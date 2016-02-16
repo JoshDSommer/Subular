@@ -1,0 +1,10 @@
+<div class="col-sm-4 col-md-2 no-padding artist-list-container">
+	<ul id="artist-list" class="artist-list scrollable-content">
+		<li class="artist-list-item"  [ngClass]="{active : selectedArtist == artist } "*ngFor="#artist of artists" (click)="onSelect(artist)">
+			{{artist.name}}
+		</li>
+	</ul>
+</div>
+<div class="col-sm-8 col-md-10 no-padding ">
+	<album-list [playerService]="playerService" [artist]="selectedArtist"></album-list>
+</div>

@@ -1,0 +1,9 @@
+<div class="col-sm-4 col-md-3 no-padding card">
+	<div class="album-card">
+		<img class="artist-album" name="album-{{album.id}}" crossOrigin="Anonymous" src="{{imgUrl(album.id)}}" />
+	</div>
+	<div class="album-card-footer">
+		{{album.title}}
+		<i class="fa fa-play-circle play-button" id="play-{{album.id}}" (click)="playAlbum(album.id)"></i>
+	</div>
+</div>

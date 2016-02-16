@@ -1,0 +1,30 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+			aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand font-endless app-font" href="#">subular</a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li class="active" (click)="page=1"><a [routerLink]="['ArtistList']">Artists</a></li>
+				<li><a href="#about">Albums</a></li>
+				<li><a href="#contact">Playlists</a></li>
+			</ul>
+			<a [routerLink]="['Settings']"><i class="fa fa-cog pull-right settings-button" (click)="page=2"></i></a>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid nav-bar-fix">
+	<div class="row">
+		<router-outlet></router-outlet>
+		<!--<artist-list *ngIf="page == 1" [playerService]="playerService"></artist-list>
+		<settings *ngIf="page == 2" ></settings>-->
+	</div>
+</div>
+<subular-player [playerService]="playerService"></subular-player>

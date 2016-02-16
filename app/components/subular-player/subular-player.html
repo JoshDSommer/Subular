@@ -1,0 +1,22 @@
+<section class="playing-footer">
+	<div class="col-xs-12 gutter">
+		<span class="gutter-progress"></span>
+	</div>
+	<div class="col-sm-2">
+		<i *ngIf="!playing" class="fa fa-play-circle pull-left" (click)="playSong()"></i>
+		<i *ngIf="playing" class="fa fa-pause-circle pull-left" (click)="pauseSong()"></i>
+		<div class="ff-rw pull-left">
+			<i class="fa fa-backward" (click)="previousSong()"></i>
+			<i class="fa fa-forward" (click)="nextSong()"></i>
+		</div>
+	</div>
+	<div class="col-sm-9">
+		<span class="title">{{nowPlayingSong.title}} {{time}}</span>
+		<span class="artist">{{nowPlayingSong.artist}}</span>
+		<span class="ablum text-muted">{{nowPlayingSong.album}}</span>
+	</div>
+	<div class="col-sm-1 heart pull-right text-right">
+		<i class="fa fa-heart-o"></i>
+		<i class="fa fa-th-list"></i>
+	</div>
+</section>

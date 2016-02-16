@@ -1,0 +1,34 @@
+.card-dark{
+			background:rgb(34, 34, 34);
+		}
+	.playing-footer{
+				position:fixed;
+				width:100%;
+				height:65px;
+				bottom:0;
+				background:#ffffff;
+				border-top:1px #101010;
+				box-shadow: 5px -1px 5px #888888;
+			}
+			i.fa{
+				color: #101010 !important;
+				line-height: 65px !important;
+				font-size: 46px !important;
+
+			}
+			div.ff-rw i, div.heart i{
+				font-size: 28px !important;
+				margin-right:15px;
+			}
+
+			.gutter{
+				background-color:#101010;
+				margin:2px 0px !important;
+				height:4px;
+				padding:0;
+			}
+			.gutter-progress{
+				background: -webkit-linear-gradient(#4B0082,#EED2EE);
+				height:4px;
+    			display: inline-block;
+			}
