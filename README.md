@@ -2,7 +2,7 @@
 
 Subular is a Angular 2 Subsonic/Madsonic music player.
 
-after cloning the repository run in projcet directory
+after cloning the repository run in project directory
 
 `npm install`
 
