@@ -15,6 +15,7 @@ made with:
 * AngularJS 2
 * CryptoJS
 * Color-Thief
+* Bootstrap
 * Typescript
 
 You can download Sonic here:
