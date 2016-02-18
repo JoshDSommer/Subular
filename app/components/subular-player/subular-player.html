@@ -17,7 +17,7 @@
 	</div>
 	<div class="col-sm-2 heart pull-right text-right">
 		<i class="fa fa-heart-o" *ngIf="songs.length>0"></i>
-		<i class="fa fa-th-list" *ngIf="songs.length>0" (click)="playingSongs = !playingSongs"></i>
+		<i class="fa fa-th-list" *ngIf="songs.length>0" [ngClass]="{activeInverse : playingSongs}"(click)="playingSongs = !playingSongs"></i>
 	</div>
 </section>
 <section id="now-playing-list" *ngIf="playingSongs">

@@ -68,14 +68,14 @@ import {SubularListItem} from '../subular-list-Item/subular-list-Item';
 				position:absolute;
 				bottom:75px;
 				top:75px;
-				right:35px;
+				right:30px;
 				background-color:#fff;
 				width:79%;
 				overflow-y:auto;
 				border-radius:2px;
     			z-index: 99;
 				padding:5px 0px 10px;
-				border:1px #efefef solid;
+				border:1px #4B0082 solid;
 			}
 			#now-playing-list td{
 				font-size:14px;

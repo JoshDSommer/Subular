@@ -32,12 +32,6 @@ import {Router}              from 'angular2/router';
 			color:#fff;
 			background-color:#9d9d9d;
 		}
-		.active{
-			background: -webkit-linear-gradient(#4B0082,#4B0082);
-			font-weight:700;
-			color:#fff;
-			border
-		}
 	`],
 	directives: [AlbumList]
 })

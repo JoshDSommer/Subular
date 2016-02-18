@@ -97,7 +97,7 @@ System.register(['angular2/core', './../../services/subular-service', './../../s
                         templateUrl: '/app/components/artist-list/artist-list.html',
                         providers: [subular_service_1.SubularService, settings_service_1.SettingsService],
                         inputs: ['artists', 'selectedArtist', 'playerService', 'i'],
-                        styles: ["\n\t\t.artist-list{\n\t\t\theight:calc(100% - 115px);\n\t\t\tlist-style-type: none;\n\t\t\tpadding:5px 0px;\n\t\t\toverflow-y:auto;\n\t\t\tborder-right:1px solid #BBB !important;\n\n\t\t}\n\t\t.artist-list::-webkit-scrollbar {\n\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.artist-list-item{\n\t\t\tpadding:5px 6px;\n\t\t\tborder-bottom:1px solid #eee !important;\n\t\t}\n\t\t.artist-list-item:hover{\n\t\t\tcolor:#fff;\n\t\t\tbackground-color:#9d9d9d;\n\t\t}\n\t\t.active{\n\t\t\tbackground: -webkit-linear-gradient(#4B0082,#4B0082);\n\t\t\tfont-weight:700;\n\t\t\tcolor:#fff;\n\t\t\tborder\n\t\t}\n\t"],
+                        styles: ["\n\t\t.artist-list{\n\t\t\theight:calc(100% - 115px);\n\t\t\tlist-style-type: none;\n\t\t\tpadding:5px 0px;\n\t\t\toverflow-y:auto;\n\t\t\tborder-right:1px solid #BBB !important;\n\n\t\t}\n\t\t.artist-list::-webkit-scrollbar {\n\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.artist-list-item{\n\t\t\tpadding:5px 6px;\n\t\t\tborder-bottom:1px solid #eee !important;\n\t\t}\n\t\t.artist-list-item:hover{\n\t\t\tcolor:#fff;\n\t\t\tbackground-color:#9d9d9d;\n\t\t}\n\t"],
                         directives: [album_list_1.AlbumList]
                     }), 
                     __metadata('design:paramtypes', [subular_service_1.SubularService, core_1.ElementRef, player_service_1.PlayerService, router_1.Router])

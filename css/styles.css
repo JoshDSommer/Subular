@@ -55,3 +55,11 @@ html, body {
 .navbar-nav li.active{
 	background: -webkit-linear-gradient(#4B0082,#EED2EE);
 }
+.active{
+			background: -webkit-linear-gradient(#4B0082,#4B0082);
+			font-weight:700;
+			color:#fff;
+}
+.activeInverse{
+		color:#4B0082 !important;
+}
