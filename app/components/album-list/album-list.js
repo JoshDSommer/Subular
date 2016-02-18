@@ -70,7 +70,7 @@ System.register(['angular2/core', '../album-card/album-card', './../../services/
                         templateUrl: '/app/components/album-list/album-list.html',
                         directives: [album_card_1.AlbumCard, bgFromImg_1.BgImageDirective],
                         inputs: ['albums', 'artist', 'playerService'],
-                        styles: ["\n\t\t.album-list{\n\t\t\theight:calc(100% - 180px);\n\t\t\toverflow-y:auto;\n\t\t\tpadding-left:5px;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t background: transparent !important;\n\t\t}\n\t\th2{\n\t\t\tpadding:0 25px;\n\t\t}\n\t"]
+                        styles: ["\n\t\t.album-list{\n\t\t\theight:calc(100% - 180px);\n\t\t\toverflow-y:auto;\n\t\t\tpadding-left:5px;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t background: transparent !important;\n\t\t}\n\t\th2{\n\t\t\tpadding:0 25px;\n\t\t}\n\t"]
                     }),
                     __param(1, core_1.Inject(player_service_1.PlayerService)), 
                     __metadata('design:paramtypes', [subular_service_1.SubularService, player_service_1.PlayerService])

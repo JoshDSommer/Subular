@@ -5,12 +5,14 @@ import {HTTP_PROVIDERS}    from 'angular2/http';
 import {Album} from './../../models/album';
 import {PlayerService, IAudioPlayingInfo} from '../../services/player-service';
 import {Song} from '../../models/song';
+import {SubularListItem} from '../subular-list-Item/subular-list-Item';
 
 @Component({
     selector: 'subular-player',
     templateUrl: '/app/components/subular-player/subular-player.html',
 	providers: [SubularService, SettingsService],
-	inputs: ['imgUrl', 'albums', 'playerService', 'nowPlayingSong', 'time'],
+	directives: [SubularListItem],
+	inputs: ['imgUrl', 'albums', 'playerService', 'nowPlayingSong', 'time', 'song', 'playingSongs'],
 	styles: [`
 	.card-dark{
 			background:rgb(34, 34, 34);
@@ -62,6 +64,65 @@ import {Song} from '../../models/song';
 			i.fa:hover{
 				color:#9d9d9d;
 			}
+			#now-playing-list{
+				position:absolute;
+				bottom:75px;
+				top:75px;
+				right:35px;
+				background-color:#fff;
+				width:79%;
+				overflow-y:auto;
+				border-radius:2px;
+    			z-index: 99;
+				padding:5px 0px 10px;
+				border:1px #efefef solid;
+			}
+			#now-playing-list td{
+				font-size:14px;
+				line-height:22px;
+			}
+			#now-playing-modal{
+				position:absolute;
+				top:0;
+				left:0;
+				right:0;
+				bottom:65px;
+				background:#000;
+				opacity:0.5;
+			}
+			#now-playing-list table{
+				width:95%;
+				margin:0 auto;
+			}
+			.row-artist{
+				padding:0 10px;
+			}
+			.row-song{
+				max-width:45%;
+				overflow:hidden;
+			}
+			.row-track{
+				width: 19px;
+			}
+			.row-num{
+				padding-right:5px;
+			}
+			tr{
+				border-bottom: 1px #efefef solid;
+				cursor:hand;
+			}
+			td, th{
+				overflow:hidden;
+			}
+			tr:hover{
+				color:#fff;
+				background-color:#9d9d9d;
+			}
+			.rowPlaying{
+				background: -webkit-linear-gradient(#4B0082,#4B0082);
+				font-weight:700;
+				color:#fff;
+			}
 	`]
 })
 export class SubularPlayer implements OnChanges, OnInit {
@@ -71,10 +132,13 @@ export class SubularPlayer implements OnChanges, OnInit {
 	public nowPlayingSong: Song;
 	public playing: boolean = false;
 	private gutterProgress: Element;
+	private songs: Song[];
+	public playingSongs: boolean = false;
 
 	constructor(private _dataService: SubularService, private _elementRef: ElementRef) {
 		this.imgUrl = this._dataService.getCoverUrl(19);
 		this.albums = this._dataService.getAlbums(19);
+		this.songs = [];
 		this.nowPlayingSong = {
 			id: 0,
 			title: '',
@@ -85,6 +149,7 @@ export class SubularPlayer implements OnChanges, OnInit {
 	nextSong(): void {
 		this.playerService.playSong(this.playerService.currentIndex + 1);
 		this.nowPlayingSong = this.playerService.currentSong();
+		this.songs = this.playerService.songList;
 	}
 
 	previousSong(): void {
@@ -103,12 +168,16 @@ export class SubularPlayer implements OnChanges, OnInit {
 	ngOnChanges(changes): void {
 
 	}
-
+	rowNum(index: number): number {
+		return index + 1;
+	}
 	ngOnInit(): void {
 		this.gutterProgress = (<HTMLElement>this._elementRef.nativeElement).getElementsByClassName("gutter-progress")[0];
 
 		this.playerService.playingSong.subscribe((song) => {
 			this.nowPlayingSong = song;
+			this.songs = this.playerService.songList;
+
 		});
 
 		this.playerService.currentPosition.subscribe((info: IAudioPlayingInfo) => {
@@ -120,4 +189,7 @@ export class SubularPlayer implements OnChanges, OnInit {
 		});
 	}
 
+	playSongFromList(index: number): void {
+		this.playerService.playSong(index);
+	}
 }

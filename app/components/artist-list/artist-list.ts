@@ -21,6 +21,9 @@ import {Router}              from 'angular2/router';
 			border-right:1px solid #BBB !important;
 
 		}
+		.artist-list::-webkit-scrollbar {
+				background: transparent !important;
+		}
 		.artist-list-item{
 			padding:5px 6px;
 			border-bottom:1px solid #eee !important;

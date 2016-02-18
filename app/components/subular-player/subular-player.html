@@ -10,13 +10,52 @@
 			<i class="fa fa-forward" (click)="nextSong()"></i>
 		</div>
 	</div>
-	<div class="col-sm-9">
+	<div class="col-sm-8">
 		<span class="title">{{nowPlayingSong.title}} {{time}}</span>
 		<span class="artist">{{nowPlayingSong.artist}}</span>
 		<span class="ablum text-muted">{{nowPlayingSong.album}}</span>
 	</div>
-	<div class="col-sm-1 heart pull-right text-right">
-		<i class="fa fa-heart-o"></i>
-		<i class="fa fa-th-list"></i>
+	<div class="col-sm-2 heart pull-right text-right">
+		<i class="fa fa-heart-o" *ngIf="songs.length>0"></i>
+		<i class="fa fa-th-list" *ngIf="songs.length>0" (click)="playingSongs = !playingSongs"></i>
 	</div>
 </section>
+<section id="now-playing-list" *ngIf="playingSongs">
+	<h3>Now Playing</h3>
+	<table>
+		<thead>
+			<tr>
+				<th class="row-num"></th>
+				<th width="45%" class="text-center row-song">
+					Song
+				</th>
+				<th class="text-center row-track">
+					track#
+				</th>
+				<th class="text-center row-artist">
+					Artist
+				</th>
+				<th class="text-right">
+					Album
+				</th>
+			</tr>
+		</thead>
+		<tr [ngClass]="{rowPlaying : nowPlayingSong == song}"   (click)="playSongFromList(i)" *ngFor="#song of songs; #i = index">
+			<td class="text-left">{{rowNum(i)}}</td>
+			<td class="text-left row-song">
+				{{song.title}}
+			</td>
+			<td class="text-right">
+				{{song.track}}
+			</td>
+			<td class="text-center">
+				{{song.artist.replace(' ','&nbsp;')}}
+			</td>
+			<td class="text-right">
+				{{song.album}}
+			</td>
+
+		</tr>
+	</table>
+</section>
+<div *ngIf="playingSongs" id="now-playing-modal" (click)="playingSongs = !playingSongs"></div>

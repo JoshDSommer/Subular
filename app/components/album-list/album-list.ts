@@ -18,6 +18,9 @@ import {PlayerService} from '../../services/player-service';
 			padding-left:5px;
 		}
 		.album-list::-webkit-scrollbar {
+					background: transparent !important;
+		}
+		.album-list::-webkit-scrollbar {
 			 background: transparent !important;
 		}
 		h2{
