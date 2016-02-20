@@ -31,18 +31,15 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                 function SubularService(_settings, _http) {
                     this._settings = _settings;
                     this._http = _http;
-                    this.buildServerData();
                 }
                 SubularService.prototype.buildServerData = function () {
-                    if (this._settings.ServerAddress != 'null') {
-                        if (!window.localStorage.getItem('subular-albums')) {
-                            window.localStorage.setItem('subular-albums', JSON.stringify([]));
-                            window.localStorage.setItem('subular-artists', JSON.stringify([]));
-                            window.localStorage.setItem('subular-playlist', JSON.stringify([]));
-                            this.buildArtistDatabase();
-                            this.buildPlayListDatabase();
-                            this.buildAlbumDatabase();
-                        }
+                    if (this._settings.ServerAddress != null && this._settings.Username != null) {
+                        window.localStorage.setItem('subular-albums', JSON.stringify([]));
+                        window.localStorage.setItem('subular-artists', JSON.stringify([]));
+                        window.localStorage.setItem('subular-playlist', JSON.stringify([]));
+                        this.buildArtistDatabase();
+                        this.buildPlayListDatabase();
+                        this.buildAlbumDatabase();
                     }
                 };
                 SubularService.prototype.getCoverUrl = function (id) {
@@ -101,23 +98,33 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                     var _this = this;
                     var playlistString;
                     var address = this._settings.getServerURl('getPlaylists');
-                    this._http.get(address).map(function (resp) { return resp.json(); }).subscribe(function (data) { return playlistString = _this.cleanSubsonicResponse(data); }, function (error) { return alert(error); }, function () {
-                        var playlists = JSON.parse(playlistString).subresp.playlists.playlist;
-                        window.localStorage.setItem('subular-playlist', JSON.stringify(playlists));
+                    this._http.get(address).map(function (resp) { return resp.json(); }).subscribe(function (data) { return playlistString = _this.cleanSubsonicResponse(data); }, function (error) { return console.log(error); }, function () {
+                        try {
+                            var playlists = JSON.parse(playlistString).subresp.playlists.playlist;
+                            window.localStorage.setItem('subular-playlist', JSON.stringify(playlists));
+                        }
+                        catch (e) {
+                            console.log(e);
+                        }
                     });
                 };
                 SubularService.prototype.buildArtistDatabase = function () {
                     var _this = this;
                     var artistString;
                     var address = this._settings.getServerURl('getIndexes');
-                    this._http.get(address).map(function (resp) { return resp.json(); }).subscribe(function (data) { return artistString = _this.cleanSubsonicResponse(data); }, function (error) { return alert(error); }, function () {
-                        var artistList = [];
-                        ;
-                        var artists = JSON.parse(artistString).subresp.indexes.index;
-                        artists.forEach(function (value, index) {
-                            artistList = artistList.concat(value.artist);
-                        });
-                        window.localStorage.setItem('subular-artists', JSON.stringify(artistList));
+                    this._http.get(address).map(function (resp) { return resp.json(); }).subscribe(function (data) { return artistString = _this.cleanSubsonicResponse(data); }, function (error) { return console.log(error); }, function () {
+                        try {
+                            var artistList_1 = [];
+                            ;
+                            var artists = JSON.parse(artistString).subresp.indexes.index;
+                            artists.forEach(function (value, index) {
+                                artistList_1 = artistList_1.concat(value.artist);
+                            });
+                            window.localStorage.setItem('subular-artists', JSON.stringify(artistList_1));
+                        }
+                        catch (e) {
+                            console.log(e);
+                        }
                     });
                 };
                 SubularService.prototype.buildAlbumDatabase = function (offset) {
@@ -125,13 +132,18 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                     var albumString;
                     offset = (!offset ? 0 : offset);
                     var address = this._settings.getServerURl('getAlbumList') + '&type=newest&size=500&offset=' + offset;
-                    this._http.get(address).map(function (resp) { return resp.json(); }).subscribe(function (data) { return albumString = _this.cleanSubsonicResponse(data); }, function (error) { return alert(error); }, function () {
-                        var albums = JSON.parse(albumString).subresp.albumList.album;
-                        if (albums.length === 500) {
-                            _this.buildAlbumDatabase(offset + 500);
+                    this._http.get(address).map(function (resp) { return resp.json(); }).subscribe(function (data) { return albumString = _this.cleanSubsonicResponse(data); }, function (error) { return console.log(error); }, function () {
+                        try {
+                            var albums = JSON.parse(albumString).subresp.albumList.album;
+                            if (albums.length === 500) {
+                                _this.buildAlbumDatabase(offset + 500);
+                            }
+                            var newAlbums = _this.getAlbums().concat(albums);
+                            window.localStorage.setItem('subular-albums', JSON.stringify(newAlbums));
                         }
-                        var newAlbums = _this.getAlbums().concat(albums);
-                        window.localStorage.setItem('subular-albums', JSON.stringify(newAlbums));
+                        catch (e) {
+                            console.log(e);
+                        }
                     });
                 };
                 SubularService.prototype.buildSongsListForArtist = function (id) {
@@ -140,10 +152,15 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                     window.localStorage.setItem('subular-songs-' + id, JSON.stringify([]));
                     albums.forEach(function (album) {
                         var songs;
-                        _this.getSongsByAlbumId(album.id).subscribe(function (data) { return songs = _this.cleanSubsonicResponse(data); }, function (error) { return alert(error); }, function () {
-                            var songsList = JSON.parse(songs).subresp.directory.child;
-                            songsList = _this.getSongs(id).concat(songsList);
-                            window.localStorage.setItem('subular-songs-' + id, JSON.stringify(songsList));
+                        _this.getSongsByAlbumId(album.id).subscribe(function (data) { return songs = _this.cleanSubsonicResponse(data); }, function (error) { return console.log(error); }, function () {
+                            try {
+                                var songsList = JSON.parse(songs).subresp.directory.child;
+                                songsList = _this.getSongs(id).concat(songsList);
+                                window.localStorage.setItem('subular-songs-' + id, JSON.stringify(songsList));
+                            }
+                            catch (e) {
+                                console.log(e);
+                            }
                         });
                     });
                 };

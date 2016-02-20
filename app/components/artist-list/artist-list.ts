@@ -82,10 +82,7 @@ export class ArtistList {
 					}
 				}
 			});
-		}else if (this.artists == null) {
-			this._dataService.buildServerData();
 		} else {
-
 			this._router.navigate(['Settings']);
 		}
 

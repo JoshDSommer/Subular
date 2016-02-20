@@ -74,9 +74,6 @@ System.register(['angular2/core', './../../services/subular-service', './../../s
                             }
                         });
                     }
-                    else if (this.artists == null) {
-                        this._dataService.buildServerData();
-                    }
                     else {
                         this._router.navigate(['Settings']);
                     }

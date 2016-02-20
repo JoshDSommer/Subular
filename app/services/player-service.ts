@@ -77,7 +77,7 @@ export class PlayerService {
 			if (this.audio != null)
 				this.audio.pause();
 
-			let streamUrl = this._settingsService.getStreamUrl(this.songList[index].id) + '&maxBitRate=128';
+			let streamUrl = this._settingsService.getStreamUrl(this.songList[index].id);// + '&maxBitRate=128';
 			this.audio = new Audio(streamUrl);
 			this.audio.play();
 			this.audio.addEventListener('timeupdate', () => {

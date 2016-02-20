@@ -76,7 +76,7 @@ System.register(['angular2/core', './subular-service'], function(exports_1) {
                         this.emitPlayingEvent(true);
                         if (this.audio != null)
                             this.audio.pause();
-                        var streamUrl = this._settingsService.getStreamUrl(this.songList[index].id) + '&maxBitRate=128';
+                        var streamUrl = this._settingsService.getStreamUrl(this.songList[index].id); // + '&maxBitRate=128';
                         this.audio = new Audio(streamUrl);
                         this.audio.play();
                         this.audio.addEventListener('timeupdate', function () {

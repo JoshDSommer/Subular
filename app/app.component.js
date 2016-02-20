@@ -43,7 +43,14 @@ System.register(['angular2/core', './services/subular-service', './services/sett
                     this._dataService = _dataService;
                     this.playerService = playerService;
                     this.page = 1;
+                    if (this._dataService.getArtists() != null && this._dataService.getArtists().length == 0)
+                        this._dataService.buildServerData();
+                    setTimeout(function () {
+                        console.log('done');
+                    }, 6000);
                 }
+                SubularApp.prototype.ngOnInit = function () {
+                };
                 SubularApp = __decorate([
                     core_1.Component({
                         selector: 'subular',

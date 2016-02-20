@@ -26,6 +26,9 @@ import {PlayerService} from '../../services/player-service';
 		h2{
 			padding:0 25px;
 		}
+		i.fa:hover{
+			color:#9d9d9d !important;
+		}
 	`]
 })
 

@@ -81,15 +81,7 @@ import {SubularListItem} from '../subular-list-Item/subular-list-Item';
 				font-size:14px;
 				line-height:22px;
 			}
-			#now-playing-modal{
-				position:absolute;
-				top:0;
-				left:0;
-				right:0;
-				bottom:65px;
-				background:#000;
-				opacity:0.5;
-			}
+
 			#now-playing-list table{
 				width:95%;
 				margin:0 auto;

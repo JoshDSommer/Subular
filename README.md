@@ -16,6 +16,7 @@ made with:
 * CryptoJS
 * Color-Thief
 * Bootstrap
+* Font Awesome
 * Typescript
 
 You can download Sonic here:

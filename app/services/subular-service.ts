@@ -5,28 +5,23 @@ import 'rxjs/add/operator/map';
 import {Artist} from '../models/artist';
 import {Album} from '../models/album';
 import {Song} from '../models/song';
-
 import {Playlist} from '../models/playlist';
 import {Observable} from 'rxjs/observable';
 
 @Injectable()
 export class SubularService {
 
-	constructor( @Inject(SettingsService) private _settings: SettingsService, @Inject(Http) private _http: Http) {
-		this.buildServerData();
-	}
+	constructor( @Inject(SettingsService) private _settings: SettingsService, @Inject(Http) private _http: Http) { }
 
 	buildServerData(): void {
-		if (this._settings.ServerAddress != 'null') {
-			if (!window.localStorage.getItem('subular-albums')) {
-				window.localStorage.setItem('subular-albums', JSON.stringify([]));
-				window.localStorage.setItem('subular-artists', JSON.stringify([]));
-				window.localStorage.setItem('subular-playlist', JSON.stringify([]));
-				this.buildArtistDatabase();
-				this.buildPlayListDatabase();
-				this.buildAlbumDatabase();
-			}
+		if (this._settings.ServerAddress != null && this._settings.Username != null) {
 
+			window.localStorage.setItem('subular-albums', JSON.stringify([]));
+			window.localStorage.setItem('subular-artists', JSON.stringify([]));
+			window.localStorage.setItem('subular-playlist', JSON.stringify([]));
+			this.buildArtistDatabase();
+			this.buildPlayListDatabase();
+			this.buildAlbumDatabase();
 		}
 	}
 
@@ -96,10 +91,14 @@ export class SubularService {
 		let address = this._settings.getServerURl('getPlaylists');
 		this._http.get(address).map(resp => resp.json()).subscribe(
 			data => playlistString = this.cleanSubsonicResponse(data),
-			error => alert(error),
+			error => console.log(error),
 			() => {
-				let playlists: any[] = JSON.parse(playlistString).subresp.playlists.playlist;
-				window.localStorage.setItem('subular-playlist', JSON.stringify(playlists));
+				try {
+					let playlists: any[] = JSON.parse(playlistString).subresp.playlists.playlist;
+					window.localStorage.setItem('subular-playlist', JSON.stringify(playlists));
+				} catch (e) {
+					console.log(e);
+				}
 			}
 		);
 	}
@@ -109,14 +108,18 @@ export class SubularService {
 		let address = this._settings.getServerURl('getIndexes');
 		this._http.get(address).map(resp => resp.json()).subscribe(
 			data => artistString = this.cleanSubsonicResponse(data),
-			error => alert(error),
+			error => console.log(error),
 			() => {
-				let artistList: any[] = [];;
-				let artists: any[] = JSON.parse(artistString).subresp.indexes.index;
-				artists.forEach((value, index) => {
-					artistList = artistList.concat(value.artist);
-				});
-				window.localStorage.setItem('subular-artists', JSON.stringify(artistList));
+				try {
+					let artistList: any[] = [];;
+					let artists: any[] = JSON.parse(artistString).subresp.indexes.index;
+					artists.forEach((value, index) => {
+						artistList = artistList.concat(value.artist);
+					});
+					window.localStorage.setItem('subular-artists', JSON.stringify(artistList));
+				} catch (e) {
+					console.log(e);
+				}
 			}
 		);
 	}
@@ -126,14 +129,18 @@ export class SubularService {
 		let address = this._settings.getServerURl('getAlbumList') + '&type=newest&size=500&offset=' + offset;
 		this._http.get(address).map(resp => resp.json()).subscribe(
 			data => albumString = this.cleanSubsonicResponse(data),
-			error => alert(error),
+			error => console.log(error),
 			() => {
-				let albums: any[] = JSON.parse(albumString).subresp.albumList.album;
-				if (albums.length === 500) {
-					this.buildAlbumDatabase(offset + 500);
+				try {
+					let albums: any[] = JSON.parse(albumString).subresp.albumList.album;
+					if (albums.length === 500) {
+						this.buildAlbumDatabase(offset + 500);
+					}
+					let newAlbums = this.getAlbums().concat(albums);
+					window.localStorage.setItem('subular-albums', JSON.stringify(newAlbums));
+				} catch (e) {
+					console.log(e);
 				}
-				let newAlbums = this.getAlbums().concat(albums);
-				window.localStorage.setItem('subular-albums', JSON.stringify(newAlbums));
 			}
 		);
 	}
@@ -146,11 +153,15 @@ export class SubularService {
 			let songs: any;
 			this.getSongsByAlbumId(album.id).subscribe(
 				data => songs = this.cleanSubsonicResponse(data),
-				error => alert(error),
+				error => console.log(error),
 				() => {
-					let songsList: any[] = JSON.parse(songs).subresp.directory.child;
-					songsList = this.getSongs(id).concat(songsList);
-					window.localStorage.setItem('subular-songs-' + id, JSON.stringify(songsList));
+					try {
+						let songsList: any[] = JSON.parse(songs).subresp.directory.child;
+						songsList = this.getSongs(id).concat(songsList);
+						window.localStorage.setItem('subular-songs-' + id, JSON.stringify(songsList));
+					} catch (e) {
+						console.log(e);
+					}
 				});
 		});
 	}

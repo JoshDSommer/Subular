@@ -1,5 +1,5 @@
 <section id="album-list-container"  >
-	<h2 class="" id="album-list-artist">{{artist.name}} <i class="fa fa-random pull-right" (click)="playArtist()"></i></h2>
+	<h2 class="" id="album-list-artist">{{artist?.name}} <i class="fa fa-random pull-right" (click)="playArtist()"></i></h2>
 	<div class="album-list  scrollable-content">
 		<album-card [playerService]="playerService" *ngFor="#album of albums" [album]="album"></album-card>
 	</div>

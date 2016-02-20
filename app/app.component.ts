@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {SubularService} from './services/subular-service';
 import {SettingsService} from './services/settings-service';
 import {HTTP_PROVIDERS}    from 'angular2/http';
@@ -40,7 +40,7 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 	{ path: '/settings', name: 'Settings', component: Settings }
 ])
 
-export class SubularApp {
+export class SubularApp implements OnInit{
 	getData: string;
 	items: Array<any>;
 	public albums: Album[];
@@ -50,8 +50,17 @@ export class SubularApp {
 	public page: number = 1;
 
 	constructor(private _dataService: SubularService, public playerService: PlayerService) {
+		if (this._dataService.getArtists() != null && this._dataService.getArtists().length  == 0)
+			this._dataService.buildServerData();
+
+		setTimeout(() => {
+			console.log('done');
+		}, 6000);
 
 
 	}
 
+	ngOnInit(): void{
+
+	}
 }
