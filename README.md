@@ -1,4 +1,5 @@
-# Subular
+# ![Subular](/images/subular.png)
+
 
 Subular is a Angular 2 Subsonic/Madsonic music player.
 
@@ -33,5 +34,6 @@ http://www.subsonic.org/
 ![Alt text](/images/screen4.png)
 
 Notes:
-* if you're having problems playing m4a files remove them from the transcoding options in subsonics(not Subulars) admin
-* VS Code Markdown realtime view: ctrl+\ to split it the ctrl+shift+v  to view it
+* if you're having problems playing m4a files remove them from the transcoding options in subsonics(not Subular's) admin
+* VS Code markdown realtime view: ctrl+\ to split it the ctrl+shift+v  to view it
+* Helpful extension for handling CORS https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en
