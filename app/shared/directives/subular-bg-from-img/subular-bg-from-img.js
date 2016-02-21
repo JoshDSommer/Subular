@@ -62,7 +62,7 @@ System.register(['angular2/core'], function(exports_1) {
                 ], BgImageDirective.prototype, "hover", null);
                 BgImageDirective = __decorate([
                     core_1.Directive({
-                        selector: '[subularBgFromImg]',
+                        selector: '[subular-bg-from-img]',
                         host: {
                             '(mouseenter)': 'onMouseEnter()',
                             '(mouseleave)': 'onMouseLeave()'

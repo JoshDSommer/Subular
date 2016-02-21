@@ -2,7 +2,7 @@ import {Directive, ElementRef, Input, OnInit} from 'angular2/core';
 declare let ColorThief: any;
 
 @Directive({
-	selector: '[subularBgFromImg]',
+	selector: '[subular-bg-from-img]',
 	host: {
 		'(mouseenter)': 'onMouseEnter()',
 		'(mouseleave)': 'onMouseLeave()'

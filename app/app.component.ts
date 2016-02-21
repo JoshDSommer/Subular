@@ -3,8 +3,8 @@ import {SubularService} from './shared/services/subular-service';
 import {SettingsService} from './shared/services/settings-service';
 import {HTTP_PROVIDERS}    from 'angular2/http';
 import {SubularPlayer} from './shared/directives/subular-player/subular-player';
-import {ArtistList} from './components/artist-list/artist-list';
-import {Settings} from './components/settings/settings';
+import {ArtistList} from './artist-list/artist-list';
+import {Settings} from './settings/settings';
 import {Artist} from './shared/models/artist';
 import {Album} from './shared/models/album';
 import {PlayerService} from './shared/services/player-service';
@@ -32,8 +32,6 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 		}
 	`],
 	directives: [SubularPlayer, ArtistList, Settings, ROUTER_DIRECTIVES]
-
-
 })
 @RouteConfig([
 	{ path: '/artist', name: 'ArtistList', component: ArtistList, useAsDefault: true },

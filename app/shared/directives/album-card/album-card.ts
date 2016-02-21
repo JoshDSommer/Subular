@@ -25,6 +25,7 @@ declare var ColorThief: any;
 		right: 2;
 		color: #fff;
 		margin-right:1%;
+		/*text-shadow: black 0.1em 0.1em 0.2em*/
 	}
 	.album-card
 	{
