@@ -5,10 +5,11 @@ import {Album} from '../../models/album';
 import {Artist} from '../../models/artist';
 import {BgImageDirective} from '../subular-bg-from-img/subular-bg-from-img';
 import {PlayerService} from '../../services/player-service';
+import {path} from '../folder-info';
 
 @Component({
 	selector: 'album-list',
-	templateUrl: '/app/shared/directives/album-list/album-list.html',
+	templateUrl: path + 'album-list/album-list.html',
 	directives: [AlbumCard, BgImageDirective],
 	inputs: ['albums', 'artist', 'playerService'],
 	styles: [`

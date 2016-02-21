@@ -1,4 +1,4 @@
-System.register(['angular2/core', './shared/services/subular-service', './shared/services/settings-service', './shared/directives/subular-player/subular-player', './components/artist-list/artist-list', './components/settings/settings', './shared/services/player-service', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', './shared/services/subular-service', './shared/services/settings-service', './shared/directives/subular-player/subular-player', './artist-list/artist-list', './settings/settings', './shared/services/player-service', 'angular2/router'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;

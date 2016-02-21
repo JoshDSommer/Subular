@@ -1,15 +1,15 @@
 import {Component, ElementRef, Inject} from 'angular2/core';
-import {SubularService} from './../../shared/services/subular-service';
-import {SettingsService} from './../../shared/services/settings-service';
+import {SubularService} from './../shared/services/subular-service';
+import {SettingsService} from './../shared/services/settings-service';
 import {HTTP_PROVIDERS}    from 'angular2/http';
-import {Artist} from './../../shared/models/artist';
-import {AlbumList} from '../../shared/directives/album-list/album-list'
-import {PlayerService} from '../../shared/services/player-service';
+import {Artist} from './../shared/models/artist';
+import {AlbumList} from '../shared/directives/album-list/album-list'
+import {PlayerService} from '../shared/services/player-service';
 import {Router}              from 'angular2/router';
 
 @Component({
 	selector: 'artist-list',
-	templateUrl: '/app/components/artist-list/artist-list.html',
+	templateUrl: '/app/artist-list/artist-list.html',
 	providers: [SubularService, SettingsService],
 	inputs: ['artists', 'selectedArtist', 'playerService', 'i'],
 	styles: [`

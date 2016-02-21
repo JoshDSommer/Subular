@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core', '../folder-info'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,12 +9,15 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, folder_info_1;
     var SubularListItem;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (folder_info_1_1) {
+                folder_info_1 = folder_info_1_1;
             }],
         execute: function() {
             SubularListItem = (function () {
@@ -25,7 +28,7 @@ System.register(['angular2/core'], function(exports_1) {
                 SubularListItem = __decorate([
                     core_1.Component({
                         selector: 'subular-list-item',
-                        templateUrl: '/app/shared/directives/subular-list-Item/subular-list-Item.html',
+                        templateUrl: folder_info_1.path + 'subular-list-Item/subular-list-Item.html',
                         inputs: ['song', 'number']
                     }), 
                     __metadata('design:paramtypes', [])

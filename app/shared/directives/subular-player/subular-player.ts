@@ -6,10 +6,11 @@ import {Album} from './../../models/album';
 import {PlayerService, IAudioPlayingInfo} from '../../services/player-service';
 import {Song} from '../../models/song';
 import {SubularListItem} from '../subular-list-Item/subular-list-Item';
+import {path} from '../folder-info';
 
 @Component({
 	selector: 'subular-player',
-	templateUrl: '/app/shared/directives/subular-player/subular-player.html',
+	templateUrl: path + 'subular-player/subular-player.html',
 	providers: [SubularService, SettingsService],
 	directives: [SubularListItem],
 	inputs: ['imgUrl', 'albums', 'playerService', 'nowPlayingSong', 'time', 'song', 'playingSongs'],

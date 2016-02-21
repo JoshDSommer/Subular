@@ -1,4 +1,4 @@
-System.register(['angular2/core', './../../services/subular-service', './../../services/settings-service', '../subular-list-Item/subular-list-Item'], function(exports_1) {
+System.register(['angular2/core', './../../services/subular-service', './../../services/settings-service', '../subular-list-Item/subular-list-Item', '../folder-info'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(['angular2/core', './../../services/subular-service', './../../s
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, subular_service_1, settings_service_1, subular_list_Item_1;
+    var core_1, subular_service_1, settings_service_1, subular_list_Item_1, folder_info_1;
     var SubularPlayer;
     return {
         setters:[
@@ -24,6 +24,9 @@ System.register(['angular2/core', './../../services/subular-service', './../../s
             },
             function (subular_list_Item_1_1) {
                 subular_list_Item_1 = subular_list_Item_1_1;
+            },
+            function (folder_info_1_1) {
+                folder_info_1 = folder_info_1_1;
             }],
         execute: function() {
             SubularPlayer = (function () {
@@ -83,7 +86,7 @@ System.register(['angular2/core', './../../services/subular-service', './../../s
                 SubularPlayer = __decorate([
                     core_1.Component({
                         selector: 'subular-player',
-                        templateUrl: '/app/shared/directives/subular-player/subular-player.html',
+                        templateUrl: folder_info_1.path + 'subular-player/subular-player.html',
                         providers: [subular_service_1.SubularService, settings_service_1.SettingsService],
                         directives: [subular_list_Item_1.SubularListItem],
                         inputs: ['imgUrl', 'albums', 'playerService', 'nowPlayingSong', 'time', 'song', 'playingSongs'],

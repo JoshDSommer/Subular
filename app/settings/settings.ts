@@ -1,11 +1,11 @@
 import {Component, ViewEncapsulation} from 'angular2/core';
-import {SettingsService} from './../../shared/services/settings-service';
-import {SubularService} from './../../shared/services/subular-service';
+import {SettingsService} from './../shared/services/settings-service';
+import {SubularService} from './../shared/services/subular-service';
 import {Router}              from 'angular2/router';
 
 @Component({
 	selector: 'settings',
-	templateUrl: '/app/components/settings/settings.html',
+	templateUrl: '/app/settings/settings.html',
 	styles: [`
 	.form-group{
 		margin-left:10px;

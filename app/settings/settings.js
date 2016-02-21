@@ -1,4 +1,4 @@
-System.register(['angular2/core', './../../shared/services/settings-service', './../../shared/services/subular-service', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', './../shared/services/settings-service', './../shared/services/subular-service', 'angular2/router'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -55,7 +55,7 @@ System.register(['angular2/core', './../../shared/services/settings-service', '.
                 Settings = __decorate([
                     core_1.Component({
                         selector: 'settings',
-                        templateUrl: '/app/components/settings/settings.html',
+                        templateUrl: '/app/settings/settings.html',
                         styles: ["\n\t.form-group{\n\t\tmargin-left:10px;\n\t}\n\t"],
                         inputs: ['server', 'username', 'password', 'loading'],
                         providers: [settings_service_1.SettingsService]

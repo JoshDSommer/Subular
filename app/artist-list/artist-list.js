@@ -1,4 +1,4 @@
-System.register(['angular2/core', './../../shared/services/subular-service', './../../shared/services/settings-service', '../../shared/directives/album-list/album-list', '../../shared/services/player-service', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', './../shared/services/subular-service', './../shared/services/settings-service', '../shared/directives/album-list/album-list', '../shared/services/player-service', 'angular2/router'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -91,7 +91,7 @@ System.register(['angular2/core', './../../shared/services/subular-service', './
                 ArtistList = __decorate([
                     core_1.Component({
                         selector: 'artist-list',
-                        templateUrl: '/app/components/artist-list/artist-list.html',
+                        templateUrl: '/app/artist-list/artist-list.html',
                         providers: [subular_service_1.SubularService, settings_service_1.SettingsService],
                         inputs: ['artists', 'selectedArtist', 'playerService', 'i'],
                         styles: ["\n\t.artist-list{\n\t\theight:calc(100% - 115px);\n\t\tlist-style-type: none;\n\t\tpadding:5px 0px;\n\t\toverflow-y:auto;\n\t\tborder-right:1px solid #BBB !important;\n\n\t}\n\t.artist-list::-webkit-scrollbar {\n\t\t\tbackground: transparent !important;\n\t}\n\t.artist-list-item{\n\t\tpadding:5px 6px;\n\t\tborder-bottom:1px solid #eee !important;\n\t}\n\t.artist-list-item:hover{\n\t\tcolor:#fff;\n\t\tbackground-color:#9d9d9d;\n\t}\n"],
