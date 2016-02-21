@@ -36,16 +36,21 @@ System.register(['angular2/core', './../../shared/services/settings-service', '.
                     this.username = this._settings.Username;
                     this.password = this._settings.Password;
                 }
-                Settings.prototype.refreshData = function () {
-                    var _this = this;
+                Settings.prototype.save = function () {
                     this._settings.ServerAddress = this.server;
                     this._settings.Username = this.username;
                     this._settings.Password = this.password;
+                };
+                Settings.prototype.refreshData = function () {
+                    var _this = this;
+                    this.save();
                     this._dataService.buildServerData();
                     this.loading = true;
                     setTimeout(function () {
                         _this._router.navigate(['ArtistList']);
                     }, 15000);
+                };
+                Settings.prototype.testConnection = function () {
                 };
                 Settings = __decorate([
                     core_1.Component({

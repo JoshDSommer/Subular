@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../album-card/album-card', '../../services/subular-service', '../attr/bgFromImg', '../../services/player-service'], function(exports_1) {
+System.register(['angular2/core', '../album-card/album-card', '../../services/subular-service', '../subular-bg-from-img/subular-bg-from-img', '../../services/player-service'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -12,7 +12,7 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, album_card_1, subular_service_1, bgFromImg_1, player_service_1;
+    var core_1, album_card_1, subular_service_1, subular_bg_from_img_1, player_service_1;
     var AlbumList;
     return {
         setters:[
@@ -25,8 +25,8 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
             function (subular_service_1_1) {
                 subular_service_1 = subular_service_1_1;
             },
-            function (bgFromImg_1_1) {
-                bgFromImg_1 = bgFromImg_1_1;
+            function (subular_bg_from_img_1_1) {
+                subular_bg_from_img_1 = subular_bg_from_img_1_1;
             },
             function (player_service_1_1) {
                 player_service_1 = player_service_1_1;
@@ -68,9 +68,9 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                     core_1.Component({
                         selector: 'album-list',
                         templateUrl: '/app/shared/directives/album-list/album-list.html',
-                        directives: [album_card_1.AlbumCard, bgFromImg_1.BgImageDirective],
+                        directives: [album_card_1.AlbumCard, subular_bg_from_img_1.BgImageDirective],
                         inputs: ['albums', 'artist', 'playerService'],
-                        styles: ["\n\t\t.album-list{\n\t\t\theight:calc(100% - 180px);\n\t\t\toverflow-y:auto;\n\t\t\tpadding-left:5px;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t background: transparent !important;\n\t\t}\n\t\th2{\n\t\t\tpadding:0 25px;\n\t\t}\n\t\ti.fa:hover{\n\t\t\tcolor:#9d9d9d !important;\n\t\t}\n\t"]
+                        styles: ["\n\t\t.album-list{\n\t\t\theight:calc(100% - 180px);\n\t\t\toverflow-y:auto;\n\t\t\tpadding-left:5px;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\tbackground: transparent !important;\n\t\t}\n\t\th2{\n\t\t\tpadding:0 25px;\n\t\t}\n\t\ti.fa:hover{\n\t\t\tcolor:#9d9d9d !important;\n\t\t}\n\t"]
                     }),
                     __param(1, core_1.Inject(player_service_1.PlayerService)), 
                     __metadata('design:paramtypes', [subular_service_1.SubularService, player_service_1.PlayerService])

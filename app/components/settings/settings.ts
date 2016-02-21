@@ -26,16 +26,21 @@ export class Settings {
 		this.username = this._settings.Username;
 		this.password = this._settings.Password;
 	}
-
-	refreshData(): void {
+	save(): void{
 		this._settings.ServerAddress = this.server;
 		this._settings.Username = this.username;
 		this._settings.Password = this.password;
+	}
+	refreshData(): void {
+		this.save();
 		this._dataService.buildServerData();
 		this.loading = true;
 		setTimeout(() => {
 			this._router.navigate(['ArtistList']);
 		}, 15000);
+
+	}
+	testConnection(): void{
 
 	}
 }

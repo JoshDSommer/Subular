@@ -32,5 +32,6 @@ http://www.subsonic.org/
 
 ![Alt text](/images/screen4.png)
 
-
-*VS Code Markdown realtime view: ctrl+\ to split it the ctrl+shift+v  to view it
+Notes:
+* if you're having problems playing m4a files remove them from the transcoding options in subsonics(not Subulars) admin
+* VS Code Markdown realtime view: ctrl+\ to split it the ctrl+shift+v  to view it

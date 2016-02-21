@@ -3,7 +3,7 @@ import {AlbumCard} from '../album-card/album-card';
 import {SubularService} from '../../services/subular-service';
 import {Album} from '../../models/album';
 import {Artist} from '../../models/artist';
-import {BgImageDirective} from '../attr/bgFromImg';
+import {BgImageDirective} from '../subular-bg-from-img/subular-bg-from-img';
 import {PlayerService} from '../../services/player-service';
 
 @Component({
@@ -21,7 +21,7 @@ import {PlayerService} from '../../services/player-service';
 					background: transparent !important;
 		}
 		.album-list::-webkit-scrollbar {
-			 background: transparent !important;
+			background: transparent !important;
 		}
 		h2{
 			padding:0 25px;

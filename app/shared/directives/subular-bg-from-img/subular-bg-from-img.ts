@@ -2,7 +2,7 @@ import {Directive, ElementRef, Input, OnInit} from 'angular2/core';
 declare let ColorThief: any;
 
 @Directive({
-    selector: '[bgFromImg]',
+	selector: '[subularBgFromImg]',
 	host: {
 		'(mouseenter)': 'onMouseEnter()',
 		'(mouseleave)': 'onMouseLeave()'
@@ -10,11 +10,11 @@ declare let ColorThief: any;
 })
 
 export class BgImageDirective implements OnInit {
-  private _hover:boolean;
+	private _hover: boolean;
 
-  @Input() set hover(hoverStatus:boolean){
-      this._hover = hoverStatus;
-  }
+	@Input() set hover(hoverStatus: boolean) {
+		this._hover = hoverStatus;
+	}
 	constructor(private el: ElementRef) { }
 	private hoverColor: string;
 	private defaultColor: string;
@@ -29,18 +29,18 @@ export class BgImageDirective implements OnInit {
 				let palettes = colorThief.getPalette(img, 8);
 				this.hoverColor = this.rgbString(palettes[2]);
 				this.defaultColor = this.rgbString(palettes[4])
-				this.element.setAttribute("style", 'background-color:' + this.defaultColor);
+				this.element.setAttribute('style', 'background-color:' + this.defaultColor);
 			});
 	}
 
 	onMouseEnter() {
-      if(this._hover)
-				this.element.setAttribute("style", 'background-color:' + this.hoverColor);
+		if (this._hover)
+			this.element.setAttribute('style', 'background-color:' + this.hoverColor);
 	}
 	onMouseLeave() {
-    if(this._hover)
-				this.element.setAttribute("style", 'background-color:' + this.defaultColor);
-	 }
+		if (this._hover)
+			this.element.setAttribute('style', 'background-color:' + this.defaultColor);
+	}
 	/**
 	 * returns the string rbg valud from a palette;
 	 */

@@ -38,16 +38,16 @@ System.register(['angular2/core'], function(exports_1) {
                             var palettes = colorThief.getPalette(img, 8);
                             _this.hoverColor = _this.rgbString(palettes[2]);
                             _this.defaultColor = _this.rgbString(palettes[4]);
-                            _this.element.setAttribute("style", 'background-color:' + _this.defaultColor);
+                            _this.element.setAttribute('style', 'background-color:' + _this.defaultColor);
                         });
                 };
                 BgImageDirective.prototype.onMouseEnter = function () {
                     if (this._hover)
-                        this.element.setAttribute("style", 'background-color:' + this.hoverColor);
+                        this.element.setAttribute('style', 'background-color:' + this.hoverColor);
                 };
                 BgImageDirective.prototype.onMouseLeave = function () {
                     if (this._hover)
-                        this.element.setAttribute("style", 'background-color:' + this.defaultColor);
+                        this.element.setAttribute('style', 'background-color:' + this.defaultColor);
                 };
                 /**
                  * returns the string rbg valud from a palette;
@@ -62,7 +62,7 @@ System.register(['angular2/core'], function(exports_1) {
                 ], BgImageDirective.prototype, "hover", null);
                 BgImageDirective = __decorate([
                     core_1.Directive({
-                        selector: '[bgFromImg]',
+                        selector: '[subularBgFromImg]',
                         host: {
                             '(mouseenter)': 'onMouseEnter()',
                             '(mouseleave)': 'onMouseLeave()'
@@ -76,4 +76,4 @@ System.register(['angular2/core'], function(exports_1) {
         }
     }
 });
-//# sourceMappingURL=bgFromImg.js.map
+//# sourceMappingURL=subular-bg-from-img.js.map
