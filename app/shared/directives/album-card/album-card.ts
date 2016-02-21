@@ -22,7 +22,7 @@ declare var ColorThief: any;
 		position: absolute;
 		font-size: 55px;
 		bottom: 0;
-		right: 0;
+		right: 2;
 		color: #fff;
 		margin-right:1%;
 	}
@@ -46,7 +46,7 @@ declare var ColorThief: any;
 		background-color: #fff;
 		margin-bottom: 10px;
 		padding:2px 33px 0 5px;
-		font-size:13px;
+		font-size:1.7vh;
 		line-height:14px;
 		border-bottom-left-radius: 5px;
 		border-bottom-right-radius: 35px;
@@ -88,8 +88,8 @@ export class AlbumCard implements OnInit {
 				if (document.body.getAttribute('style') === '') {
 					document.body.setAttribute('style', 'background: -webkit-linear-gradient(' + this.getRGBString(palettes[1]) + ',' + this.getRGBString(palettes[6]) + ');');
 				}
-				//footer.setAttribute('style', 'background: ' + this.getRGBString(palettes[6]) + '; color:' + this.getRGBString(palettes[1]) + ';');
-				//alv.setAttribute('style', 'background-color:' + this.getRGBString(palettes[5]));
+				// footer.setAttribute('style', 'background: ' + this.getRGBString(palettes[6]) + '; color:' + this.getRGBString(palettes[1]) + ';');
+				// alv.setAttribute('style', 'background-color:' + this.getRGBString(palettes[5]));
 				button.setAttribute('style', 'color:' + this.getRGBString(palettes[1]));
 			});
 		}
