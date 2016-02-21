@@ -25,7 +25,7 @@ System.register(['angular2/core'], function(exports_1) {
                 SubularListItem = __decorate([
                     core_1.Component({
                         selector: 'subular-list-item',
-                        templateUrl: '/app/components/subular-list-Item/subular-list-Item.html',
+                        templateUrl: '/app/shared/directives/subular-list-Item/subular-list-Item.html',
                         inputs: ['song', 'number']
                     }), 
                     __metadata('design:paramtypes', [])

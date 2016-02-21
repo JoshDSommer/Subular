@@ -1,14 +1,14 @@
 import {Component, OnChanges, OnInit, Inject  } from 'angular2/core';
 import {AlbumCard} from '../album-card/album-card';
-import {SubularService} from './../../services/subular-service';
-import {Album} from './../../models/album';
-import {Artist} from './../../models/artist';
-import {BgImageDirective} from '../../attr/bgFromImg';
+import {SubularService} from '../../services/subular-service';
+import {Album} from '../../models/album';
+import {Artist} from '../../models/artist';
+import {BgImageDirective} from '../attr/bgFromImg';
 import {PlayerService} from '../../services/player-service';
 
 @Component({
 	selector: 'album-list',
-	templateUrl: '/app/components/album-list/album-list.html',
+	templateUrl: '/app/shared/directives/album-list/album-list.html',
 	directives: [AlbumCard, BgImageDirective],
 	inputs: ['albums', 'artist', 'playerService'],
 	styles: [`

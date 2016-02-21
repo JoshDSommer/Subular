@@ -1,4 +1,4 @@
-System.register(['angular2/core', './services/subular-service', './services/settings-service', './components/subular-player/subular-player', './components/artist-list/artist-list', './components/settings/settings', './services/player-service', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', './shared/services/subular-service', './shared/services/settings-service', './shared/directives/subular-player/subular-player', './components/artist-list/artist-list', './components/settings/settings', './shared/services/player-service', 'angular2/router'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -61,8 +61,8 @@ System.register(['angular2/core', './services/subular-service', './services/sett
                         directives: [subular_player_1.SubularPlayer, artist_list_1.ArtistList, settings_1.Settings, router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([
-                        { path: '/', name: 'ArtistList', component: artist_list_1.ArtistList },
-                        { path: '/settings', name: 'Settings', component: settings_1.Settings }
+                        { path: '/artist', name: 'ArtistList', component: artist_list_1.ArtistList, useAsDefault: true },
+                        { path: '/settings', name: 'Settings', component: settings_1.Settings },
                     ]), 
                     __metadata('design:paramtypes', [subular_service_1.SubularService, player_service_1.PlayerService])
                 ], SubularApp);

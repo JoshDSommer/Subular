@@ -8,8 +8,8 @@ import {Song} from '../../models/song';
 import {SubularListItem} from '../subular-list-Item/subular-list-Item';
 
 @Component({
-    selector: 'subular-player',
-    templateUrl: '/app/components/subular-player/subular-player.html',
+	selector: 'subular-player',
+	templateUrl: '/app/shared/directives/subular-player/subular-player.html',
 	providers: [SubularService, SettingsService],
 	directives: [SubularListItem],
 	inputs: ['imgUrl', 'albums', 'playerService', 'nowPlayingSong', 'time', 'song', 'playingSongs'],
@@ -73,7 +73,7 @@ import {SubularListItem} from '../subular-list-Item/subular-list-Item';
 				width:79%;
 				overflow-y:auto;
 				border-radius:2px;
-    			z-index: 99;
+				z-index: 99;
 				padding:5px 0px 10px;
 				border:1px #4B0082 solid;
 			}

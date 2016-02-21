@@ -1,4 +1,4 @@
-System.register(['angular2/core', './../../services/subular-service', './../../services/settings-service', '../album-list/album-list', '../../services/player-service', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', './../../shared/services/subular-service', './../../shared/services/settings-service', '../../shared/directives/album-list/album-list', '../../shared/services/player-service', 'angular2/router'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -94,7 +94,7 @@ System.register(['angular2/core', './../../services/subular-service', './../../s
                         templateUrl: '/app/components/artist-list/artist-list.html',
                         providers: [subular_service_1.SubularService, settings_service_1.SettingsService],
                         inputs: ['artists', 'selectedArtist', 'playerService', 'i'],
-                        styles: ["\n\t\t.artist-list{\n\t\t\theight:calc(100% - 115px);\n\t\t\tlist-style-type: none;\n\t\t\tpadding:5px 0px;\n\t\t\toverflow-y:auto;\n\t\t\tborder-right:1px solid #BBB !important;\n\n\t\t}\n\t\t.artist-list::-webkit-scrollbar {\n\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.artist-list-item{\n\t\t\tpadding:5px 6px;\n\t\t\tborder-bottom:1px solid #eee !important;\n\t\t}\n\t\t.artist-list-item:hover{\n\t\t\tcolor:#fff;\n\t\t\tbackground-color:#9d9d9d;\n\t\t}\n\t"],
+                        styles: ["\n\t.artist-list{\n\t\theight:calc(100% - 115px);\n\t\tlist-style-type: none;\n\t\tpadding:5px 0px;\n\t\toverflow-y:auto;\n\t\tborder-right:1px solid #BBB !important;\n\n\t}\n\t.artist-list::-webkit-scrollbar {\n\t\t\tbackground: transparent !important;\n\t}\n\t.artist-list-item{\n\t\tpadding:5px 6px;\n\t\tborder-bottom:1px solid #eee !important;\n\t}\n\t.artist-list-item:hover{\n\t\tcolor:#fff;\n\t\tbackground-color:#9d9d9d;\n\t}\n"],
                         directives: [album_list_1.AlbumList]
                     }), 
                     __metadata('design:paramtypes', [subular_service_1.SubularService, core_1.ElementRef, player_service_1.PlayerService, router_1.Router])

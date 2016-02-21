@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../album-card/album-card', './../../services/subular-service', '../../attr/bgFromImg', '../../services/player-service'], function(exports_1) {
+System.register(['angular2/core', '../album-card/album-card', '../../services/subular-service', '../attr/bgFromImg', '../../services/player-service'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -67,10 +67,10 @@ System.register(['angular2/core', '../album-card/album-card', './../../services/
                 AlbumList = __decorate([
                     core_1.Component({
                         selector: 'album-list',
-                        templateUrl: '/app/components/album-list/album-list.html',
+                        templateUrl: '/app/shared/directives/album-list/album-list.html',
                         directives: [album_card_1.AlbumCard, bgFromImg_1.BgImageDirective],
                         inputs: ['albums', 'artist', 'playerService'],
-                        styles: ["\n\t\t.album-list{\n\t\t\theight:calc(100% - 180px);\n\t\t\toverflow-y:auto;\n\t\t\tpadding-left:5px;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t background: transparent !important;\n\t\t}\n\t\th2{\n\t\t\tpadding:0 25px;\n\t\t}\n\t"]
+                        styles: ["\n\t\t.album-list{\n\t\t\theight:calc(100% - 180px);\n\t\t\toverflow-y:auto;\n\t\t\tpadding-left:5px;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t background: transparent !important;\n\t\t}\n\t\th2{\n\t\t\tpadding:0 25px;\n\t\t}\n\t\ti.fa:hover{\n\t\t\tcolor:#9d9d9d !important;\n\t\t}\n\t"]
                     }),
                     __param(1, core_1.Inject(player_service_1.PlayerService)), 
                     __metadata('design:paramtypes', [subular_service_1.SubularService, player_service_1.PlayerService])

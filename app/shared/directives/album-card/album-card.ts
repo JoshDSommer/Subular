@@ -10,58 +10,59 @@ import {PlayerService} from '../../services/player-service';
 declare var ColorThief: any;
 
 @Component({
-    selector: 'album-card',
-    templateUrl: '/app/components/album-card/album-card.html',
+	selector: 'album-card',
+	templateUrl: '/app/shared/directives/album-card/album-card.html',
 	providers: [SubularService, SettingsService],
 	inputs: ['id', 'album', 'playerService'],
 	styles: [`
-		.card{
+	.card{
 
-		}
-		i.fa {
-			position: absolute;
-			font-size: 55px;
-			bottom: 0;
-			right: 0;
-			color: #fff;
-			margin-right:1%;
-		}
-		.album-card
-		{
-			display:block;
-			background-color: #fff;
-			width: 90%;
-			margin: 0 auto;
-			padding-top:1%;
-		}
-		img {
-			display:block;
-			width:98%;
-			margin:0 auto 0;
-		}
-		.album-card-footer{
-			margin: 0 auto;
-			width: 90%;
-			height: 35px;
-			background-color: #fff;
-			margin-bottom: 10px;
-			padding:2px 33px 0 5px;
-			font-size:13px;
-			line-height:14px;
-    		border-bottom-left-radius: 5px;
-			font-weight:700;
-		}
-		i.fa:hover{
-			color:#9d9d9d !important;
-		}
-	`]
+	}
+	i.fa {
+		position: absolute;
+		font-size: 55px;
+		bottom: 0;
+		right: 0;
+		color: #fff;
+		margin-right:1%;
+	}
+	.album-card
+	{
+		display:block;
+		background-color: #fff;
+		width: 90%;
+		margin: 0 auto;
+		padding-top:1%;
+	}
+	img {
+		display:block;
+		width:98%;
+		margin:0 auto 0;
+	}
+	.album-card-footer{
+		margin: 0 auto;
+		width: 90%;
+		height: 35px;
+		background-color: #fff;
+		margin-bottom: 10px;
+		padding:2px 33px 0 5px;
+		font-size:13px;
+		line-height:14px;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 35px;
+		font-weight:700;
+	}
+	i.fa:hover{
+		color:#9d9d9d !important;
+	}
+`]
 })
 export class AlbumCard implements OnInit {
 	public album: Album;
 	public id: number;
 	public playerService: PlayerService;
 
-	constructor(private _dataService: SubularService, private _elementRef: ElementRef, @Inject(PlayerService)  playerService: PlayerService) {
+	constructor(private _dataService: SubularService, private _elementRef: ElementRef, @Inject(PlayerService) playerService: PlayerService) {
 		this.playerService = playerService;
 	}
 	imgUrl(id: number): string {

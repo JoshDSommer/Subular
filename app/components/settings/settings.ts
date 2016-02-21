@@ -1,17 +1,17 @@
 import {Component, ViewEncapsulation} from 'angular2/core';
-import {SettingsService} from './../../services/settings-service';
-import {SubularService} from './../../services/subular-service';
+import {SettingsService} from './../../shared/services/settings-service';
+import {SubularService} from './../../shared/services/subular-service';
 import {Router}              from 'angular2/router';
 
 @Component({
 	selector: 'settings',
-    templateUrl: '/app/components/settings/settings.html',
+	templateUrl: '/app/components/settings/settings.html',
 	styles: [`
-		.form-group{
-			margin-left:10px;
-		}
-		`],
-	inputs:['server','username','password','loading'],
+	.form-group{
+		margin-left:10px;
+	}
+	`],
+	inputs: ['server', 'username', 'password', 'loading'],
 	providers: [SettingsService]
 })
 
@@ -27,7 +27,7 @@ export class Settings {
 		this.password = this._settings.Password;
 	}
 
-	refreshData(): void{
+	refreshData(): void {
 		this._settings.ServerAddress = this.server;
 		this._settings.Username = this.username;
 		this._settings.Password = this.password;
@@ -35,7 +35,7 @@ export class Settings {
 		this.loading = true;
 		setTimeout(() => {
 			this._router.navigate(['ArtistList']);
-		},15000);
+		}, 15000);
 
 	}
 }

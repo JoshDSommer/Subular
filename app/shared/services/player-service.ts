@@ -18,7 +18,7 @@ export class PlayerService {
 	public currentlyPlaying: EventEmitter<boolean>;
 
 	public currentIndex: number;
-	constructor(@Inject(SubularService) private _settingsService: SubularService) {
+	constructor( @Inject(SubularService) private _settingsService: SubularService) {
 		this.playingSong = new EventEmitter();
 		this.currentlyPlaying = new EventEmitter();
 		this.currentPosition = new EventEmitter();

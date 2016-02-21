@@ -42,6 +42,7 @@ export class SettingsService {
 		window.localStorage.setItem("server-password", CryptoJS.MD5(v + this.salt).toString());
 	}
 
+
 	getServerURl(method: string) {
 		let serverUrl = this.ServerAddress + '/rest/' + method + '.view?u=' + this.Username + '&t=' + this.Password + '&s=' + this.salt + '&v=1.0.0&c=rest&f=json';
 		return serverUrl;

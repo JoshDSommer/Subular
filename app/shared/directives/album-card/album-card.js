@@ -75,10 +75,10 @@ System.register(['angular2/core', './../../services/subular-service', './../../s
                 AlbumCard = __decorate([
                     core_1.Component({
                         selector: 'album-card',
-                        templateUrl: '/app/components/album-card/album-card.html',
+                        templateUrl: '/app/shared/directives/album-card/album-card.html',
                         providers: [subular_service_1.SubularService, settings_service_1.SettingsService],
                         inputs: ['id', 'album', 'playerService'],
-                        styles: ["\n\t\t.card{\n\n\t\t}\n\t\ti.fa {\n\t\t\tposition: absolute;\n\t\t\tfont-size: 55px;\n\t\t\tbottom: 0;\n\t\t\tright: 0;\n\t\t\tcolor: #fff;\n\t\t\tmargin-right:1%;\n\t\t}\n\t\t.album-card\n\t\t{\n\t\t\tdisplay:block;\n\t\t\tbackground-color: #fff;\n\t\t\twidth: 90%;\n\t\t\tmargin: 0 auto;\n\t\t\tpadding-top:1%;\n\t\t}\n\t\timg {\n\t\t\tdisplay:block;\n\t\t\twidth:98%;\n\t\t\tmargin:0 auto 0;\n\t\t}\n\t\t.album-card-footer{\n\t\t\tmargin: 0 auto;\n\t\t\twidth: 90%;\n\t\t\theight: 35px;\n\t\t\tbackground-color: #fff;\n\t\t\tmargin-bottom: 10px;\n\t\t\tpadding:2px 33px 0 5px;\n\t\t\tfont-size:13px;\n\t\t\tline-height:14px;\n    \t\tborder-bottom-left-radius: 5px;\n\t\t\tfont-weight:700;\n\t\t}\n\t\ti.fa:hover{\n\t\t\tcolor:#9d9d9d !important;\n\t\t}\n\t"]
+                        styles: ["\n\t.card{\n\n\t}\n\ti.fa {\n\t\tposition: absolute;\n\t\tfont-size: 55px;\n\t\tbottom: 0;\n\t\tright: 0;\n\t\tcolor: #fff;\n\t\tmargin-right:1%;\n\t}\n\t.album-card\n\t{\n\t\tdisplay:block;\n\t\tbackground-color: #fff;\n\t\twidth: 90%;\n\t\tmargin: 0 auto;\n\t\tpadding-top:1%;\n\t}\n\timg {\n\t\tdisplay:block;\n\t\twidth:98%;\n\t\tmargin:0 auto 0;\n\t}\n\t.album-card-footer{\n\t\tmargin: 0 auto;\n\t\twidth: 90%;\n\t\theight: 35px;\n\t\tbackground-color: #fff;\n\t\tmargin-bottom: 10px;\n\t\tpadding:2px 33px 0 5px;\n\t\tfont-size:13px;\n\t\tline-height:14px;\n\t\tborder-bottom-left-radius: 5px;\n\t\tborder-bottom-right-radius: 35px;\n\t\tfont-weight:700;\n\t}\n\ti.fa:hover{\n\t\tcolor:#9d9d9d !important;\n\t}\n"]
                     }),
                     __param(2, core_1.Inject(player_service_1.PlayerService)), 
                     __metadata('design:paramtypes', [subular_service_1.SubularService, core_1.ElementRef, player_service_1.PlayerService])
