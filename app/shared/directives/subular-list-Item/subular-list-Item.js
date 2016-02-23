@@ -1,5 +1,6 @@
-System.register(['angular2/core', '../folder-info', '../../services/player-service', '../subular-item-menu/subular-item-menu'], function(exports_1) {
+System.register(['angular2/core', '../folder-info', '../../services/player-service', '../subular-item-menu/subular-item-menu'], function(exports_1, context_1) {
     "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -52,7 +53,7 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                 SubularListItem = __decorate([
                     core_1.Component({
                         selector: 'subular-list-item',
-                        templateUrl: folder_info_1.path + 'subular-list-Item/subular-list-Item.html',
+                        templateUrl: folder_info_1.path + 'subular-list-item/subular-list-item.html',
                         inputs: ['songs', 'number', 'nowPlayingSong'],
                         directives: [subular_item_menu_1.SubularMenuItem],
                         styles: ["\n\t\t\ttd{\n\t\t\t\tfont-size:14px;\n\t\t\t\tline-height:22px;\n\t\t\t}\n\n\t\t\ttable{\n\t\t\t\twidth:98%;\n\t\t\t\tmargin:0 auto;\n\t\t\t}\n\t\t\t.row-artist{\n\t\t\t\tpadding:0 10px;\n\t\t\t}\n\t\t\t.row-song{\n\t\t\t\tmax-width:45%;\n\t\t\t\toverflow:hidden;\n\t\t\t}\n\t\t\t.row-track{\n\t\t\t\twidth: 19px;\n\t\t\t}\n\t\t\t.row-num{\n\t\t\t\tpadding-right:5px;\n\t\t\t}\n\t\t\ttr{\n\t\t\t\tborder-bottom: 1px #efefef solid;\n\t\t\t\tcursor:hand;\n\t\t\t}\n\t\t\ttd, th{\n\t\t\t\toverflow:hidden;\n\t\t\t\tpadding:0 5px;\n\t\t\t}\n\t\t\ttr td:first-child{\n\t\t\t\tpadding-left:10px;\n\t\t\t}\n\t\t\ttr td:last-child{\n\t\t\t\tpadding-right:10px;\n\t\t\t}\n\t\t\ttr:hover{\n\t\t\t\tcolor:#fff;\n\t\t\t\tbackground-color:#9d9d9d;\n\t\t\t}\n\t\t\t.rowPlaying{\n\t\t\t\tbackground: -webkit-linear-gradient(#4B0082,#4B0082);\n\t\t\t\tfont-weight:700;\n\t\t\t\tcolor:#fff;\n\t\t\t}"],

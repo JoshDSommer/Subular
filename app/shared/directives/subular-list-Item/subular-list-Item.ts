@@ -6,7 +6,7 @@ import {SubularMenuItem} from '../subular-item-menu/subular-item-menu';
 
 @Component({
 	selector: 'subular-list-item',
-	templateUrl: path + 'subular-list-Item/subular-list-Item.html',
+	templateUrl: path + 'subular-list-item/subular-list-item.html',
 	inputs: ['songs', 'number', 'nowPlayingSong'],
 	directives: [SubularMenuItem],
 	styles: [`

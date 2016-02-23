@@ -12,7 +12,7 @@ export interface IAudioPlayingInfo {
 @Injectable()
 export class PlayerService {
 	public songList: Song[];
-	public audio: Audio;
+	public audio: any;
 	public playingSong: EventEmitter<Song>;
 	public currentPosition: EventEmitter<IAudioPlayingInfo>;
 	public currentlyPlaying: EventEmitter<boolean>;

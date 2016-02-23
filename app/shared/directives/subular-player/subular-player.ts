@@ -1,7 +1,7 @@
 import {Component, OnChanges, OnInit, ElementRef } from 'angular2/core';
 import {SubularService} from './../../services/subular-service';
 import {SettingsService} from './../../services/settings-service';
-import {HTTP_PROVIDERS}    from 'angular2/http';
+import {HTTP_PROVIDERS}  from 'angular2/http';
 import {Album} from './../../models/album';
 import {PlayerService, IAudioPlayingInfo} from '../../services/player-service';
 import {Song} from '../../models/song';
