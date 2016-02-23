@@ -5,7 +5,7 @@ import {HTTP_PROVIDERS}    from 'angular2/http';
 import {Album} from './../../models/album';
 import {PlayerService, IAudioPlayingInfo} from '../../services/player-service';
 import {Song} from '../../models/song';
-import {SubularListItem} from '../subular-list-Item/subular-list-Item';
+import {SubularListItem} from '../subular-list-item/subular-list-item';
 import {path} from '../folder-info';
 
 @Component({
@@ -78,43 +78,8 @@ import {path} from '../folder-info';
 				padding:5px 0px 10px;
 				border:1px #4B0082 solid;
 			}
-			#now-playing-list td{
-				font-size:14px;
-				line-height:22px;
-			}
-
-			#now-playing-list table{
-				width:95%;
-				margin:0 auto;
-			}
-			.row-artist{
-				padding:0 10px;
-			}
-			.row-song{
-				max-width:45%;
-				overflow:hidden;
-			}
-			.row-track{
-				width: 19px;
-			}
-			.row-num{
-				padding-right:5px;
-			}
-			tr{
-				border-bottom: 1px #efefef solid;
-				cursor:hand;
-			}
-			td, th{
-				overflow:hidden;
-			}
-			tr:hover{
-				color:#fff;
-				background-color:#9d9d9d;
-			}
-			.rowPlaying{
-				background: -webkit-linear-gradient(#4B0082,#4B0082);
-				font-weight:700;
-				color:#fff;
+			#now-playing-list h3{
+				padding:1px 15px;
 			}
 	`]
 })
@@ -137,7 +102,7 @@ export class SubularPlayer implements OnChanges, OnInit {
 			title: '',
 			artist: '',
 			parent: 0,
-		}
+		};
 	}
 	nextSong(): void {
 		this.playerService.playSong(this.playerService.currentIndex + 1);
@@ -161,9 +126,7 @@ export class SubularPlayer implements OnChanges, OnInit {
 	ngOnChanges(changes): void {
 
 	}
-	rowNum(index: number): number {
-		return index + 1;
-	}
+
 	ngOnInit(): void {
 		this.gutterProgress = (<HTMLElement>this._elementRef.nativeElement).getElementsByClassName("gutter-progress")[0];
 
@@ -180,9 +143,5 @@ export class SubularPlayer implements OnChanges, OnInit {
 		this.playerService.currentlyPlaying.subscribe((playing: boolean) => {
 			this.playing = playing;
 		});
-	}
-
-	playSongFromList(index: number): void {
-		this.playerService.playSong(index);
 	}
 }

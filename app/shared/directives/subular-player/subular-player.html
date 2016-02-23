@@ -22,40 +22,6 @@
 </section>
 <section id="now-playing-list" *ngIf="playingSongs">
 	<h3>Now Playing</h3>
-	<table>
-		<thead>
-			<tr>
-				<th class="row-num"></th>
-				<th width="45%" class="text-center row-song">
-					Song
-				</th>
-				<th class="text-center row-track">
-					track#
-				</th>
-				<th class="text-center row-artist">
-					Artist
-				</th>
-				<th class="text-right">
-					Album
-				</th>
-			</tr>
-		</thead>
-		<tr [ngClass]="{rowPlaying : nowPlayingSong == song}"   (click)="playSongFromList(i)" *ngFor="#song of songs; #i = index">
-			<td class="text-left">{{rowNum(i)}}</td>
-			<td class="text-left row-song">
-				{{song.title}}
-			</td>
-			<td class="text-right">
-				{{song.track}}
-			</td>
-			<td class="text-center">
-				{{song.artist.replace(' ','&nbsp;')}}
-			</td>
-			<td class="text-right">
-				{{song.album}}
-			</td>
-
-		</tr>
-	</table>
+	<subular-list-item [songs]="songs" [nowPlayingSong]="nowPlayingSong"></subular-list-item>
 </section>
 <div *ngIf="playingSongs" id="now-playing-modal" class="subular-modal" (click)="playingSongs = !playingSongs"></div>

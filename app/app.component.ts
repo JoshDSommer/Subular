@@ -9,11 +9,12 @@ import {Artist} from './shared/models/artist';
 import {Album} from './shared/models/album';
 import {PlayerService} from './shared/services/player-service';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Playlists} from './playlists/playlists';
 
 @Component({
 	selector: 'subular',
 	templateUrl: '/app/app.html',
-	providers: [SubularService, SettingsService, SubularPlayer, ArtistList, PlayerService],
+	providers: [SubularService, SettingsService, SubularPlayer, ArtistList, Playlists, PlayerService],
 	inputs: ['imgUrl', 'albums', 'nowPlaying', 'playerService', 'page'],
 	styles: [`
 		.card-dark{
@@ -31,11 +32,12 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 			color:#fff;
 		}
 	`],
-	directives: [SubularPlayer, ArtistList, Settings, ROUTER_DIRECTIVES]
+	directives: [SubularPlayer, ArtistList, Settings, Playlists, ROUTER_DIRECTIVES]
 })
 @RouteConfig([
 	{ path: '/artist', name: 'ArtistList', component: ArtistList, useAsDefault: true },
 	{ path: '/settings', name: 'Settings', component: Settings },
+	{ path: '/playlists', name: 'Playlists', component: Playlists },
 ])
 
 export class SubularApp implements OnInit {
