@@ -23,10 +23,7 @@
             true,
             "single"
         ],
-        "semicolon": [
-            true,
-            "always"
-        ],
+        "semicolon": true,
         "triple-equals": [
             true,
             "allow-null-check"
