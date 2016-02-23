@@ -7,12 +7,19 @@ import {path} from '../folder-info';
 	templateUrl: path + 'subular-item-menu/subular-item-menu.html',
 	// styleUrls: ['./components/app/app.css'],
 	encapsulation: ViewEncapsulation.None,
+	inputs: ['showMenu'],
+	styles: [`.ul-play-menu{
+		position:relative;
+		z-index:99;
+	}`]
 })
 
-export class SubularMenuItem implements OnInit, OnDestroy {
-
-	constructor() { }
-
-	ngOnInit() { console.log('ngOnInit'); }
-	ngOnDestroy() { console.log('ngOnDestroy'); }
+export class SubularMenuItem {
+	public showMenu: boolean;
+	constructor() {
+		this.showMenu = false;
+	}
+	menuClick(): void {
+		this.showMenu = true;
+	}
 }

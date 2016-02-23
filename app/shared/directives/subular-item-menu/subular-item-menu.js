@@ -22,15 +22,19 @@ System.register(['angular2/core', '../folder-info'], function(exports_1) {
         execute: function() {
             SubularMenuItem = (function () {
                 function SubularMenuItem() {
+                    this.showMenu = false;
                 }
-                SubularMenuItem.prototype.ngOnInit = function () { console.log('ngOnInit'); };
-                SubularMenuItem.prototype.ngOnDestroy = function () { console.log('ngOnDestroy'); };
+                SubularMenuItem.prototype.menuClick = function () {
+                    this.showMenu = true;
+                };
                 SubularMenuItem = __decorate([
                     core_1.Component({
                         selector: 'subular-item-menu',
                         templateUrl: folder_info_1.path + 'subular-item-menu/subular-item-menu.html',
                         // styleUrls: ['./components/app/app.css'],
                         encapsulation: core_1.ViewEncapsulation.None,
+                        inputs: ['showMenu'],
+                        styles: [".ul-play-menu{\n\t\tposition:relative;\n\t\tz-index:99;\n\t}"]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], SubularMenuItem);

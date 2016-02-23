@@ -11,24 +11,24 @@
 			<th class="text-center row-artist">
 				Artist
 			</th>
-			<th class="text-right" colspan="2">
+			<th class="text-right">
 				Album
 			</th>
-
+			<th>&nbsp;</th>
 		</tr>
 	</thead>
-	<tr [ngClass]="{rowPlaying : nowPlayingSong == song}" (click)="playSongFromList(i)" *ngFor="#song of songs; #i = index">
-		<td class="text-left">{{rowNum(i)}}</td>
-		<td class="text-left row-song">
+	<tr [ngClass]="{rowPlaying : nowPlayingSong == song}"  *ngFor="#song of songs; #i = index">
+		<td (click)="playSongFromList(i)" class="text-left">{{rowNum(i)}}</td>
+		<td (click)="playSongFromList(i)" class="text-left row-song">
 			{{song.title}}
 		</td>
-		<td class="text-right">
+		<td (click)="playSongFromList(i)" class="text-right">
 			{{song.track}}
 		</td>
-		<td class="text-center">
+		<td (click)="playSongFromList(i)" class="text-center">
 			{{song.artist.replace(' ','&nbsp;')}}
 		</td>
-		<td class="text-right">
+		<td (click)="playSongFromList(i)" class="text-right">
 			{{song.album}}
 		</td>
 		<td><subular-item-menu></subular-item-menu></td>
