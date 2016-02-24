@@ -1,7 +1,7 @@
 # ![Subular](/images/subular.png)
 
 
-Subular is a Angular 2 Subsonic/Madsonic music player.
+Subular is a Angular 2 Subsonic/Madsonic music player available at http://subular.tehoriginaljosh.com/
 
 after cloning the repository run in project directory
 
@@ -11,6 +11,14 @@ then
 
 `npm start`
 
+you can alternatively use Gulp to build for production with
+
+`gulp build`
+
+or run a production version with
+
+`gulp serve`
+
 
 made with:
 * AngularJS 2
@@ -19,6 +27,7 @@ made with:
 * Bootstrap
 * Font Awesome
 * Typescript
+* Gulp
 
 You can download Sonic here:
 http://www.subsonic.org/
@@ -28,6 +37,8 @@ http://www.subsonic.org/
 ![Alt text](/images/screen3.png)
 
 ![Alt text](/images/screen1.png)
+
+![Alt text](/images/screen6.png)
 
 ![Alt text](/images/screen5.png)
 
