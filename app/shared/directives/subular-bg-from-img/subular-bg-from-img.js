@@ -1,6 +1,5 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -34,13 +33,19 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     this.element = this.el.nativeElement;
                     var img = this.element.getElementsByClassName('img-sample')[0];
                     if (img != null)
-                        img.addEventListener('load', function () {
-                            var colorThief = new ColorThief();
-                            var palettes = colorThief.getPalette(img, 8);
-                            _this.hoverColor = _this.rgbString(palettes[2]);
-                            _this.defaultColor = _this.rgbString(palettes[4]);
-                            _this.element.setAttribute('style', 'background-color:' + _this.defaultColor);
-                        });
+                        img.crossOrigin = 'Anonymous';
+                    img.addEventListener("load", function () {
+                        var palettes = colorThief.getPalette(img, 8);
+                        alt.setAttribute('style', 'color:#fefefe;border-bottom:2px ' + _this.getRGBString(palettes[6]) + 'solid;');
+                        // alt.setAttribute('style', 'color:' + this.getRGBString(palettes[6]) + ';border-bottom:2px ' + this.getRGBString(palettes[6]) + 'solid;');
+                        // document.body.setAttribute('style', 'background-color:' + this.getRGBString(palettes[5]));
+                        if (document.body.getAttribute('style') === '') {
+                            document.body.setAttribute('style', 'background: -webkit-linear-gradient(' + _this.getRGBString(palettes[1]) + ',' + _this.getRGBString(palettes[6]) + ');');
+                        }
+                        // footer.setAttribute('style', 'background: ' + this.getRGBString(palettes[6]) + '; color:' + this.getRGBString(palettes[1]) + ';');
+                        // alv.setAttribute('style', 'background-color:' + this.getRGBString(palettes[5]));
+                        button.setAttribute('style', 'color:' + _this.getRGBString(palettes[1]));
+                    });
                 };
                 BgImageDirective.prototype.onMouseEnter = function () {
                     if (this._hover)

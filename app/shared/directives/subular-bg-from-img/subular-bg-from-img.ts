@@ -24,12 +24,18 @@ export class BgImageDirective implements OnInit {
 		this.element = <HTMLElement>this.el.nativeElement;
 		let img = this.element.getElementsByClassName('img-sample')[0];
 		if (img != null)
-			img.addEventListener('load', (): void => {
-				let colorThief = new ColorThief();
-				let palettes = colorThief.getPalette(img, 8);
-				this.hoverColor = this.rgbString(palettes[2]);
-				this.defaultColor = this.rgbString(palettes[4])
-				this.element.setAttribute('style', 'background-color:' + this.defaultColor);
+			img.crossOrigin = 'Anonymous';
+			img.addEventListener("load", () => {
+				let palettes: any[] = colorThief.getPalette(img, 8);
+				alt.setAttribute('style', 'color:#fefefe;border-bottom:2px ' + this.getRGBString(palettes[6]) + 'solid;');
+				// alt.setAttribute('style', 'color:' + this.getRGBString(palettes[6]) + ';border-bottom:2px ' + this.getRGBString(palettes[6]) + 'solid;');
+				// document.body.setAttribute('style', 'background-color:' + this.getRGBString(palettes[5]));
+				if (document.body.getAttribute('style') === '') {
+					document.body.setAttribute('style', 'background: -webkit-linear-gradient(' + this.getRGBString(palettes[1]) + ',' + this.getRGBString(palettes[6]) + ');');
+				}
+				// footer.setAttribute('style', 'background: ' + this.getRGBString(palettes[6]) + '; color:' + this.getRGBString(palettes[1]) + ';');
+				// alv.setAttribute('style', 'background-color:' + this.getRGBString(palettes[5]));
+				button.setAttribute('style', 'color:' + this.getRGBString(palettes[1]));
 			});
 	}
 

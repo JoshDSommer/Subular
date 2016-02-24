@@ -14,7 +14,7 @@
 			<ul class="nav navbar-nav">
 				<li class="active" (click)="page=1"><a [routerLink]="['ArtistList']">Artists</a></li>
 				<li><a href="#about">Albums</a></li>
-				<li><a href="#contact">Playlists</a></li>
+				<li><a [routerLink]="['Playlists']">Playlists</a></li>
 			</ul>
 			<a [routerLink]="['Settings']"><i class="fa fa-cog pull-right settings-button" (click)="page=2"></i></a>
 		</div>

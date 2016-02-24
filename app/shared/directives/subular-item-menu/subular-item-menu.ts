@@ -8,10 +8,32 @@ import {path} from '../folder-info';
 	// styleUrls: ['./components/app/app.css'],
 	encapsulation: ViewEncapsulation.None,
 	inputs: ['showMenu'],
-	styles: [`.ul-play-menu{
-		position:relative;
-		z-index:99;
-	}`]
+	styles: [`
+	i.fa{
+		padding:0 5px;
+	}
+	i.fa:hover{
+		background-color:#efefef;
+	}
+	.ul-play-menu{
+		padding: 10px 20px;
+		z-index: 99;
+		background-color: #fff;
+		border: 1px solid #000;
+		list-style-type: none;
+		position: absolute;
+		margin-left: -120;
+	}
+	.ul-play-menu li{
+		padding:5px 6px;
+		border-bottom:1px solid #eee !important;
+		color:#010101;
+	}
+	.ul-play-menu li:hover{
+		color:#fff;
+		background-color:#9d9d9d;
+	}
+	`]
 })
 
 export class SubularMenuItem {

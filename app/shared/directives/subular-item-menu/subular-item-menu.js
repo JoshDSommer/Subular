@@ -1,6 +1,5 @@
-System.register(['angular2/core', '../folder-info'], function(exports_1, context_1) {
+System.register(['angular2/core', '../folder-info'], function(exports_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -35,7 +34,7 @@ System.register(['angular2/core', '../folder-info'], function(exports_1, context
                         // styleUrls: ['./components/app/app.css'],
                         encapsulation: core_1.ViewEncapsulation.None,
                         inputs: ['showMenu'],
-                        styles: [".ul-play-menu{\n\t\tposition:relative;\n\t\tz-index:99;\n\t}"]
+                        styles: ["\n\ti.fa{\n\t\tpadding:0 5px;\n\t}\n\ti.fa:hover{\n\t\tbackground-color:#efefef;\n\t}\n\t.ul-play-menu{\n\t\tpadding: 10px 20px;\n\t\tz-index: 99;\n\t\tbackground-color: #fff;\n\t\tborder: 1px solid #000;\n\t\tlist-style-type: none;\n\t\tposition: absolute;\n\t\tmargin-left: -120;\n\t}\n\t.ul-play-menu li{\n\t\tpadding:5px 6px;\n\t\tborder-bottom:1px solid #eee !important;\n\t\tcolor:#010101;\n\t}\n\t.ul-play-menu li:hover{\n\t\tcolor:#fff;\n\t\tbackground-color:#9d9d9d;\n\t}\n\t"]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], SubularMenuItem);

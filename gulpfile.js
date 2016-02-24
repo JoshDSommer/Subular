@@ -15,7 +15,7 @@ gulp.task('clean', function () {
 
 // copy static assets - i.e. non TypeScript compiled source
 gulp.task('copy:assets', ['clean'], function () {
-	return gulp.src(['app/**/*','app/**/**/*', 'index.html', 'styles.css', '!app/**/*.ts','font/*','css/styles.css','node_modules/bootstrap/dist/css/bootstrap.min.css'], { base: './' })
+	return gulp.src(['app/**/*','app/**/**/*', 'index.html', 'styles.css', '!app/**/*.ts','font/**','css/styles.css','node_modules/bootstrap/dist/css/bootstrap.min.css'], { base: './' })
 		.pipe(gulp.dest('dist'))
 });
 

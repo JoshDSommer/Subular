@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit, OnChanges} from 'angular2/core';
 import {Song} from '../../models/song';
 import {path} from '../folder-info';
 import {PlayerService, IAudioPlayingInfo} from '../../services/player-service';
@@ -56,7 +56,7 @@ import {SubularMenuItem} from '../subular-item-menu/subular-item-menu';
 				color:#fff;
 			}`],
 	})
-	export class SubularListItem implements OnInit {
+	export class SubularListItem implements OnInit, OnChanges {
 	public songs: Song[];
 	public nowPlayingSong: Song;
 	constructor(private playerService: PlayerService) {
@@ -71,7 +71,6 @@ import {SubularMenuItem} from '../subular-item-menu/subular-item-menu';
 	ngOnInit(): void {
 		this.playerService.playingSong.subscribe((song) => {
 			this.nowPlayingSong = song;
-			this.songs = this.playerService.songList;
 		});
 	}
 
@@ -80,6 +79,7 @@ import {SubularMenuItem} from '../subular-item-menu/subular-item-menu';
 	}
 
 	playSongFromList(index: number): void {
+		this.playerService.songList = this.songs;
 		this.playerService.playSong(index);
 	}
 }

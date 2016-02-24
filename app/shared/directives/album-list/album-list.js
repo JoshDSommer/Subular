@@ -1,6 +1,5 @@
-System.register(['angular2/core', '../album-card/album-card', '../../services/subular-service', '../subular-bg-from-img/subular-bg-from-img', '../../services/player-service', '../folder-info'], function(exports_1, context_1) {
+System.register(['angular2/core', '../album-card/album-card', '../../services/subular-service', '../subular-bg-from-img/subular-bg-from-img', '../../services/player-service', '../folder-info', '../subular-list-item/subular-list-item'], function(exports_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13,7 +12,7 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, album_card_1, subular_service_1, subular_bg_from_img_1, player_service_1, folder_info_1;
+    var core_1, album_card_1, subular_service_1, subular_bg_from_img_1, player_service_1, folder_info_1, subular_list_item_1;
     var AlbumList;
     return {
         setters:[
@@ -34,6 +33,9 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
             },
             function (folder_info_1_1) {
                 folder_info_1 = folder_info_1_1;
+            },
+            function (subular_list_item_1_1) {
+                subular_list_item_1 = subular_list_item_1_1;
             }],
         execute: function() {
             AlbumList = (function () {
@@ -44,24 +46,45 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                         name: ''
                     };
                     this.playerService = playerService;
+                    this.songs = [];
+                    this.nowPlayingSong = {};
                 }
+                AlbumList.prototype.imgUrl = function (id) {
+                    var url = this._dataService.getCoverUrl(id);
+                    return url;
+                };
                 AlbumList.prototype.ngOnChanges = function () {
                     if (this.artist != null) {
                         this.albums = this._dataService.getAlbums(this.artist.id);
                         document.body.setAttribute('style', '');
+                        this.songs = [];
                         this.getSongs();
                     }
                 };
                 AlbumList.prototype.ngOnInit = function () {
+                    var _this = this;
                     this.getSongs();
+                    this.playerService.playingSong.subscribe(function (song) {
+                        _this.nowPlayingSong = song;
+                    });
                 };
                 AlbumList.prototype.getSongs = function () {
                     if (this.artist != null) {
                         this._dataService.buildSongsListForArtist(this.artist.id);
                     }
                 };
+                AlbumList.prototype.getAlbumSongs = function (album) {
+                    console.log(album);
+                    this.songs = this._dataService.getSongsByArtistIdAlbumId(album.parent, album.id);
+                };
                 AlbumList.prototype.playArtist = function () {
-                    var songs = this._dataService.getSongs(this.artist.id);
+                    var songs;
+                    if (this.songs.length == 0) {
+                        songs = this._dataService.getSongs(this.artist.id);
+                    }
+                    else {
+                        songs = this.songs;
+                    }
                     this.playerService.clearSongs();
                     this.playerService.addSongs(songs);
                     this.playerService.shuffleSongs();
@@ -72,10 +95,11 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                     core_1.Component({
                         selector: 'album-list',
                         templateUrl: folder_info_1.path + 'album-list/album-list.html',
-                        directives: [album_card_1.AlbumCard, subular_bg_from_img_1.BgImageDirective],
+                        directives: [album_card_1.AlbumCard, subular_bg_from_img_1.BgImageDirective, subular_list_item_1.SubularListItem],
                         inputs: ['albums', 'artist', 'playerService'],
-                        styles: ["\n\t\t.album-list{\n\t\t\theight:calc(100% - 180px);\n\t\t\toverflow-y:auto;\n\t\t\tpadding-left:5px;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\tbackground: transparent !important;\n\t\t}\n\t\th2{\n\t\t\tpadding:0 25px;\n\t\t}\n\t\ti.fa:hover{\n\t\t\tcolor:#9d9d9d !important;\n\t\t}\n\t"]
+                        styles: ["\n\t\t.album-list{\n\t\t\theight:calc(100% - 180px);\n\t\t\toverflow-y:auto;\n\t\t\tpadding-left:5px;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\tbackground: transparent !important;\n\t\t}\n\t\th2{\n\t\t\tpadding:0 25px;\n\t\t\tmargin-bottom: 0;\n\t\t}\n\t\ti.fa:hover{\n\t\t\tcolor:#9d9d9d !important;\n\t\t}\n\t\t.album-song-list{\n\t\t\tbackground-color: white;\n\t\t\topacity: 0.85;\n\t\t\theight:calc(100% - 170px);\n\t\t\toverflow:auto;\n\t\t}\n\t"]
                     }),
+                    __param(0, core_1.Inject(subular_service_1.SubularService)),
                     __param(1, core_1.Inject(player_service_1.PlayerService)), 
                     __metadata('design:paramtypes', [subular_service_1.SubularService, player_service_1.PlayerService])
                 ], AlbumList);

@@ -13,7 +13,7 @@ declare var ColorThief: any;
 	selector: 'album-card',
 	templateUrl: '/app/shared/directives/album-card/album-card.html',
 	providers: [SubularService, SettingsService],
-	inputs: ['id', 'album', 'playerService'],
+	inputs: ['id', 'album', 'playerService','click'],
 	styles: [`
 	.card{
 
@@ -52,6 +52,7 @@ declare var ColorThief: any;
 		border-bottom-left-radius: 5px;
 		border-bottom-right-radius: 35px;
 		font-weight:700;
+		color:#101010;
 	}
 	i.fa:hover{
 		color:#9d9d9d !important;
