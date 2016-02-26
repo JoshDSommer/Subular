@@ -55,8 +55,8 @@ import {SubularMenuItem} from '../subular-item-menu/subular-item-menu';
 				font-weight:700;
 				color:#fff;
 			}`],
-	})
-	export class SubularListItem implements OnInit, OnChanges {
+})
+export class SubularListItem implements OnInit, OnChanges {
 	public songs: Song[];
 	public nowPlayingSong: Song;
 	constructor(private playerService: PlayerService) {
@@ -72,6 +72,10 @@ import {SubularMenuItem} from '../subular-item-menu/subular-item-menu';
 		this.playerService.playingSong.subscribe((song) => {
 			this.nowPlayingSong = song;
 		});
+	}
+
+	ngOnChanges(): void {
+		console.log(this.songs);
 	}
 
 	rowNum(index: number): number {

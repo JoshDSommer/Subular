@@ -94,6 +94,11 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                 SubularService.prototype.getPlaylists = function () {
                     return JSON.parse(window.localStorage.getItem('subular-playlist'));
                 };
+                SubularService.prototype.getPlaylist = function (id) {
+                    var address = this._settings.getServerURl('getPlaylist') + '&id=' + id;
+                    var songs;
+                    return this._http.get(address).map(function (resp) { return resp.json(); });
+                };
                 SubularService.prototype.buildPlayListDatabase = function () {
                     var _this = this;
                     var playlistString;

@@ -15,6 +15,9 @@ import {SubularListItem} from '../subular-list-item/subular-list-item';
 	directives: [AlbumCard, BgImageDirective, SubularListItem],
 	inputs: ['albums', 'artist', 'playerService'],
 	styles: [`
+		album-card{
+			cursor:hand;
+		}
 		.album-list{
 			height:calc(100% - 180px);
 			overflow-y:auto;

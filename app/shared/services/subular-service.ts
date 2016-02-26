@@ -86,6 +86,12 @@ export class SubularService {
 		return JSON.parse(window.localStorage.getItem('subular-playlist'))
 	}
 
+	getPlaylist(id: number): Observable<any> {
+		let address = this._settings.getServerURl('getPlaylist') + '&id=' + id;
+		let songs;
+		return this._http.get(address).map(resp => resp.json());
+	}
+
 	private buildPlayListDatabase(): void {
 		let playlistString;
 		let address = this._settings.getServerURl('getPlaylists');

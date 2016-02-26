@@ -13,25 +13,7 @@ import {Router}              from 'angular2/router';
 	providers: [SubularService, SettingsService],
 	inputs: ['artists', 'selectedArtist', 'playerService', 'i'],
 	styles: [`
-	.artist-list{
-		height:calc(100% - 115px);
-		list-style-type: none;
-		padding:5px 0px;
-		overflow-y:auto;
-		border-right:1px solid #BBB !important;
 
-	}
-	.artist-list::-webkit-scrollbar {
-			background: transparent !important;
-	}
-	.artist-list-item{
-		padding:5px 6px;
-		border-bottom:1px solid #eee !important;
-	}
-	.artist-list-item:hover{
-		color:#fff;
-		background-color:#9d9d9d;
-	}
 `],
 	directives: [AlbumList]
 })

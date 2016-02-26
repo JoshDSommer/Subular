@@ -31,6 +31,6 @@
 		<td (click)="playSongFromList(i)" class="text-right">
 			{{song.album}}
 		</td>
-		<td><subular-item-menu></subular-item-menu></td>
+		<td><subular-item-menu [song]="song"></subular-item-menu></td>
 	</tr>
 </table>

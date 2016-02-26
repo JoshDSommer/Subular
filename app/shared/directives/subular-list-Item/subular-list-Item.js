@@ -42,6 +42,9 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                         _this.nowPlayingSong = song;
                     });
                 };
+                SubularListItem.prototype.ngOnChanges = function () {
+                    console.log(this.songs);
+                };
                 SubularListItem.prototype.rowNum = function (index) {
                     return index + 1;
                 };

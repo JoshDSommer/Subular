@@ -1,8 +1,8 @@
 <i class="fa fa-ellipsis-v" (click)="menuClick()"></i>
-<!--<ul class="ul-play-menu" *ngIf="showMenu">
-	<li>Play Next</li>
-	<li>Add to Playlist</li>
-	<li>Play Now</li>
-	<li>Download</li>
+<ul class="ul-play-menu" [hidden]="!showMenu">
+	<li (click)="playNext()">Play Next</li>
+	<!--<li (click)="addToPlaylist()">Add to Playlist</li>-->
+	<li (click)="playNow()">Play Now</li>
+	<!--<li disabled>Download</li>-->
 </ul>
-<div *ngIf="showMenu" id="now-playing-modal" class="subular-modal" (click)="showMenu = !showMenu"></div>-->
+<!--<div *ngIf="showMenu" id="now-playing-modal" class="subular-modal" (click)="showMenu = !showMenu"></div>-->

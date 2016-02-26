@@ -94,7 +94,7 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                         templateUrl: '/app/artist-list/artist-list.html',
                         providers: [subular_service_1.SubularService, settings_service_1.SettingsService],
                         inputs: ['artists', 'selectedArtist', 'playerService', 'i'],
-                        styles: ["\n\t.artist-list{\n\t\theight:calc(100% - 115px);\n\t\tlist-style-type: none;\n\t\tpadding:5px 0px;\n\t\toverflow-y:auto;\n\t\tborder-right:1px solid #BBB !important;\n\n\t}\n\t.artist-list::-webkit-scrollbar {\n\t\t\tbackground: transparent !important;\n\t}\n\t.artist-list-item{\n\t\tpadding:5px 6px;\n\t\tborder-bottom:1px solid #eee !important;\n\t}\n\t.artist-list-item:hover{\n\t\tcolor:#fff;\n\t\tbackground-color:#9d9d9d;\n\t}\n"],
+                        styles: ["\n\n"],
                         directives: [album_list_1.AlbumList]
                     }), 
                     __metadata('design:paramtypes', [subular_service_1.SubularService, core_1.ElementRef, player_service_1.PlayerService, router_1.Router])
