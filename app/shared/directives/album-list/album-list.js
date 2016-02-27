@@ -39,8 +39,8 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
             }],
         execute: function() {
             AlbumList = (function () {
-                function AlbumList(_dataService, playerService) {
-                    this._dataService = _dataService;
+                function AlbumList(dataService, playerService) {
+                    this.dataService = dataService;
                     this.artist = {
                         id: 0,
                         name: ''
@@ -50,12 +50,12 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                     this.nowPlayingSong = {};
                 }
                 AlbumList.prototype.imgUrl = function (id) {
-                    var url = this._dataService.getCoverUrl(id);
+                    var url = this.dataService.getCoverUrl(id);
                     return url;
                 };
                 AlbumList.prototype.ngOnChanges = function () {
                     if (this.artist != null) {
-                        this.albums = this._dataService.getAlbums(this.artist.id);
+                        this.albums = this.dataService.getAlbums(this.artist.id);
                         document.body.setAttribute('style', '');
                         this.songs = [];
                         this.getSongs();
@@ -70,17 +70,17 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                 };
                 AlbumList.prototype.getSongs = function () {
                     if (this.artist != null) {
-                        this._dataService.buildSongsListForArtist(this.artist.id);
+                        this.dataService.buildSongsListForArtist(this.artist.id);
                     }
                 };
                 AlbumList.prototype.getAlbumSongs = function (album) {
                     console.log(album);
-                    this.songs = this._dataService.getSongsByArtistIdAlbumId(album.parent, album.id);
+                    this.songs = this.dataService.getSongsByArtistIdAlbumId(album.parent, album.id);
                 };
                 AlbumList.prototype.playArtist = function () {
                     var songs;
                     if (this.songs.length == 0) {
-                        songs = this._dataService.getSongs(this.artist.id);
+                        songs = this.dataService.getSongs(this.artist.id);
                     }
                     else {
                         songs = this.songs;

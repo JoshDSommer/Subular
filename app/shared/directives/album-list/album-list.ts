@@ -55,20 +55,20 @@ export class AlbumList implements OnChanges, OnInit {
 	public songs: Song[];
 	public nowPlayingSong: Song;
 
-	constructor( @Inject(SubularService) private _dataService: SubularService, @Inject(PlayerService) playerService: PlayerService) {
+	constructor( @Inject(SubularService) private dataService: SubularService, @Inject(PlayerService) playerService: PlayerService) {
 		this.playerService = playerService;
 		this.songs = [];
 		this.nowPlayingSong = {};
 	}
 
 	imgUrl(id: number): string {
-		let url = this._dataService.getCoverUrl(id);
+		let url = this.dataService.getCoverUrl(id);
 		return url;
 	}
 
 	ngOnChanges(): void {
 		if (this.artist != null) {
-			this.albums = this._dataService.getAlbums(this.artist.id);
+			this.albums = this.dataService.getAlbums(this.artist.id);
 			document.body.setAttribute('style', '');
 			this.songs = [];
 			this.getSongs();
@@ -85,18 +85,18 @@ export class AlbumList implements OnChanges, OnInit {
 
 	getSongs(): void {
 		if (this.artist != null) {
-			this._dataService.buildSongsListForArtist(this.artist.id);
+			this.dataService.buildSongsListForArtist(this.artist.id);
 		}
 	}
 	getAlbumSongs(album: Album): void {
 		console.log(album);
-		this.songs = this._dataService.getSongsByArtistIdAlbumId(album.parent, album.id);
+		this.songs = this.dataService.getSongsByArtistIdAlbumId(album.parent, album.id);
 	}
 
 	playArtist(): void {
 		let songs;
 		if (this.songs.length == 0) {
-			songs = this._dataService.getSongs(this.artist.id);
+			songs = this.dataService.getSongs(this.artist.id);
 		} else {
 			songs = this.songs;
 		}
