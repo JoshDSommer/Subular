@@ -2,7 +2,9 @@ import {Component, ViewEncapsulation, OnInit, ElementRef, OnDestroy, APPLICATION
 import {CORE_DIRECTIVES, COMMON_DIRECTIVES, FORM_BINDINGS, COMMON_PIPES, FORM_DIRECTIVES} from 'angular2/common';
 import {path} from '../folder-info';
 import {PlayerService} from '../../services/player-service';
+import {SubularService} from './../../services/subular-service';
 import {Song} from '../../models/song';
+import {Playlist} from '../../models/playlist';
 
 @Component({
 	selector: 'subular-item-menu',
@@ -39,9 +41,13 @@ import {Song} from '../../models/song';
 export class SubularMenuItem implements OnInit {
 	public showMenu: boolean;
 	public song: Song;
+	public playlists: Playlist[];
+	public showPlaylists: boolean;
 
-	constructor( @Inject(ElementRef) private _elementRef: ElementRef, @Inject(PlayerService) private _playerService: PlayerService) {
+	constructor( @Inject(ElementRef) private _elementRef: ElementRef, @Inject(SubularService) private dataService: SubularService, @Inject(PlayerService) private _playerService: PlayerService) {
 		this.showMenu = false;
+		this.showPlaylists = false;
+		this.playlists = this.dataService.getPlaylists();
 
 	}
 
@@ -83,5 +89,8 @@ export class SubularMenuItem implements OnInit {
 			this._playerService.playSong(this._playerService.currentIndex + 1);
 		}
 		this.showMenu = false;
+	}
+	addToPlaylist(playlistId: number, songId: number): void{
+		this.dataService.addSongToPlaylist(playlistId, songId);
 	}
 }

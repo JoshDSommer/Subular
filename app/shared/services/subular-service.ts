@@ -92,6 +92,10 @@ export class SubularService {
 		return this._http.get(address).map(resp => resp.json());
 	}
 
+	addSongToPlaylist(playlistId: number, songId: number): void{
+		let address = this._settings.getServerURl('updatePlaylist') + '&playlistId=' + playlistId + '&songIdToAdd=' + songId;
+		this._http.post(address, '');
+	}
 	private buildPlayListDatabase(): void {
 		let playlistString;
 		let address = this._settings.getServerURl('getPlaylists');

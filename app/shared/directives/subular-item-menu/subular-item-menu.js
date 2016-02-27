@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../folder-info', '../../services/player-service'], function(exports_1) {
+System.register(['angular2/core', '../folder-info', '../../services/player-service', './../../services/subular-service'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -12,7 +12,7 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, folder_info_1, player_service_1;
+    var core_1, folder_info_1, player_service_1, subular_service_1;
     var SubularMenuItem;
     return {
         setters:[
@@ -24,13 +24,19 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
             },
             function (player_service_1_1) {
                 player_service_1 = player_service_1_1;
+            },
+            function (subular_service_1_1) {
+                subular_service_1 = subular_service_1_1;
             }],
         execute: function() {
             SubularMenuItem = (function () {
-                function SubularMenuItem(_elementRef, _playerService) {
+                function SubularMenuItem(_elementRef, dataService, _playerService) {
                     this._elementRef = _elementRef;
+                    this.dataService = dataService;
                     this._playerService = _playerService;
                     this.showMenu = false;
+                    this.showPlaylists = false;
+                    this.playlists = this.dataService.getPlaylists();
                 }
                 SubularMenuItem.prototype.ngOnInit = function () {
                     var _this = this;
@@ -73,6 +79,9 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                     }
                     this.showMenu = false;
                 };
+                SubularMenuItem.prototype.addToPlaylist = function (playlistId, songId) {
+                    this.dataService.addSongToPlaylist(playlistId, songId);
+                };
                 SubularMenuItem = __decorate([
                     core_1.Component({
                         selector: 'subular-item-menu',
@@ -83,8 +92,9 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                         styles: ["\n\ti.fa{\n\t\tpadding:0 5px;\n\t}\n\ti.fa:hover{\n\t\tbackground-color:#efefef;\n\t}\n\t.ul-play-menu{\n\t\tpadding: 10px 20px;\n\t\tz-index: 99;\n\t\tbackground-color: #fff;\n\t\tborder: 1px solid #000;\n\t\tlist-style-type: none;\n\t\tposition: absolute;\n\t\tmargin-left: -120;\n\t}\n\t.ul-play-menu li{\n\t\tpadding:5px 6px;\n\t\tborder-bottom:1px solid #eee !important;\n\t\tcolor:#010101;\n\t}\n\t.ul-play-menu li:hover{\n\t}\n\t"]
                     }),
                     __param(0, core_1.Inject(core_1.ElementRef)),
-                    __param(1, core_1.Inject(player_service_1.PlayerService)), 
-                    __metadata('design:paramtypes', [core_1.ElementRef, player_service_1.PlayerService])
+                    __param(1, core_1.Inject(subular_service_1.SubularService)),
+                    __param(2, core_1.Inject(player_service_1.PlayerService)), 
+                    __metadata('design:paramtypes', [core_1.ElementRef, subular_service_1.SubularService, player_service_1.PlayerService])
                 ], SubularMenuItem);
                 return SubularMenuItem;
             }());

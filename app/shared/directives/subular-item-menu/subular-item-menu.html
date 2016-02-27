@@ -1,7 +1,11 @@
 <i class="fa fa-ellipsis-v" (click)="menuClick()"></i>
 <ul class="ul-play-menu" [hidden]="!showMenu">
 	<li (click)="playNext()">Play Next</li>
-	<!--<li (click)="addToPlaylist()">Add to Playlist</li>-->
+	<li (click)="showPlaylists = !showPlaylists">Add to Playlist
+		<ul *ngIf="showPlaylists">
+			<li *ngFor="#playlist of playlists" (click)="addToPlaylist(playlist.id,song.id)">{{playlist?.name}} </li>
+		</ul>
+	</li>
 	<li (click)="playNow()">Play Now</li>
 	<!--<li disabled>Download</li>-->
 </ul>
