@@ -101,7 +101,7 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                 };
                 SubularService.prototype.addSongToPlaylist = function (playlistId, songId) {
                     var address = this._settings.getServerURl('updatePlaylist') + '&playlistId=' + playlistId + '&songIdToAdd=' + songId;
-                    this._http.post(address, '');
+                    this._http.get(address).map(function (resp) { return resp.json(); }).subscribe(function (data) { }, function (error) { return console.log(error); }, function () { });
                 };
                 SubularService.prototype.buildPlayListDatabase = function () {
                     var _this = this;

@@ -63,7 +63,8 @@ export class SubularMenuItem implements OnInit {
 			}
 			hideMenu = setTimeout(() => {
 				this.showMenu = false;
-			}, 2000);
+				this.showPlaylists = false;
+			}, 1200);
 		});
 	}
 	menuClick(): void {

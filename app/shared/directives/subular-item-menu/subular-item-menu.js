@@ -51,7 +51,8 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                         }
                         hideMenu = setTimeout(function () {
                             _this.showMenu = false;
-                        }, 2000);
+                            _this.showPlaylists = false;
+                        }, 1200);
                     });
                 };
                 SubularMenuItem.prototype.menuClick = function () {
