@@ -1,7 +1,7 @@
 <div class="col-sm-4 col-md-2 no-padding subular-list-container">
 	<ul id="playlist-list" class="subular-list scrollable-content">
 		<li class="subular-list-item" [ngClass]="{active : selectedplaylist == playlist }" *ngFor="#playlist of playlists" (click)="onSelect(playlist)">
-			{{playlist?.name}} ({{playlist?.songCount}})
+			{{playlist?.name}}
 		</li>
 	</ul>
 </div>
