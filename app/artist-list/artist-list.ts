@@ -32,7 +32,7 @@ export class ArtistList {
 
 			this.selectedArtist = this.artists[0];
 			let el = <HTMLElement>this._elementRef.nativeElement;
-			let artistList = document.getElementsByClassName('artist-list-item');
+			let artistList = document.getElementsByClassName('subular-list-item');
 			document.addEventListener('keydown', (event: any) => {
 
 				let key = this.key(event.code).toLowerCase();

@@ -45,7 +45,7 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                     if (this.artists != null && this.artists.length > 0) {
                         this.selectedArtist = this.artists[0];
                         var el = this._elementRef.nativeElement;
-                        var artistList_1 = document.getElementsByClassName('artist-list-item');
+                        var artistList_1 = document.getElementsByClassName('subular-list-item');
                         document.addEventListener('keydown', function (event) {
                             var key = _this.key(event.code).toLowerCase();
                             if (key === 'arrowdown') {
