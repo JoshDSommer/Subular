@@ -18,6 +18,7 @@ import {SubularMenuItem} from '../subular-item-menu/subular-item-menu';
 			table{
 				width:98%;
 				margin:0 auto;
+				position:relative;
 			}
 			.row-artist{
 				padding:0 10px;

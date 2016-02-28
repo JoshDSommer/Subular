@@ -11,15 +11,17 @@ import {Playlist} from '../../models/playlist';
 	templateUrl: path + 'subular-item-menu/subular-item-menu.html',
 	// styleUrls: ['./components/app/app.css'],
 	encapsulation: ViewEncapsulation.None,
-	inputs: ['showMenu', 'song'],
+	inputs: ['showMenu', 'song', 'removeFromPlaylist', 'removeFromNowPlaying'],
 	styles: [`
+	.subular-item-menu{
+	}
 	i.fa{
 		padding:0 5px;
 	}
 	i.fa:hover{
-		background-color:#efefef;
+		opacity:0.65;
 	}
-	.ul-play-menu{
+	.ul-play-menu, .ul-play-menu-sub{
 		padding: 10px 20px;
 		z-index: 99;
 		background-color: #fff;
@@ -27,6 +29,9 @@ import {Playlist} from '../../models/playlist';
 		list-style-type: none;
 		position: absolute;
 		margin-left: -120;
+	}
+	.ul-play-menu-sub{
+		margin-top: -30px;
 	}
 	.ul-play-menu li{
 		padding:5px 6px;
@@ -43,6 +48,7 @@ export class SubularMenuItem implements OnInit {
 	public song: Song;
 	public playlists: Playlist[];
 	public showPlaylists: boolean;
+	public hideMenu: any;
 
 	constructor( @Inject(ElementRef) private _elementRef: ElementRef, @Inject(SubularService) private dataService: SubularService, @Inject(PlayerService) private _playerService: PlayerService) {
 		this.showMenu = false;
@@ -54,21 +60,30 @@ export class SubularMenuItem implements OnInit {
 	ngOnInit(): void {
 		let el = <HTMLElement>this._elementRef.nativeElement;
 		let menu = <HTMLElement>el.getElementsByClassName('ul-play-menu')[0];
-		let hideMenu;
+		let subMenu = <HTMLElement>menu.getElementsByClassName('ul-play-menu-sub')[0];
 		menu.addEventListener('mouseout', (event) => {
 			let e = <HTMLElement>event.toElement || <HTMLElement>event.relatedTarget;
-			if (e.parentNode === menu || e === menu) {
-				clearTimeout(hideMenu);
+			if (e.parentNode === menu || e.parentNode === subMenu || e === menu) {
+				clearTimeout(this.hideMenu);
+				this.hideMenu = setTimeout(() => {
+					this.showMenu = false;
+					this.showPlaylists = false;
+				}, 2700);
 				return;
 			}
-			hideMenu = setTimeout(() => {
+			this.hideMenu = setTimeout(() => {
 				this.showMenu = false;
 				this.showPlaylists = false;
-			}, 1200);
+			}, 700);
 		});
 	}
 	menuClick(): void {
+		this.showMenu = !this.showMenu
 		this.showMenu = true;
+		this.hideMenu = setTimeout(() => {
+			this.showMenu = false;
+			this.showPlaylists = false;
+		}, 1700);
 	}
 
 	playNext(): void {
@@ -91,7 +106,9 @@ export class SubularMenuItem implements OnInit {
 		}
 		this.showMenu = false;
 	}
-	addToPlaylist(playlistId: number, songId: number): void{
+	addToPlaylist(playlistId: number, songId: number): void {
 		this.dataService.addSongToPlaylist(playlistId, songId);
+		this.showMenu = false;
+		this.showPlaylists = false;
 	}
 }

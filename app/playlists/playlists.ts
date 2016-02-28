@@ -47,8 +47,8 @@ export class Playlists {
 	public selectedplaylist: Playlist;
 	public songs: Song[];
 
-	constructor(private _dataService: SubularService, private playerService: PlayerService) {
-		this.playlists = this._dataService.getPlaylists();
+	constructor(private dataService: SubularService, private playerService: PlayerService) {
+		this.playlists = this.dataService.getPlaylists();
 		this.songs = [];
 
 		if (this.playlists != null && this.playlists.length > 0) {
@@ -60,8 +60,8 @@ export class Playlists {
 	onSelect(playlist: Playlist) {
 		let playlistString;
 		let playlistSongs;
-		this._dataService.getPlaylist(playlist.id).subscribe(
-			data => playlistString = this._dataService.cleanSubsonicResponse(data),
+		this.dataService.getPlaylist(playlist.id).subscribe(
+			data => playlistString = this.dataService.cleanSubsonicResponse(data),
 			error => console.log(error),
 			() => {
 				playlistSongs = <Song[]>JSON.parse(playlistString).subresp.playlist.entry;

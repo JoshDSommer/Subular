@@ -33,10 +33,10 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
             }],
         execute: function() {
             Playlists = (function () {
-                function Playlists(_dataService, playerService) {
-                    this._dataService = _dataService;
+                function Playlists(dataService, playerService) {
+                    this.dataService = dataService;
                     this.playerService = playerService;
-                    this.playlists = this._dataService.getPlaylists();
+                    this.playlists = this.dataService.getPlaylists();
                     this.songs = [];
                     if (this.playlists != null && this.playlists.length > 0) {
                         this.selectedplaylist = this.playlists[0];
@@ -47,7 +47,7 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                     var _this = this;
                     var playlistString;
                     var playlistSongs;
-                    this._dataService.getPlaylist(playlist.id).subscribe(function (data) { return playlistString = _this._dataService.cleanSubsonicResponse(data); }, function (error) { return console.log(error); }, function () {
+                    this.dataService.getPlaylist(playlist.id).subscribe(function (data) { return playlistString = _this.dataService.cleanSubsonicResponse(data); }, function (error) { return console.log(error); }, function () {
                         playlistSongs = JSON.parse(playlistString).subresp.playlist.entry;
                         console.log(playlistSongs);
                         _this.songs = playlistSongs;

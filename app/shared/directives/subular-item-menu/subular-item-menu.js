@@ -42,21 +42,31 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                     var _this = this;
                     var el = this._elementRef.nativeElement;
                     var menu = el.getElementsByClassName('ul-play-menu')[0];
-                    var hideMenu;
+                    var subMenu = menu.getElementsByClassName('ul-play-menu-sub')[0];
                     menu.addEventListener('mouseout', function (event) {
                         var e = event.toElement || event.relatedTarget;
-                        if (e.parentNode === menu || e === menu) {
-                            clearTimeout(hideMenu);
+                        if (e.parentNode === menu || e.parentNode === subMenu || e === menu) {
+                            clearTimeout(_this.hideMenu);
+                            _this.hideMenu = setTimeout(function () {
+                                _this.showMenu = false;
+                                _this.showPlaylists = false;
+                            }, 2700);
                             return;
                         }
-                        hideMenu = setTimeout(function () {
+                        _this.hideMenu = setTimeout(function () {
                             _this.showMenu = false;
                             _this.showPlaylists = false;
-                        }, 1200);
+                        }, 700);
                     });
                 };
                 SubularMenuItem.prototype.menuClick = function () {
+                    var _this = this;
+                    this.showMenu = !this.showMenu;
                     this.showMenu = true;
+                    this.hideMenu = setTimeout(function () {
+                        _this.showMenu = false;
+                        _this.showPlaylists = false;
+                    }, 1700);
                 };
                 SubularMenuItem.prototype.playNext = function () {
                     if (this._playerService.songList == null) {
@@ -82,6 +92,8 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                 };
                 SubularMenuItem.prototype.addToPlaylist = function (playlistId, songId) {
                     this.dataService.addSongToPlaylist(playlistId, songId);
+                    this.showMenu = false;
+                    this.showPlaylists = false;
                 };
                 SubularMenuItem = __decorate([
                     core_1.Component({
@@ -89,8 +101,8 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                         templateUrl: folder_info_1.path + 'subular-item-menu/subular-item-menu.html',
                         // styleUrls: ['./components/app/app.css'],
                         encapsulation: core_1.ViewEncapsulation.None,
-                        inputs: ['showMenu', 'song'],
-                        styles: ["\n\ti.fa{\n\t\tpadding:0 5px;\n\t}\n\ti.fa:hover{\n\t\tbackground-color:#efefef;\n\t}\n\t.ul-play-menu{\n\t\tpadding: 10px 20px;\n\t\tz-index: 99;\n\t\tbackground-color: #fff;\n\t\tborder: 1px solid #000;\n\t\tlist-style-type: none;\n\t\tposition: absolute;\n\t\tmargin-left: -120;\n\t}\n\t.ul-play-menu li{\n\t\tpadding:5px 6px;\n\t\tborder-bottom:1px solid #eee !important;\n\t\tcolor:#010101;\n\t}\n\t.ul-play-menu li:hover{\n\t}\n\t"]
+                        inputs: ['showMenu', 'song', 'removeFromPlaylist', 'removeFromNowPlaying'],
+                        styles: ["\n\t.subular-item-menu{\n\t}\n\ti.fa{\n\t\tpadding:0 5px;\n\t}\n\ti.fa:hover{\n\t\topacity:0.65;\n\t}\n\t.ul-play-menu, .ul-play-menu-sub{\n\t\tpadding: 10px 20px;\n\t\tz-index: 99;\n\t\tbackground-color: #fff;\n\t\tborder: 1px solid #000;\n\t\tlist-style-type: none;\n\t\tposition: absolute;\n\t\tmargin-left: -120;\n\t}\n\t.ul-play-menu-sub{\n\t\tmargin-top: -30px;\n\t}\n\t.ul-play-menu li{\n\t\tpadding:5px 6px;\n\t\tborder-bottom:1px solid #eee !important;\n\t\tcolor:#010101;\n\t}\n\t.ul-play-menu li:hover{\n\t}\n\t"]
                     }),
                     __param(0, core_1.Inject(core_1.ElementRef)),
                     __param(1, core_1.Inject(subular_service_1.SubularService)),
