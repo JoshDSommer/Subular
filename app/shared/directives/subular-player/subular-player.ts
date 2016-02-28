@@ -2,9 +2,9 @@ import {Component, OnChanges, OnInit, ElementRef } from 'angular2/core';
 import {SubularService} from './../../services/subular-service';
 import {SettingsService} from './../../services/settings-service';
 import {HTTP_PROVIDERS}  from 'angular2/http';
-import {Album} from './../../models/album';
+import {IAlbum} from './../../models/album';
 import {PlayerService, IAudioPlayingInfo} from '../../services/player-service';
-import {Song} from '../../models/song';
+import {ISong} from '../../models/song';
 import {SubularListItem} from '../subular-list-item/subular-list-item';
 import {path} from '../folder-info';
 
@@ -84,13 +84,13 @@ import {path} from '../folder-info';
 	`]
 })
 export class SubularPlayer implements OnChanges, OnInit {
-	public albums: Album[];
+	public albums: IAlbum[];
 	public imgUrl: string;
 	public playerService: PlayerService;
-	public nowPlayingSong: Song;
+	public nowPlayingSong: ISong;
 	public playing: boolean = false;
 	private gutterProgress: Element;
-	private songs: Song[];
+	private songs: ISong[];
 	public playingSongs: boolean = false;
 
 	constructor(private _dataService: SubularService, private _elementRef: ElementRef) {
@@ -116,7 +116,6 @@ export class SubularPlayer implements OnChanges, OnInit {
 	}
 
 	pauseSong(): void {
-		console.log('pause songs');
 		this.playerService.pauseSong();
 	}
 

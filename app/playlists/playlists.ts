@@ -2,8 +2,8 @@ import {Component, ElementRef, Inject} from 'angular2/core';
 import {SubularService} from './../shared/services/subular-service';
 import {SettingsService} from './../shared/services/settings-service';
 import {HTTP_PROVIDERS}    from 'angular2/http';
-import {Playlist} from './../shared/models/playlist';
-import {Song} from './../shared/models/song';
+import {IPlaylist} from './../shared/models/playlist';
+import {ISong} from './../shared/models/song';
 import {AlbumList} from '../shared/directives/album-list/album-list'
 import {PlayerService} from '../shared/services/player-service';
 import {Router} from 'angular2/router';
@@ -43,9 +43,9 @@ import {SubularListItem} from '../shared/directives/subular-list-item/subular-li
 	directives: [AlbumList, SubularListItem]
 })
 export class Playlists {
-	public playlists: Playlist[];
-	public selectedplaylist: Playlist;
-	public songs: Song[];
+	public playlists: IPlaylist[];
+	public selectedplaylist: IPlaylist;
+	public songs: ISong[];
 
 	constructor(private dataService: SubularService, private playerService: PlayerService) {
 		this.playlists = this.dataService.getPlaylists();
@@ -57,15 +57,14 @@ export class Playlists {
 		}
 	}
 
-	onSelect(playlist: Playlist) {
+	onSelect(playlist: IPlaylist) {
 		let playlistString;
 		let playlistSongs;
 		this.dataService.getPlaylist(playlist.id).subscribe(
 			data => playlistString = this.dataService.cleanSubsonicResponse(data),
 			error => console.log(error),
 			() => {
-				playlistSongs = <Song[]>JSON.parse(playlistString).subresp.playlist.entry;
-				console.log(playlistSongs);
+				playlistSongs = <ISong[]>JSON.parse(playlistString).subresp.playlist.entry;
 				this.songs = playlistSongs;
 			}
 		);
@@ -76,7 +75,5 @@ export class Playlists {
 		this.playerService.addSongs(this.songs);
 		this.playerService.shuffleSongs();
 		this.playerService.playSong();
-
-		console.log("playArtist");
 	}
 }

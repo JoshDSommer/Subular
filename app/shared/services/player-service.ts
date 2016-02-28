@@ -1,5 +1,5 @@
 import {Injectable, EventEmitter, Inject} from 'angular2/core';
-import {Song} from '../models/song';
+import {ISong} from '../models/Song';
 import {SubularService} from './subular-service';
 
 export interface IAudioPlayingInfo {
@@ -11,9 +11,9 @@ export interface IAudioPlayingInfo {
 
 @Injectable()
 export class PlayerService {
-	public songList: Song[];
+	public songList: ISong[];
 	public audio: any;
-	public playingSong: EventEmitter<Song>;
+	public playingSong: EventEmitter<ISong>;
 	public currentPosition: EventEmitter<IAudioPlayingInfo>;
 	public currentlyPlaying: EventEmitter<boolean>;
 
@@ -37,21 +37,21 @@ export class PlayerService {
 	clearSongs(): void {
 		this.songList = [];
 	}
-	addSong(song: Song): void {
+	addSong(ISong: ISong): void {
 		this.songList = (!this.songList ? [] : this.songList);
-		this.songList.push(song);
+		this.songList.push(ISong);
 	}
 
-	addSongs(songs: Song[]): void {
-		songs.forEach((song) => {
-			this.addSong(song);
+	addSongs(songs: ISong[]): void {
+		songs.forEach((ISong) => {
+			this.addSong(ISong);
 		});
 		this.playSong();
 	}
 
 	shuffleSongs(): void {
 		let currentIndex = this.songList.length, temporaryValue, randomIndex;
-		let shuffledSongs: Song[] = [];
+		let shuffledSongs: ISong[] = [];
 		// While there remain elements to shuffle...
 		while (0 !== currentIndex) {
 
@@ -111,7 +111,7 @@ export class PlayerService {
 		this.emitPlayingEvent(true);
 	}
 
-	currentSong(): Song {
+	currentSong(): ISong {
 		return this.songList[this.currentIndex];
 	}
 }

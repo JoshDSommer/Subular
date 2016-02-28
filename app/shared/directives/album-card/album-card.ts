@@ -2,8 +2,8 @@ import {Component, OnInit, ElementRef, Inject } from 'angular2/core';
 import {SubularService} from './../../services/subular-service';
 import {SettingsService} from './../../services/settings-service';
 import {HTTP_PROVIDERS}    from 'angular2/http';
-import {Album} from './../../models/album';
-import {Song} from '../../models/song';
+import {IAlbum} from './../../models/album';
+import {ISong} from '../../models/song';
 import 'rxjs/add/operator/map';
 import {PlayerService} from '../../services/player-service';
 
@@ -60,7 +60,7 @@ declare var ColorThief: any;
 `]
 })
 export class AlbumCard implements OnInit {
-	public album: Album;
+	public album: IAlbum;
 	public id: number;
 	public playerService: PlayerService;
 
@@ -101,7 +101,7 @@ export class AlbumCard implements OnInit {
 	}
 
 	playAlbum(id: number): void {
-		let songsList: Song[] = this._dataService.getSongsByArtistIdAlbumId(this.album.parent, id);
+		let songsList: ISong[] = this._dataService.getSongsByArtistIdAlbumId(this.album.parent, id);
 		this.playerService.clearSongs();
 		this.playerService.addSongs(songsList);
 

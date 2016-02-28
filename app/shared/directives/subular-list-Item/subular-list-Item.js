@@ -1,5 +1,4 @@
 System.register(['angular2/core', '../folder-info', '../../services/player-service', '../subular-item-menu/subular-item-menu'], function(exports_1) {
-    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -43,7 +42,6 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                     });
                 };
                 SubularListItem.prototype.ngOnChanges = function () {
-                    console.log(this.songs);
                 };
                 SubularListItem.prototype.rowNum = function (index) {
                     return index + 1;
@@ -63,7 +61,7 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                     __metadata('design:paramtypes', [player_service_1.PlayerService])
                 ], SubularListItem);
                 return SubularListItem;
-            }());
+            })();
             exports_1("SubularListItem", SubularListItem);
         }
     }

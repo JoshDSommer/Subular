@@ -1,4 +1,4 @@
-export interface Playlist{
+export interface IPlaylist{
 	id: number;
 	name: string;
 	comment: string;

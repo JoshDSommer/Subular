@@ -5,8 +5,8 @@ import {HTTP_PROVIDERS}    from 'angular2/http';
 import {SubularPlayer} from './shared/directives/subular-player/subular-player';
 import {ArtistList} from './artist-list/artist-list';
 import {Settings} from './settings/settings';
-import {Artist} from './shared/models/artist';
-import {Album} from './shared/models/album';
+import {IArtist} from './shared/models/artist';
+import {IAlbum} from './shared/models/album';
 import {PlayerService} from './shared/services/player-service';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Playlists} from './playlists/playlists';
@@ -43,21 +43,15 @@ import {Playlists} from './playlists/playlists';
 export class SubularApp implements OnInit {
 	getData: string;
 	items: Array<any>;
-	public albums: Album[];
+	public albums: IAlbum[];
 	public imgUrl: string;
-	public selectedArtist: Artist;
+	public selectedArtist: IArtist;
 	public nowPlaying: any[];
 	public page: number = 1;
 
 	constructor(private _dataService: SubularService, public playerService: PlayerService) {
 		if (this._dataService.getArtists() != null && this._dataService.getArtists().length == 0)
 			this._dataService.buildServerData();
-
-		setTimeout(() => {
-			console.log('done');
-		}, 6000);
-
-
 	}
 
 	ngOnInit(): void {

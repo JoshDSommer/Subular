@@ -1,12 +1,12 @@
 import {Component, OnChanges, OnInit, Inject  } from 'angular2/core';
 import {AlbumCard} from '../album-card/album-card';
 import {SubularService} from '../../services/subular-service';
-import {Album} from '../../models/album';
-import {Artist} from '../../models/artist';
+import {IAlbum} from '../../models/album';
+import {IArtist} from '../../models/artist';
 import {BgImageDirective} from '../subular-bg-from-img/subular-bg-from-img';
 import {PlayerService} from '../../services/player-service';
 import {path} from '../folder-info';
-import {Song} from '../../models/song';
+import {ISong} from '../../models/song';
 import {SubularListItem} from '../subular-list-item/subular-list-item';
 
 @Component({
@@ -46,14 +46,14 @@ import {SubularListItem} from '../subular-list-item/subular-list-item';
 })
 
 export class AlbumList implements OnChanges, OnInit {
-	public artist: Artist = {
+	public artist: IArtist = {
 		id: 0,
 		name: ''
 	};
-	public albums: Album[];
+	public albums: IAlbum[];
 	public playerService: PlayerService;
-	public songs: Song[];
-	public nowPlayingSong: Song;
+	public songs: ISong[];
+	public nowPlayingSong: ISong;
 
 	constructor( @Inject(SubularService) private dataService: SubularService, @Inject(PlayerService) playerService: PlayerService) {
 		this.playerService = playerService;
@@ -85,18 +85,19 @@ export class AlbumList implements OnChanges, OnInit {
 
 	getSongs(): void {
 		if (this.artist != null) {
-			this.dataService.buildSongsListForArtist(this.artist.id);
+			let artistSongs = this.dataService.getSongs(this.artist.name);
+			if (artistSongs.length === 0)
+				this.dataService.buildSongsListForArtist(this.artist.id);
 		}
 	}
-	getAlbumSongs(album: Album): void {
-		console.log(album);
+	getAlbumSongs(album: IAlbum): void {
 		this.songs = this.dataService.getSongsByArtistIdAlbumId(album.parent, album.id);
 	}
 
 	playArtist(): void {
 		let songs;
 		if (this.songs.length == 0) {
-			songs = this.dataService.getSongs(this.artist.id);
+			songs = this.dataService.getSongs(this.artist.name);
 		} else {
 			songs = this.songs;
 		}
@@ -105,7 +106,5 @@ export class AlbumList implements OnChanges, OnInit {
 		this.playerService.addSongs(songs);
 		this.playerService.shuffleSongs();
 		this.playerService.playSong();
-
-		console.log("playArtist");
 	}
 }

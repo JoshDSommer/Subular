@@ -1,5 +1,5 @@
 import {Component, OnInit, OnChanges} from 'angular2/core';
-import {Song} from '../../models/song';
+import {ISong} from '../../models/song';
 import {path} from '../folder-info';
 import {PlayerService, IAudioPlayingInfo} from '../../services/player-service';
 import {SubularMenuItem} from '../subular-item-menu/subular-item-menu';
@@ -58,8 +58,8 @@ import {SubularMenuItem} from '../subular-item-menu/subular-item-menu';
 			}`],
 })
 export class SubularListItem implements OnInit, OnChanges {
-	public songs: Song[];
-	public nowPlayingSong: Song;
+	public songs: ISong[];
+	public nowPlayingSong: ISong;
 	constructor(private playerService: PlayerService) {
 		this.nowPlayingSong = {
 			id: 0,
@@ -76,7 +76,6 @@ export class SubularListItem implements OnInit, OnChanges {
 	}
 
 	ngOnChanges(): void {
-		console.log(this.songs);
 	}
 
 	rowNum(index: number): number {

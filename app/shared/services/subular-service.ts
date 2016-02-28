@@ -2,10 +2,10 @@ import {SettingsService} from './settings-service';
 import {Http, Headers} from 'angular2/http';
 import {Injectable, Inject} from 'angular2/core';
 import 'rxjs/add/operator/map';
-import {Artist} from '../models/artist';
-import {Album} from '../models/album';
-import {Song} from '../models/song';
-import {Playlist} from '../models/playlist';
+import {IArtist} from '../models/artist';
+import {IAlbum} from '../models/album';
+import {ISong} from '../models/song';
+import {IPlaylist} from '../models/playlist';
 import {Observable} from 'rxjs/observable';
 
 @Injectable()
@@ -19,6 +19,7 @@ export class SubularService {
 			window.localStorage.setItem('subular-albums', JSON.stringify([]));
 			window.localStorage.setItem('subular-artists', JSON.stringify([]));
 			window.localStorage.setItem('subular-playlist', JSON.stringify([]));
+			window.localStorage.setItem('subular-songs', JSON.stringify([]));
 			this.buildArtistDatabase();
 			this.buildPlayListDatabase();
 			this.buildAlbumDatabase();
@@ -33,36 +34,51 @@ export class SubularService {
 		return this._settings.getServerURl('stream') + '&id=' + id;
 	}
 
-	//returns and observable of all the songs.
+	// returns and observable of all the songs.
 	getSongsByAlbumId(parentId: number): Observable<any> {
 		let address = this._settings.getServerURl('getMusicDirectory') + '&id=' + parentId;
 		let songs;
 		return this._http.get(address).map(resp => resp.json());
 	}
-	getSongsByArtistIdAlbumId(id: number, parentId: number): Song[] {
-		return this.getSongs(id).filter((song) => {
-			return song.parent === parentId
+	getSongsByArtistIdAlbumId(id: number, parentId: number): ISong[] {
+		let songDb: ISong[];
+		songDb = this.getSongDB();
+
+		return songDb.filter((song) => {
+			return song.parent === parentId;
 		});
 	}
-
-	getSongs(id: number): Song[] {
-		let songs: any = window.localStorage.getItem('subular-songs-' + id);
-		if (songs != null) {
-			return JSON.parse(songs);
+	private getSongDB(): ISong[] {
+		let songDb: string = window.localStorage.getItem('subular-songs');
+		if (songDb != null) {
+			return JSON.parse(songDb);
 		}
 		return [];
 	}
 
+	getSongs(artistName: string): ISong[] {
+		let songDb: ISong[];
+		songDb = this.getSongDB();
+		let artistSongs: ISong[] = songDb.filter((song: ISong) => {
+			return song.artist === artistName;
+		});
+		if (artistSongs != null) {
+			return artistSongs;
+		} else {
+			return [];
+		}
+	}
 
-	getAlbums(parentId?: number): Album[] {
+
+	getAlbums(parentId?: number): IAlbum[] {
 		if (parentId == null) {
 			return JSON.parse(window.localStorage.getItem('subular-albums'));
 		} else {
-			let albums: Album[] = JSON.parse(window.localStorage.getItem('subular-albums'));
-			let result: Album[] = [];
+			let albums: IAlbum[] = JSON.parse(window.localStorage.getItem('subular-albums'));
+			let result: IAlbum[] = [];
 			if (albums != null) {
-				result = albums.filter((album: Album) => {
-					return album.parent == parentId;
+				result = albums.filter((album: IAlbum) => {
+					return album.parent === parentId;
 				});
 			}
 
@@ -70,19 +86,19 @@ export class SubularService {
 		}
 	}
 
-	getalbum(id: number): Album {
-		let albums: Album[] = JSON.parse(window.localStorage.getItem('subular-albums'));
-		let result = albums.filter((album: Album) => {
-			return album.id == id;
+	getalbum(id: number): IAlbum {
+		let albums: IAlbum[] = JSON.parse(window.localStorage.getItem('subular-albums'));
+		let result = albums.filter((album: IAlbum) => {
+			return album.id === id;
 		});
 		return result[0];
 	}
 
-	getArtists(): Artist[] {
+	getArtists(): IArtist[] {
 		return JSON.parse(window.localStorage.getItem('subular-artists'))
 	}
 
-	getPlaylists(): Playlist[] {
+	getPlaylists(): IPlaylist[] {
 		return JSON.parse(window.localStorage.getItem('subular-playlist'))
 	}
 
@@ -92,14 +108,30 @@ export class SubularService {
 		return this._http.get(address).map(resp => resp.json());
 	}
 
-	addSongToPlaylist(playlistId: number, songId: number): void{
+	updatePlaylist(name: string, comment: string) {
+
+	}
+	addSongToPlaylist(playlistId: number, songId: number): void {
+		//todo add check to see if song exists in playlist
 		let address = this._settings.getServerURl('updatePlaylist') + '&playlistId=' + playlistId + '&songIdToAdd=' + songId;
 		this._http.get(address).map(resp => resp.json()).subscribe(
 			data => { },
 			error => console.log(error),
-			() => {}
+			() => { }
 		);
 	}
+
+	createNewPlaylist(name: string, songId: number) {
+		let address = this._settings.getServerURl('createPlaylist') + '&name=' + name + '&songIdToAdd=' + songId;
+		this._http.get(address).map(resp => resp.json()).subscribe(
+			data => { },
+			error => console.log(error),
+			() => { }
+		);
+	}
+
+
+
 	private buildPlayListDatabase(): void {
 		let playlistString;
 		let address = this._settings.getServerURl('getPlaylists');
@@ -160,8 +192,8 @@ export class SubularService {
 	}
 
 	buildSongsListForArtist(id): void {
-		let albums: Album[] = this.getAlbums(id);
-		window.localStorage.setItem('subular-songs-' + id, JSON.stringify([]));
+		let albums: IAlbum[] = this.getAlbums(id);
+		let songsDb: ISong[] = this.getSongDB();
 
 		albums.forEach((album) => {
 			let songs: any;
@@ -171,8 +203,8 @@ export class SubularService {
 				() => {
 					try {
 						let songsList: any[] = JSON.parse(songs).subresp.directory.child;
-						songsList = this.getSongs(id).concat(songsList);
-						window.localStorage.setItem('subular-songs-' + id, JSON.stringify(songsList));
+						songsDb = songsDb.concat(songsList);
+						window.localStorage.setItem('subular-songs', JSON.stringify(songsDb));
 					} catch (e) {
 						console.log(e);
 					}

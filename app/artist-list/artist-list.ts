@@ -2,7 +2,7 @@ import {Component, ElementRef, Inject} from 'angular2/core';
 import {SubularService} from './../shared/services/subular-service';
 import {SettingsService} from './../shared/services/settings-service';
 import {HTTP_PROVIDERS}    from 'angular2/http';
-import {Artist} from './../shared/models/artist';
+import {IArtist} from './../shared/models/artist';
 import {AlbumList} from '../shared/directives/album-list/album-list'
 import {PlayerService} from '../shared/services/player-service';
 import {Router}              from 'angular2/router';
@@ -19,8 +19,8 @@ import {Router}              from 'angular2/router';
 })
 export class ArtistList {
 	items: Array<any>;
-	public artists: Artist[];
-	public selectedArtist: Artist;
+	public artists: IArtist[];
+	public selectedArtist: IArtist;
 	public playerService: PlayerService;
 	private search: string = '';
 	private searchTimeout: NodeJS.Timer;
@@ -44,18 +44,17 @@ export class ArtistList {
 
 					return;
 				}
-				//if there isa search time out clear it.
+				// if there isa search time out clear it.
 				if (this.searchTimeout) {
 					clearTimeout(this.searchTimeout);
 				}
-				//create a new timeout
+				// create a new timeout
 				this.searchTimeout = setTimeout(() => {
 					this.search = '';
 				}, 1500)
 
 				this.search = this.search + (key === 'space' ? ' ' : key);
-				console.log(this.search);
-				for (var i = 0; i < artistList.length; i++) {
+				for (let i = 0; i < artistList.length; i++) {
 					let artistName = (<HTMLElement>artistList[i]).innerHTML.trim().toLowerCase();
 					if (artistName.startsWith(this.search)) {
 						(<HTMLElement>artistList[i]).click();
@@ -76,7 +75,7 @@ export class ArtistList {
 	key(code: string): string {
 		return code.toLowerCase().replace('key', '');
 	}
-	onSelect(artist: Artist) {
+	onSelect(artist: IArtist) {
 		this.selectedArtist = artist;
 	}
 }

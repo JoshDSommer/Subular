@@ -1,5 +1,4 @@
 System.register(['angular2/core', './shared/services/subular-service', './shared/services/settings-service', './shared/directives/subular-player/subular-player', './artist-list/artist-list', './settings/settings', './shared/services/player-service', 'angular2/router', './playlists/playlists'], function(exports_1) {
-    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -48,9 +47,6 @@ System.register(['angular2/core', './shared/services/subular-service', './shared
                     this.page = 1;
                     if (this._dataService.getArtists() != null && this._dataService.getArtists().length == 0)
                         this._dataService.buildServerData();
-                    setTimeout(function () {
-                        console.log('done');
-                    }, 6000);
                 }
                 SubularApp.prototype.ngOnInit = function () {
                 };
@@ -71,7 +67,7 @@ System.register(['angular2/core', './shared/services/subular-service', './shared
                     __metadata('design:paramtypes', [subular_service_1.SubularService, player_service_1.PlayerService])
                 ], SubularApp);
                 return SubularApp;
-            }());
+            })();
             exports_1("SubularApp", SubularApp);
         }
     }

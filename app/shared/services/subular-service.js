@@ -1,5 +1,4 @@
 System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/add/operator/map'], function(exports_1) {
-    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -37,6 +36,7 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                         window.localStorage.setItem('subular-albums', JSON.stringify([]));
                         window.localStorage.setItem('subular-artists', JSON.stringify([]));
                         window.localStorage.setItem('subular-playlist', JSON.stringify([]));
+                        window.localStorage.setItem('subular-songs', JSON.stringify([]));
                         this.buildArtistDatabase();
                         this.buildPlayListDatabase();
                         this.buildAlbumDatabase();
@@ -48,23 +48,38 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                 SubularService.prototype.getStreamUrl = function (id) {
                     return this._settings.getServerURl('stream') + '&id=' + id;
                 };
-                //returns and observable of all the songs.
+                // returns and observable of all the songs.
                 SubularService.prototype.getSongsByAlbumId = function (parentId) {
                     var address = this._settings.getServerURl('getMusicDirectory') + '&id=' + parentId;
                     var songs;
                     return this._http.get(address).map(function (resp) { return resp.json(); });
                 };
                 SubularService.prototype.getSongsByArtistIdAlbumId = function (id, parentId) {
-                    return this.getSongs(id).filter(function (song) {
+                    var songDb;
+                    songDb = this.getSongDB();
+                    return songDb.filter(function (song) {
                         return song.parent === parentId;
                     });
                 };
-                SubularService.prototype.getSongs = function (id) {
-                    var songs = window.localStorage.getItem('subular-songs-' + id);
-                    if (songs != null) {
-                        return JSON.parse(songs);
+                SubularService.prototype.getSongDB = function () {
+                    var songDb = window.localStorage.getItem('subular-songs');
+                    if (songDb != null) {
+                        return JSON.parse(songDb);
                     }
                     return [];
+                };
+                SubularService.prototype.getSongs = function (artistName) {
+                    var songDb;
+                    songDb = this.getSongDB();
+                    var artistSongs = songDb.filter(function (song) {
+                        return song.artist === artistName;
+                    });
+                    if (artistSongs != null) {
+                        return artistSongs;
+                    }
+                    else {
+                        return [];
+                    }
                 };
                 SubularService.prototype.getAlbums = function (parentId) {
                     if (parentId == null) {
@@ -75,7 +90,7 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                         var result = [];
                         if (albums != null) {
                             result = albums.filter(function (album) {
-                                return album.parent == parentId;
+                                return album.parent === parentId;
                             });
                         }
                         return result;
@@ -84,7 +99,7 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                 SubularService.prototype.getalbum = function (id) {
                     var albums = JSON.parse(window.localStorage.getItem('subular-albums'));
                     var result = albums.filter(function (album) {
-                        return album.id == id;
+                        return album.id === id;
                     });
                     return result[0];
                 };
@@ -99,8 +114,15 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                     var songs;
                     return this._http.get(address).map(function (resp) { return resp.json(); });
                 };
+                SubularService.prototype.updatePlaylist = function (name, comment) {
+                };
                 SubularService.prototype.addSongToPlaylist = function (playlistId, songId) {
+                    //todo add check to see if song exists in playlist
                     var address = this._settings.getServerURl('updatePlaylist') + '&playlistId=' + playlistId + '&songIdToAdd=' + songId;
+                    this._http.get(address).map(function (resp) { return resp.json(); }).subscribe(function (data) { }, function (error) { return console.log(error); }, function () { });
+                };
+                SubularService.prototype.createNewPlaylist = function (name, songId) {
+                    var address = this._settings.getServerURl('createPlaylist') + '&name=' + name + '&songIdToAdd=' + songId;
                     this._http.get(address).map(function (resp) { return resp.json(); }).subscribe(function (data) { }, function (error) { return console.log(error); }, function () { });
                 };
                 SubularService.prototype.buildPlayListDatabase = function () {
@@ -123,13 +145,13 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                     var address = this._settings.getServerURl('getIndexes');
                     this._http.get(address).map(function (resp) { return resp.json(); }).subscribe(function (data) { return artistString = _this.cleanSubsonicResponse(data); }, function (error) { return console.log(error); }, function () {
                         try {
-                            var artistList_1 = [];
+                            var artistList = [];
                             ;
                             var artists = JSON.parse(artistString).subresp.indexes.index;
                             artists.forEach(function (value, index) {
-                                artistList_1 = artistList_1.concat(value.artist);
+                                artistList = artistList.concat(value.artist);
                             });
-                            window.localStorage.setItem('subular-artists', JSON.stringify(artistList_1));
+                            window.localStorage.setItem('subular-artists', JSON.stringify(artistList));
                         }
                         catch (e) {
                             console.log(e);
@@ -158,14 +180,14 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                 SubularService.prototype.buildSongsListForArtist = function (id) {
                     var _this = this;
                     var albums = this.getAlbums(id);
-                    window.localStorage.setItem('subular-songs-' + id, JSON.stringify([]));
+                    var songsDb = this.getSongDB();
                     albums.forEach(function (album) {
                         var songs;
                         _this.getSongsByAlbumId(album.id).subscribe(function (data) { return songs = _this.cleanSubsonicResponse(data); }, function (error) { return console.log(error); }, function () {
                             try {
                                 var songsList = JSON.parse(songs).subresp.directory.child;
-                                songsList = _this.getSongs(id).concat(songsList);
-                                window.localStorage.setItem('subular-songs-' + id, JSON.stringify(songsList));
+                                songsDb = songsDb.concat(songsList);
+                                window.localStorage.setItem('subular-songs', JSON.stringify(songsDb));
                             }
                             catch (e) {
                                 console.log(e);
@@ -183,7 +205,7 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                     __metadata('design:paramtypes', [settings_service_1.SettingsService, http_1.Http])
                 ], SubularService);
                 return SubularService;
-            }());
+            })();
             exports_1("SubularService", SubularService);
         }
     }

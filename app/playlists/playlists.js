@@ -1,5 +1,4 @@
 System.register(['angular2/core', './../shared/services/subular-service', './../shared/services/settings-service', '../shared/directives/album-list/album-list', '../shared/services/player-service', '../shared/directives/subular-list-item/subular-list-item'], function(exports_1) {
-    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -49,7 +48,6 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                     var playlistSongs;
                     this.dataService.getPlaylist(playlist.id).subscribe(function (data) { return playlistString = _this.dataService.cleanSubsonicResponse(data); }, function (error) { return console.log(error); }, function () {
                         playlistSongs = JSON.parse(playlistString).subresp.playlist.entry;
-                        console.log(playlistSongs);
                         _this.songs = playlistSongs;
                     });
                     this.selectedplaylist = playlist;
@@ -59,7 +57,6 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                     this.playerService.addSongs(this.songs);
                     this.playerService.shuffleSongs();
                     this.playerService.playSong();
-                    console.log("playArtist");
                 };
                 Playlists = __decorate([
                     core_1.Component({
@@ -73,7 +70,7 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                     __metadata('design:paramtypes', [subular_service_1.SubularService, player_service_1.PlayerService])
                 ], Playlists);
                 return Playlists;
-            }());
+            })();
             exports_1("Playlists", Playlists);
         }
     }

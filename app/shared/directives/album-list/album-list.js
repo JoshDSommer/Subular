@@ -1,5 +1,4 @@
 System.register(['angular2/core', '../album-card/album-card', '../../services/subular-service', '../subular-bg-from-img/subular-bg-from-img', '../../services/player-service', '../folder-info', '../subular-list-item/subular-list-item'], function(exports_1) {
-    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -70,17 +69,18 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                 };
                 AlbumList.prototype.getSongs = function () {
                     if (this.artist != null) {
-                        this.dataService.buildSongsListForArtist(this.artist.id);
+                        var artistSongs = this.dataService.getSongs(this.artist.name);
+                        if (artistSongs.length === 0)
+                            this.dataService.buildSongsListForArtist(this.artist.id);
                     }
                 };
                 AlbumList.prototype.getAlbumSongs = function (album) {
-                    console.log(album);
                     this.songs = this.dataService.getSongsByArtistIdAlbumId(album.parent, album.id);
                 };
                 AlbumList.prototype.playArtist = function () {
                     var songs;
                     if (this.songs.length == 0) {
-                        songs = this.dataService.getSongs(this.artist.id);
+                        songs = this.dataService.getSongs(this.artist.name);
                     }
                     else {
                         songs = this.songs;
@@ -89,7 +89,6 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                     this.playerService.addSongs(songs);
                     this.playerService.shuffleSongs();
                     this.playerService.playSong();
-                    console.log("playArtist");
                 };
                 AlbumList = __decorate([
                     core_1.Component({
@@ -104,7 +103,7 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                     __metadata('design:paramtypes', [subular_service_1.SubularService, player_service_1.PlayerService])
                 ], AlbumList);
                 return AlbumList;
-            }());
+            })();
             exports_1("AlbumList", AlbumList);
         }
     }

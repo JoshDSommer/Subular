@@ -3,8 +3,8 @@ import {CORE_DIRECTIVES, COMMON_DIRECTIVES, FORM_BINDINGS, COMMON_PIPES, FORM_DI
 import {path} from '../folder-info';
 import {PlayerService} from '../../services/player-service';
 import {SubularService} from './../../services/subular-service';
-import {Song} from '../../models/song';
-import {Playlist} from '../../models/playlist';
+import {ISong} from '../../models/song';
+import {IPlaylist} from '../../models/playlist';
 
 @Component({
 	selector: 'subular-item-menu',
@@ -45,8 +45,8 @@ import {Playlist} from '../../models/playlist';
 
 export class SubularMenuItem implements OnInit {
 	public showMenu: boolean;
-	public song: Song;
-	public playlists: Playlist[];
+	public song: ISong;
+	public playlists: IPlaylist[];
 	public showPlaylists: boolean;
 	public hideMenu: any;
 
@@ -108,6 +108,12 @@ export class SubularMenuItem implements OnInit {
 	}
 	addToPlaylist(playlistId: number, songId: number): void {
 		this.dataService.addSongToPlaylist(playlistId, songId);
+		this.showMenu = false;
+		this.showPlaylists = false;
+	}
+
+	createPlaylist(songId: number) {
+		this.dataService.createNewPlaylist('New Playlist ', songId);
 		this.showMenu = false;
 		this.showPlaylists = false;
 	}

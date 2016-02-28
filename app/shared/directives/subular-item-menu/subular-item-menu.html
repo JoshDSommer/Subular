@@ -6,9 +6,10 @@
 		<li (click)="showPlaylists = !showPlaylists">Add to Playlist
 			<ul [hidden]="!showPlaylists" class="ul-play-menu-sub">
 				<li *ngFor="#playlist of playlists" (click)="addToPlaylist(playlist.id,song.id)">{{playlist?.name}} </li>
+				<li (click)="createPlaylist(song.id)"> Create New</li>
 			</ul>
 		</li>
 		<!--<li disabled>Download</li>-->
 	</ul>
-	<!--<div *ngIf="showMenu" id="now-playing-modal" class="subular-modal" (click)="showMenu = !showMenu"></div>-->
+	<!--<div *ngIf=" showMenu " id="now-playing-modal " class="subular-modal " (click)="showMenu=! showMenu "></div>-->
 </div>
