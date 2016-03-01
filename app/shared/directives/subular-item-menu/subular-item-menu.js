@@ -1,4 +1,5 @@
 System.register(['angular2/core', '../folder-info', '../../services/player-service', './../../services/subular-service'], function(exports_1) {
+    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -114,7 +115,7 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                     __metadata('design:paramtypes', [core_1.ElementRef, subular_service_1.SubularService, player_service_1.PlayerService])
                 ], SubularMenuItem);
                 return SubularMenuItem;
-            })();
+            }());
             exports_1("SubularMenuItem", SubularMenuItem);
         }
     }

@@ -1,13 +1,14 @@
-import {Component, OnInit, OnChanges} from 'angular2/core';
+import {Component, OnInit, OnChanges, Inject } from 'angular2/core';
 import {ISong} from '../../models/song';
 import {path} from '../folder-info';
 import {PlayerService, IAudioPlayingInfo} from '../../services/player-service';
 import {SubularMenuItem} from '../subular-item-menu/subular-item-menu';
+import {SubularService} from './../../services/subular-service';
 
 @Component({
 	selector: 'subular-list-item',
 	templateUrl: path + 'subular-list-item/subular-list-item.html',
-	inputs: ['songs', 'number', 'nowPlayingSong'],
+	inputs: ['songs', 'number', 'nowPlayingSong', 'removeFromPlaylist', 'playlistId'],
 	directives: [SubularMenuItem],
 	styles: [`
 			td{
@@ -55,18 +56,26 @@ import {SubularMenuItem} from '../subular-item-menu/subular-item-menu';
 				background: -webkit-linear-gradient(#4B0082,#4B0082);
 				font-weight:700;
 				color:#fff;
-			}`],
+			}
+			.small-th{
+				width:15px;
+			}
+			`],
 })
 export class SubularListItem implements OnInit, OnChanges {
 	public songs: ISong[];
 	public nowPlayingSong: ISong;
-	constructor(private playerService: PlayerService) {
+	public removeFromPlaylist: boolean;
+	public playlistId: number;
+
+	constructor( @Inject(PlayerService) private playerService: PlayerService, @Inject(SubularService) private dataService: SubularService) {
 		this.nowPlayingSong = {
 			id: 0,
 			title: '',
 			artist: '',
 			parent: 0,
-		}
+		};
+
 	}
 
 	ngOnInit(): void {
@@ -85,5 +94,11 @@ export class SubularListItem implements OnInit, OnChanges {
 	playSongFromList(index: number): void {
 		this.playerService.songList = this.songs;
 		this.playerService.playSong(index);
+	}
+
+	removeSong(playlistId: number, songId: number) {
+		let songIndex = this.songs.map((val: ISong) => { return val.id; }).indexOf(songId);
+		this.dataService.removeSongFromPlaylist(playlistId, songId);
+		this.songs.splice(songIndex, 1);
 	}
 }

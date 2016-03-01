@@ -14,10 +14,11 @@
 			<th class="text-right">
 				Album
 			</th>
-			<th>&nbsp;</th>
+			<th class="small-th">&nbsp;</th>
+			<th class="small-th" *ngIf="removeFromPlaylist">&nbsp;</th>
 		</tr>
 	</thead>
-	<tr [ngClass]="{rowPlaying : nowPlayingSong == song}"  *ngFor="#song of songs; #i = index">
+	<tr [ngClass]="{rowPlaying : nowPlayingSong == song}" *ngFor="#song of songs; #i = index">
 		<td (click)="playSongFromList(i)" class="text-left">{{rowNum(i)}}</td>
 		<td (click)="playSongFromList(i)" class="text-left row-song">
 			{{song.title}}
@@ -31,6 +32,11 @@
 		<td (click)="playSongFromList(i)" class="text-right">
 			{{song.album}}
 		</td>
-		<td><subular-item-menu [song]="song"></subular-item-menu></td>
+		<td class="small-th">
+			<subular-item-menu [song]="song"></subular-item-menu>
+		</td>
+		<td class="small-th">
+			<i *ngIf="removeFromPlaylist" (click)="removeSong(playlistId,song.id)" class="fa fa-close"></i>
+		</td>
 	</tr>
 </table>

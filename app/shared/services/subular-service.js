@@ -1,4 +1,5 @@
 System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/add/operator/map'], function(exports_1) {
+    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -121,6 +122,19 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                     var address = this._settings.getServerURl('updatePlaylist') + '&playlistId=' + playlistId + '&songIdToAdd=' + songId;
                     this._http.get(address).map(function (resp) { return resp.json(); }).subscribe(function (data) { }, function (error) { return console.log(error); }, function () { });
                 };
+                SubularService.prototype.removeSongFromPlaylist = function (playlistId, songId) {
+                    var _this = this;
+                    var playlistString;
+                    var playlistSongs;
+                    this.getPlaylist(playlistId).subscribe(function (data) { return playlistString = _this.cleanSubsonicResponse(data); }, function (error) { return console.log(error); }, function () {
+                        playlistSongs = JSON.parse(playlistString).subresp.playlist.entry;
+                        var songIndex = playlistSongs.map(function (value) {
+                            return value.id;
+                        }).indexOf(songId);
+                        var address = _this._settings.getServerURl('updatePlaylist') + '&playlistId=' + playlistId + '&songIndexToRemove=' + songIndex;
+                        _this._http.get(address).map(function (resp) { return resp.json(); }).subscribe(function (data) { }, function (error) { return console.log(error); }, function () { });
+                    });
+                };
                 SubularService.prototype.createNewPlaylist = function (name, songId) {
                     var address = this._settings.getServerURl('createPlaylist') + '&name=' + name + '&songIdToAdd=' + songId;
                     this._http.get(address).map(function (resp) { return resp.json(); }).subscribe(function (data) { }, function (error) { return console.log(error); }, function () { });
@@ -145,13 +159,13 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                     var address = this._settings.getServerURl('getIndexes');
                     this._http.get(address).map(function (resp) { return resp.json(); }).subscribe(function (data) { return artistString = _this.cleanSubsonicResponse(data); }, function (error) { return console.log(error); }, function () {
                         try {
-                            var artistList = [];
+                            var artistList_1 = [];
                             ;
                             var artists = JSON.parse(artistString).subresp.indexes.index;
                             artists.forEach(function (value, index) {
-                                artistList = artistList.concat(value.artist);
+                                artistList_1 = artistList_1.concat(value.artist);
                             });
-                            window.localStorage.setItem('subular-artists', JSON.stringify(artistList));
+                            window.localStorage.setItem('subular-artists', JSON.stringify(artistList_1));
                         }
                         catch (e) {
                             console.log(e);
@@ -205,7 +219,7 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                     __metadata('design:paramtypes', [settings_service_1.SettingsService, http_1.Http])
                 ], SubularService);
                 return SubularService;
-            })();
+            }());
             exports_1("SubularService", SubularService);
         }
     }

@@ -25,7 +25,7 @@ export class ArtistList {
 	private search: string = '';
 	private searchTimeout: NodeJS.Timer;
 	public i: number = 0;
-	constructor(private _dataService: SubularService, private _elementRef: ElementRef, playerService: PlayerService, private _router: Router) {
+	constructor(private _dataService: SubularService, private _elementRef: ElementRef, playerService: PlayerService, private router: Router) {
 		this.playerService = playerService;
 		this.artists = this._dataService.getArtists();
 		if (this.artists != null && this.artists.length > 0) {
@@ -64,7 +64,7 @@ export class ArtistList {
 				}
 			});
 		} else {
-			this._router.navigate(['Settings']);
+			this.router.navigate(['Settings']);
 		}
 
 	}

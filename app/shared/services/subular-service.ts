@@ -121,6 +121,27 @@ export class SubularService {
 		);
 	}
 
+	removeSongFromPlaylist(playlistId: number, songId: number): void {
+		let playlistString;
+		let playlistSongs: ISong[];
+		this.getPlaylist(playlistId).subscribe(
+			data => playlistString = this.cleanSubsonicResponse(data),
+			error => console.log(error),
+			() => {
+				playlistSongs = <ISong[]>JSON.parse(playlistString).subresp.playlist.entry;
+				let songIndex = playlistSongs.map((value: ISong) => {
+					return value.id;
+				}).indexOf(songId);
+				let address = this._settings.getServerURl('updatePlaylist') + '&playlistId=' + playlistId + '&songIndexToRemove=' + songIndex;
+				this._http.get(address).map(resp => resp.json()).subscribe(
+					data => { },
+					error => console.log(error),
+					() => { }
+				);
+			}
+		);
+	}
+
 	createNewPlaylist(name: string, songId: number) {
 		let address = this._settings.getServerURl('createPlaylist') + '&name=' + name + '&songIdToAdd=' + songId;
 		this._http.get(address).map(resp => resp.json()).subscribe(

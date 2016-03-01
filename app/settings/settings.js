@@ -1,4 +1,5 @@
 System.register(['angular2/core', './../shared/services/settings-service', './../shared/services/subular-service', 'angular2/router'], function(exports_1) {
+    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -62,7 +63,7 @@ System.register(['angular2/core', './../shared/services/settings-service', './..
                     __metadata('design:paramtypes', [settings_service_1.SettingsService, subular_service_1.SubularService, router_1.Router])
                 ], Settings);
                 return Settings;
-            })();
+            }());
             exports_1("Settings", Settings);
         }
     }

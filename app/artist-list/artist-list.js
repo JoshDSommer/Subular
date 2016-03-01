@@ -1,4 +1,5 @@
 System.register(['angular2/core', './../shared/services/subular-service', './../shared/services/settings-service', '../shared/directives/album-list/album-list', '../shared/services/player-service', 'angular2/router'], function(exports_1) {
+    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -32,11 +33,11 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
             }],
         execute: function() {
             ArtistList = (function () {
-                function ArtistList(_dataService, _elementRef, playerService, _router) {
+                function ArtistList(_dataService, _elementRef, playerService, router) {
                     var _this = this;
                     this._dataService = _dataService;
                     this._elementRef = _elementRef;
-                    this._router = _router;
+                    this.router = router;
                     this.search = '';
                     this.i = 0;
                     this.playerService = playerService;
@@ -44,7 +45,7 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                     if (this.artists != null && this.artists.length > 0) {
                         this.selectedArtist = this.artists[0];
                         var el = this._elementRef.nativeElement;
-                        var artistList = document.getElementsByClassName('subular-list-item');
+                        var artistList_1 = document.getElementsByClassName('subular-list-item');
                         document.addEventListener('keydown', function (event) {
                             var key = _this.key(event.code).toLowerCase();
                             if (key === 'arrowdown') {
@@ -62,18 +63,18 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                                 _this.search = '';
                             }, 1500);
                             _this.search = _this.search + (key === 'space' ? ' ' : key);
-                            for (var i = 0; i < artistList.length; i++) {
-                                var artistName = artistList[i].innerHTML.trim().toLowerCase();
+                            for (var i = 0; i < artistList_1.length; i++) {
+                                var artistName = artistList_1[i].innerHTML.trim().toLowerCase();
                                 if (artistName.startsWith(_this.search)) {
-                                    artistList[i].click();
-                                    _this.scrollTo(artistList[i]);
+                                    artistList_1[i].click();
+                                    _this.scrollTo(artistList_1[i]);
                                     return;
                                 }
                             }
                         });
                     }
                     else {
-                        this._router.navigate(['Settings']);
+                        this.router.navigate(['Settings']);
                     }
                 }
                 ArtistList.prototype.scrollTo = function (element) {
@@ -98,7 +99,7 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                     __metadata('design:paramtypes', [subular_service_1.SubularService, core_1.ElementRef, player_service_1.PlayerService, router_1.Router])
                 ], ArtistList);
                 return ArtistList;
-            })();
+            }());
             exports_1("ArtistList", ArtistList);
         }
     }
