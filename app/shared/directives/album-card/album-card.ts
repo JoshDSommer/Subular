@@ -37,7 +37,8 @@ declare var ColorThief: any;
 	}
 	img {
 		display:block;
-		width:98%;
+		width:159px;
+		height:159px;
 		margin:0 auto 0;
 	}
 	.album-card-footer{
@@ -88,7 +89,7 @@ export class AlbumCard implements OnInit {
 				// alt.setAttribute('style', 'color:' + this.getRGBString(palettes[6]) + ';border-bottom:2px ' + this.getRGBString(palettes[6]) + 'solid;');
 				// document.body.setAttribute('style', 'background-color:' + this.getRGBString(palettes[5]));
 				if (document.body.getAttribute('style') === '') {
-					document.body.setAttribute('style', 'background: -webkit-linear-gradient(' + this.getRGBString(palettes[1]) + ',' + this.getRGBString(palettes[6]) + ');');
+					document.body.setAttribute('style', 'background: -webkit-linear-gradient(' + this.getRGBString(palettes[6]) + ', #000);');
 				}
 				// footer.setAttribute('style', 'background: ' + this.getRGBString(palettes[6]) + '; color:' + this.getRGBString(palettes[1]) + ';');
 				// alv.setAttribute('style', 'background-color:' + this.getRGBString(palettes[5]));

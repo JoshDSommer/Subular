@@ -56,7 +56,7 @@ System.register(['angular2/core', './../../services/subular-service', './../../s
                             // alt.setAttribute('style', 'color:' + this.getRGBString(palettes[6]) + ';border-bottom:2px ' + this.getRGBString(palettes[6]) + 'solid;');
                             // document.body.setAttribute('style', 'background-color:' + this.getRGBString(palettes[5]));
                             if (document.body.getAttribute('style') === '') {
-                                document.body.setAttribute('style', 'background: -webkit-linear-gradient(' + _this.getRGBString(palettes[1]) + ',' + _this.getRGBString(palettes[6]) + ');');
+                                document.body.setAttribute('style', 'background: -webkit-linear-gradient(' + _this.getRGBString(palettes[6]) + ', #000);');
                             }
                             // footer.setAttribute('style', 'background: ' + this.getRGBString(palettes[6]) + '; color:' + this.getRGBString(palettes[1]) + ';');
                             // alv.setAttribute('style', 'background-color:' + this.getRGBString(palettes[5]));
@@ -78,7 +78,7 @@ System.register(['angular2/core', './../../services/subular-service', './../../s
                         templateUrl: '/app/shared/directives/album-card/album-card.html',
                         providers: [subular_service_1.SubularService, settings_service_1.SettingsService],
                         inputs: ['id', 'album', 'playerService', 'click'],
-                        styles: ["\n\t.card{\n\n\t}\n\ti.fa {\n\t\tposition: absolute;\n\t\tfont-size: 55px;\n\t\tbottom: 0;\n\t\tright: 2;\n\t\tcolor: #fff;\n\t\tmargin-right:1%;\n\t\t/*text-shadow: black 0.1em 0.1em 0.2em*/\n\t}\n\t.album-card\n\t{\n\t\tdisplay:block;\n\t\tbackground-color: #fff;\n\t\twidth: 90%;\n\t\tmargin: 0 auto;\n\t\tpadding-top:1%;\n\t}\n\timg {\n\t\tdisplay:block;\n\t\twidth:98%;\n\t\tmargin:0 auto 0;\n\t}\n\t.album-card-footer{\n\t\tmargin: 0 auto;\n\t\twidth: 90%;\n\t\theight: 35px;\n\t\tbackground-color: #fff;\n\t\tmargin-bottom: 10px;\n\t\tpadding:2px 33px 0 5px;\n\t\tfont-size:1.7vh;\n\t\tline-height:14px;\n\t\tborder-bottom-left-radius: 5px;\n\t\tborder-bottom-right-radius: 35px;\n\t\tfont-weight:700;\n\t\tcolor:#101010;\n\t}\n\ti.fa:hover{\n\t\tcolor:#9d9d9d !important;\n\t}\n"]
+                        styles: ["\n\t.card{\n\n\t}\n\ti.fa {\n\t\tposition: absolute;\n\t\tfont-size: 55px;\n\t\tbottom: 0;\n\t\tright: 2;\n\t\tcolor: #fff;\n\t\tmargin-right:1%;\n\t\t/*text-shadow: black 0.1em 0.1em 0.2em*/\n\t}\n\t.album-card\n\t{\n\t\tdisplay:block;\n\t\tbackground-color: #fff;\n\t\twidth: 90%;\n\t\tmargin: 0 auto;\n\t\tpadding-top:1%;\n\t}\n\timg {\n\t\tdisplay:block;\n\t\twidth:159px;\n\t\theight:159px;\n\t\tmargin:0 auto 0;\n\t}\n\t.album-card-footer{\n\t\tmargin: 0 auto;\n\t\twidth: 90%;\n\t\theight: 35px;\n\t\tbackground-color: #fff;\n\t\tmargin-bottom: 10px;\n\t\tpadding:2px 33px 0 5px;\n\t\tfont-size:1.7vh;\n\t\tline-height:14px;\n\t\tborder-bottom-left-radius: 5px;\n\t\tborder-bottom-right-radius: 35px;\n\t\tfont-weight:700;\n\t\tcolor:#101010;\n\t}\n\ti.fa:hover{\n\t\tcolor:#9d9d9d !important;\n\t}\n"]
                     }),
                     __param(2, core_1.Inject(player_service_1.PlayerService)), 
                     __metadata('design:paramtypes', [subular_service_1.SubularService, core_1.ElementRef, player_service_1.PlayerService])
