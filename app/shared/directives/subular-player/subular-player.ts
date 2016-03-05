@@ -81,6 +81,9 @@ import {path} from '../folder-info';
 			#now-playing-list h3{
 				padding:1px 15px;
 			}
+			.cover-img{
+				height:63px;
+			}
 	`]
 })
 export class SubularPlayer implements OnChanges, OnInit {
@@ -94,8 +97,6 @@ export class SubularPlayer implements OnChanges, OnInit {
 	public playingSongs: boolean = false;
 
 	constructor(private _dataService: SubularService, private _elementRef: ElementRef) {
-		this.imgUrl = this._dataService.getCoverUrl(19);
-		this.albums = this._dataService.getAlbums(19);
 		this.songs = [];
 		this.nowPlayingSong = {
 			id: 0,
@@ -108,11 +109,13 @@ export class SubularPlayer implements OnChanges, OnInit {
 		this.playerService.playSong(this.playerService.currentIndex + 1);
 		this.nowPlayingSong = this.playerService.currentSong();
 		this.songs = this.playerService.songList;
+		this.getImgUrl();
 	}
 
 	previousSong(): void {
 		this.playerService.playSong(this.playerService.currentIndex - 1);
 		this.nowPlayingSong = this.playerService.currentSong();
+		this.getImgUrl();
 	}
 
 	pauseSong(): void {
@@ -123,7 +126,16 @@ export class SubularPlayer implements OnChanges, OnInit {
 		this.playerService.resumeSong();
 	}
 	ngOnChanges(changes): void {
+		this.getImgUrl();
+	}
 
+	getImgUrl(): string {
+		if (this.nowPlayingSong != null && this.nowPlayingSong.id != 0) {
+			this.imgUrl = this._dataService.getCoverUrl(this.nowPlayingSong.parent);
+		}
+		console.log('imgurl:');
+		console.log(this.imgUrl);
+		return this.imgUrl;
 	}
 
 	ngOnInit(): void {
@@ -132,7 +144,7 @@ export class SubularPlayer implements OnChanges, OnInit {
 		this.playerService.playingSong.subscribe((song) => {
 			this.nowPlayingSong = song;
 			this.songs = this.playerService.songList;
-
+			this.getImgUrl();
 		});
 
 		this.playerService.currentPosition.subscribe((info: IAudioPlayingInfo) => {

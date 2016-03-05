@@ -10,14 +10,17 @@
 			<i class="fa fa-forward" (click)="nextSong()"></i>
 		</div>
 	</div>
-	<div class="col-sm-8">
+	<div class="col-sm-1">
+		<img *ngIf="imgUrl !=null" class="pull-left cover-img" src={{imgUrl}} />
+	</div>
+	<div class="col-sm-7">
 		<span class="title">{{nowPlayingSong.title}} {{time}}</span>
 		<span class="artist">{{nowPlayingSong.artist}}</span>
 		<span class="ablum text-muted">{{nowPlayingSong.album}}</span>
 	</div>
 	<div class="col-sm-2 heart pull-right text-right">
 		<i class="fa fa-heart-o" *ngIf="songs.length>0"></i>
-		<i class="fa fa-th-list" *ngIf="songs.length>0" [ngClass]="{activeInverse : playingSongs}"(click)="playingSongs = !playingSongs"></i>
+		<i class="fa fa-th-list" *ngIf="songs.length>0" [ngClass]="{activeInverse : playingSongs}" (click)="playingSongs = !playingSongs"></i>
 	</div>
 </section>
 <section id="now-playing-list" *ngIf="playingSongs">

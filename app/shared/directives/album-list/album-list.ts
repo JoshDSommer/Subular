@@ -91,7 +91,6 @@ export class AlbumList implements OnChanges, OnInit {
 		if (this.routerParams.get('albumId') != null) {
 			let albumId = +this.routerParams.get('albumId');
 			this.songs = this.dataService.getSongsByArtistIdAlbumId(0, albumId);
-			console.log(this.songs);
 		} else {
 			this.getSongs();
 			document.body.setAttribute('style', '');
@@ -111,8 +110,6 @@ export class AlbumList implements OnChanges, OnInit {
 	}
 	getAlbumSongs(album: IAlbum): void {
 		this.router.navigate(['ArtistAlbum', { id: this.artist.id, albumId: album.id }]);
-		console.log({ id: album.parent, albumId: album.id });
-		// this.songs = this.dataService.getSongsByArtistIdAlbumId(album.parent, album.id);
 	}
 
 	playArtist(): void {

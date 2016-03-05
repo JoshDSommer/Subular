@@ -97,7 +97,6 @@ System.register(['angular2/core', './subular-service'], function(exports_1) {
                         });
                     }
                     else {
-                        console.log('no songs in list');
                     }
                 };
                 PlayerService.prototype.pauseSong = function () {

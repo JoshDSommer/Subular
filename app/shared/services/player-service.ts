@@ -98,7 +98,6 @@ export class PlayerService {
 					this.playSong(this.currentIndex + 1);
 			});
 		} else {
-			console.log('no songs in list');
 		}
 
 	}

@@ -68,7 +68,6 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                     if (this.routerParams.get('albumId') != null) {
                         var albumId = +this.routerParams.get('albumId');
                         this.songs = this.dataService.getSongsByArtistIdAlbumId(0, albumId);
-                        console.log(this.songs);
                     }
                     else {
                         this.getSongs();
@@ -88,8 +87,6 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                 };
                 AlbumList.prototype.getAlbumSongs = function (album) {
                     this.router.navigate(['ArtistAlbum', { id: this.artist.id, albumId: album.id }]);
-                    console.log({ id: album.parent, albumId: album.id });
-                    // this.songs = this.dataService.getSongsByArtistIdAlbumId(album.parent, album.id);
                 };
                 AlbumList.prototype.playArtist = function () {
                     var songs;
