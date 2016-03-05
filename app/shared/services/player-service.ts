@@ -94,7 +94,8 @@ export class PlayerService {
 
 			});
 			this.audio.addEventListener('ended', () => {
-				this.playSong(this.currentIndex + 1);
+				if ((this.currentIndex + 1) < this.songList.length)
+					this.playSong(this.currentIndex + 1);
 			});
 		} else {
 			console.log('no songs in list');

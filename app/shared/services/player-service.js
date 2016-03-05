@@ -92,7 +92,8 @@ System.register(['angular2/core', './subular-service'], function(exports_1) {
                             });
                         });
                         this.audio.addEventListener('ended', function () {
-                            _this.playSong(_this.currentIndex + 1);
+                            if ((_this.currentIndex + 1) < _this.songList.length)
+                                _this.playSong(_this.currentIndex + 1);
                         });
                     }
                     else {
