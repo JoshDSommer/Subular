@@ -8,12 +8,13 @@ import {PlayerService} from '../../services/player-service';
 import {path} from '../folder-info';
 import {ISong} from '../../models/song';
 import {SubularListItem} from '../subular-list-item/subular-list-item';
+import {Router, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
 	selector: 'album-list',
 	templateUrl: path + 'album-list/album-list.html',
-	directives: [AlbumCard, BgImageDirective, SubularListItem],
-	inputs: ['albums', 'artist', 'playerService'],
+	directives: [AlbumCard, BgImageDirective, SubularListItem, ROUTER_DIRECTIVES],
+	inputs: ['albums', 'artist', 'playerService', 'songs'],
 	styles: [`
 		album-card{
 			cursor:hand;
@@ -42,6 +43,12 @@ import {SubularListItem} from '../subular-list-item/subular-list-item';
 			height:calc(100% - 170px);
 			overflow:auto;
 		}
+		#album-list-artist a{
+			color:inherit;
+		}
+		h2{
+			color:#fff;
+		}
 	`]
 })
 
@@ -55,10 +62,16 @@ export class AlbumList implements OnChanges, OnInit {
 	public songs: ISong[];
 	public nowPlayingSong: ISong;
 
-	constructor( @Inject(SubularService) private dataService: SubularService, @Inject(PlayerService) playerService: PlayerService) {
+	constructor(
+		@Inject(SubularService) private dataService: SubularService,
+		@Inject(PlayerService) playerService: PlayerService,
+		@Inject(Router) private router: Router,
+		@Inject(RouteParams) private routerParams: RouteParams
+	) {
 		this.playerService = playerService;
 		this.songs = [];
 		this.nowPlayingSong = {};
+
 	}
 
 	imgUrl(id: number): string {
@@ -69,15 +82,21 @@ export class AlbumList implements OnChanges, OnInit {
 	ngOnChanges(): void {
 		if (this.artist != null) {
 			this.albums = this.dataService.getAlbums(this.artist.id);
-			document.body.setAttribute('style', '');
-			this.songs = [];
-			this.getSongs();
+			// this.songs = [];
+			// this.getSongs();
 		}
 	}
 
 	ngOnInit(): void {
-		this.getSongs();
-
+		if (this.routerParams.get('albumId') != null) {
+			let albumId = +this.routerParams.get('albumId');
+			this.songs = this.dataService.getSongsByArtistIdAlbumId(0, albumId);
+			console.log(this.songs);
+		} else {
+			this.getSongs();
+			document.body.setAttribute('style', '');
+			this.songs = [];
+		}
 		this.playerService.playingSong.subscribe((song) => {
 			this.nowPlayingSong = song;
 		});
@@ -91,7 +110,9 @@ export class AlbumList implements OnChanges, OnInit {
 		}
 	}
 	getAlbumSongs(album: IAlbum): void {
-		this.songs = this.dataService.getSongsByArtistIdAlbumId(album.parent, album.id);
+		this.router.navigate(['ArtistAlbum', { id: this.artist.id, albumId: album.id }]);
+		console.log({ id: album.parent, albumId: album.id });
+		// this.songs = this.dataService.getSongsByArtistIdAlbumId(album.parent, album.id);
 	}
 
 	playArtist(): void {

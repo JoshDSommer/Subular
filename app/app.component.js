@@ -62,6 +62,8 @@ System.register(['angular2/core', './shared/services/subular-service', './shared
                     }),
                     router_1.RouteConfig([
                         { path: '/artist', name: 'ArtistList', component: artist_list_1.ArtistList, useAsDefault: true },
+                        { path: '/artist/:id', name: 'ArtistAlbums', component: artist_list_1.ArtistList },
+                        { path: '/artist/:id/:albumId', name: 'ArtistAlbum', component: artist_list_1.ArtistList },
                         { path: '/settings', name: 'Settings', component: settings_1.Settings },
                         { path: '/playlists', name: 'Playlists', component: playlists_1.Playlists },
                     ]), 

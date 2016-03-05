@@ -96,3 +96,10 @@ html, body {
 	background:#000;
 	opacity:0.5;
 }
+
+.subular-default-bg{
+	background: -webkit-linear-gradient(#4B0082, #000);
+	background: -o-linear-gradient(#4B0082, #000);
+	background: linear-gradient(#4B0082, #000);
+
+}

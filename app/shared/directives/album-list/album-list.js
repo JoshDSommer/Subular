@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../album-card/album-card', '../../services/subular-service', '../subular-bg-from-img/subular-bg-from-img', '../../services/player-service', '../folder-info', '../subular-list-item/subular-list-item'], function(exports_1) {
+System.register(['angular2/core', '../album-card/album-card', '../../services/subular-service', '../subular-bg-from-img/subular-bg-from-img', '../../services/player-service', '../folder-info', '../subular-list-item/subular-list-item', 'angular2/router'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -12,7 +12,7 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, album_card_1, subular_service_1, subular_bg_from_img_1, player_service_1, folder_info_1, subular_list_item_1;
+    var core_1, album_card_1, subular_service_1, subular_bg_from_img_1, player_service_1, folder_info_1, subular_list_item_1, router_1;
     var AlbumList;
     return {
         setters:[
@@ -36,11 +36,16 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
             },
             function (subular_list_item_1_1) {
                 subular_list_item_1 = subular_list_item_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             AlbumList = (function () {
-                function AlbumList(dataService, playerService) {
+                function AlbumList(dataService, playerService, router, routerParams) {
                     this.dataService = dataService;
+                    this.router = router;
+                    this.routerParams = routerParams;
                     this.artist = {
                         id: 0,
                         name: ''
@@ -56,14 +61,20 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                 AlbumList.prototype.ngOnChanges = function () {
                     if (this.artist != null) {
                         this.albums = this.dataService.getAlbums(this.artist.id);
-                        document.body.setAttribute('style', '');
-                        this.songs = [];
-                        this.getSongs();
                     }
                 };
                 AlbumList.prototype.ngOnInit = function () {
                     var _this = this;
-                    this.getSongs();
+                    if (this.routerParams.get('albumId') != null) {
+                        var albumId = +this.routerParams.get('albumId');
+                        this.songs = this.dataService.getSongsByArtistIdAlbumId(0, albumId);
+                        console.log(this.songs);
+                    }
+                    else {
+                        this.getSongs();
+                        document.body.setAttribute('style', '');
+                        this.songs = [];
+                    }
                     this.playerService.playingSong.subscribe(function (song) {
                         _this.nowPlayingSong = song;
                     });
@@ -76,7 +87,9 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                     }
                 };
                 AlbumList.prototype.getAlbumSongs = function (album) {
-                    this.songs = this.dataService.getSongsByArtistIdAlbumId(album.parent, album.id);
+                    this.router.navigate(['ArtistAlbum', { id: this.artist.id, albumId: album.id }]);
+                    console.log({ id: album.parent, albumId: album.id });
+                    // this.songs = this.dataService.getSongsByArtistIdAlbumId(album.parent, album.id);
                 };
                 AlbumList.prototype.playArtist = function () {
                     var songs;
@@ -95,13 +108,15 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                     core_1.Component({
                         selector: 'album-list',
                         templateUrl: folder_info_1.path + 'album-list/album-list.html',
-                        directives: [album_card_1.AlbumCard, subular_bg_from_img_1.BgImageDirective, subular_list_item_1.SubularListItem],
-                        inputs: ['albums', 'artist', 'playerService'],
-                        styles: ["\n\t\talbum-card{\n\t\t\tcursor:hand;\n\t\t}\n\t\t.album-list{\n\t\t\theight:calc(100% - 180px);\n\t\t\toverflow-y:auto;\n\t\t\tpadding-left:5px;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\tbackground: transparent !important;\n\t\t}\n\t\th2{\n\t\t\tpadding:0 25px;\n\t\t\tmargin-bottom: 0;\n\t\t}\n\t\ti.fa:hover{\n\t\t\tcolor:#9d9d9d !important;\n\t\t}\n\t\t.album-song-list{\n\t\t\tbackground-color: white;\n\t\t\topacity: 0.85;\n\t\t\theight:calc(100% - 170px);\n\t\t\toverflow:auto;\n\t\t}\n\t"]
+                        directives: [album_card_1.AlbumCard, subular_bg_from_img_1.BgImageDirective, subular_list_item_1.SubularListItem, router_1.ROUTER_DIRECTIVES],
+                        inputs: ['albums', 'artist', 'playerService', 'songs'],
+                        styles: ["\n\t\talbum-card{\n\t\t\tcursor:hand;\n\t\t}\n\t\t.album-list{\n\t\t\theight:calc(100% - 180px);\n\t\t\toverflow-y:auto;\n\t\t\tpadding-left:5px;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\tbackground: transparent !important;\n\t\t}\n\t\th2{\n\t\t\tpadding:0 25px;\n\t\t\tmargin-bottom: 0;\n\t\t}\n\t\ti.fa:hover{\n\t\t\tcolor:#9d9d9d !important;\n\t\t}\n\t\t.album-song-list{\n\t\t\tbackground-color: white;\n\t\t\topacity: 0.85;\n\t\t\theight:calc(100% - 170px);\n\t\t\toverflow:auto;\n\t\t}\n\t\t#album-list-artist a{\n\t\t\tcolor:inherit;\n\t\t}\n\t\th2{\n\t\t\tcolor:#fff;\n\t\t}\n\t"]
                     }),
                     __param(0, core_1.Inject(subular_service_1.SubularService)),
-                    __param(1, core_1.Inject(player_service_1.PlayerService)), 
-                    __metadata('design:paramtypes', [subular_service_1.SubularService, player_service_1.PlayerService])
+                    __param(1, core_1.Inject(player_service_1.PlayerService)),
+                    __param(2, core_1.Inject(router_1.Router)),
+                    __param(3, core_1.Inject(router_1.RouteParams)), 
+                    __metadata('design:paramtypes', [subular_service_1.SubularService, player_service_1.PlayerService, router_1.Router, router_1.RouteParams])
                 ], AlbumList);
                 return AlbumList;
             }());

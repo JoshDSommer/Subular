@@ -36,6 +36,8 @@ import {Playlists} from './playlists/playlists';
 })
 @RouteConfig([
 	{ path: '/artist', name: 'ArtistList', component: ArtistList, useAsDefault: true },
+	{ path: '/artist/:id', name: 'ArtistAlbums', component: ArtistList},
+	{ path: '/artist/:id/:albumId', name: 'ArtistAlbum', component: ArtistList},
 	{ path: '/settings', name: 'Settings', component: Settings },
 	{ path: '/playlists', name: 'Playlists', component: Playlists },
 ])

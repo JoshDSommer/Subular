@@ -1,11 +1,11 @@
-import {Component, ElementRef, Inject} from 'angular2/core';
+import {Component, ElementRef, Inject, OnInit } from 'angular2/core';
 import {SubularService} from './../shared/services/subular-service';
 import {SettingsService} from './../shared/services/settings-service';
 import {HTTP_PROVIDERS}    from 'angular2/http';
 import {IArtist} from './../shared/models/artist';
 import {AlbumList} from '../shared/directives/album-list/album-list'
 import {PlayerService} from '../shared/services/player-service';
-import {Router}              from 'angular2/router';
+import {Router, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
 	selector: 'artist-list',
@@ -17,15 +17,30 @@ import {Router}              from 'angular2/router';
 `],
 	directives: [AlbumList]
 })
-export class ArtistList {
+export class ArtistList implements OnInit {
 	items: Array<any>;
 	public artists: IArtist[];
 	public selectedArtist: IArtist;
 	public playerService: PlayerService;
 	private search: string = '';
 	private searchTimeout: NodeJS.Timer;
+
 	public i: number = 0;
-	constructor(private _dataService: SubularService, private _elementRef: ElementRef, playerService: PlayerService, private router: Router) {
+
+	ngOnInit(): void {
+		if (this.routerParams.get('id') != null) {
+			this.selectedArtist = this.artists.find((artist: IArtist) => {
+				return artist.id.toString() === this.routerParams.get('id');
+			});
+		}
+	}
+	constructor(
+		@Inject(SubularService) private _dataService: SubularService,
+		@Inject(ElementRef) private _elementRef: ElementRef,
+		@Inject(PlayerService) playerService: PlayerService,
+		@Inject(Router) private router: Router,
+		@Inject(RouteParams) private routerParams: RouteParams) {
+
 		this.playerService = playerService;
 		this.artists = this._dataService.getArtists();
 		if (this.artists != null && this.artists.length > 0) {
@@ -76,6 +91,7 @@ export class ArtistList {
 		return code.toLowerCase().replace('key', '');
 	}
 	onSelect(artist: IArtist) {
-		this.selectedArtist = artist;
+		this.router.navigate(['ArtistAlbums', { id: artist.id }]);
+		//this.selectedArtist = artist;
 	}
 }

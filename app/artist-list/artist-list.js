@@ -9,6 +9,9 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
+    var __param = (this && this.__param) || function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
     var core_1, subular_service_1, settings_service_1, album_list_1, player_service_1, router_1;
     var ArtistList;
     return {
@@ -33,11 +36,12 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
             }],
         execute: function() {
             ArtistList = (function () {
-                function ArtistList(_dataService, _elementRef, playerService, router) {
+                function ArtistList(_dataService, _elementRef, playerService, router, routerParams) {
                     var _this = this;
                     this._dataService = _dataService;
                     this._elementRef = _elementRef;
                     this.router = router;
+                    this.routerParams = routerParams;
                     this.search = '';
                     this.i = 0;
                     this.playerService = playerService;
@@ -77,6 +81,14 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                         this.router.navigate(['Settings']);
                     }
                 }
+                ArtistList.prototype.ngOnInit = function () {
+                    var _this = this;
+                    if (this.routerParams.get('id') != null) {
+                        this.selectedArtist = this.artists.find(function (artist) {
+                            return artist.id.toString() === _this.routerParams.get('id');
+                        });
+                    }
+                };
                 ArtistList.prototype.scrollTo = function (element) {
                     var topPos = element.offsetTop;
                     document.getElementById('artist-list').scrollTop = topPos - 100;
@@ -85,7 +97,8 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                     return code.toLowerCase().replace('key', '');
                 };
                 ArtistList.prototype.onSelect = function (artist) {
-                    this.selectedArtist = artist;
+                    this.router.navigate(['ArtistAlbums', { id: artist.id }]);
+                    //this.selectedArtist = artist;
                 };
                 ArtistList = __decorate([
                     core_1.Component({
@@ -95,8 +108,13 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                         inputs: ['artists', 'selectedArtist', 'playerService', 'i'],
                         styles: ["\n\n"],
                         directives: [album_list_1.AlbumList]
-                    }), 
-                    __metadata('design:paramtypes', [subular_service_1.SubularService, core_1.ElementRef, player_service_1.PlayerService, router_1.Router])
+                    }),
+                    __param(0, core_1.Inject(subular_service_1.SubularService)),
+                    __param(1, core_1.Inject(core_1.ElementRef)),
+                    __param(2, core_1.Inject(player_service_1.PlayerService)),
+                    __param(3, core_1.Inject(router_1.Router)),
+                    __param(4, core_1.Inject(router_1.RouteParams)), 
+                    __metadata('design:paramtypes', [subular_service_1.SubularService, core_1.ElementRef, player_service_1.PlayerService, router_1.Router, router_1.RouteParams])
                 ], ArtistList);
                 return ArtistList;
             }());

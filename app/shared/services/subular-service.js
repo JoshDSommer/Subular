@@ -57,10 +57,12 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                 };
                 SubularService.prototype.getSongsByArtistIdAlbumId = function (id, parentId) {
                     var songDb;
+                    var artistSongs;
                     songDb = this.getSongDB();
-                    return songDb.filter(function (song) {
-                        return song.parent === parentId;
+                    artistSongs = songDb.filter(function (song) {
+                        return song.parent == parentId;
                     });
+                    return artistSongs;
                 };
                 SubularService.prototype.getSongDB = function () {
                     var songDb = window.localStorage.getItem('subular-songs');
@@ -70,16 +72,21 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                     return [];
                 };
                 SubularService.prototype.getSongs = function (artistName) {
-                    var songDb;
-                    songDb = this.getSongDB();
-                    var artistSongs = songDb.filter(function (song) {
-                        return song.artist === artistName;
-                    });
-                    if (artistSongs != null) {
-                        return artistSongs;
+                    if (artistName == null) {
+                        return this.getSongDB();
                     }
                     else {
-                        return [];
+                        var songDb = void 0;
+                        songDb = this.getSongDB();
+                        var artistSongs = songDb.filter(function (song) {
+                            return song.artist === artistName;
+                        });
+                        if (artistSongs != null) {
+                            return artistSongs;
+                        }
+                        else {
+                            return [];
+                        }
                     }
                 };
                 SubularService.prototype.getAlbums = function (parentId) {

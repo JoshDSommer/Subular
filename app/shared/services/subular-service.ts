@@ -42,11 +42,14 @@ export class SubularService {
 	}
 	getSongsByArtistIdAlbumId(id: number, parentId: number): ISong[] {
 		let songDb: ISong[];
+		let artistSongs: ISong[];
 		songDb = this.getSongDB();
 
-		return songDb.filter((song) => {
-			return song.parent === parentId;
+		artistSongs = songDb.filter((song) => {
+			return song.parent == parentId;
 		});
+
+		return artistSongs;
 	}
 	private getSongDB(): ISong[] {
 		let songDb: string = window.localStorage.getItem('subular-songs');
@@ -56,16 +59,20 @@ export class SubularService {
 		return [];
 	}
 
-	getSongs(artistName: string): ISong[] {
-		let songDb: ISong[];
-		songDb = this.getSongDB();
-		let artistSongs: ISong[] = songDb.filter((song: ISong) => {
-			return song.artist === artistName;
-		});
-		if (artistSongs != null) {
-			return artistSongs;
+	getSongs(artistName?: string): ISong[] {
+		if (artistName == null) {
+			return this.getSongDB();
 		} else {
-			return [];
+			let songDb: ISong[];
+			songDb = this.getSongDB();
+			let artistSongs: ISong[] = songDb.filter((song: ISong) => {
+				return song.artist === artistName;
+			});
+			if (artistSongs != null) {
+				return artistSongs;
+			} else {
+				return [];
+			}
 		}
 	}
 
