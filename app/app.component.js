@@ -61,7 +61,8 @@ System.register(['angular2/core', './shared/services/subular-service', './shared
                         directives: [subular_player_1.SubularPlayer, artist_list_1.ArtistList, settings_1.Settings, playlists_1.Playlists, router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([
-                        { path: '/artist', name: 'ArtistList', component: artist_list_1.ArtistList, useAsDefault: true },
+                        { path: '/', name: 'Landing', component: artist_list_1.ArtistList, useAsDefault: true },
+                        { path: '/artist', name: 'ArtistList', component: artist_list_1.ArtistList },
                         { path: '/artist/:id', name: 'ArtistAlbums', component: artist_list_1.ArtistList },
                         { path: '/artist/:id/:albumId', name: 'ArtistAlbum', component: artist_list_1.ArtistList },
                         { path: '/settings', name: 'Settings', component: settings_1.Settings },
