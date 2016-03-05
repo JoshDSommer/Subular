@@ -65,17 +65,27 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                             // create a new timeout
                             _this.searchTimeout = setTimeout(function () {
                                 _this.search = '';
-                            }, 1500);
+                            }, 500);
                             _this.search = _this.search + (key === 'space' ? ' ' : key);
-                            for (var i = 0; i < artistList_1.length; i++) {
+                            var _loop_1 = function(i) {
                                 var artistName = artistList_1[i].innerHTML.trim().toLowerCase();
                                 if (artistName.startsWith(_this.search)) {
-                                    artistList_1[i].click();
+                                    clearTimeout(_this.gotoClick);
+                                    _this.gotoClick = setTimeout(function () {
+                                        artistList_1[i].click();
+                                        _this.scrollTo(artistList_1[i]);
+                                    }, 500);
                                     _this.scrollTo(artistList_1[i]);
-                                    return;
+                                    return { value: void 0 };
                                 }
+                            };
+                            for (var i = 0; i < artistList_1.length; i++) {
+                                var state_1 = _loop_1(i);
+                                if (typeof state_1 === "object") return state_1.value
                             }
                         });
+                        var element = document.getElementById(this.selectedArtist.name.replace(' ', '-'));
+                        this.scrollTo(element);
                     }
                     else {
                         this.router.navigate(['Settings']);
@@ -89,9 +99,19 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                         });
                     }
                 };
+                ArtistList.prototype.ngOnChanges = function () {
+                };
                 ArtistList.prototype.scrollTo = function (element) {
-                    var topPos = element.offsetTop;
-                    document.getElementById('artist-list').scrollTop = topPos - 100;
+                    if (element != null) {
+                        var topPos = element.offsetTop;
+                        var oldies = document.getElementsByClassName("active");
+                        for (var i = 0; i < oldies.length; i++) {
+                            var artistItem = oldies.item(i);
+                            artistItem.className = artistItem.className.replace('active', '');
+                        }
+                        document.getElementById('artist-list').scrollTop = topPos - 100;
+                        element.className += ' active';
+                    }
                 };
                 ArtistList.prototype.key = function (code) {
                     return code.toLowerCase().replace('key', '');
@@ -99,6 +119,8 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                 ArtistList.prototype.onSelect = function (artist) {
                     this.router.navigate(['ArtistAlbums', { id: artist.id }]);
                     //this.selectedArtist = artist;
+                    var element = document.getElementById(artist.name.replace(' ', '-'));
+                    this.scrollTo(element);
                 };
                 ArtistList = __decorate([
                     core_1.Component({

@@ -1,4 +1,4 @@
-System.register(['angular2/core', './../../services/subular-service', './../../services/settings-service', '../subular-list-item/subular-list-item', '../folder-info'], function(exports_1) {
+System.register(['angular2/core', './../../services/subular-service', './../../services/settings-service', '../subular-list-item/subular-list-item', '../folder-info', 'angular2/router'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(['angular2/core', './../../services/subular-service', './../../s
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, subular_service_1, settings_service_1, subular_list_item_1, folder_info_1;
+    var core_1, subular_service_1, settings_service_1, subular_list_item_1, folder_info_1, router_1;
     var SubularPlayer;
     return {
         setters:[
@@ -27,6 +27,9 @@ System.register(['angular2/core', './../../services/subular-service', './../../s
             },
             function (folder_info_1_1) {
                 folder_info_1 = folder_info_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             SubularPlayer = (function () {
@@ -36,7 +39,7 @@ System.register(['angular2/core', './../../services/subular-service', './../../s
                     this.playing = false;
                     this.playingSongs = false;
                     this.songs = [];
-                    this.nowPlayingSong = {
+                    this.currentSong = {
                         id: 0,
                         title: '',
                         artist: '',
@@ -45,13 +48,13 @@ System.register(['angular2/core', './../../services/subular-service', './../../s
                 }
                 SubularPlayer.prototype.nextSong = function () {
                     this.playerService.playSong(this.playerService.currentIndex + 1);
-                    this.nowPlayingSong = this.playerService.currentSong();
+                    this.currentSong = this.playerService.currentSong();
                     this.songs = this.playerService.songList;
                     this.getImgUrl();
                 };
                 SubularPlayer.prototype.previousSong = function () {
                     this.playerService.playSong(this.playerService.currentIndex - 1);
-                    this.nowPlayingSong = this.playerService.currentSong();
+                    this.currentSong = this.playerService.currentSong();
                     this.getImgUrl();
                 };
                 SubularPlayer.prototype.pauseSong = function () {
@@ -64,20 +67,19 @@ System.register(['angular2/core', './../../services/subular-service', './../../s
                     this.getImgUrl();
                 };
                 SubularPlayer.prototype.getImgUrl = function () {
-                    if (this.nowPlayingSong != null && this.nowPlayingSong.id != 0) {
-                        this.imgUrl = this._dataService.getCoverUrl(this.nowPlayingSong.parent);
+                    if (this.currentSong != null && this.currentSong.id != 0) {
+                        this.imgUrl = this._dataService.getCoverUrl(this.currentSong.parent);
                     }
-                    console.log('imgurl:');
-                    console.log(this.imgUrl);
                     return this.imgUrl;
                 };
                 SubularPlayer.prototype.ngOnInit = function () {
                     var _this = this;
                     this.gutterProgress = this._elementRef.nativeElement.getElementsByClassName("gutter-progress")[0];
                     this.playerService.playingSong.subscribe(function (song) {
-                        _this.nowPlayingSong = song;
+                        _this.currentSong = song;
                         _this.songs = _this.playerService.songList;
                         _this.getImgUrl();
+                        _this.currentArtist = _this._dataService.getArtist(_this.currentSong.artist);
                     });
                     this.playerService.currentPosition.subscribe(function (info) {
                         _this.gutterProgress.setAttribute('style', 'width:' + info.position + '%;');
@@ -91,9 +93,9 @@ System.register(['angular2/core', './../../services/subular-service', './../../s
                         selector: 'subular-player',
                         templateUrl: folder_info_1.path + 'subular-player/subular-player.html',
                         providers: [subular_service_1.SubularService, settings_service_1.SettingsService],
-                        directives: [subular_list_item_1.SubularListItem],
+                        directives: [subular_list_item_1.SubularListItem, router_1.ROUTER_DIRECTIVES],
                         inputs: ['imgUrl', 'albums', 'playerService', 'nowPlayingSong', 'time', 'song', 'playingSongs'],
-                        styles: ["\n\t.card-dark{\n\t\t\tbackground:rgb(34, 34, 34);\n\t\t}\n\t.playing-footer{\n\t\t\t\tposition:fixed;\n\t\t\t\twidth:100%;\n\t\t\t\theight:65px;\n\t\t\t\tbottom:0;\n\t\t\t\tbackground:#ffffff;\n\t\t\t\tborder-top:1px #101010;\n\t\t\t\tbox-shadow: 5px -1px 5px #888888;\n\t\t\t}\n\t\t\ti.fa{\n\t\t\t\tcolor: #101010;\n\t\t\t\tline-height: 60px !important;\n\t\t\t\tfont-size: 46px !important;\n\n\t\t\t}\n\t\t\tdiv.ff-rw i, div.heart i{\n\t\t\t\tfont-size: 28px !important;\n\t\t\t\tmargin-right:15px;\n\t\t\t}\n\n\t\t\t.gutter{\n\t\t\t\tbackground-color:#101010;\n\t\t\t\tmargin:0 !important;\n\t\t\t\theight:4px;\n\t\t\t\tpadding:0;\n\t\t\t}\n\t\t\t.gutter-progress{\n\t\t\t\tbackground: -webkit-linear-gradient(#4B0082,#EED2EE);\n\t\t\t\theight:4px;\n    \t\t\tdisplay: inline-block;\n\t\t\t}\n\t\t\t.title{\n\t\t\t\twidth: 100%;\n\t\t\t\tdisplay: inline-block;\n\t\t\t\tfont-size: 20px;\n\t\t\t\tmargin-top:5px;\n\t\t\t}\n\t\t\t.album{\n\t\t\t\tfont-size: 13px;\n\t\t\t\tmargin-left: 10px;\n\t\t\t}\n\t\t\t.artist{\n\t\t\t\tfont-weight:700;\n\t\t\t}\n\t\t\ti.fa:hover{\n\t\t\t\tcolor:#9d9d9d;\n\t\t\t}\n\t\t\t#now-playing-list{\n\t\t\t\tposition:absolute;\n\t\t\t\tbottom:75px;\n\t\t\t\ttop:75px;\n\t\t\t\tright:30px;\n\t\t\t\tbackground-color:#fff;\n\t\t\t\twidth:79%;\n\t\t\t\toverflow-y:auto;\n\t\t\t\tborder-radius:2px;\n\t\t\t\tz-index: 99;\n\t\t\t\tpadding:5px 0px 10px;\n\t\t\t\tborder:1px #4B0082 solid;\n\t\t\t}\n\t\t\t#now-playing-list h3{\n\t\t\t\tpadding:1px 15px;\n\t\t\t}\n\t\t\t.cover-img{\n\t\t\t\theight:63px;\n\t\t\t}\n\t"]
+                        styles: ["\n\t.card-dark{\n\t\t\tbackground:rgb(34, 34, 34);\n\t\t}\n\t.playing-footer{\n\t\t\t\tposition:fixed;\n\t\t\t\twidth:100%;\n\t\t\t\theight:65px;\n\t\t\t\tbottom:0;\n\t\t\t\tbackground:#ffffff;\n\t\t\t\tborder-top:1px #101010;\n\t\t\t\tbox-shadow: 5px -1px 5px #888888;\n\t\t\t}\n\t\t\ti.fa{\n\t\t\t\tcolor: #101010;\n\t\t\t\tline-height: 60px !important;\n\t\t\t\tfont-size: 46px !important;\n\t\t\t\tmargin-right:7px;\n\t\t\t}\n\t\t\ti.play-pause{\n\t\t\t\tmargin-right:20px;\n\t\t\t}\n\t\t\tdiv.ff-rw i, div.heart i{\n\t\t\t\tfont-size: 28px !important;\n\t\t\t\tmargin-right:10px;\n\t\t\t}\n\n\t\t\t.gutter{\n\t\t\t\tbackground-color:#101010;\n\t\t\t\tmargin:0 !important;\n\t\t\t\theight:4px;\n\t\t\t\tpadding:0;\n\t\t\t}\n\t\t\t.gutter-progress{\n\t\t\t\tbackground: -webkit-linear-gradient(#4B0082,#EED2EE);\n\t\t\t\theight:4px;\n    \t\t\tdisplay: inline-block;\n\t\t\t}\n\t\t\t.title, .album, .artist, .cover-img{\n\t\t\t\tcursor:hand;\n\t\t\t}\n\t\t\t.title{\n\t\t\t\twidth: 100%;\n\t\t\t\tdisplay: inline-block;\n\t\t\t\tfont-size: 20px;\n\t\t\t\tmargin-top:5px;\n\t\t\t}\n\t\t\t.album{\n\t\t\t\tfont-size: 13px;\n\t\t\t\tmargin-left: 10px;\n\t\t\t}\n\t\t\t.artist{\n\t\t\t\tfont-weight:700;\n\t\t\t}\n\t\t\ti.fa:hover{\n\t\t\t\tcolor:#9d9d9d;\n\t\t\t}\n\t\t\t#now-playing-list{\n\t\t\t\tposition:absolute;\n\t\t\t\tbottom:75px;\n\t\t\t\ttop:75px;\n\t\t\t\tright:30px;\n\t\t\t\tbackground-color:#fff;\n\t\t\t\twidth:79%;\n\t\t\t\toverflow-y:auto;\n\t\t\t\tborder-radius:2px;\n\t\t\t\tz-index: 99;\n\t\t\t\tpadding:5px 0px 10px;\n\t\t\t\tborder:1px #4B0082 solid;\n\t\t\t}\n\t\t\t#now-playing-list h3{\n\t\t\t\tpadding:1px 15px;\n\t\t\t}\n\t\t\t.cover-img{\n\t\t\t\theight:63px;\n\t\t\t}\n\t"]
                     }), 
                     __metadata('design:paramtypes', [subular_service_1.SubularService, core_1.ElementRef])
                 ], SubularPlayer);

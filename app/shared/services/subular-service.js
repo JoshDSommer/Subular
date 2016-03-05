@@ -111,6 +111,11 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                     });
                     return result[0];
                 };
+                SubularService.prototype.getArtist = function (name) {
+                    return this.getArtists().find(function (value) {
+                        return value.name == name;
+                    });
+                };
                 SubularService.prototype.getArtists = function () {
                     return JSON.parse(window.localStorage.getItem('subular-artists'));
                 };

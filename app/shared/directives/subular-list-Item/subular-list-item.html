@@ -6,7 +6,10 @@
 				Song
 			</th>
 			<th class="text-center row-track">
-				track#
+				Time
+			</th>
+			<th class="text-center row-track">
+				Track#
 			</th>
 			<th class="text-center row-artist">
 				Artist
@@ -22,6 +25,9 @@
 		<td (click)="playSongFromList(i)" class="text-left">{{rowNum(i)}}</td>
 		<td (click)="playSongFromList(i)" class="text-left row-song">
 			{{song.title}}
+		</td>
+		<td (click)="playSongFromList(i)" class="text-right">
+			{{formatDuration(song.duration)}}
 		</td>
 		<td (click)="playSongFromList(i)" class="text-right">
 			{{song.track}}

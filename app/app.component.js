@@ -41,6 +41,7 @@ System.register(['angular2/core', './shared/services/subular-service', './shared
                 playlists_1 = playlists_1_1;
             }],
         execute: function() {
+            //enableProdMode();
             SubularApp = (function () {
                 function SubularApp(_dataService, playerService) {
                     this._dataService = _dataService;

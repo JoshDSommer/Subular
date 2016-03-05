@@ -54,6 +54,12 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                 SubularListItem.prototype.rowNum = function (index) {
                     return index + 1;
                 };
+                SubularListItem.prototype.formatDuration = function (duration) {
+                    var min = Math.floor(duration / 60);
+                    var seconds = duration - min * 60;
+                    var returnTime = min + ':' + (seconds <= 9 ? '0' + seconds : seconds);
+                    return returnTime;
+                };
                 SubularListItem.prototype.playSongFromList = function (index) {
                     this.playerService.songList = this.songs;
                     this.playerService.playSong(index);

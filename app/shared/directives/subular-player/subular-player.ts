@@ -7,12 +7,14 @@ import {PlayerService, IAudioPlayingInfo} from '../../services/player-service';
 import {ISong} from '../../models/song';
 import {SubularListItem} from '../subular-list-item/subular-list-item';
 import {path} from '../folder-info';
+import {Router, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
+import {IArtist} from '../../models/artist';
 
 @Component({
 	selector: 'subular-player',
 	templateUrl: path + 'subular-player/subular-player.html',
 	providers: [SubularService, SettingsService],
-	directives: [SubularListItem],
+	directives: [SubularListItem, ROUTER_DIRECTIVES],
 	inputs: ['imgUrl', 'albums', 'playerService', 'nowPlayingSong', 'time', 'song', 'playingSongs'],
 	styles: [`
 	.card-dark{
@@ -31,11 +33,14 @@ import {path} from '../folder-info';
 				color: #101010;
 				line-height: 60px !important;
 				font-size: 46px !important;
-
+				margin-right:7px;
+			}
+			i.play-pause{
+				margin-right:20px;
 			}
 			div.ff-rw i, div.heart i{
 				font-size: 28px !important;
-				margin-right:15px;
+				margin-right:10px;
 			}
 
 			.gutter{
@@ -48,6 +53,9 @@ import {path} from '../folder-info';
 				background: -webkit-linear-gradient(#4B0082,#EED2EE);
 				height:4px;
     			display: inline-block;
+			}
+			.title, .album, .artist, .cover-img{
+				cursor:hand;
 			}
 			.title{
 				width: 100%;
@@ -90,7 +98,8 @@ export class SubularPlayer implements OnChanges, OnInit {
 	public albums: IAlbum[];
 	public imgUrl: string;
 	public playerService: PlayerService;
-	public nowPlayingSong: ISong;
+	public currentSong: ISong;
+	public currentArtist: IArtist;
 	public playing: boolean = false;
 	private gutterProgress: Element;
 	private songs: ISong[];
@@ -98,7 +107,7 @@ export class SubularPlayer implements OnChanges, OnInit {
 
 	constructor(private _dataService: SubularService, private _elementRef: ElementRef) {
 		this.songs = [];
-		this.nowPlayingSong = {
+		this.currentSong = {
 			id: 0,
 			title: '',
 			artist: '',
@@ -107,14 +116,14 @@ export class SubularPlayer implements OnChanges, OnInit {
 	}
 	nextSong(): void {
 		this.playerService.playSong(this.playerService.currentIndex + 1);
-		this.nowPlayingSong = this.playerService.currentSong();
+		this.currentSong = this.playerService.currentSong();
 		this.songs = this.playerService.songList;
 		this.getImgUrl();
 	}
 
 	previousSong(): void {
 		this.playerService.playSong(this.playerService.currentIndex - 1);
-		this.nowPlayingSong = this.playerService.currentSong();
+		this.currentSong = this.playerService.currentSong();
 		this.getImgUrl();
 	}
 
@@ -130,11 +139,9 @@ export class SubularPlayer implements OnChanges, OnInit {
 	}
 
 	getImgUrl(): string {
-		if (this.nowPlayingSong != null && this.nowPlayingSong.id != 0) {
-			this.imgUrl = this._dataService.getCoverUrl(this.nowPlayingSong.parent);
+		if (this.currentSong != null && this.currentSong.id != 0) {
+			this.imgUrl = this._dataService.getCoverUrl(this.currentSong.parent);
 		}
-		console.log('imgurl:');
-		console.log(this.imgUrl);
 		return this.imgUrl;
 	}
 
@@ -142,9 +149,10 @@ export class SubularPlayer implements OnChanges, OnInit {
 		this.gutterProgress = (<HTMLElement>this._elementRef.nativeElement).getElementsByClassName("gutter-progress")[0];
 
 		this.playerService.playingSong.subscribe((song) => {
-			this.nowPlayingSong = song;
+			this.currentSong = song;
 			this.songs = this.playerService.songList;
 			this.getImgUrl();
+			this.currentArtist = this._dataService.getArtist(this.currentSong.artist);
 		});
 
 		this.playerService.currentPosition.subscribe((info: IAudioPlayingInfo) => {

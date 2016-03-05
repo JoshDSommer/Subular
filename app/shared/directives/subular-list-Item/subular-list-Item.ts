@@ -90,6 +90,12 @@ export class SubularListItem implements OnInit, OnChanges {
 	rowNum(index: number): number {
 		return index + 1;
 	}
+	formatDuration(duration: number): string {
+		let min = Math.floor(duration / 60);
+		let seconds = duration - min * 60;
+		let returnTime: string = min + ':' + (seconds <=9 ? '0' + seconds : seconds);
+		return returnTime;
+	}
 
 	playSongFromList(index: number): void {
 		this.playerService.songList = this.songs;

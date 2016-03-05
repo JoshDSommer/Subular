@@ -101,6 +101,11 @@ export class SubularService {
 		return result[0];
 	}
 
+	getArtist(name: string): IArtist {
+		return this.getArtists().find((value: IArtist) => {
+			return value.name == name;
+		});
+	}
 	getArtists(): IArtist[] {
 		return JSON.parse(window.localStorage.getItem('subular-artists'))
 	}

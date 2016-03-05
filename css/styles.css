@@ -103,3 +103,6 @@ html, body {
 	background: linear-gradient(#4B0082, #000);
 
 }
+.no-padding{
+	padding: 0 !important;
+}

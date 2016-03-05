@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit, enableProdMode } from 'angular2/core';
 import {SubularService} from './shared/services/subular-service';
 import {SettingsService} from './shared/services/settings-service';
 import {HTTP_PROVIDERS}    from 'angular2/http';
@@ -10,6 +10,8 @@ import {IAlbum} from './shared/models/album';
 import {PlayerService} from './shared/services/player-service';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Playlists} from './playlists/playlists';
+
+//enableProdMode();
 
 @Component({
 	selector: 'subular',
