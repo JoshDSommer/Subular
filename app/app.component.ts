@@ -40,7 +40,7 @@ import {Playlists} from './playlists/playlists';
 	{ path: '/', name: 'Landing', component: ArtistList, useAsDefault: true },
 	{ path: '/artist', name: 'ArtistList', component: ArtistList },
 	{ path: '/artist/:id', name: 'ArtistAlbums', component: ArtistList},
-	{ path: '/artist/:id/:albumId', name: 'ArtistAlbum', component: ArtistList},
+	{ path: '/artist/:id/album/:albumId', name: 'ArtistAlbum', component: ArtistList},
 	{ path: '/settings', name: 'Settings', component: Settings },
 	{ path: '/playlists', name: 'Playlists', component: Playlists },
 ])
