@@ -8,11 +8,11 @@ import {AlbumList} from '../shared/directives/album-list/album-list'
 import {PlayerService} from '../shared/services/player-service';
 import {Router} from 'angular2/router';
 import {SubularListItem} from '../shared/directives/subular-list-item/subular-list-item';
+import {ISubularItems, SubularListBoxService} from '../shared/directives/subular-list-box/subular-list-box.service';
 
 @Component({
 	selector: 'playlists',
 	templateUrl: 'app/playlists/playlists.html',
-	providers: [SubularService, SettingsService],
 	inputs: ['playlists', 'selectedplaylist', 'songs'],
 	styles: [`
 		.playlist-list{
@@ -46,10 +46,13 @@ export class Playlists {
 	public playlists: IPlaylist[];
 	public selectedplaylist: IPlaylist;
 	public songs: ISong[];
+	private subularService: SubularListBoxService;
 
-	constructor(private dataService: SubularService, private playerService: PlayerService) {
+	constructor(private dataService: SubularService, private playerService: PlayerService, @Inject(SubularListBoxService) subularService: SubularListBoxService) {
+		this.subularService = subularService;
 		this.playlists = this.dataService.getPlaylists();
 		this.songs = [];
+		subularService.setItems(this.playlists);
 
 		if (this.playlists != null && this.playlists.length > 0) {
 			this.selectedplaylist = this.playlists[0];

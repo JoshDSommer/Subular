@@ -12,7 +12,6 @@ import {Router}              from 'angular2/router';
 	}
 	`],
 	inputs: ['server', 'username', 'password', 'loading'],
-	providers: [SettingsService]
 })
 
 export class Settings {

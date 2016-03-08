@@ -61,6 +61,7 @@ export class AlbumList implements OnChanges, OnInit {
 	public playerService: PlayerService;
 	public songs: ISong[];
 	public nowPlayingSong: ISong;
+	private gotoClick: any;
 
 	constructor(
 		@Inject(SubularService) private dataService: SubularService,

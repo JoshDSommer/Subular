@@ -34,8 +34,8 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
         execute: function() {
             SubularListItem = (function () {
                 function SubularListItem(playerService, dataService) {
-                    this.playerService = playerService;
                     this.dataService = dataService;
+                    this.playerService = playerService;
                     this.nowPlayingSong = {
                         id: 0,
                         title: '',
@@ -47,6 +47,7 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                     var _this = this;
                     this.playerService.playingSong.subscribe(function (song) {
                         _this.nowPlayingSong = song;
+                        console.log(_this.nowPlayingSong);
                     });
                 };
                 SubularListItem.prototype.ngOnChanges = function () {

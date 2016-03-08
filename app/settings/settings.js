@@ -58,7 +58,6 @@ System.register(['angular2/core', './../shared/services/settings-service', './..
                         templateUrl: '/app/settings/settings.html',
                         styles: ["\n\t.form-group{\n\t\tmargin-left:10px;\n\t}\n\t"],
                         inputs: ['server', 'username', 'password', 'loading'],
-                        providers: [settings_service_1.SettingsService]
                     }), 
                     __metadata('design:paramtypes', [settings_service_1.SettingsService, subular_service_1.SubularService, router_1.Router])
                 ], Settings);
