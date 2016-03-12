@@ -1,4 +1,4 @@
-System.register(['angular2/core', './../shared/services/subular-service', '../shared/directives/album-list/album-list', '../shared/services/player-service', 'angular2/router', '../shared/directives/subular-list-item/subular-list-item', '../shared/directives/subular-list-box/subular-list-box.service'], function(exports_1) {
+System.register(['angular2/core', './../shared/services/subular-service', './../shared/services/settings-service', '../shared/directives/album-list/album-list', '../shared/services/player-service', 'angular2/router', '../shared/directives/subular-list-item/subular-list-item', '../shared/directives/subular-list-box/subular-list-box.service', 'lodash'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -12,7 +12,7 @@ System.register(['angular2/core', './../shared/services/subular-service', '../sh
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, subular_service_1, album_list_1, player_service_1, router_1, subular_list_item_1, subular_list_box_service_1;
+    var core_1, subular_service_1, settings_service_1, album_list_1, player_service_1, router_1, subular_list_item_1, subular_list_box_service_1, _;
     var Playlists;
     return {
         setters:[
@@ -21,6 +21,9 @@ System.register(['angular2/core', './../shared/services/subular-service', '../sh
             },
             function (subular_service_1_1) {
                 subular_service_1 = subular_service_1_1;
+            },
+            function (settings_service_1_1) {
+                settings_service_1 = settings_service_1_1;
             },
             function (album_list_1_1) {
                 album_list_1 = album_list_1_1;
@@ -36,42 +39,58 @@ System.register(['angular2/core', './../shared/services/subular-service', '../sh
             },
             function (subular_list_box_service_1_1) {
                 subular_list_box_service_1 = subular_list_box_service_1_1;
+            },
+            function (_1) {
+                _ = _1;
             }],
         execute: function() {
             Playlists = (function () {
-                function Playlists(dataService, playerService, router, subularService, zone) {
+                function Playlists(dataService, playerService, router, routerParams, subularService, settings) {
                     var _this = this;
                     this.dataService = dataService;
                     this.playerService = playerService;
                     this.router = router;
-                    this.zone = zone;
+                    this.routerParams = routerParams;
                     this.subularService = subularService;
+                    this.settings = settings;
                     this.playlists = this.dataService.getPlaylists();
                     this.songs = [];
-                    subularService.setItems(this.playlists);
-                    subularService.ItemSelectFunction = function (playlist) {
-                        // this.router.navigate(['Playlist', { id: playlist.id }]);
-                        _this.onSelect(playlist);
-                    };
-                    if (this.playlists != null && this.playlists.length > 0) {
-                        this.selectedplaylist = this.playlists[0];
-                        this.onSelect(this.selectedplaylist);
+                    if (this.routerParams.get('id') == null) {
+                        subularService.setItems(this.playlists);
+                        subularService.ItemSelectFunction = function (playlist) {
+                            _this.router.navigate(['Playlist', { id: playlist.id }]);
+                        };
+                        this.router.navigate(['Playlist', { id: this.playlists[0].id }]);
                     }
+                    this.settings.defaultBackground();
                 }
-                Playlists.prototype.ngOnInit = function () {
+                Playlists.prototype.getCover = function (albumId) {
+                    return this.dataService.getCoverUrl(albumId);
                 };
-                Playlists.prototype.onSelect = function (playlist) {
+                Playlists.prototype.ngOnInit = function () {
+                    if (this.routerParams.get('id') != null) {
+                        var albumId = +this.routerParams.get('id');
+                        this.selectedPlaylist(albumId);
+                    }
+                };
+                Playlists.prototype.selectedPlaylist = function (playlistId) {
                     var _this = this;
                     var playlistString;
                     var playlistSongs;
                     this.songs = [];
-                    this.dataService.getPlaylist(playlist.id).subscribe(function (data) { return playlistString = _this.dataService.cleanSubsonicResponse(data); }, function (error) { return console.log(error); }, function () {
-                        _this.zone.run(function () {
-                            playlistSongs = JSON.parse(playlistString).subresp.playlist.entry;
-                            _this.songs = playlistSongs;
+                    this.albumIds = [];
+                    this.dataService.getPlaylist(playlistId).subscribe(function (data) { return playlistString = _this.dataService.cleanSubsonicResponse(data); }, function (error) { return console.log(error); }, function () {
+                        playlistSongs = JSON.parse(playlistString).subresp.playlist.entry;
+                        _this.songs = playlistSongs;
+                        _.forEach(_this.songs, function (song) {
+                            if (_this.albumIds.indexOf(song.parent) === -1) {
+                                _this.albumIds.push(song.parent);
+                            }
                         });
                     });
-                    this.selectedplaylist = playlist;
+                    this.selectedplaylist = _.find(this.dataService.getPlaylists(), function (playlist) {
+                        return playlist.id = playlistId;
+                    });
                 };
                 Playlists.prototype.playPlaylist = function () {
                     this.playerService.clearSongs();
@@ -84,12 +103,13 @@ System.register(['angular2/core', './../shared/services/subular-service', '../sh
                         selector: 'playlists',
                         templateUrl: 'app/playlists/playlists.html',
                         inputs: ['playlists', 'selectedplaylist', 'songs'],
-                        styles: ["\n\t\t.playlist-list{\n\t\t\theight:calc(100% - 115px);\n\t\t\tlist-style-type: none;\n\t\t\tpadding:5px 0px;\n\t\t\toverflow-y:auto;\n\t\t\tborder-right:1px solid #BBB !important;\n\t\t}\n\t\t.playlist-list::-webkit-scrollbar {\n\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.playlist-list-item{\n\t\t\tpadding:5px 6px;\n\t\t\tborder-bottom:1px solid #eee !important;\n\t\t}\n\t\t.playlist-list-item:hover{\n\t\t\tcolor:#fff;\n\t\t\tbackground-color:#9d9d9d;\n\t\t}\n\t\t.playlist-container{\n\t\t\tbackground-color: white;\n\t\t\topacity: 0.85;\n\t\t\theight:calc(100% - 115px);\n\t\t\toverflow:auto;\n\t\t}\n\t"],
+                        styles: ["\n\t\th2{\n\t\t\tcolor:#fff;\n\t\t\twidth:95%;\n\t\t},\n\t\tsubular-list-item {\n\t\t\tbackground-color: #fff;\n\t\t}\n\t\t.album-images{\n\t\t\theight:45px;\n\t\t}\n\t"],
                         directives: [album_list_1.AlbumList, subular_list_item_1.SubularListItem]
                     }),
                     __param(2, core_1.Inject(router_1.Router)),
-                    __param(3, core_1.Inject(subular_list_box_service_1.SubularListBoxService)), 
-                    __metadata('design:paramtypes', [subular_service_1.SubularService, player_service_1.PlayerService, router_1.Router, subular_list_box_service_1.SubularListBoxService, core_1.NgZone])
+                    __param(3, core_1.Inject(router_1.RouteParams)),
+                    __param(4, core_1.Inject(subular_list_box_service_1.SubularListBoxService)), 
+                    __metadata('design:paramtypes', [subular_service_1.SubularService, player_service_1.PlayerService, router_1.Router, router_1.RouteParams, subular_list_box_service_1.SubularListBoxService, settings_service_1.SettingsService])
                 ], Playlists);
                 return Playlists;
             }());

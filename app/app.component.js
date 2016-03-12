@@ -60,7 +60,7 @@ System.register(['angular2/core', './shared/services/subular-service', './shared
                         { path: '/', name: 'Landing', component: artist_list_1.ArtistList, useAsDefault: true },
                         { path: '/artist', name: 'ArtistList', component: artist_list_1.ArtistList },
                         { path: '/artist/:id', name: 'ArtistAlbums', component: artist_list_1.ArtistList },
-                        { path: '/artist/:id/:albumId', name: 'ArtistAlbum', component: artist_list_1.ArtistList },
+                        { path: '/artist/:id/album/:albumId', name: 'ArtistAlbum', component: artist_list_1.ArtistList },
                         { path: '/settings', name: 'Settings', component: settings_1.Settings },
                         { path: '/playlists/:id', name: 'Playlist', component: playlists_1.Playlists },
                         { path: '/playlists/', name: 'Playlists', component: playlists_1.Playlists },

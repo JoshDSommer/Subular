@@ -6,38 +6,25 @@ import {IPlaylist} from './../shared/models/playlist';
 import {ISong} from './../shared/models/song';
 import {AlbumList} from '../shared/directives/album-list/album-list'
 import {PlayerService} from '../shared/services/player-service';
-import {Router} from 'angular2/router';
+import {Router, RouteParams} from 'angular2/router';
 import {SubularListItem} from '../shared/directives/subular-list-item/subular-list-item';
 import {ISubularItems, SubularListBoxService} from '../shared/directives/subular-list-box/subular-list-box.service';
+import * as _ from 'lodash';
 
 @Component({
 	selector: 'playlists',
 	templateUrl: 'app/playlists/playlists.html',
 	inputs: ['playlists', 'selectedplaylist', 'songs'],
 	styles: [`
-		.playlist-list{
-			height:calc(100% - 115px);
-			list-style-type: none;
-			padding:5px 0px;
-			overflow-y:auto;
-			border-right:1px solid #BBB !important;
-		}
-		.playlist-list::-webkit-scrollbar {
-				background: transparent !important;
-		}
-		.playlist-list-item{
-			padding:5px 6px;
-			border-bottom:1px solid #eee !important;
-		}
-		.playlist-list-item:hover{
+		h2{
 			color:#fff;
-			background-color:#9d9d9d;
+			width:95%;
+		},
+		subular-list-item {
+			background-color: #fff;
 		}
-		.playlist-container{
-			background-color: white;
-			opacity: 0.85;
-			height:calc(100% - 115px);
-			overflow:auto;
+		.album-images{
+			height:45px;
 		}
 	`],
 	directives: [AlbumList, SubularListItem]
@@ -46,47 +33,61 @@ export class Playlists implements OnInit {
 	public playlists: IPlaylist[];
 	public selectedplaylist: IPlaylist;
 	public songs: ISong[];
-	private subularService: SubularListBoxService;
+	private albumIds: number[];
 
 	constructor(private dataService: SubularService, private playerService: PlayerService,
 		@Inject(Router) private router: Router,
-		@Inject(SubularListBoxService) subularService: SubularListBoxService,
-		private zone: NgZone) {
+		@Inject(RouteParams) private routerParams: RouteParams,
+		@Inject(SubularListBoxService) private subularService: SubularListBoxService,
+		private settings: SettingsService) {
 
-		this.subularService = subularService;
 		this.playlists = this.dataService.getPlaylists();
 		this.songs = [];
-		subularService.setItems(this.playlists);
-		subularService.ItemSelectFunction = (playlist: IPlaylist): any => {
-			// this.router.navigate(['Playlist', { id: playlist.id }]);
-			this.onSelect(playlist);
-		};
 
-		if (this.playlists != null && this.playlists.length > 0) {
-			this.selectedplaylist = this.playlists[0];
-			this.onSelect(this.selectedplaylist);
+		if (this.routerParams.get('id') == null) {
+			subularService.setItems(this.playlists);
+			subularService.ItemSelectFunction = (playlist: IPlaylist): any => {
+				this.router.navigate(['Playlist', { id: playlist.id }]);
+			};
+			this.router.navigate(['Playlist', { id: this.playlists[0].id }]);
 		}
+
+		this.settings.defaultBackground();
+	}
+	getCover(albumId: number): string {
+		return this.dataService.getCoverUrl(albumId);
 	}
 
 	ngOnInit(): void {
-
+		if (this.routerParams.get('id') != null) {
+			let albumId = +this.routerParams.get('id');
+			this.selectedPlaylist(albumId);
+		}
 	}
 
-	onSelect(playlist: IPlaylist) {
+	selectedPlaylist(playlistId: number) {
 		let playlistString;
 		let playlistSongs;
 		this.songs = [];
-		this.dataService.getPlaylist(playlist.id).subscribe(
+		this.albumIds = [];
+		this.dataService.getPlaylist(playlistId).subscribe(
 			data => playlistString = this.dataService.cleanSubsonicResponse(data),
 			error => console.log(error),
 			() => {
-				this.zone.run(() => {
-					playlistSongs = <ISong[]>JSON.parse(playlistString).subresp.playlist.entry;
-					this.songs = playlistSongs;
+
+				playlistSongs = <ISong[]>JSON.parse(playlistString).subresp.playlist.entry;
+				this.songs = playlistSongs;
+				_.forEach(this.songs, (song: ISong) => {
+					if (this.albumIds.indexOf(song.parent) === -1) {
+						this.albumIds.push(song.parent);
+					}
 				});
 			}
 		);
-		this.selectedplaylist = playlist;
+		this.selectedplaylist = _.find(this.dataService.getPlaylists(), (playlist: IPlaylist) => {
+			return playlist.id = playlistId;
+		});
+
 	}
 	playPlaylist(): void {
 		this.playerService.clearSongs();

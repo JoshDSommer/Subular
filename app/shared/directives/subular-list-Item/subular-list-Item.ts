@@ -17,9 +17,7 @@ import {SubularService} from './../../services/subular-service';
 			}
 
 			table{
-				width:98%;
-				margin:0 auto;
-				position:relative;
+
 			}
 			.row-artist{
 				padding:0 10px;

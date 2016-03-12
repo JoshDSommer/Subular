@@ -73,6 +73,9 @@ System.register(['angular2/core'], function(exports_1) {
                         text += possible.charAt(Math.floor(Math.random() * possible.length));
                     return text;
                 };
+                SettingsService.prototype.defaultBackground = function () {
+                    document.body.setAttribute('style', "\n\t\t\t\t\t\tbackground: -webkit-linear-gradient(#4B0082,#101010);\n\t\t\t\t\t\tbackground: -o-linear-gradient(#4B0082,#101010);\n\t\t\t\t\t\tbackground: linear-gradient(#4B0082,#101010;\n\t\t\t\t\t\t");
+                };
                 SettingsService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [])

@@ -40,13 +40,8 @@ import {Playlists} from './playlists/playlists';
 @RouteConfig([
 	{ path: '/', name: 'Landing', component: ArtistList, useAsDefault: true },
 	{ path: '/artist', name: 'ArtistList', component: ArtistList },
-<<<<<<< HEAD
 	{ path: '/artist/:id', name: 'ArtistAlbums', component: ArtistList },
-	{ path: '/artist/:id/:albumId', name: 'ArtistAlbum', component: ArtistList },
-=======
-	{ path: '/artist/:id', name: 'ArtistAlbums', component: ArtistList},
-	{ path: '/artist/:id/album/:albumId', name: 'ArtistAlbum', component: ArtistList},
->>>>>>> master
+	{ path: '/artist/:id/album/:albumId', name: 'ArtistAlbum', component: ArtistList },
 	{ path: '/settings', name: 'Settings', component: Settings },
 	{ path: '/playlists/:id', name: 'Playlist', component: Playlists },
 	{ path: '/playlists/', name: 'Playlists', component: Playlists },

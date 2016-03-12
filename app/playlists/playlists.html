@@ -1,4 +1,7 @@
-	<div class="playlist-container">
-		<h2 class="">{{selectedplaylist?.name}}  ({{songs?.length}}) <i class="fa fa-random pull-right" (click)="playPlaylist()" ></i></h2>
-		<subular-list-item [songs]="songs" ></subular-list-item>
-	</div>
+<div class="row album-images">
+	<img height="45px" [src]="getCover(id)" *ngFor="#id of albumIds" />
+</div>
+<div class="playlist-container">
+	<h2 class="">{{selectedplaylist?.name}}  ({{songs?.length}}) <i class="fa fa-random pull-right" (click)="playPlaylist()" ></i></h2>
+	<subular-list-item [songs]="songs" ></subular-list-item>
+</div>

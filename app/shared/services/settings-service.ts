@@ -23,7 +23,7 @@ export class SettingsService {
 	}
 
 	set ServerAddress(v: string) {
-		window.localStorage.setItem("server-address",v);
+		window.localStorage.setItem("server-address", v);
 	}
 
 	get Username() {
@@ -58,4 +58,11 @@ export class SettingsService {
 		return text;
 	}
 
+	defaultBackground(): void {
+		document.body.setAttribute('style', `
+						background: -webkit-linear-gradient(#4B0082,#101010);
+						background: -o-linear-gradient(#4B0082,#101010);
+						background: linear-gradient(#4B0082,#101010;
+						`);
+	}
 }
