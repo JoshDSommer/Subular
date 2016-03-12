@@ -84,6 +84,7 @@ System.register(['angular2/core', './subular-service'], function(exports_1) {
                             var pos = (_this.audio.currentTime / _this.audio.duration) * 100;
                             var mins = Math.floor(rem / 60);
                             var secs = rem - mins * 60;
+                            _this.emitPlayingSongEvent();
                             _this.currentPosition.emit({
                                 remainingTime: rem,
                                 position: pos,

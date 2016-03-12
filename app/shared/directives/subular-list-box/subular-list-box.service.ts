@@ -10,6 +10,7 @@ export class SubularListBoxService {
 	public items: EventEmitter<ISubularItems[]>;
 	public item: EventEmitter<ISubularItems>;
 	private _service: SubularListBoxService;
+	public ItemSelectFunction: ((item: ISubularItems) => {});
 
 	constructor() {
 		this.items = new EventEmitter();

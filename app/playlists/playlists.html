@@ -1,4 +1,5 @@
 	<div class="playlist-container">
+		{{songs}}
 		<h2 class="">{{selectedplaylist?.name}}  ({{songs?.length}}) <i class="fa fa-random pull-right" (click)="playPlaylist()" ></i></h2>
 		<subular-list-item [songs]="songs" [removeFromPlaylist]="true" [playlistId]="selectedplaylist?.id"></subular-list-item>
 	</div>

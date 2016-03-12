@@ -37,6 +37,7 @@ System.register(['angular2/core', './../shared/services/subular-service', '../sh
         execute: function() {
             ArtistList = (function () {
                 function ArtistList(_dataService, _elementRef, playerService, router, routerParams, subularService) {
+                    var _this = this;
                     this._dataService = _dataService;
                     this._elementRef = _elementRef;
                     this.router = router;
@@ -47,6 +48,9 @@ System.register(['angular2/core', './../shared/services/subular-service', '../sh
                     this.playerService = playerService;
                     this.artists = this._dataService.getArtists();
                     this.subularService.setItems(this.artists);
+                    this.subularService.ItemSelectFunction = function (artist) {
+                        _this.router.navigate(['ArtistAlbums', { id: artist.id }]);
+                    };
                     // 		if (this.artists != null && this.artists.length > 0) {
                     //
                     // 			this.selectedArtist = this.artists[0];

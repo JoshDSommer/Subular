@@ -7,4 +7,4 @@ import {PlayerService} from './shared/services/player-service';
 import {SubularService} from './shared/services/subular-service';
 import {SettingsService} from './shared/services/settings-service';
 
-bootstrap(SubularApp, [HTTP_PROVIDERS, ROUTER_PROVIDERS, SubularListBoxService,SubularService,SettingsService, PlayerService]);
+bootstrap(SubularApp, [HTTP_PROVIDERS, ROUTER_PROVIDERS, SubularListBoxService, SubularService, SettingsService, PlayerService]);

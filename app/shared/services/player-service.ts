@@ -85,6 +85,7 @@ export class PlayerService {
 				let pos = (this.audio.currentTime / this.audio.duration) * 100;
 				let mins = Math.floor(rem / 60);
 				let secs = rem - mins * 60;
+				this.emitPlayingSongEvent();
 				this.currentPosition.emit({
 					remainingTime: rem,
 					position: pos,

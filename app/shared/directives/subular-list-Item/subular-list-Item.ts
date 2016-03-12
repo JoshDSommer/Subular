@@ -83,12 +83,10 @@ export class SubularListItem implements OnInit, OnChanges {
 	ngOnInit(): void {
 		this.playerService.playingSong.subscribe((song) => {
 			this.nowPlayingSong = song;
-			console.log(this.nowPlayingSong);
 		});
 	}
 
 	ngOnChanges(): void {
-
 	}
 
 	rowNum(index: number): number {

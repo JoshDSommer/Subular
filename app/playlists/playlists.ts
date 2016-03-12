@@ -1,4 +1,4 @@
-import {Component, ElementRef, Inject} from 'angular2/core';
+import {Component, ElementRef, Inject, OnInit } from 'angular2/core';
 import {SubularService} from './../shared/services/subular-service';
 import {SettingsService} from './../shared/services/settings-service';
 import {HTTP_PROVIDERS}    from 'angular2/http';
@@ -6,9 +6,9 @@ import {IPlaylist} from './../shared/models/playlist';
 import {ISong} from './../shared/models/song';
 import {AlbumList} from '../shared/directives/album-list/album-list'
 import {PlayerService} from '../shared/services/player-service';
-import {Router} from 'angular2/router';
 import {SubularListItem} from '../shared/directives/subular-list-item/subular-list-item';
 import {ISubularItems, SubularListBoxService} from '../shared/directives/subular-list-box/subular-list-box.service';
+import {Router, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
 	selector: 'playlists',
@@ -42,17 +42,24 @@ import {ISubularItems, SubularListBoxService} from '../shared/directives/subular
 	`],
 	directives: [AlbumList, SubularListItem]
 })
-export class Playlists {
+export class Playlists implements OnInit {
 	public playlists: IPlaylist[];
 	public selectedplaylist: IPlaylist;
 	public songs: ISong[];
 	private subularService: SubularListBoxService;
 
-	constructor(private dataService: SubularService, private playerService: PlayerService, @Inject(SubularListBoxService) subularService: SubularListBoxService) {
+	constructor(private dataService: SubularService, private playerService: PlayerService,
+		@Inject(Router) private router: Router,
+		@Inject(RouteParams) private routerParams: RouteParams,
+		@Inject(SubularListBoxService) subularService: SubularListBoxService) {
+
 		this.subularService = subularService;
 		this.playlists = this.dataService.getPlaylists();
 		this.songs = [];
 		subularService.setItems(this.playlists);
+		subularService.ItemSelectFunction = (playlist: IPlaylist): any => {
+			this.router.navigate(['Playlist', { id: playlist.id }]);
+		};
 
 		if (this.playlists != null && this.playlists.length > 0) {
 			this.selectedplaylist = this.playlists[0];
@@ -60,18 +67,24 @@ export class Playlists {
 		}
 	}
 
+	ngOnInit(): void {
+		// if (this.routerParams.get('id') != null) {
+		// 	let playlistString;
+		// 	let playlistSongs;
+		// 	this.dataService.getPlaylist(+this.routerParams.get('id')).subscribe(
+		// 		data => playlistString = this.dataService.cleanSubsonicResponse(data),
+		// 		error => console.log(error),
+		// 		() => {
+		// 			playlistSongs = <ISong[]>JSON.parse(playlistString).subresp.playlist.entry;
+		// 			console.log(playlistSongs);
+		// 			this.songs = playlistSongs;
+		// 		}
+		// 	);
+		// }
+	}
+
 	onSelect(playlist: IPlaylist) {
-		let playlistString;
-		let playlistSongs;
-		this.dataService.getPlaylist(playlist.id).subscribe(
-			data => playlistString = this.dataService.cleanSubsonicResponse(data),
-			error => console.log(error),
-			() => {
-				playlistSongs = <ISong[]>JSON.parse(playlistString).subresp.playlist.entry;
-				this.songs = playlistSongs;
-			}
-		);
-		this.selectedplaylist = playlist;
+
 	}
 	playPlaylist(): void {
 		this.playerService.clearSongs();

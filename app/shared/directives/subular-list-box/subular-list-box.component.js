@@ -106,10 +106,11 @@ System.register(['angular2/core', 'angular2/router', '../folder-info', './subula
                 };
                 SubularListBox.prototype.onSelect = function (item) {
                     this.selectedItem = item;
-                    this.router.navigate(['ArtistAlbums', { id: item.id }]);
+                    // this.router.navigate(['ArtistAlbums', { id: item.id }]);
                     //this.selectedArtist = artist;
                     // let element = document.getElementById(artist.name.replace(' ', '-'));
                     // this.scrollTo(element);
+                    this.subularService.ItemSelectFunction(item);
                 };
                 SubularListBox = __decorate([
                     core_1.Component({

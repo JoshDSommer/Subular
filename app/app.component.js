@@ -62,7 +62,8 @@ System.register(['angular2/core', './shared/services/subular-service', './shared
                         { path: '/artist/:id', name: 'ArtistAlbums', component: artist_list_1.ArtistList },
                         { path: '/artist/:id/:albumId', name: 'ArtistAlbum', component: artist_list_1.ArtistList },
                         { path: '/settings', name: 'Settings', component: settings_1.Settings },
-                        { path: '/playlists', name: 'Playlists', component: playlists_1.Playlists },
+                        { path: '/playlists/:id', name: 'Playlist', component: playlists_1.Playlists },
+                        { path: '/playlists/', name: 'Playlists', component: playlists_1.Playlists },
                     ]), 
                     __metadata('design:paramtypes', [subular_service_1.SubularService])
                 ], SubularApp);

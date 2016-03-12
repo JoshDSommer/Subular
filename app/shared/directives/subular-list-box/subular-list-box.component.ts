@@ -108,9 +108,10 @@ export class SubularListBox implements OnInit, OnChanges {
 	}
 	onSelect(item: ISubularItems) {
 		this.selectedItem = item;
-		this.router.navigate(['ArtistAlbums', { id: item.id }]);
+		// this.router.navigate(['ArtistAlbums', { id: item.id }]);
 		//this.selectedArtist = artist;
 		// let element = document.getElementById(artist.name.replace(' ', '-'));
 		// this.scrollTo(element);
+		this.subularService.ItemSelectFunction(item);
 	}
 }

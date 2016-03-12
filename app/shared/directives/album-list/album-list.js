@@ -76,6 +76,7 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                     }
                     this.playerService.playingSong.subscribe(function (song) {
                         _this.nowPlayingSong = song;
+                        console.log('album-list' + _this.nowPlayingSong.title);
                     });
                 };
                 AlbumList.prototype.getSongs = function () {

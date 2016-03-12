@@ -47,7 +47,6 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                     var _this = this;
                     this.playerService.playingSong.subscribe(function (song) {
                         _this.nowPlayingSong = song;
-                        console.log(_this.nowPlayingSong);
                     });
                 };
                 SubularListItem.prototype.ngOnChanges = function () {

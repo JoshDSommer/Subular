@@ -43,7 +43,8 @@ import {Playlists} from './playlists/playlists';
 	{ path: '/artist/:id', name: 'ArtistAlbums', component: ArtistList },
 	{ path: '/artist/:id/:albumId', name: 'ArtistAlbum', component: ArtistList },
 	{ path: '/settings', name: 'Settings', component: Settings },
-	{ path: '/playlists', name: 'Playlists', component: Playlists },
+	{ path: '/playlists/:id', name: 'Playlist', component: Playlists },
+	{ path: '/playlists/', name: 'Playlists', component: Playlists },
 ])
 
 export class SubularApp implements OnInit {

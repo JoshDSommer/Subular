@@ -99,6 +99,7 @@ export class AlbumList implements OnChanges, OnInit {
 		}
 		this.playerService.playingSong.subscribe((song) => {
 			this.nowPlayingSong = song;
+			console.log('album-list' + this.nowPlayingSong.title);
 		});
 	}
 
