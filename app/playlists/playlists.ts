@@ -1,4 +1,4 @@
-import {Component, ElementRef, Inject, OnInit } from 'angular2/core';
+import {Component, ElementRef, Inject, OnInit, NgZone} from 'angular2/core';
 import {SubularService} from './../shared/services/subular-service';
 import {SettingsService} from './../shared/services/settings-service';
 import {HTTP_PROVIDERS}    from 'angular2/http';
@@ -6,9 +6,9 @@ import {IPlaylist} from './../shared/models/playlist';
 import {ISong} from './../shared/models/song';
 import {AlbumList} from '../shared/directives/album-list/album-list'
 import {PlayerService} from '../shared/services/player-service';
+import {Router} from 'angular2/router';
 import {SubularListItem} from '../shared/directives/subular-list-item/subular-list-item';
 import {ISubularItems, SubularListBoxService} from '../shared/directives/subular-list-box/subular-list-box.service';
-import {Router, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
 	selector: 'playlists',
@@ -50,15 +50,16 @@ export class Playlists implements OnInit {
 
 	constructor(private dataService: SubularService, private playerService: PlayerService,
 		@Inject(Router) private router: Router,
-		@Inject(RouteParams) private routerParams: RouteParams,
-		@Inject(SubularListBoxService) subularService: SubularListBoxService) {
+		@Inject(SubularListBoxService) subularService: SubularListBoxService,
+		private zone: NgZone) {
 
 		this.subularService = subularService;
 		this.playlists = this.dataService.getPlaylists();
 		this.songs = [];
 		subularService.setItems(this.playlists);
 		subularService.ItemSelectFunction = (playlist: IPlaylist): any => {
-			this.router.navigate(['Playlist', { id: playlist.id }]);
+			// this.router.navigate(['Playlist', { id: playlist.id }]);
+			this.onSelect(playlist);
 		};
 
 		if (this.playlists != null && this.playlists.length > 0) {
@@ -68,23 +69,24 @@ export class Playlists implements OnInit {
 	}
 
 	ngOnInit(): void {
-		// if (this.routerParams.get('id') != null) {
-		// 	let playlistString;
-		// 	let playlistSongs;
-		// 	this.dataService.getPlaylist(+this.routerParams.get('id')).subscribe(
-		// 		data => playlistString = this.dataService.cleanSubsonicResponse(data),
-		// 		error => console.log(error),
-		// 		() => {
-		// 			playlistSongs = <ISong[]>JSON.parse(playlistString).subresp.playlist.entry;
-		// 			console.log(playlistSongs);
-		// 			this.songs = playlistSongs;
-		// 		}
-		// 	);
-		// }
+
 	}
 
 	onSelect(playlist: IPlaylist) {
-
+		let playlistString;
+		let playlistSongs;
+		this.songs = [];
+		this.dataService.getPlaylist(playlist.id).subscribe(
+			data => playlistString = this.dataService.cleanSubsonicResponse(data),
+			error => console.log(error),
+			() => {
+				this.zone.run(() => {
+					playlistSongs = <ISong[]>JSON.parse(playlistString).subresp.playlist.entry;
+					this.songs = playlistSongs;
+				});
+			}
+		);
+		this.selectedplaylist = playlist;
 	}
 	playPlaylist(): void {
 		this.playerService.clearSongs();

@@ -21,8 +21,8 @@
 			<th class="small-th" *ngIf="removeFromPlaylist">&nbsp;</th>
 		</tr>
 	</thead>
-	<tr [ngClass]="{rowPlaying : nowPlayingSong == song}" *ngFor="#song of songs; #i = index">
-		<td (click)="playSongFromList(i)" class="text-left">{{rowNum(0)}}</td>
+	<tr [ngClass]="{rowPlaying : nowPlayingSong === song}" *ngFor="#song of songs; #i = index">
+		<td (click)="playSongFromList(i)" class="text-left">{{rowNum(i)}}</td>
 		<td (click)="playSongFromList(i)" class="text-left row-song">
 			{{song.title}}
 		</td>
