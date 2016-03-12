@@ -1,6 +1,5 @@
-System.register(['angular2/core', '../album-card/album-card', '../../services/subular-service', '../subular-bg-from-img/subular-bg-from-img', '../../services/player-service', '../folder-info', '../subular-list-item/subular-list-item', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', '../album-card/album-card', '../../services/subular-service', '../subular-bg-from-img/subular-bg-from-img', '../../services/player-service', '../folder-info', '../subular-list-item/subular-list-item', 'angular2/router'], function(exports_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -77,6 +76,7 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                     }
                     this.playerService.playingSong.subscribe(function (song) {
                         _this.nowPlayingSong = song;
+                        console.log('album-list' + _this.nowPlayingSong.title);
                     });
                 };
                 AlbumList.prototype.getSongs = function () {

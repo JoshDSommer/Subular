@@ -1,6 +1,5 @@
-System.register(['angular2/core', '../folder-info', '../../services/player-service', '../subular-item-menu/subular-item-menu', './../../services/subular-service'], function(exports_1, context_1) {
+System.register(['angular2/core', '../folder-info', '../../services/player-service', '../subular-item-menu/subular-item-menu', './../../services/subular-service'], function(exports_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -35,8 +34,8 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
         execute: function() {
             SubularListItem = (function () {
                 function SubularListItem(playerService, dataService) {
-                    this.playerService = playerService;
                     this.dataService = dataService;
+                    this.playerService = playerService;
                     this.nowPlayingSong = {
                         id: 0,
                         title: '',
@@ -76,7 +75,7 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                         templateUrl: folder_info_1.path + 'subular-list-item/subular-list-item.html',
                         inputs: ['songs', 'number', 'nowPlayingSong', 'removeFromPlaylist', 'playlistId'],
                         directives: [subular_item_menu_1.SubularMenuItem],
-                        styles: ["\n\t\t\ttd{\n\t\t\t\tfont-size:14px;\n\t\t\t\tline-height:22px;\n\t\t\t}\n\n\t\t\ttable{\n\t\t\t\twidth:98%;\n\t\t\t\tmargin:0 auto;\n\t\t\t\tposition:relative;\n\t\t\t}\n\t\t\t.row-artist{\n\t\t\t\tpadding:0 10px;\n\t\t\t}\n\t\t\t.row-song{\n\t\t\t\tmax-width:45%;\n\t\t\t\toverflow:hidden;\n\t\t\t}\n\t\t\t.row-track{\n\t\t\t\twidth: 19px;\n\t\t\t}\n\t\t\t.row-num{\n\t\t\t\tpadding-right:5px;\n\t\t\t}\n\t\t\ttr{\n\t\t\t\tborder-bottom: 1px #efefef solid;\n\t\t\t\tcursor:hand;\n\t\t\t}\n\t\t\ttd, th{\n\t\t\t\toverflow:hidden;\n\t\t\t\tpadding:0 5px;\n\t\t\t}\n\t\t\ttr td:first-child{\n\t\t\t\tpadding-left:10px;\n\t\t\t}\n\t\t\ttr td:last-child{\n\t\t\t\tpadding-right:10px;\n\t\t\t}\n\t\t\ttr:hover{\n\t\t\t\tcolor:#fff;\n\t\t\t\tbackground-color:#9d9d9d;\n\t\t\t}\n\t\t\t.rowPlaying{\n\t\t\t\tbackground: -webkit-linear-gradient(#4B0082,#4B0082);\n\t\t\t\tfont-weight:700;\n\t\t\t\tcolor:#fff;\n\t\t\t}\n\t\t\t.small-th{\n\t\t\t\twidth:15px;\n\t\t\t}\n\t\t\t"],
+                        styles: ["\n\t\t\ttd{\n\t\t\t\tfont-size:14px;\n\t\t\t\tline-height:22px;\n\t\t\t}\n\n\t\t\ttable{\n\n\t\t\t}\n\t\t\t.row-artist{\n\t\t\t\tpadding:0 10px;\n\t\t\t}\n\t\t\t.row-song{\n\t\t\t\tmax-width:45%;\n\t\t\t\toverflow:hidden;\n\t\t\t}\n\t\t\t.row-track{\n\t\t\t\twidth: 19px;\n\t\t\t}\n\t\t\t.row-num{\n\t\t\t\tpadding-right:5px;\n\t\t\t}\n\t\t\ttr{\n\t\t\t\tborder-bottom: 1px #efefef solid;\n\t\t\t\tcursor:hand;\n\t\t\t}\n\t\t\ttd, th{\n\t\t\t\toverflow:hidden;\n\t\t\t\tpadding:0 5px;\n\t\t\t}\n\t\t\ttr td:first-child{\n\t\t\t\tpadding-left:10px;\n\t\t\t}\n\t\t\ttr td:last-child{\n\t\t\t\tpadding-right:10px;\n\t\t\t}\n\t\t\ttr:hover{\n\t\t\t\tcolor:#fff;\n\t\t\t\tbackground-color:#9d9d9d;\n\t\t\t}\n\t\t\t.rowPlaying{\n\t\t\t\tbackground: -webkit-linear-gradient(#4B0082,#4B0082);\n\t\t\t\tfont-weight:700;\n\t\t\t\tcolor:#fff;\n\t\t\t}\n\t\t\t.small-th{\n\t\t\t\twidth:15px;\n\t\t\t}\n\t\t\t"],
                     }),
                     __param(0, core_1.Inject(player_service_1.PlayerService)),
                     __param(1, core_1.Inject(subular_service_1.SubularService)), 

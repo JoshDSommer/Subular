@@ -1,8 +1,9 @@
-import {Component, OnInit, enableProdMode } from 'angular2/core';
+import {Component, OnInit, enableProdMode, Inject } from 'angular2/core';
 import {SubularService} from './shared/services/subular-service';
 import {SettingsService} from './shared/services/settings-service';
 import {HTTP_PROVIDERS}    from 'angular2/http';
 import {SubularPlayer} from './shared/directives/subular-player/subular-player';
+import {SubularListBox} from './shared/directives/subular-list-box/subular-list-box.component';
 import {ArtistList} from './artist-list/artist-list';
 import {Settings} from './settings/settings';
 import {IArtist} from './shared/models/artist';
@@ -16,7 +17,6 @@ import {Playlists} from './playlists/playlists';
 @Component({
 	selector: 'subular',
 	templateUrl: '/app/app.html',
-	providers: [SubularService, SettingsService, SubularPlayer, ArtistList, Playlists, PlayerService],
 	inputs: ['imgUrl', 'albums', 'nowPlaying', 'playerService', 'page'],
 	styles: [`
 		.card-dark{
@@ -34,15 +34,17 @@ import {Playlists} from './playlists/playlists';
 			color:#fff;
 		}
 	`],
-	directives: [SubularPlayer, ArtistList, Settings, Playlists, ROUTER_DIRECTIVES]
+	directives: [SubularPlayer, ArtistList, Settings, Playlists, ROUTER_DIRECTIVES, SubularListBox]
 })
+
 @RouteConfig([
 	{ path: '/', name: 'Landing', component: ArtistList, useAsDefault: true },
 	{ path: '/artist', name: 'ArtistList', component: ArtistList },
-	{ path: '/artist/:id', name: 'ArtistAlbums', component: ArtistList},
-	{ path: '/artist/:id/album/:albumId', name: 'ArtistAlbum', component: ArtistList},
+	{ path: '/artist/:id', name: 'ArtistAlbums', component: ArtistList },
+	{ path: '/artist/:id/album/:albumId', name: 'ArtistAlbum', component: ArtistList },
 	{ path: '/settings', name: 'Settings', component: Settings },
-	{ path: '/playlists', name: 'Playlists', component: Playlists },
+	{ path: '/playlists/:id', name: 'Playlist', component: Playlists },
+	{ path: '/playlists/', name: 'Playlists', component: Playlists },
 ])
 
 export class SubularApp implements OnInit {
@@ -54,7 +56,7 @@ export class SubularApp implements OnInit {
 	public nowPlaying: any[];
 	public page: number = 1;
 
-	constructor(private _dataService: SubularService, public playerService: PlayerService) {
+	constructor(private _dataService: SubularService) {
 		if (this._dataService.getArtists() != null && this._dataService.getArtists().length == 0)
 			this._dataService.buildServerData();
 	}

@@ -12,7 +12,6 @@ declare var ColorThief: any;
 @Component({
 	selector: 'album-card',
 	templateUrl: '/app/shared/directives/album-card/album-card.html',
-	providers: [SubularService, SettingsService],
 	inputs: ['id', 'album', 'playerService', 'click'],
 	styles: [`
 	.card{

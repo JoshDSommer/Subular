@@ -6,11 +6,11 @@ import {IArtist} from './../shared/models/artist';
 import {AlbumList} from '../shared/directives/album-list/album-list';
 import {PlayerService} from '../shared/services/player-service';
 import {Router, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
+import {ISubularItems, SubularListBoxService} from '../shared/directives/subular-list-box/subular-list-box.service';
 
 @Component({
 	selector: 'artist-list',
 	templateUrl: '/app/artist-list/artist-list.html',
-	providers: [SubularService, SettingsService],
 	inputs: ['artists', 'selectedArtist', 'playerService', 'i'],
 	styles: [`
 
@@ -26,13 +26,17 @@ export class ArtistList implements OnInit, OnChanges {
 	private searchTimeout: NodeJS.Timer;
 	private gotoClick: any;
 	public i: number = 0;
+	private subularService: SubularListBoxService;
 
 	ngOnInit(): void {
 		if (this.routerParams.get('id') != null) {
 			this.selectedArtist = this.artists.find((artist: IArtist) => {
 				return artist.id.toString() === this.routerParams.get('id');
 			});
+
+			this.subularService.setSelectedItem(this.selectedArtist);
 		}
+
 	}
 
 	ngOnChanges(): void {
@@ -44,55 +48,62 @@ export class ArtistList implements OnInit, OnChanges {
 		@Inject(ElementRef) private _elementRef: ElementRef,
 		@Inject(PlayerService) playerService: PlayerService,
 		@Inject(Router) private router: Router,
-		@Inject(RouteParams) private routerParams: RouteParams) {
-
+		@Inject(RouteParams) private routerParams: RouteParams,
+		@Inject(SubularListBoxService) subularService: SubularListBoxService
+	) {
+		this.subularService = subularService;
 		this.playerService = playerService;
 		this.artists = this._dataService.getArtists();
+		this.subularService.setItems(this.artists);
 
-		if (this.artists != null && this.artists.length > 0) {
+		this.subularService.ItemSelectFunction = (artist: IArtist): any => {
+			this.router.navigate(['ArtistAlbums', { id: artist.id }]);
+		};
 
-			this.selectedArtist = this.artists[0];
-			let el = <HTMLElement>this._elementRef.nativeElement;
-			let artistList = document.getElementsByClassName('subular-list-item');
-			document.addEventListener('keydown', (event: any) => {
-
-				let key = this.key(event.code).toLowerCase();
-
-				if (key === 'arrowdown') {
-
-					return;
-				} else if (key === 'arrowup') {
-
-					return;
-				}
-				// if there isa search time out clear it.
-				if (this.searchTimeout) {
-					clearTimeout(this.searchTimeout);
-				}
-				// create a new timeout
-				this.searchTimeout = setTimeout(() => {
-					this.search = '';
-				}, 500);
-
-				this.search = this.search + (key === 'space' ? ' ' : key);
-				for (let i = 0; i < artistList.length; i++) {
-					let artistName = (<HTMLElement>artistList[i]).innerHTML.trim().toLowerCase();
-					if (artistName.startsWith(this.search)) {
-						clearTimeout(this.gotoClick);
-						this.gotoClick = setTimeout(() => {
-							(<HTMLElement>artistList[i]).click();
-							this.scrollTo(<HTMLElement>artistList[i]);
-						}, 500);
-						this.scrollTo(<HTMLElement>artistList[i]);
-						return;
-					}
-				}
-			});
-			let element = document.getElementById(this.selectedArtist.name.replace(' ', '-'));
-			this.scrollTo(element);
-		} else {
-			this.router.navigate(['Settings']);
-		}
+		// 		if (this.artists != null && this.artists.length > 0) {
+		//
+		// 			this.selectedArtist = this.artists[0];
+		// 			let el = <HTMLElement>this._elementRef.nativeElement;
+		// 			let artistList = document.getElementsByClassName('subular-list-item');
+		// 			document.addEventListener('keydown', (event: any) => {
+		//
+		// 				let key = this.key(event.code).toLowerCase();
+		//
+		// 				if (key === 'arrowdown') {
+		//
+		// 					return;
+		// 				} else if (key === 'arrowup') {
+		//
+		// 					return;
+		// 				}
+		// 				// if there isa search time out clear it.
+		// 				if (this.searchTimeout) {
+		// 					clearTimeout(this.searchTimeout);
+		// 				}
+		// 				// create a new timeout
+		// 				this.searchTimeout = setTimeout(() => {
+		// 					this.search = '';
+		// 				}, 500);
+		//
+		// 				this.search = this.search + (key === 'space' ? ' ' : key);
+		// 				for (let i = 0; i < artistList.length; i++) {
+		// 					let artistName = (<HTMLElement>artistList[i]).innerHTML.trim().toLowerCase();
+		// 					if (artistName.startsWith(this.search)) {
+		// 						clearTimeout(this.gotoClick);
+		// 						this.gotoClick = setTimeout(() => {
+		// 							(<HTMLElement>artistList[i]).click();
+		// 							this.scrollTo(<HTMLElement>artistList[i]);
+		// 						}, 500);
+		// 						this.scrollTo(<HTMLElement>artistList[i]);
+		// 						return;
+		// 					}
+		// 				}
+		// 			});
+		// 			let element = document.getElementById(this.selectedArtist.name.replace(' ', '-'));
+		// 			this.scrollTo(element);
+		// 		} else {
+		// 			this.router.navigate(['Settings']);
+		// 		}
 
 	}
 	scrollTo(element: HTMLElement): void {

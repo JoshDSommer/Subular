@@ -17,9 +17,7 @@ import {SubularService} from './../../services/subular-service';
 			}
 
 			table{
-				width:98%;
-				margin:0 auto;
-				position:relative;
+
 			}
 			.row-artist{
 				padding:0 10px;
@@ -67,8 +65,10 @@ export class SubularListItem implements OnInit, OnChanges {
 	public nowPlayingSong: ISong;
 	public removeFromPlaylist: boolean;
 	public playlistId: number;
+	public playerService: PlayerService;
 
-	constructor( @Inject(PlayerService) private playerService: PlayerService, @Inject(SubularService) private dataService: SubularService) {
+	constructor( @Inject(PlayerService) playerService: PlayerService, @Inject(SubularService) private dataService: SubularService) {
+		this.playerService = playerService;
 		this.nowPlayingSong = {
 			id: 0,
 			title: '',
@@ -93,7 +93,7 @@ export class SubularListItem implements OnInit, OnChanges {
 	formatDuration(duration: number): string {
 		let min = Math.floor(duration / 60);
 		let seconds = duration - min * 60;
-		let returnTime: string = min + ':' + (seconds <=9 ? '0' + seconds : seconds);
+		let returnTime: string = min + ':' + (seconds <= 9 ? '0' + seconds : seconds);
 		return returnTime;
 	}
 

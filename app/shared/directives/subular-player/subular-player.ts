@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, ElementRef } from 'angular2/core';
+import {Component, OnChanges, OnInit, ElementRef, Inject } from 'angular2/core';
 import {SubularService} from './../../services/subular-service';
 import {SettingsService} from './../../services/settings-service';
 import {HTTP_PROVIDERS}  from 'angular2/http';
@@ -13,9 +13,8 @@ import {IArtist} from '../../models/artist';
 @Component({
 	selector: 'subular-player',
 	templateUrl: path + 'subular-player/subular-player.html',
-	providers: [SubularService, SettingsService],
 	directives: [SubularListItem, ROUTER_DIRECTIVES],
-	inputs: ['imgUrl', 'albums', 'playerService', 'nowPlayingSong', 'time', 'song', 'playingSongs'],
+	inputs: ['imgUrl', 'albums', 'nowPlayingSong', 'time', 'song', 'playingSongs'],
 	styles: [`
 	.card-dark{
 			background:rgb(34, 34, 34);
@@ -97,7 +96,7 @@ import {IArtist} from '../../models/artist';
 export class SubularPlayer implements OnChanges, OnInit {
 	public albums: IAlbum[];
 	public imgUrl: string;
-	public playerService: PlayerService;
+	private playerService: PlayerService;
 	public currentSong: ISong;
 	public currentArtist: IArtist;
 	public playing: boolean = false;
@@ -105,7 +104,8 @@ export class SubularPlayer implements OnChanges, OnInit {
 	private songs: ISong[];
 	public playingSongs: boolean = false;
 
-	constructor(private _dataService: SubularService, private _elementRef: ElementRef) {
+	constructor(private _dataService: SubularService, private _elementRef: ElementRef, @Inject(PlayerService) playerService: PlayerService) {
+		this.playerService = playerService;
 		this.songs = [];
 		this.currentSong = {
 			id: 0,

@@ -1,6 +1,5 @@
-System.register(['angular2/core', './../shared/services/subular-service', './../shared/services/settings-service', '../shared/directives/album-list/album-list', '../shared/services/player-service', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', './../shared/services/subular-service', '../shared/directives/album-list/album-list', '../shared/services/player-service', 'angular2/router', '../shared/directives/subular-list-box/subular-list-box.service'], function(exports_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13,7 +12,7 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, subular_service_1, settings_service_1, album_list_1, player_service_1, router_1;
+    var core_1, subular_service_1, album_list_1, player_service_1, router_1, subular_list_box_service_1;
     var ArtistList;
     return {
         setters:[
@@ -23,9 +22,6 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
             function (subular_service_1_1) {
                 subular_service_1 = subular_service_1_1;
             },
-            function (settings_service_1_1) {
-                settings_service_1 = settings_service_1_1;
-            },
             function (album_list_1_1) {
                 album_list_1 = album_list_1_1;
             },
@@ -34,10 +30,13 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (subular_list_box_service_1_1) {
+                subular_list_box_service_1 = subular_list_box_service_1_1;
             }],
         execute: function() {
             ArtistList = (function () {
-                function ArtistList(_dataService, _elementRef, playerService, router, routerParams) {
+                function ArtistList(_dataService, _elementRef, playerService, router, routerParams, subularService) {
                     var _this = this;
                     this._dataService = _dataService;
                     this._elementRef = _elementRef;
@@ -45,52 +44,57 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                     this.routerParams = routerParams;
                     this.search = '';
                     this.i = 0;
+                    this.subularService = subularService;
                     this.playerService = playerService;
                     this.artists = this._dataService.getArtists();
-                    if (this.artists != null && this.artists.length > 0) {
-                        this.selectedArtist = this.artists[0];
-                        var el = this._elementRef.nativeElement;
-                        var artistList_1 = document.getElementsByClassName('subular-list-item');
-                        document.addEventListener('keydown', function (event) {
-                            var key = _this.key(event.code).toLowerCase();
-                            if (key === 'arrowdown') {
-                                return;
-                            }
-                            else if (key === 'arrowup') {
-                                return;
-                            }
-                            // if there isa search time out clear it.
-                            if (_this.searchTimeout) {
-                                clearTimeout(_this.searchTimeout);
-                            }
-                            // create a new timeout
-                            _this.searchTimeout = setTimeout(function () {
-                                _this.search = '';
-                            }, 500);
-                            _this.search = _this.search + (key === 'space' ? ' ' : key);
-                            var _loop_1 = function(i) {
-                                var artistName = artistList_1[i].innerHTML.trim().toLowerCase();
-                                if (artistName.startsWith(_this.search)) {
-                                    clearTimeout(_this.gotoClick);
-                                    _this.gotoClick = setTimeout(function () {
-                                        artistList_1[i].click();
-                                        _this.scrollTo(artistList_1[i]);
-                                    }, 500);
-                                    _this.scrollTo(artistList_1[i]);
-                                    return { value: void 0 };
-                                }
-                            };
-                            for (var i = 0; i < artistList_1.length; i++) {
-                                var state_1 = _loop_1(i);
-                                if (typeof state_1 === "object") return state_1.value;
-                            }
-                        });
-                        var element = document.getElementById(this.selectedArtist.name.replace(' ', '-'));
-                        this.scrollTo(element);
-                    }
-                    else {
-                        this.router.navigate(['Settings']);
-                    }
+                    this.subularService.setItems(this.artists);
+                    this.subularService.ItemSelectFunction = function (artist) {
+                        _this.router.navigate(['ArtistAlbums', { id: artist.id }]);
+                    };
+                    // 		if (this.artists != null && this.artists.length > 0) {
+                    //
+                    // 			this.selectedArtist = this.artists[0];
+                    // 			let el = <HTMLElement>this._elementRef.nativeElement;
+                    // 			let artistList = document.getElementsByClassName('subular-list-item');
+                    // 			document.addEventListener('keydown', (event: any) => {
+                    //
+                    // 				let key = this.key(event.code).toLowerCase();
+                    //
+                    // 				if (key === 'arrowdown') {
+                    //
+                    // 					return;
+                    // 				} else if (key === 'arrowup') {
+                    //
+                    // 					return;
+                    // 				}
+                    // 				// if there isa search time out clear it.
+                    // 				if (this.searchTimeout) {
+                    // 					clearTimeout(this.searchTimeout);
+                    // 				}
+                    // 				// create a new timeout
+                    // 				this.searchTimeout = setTimeout(() => {
+                    // 					this.search = '';
+                    // 				}, 500);
+                    //
+                    // 				this.search = this.search + (key === 'space' ? ' ' : key);
+                    // 				for (let i = 0; i < artistList.length; i++) {
+                    // 					let artistName = (<HTMLElement>artistList[i]).innerHTML.trim().toLowerCase();
+                    // 					if (artistName.startsWith(this.search)) {
+                    // 						clearTimeout(this.gotoClick);
+                    // 						this.gotoClick = setTimeout(() => {
+                    // 							(<HTMLElement>artistList[i]).click();
+                    // 							this.scrollTo(<HTMLElement>artistList[i]);
+                    // 						}, 500);
+                    // 						this.scrollTo(<HTMLElement>artistList[i]);
+                    // 						return;
+                    // 					}
+                    // 				}
+                    // 			});
+                    // 			let element = document.getElementById(this.selectedArtist.name.replace(' ', '-'));
+                    // 			this.scrollTo(element);
+                    // 		} else {
+                    // 			this.router.navigate(['Settings']);
+                    // 		}
                 }
                 ArtistList.prototype.ngOnInit = function () {
                     var _this = this;
@@ -98,6 +102,7 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                         this.selectedArtist = this.artists.find(function (artist) {
                             return artist.id.toString() === _this.routerParams.get('id');
                         });
+                        this.subularService.setSelectedItem(this.selectedArtist);
                     }
                 };
                 ArtistList.prototype.ngOnChanges = function () {
@@ -127,7 +132,6 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                     core_1.Component({
                         selector: 'artist-list',
                         templateUrl: '/app/artist-list/artist-list.html',
-                        providers: [subular_service_1.SubularService, settings_service_1.SettingsService],
                         inputs: ['artists', 'selectedArtist', 'playerService', 'i'],
                         styles: ["\n\n"],
                         directives: [album_list_1.AlbumList]
@@ -136,8 +140,9 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                     __param(1, core_1.Inject(core_1.ElementRef)),
                     __param(2, core_1.Inject(player_service_1.PlayerService)),
                     __param(3, core_1.Inject(router_1.Router)),
-                    __param(4, core_1.Inject(router_1.RouteParams)), 
-                    __metadata('design:paramtypes', [subular_service_1.SubularService, core_1.ElementRef, player_service_1.PlayerService, router_1.Router, router_1.RouteParams])
+                    __param(4, core_1.Inject(router_1.RouteParams)),
+                    __param(5, core_1.Inject(subular_list_box_service_1.SubularListBoxService)), 
+                    __metadata('design:paramtypes', [subular_service_1.SubularService, core_1.ElementRef, player_service_1.PlayerService, router_1.Router, router_1.RouteParams, subular_list_box_service_1.SubularListBoxService])
                 ], ArtistList);
                 return ArtistList;
             }());

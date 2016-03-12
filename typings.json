@@ -2,5 +2,8 @@
   "ambientDependencies": {
     "lodash": "github:DefinitelyTyped/DefinitelyTyped/lodash/lodash.d.ts#ad1c4f411a9ad949c0c73de4d190be1b2bf08a6f",
     "velocity-animate": "github:DefinitelyTyped/DefinitelyTyped/velocity-animate/velocity-animate.d.ts#b92c8228f6ba925212e7744dfcb955964393ecc4"
+  },
+  "dependencies": {
+    "lodash": "github:typed-typings/npm-lodash#65781ee6b25562ee9b5913043a3ba249acfcee17"
   }
 }
