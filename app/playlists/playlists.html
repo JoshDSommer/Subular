@@ -1,13 +1,7 @@
-<div class="col-sm-4 col-md-2 no-padding subular-list-container">
-	<ul id="playlist-list" class="subular-list scrollable-content">
-		<li class="subular-list-item" [ngClass]="{active : selectedplaylist == playlist }" *ngFor="#playlist of playlists" (click)="onSelect(playlist)">
-			{{playlist?.name}}
-		</li>
-	</ul>
+<div class="row album-images">
+	<img height="45px" [src]="getCover(id)" *ngFor="#id of albumIds" />
 </div>
-<div class="col-sm-8 col-md-10 no-padding ">
-	<div class="playlist-container">
-		<h2 class="">{{selectedplaylist?.name}}  ({{songs?.length}}) <i class="fa fa-random pull-right" (click)="playPlaylist()" ></i></h2>
-		<subular-list-item [songs]="songs" [removeFromPlaylist]="true" [playlistId]="selectedplaylist?.id"></subular-list-item>
-	</div>
+<div class="playlist-container">
+	<h2 class="">{{selectedplaylist?.name}}  ({{songs?.length}}) <i class="fa fa-random pull-right" (click)="playPlaylist()" ></i></h2>
+	<subular-list-item [songs]="songs" ></subular-list-item>
 </div>

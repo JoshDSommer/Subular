@@ -25,6 +25,7 @@
 </section>
 <section id="now-playing-list" *ngIf="playingSongs">
 	<h3>Now Playing</h3>
-	<subular-list-item [songs]="songs" [currentSong]="currentSong"></subular-list-item>
+	<subular-list-item [songs]="songs" [nowPlayingSong]="currentSong"></subular-list-item>
 </section>
+
 <div *ngIf="playingSongs" id="now-playing-modal" class="subular-modal" (click)="playingSongs = !playingSongs"></div>
