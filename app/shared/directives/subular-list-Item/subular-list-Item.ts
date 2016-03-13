@@ -60,6 +60,7 @@ import {SubularService} from './../../services/subular-service';
 			}
 			`],
 })
+
 export class SubularListItem implements OnInit, OnChanges {
 	public songs: ISong[];
 	public nowPlayingSong: ISong;
