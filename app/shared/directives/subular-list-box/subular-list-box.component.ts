@@ -57,7 +57,7 @@ export class SubularListBox implements OnInit, OnChanges {
 				}, 500);
 
 				this.search = this.search + (key === 'space' ? ' ' : key);
-				for (let i = 0; i < artistList.length; i++) {
+				for (var i = 0; i < artistList.length; i++) {
 					let artistName = (<HTMLElement>artistList[i]).innerHTML.trim().toLowerCase();
 					if (artistName.startsWith(this.search)) {
 						clearTimeout(this.gotoClick);

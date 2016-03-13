@@ -3,7 +3,6 @@ import {AlbumCard} from '../album-card/album-card';
 import {SubularService} from '../../services/subular-service';
 import {IAlbum} from '../../models/album';
 import {IArtist} from '../../models/artist';
-import {BgImageDirective} from '../subular-bg-from-img/subular-bg-from-img';
 import {PlayerService} from '../../services/player-service';
 import {path} from '../folder-info';
 import {ISong} from '../../models/song';
@@ -13,7 +12,7 @@ import {Router, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 @Component({
 	selector: 'album-list',
 	templateUrl: path + 'album-list/album-list.html',
-	directives: [AlbumCard, BgImageDirective, SubularListItem, ROUTER_DIRECTIVES],
+	directives: [AlbumCard, SubularListItem, ROUTER_DIRECTIVES],
 	inputs: ['albums', 'artist', 'playerService', 'songs'],
 	styles: [`
 		album-card{

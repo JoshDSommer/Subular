@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../album-card/album-card', '../../services/subular-service', '../subular-bg-from-img/subular-bg-from-img', '../../services/player-service', '../folder-info', '../subular-list-item/subular-list-item', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', '../album-card/album-card', '../../services/subular-service', '../../services/player-service', '../folder-info', '../subular-list-item/subular-list-item', 'angular2/router'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -12,7 +12,7 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, album_card_1, subular_service_1, subular_bg_from_img_1, player_service_1, folder_info_1, subular_list_item_1, router_1;
+    var core_1, album_card_1, subular_service_1, player_service_1, folder_info_1, subular_list_item_1, router_1;
     var AlbumList;
     return {
         setters:[
@@ -24,9 +24,6 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
             },
             function (subular_service_1_1) {
                 subular_service_1 = subular_service_1_1;
-            },
-            function (subular_bg_from_img_1_1) {
-                subular_bg_from_img_1 = subular_bg_from_img_1_1;
             },
             function (player_service_1_1) {
                 player_service_1 = player_service_1_1;
@@ -106,7 +103,7 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                     core_1.Component({
                         selector: 'album-list',
                         templateUrl: folder_info_1.path + 'album-list/album-list.html',
-                        directives: [album_card_1.AlbumCard, subular_bg_from_img_1.BgImageDirective, subular_list_item_1.SubularListItem, router_1.ROUTER_DIRECTIVES],
+                        directives: [album_card_1.AlbumCard, subular_list_item_1.SubularListItem, router_1.ROUTER_DIRECTIVES],
                         inputs: ['albums', 'artist', 'playerService', 'songs'],
                         styles: ["\n\t\talbum-card{\n\t\t\tcursor:hand;\n\t\t}\n\t\t.album-list{\n\t\t\theight:calc(100% - 180px);\n\t\t\toverflow-y:auto;\n\t\t\tpadding-left:5px;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\tbackground: transparent !important;\n\t\t}\n\t\th2{\n\t\t\tpadding:0 25px;\n\t\t\tmargin-bottom: 0;\n\t\t}\n\t\ti.fa:hover{\n\t\t\tcolor:#9d9d9d !important;\n\t\t}\n\t\t.album-song-list{\n\t\t\tbackground-color: white;\n\t\t\topacity: 0.85;\n\t\t\theight:calc(100% - 170px);\n\t\t\toverflow:auto;\n\t\t}\n\t\t#album-list-artist a{\n\t\t\tcolor:inherit;\n\t\t}\n\t\th2{\n\t\t\tcolor:#fff;\n\t\t}\n\t"]
                     }),

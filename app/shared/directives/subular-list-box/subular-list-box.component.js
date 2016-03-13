@@ -56,7 +56,7 @@ System.register(['angular2/core', 'angular2/router', '../folder-info', './subula
                                 _this.search = '';
                             }, 500);
                             _this.search = _this.search + (key === 'space' ? ' ' : key);
-                            var _loop_1 = function(i) {
+                            for (var i = 0; i < artistList_1.length; i++) {
                                 var artistName = artistList_1[i].innerHTML.trim().toLowerCase();
                                 if (artistName.startsWith(_this.search)) {
                                     clearTimeout(_this.gotoClick);
@@ -65,12 +65,8 @@ System.register(['angular2/core', 'angular2/router', '../folder-info', './subula
                                         _this.scrollTo(artistList_1[i]);
                                     }, 500);
                                     _this.scrollTo(artistList_1[i]);
-                                    return { value: void 0 };
+                                    return;
                                 }
-                            };
-                            for (var i = 0; i < artistList_1.length; i++) {
-                                var state_1 = _loop_1(i);
-                                if (typeof state_1 === "object") return state_1.value
                             }
                         });
                         var element = document.getElementById(this.selectedItem.name.replace(' ', '-'));
