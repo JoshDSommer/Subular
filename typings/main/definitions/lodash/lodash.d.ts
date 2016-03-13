@@ -18286,10 +18286,3 @@ module _ {
 
 export = _;
 
-// Backward compatibility with --target es5
-interface Map<K, V> {}
-}
-declare module 'lodash' {
-import main = require('lodash/index');
-export = main;
-}
