@@ -11,11 +11,11 @@ then
 
 `npm start`
 
-you can alternatively use Gulp to build for production with
+to build a version for production, run:
 
-`gulp build`
+`npm run dist` this will create a production version of the app in the dist folder using `gulp build`
 
-or run a production version with
+or too run a production version with
 
 `gulp serve`
 
