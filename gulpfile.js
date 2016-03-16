@@ -30,6 +30,7 @@ gulp.task('copy:libs', ['clean'], function () {
 		'node_modules/angular2/bundles/angular2.dev.js',
 		'node_modules/angular2/bundles/http.js',
 		'node_modules/node-vibrant/dist/vibrant.js',
+		'node_modules/lodash/lodash.js',
 		'js/color-thief.min.js',
 		'node_modules/angular2/bundles/router.dev.js',
 		'node_modules/crypto-js/crypto-js.js',

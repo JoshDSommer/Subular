@@ -4,6 +4,7 @@ import {SubularService} from '../shared/services/subular-service';
 import {PlayerService} from '../shared/services/player-service';
 import {ISong} from '../shared/models/song';
 import {ISubularItems, SubularListBoxService} from '../shared/directives/subular-list-box/subular-list-box.service';
+import {SettingsService} from './../shared/services/settings-service';
 
 import {IArtist} from './../shared/models/artist';
 import {SubularListItem} from './../shared/directives/subular-list-item/subular-list-item';
@@ -22,12 +23,13 @@ export class AlbumComponent implements OnInit {
 	public currentSong: ISong;
 	constructor(
 		@Inject(SubularService) private dataService: SubularService, @Inject(PlayerService) private playerService: PlayerService, @Inject(Router) private router: Router, @Inject(RouteParams) private routerParams: RouteParams
-		, @Inject(SubularListBoxService) private subularService: SubularListBoxService
+		, @Inject(SubularListBoxService) private subularService: SubularListBoxService, private settings: SettingsService
 	) {
 		this.songs = [];
 	}
 
 	ngOnInit() {
+		//this.settings.defaultBackground();
 		this.artists = this.dataService.getArtists();
 		this.subularService.setItems(this.artists);
 

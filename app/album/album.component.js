@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../shared/services/subular-service', '../shared/services/player-service', '../shared/directives/subular-list-box/subular-list-box.service', './../shared/directives/subular-list-item/subular-list-item'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', '../shared/services/subular-service', '../shared/services/player-service', '../shared/directives/subular-list-box/subular-list-box.service', './../shared/services/settings-service', './../shared/directives/subular-list-item/subular-list-item'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -12,7 +12,7 @@ System.register(['angular2/core', 'angular2/router', '../shared/services/subular
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, router_1, subular_service_1, player_service_1, subular_list_box_service_1, subular_list_item_1;
+    var core_1, router_1, subular_service_1, player_service_1, subular_list_box_service_1, settings_service_1, subular_list_item_1;
     var AlbumComponent;
     return {
         setters:[
@@ -31,21 +31,26 @@ System.register(['angular2/core', 'angular2/router', '../shared/services/subular
             function (subular_list_box_service_1_1) {
                 subular_list_box_service_1 = subular_list_box_service_1_1;
             },
+            function (settings_service_1_1) {
+                settings_service_1 = settings_service_1_1;
+            },
             function (subular_list_item_1_1) {
                 subular_list_item_1 = subular_list_item_1_1;
             }],
         execute: function() {
             AlbumComponent = (function () {
-                function AlbumComponent(dataService, playerService, router, routerParams, subularService) {
+                function AlbumComponent(dataService, playerService, router, routerParams, subularService, settings) {
                     this.dataService = dataService;
                     this.playerService = playerService;
                     this.router = router;
                     this.routerParams = routerParams;
                     this.subularService = subularService;
+                    this.settings = settings;
                     this.songs = [];
                 }
                 AlbumComponent.prototype.ngOnInit = function () {
                     var _this = this;
+                    //this.settings.defaultBackground();
                     this.artists = this.dataService.getArtists();
                     this.subularService.setItems(this.artists);
                     this.subularService.ItemSelectFunction = function (artist) {
@@ -80,7 +85,7 @@ System.register(['angular2/core', 'angular2/router', '../shared/services/subular
                     __param(2, core_1.Inject(router_1.Router)),
                     __param(3, core_1.Inject(router_1.RouteParams)),
                     __param(4, core_1.Inject(subular_list_box_service_1.SubularListBoxService)), 
-                    __metadata('design:paramtypes', [subular_service_1.SubularService, player_service_1.PlayerService, router_1.Router, router_1.RouteParams, subular_list_box_service_1.SubularListBoxService])
+                    __metadata('design:paramtypes', [subular_service_1.SubularService, player_service_1.PlayerService, router_1.Router, router_1.RouteParams, subular_list_box_service_1.SubularListBoxService, settings_service_1.SettingsService])
                 ], AlbumComponent);
                 return AlbumComponent;
             }());

@@ -35,7 +35,6 @@ export class BgImageDirective implements OnInit {
 						background: linear-gradient(` + this.getRGBString(palettes[1]) + `, #101010;
 						`);
 				}
-				button.setAttribute('style', 'color:' + this.getRGBString(palettes[4]));
 			});
 		}
 	}

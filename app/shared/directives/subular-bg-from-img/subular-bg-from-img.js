@@ -37,7 +37,6 @@ System.register(['angular2/core'], function(exports_1) {
                             if (document.body.getAttribute('style') === '') {
                                 document.body.setAttribute('style', "\n\t\t\t\t\t\tbackground: -webkit-linear-gradient(" + _this.getRGBString(palettes[1]) + ", #101010);\n\t\t\t\t\t\tbackground: -o-linear-gradient(" + _this.getRGBString(palettes[1]) + ", #101010);\n\t\t\t\t\t\tbackground: linear-gradient(" + _this.getRGBString(palettes[1]) + ", #101010;\n\t\t\t\t\t\t");
                             }
-                            button.setAttribute('style', 'color:' + _this.getRGBString(palettes[4]));
                         });
                     }
                 };

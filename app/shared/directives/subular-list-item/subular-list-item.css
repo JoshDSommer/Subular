@@ -4,8 +4,6 @@ td{
 }
 
 .table-wrap{
-	opacity: 0.8;
-	background-color: #fff;
 	height: 100%;
 }
 table{
@@ -33,6 +31,7 @@ tr{
 td, th{
 	overflow:hidden;
 	padding:0 5px;
+	color:#f8f8ff;
 }
 tr td:first-child{
 	padding-left:10px;
@@ -41,13 +40,13 @@ tr td:last-child{
 	padding-right:10px;
 }
 tr:hover{
-	color:#fff;
-	background-color:#9d9d9d;
+	color:#9d9d9d;
+	/*background-color:#9d9d9d;*/
 }
 .rowPlaying{
 	background: -webkit-linear-gradient(#4B0082,#4B0082);
 	font-weight:700;
-	color:#fff;
+	color:#f8f8ff;
 }
 .small-th{
 	width:15px;
