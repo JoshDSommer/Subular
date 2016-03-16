@@ -1,5 +1,4 @@
 System.register(['angular2/core', './../../services/subular-service', 'rxjs/add/operator/map', '../../services/player-service'], function(exports_1) {
-    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -76,7 +75,7 @@ System.register(['angular2/core', './../../services/subular-service', 'rxjs/add/
                     __metadata('design:paramtypes', [subular_service_1.SubularService, core_1.ElementRef, player_service_1.PlayerService])
                 ], AlbumCard);
                 return AlbumCard;
-            }());
+            })();
             exports_1("AlbumCard", AlbumCard);
         }
     }

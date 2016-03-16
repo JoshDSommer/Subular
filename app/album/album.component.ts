@@ -12,8 +12,13 @@ import {SubularListItem} from './../shared/directives/subular-list-item/subular-
 @Component({
 	selector: 'album',
 	templateUrl: 'app/album/album.html',
-	directives: [SubularListItem]
-
+	directives: [SubularListItem],
+	styles: [`
+		.album-song-list{
+			height:calc(100% - 170px);
+			overflow:auto;
+		}
+	`]
 })
 
 export class AlbumComponent implements OnInit {

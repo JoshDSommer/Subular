@@ -1,5 +1,4 @@
 System.register(['angular2/core', 'angular2/router', '../folder-info', './subular-list-box.service'], function(exports_1) {
-    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +37,7 @@ System.register(['angular2/core', 'angular2/router', '../folder-info', './subula
                     this.subularService = subularService;
                     if (this.items != null && this.items.length > 0) {
                         var el = this._elementRef.nativeElement;
-                        var artistList_1 = document.getElementsByClassName('subular-list-box-item');
+                        var artistList = document.getElementsByClassName('subular-list-box-item');
                         document.addEventListener('keydown', function (event) {
                             var key = _this.key(event.code).toLowerCase();
                             if (key === 'arrowdown') {
@@ -56,15 +55,15 @@ System.register(['angular2/core', 'angular2/router', '../folder-info', './subula
                                 _this.search = '';
                             }, 500);
                             _this.search = _this.search + (key === 'space' ? ' ' : key);
-                            for (var i = 0; i < artistList_1.length; i++) {
-                                var artistName = artistList_1[i].innerHTML.trim().toLowerCase();
+                            for (var i = 0; i < artistList.length; i++) {
+                                var artistName = artistList[i].innerHTML.trim().toLowerCase();
                                 if (artistName.startsWith(_this.search)) {
                                     clearTimeout(_this.gotoClick);
                                     _this.gotoClick = setTimeout(function () {
-                                        artistList_1[i].click();
-                                        _this.scrollTo(artistList_1[i]);
+                                        artistList[i].click();
+                                        _this.scrollTo(artistList[i]);
                                     }, 500);
-                                    _this.scrollTo(artistList_1[i]);
+                                    _this.scrollTo(artistList[i]);
                                     return;
                                 }
                             }
@@ -122,7 +121,7 @@ System.register(['angular2/core', 'angular2/router', '../folder-info', './subula
                     __metadata('design:paramtypes', [core_1.ElementRef, router_1.Router, subular_list_box_service_1.SubularListBoxService])
                 ], SubularListBox);
                 return SubularListBox;
-            }());
+            })();
             exports_1("SubularListBox", SubularListBox);
         }
     }

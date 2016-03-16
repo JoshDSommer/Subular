@@ -1,5 +1,4 @@
 System.register(['angular2/core', 'angular2/router', '../shared/services/subular-service', '../shared/services/player-service', '../shared/directives/subular-list-box/subular-list-box.service', './../shared/services/settings-service', './../shared/directives/subular-list-item/subular-list-item'], function(exports_1) {
-    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -78,7 +77,8 @@ System.register(['angular2/core', 'angular2/router', '../shared/services/subular
                     core_1.Component({
                         selector: 'album',
                         templateUrl: 'app/album/album.html',
-                        directives: [subular_list_item_1.SubularListItem]
+                        directives: [subular_list_item_1.SubularListItem],
+                        styles: ["\n\t\t.album-song-list{\n\t\t\theight:calc(100% - 170px);\n\t\t\toverflow:auto;\n\t\t}\n\t"]
                     }),
                     __param(0, core_1.Inject(subular_service_1.SubularService)),
                     __param(1, core_1.Inject(player_service_1.PlayerService)),
@@ -88,7 +88,7 @@ System.register(['angular2/core', 'angular2/router', '../shared/services/subular
                     __metadata('design:paramtypes', [subular_service_1.SubularService, player_service_1.PlayerService, router_1.Router, router_1.RouteParams, subular_list_box_service_1.SubularListBoxService, settings_service_1.SettingsService])
                 ], AlbumComponent);
                 return AlbumComponent;
-            }());
+            })();
             exports_1("AlbumComponent", AlbumComponent);
         }
     }
