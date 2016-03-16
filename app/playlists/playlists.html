@@ -1,7 +1,7 @@
-<div class="row album-images">
-	<img height="45px" [src]="getCover(id)" *ngFor="#id of albumIds" />
+<div class="album-images">
+	<a [routerLink]="['ArtistAlbum', { id: album.artistId, albumId:album.parent }]" *ngFor="#album of albums"><img height="45px" [src]="getCover(album.parent)" /></a>
 </div>
 <div class="playlist-container">
 	<h2 class="">{{selectedplaylist?.name}}  ({{songs?.length}}) <i class="fa fa-random pull-right" (click)="playPlaylist()" ></i></h2>
-	<subular-list-item [songs]="songs" ></subular-list-item>
+	<subular-list-item [songs]="songs" [nowPlayingSong]="currentSong"></subular-list-item>
 </div>

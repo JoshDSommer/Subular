@@ -41,6 +41,7 @@ html, body {
 		list-style-type: none;
 		padding:5px 0px;
 		overflow-y:auto;
+		overflow-x:hidden;
 		border-right:1px solid #BBB !important;
 
 	}

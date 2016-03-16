@@ -11,6 +11,7 @@ import {IAlbum} from './shared/models/album';
 import {PlayerService} from './shared/services/player-service';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Playlists} from './playlists/playlists';
+import {AlbumComponent} from './album/album.component';
 
 //enableProdMode();
 
@@ -34,14 +35,15 @@ import {Playlists} from './playlists/playlists';
 			color:#fff;
 		}
 	`],
-	directives: [SubularPlayer, ArtistList, Settings, Playlists, ROUTER_DIRECTIVES, SubularListBox]
+	directives: [SubularPlayer, ArtistList, Settings, Playlists, ROUTER_DIRECTIVES, SubularListBox],
+	providers: [PlayerService, SubularService, SettingsService],
 })
 
 @RouteConfig([
 	{ path: '/', name: 'Landing', component: ArtistList, useAsDefault: true },
 	{ path: '/artist', name: 'ArtistList', component: ArtistList },
 	{ path: '/artist/:id', name: 'ArtistAlbums', component: ArtistList },
-	{ path: '/artist/:id/album/:albumId', name: 'ArtistAlbum', component: ArtistList },
+	{ path: '/artist/:id/album/:albumId', name: 'ArtistAlbum', component: AlbumComponent },
 	{ path: '/settings', name: 'Settings', component: Settings },
 	{ path: '/playlists/:id', name: 'Playlist', component: Playlists },
 	{ path: '/playlists/', name: 'Playlists', component: Playlists },

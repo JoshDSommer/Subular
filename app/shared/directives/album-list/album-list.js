@@ -48,13 +48,8 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                         name: ''
                     };
                     this.playerService = playerService;
-                    this.songs = [];
                     this.nowPlayingSong = {};
                 }
-                AlbumList.prototype.imgUrl = function (id) {
-                    var url = this.dataService.getCoverUrl(id);
-                    return url;
-                };
                 AlbumList.prototype.ngOnChanges = function () {
                     if (this.artist != null) {
                         this.albums = this.dataService.getAlbums(this.artist.id);
@@ -62,18 +57,10 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                 };
                 AlbumList.prototype.ngOnInit = function () {
                     var _this = this;
-                    if (this.routerParams.get('albumId') != null) {
-                        var albumId = +this.routerParams.get('albumId');
-                        this.songs = this.dataService.getSongsByArtistIdAlbumId(0, albumId);
-                    }
-                    else {
-                        this.getSongs();
-                        document.body.setAttribute('style', '');
-                        this.songs = [];
-                    }
+                    this.getSongs();
+                    document.body.setAttribute('style', '');
                     this.playerService.playingSong.subscribe(function (song) {
                         _this.nowPlayingSong = song;
-                        console.log('album-list' + _this.nowPlayingSong.title);
                     });
                 };
                 AlbumList.prototype.getSongs = function () {
@@ -88,12 +75,7 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                 };
                 AlbumList.prototype.playArtist = function () {
                     var songs;
-                    if (this.songs.length == 0) {
-                        songs = this.dataService.getSongs(this.artist.name);
-                    }
-                    else {
-                        songs = this.songs;
-                    }
+                    songs = this.dataService.getSongs(this.artist.name);
                     this.playerService.clearSongs();
                     this.playerService.addSongs(songs);
                     this.playerService.shuffleSongs();

@@ -1,12 +1,8 @@
 <section id="album-list-container">
 	<h2 class="" id="album-list-artist"><a [routerLink]="['ArtistAlbums', { id: artist?.id }]">{{artist?.name}}</a> <i class="fa fa-random pull-right" (click)="playArtist()"></i></h2>
-	<div class="album-list  scrollable-content" *ngIf="songs.length === 0">
+	<div class="album-list  scrollable-content" >
 		<div (click)="getAlbumSongs(album)" *ngFor="#album of albums">
 			<album-card [playerService]="playerService" [album]="album"></album-card>
 		</div>
-	</div>
-	<div class="album-song-list  scrollable-content" *ngIf="songs.length > 0">
-		<img src={{imgUrl(songs[0]?.parent)}} />
-		<subular-list-item [songs]="songs" ></subular-list-item>
 	</div>
 </section>

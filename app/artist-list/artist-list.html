@@ -1,11 +1,3 @@
-<!--<div class="col-sm-4 col-md-2 no-padding subular-list-container">
-	<ul id="artist-list" class="subular-list scrollable-content">
-		<li id="{{artist?.name.replace(' ','-')}}" class="subular-list-item" [ngClass]="{active : selectedArtist == artist }" *ngFor="#artist of artists"
-		(click)="onSelect(artist)">
-			{{artist?.name}}
-		</li>
-	</ul>
-</div>-->
 <div >
 	<album-list [artist]="selectedArtist"></album-list>
 </div>

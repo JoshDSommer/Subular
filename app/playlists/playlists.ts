@@ -4,9 +4,10 @@ import {SettingsService} from './../shared/services/settings-service';
 import {HTTP_PROVIDERS}    from 'angular2/http';
 import {IPlaylist} from './../shared/models/playlist';
 import {ISong} from './../shared/models/song';
+import {IAlbum} from './../shared/models/album';
 import {AlbumList} from '../shared/directives/album-list/album-list'
 import {PlayerService} from '../shared/services/player-service';
-import {Router, RouteParams} from 'angular2/router';
+import {Router, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import {SubularListItem} from '../shared/directives/subular-list-item/subular-list-item';
 import {ISubularItems, SubularListBoxService} from '../shared/directives/subular-list-box/subular-list-box.service';
 import * as _ from 'lodash';
@@ -21,19 +22,19 @@ import * as _ from 'lodash';
 			width:95%;
 		},
 		subular-list-item {
-			background-color: #fff;
 		}
 		.album-images{
 			height:45px;
 		}
 	`],
-	directives: [AlbumList, SubularListItem]
+	directives: [AlbumList, SubularListItem, ROUTER_DIRECTIVES]
 })
 export class Playlists implements OnInit {
 	public playlists: IPlaylist[];
 	public selectedplaylist: IPlaylist;
 	public songs: ISong[];
-	private albumIds: number[];
+	private albums: ISong[];
+	public currentSong: ISong;
 
 	constructor(private dataService: SubularService, private playerService: PlayerService,
 		@Inject(Router) private router: Router,
@@ -63,13 +64,16 @@ export class Playlists implements OnInit {
 			let albumId = +this.routerParams.get('id');
 			this.selectedPlaylist(albumId);
 		}
+		this.playerService.playingSong.subscribe((song) => {
+			this.currentSong = song;
+		});
 	}
 
 	selectedPlaylist(playlistId: number) {
 		let playlistString;
 		let playlistSongs;
 		this.songs = [];
-		this.albumIds = [];
+		this.albums = [];
 		this.dataService.getPlaylist(playlistId).subscribe(
 			data => playlistString = this.dataService.cleanSubsonicResponse(data),
 			error => console.log(error),
@@ -78,15 +82,18 @@ export class Playlists implements OnInit {
 				playlistSongs = <ISong[]>JSON.parse(playlistString).subresp.playlist.entry;
 				this.songs = playlistSongs;
 				_.forEach(this.songs, (song: ISong) => {
-					if (this.albumIds.indexOf(song.parent) === -1) {
-						this.albumIds.push(song.parent);
+					let albumSong = this.albums.filter((albumSong: ISong) => {
+						return albumSong.parent === song.parent;
+					});
+					if (albumSong.length == 0) {
+						this.albums.push(song);
 					}
 				});
 			}
 		);
-		this.selectedplaylist = _.find(this.dataService.getPlaylists(), (playlist: IPlaylist) => {
-			return playlist.id = playlistId;
-		});
+		this.selectedplaylist = this.dataService.getPlaylists().filter((playlist: IPlaylist) => {
+			return playlist.id == playlistId;
+		})[0];
 
 	}
 	playPlaylist(): void {

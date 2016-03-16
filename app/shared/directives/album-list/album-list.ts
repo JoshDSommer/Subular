@@ -1,9 +1,9 @@
 import {Component, OnChanges, OnInit, Inject  } from 'angular2/core';
 import {AlbumCard} from '../album-card/album-card';
 import {SubularService} from '../../services/subular-service';
+import {PlayerService} from '../../services/player-service';
 import {IAlbum} from '../../models/album';
 import {IArtist} from '../../models/artist';
-import {PlayerService} from '../../services/player-service';
 import {path} from '../folder-info';
 import {ISong} from '../../models/song';
 import {SubularListItem} from '../subular-list-item/subular-list-item';
@@ -58,7 +58,6 @@ export class AlbumList implements OnChanges, OnInit {
 	};
 	public albums: IAlbum[];
 	public playerService: PlayerService;
-	public songs: ISong[];
 	public nowPlayingSong: ISong;
 	private gotoClick: any;
 
@@ -69,15 +68,10 @@ export class AlbumList implements OnChanges, OnInit {
 		@Inject(RouteParams) private routerParams: RouteParams
 	) {
 		this.playerService = playerService;
-		this.songs = [];
 		this.nowPlayingSong = {};
-
 	}
 
-	imgUrl(id: number): string {
-		let url = this.dataService.getCoverUrl(id);
-		return url;
-	}
+
 
 	ngOnChanges(): void {
 		if (this.artist != null) {
@@ -88,17 +82,12 @@ export class AlbumList implements OnChanges, OnInit {
 	}
 
 	ngOnInit(): void {
-		if (this.routerParams.get('albumId') != null) {
-			let albumId = +this.routerParams.get('albumId');
-			this.songs = this.dataService.getSongsByArtistIdAlbumId(0, albumId);
-		} else {
-			this.getSongs();
-			document.body.setAttribute('style', '');
-			this.songs = [];
-		}
+
+		this.getSongs();
+		document.body.setAttribute('style', '');
+
 		this.playerService.playingSong.subscribe((song) => {
 			this.nowPlayingSong = song;
-			console.log('album-list' + this.nowPlayingSong.title);
 		});
 	}
 
@@ -115,11 +104,8 @@ export class AlbumList implements OnChanges, OnInit {
 
 	playArtist(): void {
 		let songs;
-		if (this.songs.length == 0) {
-			songs = this.dataService.getSongs(this.artist.name);
-		} else {
-			songs = this.songs;
-		}
+
+		songs = this.dataService.getSongs(this.artist.name);
 
 		this.playerService.clearSongs();
 		this.playerService.addSongs(songs);

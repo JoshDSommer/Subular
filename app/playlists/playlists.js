@@ -68,29 +68,36 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                     return this.dataService.getCoverUrl(albumId);
                 };
                 Playlists.prototype.ngOnInit = function () {
+                    var _this = this;
                     if (this.routerParams.get('id') != null) {
                         var albumId = +this.routerParams.get('id');
                         this.selectedPlaylist(albumId);
                     }
+                    this.playerService.playingSong.subscribe(function (song) {
+                        _this.currentSong = song;
+                    });
                 };
                 Playlists.prototype.selectedPlaylist = function (playlistId) {
                     var _this = this;
                     var playlistString;
                     var playlistSongs;
                     this.songs = [];
-                    this.albumIds = [];
+                    this.albums = [];
                     this.dataService.getPlaylist(playlistId).subscribe(function (data) { return playlistString = _this.dataService.cleanSubsonicResponse(data); }, function (error) { return console.log(error); }, function () {
                         playlistSongs = JSON.parse(playlistString).subresp.playlist.entry;
                         _this.songs = playlistSongs;
                         _.forEach(_this.songs, function (song) {
-                            if (_this.albumIds.indexOf(song.parent) === -1) {
-                                _this.albumIds.push(song.parent);
+                            var albumSong = _this.albums.filter(function (albumSong) {
+                                return albumSong.parent === song.parent;
+                            });
+                            if (albumSong.length == 0) {
+                                _this.albums.push(song);
                             }
                         });
                     });
-                    this.selectedplaylist = _.find(this.dataService.getPlaylists(), function (playlist) {
-                        return playlist.id = playlistId;
-                    });
+                    this.selectedplaylist = this.dataService.getPlaylists().filter(function (playlist) {
+                        return playlist.id == playlistId;
+                    })[0];
                 };
                 Playlists.prototype.playPlaylist = function () {
                     this.playerService.clearSongs();
@@ -103,8 +110,8 @@ System.register(['angular2/core', './../shared/services/subular-service', './../
                         selector: 'playlists',
                         templateUrl: 'app/playlists/playlists.html',
                         inputs: ['playlists', 'selectedplaylist', 'songs'],
-                        styles: ["\n\t\th2{\n\t\t\tcolor:#fff;\n\t\t\twidth:95%;\n\t\t},\n\t\tsubular-list-item {\n\t\t\tbackground-color: #fff;\n\t\t}\n\t\t.album-images{\n\t\t\theight:45px;\n\t\t}\n\t"],
-                        directives: [album_list_1.AlbumList, subular_list_item_1.SubularListItem]
+                        styles: ["\n\t\th2{\n\t\t\tcolor:#fff;\n\t\t\twidth:95%;\n\t\t},\n\t\tsubular-list-item {\n\t\t}\n\t\t.album-images{\n\t\t\theight:45px;\n\t\t}\n\t"],
+                        directives: [album_list_1.AlbumList, subular_list_item_1.SubularListItem, router_1.ROUTER_DIRECTIVES]
                     }),
                     __param(2, core_1.Inject(router_1.Router)),
                     __param(3, core_1.Inject(router_1.RouteParams)),

@@ -10,55 +10,7 @@ import {SubularService} from './../../services/subular-service';
 	templateUrl: path + 'subular-list-item/subular-list-item.html',
 	inputs: ['songs', 'number', 'nowPlayingSong', 'removeFromPlaylist', 'playlistId'],
 	directives: [SubularMenuItem],
-	styles: [`
-			td{
-				font-size:14px;
-				line-height:22px;
-			}
-
-			table{
-
-			}
-			.row-artist{
-				padding:0 10px;
-			}
-			.row-song{
-				max-width:45%;
-				overflow:hidden;
-			}
-			.row-track{
-				width: 19px;
-			}
-			.row-num{
-				padding-right:5px;
-			}
-			tr{
-				border-bottom: 1px #efefef solid;
-				cursor:hand;
-			}
-			td, th{
-				overflow:hidden;
-				padding:0 5px;
-			}
-			tr td:first-child{
-				padding-left:10px;
-			}
-			tr td:last-child{
-				padding-right:10px;
-			}
-			tr:hover{
-				color:#fff;
-				background-color:#9d9d9d;
-			}
-			.rowPlaying{
-				background: -webkit-linear-gradient(#4B0082,#4B0082);
-				font-weight:700;
-				color:#fff;
-			}
-			.small-th{
-				width:15px;
-			}
-			`],
+	styleUrls: [path + 'subular-list-item/subular-list-item.css'],
 })
 
 export class SubularListItem implements OnInit, OnChanges {
@@ -80,12 +32,12 @@ export class SubularListItem implements OnInit, OnChanges {
 	}
 
 	ngOnInit(): void {
-		this.playerService.playingSong.subscribe((song) => {
-			this.nowPlayingSong = song;
-		});
 	}
 
 	ngOnChanges(): void {
+		let songs = this.songs;
+		this.songs = [];
+		this.songs = songs;
 	}
 
 	rowNum(index: number): number {
