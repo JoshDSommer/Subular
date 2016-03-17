@@ -1,4 +1,6 @@
-System.register(['angular2/core', './../../services/subular-service', 'rxjs/add/operator/map', '../../services/player-service'], function(exports_1) {
+System.register(['angular2/core', './../../services/subular-service', 'rxjs/add/operator/map', '../../services/player-service'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -50,7 +52,7 @@ System.register(['angular2/core', './../../services/subular-service', 'rxjs/add/
                             var palettes = colorThief.getPalette(img, 8);
                             alt.setAttribute('style', 'color:#fefefe;border-bottom:2px ' + _this.getRGBString(palettes[6]) + 'solid;');
                             if (document.body.getAttribute('style') === '') {
-                                document.body.setAttribute('style', "\n\t\t\t\t\t\tbackground: -webkit-linear-gradient(" + _this.getRGBString(palettes[1]) + ", #101010);\n\t\t\t\t\t\tbackground: -o-linear-gradient(" + _this.getRGBString(palettes[1]) + ", #101010);\n\t\t\t\t\t\tbackground: linear-gradient(" + _this.getRGBString(palettes[1]) + ", #101010;\n\t\t\t\t\t\t");
+                                document.body.setAttribute('style', "\n\t\t\t\t\t\tbackground: -webkit-linear-gradient(" + _this.getBrightBGColor(palettes) + ", #101010, #080808);\n\t\t\t\t\t\tbackground: -o-linear-gradient(" + _this.getBrightBGColor(palettes) + ", #101010, #080808);\n\t\t\t\t\t\tbackground: linear-gradient(" + _this.getBrightBGColor(palettes) + ", #101010, #080808);\n\t\t\t\t\t\t");
                             }
                             button.setAttribute('style', 'color:' + _this.getRGBString(palettes[4]));
                         });
@@ -58,6 +60,21 @@ System.register(['angular2/core', './../../services/subular-service', 'rxjs/add/
                 };
                 AlbumCard.prototype.getRGBString = function (palette) {
                     return 'rgb(' + palette[0] + ',' + palette[1] + ',' + palette[2] + ')';
+                };
+                AlbumCard.prototype.getBrightBGColor = function (palettes, tolerance) {
+                    tolerance = tolerance == null ? 199 : tolerance;
+                    var brightPallet = palettes[0];
+                    palettes.forEach(function (palette) {
+                        if ((palette[0] > tolerance || palette[1] > tolerance || palette[2] > tolerance) && (palette[0] < (tolerance - (tolerance / 3)) || palette[1] < (tolerance - (tolerance / 3)) || palette[2] < (tolerance - (tolerance / 3)))) {
+                            brightPallet = palette;
+                        }
+                    });
+                    if (brightPallet[0] < tolerance && brightPallet[1] < tolerance && brightPallet[2] < tolerance) {
+                        return this.getBrightBGColor(palettes, tolerance - 15);
+                    }
+                    else {
+                        return this.getRGBString(brightPallet);
+                    }
                 };
                 AlbumCard.prototype.playAlbum = function (id) {
                     var songsList = this._dataService.getSongsByArtistIdAlbumId(this.album.parent, id);
@@ -75,7 +92,7 @@ System.register(['angular2/core', './../../services/subular-service', 'rxjs/add/
                     __metadata('design:paramtypes', [subular_service_1.SubularService, core_1.ElementRef, player_service_1.PlayerService])
                 ], AlbumCard);
                 return AlbumCard;
-            })();
+            }());
             exports_1("AlbumCard", AlbumCard);
         }
     }
