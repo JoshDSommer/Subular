@@ -87,9 +87,9 @@ export class AlbumCard implements OnInit {
 				alt.setAttribute('style', 'color:#fefefe;border-bottom:2px ' + this.getRGBString(palettes[6]) + 'solid;');
 				if (document.body.getAttribute('style') === '') {
 					document.body.setAttribute('style', `
-						background: -webkit-linear-gradient(` + this.getRGBString(palettes[1]) + `, #101010);
-						background: -o-linear-gradient(` + this.getRGBString(palettes[1]) + `, #101010);
-						background: linear-gradient(` + this.getRGBString(palettes[1]) + `, #101010;
+						background: -webkit-linear-gradient(` + this.getBrightBGColor(palettes) + `, #101010, #080808);
+						background: -o-linear-gradient(` + this.getBrightBGColor(palettes) + `, #101010, #080808);
+						background: linear-gradient(` + this.getBrightBGColor(palettes) + `, #101010, #080808);
 						`);
 				}
 				button.setAttribute('style', 'color:' + this.getRGBString(palettes[4]));
@@ -100,10 +100,26 @@ export class AlbumCard implements OnInit {
 		return 'rgb(' + palette[0] + ',' + palette[1] + ',' + palette[2] + ')';
 	}
 
+	getBrightBGColor(palettes: any[], tolerance?: number): string {
+		tolerance = tolerance == null ? 199 : tolerance;
+
+		let brightPallet = palettes[0];
+		palettes.forEach((palette: any) => {
+			if ((palette[0] > tolerance || palette[1] > tolerance || palette[2] > tolerance) && (palette[0] < (tolerance - (tolerance / 3)) || palette[1] < (tolerance - (tolerance / 3)) || palette[2] < (tolerance - (tolerance / 3)))) {
+				brightPallet = palette;
+			}
+		});
+
+		if (brightPallet[0] < tolerance && brightPallet[1] < tolerance && brightPallet[2] < tolerance) {
+			return this.getBrightBGColor(palettes, tolerance - 15);
+		} else {
+			return this.getRGBString(brightPallet);
+		}
+	}
+
 	playAlbum(id: number): void {
 		let songsList: ISong[] = this._dataService.getSongsByArtistIdAlbumId(this.album.parent, id);
 		this.playerService.clearSongs();
 		this.playerService.addSongs(songsList);
-
 	}
 }

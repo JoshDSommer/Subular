@@ -1,4 +1,6 @@
-System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/add/operator/map'], function(exports_1) {
+System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/add/operator/map'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -75,7 +77,7 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                         return this.getSongDB();
                     }
                     else {
-                        var songDb;
+                        var songDb = void 0;
                         songDb = this.getSongDB();
                         var artistSongs = songDb.filter(function (song) {
                             return song.artist === artistName;
@@ -170,13 +172,13 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                     var address = this._settings.getServerURl('getIndexes');
                     this._http.get(address).map(function (resp) { return resp.json(); }).subscribe(function (data) { return artistString = _this.cleanSubsonicResponse(data); }, function (error) { return console.log(error); }, function () {
                         try {
-                            var artistList = [];
+                            var artistList_1 = [];
                             ;
                             var artists = JSON.parse(artistString).subresp.indexes.index;
                             artists.forEach(function (value, index) {
-                                artistList = artistList.concat(value.artist);
+                                artistList_1 = artistList_1.concat(value.artist);
                             });
-                            window.localStorage.setItem('subular-artists', JSON.stringify(artistList));
+                            window.localStorage.setItem('subular-artists', JSON.stringify(artistList_1));
                         }
                         catch (e) {
                             console.log(e);
@@ -230,7 +232,7 @@ System.register(['./settings-service', 'angular2/http', 'angular2/core', 'rxjs/a
                     __metadata('design:paramtypes', [settings_service_1.SettingsService, http_1.Http])
                 ], SubularService);
                 return SubularService;
-            })();
+            }());
             exports_1("SubularService", SubularService);
         }
     }
