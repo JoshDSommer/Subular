@@ -30,6 +30,7 @@ import {SubularListItem} from './../shared/directives/subular-list-item/subular-
 			font-size:12px;
 			margin:0 0 15px;
 			font-weight:500;
+			color:#fff;
 		}
 	`],
 	styleUrls: ['app/shared/directives/subular-list-item/subular-list-item-light.css'],
