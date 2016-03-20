@@ -58,32 +58,33 @@ export class SubularMenuItem implements OnInit {
 	}
 
 	ngOnInit(): void {
+		console.log($('body'));
 		let el = <HTMLElement>this._elementRef.nativeElement;
 		let menu = <HTMLElement>el.getElementsByClassName('ul-play-menu')[0];
 		let subMenu = <HTMLElement>menu.getElementsByClassName('ul-play-menu-sub')[0];
-		menu.addEventListener('mouseout', (event) => {
-			let e = <HTMLElement>event.toElement || <HTMLElement>event.relatedTarget;
-			if (e.parentNode === menu || e.parentNode === subMenu || e === menu) {
-				clearTimeout(this.hideMenu);
-				this.hideMenu = setTimeout(() => {
-					this.showMenu = false;
-					this.showPlaylists = false;
-				}, 2700);
-				return;
-			}
-			this.hideMenu = setTimeout(() => {
-				this.showMenu = false;
-				this.showPlaylists = false;
-			}, 2200);
-		});
+		// menu.addEventListener('mouseout', (event) => {
+		// 	let e = <HTMLElement>event.toElement || <HTMLElement>event.relatedTarget;
+		// 	if (e.parentNode === menu || e.parentNode === subMenu || e === menu) {
+		// 		clearTimeout(this.hideMenu);
+		// 		this.hideMenu = setTimeout(() => {
+		// 			this.showMenu = false;
+		// 			this.showPlaylists = false;
+		// 		}, 2700);
+		// 		return;
+		// 	}
+		// 	this.hideMenu = setTimeout(() => {
+		// 		this.showMenu = false;
+		// 		this.showPlaylists = false;
+		// 	}, 2200);
+		// });
 	}
 	menuClick(): void {
 		this.showMenu = !this.showMenu;
 		this.showMenu = true;
-		this.hideMenu = setTimeout(() => {
-			this.showMenu = false;
-			this.showPlaylists = false;
-		}, 1700);
+		// this.hideMenu = setTimeout(() => {
+		// 	this.showMenu = false;
+		// 	this.showPlaylists = false;
+		// }, 1700);
 	}
 
 	playNext(): void {

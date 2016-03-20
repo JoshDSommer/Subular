@@ -1,6 +1,5 @@
-System.register(['angular2/core', 'angular2/router', '../shared/services/subular-service', '../shared/services/player-service', '../shared/directives/subular-list-box/subular-list-box.service', './../shared/services/settings-service', './../shared/directives/subular-list-item/subular-list-item'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../shared/services/subular-service', '../shared/services/player-service', '../shared/directives/subular-list-box/subular-list-box.service', './../shared/services/settings-service', './../shared/directives/subular-list-item/subular-list-item'], function(exports_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -70,6 +69,9 @@ System.register(['angular2/core', 'angular2/router', '../shared/services/subular
                     this.playerService.playingSong.subscribe(function (song) {
                         _this.currentSong = song;
                     });
+                    if (document.body.getAttribute('style') == null || document.body.getAttribute('style') == '') {
+                        this.settings.defaultBackground();
+                    }
                 };
                 AlbumComponent.prototype.imgUrl = function (id) {
                     var url = this.dataService.getCoverUrl(id);
@@ -80,7 +82,8 @@ System.register(['angular2/core', 'angular2/router', '../shared/services/subular
                         selector: 'album',
                         templateUrl: 'app/album/album.html',
                         directives: [subular_list_item_1.SubularListItem],
-                        styles: ["\n\t\t.album-song-list{\n\t\t\theight:calc(100% - 170px);\n\t\t\toverflow:auto;\n\t\t}\n\t"]
+                        styles: ["\n\t\t.album-song-list{\n\t\t\theight:calc(100% - 170px);\n\t\t\toverflow:auto;\n\t\t}\n\t"],
+                        styleUrls: ['app/shared/directives/subular-list-item/subular-list-item-light.css'],
                     }),
                     __param(0, core_1.Inject(subular_service_1.SubularService)),
                     __param(1, core_1.Inject(player_service_1.PlayerService)),

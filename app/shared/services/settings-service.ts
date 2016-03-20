@@ -60,9 +60,9 @@ export class SettingsService {
 
 	defaultBackground(): void {
 		document.body.setAttribute('style', `
-						background: -webkit-linear-gradient(#4B0082,#101010);
-						background: -o-linear-gradient(#4B0082,#101010);
-						background: linear-gradient(#4B0082,#101010;
+						background: -webkit-linear-gradient(#4B0082, #101010, #080808);
+						background: -o-linear-gradient(#4B0082, #101010, #080808);
+						background: linear-gradient(#4B0082, #101010, #080808);;
 						`);
 	}
 }

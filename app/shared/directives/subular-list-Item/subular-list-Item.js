@@ -1,6 +1,5 @@
-System.register(['angular2/core', '../folder-info', '../../services/player-service', '../subular-item-menu/subular-item-menu', './../../services/subular-service'], function(exports_1, context_1) {
+System.register(['angular2/core', '../folder-info', '../../services/player-service', '../subular-item-menu/subular-item-menu', './../../services/subular-service', 'jquery'], function(exports_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13,7 +12,7 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, folder_info_1, player_service_1, subular_item_menu_1, subular_service_1;
+    var core_1, folder_info_1, player_service_1, subular_item_menu_1, subular_service_1, $;
     var SubularListItem;
     return {
         setters:[
@@ -31,6 +30,9 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
             },
             function (subular_service_1_1) {
                 subular_service_1 = subular_service_1_1;
+            },
+            function ($_1) {
+                $ = $_1;
             }],
         execute: function() {
             SubularListItem = (function () {
@@ -45,6 +47,31 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                     };
                 }
                 SubularListItem.prototype.ngOnInit = function () {
+                    if (this.style === 'dark') {
+                        this.darkStyle = true;
+                    }
+                    else {
+                        this.darkStyle = false;
+                    }
+                    console.log(this.style);
+                    $.contextMenu({
+                        selector: '.song-list-item',
+                        callback: function (key, options) {
+                            var m = "clicked: " + key;
+                            window.console && console.log(m) || alert(m);
+                        },
+                        items: {
+                            "edit": { name: "Edit", icon: "edit" },
+                            "cut": { name: "Cut", icon: "cut" },
+                            copy: { name: "Copy", icon: "copy" },
+                            "paste": { name: "Paste", icon: "paste" },
+                            "delete": { name: "Delete", icon: "delete" },
+                            "sep1": "---------",
+                            "quit": { name: "Quit", icon: function () {
+                                    return 'context-menu-icon context-menu-icon-quit';
+                                } }
+                        }
+                    });
                 };
                 SubularListItem.prototype.ngOnChanges = function () {
                     var songs = this.songs;
@@ -69,13 +96,21 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                     this.dataService.removeSongFromPlaylist(playlistId, songId);
                     this.songs.splice(songIndex, 1);
                 };
+                __decorate([
+                    core_1.Input('item-style'), 
+                    __metadata('design:type', String)
+                ], SubularListItem.prototype, "style", void 0);
                 SubularListItem = __decorate([
                     core_1.Component({
                         selector: 'subular-list-item',
                         templateUrl: folder_info_1.path + 'subular-list-item/subular-list-item.html',
-                        inputs: ['songs', 'number', 'nowPlayingSong', 'removeFromPlaylist', 'playlistId'],
+                        inputs: ['songs', 'nowPlayingSong', 'removeFromPlaylist', 'playlistId'],
                         directives: [subular_item_menu_1.SubularMenuItem],
-                        styleUrls: [folder_info_1.path + 'subular-list-item/subular-list-item.css'],
+                        styleUrls: [
+                            folder_info_1.path + 'subular-list-item/subular-list-item.css',
+                            folder_info_1.path + 'subular-list-item/subular-list-item-light.css',
+                            folder_info_1.path + 'subular-list-item/subular-list-item-dark.css',
+                        ]
                     }),
                     __param(0, core_1.Inject(player_service_1.PlayerService)),
                     __param(1, core_1.Inject(subular_service_1.SubularService)), 

@@ -1,4 +1,4 @@
-import {Component, ElementRef, Inject, OnInit, OnChanges } from 'angular2/core';
+import {Component, ElementRef, Inject, OnInit, OnChanges, ViewEncapsulation  } from 'angular2/core';
 import {SubularService} from './../shared/services/subular-service';
 import {SettingsService} from './../shared/services/settings-service';
 import {HTTP_PROVIDERS}    from 'angular2/http';
@@ -15,7 +15,7 @@ import {ISubularItems, SubularListBoxService} from '../shared/directives/subular
 	styles: [`
 
 `],
-	directives: [AlbumList]
+	directives: [AlbumList],
 })
 export class ArtistList implements OnInit, OnChanges {
 	items: Array<any>;

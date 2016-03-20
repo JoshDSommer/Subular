@@ -1,6 +1,5 @@
-System.register(['angular2/core', '../album-card/album-card', '../../services/subular-service', '../../services/player-service', '../folder-info', '../subular-list-item/subular-list-item', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', '../album-card/album-card', '../../services/subular-service', '../../services/player-service', '../folder-info', '../subular-list-item/subular-list-item', 'angular2/router'], function(exports_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -88,7 +87,7 @@ System.register(['angular2/core', '../album-card/album-card', '../../services/su
                         templateUrl: folder_info_1.path + 'album-list/album-list.html',
                         directives: [album_card_1.AlbumCard, subular_list_item_1.SubularListItem, router_1.ROUTER_DIRECTIVES],
                         inputs: ['albums', 'artist', 'playerService', 'songs'],
-                        styles: ["\n\t\talbum-card{\n\t\t\tcursor:hand;\n\t\t}\n\t\t.album-list{\n\t\t\theight:calc(100% - 180px);\n\t\t\toverflow-y:auto;\n\t\t\tpadding-left:5px;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\tbackground: transparent !important;\n\t\t}\n\t\th2{\n\t\t\tpadding:0 25px;\n\t\t\tmargin-bottom: 0;\n\t\t}\n\t\ti.fa:hover{\n\t\t\tcolor:#9d9d9d !important;\n\t\t}\n\t\t.album-song-list{\n\t\t\tbackground-color: white;\n\t\t\topacity: 0.85;\n\t\t\theight:calc(100% - 170px);\n\t\t\toverflow:auto;\n\t\t}\n\t\t#album-list-artist a{\n\t\t\tcolor:inherit;\n\t\t}\n\t\th2{\n\t\t\tcolor:#fff;\n\t\t}\n\t"]
+                        styles: ["\n\t\talbum-card{\n\t\t\tcursor:hand;\n\t\t}\n\t\t.album-list{\n\t\t\theight:calc(100% - 180px);\n\t\t\toverflow-y:auto;\n\t\t\tpadding-left:5px;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\t\t\tbackground: transparent !important;\n\t\t}\n\t\t.album-list::-webkit-scrollbar {\n\t\t\tbackground: transparent !important;\n\t\t}\n\t\th2{\n\t\t\tpadding:0 25px;\n\t\t\tmargin-bottom: 0;\n\t\t}\n\t\ti.fa:hover{\n\t\t\tcolor:#9d9d9d !important;\n\t\t}\n\t\t.album-song-list{\n\t\t\tbackground-color: white;\n\t\t\topacity: 0.85;\n\t\t\theight:calc(100% - 170px);\n\t\t\toverflow:auto;\n\t\t}\n\t\t#album-list-artist a{\n\t\t\tcolor:inherit;\n\t\t}\n\t\th2{\n\t\t\tcolor:#fff;\n\t\t}\n\t"],
                     }),
                     __param(0, core_1.Inject(subular_service_1.SubularService)),
                     __param(1, core_1.Inject(player_service_1.PlayerService)),

@@ -32,3 +32,6 @@
 				height:4px;
     			display: inline-block;
 			}
+subular-list-item table tr td, subular-list-item table tr th{
+	color: #101010;
+}

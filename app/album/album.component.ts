@@ -18,7 +18,9 @@ import {SubularListItem} from './../shared/directives/subular-list-item/subular-
 			height:calc(100% - 170px);
 			overflow:auto;
 		}
-	`]
+	`],
+	styleUrls: ['app/shared/directives/subular-list-item/subular-list-item-light.css'],
+
 })
 
 export class AlbumComponent implements OnInit {
@@ -55,6 +57,9 @@ export class AlbumComponent implements OnInit {
 		this.playerService.playingSong.subscribe((song) => {
 			this.currentSong = song;
 		});
+		if (document.body.getAttribute('style') == null || document.body.getAttribute('style') == '') {
+			this.settings.defaultBackground();
+		}
 	}
 
 	imgUrl(id: number): string {

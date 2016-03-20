@@ -1,6 +1,5 @@
-System.register(['angular2/core', './../shared/services/subular-service', '../shared/directives/album-list/album-list', '../shared/services/player-service', 'angular2/router', '../shared/directives/subular-list-box/subular-list-box.service'], function(exports_1, context_1) {
+System.register(['angular2/core', './../shared/services/subular-service', '../shared/directives/album-list/album-list', '../shared/services/player-service', 'angular2/router', '../shared/directives/subular-list-box/subular-list-box.service'], function(exports_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -135,7 +134,7 @@ System.register(['angular2/core', './../shared/services/subular-service', '../sh
                         templateUrl: '/app/artist-list/artist-list.html',
                         inputs: ['artists', 'selectedArtist', 'playerService', 'i'],
                         styles: ["\n\n"],
-                        directives: [album_list_1.AlbumList]
+                        directives: [album_list_1.AlbumList],
                     }),
                     __param(0, core_1.Inject(subular_service_1.SubularService)),
                     __param(1, core_1.Inject(core_1.ElementRef)),

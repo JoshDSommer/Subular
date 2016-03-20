@@ -9,6 +9,7 @@
 				<li (click)="createPlaylist(song.id)"> Create New</li>
 			</ul>
 		</li>
-		<!--<li disabled>Download</li>-->
 	</ul>
 </div>
+
+<div *ngIf="showMenu" id="menu-modal" class="subular-modal" (click)="showMenu = !showMenu"></div>

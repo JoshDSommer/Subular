@@ -1,6 +1,5 @@
-System.register(['angular2/core', '../folder-info', '../../services/player-service', './../../services/subular-service'], function(exports_1, context_1) {
+System.register(['angular2/core', '../folder-info', '../../services/player-service', './../../services/subular-service'], function(exports_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -40,34 +39,33 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                     this.playlists = this.dataService.getPlaylists();
                 }
                 SubularMenuItem.prototype.ngOnInit = function () {
-                    var _this = this;
+                    console.log($('body'));
                     var el = this._elementRef.nativeElement;
                     var menu = el.getElementsByClassName('ul-play-menu')[0];
                     var subMenu = menu.getElementsByClassName('ul-play-menu-sub')[0];
-                    menu.addEventListener('mouseout', function (event) {
-                        var e = event.toElement || event.relatedTarget;
-                        if (e.parentNode === menu || e.parentNode === subMenu || e === menu) {
-                            clearTimeout(_this.hideMenu);
-                            _this.hideMenu = setTimeout(function () {
-                                _this.showMenu = false;
-                                _this.showPlaylists = false;
-                            }, 2700);
-                            return;
-                        }
-                        _this.hideMenu = setTimeout(function () {
-                            _this.showMenu = false;
-                            _this.showPlaylists = false;
-                        }, 2200);
-                    });
+                    // menu.addEventListener('mouseout', (event) => {
+                    // 	let e = <HTMLElement>event.toElement || <HTMLElement>event.relatedTarget;
+                    // 	if (e.parentNode === menu || e.parentNode === subMenu || e === menu) {
+                    // 		clearTimeout(this.hideMenu);
+                    // 		this.hideMenu = setTimeout(() => {
+                    // 			this.showMenu = false;
+                    // 			this.showPlaylists = false;
+                    // 		}, 2700);
+                    // 		return;
+                    // 	}
+                    // 	this.hideMenu = setTimeout(() => {
+                    // 		this.showMenu = false;
+                    // 		this.showPlaylists = false;
+                    // 	}, 2200);
+                    // });
                 };
                 SubularMenuItem.prototype.menuClick = function () {
-                    var _this = this;
                     this.showMenu = !this.showMenu;
                     this.showMenu = true;
-                    this.hideMenu = setTimeout(function () {
-                        _this.showMenu = false;
-                        _this.showPlaylists = false;
-                    }, 1700);
+                    // this.hideMenu = setTimeout(() => {
+                    // 	this.showMenu = false;
+                    // 	this.showPlaylists = false;
+                    // }, 1700);
                 };
                 SubularMenuItem.prototype.playNext = function () {
                     if (this._playerService.songList == null) {

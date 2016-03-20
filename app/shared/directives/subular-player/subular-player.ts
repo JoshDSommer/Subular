@@ -91,6 +91,9 @@ import {IArtist} from '../../models/artist';
 			.cover-img{
 				height:63px;
 			}
+			subular-list-item div table tr td, subular-list-item div table tr th{
+				color: #101010 !important;
+			}
 	`]
 })
 export class SubularPlayer implements OnChanges, OnInit {

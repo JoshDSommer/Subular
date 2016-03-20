@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, Inject  } from 'angular2/core';
+import {Component, OnChanges, OnInit, Inject, ViewEncapsulation  } from 'angular2/core';
 import {AlbumCard} from '../album-card/album-card';
 import {SubularService} from '../../services/subular-service';
 import {PlayerService} from '../../services/player-service';
@@ -48,7 +48,8 @@ import {Router, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 		h2{
 			color:#fff;
 		}
-	`]
+	`],
+
 })
 
 export class AlbumList implements OnChanges, OnInit {

@@ -6,7 +6,7 @@
     "tsc:w": "tsc -w",
     "lite": "lite-server",
     "start": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
-	"dist": "gulp build"
+    "dist": "gulp build"
   },
   "license": "ISC",
   "dependencies": {
@@ -20,6 +20,8 @@
     "gulp": "^3.9.0",
     "gulp-tslint": "^4.3.2",
     "gulp-typescript": "^2.8.0",
+    "jquery": "^2.2.2",
+    "jquery-contextmenu": "^2.1.1",
     "lodash": "^4.6.1",
     "node-vibrant": "^2.0.2",
     "reflect-metadata": "0.1.2",
