@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../folder-info', '../../services/player-service', '../subular-item-menu/subular-item-menu', './../../services/subular-service', 'jquery'], function(exports_1) {
+System.register(['angular2/core', '../folder-info', '../../services/player-service', '../subular-item-menu/subular-item-menu', './../../services/subular-service'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -12,7 +12,7 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, folder_info_1, player_service_1, subular_item_menu_1, subular_service_1, $;
+    var core_1, folder_info_1, player_service_1, subular_item_menu_1, subular_service_1;
     var SubularListItem;
     return {
         setters:[
@@ -30,9 +30,6 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
             },
             function (subular_service_1_1) {
                 subular_service_1 = subular_service_1_1;
-            },
-            function ($_1) {
-                $ = $_1;
             }],
         execute: function() {
             SubularListItem = (function () {
@@ -54,24 +51,24 @@ System.register(['angular2/core', '../folder-info', '../../services/player-servi
                         this.darkStyle = false;
                     }
                     console.log(this.style);
-                    $.contextMenu({
-                        selector: '.song-list-item',
-                        callback: function (key, options) {
-                            var m = "clicked: " + key;
-                            window.console && console.log(m) || alert(m);
-                        },
-                        items: {
-                            "edit": { name: "Edit", icon: "edit" },
-                            "cut": { name: "Cut", icon: "cut" },
-                            copy: { name: "Copy", icon: "copy" },
-                            "paste": { name: "Paste", icon: "paste" },
-                            "delete": { name: "Delete", icon: "delete" },
-                            "sep1": "---------",
-                            "quit": { name: "Quit", icon: function () {
-                                    return 'context-menu-icon context-menu-icon-quit';
-                                } }
-                        }
-                    });
+                    // $.contextMenu({
+                    // 		selector: '.song-list-item',
+                    // 		callback: function(key, options) {
+                    // 			var m = "clicked: " + key;
+                    // 			window.console && console.log(m) || alert(m);
+                    // 		},
+                    // 		items: {
+                    // 			"edit": {name: "Edit", icon: "edit"},
+                    // 			"cut": {name: "Cut", icon: "cut"},
+                    // 			copy: {name: "Copy", icon: "copy"},
+                    // 			"paste": {name: "Paste", icon: "paste"},
+                    // 			"delete": {name: "Delete", icon: "delete"},
+                    // 			"sep1": "---------",
+                    // 			"quit": {name: "Quit", icon: function(){
+                    // 				return 'context-menu-icon context-menu-icon-quit';
+                    // 			}}
+                    // 		}
+                    // 	});
                 };
                 SubularListItem.prototype.ngOnChanges = function () {
                     var songs = this.songs;

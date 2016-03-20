@@ -18,6 +18,19 @@ import {SubularListItem} from './../shared/directives/subular-list-item/subular-
 			height:calc(100% - 170px);
 			overflow:auto;
 		}
+		img{
+			margin:15px;
+			float:left;
+		}
+		h2,h3{
+			color:#fff;
+			margin: 15px 0 10px;
+		}
+		.year{
+			font-size:12px;
+			margin:0 0 15px;
+			font-weight:500;
+		}
 	`],
 	styleUrls: ['app/shared/directives/subular-list-item/subular-list-item-light.css'],
 

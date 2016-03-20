@@ -82,7 +82,7 @@ System.register(['angular2/core', 'angular2/router', '../shared/services/subular
                         selector: 'album',
                         templateUrl: 'app/album/album.html',
                         directives: [subular_list_item_1.SubularListItem],
-                        styles: ["\n\t\t.album-song-list{\n\t\t\theight:calc(100% - 170px);\n\t\t\toverflow:auto;\n\t\t}\n\t"],
+                        styles: ["\n\t\t.album-song-list{\n\t\t\theight:calc(100% - 170px);\n\t\t\toverflow:auto;\n\t\t}\n\t\timg{\n\t\t\tmargin:15px;\n\t\t\tfloat:left;\n\t\t}\n\t\th2,h3{\n\t\t\tcolor:#fff;\n\t\t\tmargin: 15px 0 10px;\n\t\t}\n\t\t.year{\n\t\t\tfont-size:12px;\n\t\t\tmargin:0 0 15px;\n\t\t}\n\t"],
                         styleUrls: ['app/shared/directives/subular-list-item/subular-list-item-light.css'],
                     }),
                     __param(0, core_1.Inject(subular_service_1.SubularService)),

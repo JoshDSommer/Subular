@@ -1,4 +1,6 @@
 <div class="album-song-list  scrollable-content" *ngIf="songs.length > 0">
 	<img src={{imgUrl(songs[0]?.parent)}} />
+	<h2>{{songs[0]?.album}} <span class="year">{{songs[0]?.year}}</span></h2>
+	<h3>{{songs[0]?.artist}}</h3>
 	<subular-list-item [songs]="songs" [nowPlayingSong]="currentSong" ></subular-list-item>
 </div>
