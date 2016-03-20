@@ -34,7 +34,9 @@ gulp.task('copy:libs', ['clean'], function () {
 		'js/color-thief.min.js',
 		'node_modules/angular2/bundles/router.dev.js',
 		'node_modules/crypto-js/crypto-js.js',
-		'node_modules/bootstrap/dist/js/bootstrap.min.js'
+		'node_modules/bootstrap/dist/js/bootstrap.min.js',
+		'node_modules/jquery/dist/jquery.min.js',
+		'node_modules/jquery-contextmenu/dist/jquery.contextMenu.min.js'
 	], { base: './' })
 		.pipe(gulp.dest('dist'))
 });

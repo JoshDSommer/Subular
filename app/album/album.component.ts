@@ -15,7 +15,7 @@ import {SubularListItem} from './../shared/directives/subular-list-item/subular-
 	directives: [SubularListItem],
 	styles: [`
 		.album-song-list{
-			height:calc(100% - 170px);
+			height:calc(100% - 115px);
 			overflow:auto;
 		}
 		img{

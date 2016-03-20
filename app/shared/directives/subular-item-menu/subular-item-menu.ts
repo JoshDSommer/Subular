@@ -58,7 +58,6 @@ export class SubularMenuItem implements OnInit {
 	}
 
 	ngOnInit(): void {
-		console.log($('body'));
 		let el = <HTMLElement>this._elementRef.nativeElement;
 		let menu = <HTMLElement>el.getElementsByClassName('ul-play-menu')[0];
 		let subMenu = <HTMLElement>menu.getElementsByClassName('ul-play-menu-sub')[0];
