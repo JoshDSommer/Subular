@@ -1,1 +1,0 @@
-export let path = './app/shared/directives/'

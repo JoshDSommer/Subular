@@ -1,6 +1,0 @@
-<ul class="subular-list-box scrollable-content">
-	<li id="{{item?.name.replace(' ','-')}}" class="subular-list-box-item" [ngClass]="{active : selectedItem == item }" *ngFor="#item of items"
-	(click)="onSelect(item)">
-		{{item?.name}}
-	</li>
-</ul>
