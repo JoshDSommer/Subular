@@ -10,7 +10,8 @@
 /** Map relative paths to URLs. */
 const map: any = {
 	'crypto-js': 'vendor/crypto-js',
-	'@ngrx': 'vendor/@ngrx'
+	'@ngrx': 'vendor/@ngrx',
+	'lodash': 'vendor/lodash'
 };
 
 /** User packages configuration. */
@@ -23,6 +24,10 @@ const packages: any = {
 		main: 'index.js',
 	},
 	'@ngrx/core': {
+		main: 'index.js',
+		format: 'cjs'
+	},
+	'lodash': {
 		main: 'index.js',
 		format: 'cjs'
 	},

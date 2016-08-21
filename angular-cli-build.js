@@ -17,7 +17,8 @@ module.exports = function(defaults) {
       'rxjs/**/*.+(js|js.map)',
       '@ngrx/**/*.+(js)',
       '@angular/**/*.+(js|js.map)',
-      'crypto-js/**/*.js'
+      'crypto-js/**/*.js',
+      'lodash/**/*.js',
     ]
   });
 };
