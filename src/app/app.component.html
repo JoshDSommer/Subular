@@ -1,3 +1,7 @@
 <h1>
   {{title}}
 </h1>
+
+<div *ngFor="let artist of artists | async">
+  {{ artist?.name }}
+</div>
