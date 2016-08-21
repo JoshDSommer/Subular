@@ -1,9 +1,10 @@
 
-import { sample as sampleReducer } from './sample';
-
-export const sample = sampleReducer;
+export { servers, SERVER_ACTIONS, IServer   } from './servers';
+export { artists, ARTIST_ACTIONS, IArtist   } from './artists';
+export { appState, STATE_ACTIONS, AppState   } from './appState';
 
 export const REDUCERS_DICTONARY = {
-	sample: 'sample',
-
+	servers: 'servers',
+	artists: 'artists',
+	appState: 'appState'
 };
