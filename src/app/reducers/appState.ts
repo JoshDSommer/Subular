@@ -6,7 +6,7 @@ export enum AppState {
 	paused
 }
 
-export const STATE_ACTIONS = {
+export const APP_STATE_ACTIONS = {
 	LOADING: 'LOADING',
 	PLAYING: 'PLAYING',
 	PAUSED: 'PAUSED'
@@ -14,11 +14,11 @@ export const STATE_ACTIONS = {
 
 export const appState: ActionReducer<AppState> = (state:AppState = AppState.loading, {type}) => {
 	switch (type) {
-		case STATE_ACTIONS.LOADING:
+		case APP_STATE_ACTIONS.LOADING:
 			return AppState.loading;
-		case STATE_ACTIONS.PAUSED:
+		case APP_STATE_ACTIONS.PAUSED:
 			return AppState.paused;
-		case STATE_ACTIONS.PLAYING:
+		case APP_STATE_ACTIONS.PLAYING:
 			return AppState.playing;
 		default:
 			return state;
