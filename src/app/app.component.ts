@@ -3,6 +3,7 @@ import { SubularService } from './services/subsonic.service';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IServer, IArtist, REDUCERS_DICTONARY, SERVER_ACTIONS, AppState } from './reducers/reducers.index';
+import { StoreLogMonitorComponent } from '@ngrx/store-log-monitor';
 
 @Component({
 	moduleId: module.id,
@@ -10,6 +11,7 @@ import { IServer, IArtist, REDUCERS_DICTONARY, SERVER_ACTIONS, AppState } from '
 	templateUrl: 'app.component.html',
 	styleUrls: ['app.component.css'],
 	providers: [ SubularService]
+	directives: [StoreLogMonitorComponent]
 })
 export class AppComponent {
 	title = 'app works!';

@@ -27,6 +27,14 @@ const packages: any = {
 		main: 'index.js',
 		format: 'cjs'
 	},
+	'@ngrx/store-devtools': {
+		main: 'index.js',
+		format: 'cjs'
+	},
+	'@ngrx/store-log-monitor': {
+		main: 'index.js',
+		format: 'cjs'
+	},
 	'lodash': {
 		main: 'index.js',
 		format: 'cjs'
