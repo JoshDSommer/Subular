@@ -2,8 +2,9 @@ import {Http} from '@angular/http';
 import {Injectable} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { IServer, IArtist, REDUCERS_DICTONARY, SERVER_ACTIONS, ARTIST_ACTIONS } from '../reducers/reducers.index';
+import { IServer, IArtist, REDUCERS_DICTONARY, SERVER_ACTIONS, ARTIST_ACTIONS, APP_STATE_ACTIONS } from '../reducers/reducers.index';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 
 @Injectable()
 export class SubularService {
@@ -20,7 +21,12 @@ export class SubularService {
 		// 	window.localStorage.setItem('subular-artists', JSON.stringify([]));
 		// 	window.localStorage.setItem('subular-playlist', JSON.stringify([]));
 		// 	window.localStorage.setItem('subular-songs', JSON.stringify([]));
-		this.buildArtistDatabase(server);
+		this.buildArtistDatabase(server)
+			.subscribe(
+				(payload) => this.store.dispatch({ type: ARTIST_ACTIONS.ADD_ARTISTS, payload: payload }),
+				null,
+				() => this.store.dispatch({type:APP_STATE_ACTIONS.PAUSED})
+			);
 		// 	this.buildPlayListDatabase();
 		// 	this.buildAlbumDatabase();
 		// }
@@ -189,10 +195,10 @@ export class SubularService {
 		return `${server.serverAddress}/rest/${method}.view?u=${server.serverUserName}&t=${server.serverPassword}&s=${server.salt}&v=1.0.0&c=rest&f=json`;
 	}
 
-	private buildArtistDatabase(server: IServer): void {
+	private buildArtistDatabase(server: IServer): Observable<any> {
 		let artistString;
 		let address = this.getServerURl(server, 'getIndexes');
-		this.http.get(address)
+		return this.http.get(address)
 			.map(resp => resp.json())
 			.map(payload => {
 				artistString = this.cleanSubsonicResponse(payload);
@@ -203,8 +209,8 @@ export class SubularService {
 					artists = artists.concat(value.artist);
 				});
 				return artists;
-			})
-			.subscribe((payload) => this.store.dispatch({ type: ARTIST_ACTIONS.ADD_ARTISTS, payload: payload }));
+			});
+
 	}
 	// private buildAlbumDatabase(offset?: number): void {
 	// 	let albumString

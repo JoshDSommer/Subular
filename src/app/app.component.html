@@ -1,7 +1,12 @@
 <h1>
   {{title}}
 </h1>
-
-<div *ngFor="let artist of artists | async">
-  {{ artist?.name }}
-</div> <ngrx-store-log-monitor toggleCommand="ctrl-h" positionCommand="ctrl-m"></ngrx-store-log-monitor>
+ <ngrx-store-log-monitor toggleCommand="ctrl-h" positionCommand="ctrl-m"></ngrx-store-log-monitor>
+<section *ngIf="(appState | async) == appStateEnum.loading">
+  Loading app data...
+</section>
+<section *ngIf="(appState | async)  != appStateEnum.loading">
+  <div *ngFor="let artist of artists | async">
+    {{ artist?.name }}
+  </div>
+</section>

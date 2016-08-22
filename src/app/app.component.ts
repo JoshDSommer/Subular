@@ -5,12 +5,13 @@ import { Observable } from 'rxjs';
 import { IServer, IArtist, REDUCERS_DICTONARY, SERVER_ACTIONS, AppState } from './reducers/reducers.index';
 import { StoreLogMonitorComponent } from '@ngrx/store-log-monitor';
 
+
 @Component({
 	moduleId: module.id,
 	selector: 'app-root',
 	templateUrl: 'app.component.html',
 	styleUrls: ['app.component.css'],
-	providers: [ SubularService]
+	providers: [SubularService],
 	directives: [StoreLogMonitorComponent]
 })
 export class AppComponent {
@@ -18,14 +19,17 @@ export class AppComponent {
 	artists: Observable<IArtist>;
 	server: Observable<IServer[]>;
 	appState: Observable<AppState>;
+	appStateEnum;
 
 	constructor(private subular: SubularService, private store: Store<any>) {
 		this.artists = <any>this.store.select(REDUCERS_DICTONARY.artists);
 		this.server = <any>this.store.select(REDUCERS_DICTONARY.servers);
 		this.appState = <any>this.store.select(REDUCERS_DICTONARY.appState);
 
+		this.appStateEnum = AppState;
+
 		let newServer: IServer = {
-			name: '',
+			name: 'home',
 			serverAddress: '',
 			serverPassword: '',
 			serverUserName: '',
@@ -34,7 +38,7 @@ export class AppComponent {
 		}
 
 		this.server.subscribe((server: IServer[]) => {
-			if (server && server[0]) {
+			if (server && server[0] && server[0].selected) {
 				this.subular.buildServerData(server[0]);
 			}
 		});
