@@ -20,7 +20,8 @@ export class SubularService {
 		// 	window.localStorage.setItem('subular-artists', JSON.stringify([]));
 		// 	window.localStorage.setItem('subular-playlist', JSON.stringify([]));
 		// 	window.localStorage.setItem('subular-songs', JSON.stringify([]));
-		this.buildArtistDatabase(server);
+		this.buildArtistDatabase(server)
+			.subscribe((payload) => this.store.dispatch({ type: ARTIST_ACTIONS.ADD_ARTISTS, payload: payload }));
 		// 	this.buildPlayListDatabase();
 		// 	this.buildAlbumDatabase();
 		// }
@@ -189,22 +190,21 @@ export class SubularService {
 		return `${server.serverAddress}/rest/${method}.view?u=${server.serverUserName}&t=${server.serverPassword}&s=${server.salt}&v=1.0.0&c=rest&f=json`;
 	}
 
-	private buildArtistDatabase(server: IServer): void {
+	private buildArtistDatabase(server: IServer): Observable<any> {
 		let artistString;
 		let address = this.getServerURl(server, 'getIndexes');
-		this.http.get(address)
+		return this.http.get(address)
 			.map(resp => resp.json())
 			.map(payload => {
 				artistString = this.cleanSubsonicResponse(payload);
 				let artists: any[] = [];
 				let artistsList: any[] = JSON.parse(artistString).subresp.indexes.index;
-				console.log(JSON.stringify(artistsList));
 				artistsList.forEach((value, index) => {
 					artists = artists.concat(value.artist);
 				});
+				window.localStorage.setItem('subular-artists', JSON.stringify(artists));
 				return artists;
-			})
-			.subscribe((payload) => this.store.dispatch({ type: ARTIST_ACTIONS.ADD_ARTISTS, payload: payload }));
+			});
 	}
 	// private buildAlbumDatabase(offset?: number): void {
 	// 	let albumString
