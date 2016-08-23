@@ -7,5 +7,8 @@
   "globalDependencies": {
     "crypto-js": "registry:dt/crypto-js#3.1.4+20160708041433",
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504"
+  },
+  "dependencies": {
+    "lodash": "registry:npm/lodash#4.0.0+20160723033700"
   }
 }

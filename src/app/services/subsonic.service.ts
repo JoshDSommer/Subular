@@ -2,8 +2,9 @@ import {Http} from '@angular/http';
 import {Injectable} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { IServer, IArtist, REDUCERS_DICTONARY, SERVER_ACTIONS, ARTIST_ACTIONS } from '../reducers/reducers.index';
+import { IServer, IArtist, REDUCERS_DICTONARY, SERVER_ACTIONS, ARTIST_ACTIONS, APP_STATE_ACTIONS } from '../reducers/reducers.index';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 
 @Injectable()
 export class SubularService {
@@ -21,7 +22,15 @@ export class SubularService {
 		// 	window.localStorage.setItem('subular-playlist', JSON.stringify([]));
 		// 	window.localStorage.setItem('subular-songs', JSON.stringify([]));
 		this.buildArtistDatabase(server)
+<<<<<<< HEAD
 			.subscribe((payload) => this.store.dispatch({ type: ARTIST_ACTIONS.ADD_ARTISTS, payload: payload }));
+=======
+			.subscribe(
+				(payload) => this.store.dispatch({ type: ARTIST_ACTIONS.ADD_ARTISTS, payload: payload }),
+				null,
+				() => this.store.dispatch({type:APP_STATE_ACTIONS.PAUSED})
+			);
+>>>>>>> origin/master
 		// 	this.buildPlayListDatabase();
 		// 	this.buildAlbumDatabase();
 		// }
@@ -205,6 +214,10 @@ export class SubularService {
 				window.localStorage.setItem('subular-artists', JSON.stringify(artists));
 				return artists;
 			});
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 	}
 	// private buildAlbumDatabase(offset?: number): void {
 	// 	let albumString
