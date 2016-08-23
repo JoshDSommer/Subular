@@ -1,37 +1,49 @@
 import {Http} from '@angular/http';
 import {Injectable} from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Store, Action } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 import { IServer, IArtist, REDUCERS_DICTONARY, SERVER_ACTIONS, ARTIST_ACTIONS, APP_STATE_ACTIONS } from '../reducers/reducers.index';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/switchMap';
+import { StateUpdates, Effect } from '@ngrx/effects';
 
 @Injectable()
 export class SubularService {
-	private settings: Observable<IServer>;
+	// private settings: Observable<IServer>;
 
-	constructor(private http: Http, private store: Store<any>) {
+	@Effect() artists$ = this.updates$
+		.whenAction(SERVER_ACTIONS.ADD_SERVER)
+		.map(update => {
+			return update.action.payload;
+		})
+		.switchMap(payload => this.buildArtistDatabase(payload)
+			.map(res => ({ type:ARTIST_ACTIONS.ADD_ARTISTS , payload: res })));
+
+	constructor(private http: Http, private store: Store<any>, private updates$: StateUpdates<any>) {
 
 	}
 
-	buildServerData(server: IServer): void {
-		// if (this._settings.ServerAddress != null && this._settings.Username != null) {
 
-		// 	window.localStorage.setItem('subular-albums', JSON.stringify([]));
-		// 	window.localStorage.setItem('subular-artists', JSON.stringify([]));
-		// 	window.localStorage.setItem('subular-playlist', JSON.stringify([]));
-		// 	window.localStorage.setItem('subular-songs', JSON.stringify([]));
-		this.buildArtistDatabase(server)
-			.subscribe(
-				(payload) => this.store.dispatch({ type: ARTIST_ACTIONS.ADD_ARTISTS, payload: payload }),
-				null,
-				() => this.store.dispatch({type:APP_STATE_ACTIONS.PAUSED})
-			);
 
-		// 	this.buildPlayListDatabase();
-		// 	this.buildAlbumDatabase();
-		// }
-	}
+	// buildServerData(server: IServer): void {
+	// 	// if (this._settings.ServerAddress != null && this._settings.Username != null) {
+
+	// 	// 	window.localStorage.setItem('subular-albums', JSON.stringify([]));
+	// 	// 	window.localStorage.setItem('subular-artists', JSON.stringify([]));
+	// 	// 	window.localStorage.setItem('subular-playlist', JSON.stringify([]));
+	// 	// 	window.localStorage.setItem('subular-songs', JSON.stringify([]));
+	// 	this.buildArtistDatabase(server)
+	// 		.subscribe(
+	// 			(payload) => this.store.dispatch({ type: ARTIST_ACTIONS.ADD_ARTISTS, payload: payload }),
+	// 			null,
+	// 			() => this.store.dispatch({type:APP_STATE_ACTIONS.PAUSED})
+	// 		);
+
+	// 	// 	this.buildPlayListDatabase();
+	// 	// 	this.buildAlbumDatabase();
+	// 	// }
+	// }
 
 	// getCoverUrl(id: number): string {
 	// 	return this._settings.getServerURl('getCoverArt') + '&id=' + id + '&size=274';
@@ -208,7 +220,7 @@ export class SubularService {
 				artistsList.forEach((value, index) => {
 					artists = artists.concat(value.artist);
 				});
-				window.localStorage.setItem('subular-artists', JSON.stringify(artists));
+				//window.localStorage.setItem('subular-artists', JSON.stringify(artists));
 				return artists;
 			});
 	}

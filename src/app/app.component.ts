@@ -35,13 +35,7 @@ export class AppComponent {
 			serverUserName: '',
 			salt: '',
 			selected: true
-		}
-
-		this.server.subscribe((server: IServer[]) => {
-			if (server && server[0] && server[0].selected) {
-				this.subular.buildServerData(server[0]);
-			}
-		});
+		};
 
 		this.store.dispatch({ type: SERVER_ACTIONS.ADD_SERVER, payload: newServer });
 
