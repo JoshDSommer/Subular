@@ -1,6 +1,10 @@
 <h1>
   {{title}}
 </h1>
+<div *ngFor="let server of servers | async">
+  {{ server?.name }}
+</div>
+artists
  <ngrx-store-log-monitor toggleCommand="ctrl-h" positionCommand="ctrl-m"></ngrx-store-log-monitor>
 <section *ngIf="(appState | async) == appStateEnum.loading">
   Loading app data...
@@ -10,3 +14,5 @@
     {{ artist?.name }}
   </div>
 </section>
+
+d

@@ -9,7 +9,7 @@ import { useLogMonitor } from '@ngrx/store-log-monitor';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { runEffects } from '@ngrx/effects';
 
-import { servers, artists, appState } from './app/reducers/reducers.index';
+import { servers, artists, appState, nowPlaying } from './app/reducers/reducers.index';
 import { SubularService } from './app/services/subsonic.service';
 
 if (environment.production) {
@@ -17,7 +17,7 @@ if (environment.production) {
 }
 
 bootstrap(AppComponent, [
-	provideStore({ servers, artists, appState }),
+	provideStore({ servers, artists, appState, nowPlaying }),
 	runEffects(SubularService),
 	HTTP_PROVIDERS,
 	instrumentStore({
