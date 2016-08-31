@@ -17,8 +17,7 @@ describe('Artists Reducer', () => {
 			title:'Track to Add'
 		}
 		let result = nowPlaying(intialState, { type: NOW_PLAYING_ACTIONS.QUEUE_TRACK, payload:trackToAdd });
-
-		console.log(result);
-
+		expect(true).toBe(false);
+		expect(result).toContain(trackToAdd);
 	});
 });

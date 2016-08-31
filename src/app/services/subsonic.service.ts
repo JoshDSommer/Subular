@@ -5,23 +5,29 @@ import { Observable } from 'rxjs/Observable';
 import { IServer, IArtist, REDUCERS_DICTONARY, SERVER_ACTIONS, ARTIST_ACTIONS, APP_STATE_ACTIONS } from '../reducers/reducers.index';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/switchMap';
 import { StateUpdates, Effect } from '@ngrx/effects';
 
 @Injectable()
 export class SubularService {
-	// private settings: Observable<IServer>;
+	private server: IServer;
 
 	@Effect() artists$ = this.updates$
 		.whenAction(SERVER_ACTIONS.ADD_SERVER)
 		.map(update => {
 			return update.action.payload;
 		})
-		.switchMap(payload => this.buildArtistDatabase(payload)
-			.map(res => ({ type:ARTIST_ACTIONS.ADD_ARTISTS , payload: res })));
+		.switchMap(payload => this.buildArtistDatabase()
+			.map(res => ({ type:ARTIST_ACTIONS.ADD_ARTISTS , payload: res }))
+		);
 
 	constructor(private http: Http, private store: Store<any>, private updates$: StateUpdates<any>) {
-
+		this.store.select<IServer[]>(REDUCERS_DICTONARY.servers).subscribe((servers)=>{
+			this.server = servers.filter((server)=>{
+				return server.selected;
+			})[0];
+		});
 	}
 
 
@@ -37,7 +43,7 @@ export class SubularService {
 	// 		.subscribe(
 	// 			(payload) => this.store.dispatch({ type: ARTIST_ACTIONS.ADD_ARTISTS, payload: payload }),
 	// 			null,
-	// 			() => this.store.dispatch({type:APP_STATE_ACTIONS.PAUSED})
+	// 			() =>
 	// 		);
 
 	// 	// 	this.buildPlayListDatabase();
@@ -204,26 +210,76 @@ export class SubularService {
 		return JSON.stringify(data).replace('subsonic-response', 'subresp');
 	}
 
-	getServerURl(server: IServer, method: string) {
-		return `${server.serverAddress}/rest/${method}.view?u=${server.serverUserName}&t=${server.serverPassword}&s=${server.salt}&v=1.0.0&c=rest&f=json`;
+	getServerURl(server: IServer, method: string, ...args: string[]) {
+		let additionalArguments = '';
+		if (args) {
+			additionalArguments = `&${args.join('&')}`;
+		}
+		return `${server.serverAddress}/rest/${method}.view?u=${server.serverUserName}&t=${server.serverPassword}&s=${server.salt}${additionalArguments}&v=1.0.0&c=rest&f=json`;
 	}
 
-	private buildArtistDatabase(server: IServer): Observable<any> {
+	private buildArtistDatabase(): Observable<any> {
+		let subularArtistLocalStorage =`subular-artists-server-${this.server.name}`;
 		let artistString;
-		let address = this.getServerURl(server, 'getIndexes');
+		let address = this.getServerURl(this.server, 'getArtists');
+		let artistsLocalStorage = window.localStorage.getItem(subularArtistLocalStorage);
+
+		//if we have values in local storage pull them out instead of hitting the api.
+		if(artistsLocalStorage) {
+			return new Observable((observer) => {
+				observer.next(JSON.parse(artistsLocalStorage));
+				observer.complete;
+				return observer;
+			})
+				.delay(5000) // delaying this 5 seconds to give a more applicationy feel...whateves.
+				.do(()=>{
+					this.store.dispatch({ type: APP_STATE_ACTIONS.PAUSED });
+				});
+		}
+
 		return this.http.get(address)
 			.map(resp => resp.json())
 			.map(payload => {
 				artistString = this.cleanSubsonicResponse(payload);
 				let artists: any[] = [];
-				let artistsList: any[] = JSON.parse(artistString).subresp.indexes.index;
+				let artistsList: any[] = JSON.parse(artistString).subresp.artists.index;
 				artistsList.forEach((value, index) => {
 					artists = artists.concat(value.artist);
 				});
-				//window.localStorage.setItem('subular-artists', JSON.stringify(artists));
+				window.localStorage.setItem(subularArtistLocalStorage, JSON.stringify(artists));
 				return artists;
+			})
+			.do(() =>this.store.dispatch({type:APP_STATE_ACTIONS.PAUSED}));
+	}
+
+
+	public getArtistInfo(artistId: number): Observable<any>{
+		let address = this.getServerURl(this.server, 'getArtistInfo2', `id=${artistId}`);
+
+		let artistInfo;
+
+		return this.http.get(address)
+			.map(resp => resp.json())
+			.map(payload => {
+				artistInfo = this.cleanSubsonicResponse(payload);
+				console.log(artistInfo);
+				return artistInfo;
 			});
 	}
+
+	public getAlbumInfo(albumId: number): Observable<any>{
+		let address = this.getServerURl(this.server, 'getAlbum', `id=${albumId}`);
+		let albumInfo;
+		return this.http.get(address)
+			.map(resp => resp.json())
+			.map(payload => {
+				albumInfo = this.cleanSubsonicResponse(payload);
+				console.log(albumInfo);
+				return albumInfo;
+			});
+	}
+
+
 	// private buildAlbumDatabase(offset?: number): void {
 	// 	let albumString
 	// 	offset = (!offset ? 0 : offset);

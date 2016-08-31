@@ -12,7 +12,7 @@ export const APP_STATE_ACTIONS = {
 	PAUSED: 'PAUSED'
 };
 
-export const appState: ActionReducer<AppState> = (state:AppState = AppState.paused, {type}) => {
+export const appState: ActionReducer<AppState> = (state:AppState = AppState.loading, {type}) => {
 	switch (type) {
 		case APP_STATE_ACTIONS.LOADING:
 			return AppState.loading;
