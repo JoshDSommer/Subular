@@ -206,8 +206,8 @@ export class SubularService {
 	// 		}
 	// 	);
 	// }
-	private cleanSubsonicResponse(data: any): string {
-		return JSON.stringify(data).replace('subsonic-response', 'subresp');
+	private cleanSubsonicResponse(data: any): any {
+		return JSON.parse(JSON.stringify(data).replace('subsonic-response', 'subresp')).subresp;
 	}
 
 	getServerURl(server: IServer, method: string, ...args: string[]) {
@@ -240,9 +240,8 @@ export class SubularService {
 		return this.http.get(address)
 			.map(resp => resp.json())
 			.map(payload => {
-				artistString = this.cleanSubsonicResponse(payload);
 				let artists: any[] = [];
-				let artistsList: any[] = JSON.parse(artistString).subresp.artists.index;
+				let artistsList: any[] = this.cleanSubsonicResponse(payload).artists.index;
 				artistsList.forEach((value, index) => {
 					artists = artists.concat(value.artist);
 				});
@@ -262,8 +261,7 @@ export class SubularService {
 			.map(resp => resp.json())
 			.map(payload => {
 				artistInfo = this.cleanSubsonicResponse(payload);
-				console.log(artistInfo);
-				return artistInfo;
+				return artistInfo.artistInfo2;
 			});
 	}
 

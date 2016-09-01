@@ -1,0 +1,6 @@
+<div *ngIf="artist">
+	<img [src]="artist.smallImageUrl" />
+	<img [src]="artist.mediumImageUrl" />
+	<img [src]="artist.largeImageUrl" />
+	<div class="artstInfo"> {{ artist?.biography }}</div>
+</div>

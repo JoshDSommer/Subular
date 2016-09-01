@@ -15,9 +15,12 @@ import { servers, artists, appState, nowPlaying } from './reducers/reducers.inde
 import { SubularService } from './services/subsonic.service';
 
 import { ArtistsComponent } from './components/artists/artists.component';
+import { ArtistInfoComponent } from './components/artistInfo/artistInfo.component';
+import { AlbumComponent } from './components/album/album.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, ArtistsComponent],
+  declarations: [AppComponent, ArtistsComponent, AlbumComponent, ArtistInfoComponent, HomeComponent],
   imports: [BrowserModule, routing],
   bootstrap: [AppComponent],
   providers:[

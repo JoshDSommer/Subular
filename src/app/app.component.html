@@ -2,8 +2,16 @@
 {{title}}
 </h1>
 <ngrx-store-log-monitor toggleCommand="ctrl-h" positionCommand="ctrl-m"></ngrx-store-log-monitor>
-<section *ngIf="(appState | async) == appStateEnum.loading">
-	Loading app data...
-</section>
-<router-outlet></router-outlet>
 
+<section class="container">
+
+	<section class="artist-list">
+		<section *ngIf="(appState | async) == appStateEnum.loading">
+			Loading app data...
+		</section>
+		<artists></artists>
+	</section>
+	<section class="main-content">
+		<router-outlet></router-outlet>
+	</section>
+</section>

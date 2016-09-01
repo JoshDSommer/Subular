@@ -1,0 +1,13 @@
+.container{
+	display: flex;
+	flex-flow: row wrap;
+}
+.artist-list{
+	flex: 1 0 200;
+	border:1px solid green;
+}
+.main-content{
+	/*max-width: calc(100% - 150)*/
+	flex: 2 0;
+	border:1px solid red;
+}

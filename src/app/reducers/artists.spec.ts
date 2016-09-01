@@ -8,7 +8,7 @@ describe('Artists Reducer', () => {
 	let intialState: IArtist[];
 
 	beforeEach(() => {
-		intialState = [{
+		intialState = <any>[{
 			id: 1,
 			name: 'mockArtist1'
 		},
@@ -18,7 +18,7 @@ describe('Artists Reducer', () => {
 		}];
 	});
 	it('should add a new artist to the store', () => {
-		let mockArtist: IArtist = {
+		let mockArtist:IArtist = <any>{
 			id: 1,
 			name: 'mockArtist'
 		};
