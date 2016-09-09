@@ -17,11 +17,12 @@ import { SubularService } from './services/subsonic.service';
 import { ArtistsComponent } from './components/artists/artists.component';
 import { ArtistInfoComponent } from './components/artistInfo/artistInfo.component';
 import { AlbumComponent } from './components/album/album.component';
+import { SongListComponent } from './components/songList/songList.component';
 import { HomeComponent } from './components/home/home.component';
 import { Angular2DataTableModule } from 'angular2-data-table';
 
 @NgModule({
-  declarations: [AppComponent, ArtistsComponent, AlbumComponent, ArtistInfoComponent, HomeComponent],
+  declarations: [AppComponent, ArtistsComponent, AlbumComponent, ArtistInfoComponent, HomeComponent, SongListComponent],
   imports: [BrowserModule, routing, Angular2DataTableModule],
   bootstrap: [AppComponent],
   providers:[
