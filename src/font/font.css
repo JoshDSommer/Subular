@@ -1,0 +1,38 @@
+@font-face {
+	font-family: 'ENDLESS-BUMMER';
+	src: url("/font/endless-bummer/ENDLESSBUMMER-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'ASTRON-BOY';
+  src: url("/font/astron-boy/astron boy.ttf");
+}
+
+@font-face {
+  font-family: 'TRUE-CRIME';
+  src: url("/font/True-Crimes/true-crimes.ttf");
+}
+
+@font-face {
+  font-family: 'pacifico';
+  src: url("/font/pacifico/Pacifico.ttf");
+}
+
+@font-face {
+  font-family: 'montserrat';
+  src: url("/font/montserrat/Montserrat-Regular.otf") format("opentype");
+}
+
+.font-astron-boy{
+	font-family: 'ASTRON-BOY';
+}
+.font-endless{
+}
+
+.app-font{
+	font-family: 'pacifico';
+	padding: 0 9px;
+	background: -webkit-linear-gradient(#4B0082,#EED2EE);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
