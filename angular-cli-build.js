@@ -19,6 +19,9 @@ module.exports = function(defaults) {
       '@angular/**/*.+(js|js.map)',
       'crypto-js/**/*.js',
       'lodash/**/*.js',
+      'angular2-data-table/**/*.+(js|css)',
+      'bootstrap/**/*.+(js|css)',
+      'jquery/**/*.js',
     ]
   });
 };

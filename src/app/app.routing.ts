@@ -12,12 +12,12 @@ const appRoutes: Routes =[
 		component: HomeComponent
 	},
 	{
-		path: 'artist/:id',
+		path: 'artist/:artistId',
 		component: ArtistInfoComponent
 	},
 	{
-		path: 'album/:id',
-		component: AlbumComponent
+		path: 'artist/:artistId/album/:albumId',
+		component: AlbumComponent,
 	}
 ];
 

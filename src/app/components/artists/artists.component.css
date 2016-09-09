@@ -1,3 +1,4 @@
-.artists {
-
+#artists {
+	max-height: 900px;
+	overflow-y: scroll;
 }

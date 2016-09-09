@@ -1,8 +1,6 @@
-<section *ngIf="(appState | async)  != appStateEnum.loading">
-	<h2>Artists</h2>
-	{{ (artists | async)?.nowPlayingTrack?.title }}
+<section *ngIf="(appState | async)  != appStateEnum.loading" id="artists">
+	<div *ngFor="let artist of artists$ | async">
 
-	<div *ngFor="let artist of artists | async">
-		<a routerLink="/artist/{{ artist?.id }}">{{ artist?.name + ' - ' + artist?.id }}</a>
+		<a routerLink="/artist/{{ artist?.id }}">{{ artist?.name }}</a>
 	</div>
 </section>

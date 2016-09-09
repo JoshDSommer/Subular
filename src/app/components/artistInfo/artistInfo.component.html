@@ -1,6 +1,12 @@
 <div *ngIf="artist">
-	<img [src]="artist.smallImageUrl" />
+	<!--<img [src]="artist.smallImageUrl" />-->
 	<img [src]="artist.mediumImageUrl" />
-	<img [src]="artist.largeImageUrl" />
+	<!--<img [src]="artist.largeImageUrl" />-->
 	<div class="artstInfo"> {{ artist?.biography }}</div>
+	<div *ngFor="let album of albums$ | async">
+		<a [routerLink]="['/artist/' + album.artistId + '/album/' +  album.id]">
+			<img [src]="album.coverArt" alt="" />
+			{{ album.name }}
+		</a>
+	</div>
 </div>

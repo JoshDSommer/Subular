@@ -3,8 +3,9 @@ import { SubularService } from './services/subsonic.service';
 import { StoreService } from './services/store.service';
 import { Store, Action } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
-import { IServer, IArtist, REDUCERS_DICTONARY, SERVER_ACTIONS, AppState, NOW_PLAYING_ACTIONS } from './reducers/reducers.index';
+import { IServer, REDUCERS_DICTONARY, SERVER_ACTIONS, AppState, NOW_PLAYING_ACTIONS,APP_STATE_ACTIONS } from './reducers/reducers.index';
 import { StoreLogMonitorComponent } from '@ngrx/store-log-monitor';
+import { IArtist } from './shared/models';
 
 
 @Component({
@@ -39,6 +40,10 @@ export class AppComponent {
 		};
 
 		this.store.dispatch({ type: SERVER_ACTIONS.ADD_SERVER, payload: newServer });
+
+		this.subular.buildServerData().subscribe(null,null,() => {
+			this.store.dispatch({ type: APP_STATE_ACTIONS.PAUSED });
+		});
 	}
 	ngOnInit(): void {
 	}

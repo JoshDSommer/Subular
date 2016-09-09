@@ -11,20 +11,21 @@ import { useLogMonitor } from '@ngrx/store-log-monitor';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { runEffects } from '@ngrx/effects';
 
-import { servers, artists, appState, nowPlaying } from './reducers/reducers.index';
+import { servers,  appState, nowPlayingQueue, nowPlayingTrack } from './reducers/reducers.index';
 import { SubularService } from './services/subsonic.service';
 
 import { ArtistsComponent } from './components/artists/artists.component';
 import { ArtistInfoComponent } from './components/artistInfo/artistInfo.component';
 import { AlbumComponent } from './components/album/album.component';
 import { HomeComponent } from './components/home/home.component';
+import { Angular2DataTableModule } from 'angular2-data-table';
 
 @NgModule({
   declarations: [AppComponent, ArtistsComponent, AlbumComponent, ArtistInfoComponent, HomeComponent],
-  imports: [BrowserModule, routing],
+  imports: [BrowserModule, routing, Angular2DataTableModule],
   bootstrap: [AppComponent],
   providers:[
-	provideStore({ servers, artists, appState, nowPlaying }),
+	provideStore({ servers, appState, nowPlayingQueue, nowPlayingTrack }),
 	runEffects(SubularService),
 	HTTP_PROVIDERS,
 	instrumentStore({

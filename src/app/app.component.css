@@ -1,6 +1,11 @@
+.container-wrap{
+	height: 50%;
+	overflow: hidden;
+}
 .container{
 	display: flex;
 	flex-flow: row wrap;
+	height: 100%;
 }
 .artist-list{
 	flex: 1 0 200;

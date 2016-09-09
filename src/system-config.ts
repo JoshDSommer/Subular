@@ -11,7 +11,8 @@
 const map: any = {
 	'crypto-js': 'vendor/crypto-js',
 	'@ngrx': 'vendor/@ngrx',
-	'lodash': 'vendor/lodash'
+	'lodash': 'vendor/lodash',
+	'angular2-data-table' : 'vendor/angular2-data-table'
 };
 
 /** User packages configuration. */
@@ -43,6 +44,10 @@ const packages: any = {
 		main: 'index.js',
 		format: 'cjs'
 	},
+	'angular2-data-table': {
+		main:'release/angular2-data-table.cjs.js',
+		format: 'cjs'
+	}
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////

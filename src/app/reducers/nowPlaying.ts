@@ -1,23 +1,5 @@
 import { ActionReducer, combineReducers, Action  } from '@ngrx/store';
-
-
-export interface ISong {
-	id?: number;
-	title?: string;
-	album?: string;
-	artist?: string;
-	track?: number;
-	year?: number;
-	genre?: string;
-	coverArt?: number;
-	duration?: number;
-	bitRate?: number;
-	path?: string;
-	discNumber?: number;
-	albumId?: number;
-	artistId?: number;
-	playing: boolean;
-}
+import { ISong } from '../shared/models';
 
 export const NOW_PLAYING_ACTIONS = {
 	QUEUE_TRACK: 'QUEUE_TRACK',
@@ -60,4 +42,3 @@ export const nowPlayingQueue = (state = [], action: Action) => {
 	}
 }
 
-export const nowPlaying = combineReducers({ nowPlayingTrack, nowPlayingQueue })

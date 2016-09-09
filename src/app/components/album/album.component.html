@@ -1,1 +1,10 @@
-<div class="album"> Hello AlbumComponent! </div>
+<img [src]="album?.coverArt" alt="" />
+<h1>{{ album?.artist }}</h1>
+<h2>{{ album?.name }}</h2>
+<datatable
+  class='material striped'
+  [rows]='rows'
+  [options]='options'
+  (onRowClick)='onRowClick($event)'
+  >
+</datatable>
