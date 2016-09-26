@@ -1,18 +1,36 @@
+body{
+	padding-top: 70px;
+}
 .container-wrap{
 	height: 50%;
 	overflow: hidden;
 }
 .container{
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: column;
 	height: 100%;
 }
-.artist-list{
+.list{
 	flex: 1 0 200;
-	border:1px solid green;
+	height: 100vh;
+	padding-top: 50px;
+	padding-bottom: 65px;
 }
 .main-content{
 	/*max-width: calc(100% - 150)*/
 	flex: 2 0;
-	border:1px solid red;
+	height: 100vh;
+	padding-top: 50px;
+	padding-bottom: 65px;
+}
+	.scroll-content{
+		overflow-y: scroll;
+    	height: 100%;
+	}
+.no-padding{
+	padding: 0 !important;
+}
+.subular-list-container{
+    padding-right: 0px;
+    padding-left: 35px;
 }

@@ -1,120 +1,128 @@
-// import {Injectable, Inject} from '@angular/core';
-// import {SubularService} from './subular-service';
-// import { BehaviorSubject } from 'rxjs/RX';
+import {Injectable, Inject} from '@angular/core';
+import {SubularService} from './subsonic.service';
+import { BehaviorSubject, Observable } from 'rxjs/RX';
+import { IArtist, IAlbum, ISong } from '../shared/models';
 
 
 
-// export interface IAudioPlayingInfo {
-// 	remainingTime: number;
-// 	position: number;
-// 	mins: number;
-// 	secs: number;
-// }
+export interface IAudioPlayingInfo {
+	remainingTime: number;
+	position: number;
+	mins: number;
+	secs: number;
+}
 
-// @Injectable()
-// export class PlayerService {
-// 	public songList: ISong[];
-// 	public audio: any;
-// 	public playingSong: EventEmitter<ISong>;
-// 	public currentPosition: EventEmitter<IAudioPlayingInfo>;
-// 	public currentlyPlaying: EventEmitter<boolean>;
+@Injectable()
+export class PlayerService {
+	public songList: ISong[];
+	public audio: any;
+	public playingSong: BehaviorSubject<ISong>;
+	public currentPosition: BehaviorSubject<IAudioPlayingInfo>;
+	public currentlyPlaying: BehaviorSubject<boolean>;
 
-// 	public currentIndex: number;
-// 	constructor( @Inject(SubularService) private _settingsService: SubularService) {
-// 		this.playingSong = new EventEmitter();
-// 		this.currentlyPlaying = new EventEmitter();
-// 		this.currentPosition = new EventEmitter();
-// 	}
-// 	emitPlayingSongEvent() {
-// 		this.playingSong.emit(this.currentSong());
-// 	}
-// 	emitPlayingEvent(playing: boolean) {
-// 		this.currentlyPlaying.emit(playing);
-// 	}
 
-// 	getCurrentIndexChangeemitter() {
-// 		return this.playingSong;
-// 	}
+	private audioPlaying$:Observable<any>
+	private audioEnded$:Observable<any>;
 
-// 	clearSongs(): void {
-// 		this.songList = [];
-// 	}
-// 	addSong(ISong: ISong): void {
-// 		this.songList = (!this.songList ? [] : this.songList);
-// 		this.songList.push(ISong);
-// 	}
+	public currentIndex: number;
+	constructor(private subular: SubularService ) {
+		this.playingSong = new BehaviorSubject(null);
+		this.currentlyPlaying = new BehaviorSubject(null);
+		this.currentPosition = new BehaviorSubject(null);
+	}
 
-// 	addSongs(songs: ISong[]): void {
-// 		songs.forEach((ISong) => {
-// 			this.addSong(ISong);
-// 		});
-// 		this.playSong();
-// 	}
+	emitPlayingSongEvent() {
+		this.playingSong.next(this.currentSong());
+	}
 
-// 	shuffleSongs(): void {
-// 		let currentIndex = this.songList.length, temporaryValue, randomIndex;
-// 		let shuffledSongs: ISong[] = [];
-// 		// While there remain elements to shuffle...
-// 		while (0 !== currentIndex) {
+	emitPlayingEvent(playing: boolean) {
+		this.currentlyPlaying.next(playing);
+	}
 
-// 			// Pick a remaining element...
-// 			randomIndex = Math.floor(Math.random() * currentIndex);
-// 			currentIndex -= 1;
+	getCurrentIndexChangeemitter() {
+		return this.playingSong;
+	}
 
-// 			// And swap it with the current element.
-// 			temporaryValue = this.songList[currentIndex];
-// 			this.songList[currentIndex] = this.songList[randomIndex];
-// 			this.songList[randomIndex] = temporaryValue;
-// 		}
-// 	}
+	clearSongs(): void {
+		this.songList = [];
+	}
+	addSong(ISong: ISong): void {
+		this.songList = (!this.songList ? [] : this.songList);
+		this.songList.push(ISong);
+	}
 
-// 	playSong(index?: number): void {
-// 		if (this.songList.length > 0) {
+	addSongs(songs: ISong[]): void {
+		songs.forEach((ISong) => {
+			this.addSong(ISong);
+		});
+		this.playSong();
+	}
 
-// 			index = (!index ? 0 : index);
-// 			this.currentIndex = index;
-// 			this.emitPlayingSongEvent();
-// 			this.emitPlayingEvent(true);
+	shuffleSongs(): void {
+		let currentIndex = this.songList.length, temporaryValue, randomIndex;
+		let shuffledSongs: ISong[] = [];
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
 
-// 			if (this.audio != null)
-// 				this.audio.pause();
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
 
-// 			let streamUrl = this._settingsService.getStreamUrl(this.songList[index].id);// + '&maxBitRate=128';
-// 			this.audio = new Audio(streamUrl);
-// 			this.audio.play();
-// 			this.audio.addEventListener('timeupdate', () => {
-// 				let rem = this.audio.duration - this.audio.currentTime;
-// 				let pos = (this.audio.currentTime / this.audio.duration) * 100;
-// 				let mins = Math.floor(rem / 60);
-// 				let secs = rem - mins * 60;
-// 				this.emitPlayingSongEvent();
-// 				this.currentPosition.emit({
-// 					remainingTime: rem,
-// 					position: pos,
-// 					mins,
-// 					secs
-// 				});
+			// And swap it with the current element.
+			temporaryValue = this.songList[currentIndex];
+			this.songList[currentIndex] = this.songList[randomIndex];
+			this.songList[randomIndex] = temporaryValue;
+		}
+	}
 
-// 			});
-// 			this.audio.addEventListener('ended', () => {
-// 				if ((this.currentIndex + 1) < this.songList.length)
-// 					this.playSong(this.currentIndex + 1);
-// 			});
-// 		} else {
-// 		}
+	playSong(index?: number): void {
+		if (this.songList.length > 0) {
 
-// 	}
-// 	pauseSong(): void {
-// 		this.audio.pause();
-// 		this.emitPlayingEvent(false);
-// 	}
+			index = (!index ? 0 : index);
+			this.currentIndex = index;
+			this.emitPlayingSongEvent();
+			this.emitPlayingEvent(true);
 
-// 	resumeSong(): void {
-// 		this.audio.play();
-// 		this.emitPlayingEvent(true);
-// 	}
+			if (this.audio != null)
+				this.audio.pause();
 
-// 	currentSong(): ISong {
-// 		return this.songList[this.currentIndex];
-// 	}
-// }
+			let streamUrl = this.subular.getStreamUrl(this.songList[index].id);// + '&maxBitRate=128';
+			this.audio = new Audio(streamUrl);
+			this.audio.play();
+
+			this.audioPlaying$ = Observable.fromEvent(this.audio, 'timeupdate');
+
+			this.audioPlaying$.subscribe(()=>{
+				let rem = this.audio.duration - this.audio.currentTime;
+				let pos = (this.audio.currentTime / this.audio.duration) * 100;
+				let mins = Math.floor(rem / 60);
+				let secs = rem - mins * 60;
+				this.emitPlayingSongEvent();
+				this.currentPosition.next({
+					remainingTime: rem,
+					position: pos,
+					mins,
+					secs
+				});
+
+			});
+			this.audio.addEventListener('ended', () => {
+				if ((this.currentIndex + 1) < this.songList.length)
+					this.playSong(this.currentIndex + 1);
+			});
+		}
+	}
+	pauseSong(): void {
+		this.audio.pause();
+		this.emitPlayingEvent(false);
+	}
+
+	resumeSong(): void {
+		this.audio.play();
+		this.emitPlayingEvent(true);
+	}
+
+	currentSong(): ISong {
+		return this.songList[this.currentIndex];
+	}
+}

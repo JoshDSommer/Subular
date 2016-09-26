@@ -1,0 +1,6455 @@
+[
+	{
+		"id": "22",
+		"name": "ABBA",
+		"coverArt": "ar-22",
+		"albumCount": 2
+	},
+	{
+		"id": "24",
+		"name": "AC/DC",
+		"coverArt": "ar-24",
+		"albumCount": 1
+	},
+	{
+		"id": "23",
+		"name": "Ace of Base",
+		"coverArt": "ar-23",
+		"albumCount": 1
+	},
+	{
+		"id": "18",
+		"name": "A Day to Remember",
+		"coverArt": "ar-18",
+		"albumCount": 5
+	},
+	{
+		"id": "25",
+		"name": "Adele",
+		"coverArt": "ar-25",
+		"albumCount": 2
+	},
+	{
+		"id": "26",
+		"name": "Adventures Of Stevie V",
+		"albumCount": 1
+	},
+	{
+		"id": "27",
+		"name": "AFI",
+		"coverArt": "ar-27",
+		"albumCount": 12
+	},
+	{
+		"id": "19",
+		"name": "A Fine Frenzy",
+		"coverArt": "ar-19",
+		"albumCount": 1
+	},
+	{
+		"id": "28",
+		"name": "Against All Authority",
+		"coverArt": "ar-28",
+		"albumCount": 3
+	},
+	{
+		"id": "29",
+		"name": "Against Me!",
+		"coverArt": "ar-29",
+		"albumCount": 17
+	},
+	{
+		"id": "849",
+		"name": "The Aggrolites",
+		"coverArt": "ar-849",
+		"albumCount": 2
+	},
+	{
+		"id": "30",
+		"name": "Agnostic Front",
+		"coverArt": "ar-30",
+		"albumCount": 1
+	},
+	{
+		"id": "850",
+		"name": "The Airborne Toxic Event",
+		"coverArt": "ar-850",
+		"albumCount": 2
+	},
+	{
+		"id": "31",
+		"name": "Air Traffic Controller",
+		"coverArt": "ar-31",
+		"albumCount": 1
+	},
+	{
+		"id": "32",
+		"name": "Akon",
+		"coverArt": "ar-32",
+		"albumCount": 1
+	},
+	{
+		"id": "165",
+		"name": "Alabama",
+		"coverArt": "ar-165",
+		"albumCount": 1
+	},
+	{
+		"id": "59",
+		"name": "Alabama Shakes",
+		"coverArt": "ar-59",
+		"albumCount": 1
+	},
+	{
+		"id": "60",
+		"name": "Alannah Myles",
+		"albumCount": 1
+	},
+	{
+		"id": "61",
+		"name": "Alexisonfire",
+		"coverArt": "ar-61",
+		"albumCount": 3
+	},
+	{
+		"id": "33",
+		"name": "Al Green",
+		"coverArt": "ar-33",
+		"albumCount": 1
+	},
+	{
+		"id": "62",
+		"name": "Alice In Chains",
+		"coverArt": "ar-62",
+		"albumCount": 1
+	},
+	{
+		"id": "63",
+		"name": "Alicia Keys",
+		"coverArt": "ar-63",
+		"albumCount": 1
+	},
+	{
+		"id": "64",
+		"name": "Alien Ant Farm",
+		"coverArt": "ar-64",
+		"albumCount": 2
+	},
+	{
+		"id": "65",
+		"name": "Alkaline Trio",
+		"coverArt": "ar-65",
+		"albumCount": 16
+	},
+	{
+		"id": "66",
+		"name": "All",
+		"coverArt": "ar-66",
+		"albumCount": 9
+	},
+	{
+		"id": "67",
+		"name": "ALL",
+		"coverArt": "ar-67",
+		"albumCount": 1
+	},
+	{
+		"id": "68",
+		"name": "America",
+		"coverArt": "ar-68",
+		"albumCount": 1
+	},
+	{
+		"id": "69",
+		"name": "American Authors",
+		"coverArt": "ar-69",
+		"albumCount": 1
+	},
+	{
+		"id": "70",
+		"name": "American Steel",
+		"coverArt": "ar-70",
+		"albumCount": 3
+	},
+	{
+		"id": "71",
+		"name": "Amorphis",
+		"coverArt": "ar-71",
+		"albumCount": 1
+	},
+	{
+		"id": "72",
+		"name": "Amos Lee",
+		"coverArt": "ar-72",
+		"albumCount": 1
+	},
+	{
+		"id": "73",
+		"name": "Amy Winehouse",
+		"albumCount": 1
+	},
+	{
+		"id": "74",
+		"name": "Andrea Bocelli",
+		"coverArt": "ar-74",
+		"albumCount": 1
+	},
+	{
+		"id": "75",
+		"name": "Andrew W.K.",
+		"coverArt": "ar-75",
+		"albumCount": 4
+	},
+	{
+		"id": "76",
+		"name": "Andy D",
+		"coverArt": "ar-76",
+		"albumCount": 2
+	},
+	{
+		"id": "77",
+		"name": "Angels & Airwaves",
+		"coverArt": "ar-77",
+		"albumCount": 3
+	},
+	{
+		"id": "78",
+		"name": "Anika Moa",
+		"coverArt": "ar-78",
+		"albumCount": 1
+	},
+	{
+		"id": "79",
+		"name": "Anti-Flag",
+		"coverArt": "ar-79",
+		"albumCount": 14
+	},
+	{
+		"id": "80",
+		"name": "Anti-Nowhere League",
+		"coverArt": "ar-80",
+		"albumCount": 1
+	},
+	{
+		"id": "20",
+		"name": "A Perfect Circle",
+		"coverArt": "ar-20",
+		"albumCount": 2
+	},
+	{
+		"id": "851",
+		"name": "The Aquabats",
+		"coverArt": "ar-851",
+		"albumCount": 4
+	},
+	{
+		"id": "81",
+		"name": "Arcade Fire",
+		"coverArt": "ar-81",
+		"albumCount": 3
+	},
+	{
+		"id": "82",
+		"name": "Arctic Monkeys",
+		"coverArt": "ar-82",
+		"albumCount": 1
+	},
+	{
+		"id": "83",
+		"name": "Arliss Nancy",
+		"coverArt": "ar-83",
+		"albumCount": 3
+	},
+	{
+		"id": "84",
+		"name": "Army Of Lovers",
+		"albumCount": 1
+	},
+	{
+		"id": "85",
+		"name": "As Friends Rust",
+		"coverArt": "ar-85",
+		"albumCount": 1
+	},
+	{
+		"id": "166",
+		"name": "Asia",
+		"coverArt": "ar-166",
+		"albumCount": 3
+	},
+	{
+		"id": "86",
+		"name": "As I Lay Dying",
+		"coverArt": "ar-86",
+		"albumCount": 5
+	},
+	{
+		"id": "258",
+		"name": "The Ataris",
+		"coverArt": "ar-258",
+		"albumCount": 5
+	},
+	{
+		"id": "88",
+		"name": "Atlas Losing Grip",
+		"coverArt": "ar-88",
+		"albumCount": 5
+	},
+	{
+		"id": "89",
+		"name": "Atreyu",
+		"coverArt": "ar-89",
+		"albumCount": 3
+	},
+	{
+		"id": "87",
+		"name": "At The Drive-In",
+		"coverArt": "ar-87",
+		"albumCount": 3
+	},
+	{
+		"id": "90",
+		"name": "Audioslave",
+		"coverArt": "ar-90",
+		"albumCount": 5
+	},
+	{
+		"id": "91",
+		"name": "Austin Lucas",
+		"coverArt": "ar-91",
+		"albumCount": 1
+	},
+	{
+		"id": "92",
+		"name": "Authority Zero",
+		"coverArt": "ar-92",
+		"albumCount": 5
+	},
+	{
+		"id": "93",
+		"name": "Avail",
+		"coverArt": "ar-93",
+		"albumCount": 4
+	},
+	{
+		"id": "94",
+		"name": "Avenged Sevenfold",
+		"coverArt": "ar-94",
+		"albumCount": 6
+	},
+	{
+		"id": "852",
+		"name": "The Avett Brothers",
+		"coverArt": "ar-852",
+		"albumCount": 7
+	},
+	{
+		"id": "95",
+		"name": "Avicii",
+		"coverArt": "ar-95",
+		"albumCount": 2
+	},
+	{
+		"id": "96",
+		"name": "Avoid One Thing",
+		"coverArt": "ar-96",
+		"albumCount": 1
+	},
+	{
+		"id": "97",
+		"name": "Avril Lavigne",
+		"coverArt": "ar-97",
+		"albumCount": 2
+	},
+	{
+		"id": "21",
+		"name": "A Wilhelm Scream",
+		"coverArt": "ar-21",
+		"albumCount": 6
+	},
+	{
+		"id": "98",
+		"name": "AWOLNATION",
+		"coverArt": "ar-98",
+		"albumCount": 2
+	},
+	{
+		"id": "853",
+		"name": "The Babies",
+		"coverArt": "ar-853",
+		"albumCount": 1
+	},
+	{
+		"id": "99",
+		"name": "Babylon Zoo",
+		"albumCount": 1
+	},
+	{
+		"id": "100",
+		"name": "Bad Astronaut",
+		"coverArt": "ar-100",
+		"albumCount": 3
+	},
+	{
+		"id": "101",
+		"name": "Bad Brains",
+		"coverArt": "ar-101",
+		"albumCount": 2
+	},
+	{
+		"id": "102",
+		"name": "Bad Company",
+		"coverArt": "ar-102",
+		"albumCount": 1
+	},
+	{
+		"id": "105",
+		"name": "Badfinger",
+		"coverArt": "ar-105",
+		"albumCount": 1
+	},
+	{
+		"id": "103",
+		"name": "Bad Meets Evil",
+		"coverArt": "ar-103",
+		"albumCount": 1
+	},
+	{
+		"id": "104",
+		"name": "Bad Religion",
+		"coverArt": "ar-104",
+		"albumCount": 21
+	},
+	{
+		"id": "854",
+		"name": "The Band",
+		"coverArt": "ar-854",
+		"albumCount": 2
+	},
+	{
+		"id": "106",
+		"name": "Band of Horses",
+		"coverArt": "ar-106",
+		"albumCount": 1
+	},
+	{
+		"id": "107",
+		"name": "Band Of Horses",
+		"coverArt": "ar-107",
+		"albumCount": 2
+	},
+	{
+		"id": "855",
+		"name": "The Band Perry",
+		"coverArt": "ar-855",
+		"albumCount": 1
+	},
+	{
+		"id": "108",
+		"name": "Banner Pilot",
+		"coverArt": "ar-108",
+		"albumCount": 3
+	},
+	{
+		"id": "109",
+		"name": "Banquets",
+		"coverArt": "ar-109",
+		"albumCount": 5
+	},
+	{
+		"id": "110",
+		"name": "Barenaked Ladies",
+		"coverArt": "ar-110",
+		"albumCount": 6
+	},
+	{
+		"id": "111",
+		"name": "Baroness",
+		"coverArt": "ar-111",
+		"albumCount": 3
+	},
+	{
+		"id": "167",
+		"name": "Barry Manilow",
+		"coverArt": "ar-167",
+		"albumCount": 1
+	},
+	{
+		"id": "230",
+		"name": "Barry White",
+		"coverArt": "ar-230",
+		"albumCount": 1
+	},
+	{
+		"id": "113",
+		"name": "Bastille",
+		"coverArt": "ar-113",
+		"albumCount": 2
+	},
+	{
+		"id": "114",
+		"name": "Bayside",
+		"coverArt": "ar-114",
+		"albumCount": 5
+	},
+	{
+		"id": "115",
+		"name": "Beach Boys",
+		"coverArt": "ar-115",
+		"albumCount": 1
+	},
+	{
+		"id": "856",
+		"name": "The Beach Boys",
+		"coverArt": "ar-856",
+		"albumCount": 2
+	},
+	{
+		"id": "116",
+		"name": "Bear vs. Shark",
+		"coverArt": "ar-116",
+		"albumCount": 1
+	},
+	{
+		"id": "117",
+		"name": "Beastie Boys",
+		"coverArt": "ar-117",
+		"albumCount": 4
+	},
+	{
+		"id": "857",
+		"name": "The Beatles",
+		"coverArt": "ar-857",
+		"albumCount": 10
+	},
+	{
+		"id": "118",
+		"name": "Beck",
+		"coverArt": "ar-118",
+		"albumCount": 5
+	},
+	{
+		"id": "119",
+		"name": "Belvedere",
+		"coverArt": "ar-119",
+		"albumCount": 1
+	},
+	{
+		"id": "120",
+		"name": "Ben Folds",
+		"coverArt": "ar-120",
+		"albumCount": 1
+	},
+	{
+		"id": "123",
+		"name": "Benjamin Henderson",
+		"coverArt": "ar-123",
+		"albumCount": 2
+	},
+	{
+		"id": "121",
+		"name": "Ben Nichols",
+		"coverArt": "ar-121",
+		"albumCount": 1
+	},
+	{
+		"id": "122",
+		"name": "Ben Weasel and His Iron String Quartet",
+		"coverArt": "ar-122",
+		"albumCount": 1
+	},
+	{
+		"id": "124",
+		"name": "Better Than Ezra",
+		"coverArt": "ar-124",
+		"albumCount": 1
+	},
+	{
+		"id": "125",
+		"name": "Big Country",
+		"coverArt": "ar-125",
+		"albumCount": 1
+	},
+	{
+		"id": "126",
+		"name": "Billie Holiday",
+		"coverArt": "ar-126",
+		"albumCount": 1
+	},
+	{
+		"id": "127",
+		"name": "Billie Joe + Norah",
+		"coverArt": "ar-127",
+		"albumCount": 1
+	},
+	{
+		"id": "128",
+		"name": "Billy Bragg",
+		"coverArt": "ar-128",
+		"albumCount": 6
+	},
+	{
+		"id": "129",
+		"name": "Billy Bragg & Wilco",
+		"coverArt": "ar-129",
+		"albumCount": 2
+	},
+	{
+		"id": "130",
+		"name": "Billy Idol",
+		"coverArt": "ar-130",
+		"albumCount": 1
+	},
+	{
+		"id": "131",
+		"name": "Billy Joel",
+		"coverArt": "ar-131",
+		"albumCount": 4
+	},
+	{
+		"id": "132",
+		"name": "Billy Miles",
+		"coverArt": "ar-132",
+		"albumCount": 1
+	},
+	{
+		"id": "133",
+		"name": "Billy Ray Cyrus",
+		"albumCount": 1
+	},
+	{
+		"id": "134",
+		"name": "Billy Talent",
+		"coverArt": "ar-134",
+		"albumCount": 4
+	},
+	{
+		"id": "858",
+		"name": "The Black Eyed Peas",
+		"albumCount": 1
+	},
+	{
+		"id": "135",
+		"name": "Black Flag",
+		"coverArt": "ar-135",
+		"albumCount": 6
+	},
+	{
+		"id": "859",
+		"name": "The Black Keys",
+		"coverArt": "ar-859",
+		"albumCount": 5
+	},
+	{
+		"id": "860",
+		"name": "The Black Pacific",
+		"coverArt": "ar-860",
+		"albumCount": 1
+	},
+	{
+		"id": "168",
+		"name": "Blaqk Audio",
+		"coverArt": "ar-168",
+		"albumCount": 2
+	},
+	{
+		"id": "136",
+		"name": "Blind Melon",
+		"coverArt": "ar-136",
+		"albumCount": 2
+	},
+	{
+		"id": "137",
+		"name": "Blink-182",
+		"coverArt": "ar-137",
+		"albumCount": 10
+	},
+	{
+		"id": "138",
+		"name": "Bloc Party",
+		"coverArt": "ar-138",
+		"albumCount": 1
+	},
+	{
+		"id": "140",
+		"name": "Blood for Blood",
+		"coverArt": "ar-140",
+		"albumCount": 2
+	},
+	{
+		"id": "139",
+		"name": "Blood For Blood",
+		"coverArt": "ar-139",
+		"albumCount": 2
+	},
+	{
+		"id": "861",
+		"name": "The Bloodhound Gang",
+		"coverArt": "ar-861",
+		"albumCount": 6
+	},
+	{
+		"id": "862",
+		"name": "The Blue Boy",
+		"albumCount": 1
+	},
+	{
+		"id": "141",
+		"name": "Blue Oyster Cult",
+		"coverArt": "ar-141",
+		"albumCount": 1
+	},
+	{
+		"id": "142",
+		"name": "Blues Traveler",
+		"coverArt": "ar-142",
+		"albumCount": 1
+	},
+	{
+		"id": "148",
+		"name": "Bobby Womack",
+		"coverArt": "ar-148",
+		"albumCount": 1
+	},
+	{
+		"id": "143",
+		"name": "Bob Dylan",
+		"coverArt": "ar-143",
+		"albumCount": 4
+	},
+	{
+		"id": "144",
+		"name": "Bob Marley",
+		"coverArt": "ar-144",
+		"albumCount": 4
+	},
+	{
+		"id": "145",
+		"name": "Bob Marley & The Wailers",
+		"coverArt": "ar-145",
+		"albumCount": 2
+	},
+	{
+		"id": "146",
+		"name": "Bob Mould",
+		"coverArt": "ar-146",
+		"albumCount": 4
+	},
+	{
+		"id": "147",
+		"name": "Bob Seger",
+		"coverArt": "ar-147",
+		"albumCount": 3
+	},
+	{
+		"id": "149",
+		"name": "Bon Jovi",
+		"coverArt": "ar-149",
+		"albumCount": 1
+	},
+	{
+		"id": "150",
+		"name": "Boston",
+		"coverArt": "ar-150",
+		"albumCount": 1
+	},
+	{
+		"id": "863",
+		"name": "The Both",
+		"coverArt": "ar-863",
+		"albumCount": 1
+	},
+	{
+		"id": "864",
+		"name": "The Bouncing Souls",
+		"coverArt": "ar-864",
+		"albumCount": 17
+	},
+	{
+		"id": "151",
+		"name": "Bowling For Soup",
+		"coverArt": "ar-151",
+		"albumCount": 3
+	},
+	{
+		"id": "152",
+		"name": "BoySetsFire",
+		"coverArt": "ar-152",
+		"albumCount": 1
+	},
+	{
+		"id": "153",
+		"name": "Boyz II Men",
+		"coverArt": "ar-153",
+		"albumCount": 1
+	},
+	{
+		"id": "865",
+		"name": "The Braces",
+		"coverArt": "ar-865",
+		"albumCount": 1
+	},
+	{
+		"id": "154",
+		"name": "Bracket",
+		"coverArt": "ar-154",
+		"albumCount": 1
+	},
+	{
+		"id": "155",
+		"name": "Brand New",
+		"coverArt": "ar-155",
+		"albumCount": 4
+	},
+	{
+		"id": "156",
+		"name": "Break Anchor",
+		"coverArt": "ar-156",
+		"albumCount": 2
+	},
+	{
+		"id": "157",
+		"name": "Brendan Kelly and the Wandering Birds",
+		"coverArt": "ar-157",
+		"albumCount": 3
+	},
+	{
+		"id": "158",
+		"name": "Brian Fallon",
+		"coverArt": "ar-158",
+		"albumCount": 1
+	},
+	{
+		"id": "866",
+		"name": "The Briggs",
+		"coverArt": "ar-866",
+		"albumCount": 3
+	},
+	{
+		"id": "159",
+		"name": "Bright Eyes",
+		"coverArt": "ar-159",
+		"albumCount": 22
+	},
+	{
+		"id": "160",
+		"name": "Britney Spears",
+		"albumCount": 1
+	},
+	{
+		"id": "867",
+		"name": "The Bronx",
+		"coverArt": "ar-867",
+		"albumCount": 3
+	},
+	{
+		"id": "161",
+		"name": "Bruce Springsteen",
+		"coverArt": "ar-161",
+		"albumCount": 8
+	},
+	{
+		"id": "162",
+		"name": "Buck-O-Nine",
+		"coverArt": "ar-162",
+		"albumCount": 2
+	},
+	{
+		"id": "163",
+		"name": "Buffalo Springfield",
+		"coverArt": "ar-163",
+		"albumCount": 1
+	},
+	{
+		"id": "164",
+		"name": "Bush",
+		"coverArt": "ar-164",
+		"albumCount": 4
+	},
+	{
+		"id": "169",
+		"name": "ButtHole Surfers",
+		"coverArt": "ar-169",
+		"albumCount": 1
+	},
+	{
+		"id": "183",
+		"name": "C.J. Ramone",
+		"coverArt": "ar-183",
+		"albumCount": 1
+	},
+	{
+		"id": "184",
+		"name": "Cage The Elephant",
+		"coverArt": "ar-184",
+		"albumCount": 1
+	},
+	{
+		"id": "185",
+		"name": "Cake",
+		"coverArt": "ar-185",
+		"albumCount": 1
+	},
+	{
+		"id": "186",
+		"name": "Candlebox",
+		"coverArt": "ar-186",
+		"albumCount": 1
+	},
+	{
+		"id": "187",
+		"name": "Capital Cities",
+		"coverArt": "ar-187",
+		"albumCount": 1
+	},
+	{
+		"id": "188",
+		"name": "Captain, We're Sinking",
+		"coverArt": "ar-188",
+		"albumCount": 1
+	},
+	{
+		"id": "189",
+		"name": "Carly Rae Jepsen",
+		"coverArt": "ar-189",
+		"albumCount": 1
+	},
+	{
+		"id": "868",
+		"name": "The Cars",
+		"coverArt": "ar-868",
+		"albumCount": 1
+	},
+	{
+		"id": "190",
+		"name": "Cartoons",
+		"albumCount": 1
+	},
+	{
+		"id": "192",
+		"name": "Catch 22",
+		"coverArt": "ar-192",
+		"albumCount": 1
+	},
+	{
+		"id": "191",
+		"name": "Cat Stevens",
+		"coverArt": "ar-191",
+		"albumCount": 2
+	},
+	{
+		"id": "193",
+		"name": "Cee Lo Green",
+		"coverArt": "ar-193",
+		"albumCount": 2
+	},
+	{
+		"id": "194",
+		"name": "Ceremony",
+		"coverArt": "ar-194",
+		"albumCount": 1
+	},
+	{
+		"id": "195",
+		"name": "Chaos Chaos",
+		"coverArt": "ar-195",
+		"albumCount": 1
+	},
+	{
+		"id": "196",
+		"name": "Charlene Soraia",
+		"albumCount": 1
+	},
+	{
+		"id": "197",
+		"name": "Cheap Girls",
+		"coverArt": "ar-197",
+		"albumCount": 4
+	},
+	{
+		"id": "198",
+		"name": "Cheap Trick",
+		"coverArt": "ar-198",
+		"albumCount": 3
+	},
+	{
+		"id": "199",
+		"name": "Cheryl Cole",
+		"coverArt": "ar-199",
+		"albumCount": 1
+	},
+	{
+		"id": "201",
+		"name": "Children of Bodom",
+		"coverArt": "ar-201",
+		"albumCount": 1
+	},
+	{
+		"id": "200",
+		"name": "Children Of Bodom",
+		"coverArt": "ar-200",
+		"albumCount": 1
+	},
+	{
+		"id": "869",
+		"name": "The Chinkees",
+		"coverArt": "ar-869",
+		"albumCount": 1
+	},
+	{
+		"id": "202",
+		"name": "Chixdiggit!",
+		"coverArt": "ar-202",
+		"albumCount": 5
+	},
+	{
+		"id": "203",
+		"name": "Choking Victim",
+		"coverArt": "ar-203",
+		"albumCount": 1
+	},
+	{
+		"id": "204",
+		"name": "Chris Isaak",
+		"coverArt": "ar-204",
+		"albumCount": 5
+	},
+	{
+		"id": "205",
+		"name": "Chris Stowe",
+		"coverArt": "ar-205",
+		"albumCount": 1
+	},
+	{
+		"id": "206",
+		"name": "Chris Wollard And The Ship Thieves",
+		"coverArt": "ar-206",
+		"albumCount": 1
+	},
+	{
+		"id": "207",
+		"name": "Chuck Ragan",
+		"coverArt": "ar-207",
+		"albumCount": 8
+	},
+	{
+		"id": "208",
+		"name": "CHVRCHES",
+		"coverArt": "ar-208",
+		"albumCount": 2
+	},
+	{
+		"id": "170",
+		"name": "Cinderella",
+		"coverArt": "ar-170",
+		"albumCount": 2
+	},
+	{
+		"id": "209",
+		"name": "City and Colour",
+		"coverArt": "ar-209",
+		"albumCount": 2
+	},
+	{
+		"id": "210",
+		"name": "City And Colour",
+		"coverArt": "ar-210",
+		"albumCount": 2
+	},
+	{
+		"id": "211",
+		"name": "CIV",
+		"coverArt": "ar-211",
+		"albumCount": 2
+	},
+	{
+		"id": "960",
+		"name": "The Civil Wars",
+		"coverArt": "ar-960",
+		"albumCount": 1
+	},
+	{
+		"id": "870",
+		"name": "The Clash",
+		"coverArt": "ar-870",
+		"albumCount": 9
+	},
+	{
+		"id": "212",
+		"name": "Classics Of Love",
+		"coverArt": "ar-212",
+		"albumCount": 1
+	},
+	{
+		"id": "213",
+		"name": "Clowns For Progress",
+		"coverArt": "ar-213",
+		"albumCount": 2
+	},
+	{
+		"id": "214",
+		"name": "Clutch",
+		"coverArt": "ar-214",
+		"albumCount": 5
+	},
+	{
+		"id": "215",
+		"name": "Cobra Skulls",
+		"coverArt": "ar-215",
+		"albumCount": 6
+	},
+	{
+		"id": "216",
+		"name": "Cock Sparrer",
+		"coverArt": "ar-216",
+		"albumCount": 1
+	},
+	{
+		"id": "217",
+		"name": "Coconut Records",
+		"coverArt": "ar-217",
+		"albumCount": 1
+	},
+	{
+		"id": "218",
+		"name": "Coffee Project",
+		"coverArt": "ar-218",
+		"albumCount": 2
+	},
+	{
+		"id": "219",
+		"name": "Coheed & Cambria",
+		"coverArt": "ar-219",
+		"albumCount": 9
+	},
+	{
+		"id": "220",
+		"name": "Cold",
+		"coverArt": "ar-220",
+		"albumCount": 1
+	},
+	{
+		"id": "221",
+		"name": "Coldplay",
+		"coverArt": "ar-221",
+		"albumCount": 6
+	},
+	{
+		"id": "222",
+		"name": "Colin Hay",
+		"coverArt": "ar-222",
+		"albumCount": 4
+	},
+	{
+		"id": "223",
+		"name": "Collective Soul",
+		"coverArt": "ar-223",
+		"albumCount": 1
+	},
+	{
+		"id": "871",
+		"name": "The Color Fred",
+		"coverArt": "ar-871",
+		"albumCount": 1
+	},
+	{
+		"id": "264",
+		"name": "Converge",
+		"coverArt": "ar-264",
+		"albumCount": 4
+	},
+	{
+		"id": "265",
+		"name": "Coolio Feat. L.V.",
+		"albumCount": 1
+	},
+	{
+		"id": "872",
+		"name": "The Copyrights",
+		"coverArt": "ar-872",
+		"albumCount": 5
+	},
+	{
+		"id": "266",
+		"name": "Corinne Bailey Rae",
+		"coverArt": "ar-266",
+		"albumCount": 1
+	},
+	{
+		"id": "267",
+		"name": "Cory Branan",
+		"coverArt": "ar-267",
+		"albumCount": 4
+	},
+	{
+		"id": "268",
+		"name": "Counterpunch",
+		"albumCount": 2
+	},
+	{
+		"id": "269",
+		"name": "Counting Crows",
+		"coverArt": "ar-269",
+		"albumCount": 4
+	},
+	{
+		"id": "873",
+		"name": "The Cranberries",
+		"coverArt": "ar-873",
+		"albumCount": 4
+	},
+	{
+		"id": "270",
+		"name": "Crash Test Dummies",
+		"coverArt": "ar-270",
+		"albumCount": 2
+	},
+	{
+		"id": "271",
+		"name": "Creedence Clearwater Revival",
+		"coverArt": "ar-271",
+		"albumCount": 2
+	},
+	{
+		"id": "272",
+		"name": "Cro-Mags",
+		"coverArt": "ar-272",
+		"albumCount": 1
+	},
+	{
+		"id": "875",
+		"name": "The Cult",
+		"coverArt": "ar-875",
+		"albumCount": 1
+	},
+	{
+		"id": "874",
+		"name": "the Cult",
+		"coverArt": "ar-874",
+		"albumCount": 1
+	},
+	{
+		"id": "876",
+		"name": "The Cure",
+		"coverArt": "ar-876",
+		"albumCount": 6
+	},
+	{
+		"id": "273",
+		"name": "Cursive",
+		"coverArt": "ar-273",
+		"albumCount": 1
+	},
+	{
+		"id": "274",
+		"name": "Cutting Crew",
+		"coverArt": "ar-274",
+		"albumCount": 1
+	},
+	{
+		"id": "275",
+		"name": "Cyndi Lauper",
+		"coverArt": "ar-275",
+		"albumCount": 1
+	},
+	{
+		"id": "276",
+		"name": "D.O.A.",
+		"coverArt": "ar-276",
+		"albumCount": 3
+	},
+	{
+		"id": "171",
+		"name": "D-12",
+		"coverArt": "ar-171",
+		"albumCount": 2
+	},
+	{
+		"id": "277",
+		"name": "Daft Punk",
+		"coverArt": "ar-277",
+		"albumCount": 1
+	},
+	{
+		"id": "278",
+		"name": "Damien Rice",
+		"coverArt": "ar-278",
+		"albumCount": 2
+	},
+	{
+		"id": "877",
+		"name": "The Damned",
+		"coverArt": "ar-877",
+		"albumCount": 5
+	},
+	{
+		"id": "279",
+		"name": "Damn Yankees",
+		"coverArt": "ar-279",
+		"albumCount": 1
+	},
+	{
+		"id": "280",
+		"name": "Dan Andriano in the Emergency Room",
+		"coverArt": "ar-280",
+		"albumCount": 3
+	},
+	{
+		"id": "281",
+		"name": "Dan Andriano In The Emergency Room",
+		"coverArt": "ar-281",
+		"albumCount": 2
+	},
+	{
+		"id": "282",
+		"name": "Dan Vapid And The Cheats",
+		"coverArt": "ar-282",
+		"albumCount": 1
+	},
+	{
+		"id": "283",
+		"name": "Danzig",
+		"coverArt": "ar-283",
+		"albumCount": 8
+	},
+	{
+		"id": "284",
+		"name": "Darius Rucker",
+		"coverArt": "ar-284",
+		"albumCount": 4
+	},
+	{
+		"id": "285",
+		"name": "Darkbuster",
+		"coverArt": "ar-285",
+		"albumCount": 2
+	},
+	{
+		"id": "878",
+		"name": "The Darkness",
+		"coverArt": "ar-878",
+		"albumCount": 2
+	},
+	{
+		"id": "237",
+		"name": "Dark Shadows",
+		"coverArt": "ar-237",
+		"albumCount": 1
+	},
+	{
+		"id": "286",
+		"name": "Daryl Hall & John Oates",
+		"coverArt": "ar-286",
+		"albumCount": 1
+	},
+	{
+		"id": "287",
+		"name": "Dashboard Confessional",
+		"coverArt": "ar-287",
+		"albumCount": 4
+	},
+	{
+		"id": "288",
+		"name": "Dave Hause",
+		"coverArt": "ar-288",
+		"albumCount": 7
+	},
+	{
+		"id": "289",
+		"name": "Dave Matthews Band",
+		"coverArt": "ar-289",
+		"albumCount": 2
+	},
+	{
+		"id": "290",
+		"name": "David Bowie",
+		"coverArt": "ar-290",
+		"albumCount": 2
+	},
+	{
+		"id": "291",
+		"name": "David Guetta Feat. Kelly Rowland",
+		"coverArt": "ar-291",
+		"albumCount": 1
+	},
+	{
+		"id": "292",
+		"name": "Dead Kennedys",
+		"coverArt": "ar-292",
+		"albumCount": 4
+	},
+	{
+		"id": "293",
+		"name": "Dead Milkmen",
+		"coverArt": "ar-293",
+		"albumCount": 3
+	},
+	{
+		"id": "879",
+		"name": "The Dead Milkmen",
+		"coverArt": "ar-879",
+		"albumCount": 1
+	},
+	{
+		"id": "295",
+		"name": "Dead to Me",
+		"coverArt": "ar-295",
+		"albumCount": 1
+	},
+	{
+		"id": "294",
+		"name": "Dead To Me",
+		"coverArt": "ar-294",
+		"albumCount": 5
+	},
+	{
+		"id": "296",
+		"name": "Dear Landlord",
+		"coverArt": "ar-296",
+		"albumCount": 1
+	},
+	{
+		"id": "297",
+		"name": "Death By Stereo",
+		"coverArt": "ar-297",
+		"albumCount": 5
+	},
+	{
+		"id": "299",
+		"name": "Death Cab for Cutie",
+		"coverArt": "ar-299",
+		"albumCount": 3
+	},
+	{
+		"id": "298",
+		"name": "Death Cab For Cutie",
+		"coverArt": "ar-298",
+		"albumCount": 3
+	},
+	{
+		"id": "880",
+		"name": "The Decemberists",
+		"coverArt": "ar-880",
+		"albumCount": 6
+	},
+	{
+		"id": "300",
+		"name": "Defeater",
+		"coverArt": "ar-300",
+		"albumCount": 4
+	},
+	{
+		"id": "172",
+		"name": "Def Leppard",
+		"coverArt": "ar-172",
+		"albumCount": 1
+	},
+	{
+		"id": "301",
+		"name": "Deftones",
+		"coverArt": "ar-301",
+		"albumCount": 7
+	},
+	{
+		"id": "562",
+		"name": "Los Del Mar",
+		"albumCount": 1
+	},
+	{
+		"id": "302",
+		"name": "Delta Spirit",
+		"coverArt": "ar-302",
+		"albumCount": 3
+	},
+	{
+		"id": "303",
+		"name": "Depeche Mode",
+		"coverArt": "ar-303",
+		"albumCount": 2
+	},
+	{
+		"id": "304",
+		"name": "Descendents",
+		"coverArt": "ar-304",
+		"albumCount": 14
+	},
+	{
+		"id": "1089",
+		"name": "Devil You Know",
+		"coverArt": "ar-1089",
+		"albumCount": 2
+	},
+	{
+		"id": "305",
+		"name": "Devo",
+		"coverArt": "ar-305",
+		"albumCount": 1
+	},
+	{
+		"id": "306",
+		"name": "Dexy's Midnight Runners",
+		"coverArt": "ar-306",
+		"albumCount": 1
+	},
+	{
+		"id": "307",
+		"name": "Diana Ross",
+		"coverArt": "ar-307",
+		"albumCount": 1
+	},
+	{
+		"id": "251",
+		"name": "Dieselboy",
+		"coverArt": "ar-251",
+		"albumCount": 1
+	},
+	{
+		"id": "308",
+		"name": "Diesel Boy",
+		"coverArt": "ar-308",
+		"albumCount": 2
+	},
+	{
+		"id": "242",
+		"name": "Dillinger Four",
+		"coverArt": "ar-242",
+		"albumCount": 5
+	},
+	{
+		"id": "309",
+		"name": "Dinosaur Jr.",
+		"coverArt": "ar-309",
+		"albumCount": 2
+	},
+	{
+		"id": "310",
+		"name": "Dio",
+		"coverArt": "ar-310",
+		"albumCount": 1
+	},
+	{
+		"id": "311",
+		"name": "Dire Straits",
+		"coverArt": "ar-311",
+		"albumCount": 1
+	},
+	{
+		"id": "881",
+		"name": "The Distillers",
+		"coverArt": "ar-881",
+		"albumCount": 3
+	},
+	{
+		"id": "312",
+		"name": "Disturbed",
+		"coverArt": "ar-312",
+		"albumCount": 8
+	},
+	{
+		"id": "252",
+		"name": "Divit",
+		"coverArt": "ar-252",
+		"albumCount": 1
+	},
+	{
+		"id": "313",
+		"name": "Dixie Chicks",
+		"coverArt": "ar-313",
+		"albumCount": 2
+	},
+	{
+		"id": "314",
+		"name": "DOA",
+		"coverArt": "ar-314",
+		"albumCount": 1
+	},
+	{
+		"id": "315",
+		"name": "Don Henley",
+		"coverArt": "ar-315",
+		"albumCount": 1
+	},
+	{
+		"id": "316",
+		"name": "Doomtree",
+		"coverArt": "ar-316",
+		"albumCount": 2
+	},
+	{
+		"id": "882",
+		"name": "The Dopamines",
+		"coverArt": "ar-882",
+		"albumCount": 3
+	},
+	{
+		"id": "317",
+		"name": "Douglas Adams",
+		"coverArt": "ar-317",
+		"albumCount": 3
+	},
+	{
+		"id": "318",
+		"name": "Down By Law",
+		"coverArt": "ar-318",
+		"albumCount": 3
+	},
+	{
+		"id": "883",
+		"name": "The Draft",
+		"coverArt": "ar-883",
+		"albumCount": 4
+	},
+	{
+		"id": "173",
+		"name": "Drag the River",
+		"coverArt": "ar-173",
+		"albumCount": 1
+	},
+	{
+		"id": "174",
+		"name": "Drag The River",
+		"coverArt": "ar-174",
+		"albumCount": 1
+	},
+	{
+		"id": "319",
+		"name": "Drake",
+		"coverArt": "ar-319",
+		"albumCount": 3
+	},
+	{
+		"id": "320",
+		"name": "Dream Theater",
+		"coverArt": "ar-320",
+		"albumCount": 3
+	},
+	{
+		"id": "321",
+		"name": "Drive-By Truckers",
+		"coverArt": "ar-321",
+		"albumCount": 4
+	},
+	{
+		"id": "322",
+		"name": "Dropkick Murphys",
+		"coverArt": "ar-322",
+		"albumCount": 11
+	},
+	{
+		"id": "884",
+		"name": "The Drowning Men",
+		"coverArt": "ar-884",
+		"albumCount": 2
+	},
+	{
+		"id": "323",
+		"name": "Drug Church",
+		"coverArt": "ar-323",
+		"albumCount": 1
+	},
+	{
+		"id": "324",
+		"name": "Duffy",
+		"albumCount": 1
+	},
+	{
+		"id": "325",
+		"name": "Dumb And Dumber Soudtrack",
+		"coverArt": "ar-325",
+		"albumCount": 1
+	},
+	{
+		"id": "885",
+		"name": "The Dwarves",
+		"coverArt": "ar-885",
+		"albumCount": 4
+	},
+	{
+		"id": "886",
+		"name": "The Eagles",
+		"coverArt": "ar-886",
+		"albumCount": 3
+	},
+	{
+		"id": "326",
+		"name": "Eagles Of Death Metal",
+		"coverArt": "ar-326",
+		"albumCount": 3
+	},
+	{
+		"id": "327",
+		"name": "Earth Wind & Fire",
+		"coverArt": "ar-327",
+		"albumCount": 1
+	},
+	{
+		"id": "329",
+		"name": "Eddie Money",
+		"coverArt": "ar-329",
+		"albumCount": 1
+	},
+	{
+		"id": "330",
+		"name": "Eddie Vedder",
+		"coverArt": "ar-330",
+		"albumCount": 2
+	},
+	{
+		"id": "331",
+		"name": "Eddy Grant",
+		"coverArt": "ar-331",
+		"albumCount": 1
+	},
+	{
+		"id": "328",
+		"name": "Ed Sheeran",
+		"coverArt": "ar-328",
+		"albumCount": 1
+	},
+	{
+		"id": "332",
+		"name": "Edward Sharpe & The Magnetic Zeros",
+		"coverArt": "ar-332",
+		"albumCount": 3
+	},
+	{
+		"id": "333",
+		"name": "Eels",
+		"coverArt": "ar-333",
+		"albumCount": 6
+	},
+	{
+		"id": "334",
+		"name": "Eiffel 65",
+		"coverArt": "ar-334",
+		"albumCount": 1
+	},
+	{
+		"id": "335",
+		"name": "Electric Light Orchestra",
+		"coverArt": "ar-335",
+		"albumCount": 1
+	},
+	{
+		"id": "336",
+		"name": "Ellie Goulding",
+		"coverArt": "ar-336",
+		"albumCount": 3
+	},
+	{
+		"id": "337",
+		"name": "Elliott Smith",
+		"coverArt": "ar-337",
+		"albumCount": 1
+	},
+	{
+		"id": "338",
+		"name": "Elton John",
+		"coverArt": "ar-338",
+		"albumCount": 4
+	},
+	{
+		"id": "339",
+		"name": "Elway",
+		"coverArt": "ar-339",
+		"albumCount": 4
+	},
+	{
+		"id": "340",
+		"name": "Emeli Sandé",
+		"albumCount": 1
+	},
+	{
+		"id": "341",
+		"name": "EMF",
+		"albumCount": 1
+	},
+	{
+		"id": "342",
+		"name": "Emilia",
+		"albumCount": 1
+	},
+	{
+		"id": "343",
+		"name": "Eminem",
+		"coverArt": "ar-343",
+		"albumCount": 2
+	},
+	{
+		"id": "344",
+		"name": "Empire Of The Sun",
+		"coverArt": "ar-344",
+		"albumCount": 3
+	},
+	{
+		"id": "346",
+		"name": "Entombed",
+		"coverArt": "ar-346",
+		"albumCount": 2
+	},
+	{
+		"id": "345",
+		"name": "En Vogue",
+		"albumCount": 1
+	},
+	{
+		"id": "347",
+		"name": "Envy",
+		"coverArt": "ar-347",
+		"albumCount": 2
+	},
+	{
+		"id": "887",
+		"name": "The Ergs!",
+		"coverArt": "ar-887",
+		"albumCount": 4
+	},
+	{
+		"id": "348",
+		"name": "Eric Church",
+		"coverArt": "ar-348",
+		"albumCount": 1
+	},
+	{
+		"id": "349",
+		"name": "Eric Clapton",
+		"coverArt": "ar-349",
+		"albumCount": 3
+	},
+	{
+		"id": "350",
+		"name": "Evanescence",
+		"coverArt": "ar-350",
+		"albumCount": 1
+	},
+	{
+		"id": "175",
+		"name": "Eve 6",
+		"coverArt": "ar-175",
+		"albumCount": 4
+	},
+	{
+		"id": "351",
+		"name": "Everclear",
+		"coverArt": "ar-351",
+		"albumCount": 10
+	},
+	{
+		"id": "352",
+		"name": "Evergreen Terrace",
+		"coverArt": "ar-352",
+		"albumCount": 4
+	},
+	{
+		"id": "353",
+		"name": "Everybody Out",
+		"coverArt": "ar-353",
+		"albumCount": 1
+	},
+	{
+		"id": "355",
+		"name": "Example",
+		"coverArt": "ar-355",
+		"albumCount": 1
+	},
+	{
+		"id": "354",
+		"name": "Ex Friends",
+		"coverArt": "ar-354",
+		"albumCount": 1
+	},
+	{
+		"id": "888",
+		"name": "The Explosion",
+		"coverArt": "ar-888",
+		"albumCount": 2
+	},
+	{
+		"id": "356",
+		"name": "Explosions & Fireworks",
+		"coverArt": "ar-356",
+		"albumCount": 1
+	},
+	{
+		"id": "357",
+		"name": "Explosions In The Sky",
+		"coverArt": "ar-357",
+		"albumCount": 1
+	},
+	{
+		"id": "358",
+		"name": "Extreme",
+		"albumCount": 1
+	},
+	{
+		"id": "359",
+		"name": "F.Y.P.",
+		"coverArt": "ar-359",
+		"albumCount": 2
+	},
+	{
+		"id": "361",
+		"name": "Face to Face",
+		"coverArt": "ar-361",
+		"albumCount": 3
+	},
+	{
+		"id": "360",
+		"name": "Face To Face",
+		"coverArt": "ar-360",
+		"albumCount": 7
+	},
+	{
+		"id": "362",
+		"name": "Fake Problems",
+		"coverArt": "ar-362",
+		"albumCount": 2
+	},
+	{
+		"id": "889",
+		"name": "The Falcon",
+		"coverArt": "ar-889",
+		"albumCount": 3
+	},
+	{
+		"id": "363",
+		"name": "Fall Out Boy",
+		"coverArt": "ar-363",
+		"albumCount": 1
+	},
+	{
+		"id": "364",
+		"name": "Family Man",
+		"coverArt": "ar-364",
+		"albumCount": 1
+	},
+	{
+		"id": "366",
+		"name": "Farewell Continental",
+		"coverArt": "ar-366",
+		"albumCount": 1
+	},
+	{
+		"id": "365",
+		"name": "Far from Finished",
+		"coverArt": "ar-365",
+		"albumCount": 2
+	},
+	{
+		"id": "367",
+		"name": "Fastball",
+		"coverArt": "ar-367",
+		"albumCount": 2
+	},
+	{
+		"id": "368",
+		"name": "Fear",
+		"coverArt": "ar-368",
+		"albumCount": 1
+	},
+	{
+		"id": "369",
+		"name": "Fear Factory",
+		"coverArt": "ar-369",
+		"albumCount": 4
+	},
+	{
+		"id": "370",
+		"name": "Feist",
+		"coverArt": "ar-370",
+		"albumCount": 1
+	},
+	{
+		"id": "371",
+		"name": "Fenix TX",
+		"coverArt": "ar-371",
+		"albumCount": 2
+	},
+	{
+		"id": "372",
+		"name": "Filter",
+		"coverArt": "ar-372",
+		"albumCount": 3
+	},
+	{
+		"id": "373",
+		"name": "Fine Young Cannibals",
+		"coverArt": "ar-373",
+		"albumCount": 1
+	},
+	{
+		"id": "374",
+		"name": "Finger Eleven",
+		"coverArt": "ar-374",
+		"albumCount": 1
+	},
+	{
+		"id": "375",
+		"name": "Five for Fighting",
+		"coverArt": "ar-375",
+		"albumCount": 1
+	},
+	{
+		"id": "376",
+		"name": "Flaming Lips",
+		"coverArt": "ar-376",
+		"albumCount": 1
+	},
+	{
+		"id": "377",
+		"name": "Flatliners",
+		"coverArt": "ar-377",
+		"albumCount": 1
+	},
+	{
+		"id": "890",
+		"name": "The Flatliners",
+		"coverArt": "ar-890",
+		"albumCount": 3
+	},
+	{
+		"id": "378",
+		"name": "Fleet Foxes",
+		"coverArt": "ar-378",
+		"albumCount": 2
+	},
+	{
+		"id": "379",
+		"name": "Fleetwood Mac",
+		"coverArt": "ar-379",
+		"albumCount": 1
+	},
+	{
+		"id": "381",
+		"name": "Flogging Molly",
+		"coverArt": "ar-381",
+		"albumCount": 6
+	},
+	{
+		"id": "176",
+		"name": "Florence + The Machine",
+		"coverArt": "ar-176",
+		"albumCount": 4
+	},
+	{
+		"id": "380",
+		"name": "Flo Rida",
+		"coverArt": "ar-380",
+		"albumCount": 1
+	},
+	{
+		"id": "382",
+		"name": "Flys",
+		"coverArt": "ar-382",
+		"albumCount": 1
+	},
+	{
+		"id": "383",
+		"name": "Foo Fighters",
+		"coverArt": "ar-383",
+		"albumCount": 8
+	},
+	{
+		"id": "384",
+		"name": "Fool's Garden",
+		"albumCount": 1
+	},
+	{
+		"id": "385",
+		"name": "Foreigner",
+		"albumCount": 1
+	},
+	{
+		"id": "386",
+		"name": "Fort Minor",
+		"coverArt": "ar-386",
+		"albumCount": 1
+	},
+	{
+		"id": "387",
+		"name": "Foster The People",
+		"coverArt": "ar-387",
+		"albumCount": 1
+	},
+	{
+		"id": "388",
+		"name": "Fountains of Wayne",
+		"coverArt": "ar-388",
+		"albumCount": 1
+	},
+	{
+		"id": "389",
+		"name": "Four Year Strong",
+		"coverArt": "ar-389",
+		"albumCount": 4
+	},
+	{
+		"id": "390",
+		"name": "Foxy Shazam",
+		"coverArt": "ar-390",
+		"albumCount": 2
+	},
+	{
+		"id": "391",
+		"name": "Frank Ocean",
+		"coverArt": "ar-391",
+		"albumCount": 1
+	},
+	{
+		"id": "392",
+		"name": "Frank Turner",
+		"coverArt": "ar-392",
+		"albumCount": 9
+	},
+	{
+		"id": "393",
+		"name": "Franky Lee",
+		"coverArt": "ar-393",
+		"albumCount": 1
+	},
+	{
+		"id": "394",
+		"name": "Frenzal Rhomb",
+		"coverArt": "ar-394",
+		"albumCount": 6
+	},
+	{
+		"id": "395",
+		"name": "From Autumn To Ashes",
+		"coverArt": "ar-395",
+		"albumCount": 2
+	},
+	{
+		"id": "396",
+		"name": "Fucked Up",
+		"coverArt": "ar-396",
+		"albumCount": 3
+	},
+	{
+		"id": "397",
+		"name": "Fugees",
+		"albumCount": 1
+	},
+	{
+		"id": "399",
+		"name": "Funeral for a Friend",
+		"coverArt": "ar-399",
+		"albumCount": 1
+	},
+	{
+		"id": "398",
+		"name": "Funeral For A Friend",
+		"coverArt": "ar-398",
+		"albumCount": 3
+	},
+	{
+		"id": "961",
+		"name": "The F-Ups",
+		"coverArt": "ar-961",
+		"albumCount": 1
+	},
+	{
+		"id": "400",
+		"name": "Further Seems Forever",
+		"albumCount": 2
+	},
+	{
+		"id": "401",
+		"name": "Fyfe Dangerfield",
+		"albumCount": 1
+	},
+	{
+		"id": "402",
+		"name": "Gabrielle",
+		"albumCount": 1
+	},
+	{
+		"id": "891",
+		"name": "The Gadjits",
+		"coverArt": "ar-891",
+		"albumCount": 2
+	},
+	{
+		"id": "403",
+		"name": "Gallows",
+		"coverArt": "ar-403",
+		"albumCount": 2
+	},
+	{
+		"id": "892",
+		"name": "The Gamits",
+		"coverArt": "ar-892",
+		"albumCount": 2
+	},
+	{
+		"id": "893",
+		"name": "The Gaslight Anthem",
+		"coverArt": "ar-893",
+		"albumCount": 12
+	},
+	{
+		"id": "894",
+		"name": "The Generators",
+		"coverArt": "ar-894",
+		"albumCount": 5
+	},
+	{
+		"id": "404",
+		"name": "Genesis",
+		"coverArt": "ar-404",
+		"albumCount": 1
+	},
+	{
+		"id": "405",
+		"name": "Get Dead",
+		"coverArt": "ar-405",
+		"albumCount": 2
+	},
+	{
+		"id": "406",
+		"name": "Gin Blossoms",
+		"coverArt": "ar-406",
+		"albumCount": 2
+	},
+	{
+		"id": "407",
+		"name": "Girls Aloud",
+		"albumCount": 1
+	},
+	{
+		"id": "408",
+		"name": "Glocca Morra",
+		"coverArt": "ar-408",
+		"albumCount": 1
+	},
+	{
+		"id": "409",
+		"name": "Gloria Gaynor",
+		"albumCount": 1
+	},
+	{
+		"id": "410",
+		"name": "Gnarls Barkley",
+		"coverArt": "ar-410",
+		"albumCount": 1
+	},
+	{
+		"id": "177",
+		"name": "Gob",
+		"coverArt": "ar-177",
+		"albumCount": 3
+	},
+	{
+		"id": "411",
+		"name": "Gogol Bordello",
+		"coverArt": "ar-411",
+		"albumCount": 3
+	},
+	{
+		"id": "412",
+		"name": "Goldfinger",
+		"coverArt": "ar-412",
+		"albumCount": 8
+	},
+	{
+		"id": "414",
+		"name": "Good Old War",
+		"coverArt": "ar-414",
+		"albumCount": 3
+	},
+	{
+		"id": "415",
+		"name": "Good Riddance",
+		"coverArt": "ar-415",
+		"albumCount": 11
+	},
+	{
+		"id": "413",
+		"name": "Goo Goo Dolls",
+		"coverArt": "ar-413",
+		"albumCount": 5
+	},
+	{
+		"id": "416",
+		"name": "Gotye",
+		"coverArt": "ar-416",
+		"albumCount": 1
+	},
+	{
+		"id": "417",
+		"name": "Grade",
+		"coverArt": "ar-417",
+		"albumCount": 4
+	},
+	{
+		"id": "418",
+		"name": "Grateful Dead",
+		"coverArt": "ar-418",
+		"albumCount": 1
+	},
+	{
+		"id": "256",
+		"name": "Green Day",
+		"coverArt": "ar-256",
+		"albumCount": 16
+	},
+	{
+		"id": "419",
+		"name": "Green Jelly",
+		"coverArt": "ar-419",
+		"albumCount": 1
+	},
+	{
+		"id": "420",
+		"name": "Greenland is Melting",
+		"coverArt": "ar-420",
+		"albumCount": 2
+	},
+	{
+		"id": "421",
+		"name": "Greg Graffin",
+		"coverArt": "ar-421",
+		"albumCount": 1
+	},
+	{
+		"id": "422",
+		"name": "Groovie Ghoulies",
+		"coverArt": "ar-422",
+		"albumCount": 2
+	},
+	{
+		"id": "239",
+		"name": "GTA Vice City OST",
+		"coverArt": "ar-239",
+		"albumCount": 7
+	},
+	{
+		"id": "423",
+		"name": "Guided By Voices",
+		"coverArt": "ar-423",
+		"albumCount": 1
+	},
+	{
+		"id": "240",
+		"name": "Guns N' Roses",
+		"coverArt": "ar-240",
+		"albumCount": 7
+	},
+	{
+		"id": "255",
+		"name": "Guttermouth",
+		"coverArt": "ar-255",
+		"albumCount": 13
+	},
+	{
+		"id": "424",
+		"name": "Gwar",
+		"coverArt": "ar-424",
+		"albumCount": 3
+	},
+	{
+		"id": "425",
+		"name": "Gwen Stefani",
+		"coverArt": "ar-425",
+		"albumCount": 2
+	},
+	{
+		"id": "227",
+		"name": "H20",
+		"coverArt": "ar-227",
+		"albumCount": 1
+	},
+	{
+		"id": "426",
+		"name": "H2O",
+		"coverArt": "ar-426",
+		"albumCount": 12
+	},
+	{
+		"id": "231",
+		"name": "Hagfish",
+		"coverArt": "ar-231",
+		"albumCount": 6
+	},
+	{
+		"id": "178",
+		"name": "Hannibal Buress",
+		"coverArt": "ar-178",
+		"albumCount": 1
+	},
+	{
+		"id": "427",
+		"name": "Harvey Danger",
+		"coverArt": "ar-427",
+		"albumCount": 1
+	},
+	{
+		"id": "428",
+		"name": "Hatebreed",
+		"coverArt": "ar-428",
+		"albumCount": 3
+	},
+	{
+		"id": "895",
+		"name": "The Have Nots",
+		"coverArt": "ar-895",
+		"albumCount": 2
+	},
+	{
+		"id": "897",
+		"name": "the head and the heart",
+		"coverArt": "ar-897",
+		"albumCount": 1
+	},
+	{
+		"id": "896",
+		"name": "The Head and the Heart",
+		"coverArt": "ar-896",
+		"albumCount": 1
+	},
+	{
+		"id": "898",
+		"name": "The Head And The Heart",
+		"coverArt": "ar-898",
+		"albumCount": 1
+	},
+	{
+		"id": "429",
+		"name": "Heart",
+		"coverArt": "ar-429",
+		"albumCount": 3
+	},
+	{
+		"id": "430",
+		"name": "Heartwell",
+		"coverArt": "ar-430",
+		"albumCount": 1
+	},
+	{
+		"id": "431",
+		"name": "Heavens",
+		"coverArt": "ar-431",
+		"albumCount": 1
+	},
+	{
+		"id": "432",
+		"name": "Helmet",
+		"coverArt": "ar-432",
+		"albumCount": 1
+	},
+	{
+		"id": "899",
+		"name": "The Hippos",
+		"coverArt": "ar-899",
+		"albumCount": 2
+	},
+	{
+		"id": "433",
+		"name": "Hi-Standard",
+		"coverArt": "ar-433",
+		"albumCount": 1
+	},
+	{
+		"id": "900",
+		"name": "The Hives",
+		"coverArt": "ar-900",
+		"albumCount": 1
+	},
+	{
+		"id": "901",
+		"name": "The Hold Steady",
+		"coverArt": "ar-901",
+		"albumCount": 10
+	},
+	{
+		"id": "0",
+		"name": "Hollywood Principle",
+		"coverArt": "ar-0",
+		"albumCount": 1
+	},
+	{
+		"id": "434",
+		"name": "Hollywood Undead",
+		"coverArt": "ar-434",
+		"albumCount": 1
+	},
+	{
+		"id": "902",
+		"name": "The Holy Mess",
+		"coverArt": "ar-902",
+		"albumCount": 3
+	},
+	{
+		"id": "435",
+		"name": "Home Grown",
+		"coverArt": "ar-435",
+		"albumCount": 1
+	},
+	{
+		"id": "436",
+		"name": "Hootie & The Blowfish",
+		"coverArt": "ar-436",
+		"albumCount": 2
+	},
+	{
+		"id": "437",
+		"name": "Horace Pinker",
+		"coverArt": "ar-437",
+		"albumCount": 1
+	},
+	{
+		"id": "903",
+		"name": "The Horrible Crowes",
+		"coverArt": "ar-903",
+		"albumCount": 1
+	},
+	{
+		"id": "438",
+		"name": "Hot Chip",
+		"coverArt": "ar-438",
+		"albumCount": 3
+	},
+	{
+		"id": "439",
+		"name": "Hot Water Music",
+		"coverArt": "ar-439",
+		"albumCount": 10
+	},
+	{
+		"id": "440",
+		"name": "House Of Pain",
+		"albumCount": 1
+	},
+	{
+		"id": "441",
+		"name": "Huey Lewis & The News",
+		"coverArt": "ar-441",
+		"albumCount": 7
+	},
+	{
+		"id": "442",
+		"name": "Hum",
+		"coverArt": "ar-442",
+		"albumCount": 1
+	},
+	{
+		"id": "904",
+		"name": "The Humpers",
+		"coverArt": "ar-904",
+		"albumCount": 1
+	},
+	{
+		"id": "443",
+		"name": "I Am The Avalanche",
+		"coverArt": "ar-443",
+		"albumCount": 3
+	},
+	{
+		"id": "444",
+		"name": "Iggy And The Stooges",
+		"coverArt": "ar-444",
+		"albumCount": 1
+	},
+	{
+		"id": "445",
+		"name": "Iggy Pop",
+		"coverArt": "ar-445",
+		"albumCount": 1
+	},
+	{
+		"id": "446",
+		"name": "Ignite",
+		"coverArt": "ar-446",
+		"albumCount": 3
+	},
+	{
+		"id": "179",
+		"name": "Imagine Dragons",
+		"coverArt": "ar-179",
+		"albumCount": 2
+	},
+	{
+		"id": "447",
+		"name": "Immortal Technique",
+		"coverArt": "ar-447",
+		"albumCount": 3
+	},
+	{
+		"id": "448",
+		"name": "Imogen Heap",
+		"coverArt": "ar-448",
+		"albumCount": 1
+	},
+	{
+		"id": "450",
+		"name": "Incubus",
+		"coverArt": "ar-450",
+		"albumCount": 7
+	},
+	{
+		"id": "449",
+		"name": "In Flames",
+		"coverArt": "ar-449",
+		"albumCount": 6
+	},
+	{
+		"id": "451",
+		"name": "Ingrid Michaelson",
+		"coverArt": "ar-451",
+		"albumCount": 1
+	},
+	{
+		"id": "452",
+		"name": "Ini Kamoze",
+		"albumCount": 1
+	},
+	{
+		"id": "453",
+		"name": "Inner Circle",
+		"albumCount": 1
+	},
+	{
+		"id": "454",
+		"name": "INXS",
+		"coverArt": "ar-454",
+		"albumCount": 1
+	},
+	{
+		"id": "455",
+		"name": "Iron & Wine",
+		"coverArt": "ar-455",
+		"albumCount": 1
+	},
+	{
+		"id": "456",
+		"name": "Iron Chic",
+		"coverArt": "ar-456",
+		"albumCount": 5
+	},
+	{
+		"id": "457",
+		"name": "Iron Maiden",
+		"coverArt": "ar-457",
+		"albumCount": 3
+	},
+	{
+		"id": "458",
+		"name": "It Dies Today",
+		"coverArt": "ar-458",
+		"albumCount": 1
+	},
+	{
+		"id": "459",
+		"name": "Jack Johnson",
+		"coverArt": "ar-459",
+		"albumCount": 12
+	},
+	{
+		"id": "460",
+		"name": "Jackson 5",
+		"coverArt": "ar-460",
+		"albumCount": 1
+	},
+	{
+		"id": "461",
+		"name": "James",
+		"coverArt": "ar-461",
+		"albumCount": 1
+	},
+	{
+		"id": "462",
+		"name": "James Morrison Feat. Nelly Furtado",
+		"coverArt": "ar-462",
+		"albumCount": 1
+	},
+	{
+		"id": "245",
+		"name": "James Taylor",
+		"coverArt": "ar-245",
+		"albumCount": 2
+	},
+	{
+		"id": "463",
+		"name": "Jane's Addiction",
+		"coverArt": "ar-463",
+		"albumCount": 2
+	},
+	{
+		"id": "464",
+		"name": "Janis Joplin",
+		"coverArt": "ar-464",
+		"albumCount": 1
+	},
+	{
+		"id": "465",
+		"name": "Japandroids",
+		"coverArt": "ar-465",
+		"albumCount": 2
+	},
+	{
+		"id": "466",
+		"name": "Jason Mraz",
+		"coverArt": "ar-466",
+		"albumCount": 3
+	},
+	{
+		"id": "467",
+		"name": "Jawbreaker",
+		"coverArt": "ar-467",
+		"albumCount": 3
+	},
+	{
+		"id": "468",
+		"name": "Jay Reatard",
+		"coverArt": "ar-468",
+		"albumCount": 2
+	},
+	{
+		"id": "469",
+		"name": "Jay-Z",
+		"coverArt": "ar-469",
+		"albumCount": 3
+	},
+	{
+		"id": "180",
+		"name": "JAY Z & Kanye West",
+		"coverArt": "ar-180",
+		"albumCount": 1
+	},
+	{
+		"id": "470",
+		"name": "Jeff Buckley",
+		"coverArt": "ar-470",
+		"albumCount": 1
+	},
+	{
+		"id": "471",
+		"name": "Jello Biafra",
+		"coverArt": "ar-471",
+		"albumCount": 1
+	},
+	{
+		"id": "472",
+		"name": "Jennifer Lopez",
+		"albumCount": 1
+	},
+	{
+		"id": "473",
+		"name": "Jennifer Lopez Feat. Lil Wayne",
+		"albumCount": 1
+	},
+	{
+		"id": "474",
+		"name": "Jenny Owen Youngs",
+		"coverArt": "ar-474",
+		"albumCount": 1
+	},
+	{
+		"id": "475",
+		"name": "Jessie J",
+		"coverArt": "ar-475",
+		"albumCount": 2
+	},
+	{
+		"id": "476",
+		"name": "JET",
+		"coverArt": "ar-476",
+		"albumCount": 1
+	},
+	{
+		"id": "477",
+		"name": "Jimi Hendrix",
+		"coverArt": "ar-477",
+		"albumCount": 2
+	},
+	{
+		"id": "905",
+		"name": "The Jimi Hendrix Experience",
+		"coverArt": "ar-905",
+		"albumCount": 2
+	},
+	{
+		"id": "478",
+		"name": "Jimmy Cliff",
+		"coverArt": "ar-478",
+		"albumCount": 1
+	},
+	{
+		"id": "479",
+		"name": "Jimmy Eat World",
+		"coverArt": "ar-479",
+		"albumCount": 7
+	},
+	{
+		"id": "480",
+		"name": "Joan Jett & the Blackhearts",
+		"coverArt": "ar-480",
+		"albumCount": 1
+	},
+	{
+		"id": "481",
+		"name": "Joan Jett and the Blackhearts",
+		"coverArt": "ar-481",
+		"albumCount": 1
+	},
+	{
+		"id": "482",
+		"name": "Joe Cocker",
+		"coverArt": "ar-482",
+		"albumCount": 2
+	},
+	{
+		"id": "483",
+		"name": "Joe Strummer & The Mescaleros",
+		"coverArt": "ar-483",
+		"albumCount": 2
+	},
+	{
+		"id": "484",
+		"name": "Joe Walsh",
+		"coverArt": "ar-484",
+		"albumCount": 1
+	},
+	{
+		"id": "485",
+		"name": "Joey Briggs",
+		"coverArt": "ar-485",
+		"albumCount": 1
+	},
+	{
+		"id": "486",
+		"name": "Joey Cape",
+		"coverArt": "ar-486",
+		"albumCount": 3
+	},
+	{
+		"id": "488",
+		"name": "Joey Cape's Bad Loud",
+		"coverArt": "ar-488",
+		"albumCount": 1
+	},
+	{
+		"id": "487",
+		"name": "Joey Cape & Tony Sly",
+		"coverArt": "ar-487",
+		"albumCount": 1
+	},
+	{
+		"id": "489",
+		"name": "Joey Ramone",
+		"coverArt": "ar-489",
+		"albumCount": 3
+	},
+	{
+		"id": "490",
+		"name": "John Butler",
+		"coverArt": "ar-490",
+		"albumCount": 1
+	},
+	{
+		"id": "491",
+		"name": "John Butler Trio",
+		"coverArt": "ar-491",
+		"albumCount": 4
+	},
+	{
+		"id": "181",
+		"name": "John Fogerty",
+		"coverArt": "ar-181",
+		"albumCount": 1
+	},
+	{
+		"id": "492",
+		"name": "John K. Samson",
+		"coverArt": "ar-492",
+		"albumCount": 1
+	},
+	{
+		"id": "493",
+		"name": "John Lennon",
+		"coverArt": "ar-493",
+		"albumCount": 2
+	},
+	{
+		"id": "494",
+		"name": "John Mayer",
+		"coverArt": "ar-494",
+		"albumCount": 3
+	},
+	{
+		"id": "496",
+		"name": "Johnny Cash",
+		"coverArt": "ar-496",
+		"albumCount": 4
+	},
+	{
+		"id": "495",
+		"name": "John Williams",
+		"coverArt": "ar-495",
+		"albumCount": 1
+	},
+	{
+		"id": "497",
+		"name": "Jon Cougar Concentration Camp",
+		"coverArt": "ar-497",
+		"albumCount": 3
+	},
+	{
+		"id": "499",
+		"name": "Joni Mitchell",
+		"coverArt": "ar-499",
+		"albumCount": 2
+	},
+	{
+		"id": "498",
+		"name": "Jon Snodgrass",
+		"coverArt": "ar-498",
+		"albumCount": 2
+	},
+	{
+		"id": "500",
+		"name": "Journey",
+		"coverArt": "ar-500",
+		"albumCount": 2
+	},
+	{
+		"id": "501",
+		"name": "Jovanotti",
+		"albumCount": 1
+	},
+	{
+		"id": "503",
+		"name": "Joyce Manor",
+		"coverArt": "ar-503",
+		"albumCount": 4
+	},
+	{
+		"id": "502",
+		"name": "Joy Division",
+		"coverArt": "ar-502",
+		"albumCount": 1
+	},
+	{
+		"id": "504",
+		"name": "Judas Priest",
+		"coverArt": "ar-504",
+		"albumCount": 1
+	},
+	{
+		"id": "505",
+		"name": "Jughead's Revenge",
+		"coverArt": "ar-505",
+		"albumCount": 5
+	},
+	{
+		"id": "506",
+		"name": "Junior Battles",
+		"coverArt": "ar-506",
+		"albumCount": 1
+	},
+	{
+		"id": "507",
+		"name": "Justin Bieber Feat. Ludacris",
+		"albumCount": 1
+	},
+	{
+		"id": "508",
+		"name": "Justin Timberlake",
+		"coverArt": "ar-508",
+		"albumCount": 2
+	},
+	{
+		"id": "509",
+		"name": "Kaiser Chiefs",
+		"coverArt": "ar-509",
+		"albumCount": 1
+	},
+	{
+		"id": "510",
+		"name": "Kansas",
+		"coverArt": "ar-510",
+		"albumCount": 1
+	},
+	{
+		"id": "511",
+		"name": "Kanye West",
+		"coverArt": "ar-511",
+		"albumCount": 10
+	},
+	{
+		"id": "512",
+		"name": "Katy Perry",
+		"coverArt": "ar-512",
+		"albumCount": 5
+	},
+	{
+		"id": "513",
+		"name": "Ke$ha",
+		"coverArt": "ar-513",
+		"albumCount": 3
+	},
+	{
+		"id": "514",
+		"name": "Kelly Clarkson",
+		"coverArt": "ar-514",
+		"albumCount": 1
+	},
+	{
+		"id": "515",
+		"name": "Kepi Ghoulie",
+		"coverArt": "ar-515",
+		"albumCount": 1
+	},
+	{
+		"id": "182",
+		"name": "Kevin Seconds",
+		"coverArt": "ar-182",
+		"albumCount": 1
+	},
+	{
+		"id": "516",
+		"name": "Kid Cudi",
+		"coverArt": "ar-516",
+		"albumCount": 3
+	},
+	{
+		"id": "517",
+		"name": "KiD CuDi",
+		"coverArt": "ar-517",
+		"albumCount": 2
+	},
+	{
+		"id": "906",
+		"name": "The Killers",
+		"coverArt": "ar-906",
+		"albumCount": 4
+	},
+	{
+		"id": "518",
+		"name": "Killswitch Engage",
+		"coverArt": "ar-518",
+		"albumCount": 7
+	},
+	{
+		"id": "519",
+		"name": "Kim Appleby",
+		"albumCount": 1
+	},
+	{
+		"id": "226",
+		"name": "Kim Carnes",
+		"albumCount": 1
+	},
+	{
+		"id": "520",
+		"name": "Kina Grannis",
+		"coverArt": "ar-520",
+		"albumCount": 2
+	},
+	{
+		"id": "907",
+		"name": "The King Blues",
+		"coverArt": "ar-907",
+		"albumCount": 3
+	},
+	{
+		"id": "521",
+		"name": "Kings of Leon",
+		"coverArt": "ar-521",
+		"albumCount": 6
+	},
+	{
+		"id": "522",
+		"name": "Kings Of Leon",
+		"coverArt": "ar-522",
+		"albumCount": 1
+	},
+	{
+		"id": "523",
+		"name": "Kings Of Nuthin'",
+		"coverArt": "ar-523",
+		"albumCount": 1
+	},
+	{
+		"id": "962",
+		"name": "The Kinks",
+		"coverArt": "ar-962",
+		"albumCount": 1
+	},
+	{
+		"id": "524",
+		"name": "Koffin Kats",
+		"coverArt": "ar-524",
+		"albumCount": 1
+	},
+	{
+		"id": "908",
+		"name": "The Koffin Kats",
+		"coverArt": "ar-908",
+		"albumCount": 2
+	},
+	{
+		"id": "525",
+		"name": "Korn",
+		"coverArt": "ar-525",
+		"albumCount": 7
+	},
+	{
+		"id": "526",
+		"name": "Korpiklaani",
+		"coverArt": "ar-526",
+		"albumCount": 1
+	},
+	{
+		"id": "527",
+		"name": "Kosheen",
+		"albumCount": 1
+	},
+	{
+		"id": "528",
+		"name": "Kris Allen",
+		"coverArt": "ar-528",
+		"albumCount": 1
+	},
+	{
+		"id": "529",
+		"name": "Kriss Kross",
+		"albumCount": 1
+	},
+	{
+		"id": "530",
+		"name": "KT Tunstall",
+		"albumCount": 1
+	},
+	{
+		"id": "531",
+		"name": "Kyle Dixon & Michael Stein",
+		"coverArt": "ar-531",
+		"albumCount": 1
+	},
+	{
+		"id": "532",
+		"name": "Kylie Minogue",
+		"albumCount": 1
+	},
+	{
+		"id": "533",
+		"name": "L7",
+		"coverArt": "ar-533",
+		"albumCount": 2
+	},
+	{
+		"id": "535",
+		"name": "Lady Gaga",
+		"coverArt": "ar-535",
+		"albumCount": 2
+	},
+	{
+		"id": "536",
+		"name": "LaGrecia",
+		"coverArt": "ar-536",
+		"albumCount": 1
+	},
+	{
+		"id": "537",
+		"name": "Lagwagon",
+		"coverArt": "ar-537",
+		"albumCount": 13
+	},
+	{
+		"id": "539",
+		"name": "Lamb of God",
+		"coverArt": "ar-539",
+		"albumCount": 1
+	},
+	{
+		"id": "538",
+		"name": "Lamb Of God",
+		"coverArt": "ar-538",
+		"albumCount": 4
+	},
+	{
+		"id": "540",
+		"name": "Lana Del Rey",
+		"coverArt": "ar-540",
+		"albumCount": 1
+	},
+	{
+		"id": "541",
+		"name": "Larry And His Flask",
+		"coverArt": "ar-541",
+		"albumCount": 1
+	},
+	{
+		"id": "542",
+		"name": "Lars Frederiksen & The Bastards",
+		"coverArt": "ar-542",
+		"albumCount": 2
+	},
+	{
+		"id": "543",
+		"name": "Latterman",
+		"coverArt": "ar-543",
+		"albumCount": 2
+	},
+	{
+		"id": "544",
+		"name": "Laura Marling",
+		"coverArt": "ar-544",
+		"albumCount": 3
+	},
+	{
+		"id": "545",
+		"name": "Laura Stevenson",
+		"coverArt": "ar-545",
+		"albumCount": 1
+	},
+	{
+		"id": "263",
+		"name": "The Lawrence Arms",
+		"coverArt": "ar-263",
+		"albumCount": 10
+	},
+	{
+		"id": "546",
+		"name": "Leatherface",
+		"coverArt": "ar-546",
+		"albumCount": 2
+	},
+	{
+		"id": "547",
+		"name": "Led Zeppelin",
+		"coverArt": "ar-547",
+		"albumCount": 1
+	},
+	{
+		"id": "548",
+		"name": "Leftover Crack",
+		"coverArt": "ar-548",
+		"albumCount": 1
+	},
+	{
+		"id": "549",
+		"name": "Leftöver Crack",
+		"coverArt": "ar-549",
+		"albumCount": 1
+	},
+	{
+		"id": "909",
+		"name": "The Lemonheads",
+		"coverArt": "ar-909",
+		"albumCount": 3
+	},
+	{
+		"id": "6",
+		"name": "Len",
+		"coverArt": "ar-6",
+		"albumCount": 1
+	},
+	{
+		"id": "550",
+		"name": "Less Than Jake",
+		"coverArt": "ar-550",
+		"albumCount": 21
+	},
+	{
+		"id": "551",
+		"name": "Lifetime",
+		"coverArt": "ar-551",
+		"albumCount": 2
+	},
+	{
+		"id": "552",
+		"name": "Light Years",
+		"coverArt": "ar-552",
+		"albumCount": 1
+	},
+	{
+		"id": "553",
+		"name": "Lily Allen",
+		"albumCount": 1
+	},
+	{
+		"id": "554",
+		"name": "Limp",
+		"coverArt": "ar-554",
+		"albumCount": 1
+	},
+	{
+		"id": "555",
+		"name": "Linkin Park",
+		"coverArt": "ar-555",
+		"albumCount": 3
+	},
+	{
+		"id": "556",
+		"name": "Lionel Richie",
+		"coverArt": "ar-556",
+		"albumCount": 1
+	},
+	{
+		"id": "557",
+		"name": "Lit",
+		"coverArt": "ar-557",
+		"albumCount": 2
+	},
+	{
+		"id": "558",
+		"name": "Live",
+		"coverArt": "ar-558",
+		"albumCount": 1
+	},
+	{
+		"id": "910",
+		"name": "The Living End",
+		"coverArt": "ar-910",
+		"albumCount": 5
+	},
+	{
+		"id": "559",
+		"name": "Local H",
+		"coverArt": "ar-559",
+		"albumCount": 2
+	},
+	{
+		"id": "560",
+		"name": "Londonbeat",
+		"albumCount": 1
+	},
+	{
+		"id": "563",
+		"name": "Los Lonely Boys",
+		"coverArt": "ar-563",
+		"albumCount": 1
+	},
+	{
+		"id": "911",
+		"name": "The Lonely Island",
+		"coverArt": "ar-911",
+		"albumCount": 1
+	},
+	{
+		"id": "561",
+		"name": "Lorca",
+		"albumCount": 1
+	},
+	{
+		"id": "564",
+		"name": "Lost City Angels",
+		"coverArt": "ar-564",
+		"albumCount": 1
+	},
+	{
+		"id": "565",
+		"name": "Lou Bega",
+		"albumCount": 1
+	},
+	{
+		"id": "566",
+		"name": "Louis CK",
+		"coverArt": "ar-566",
+		"albumCount": 2
+	},
+	{
+		"id": "912",
+		"name": "The Loved Ones",
+		"coverArt": "ar-912",
+		"albumCount": 4
+	},
+	{
+		"id": "567",
+		"name": "Lucero",
+		"coverArt": "ar-567",
+		"albumCount": 8
+	},
+	{
+		"id": "568",
+		"name": "Lucky Scars",
+		"coverArt": "ar-568",
+		"albumCount": 1
+	},
+	{
+		"id": "913",
+		"name": "The Lumineers",
+		"coverArt": "ar-913",
+		"albumCount": 1
+	},
+	{
+		"id": "569",
+		"name": "Lupe Fiasco",
+		"coverArt": "ar-569",
+		"albumCount": 4
+	},
+	{
+		"id": "570",
+		"name": "Luther",
+		"coverArt": "ar-570",
+		"albumCount": 1
+	},
+	{
+		"id": "571",
+		"name": "Lynyrd Skynyrd",
+		"coverArt": "ar-571",
+		"albumCount": 2
+	},
+	{
+		"id": "572",
+		"name": "M.I.A.",
+		"coverArt": "ar-572",
+		"albumCount": 2
+	},
+	{
+		"id": "573",
+		"name": "M83",
+		"coverArt": "ar-573",
+		"albumCount": 1
+	},
+	{
+		"id": "574",
+		"name": "Macklemore",
+		"coverArt": "ar-574",
+		"albumCount": 1
+	},
+	{
+		"id": "575",
+		"name": "Macklemore & Ryan Lewis",
+		"coverArt": "ar-575",
+		"albumCount": 1
+	},
+	{
+		"id": "577",
+		"name": "Madcap",
+		"coverArt": "ar-577",
+		"albumCount": 3
+	},
+	{
+		"id": "578",
+		"name": "Madness",
+		"coverArt": "ar-578",
+		"albumCount": 1
+	},
+	{
+		"id": "576",
+		"name": "Mad Sin",
+		"coverArt": "ar-576",
+		"albumCount": 1
+	},
+	{
+		"id": "579",
+		"name": "Make Do and Mend",
+		"coverArt": "ar-579",
+		"albumCount": 1
+	},
+	{
+		"id": "580",
+		"name": "Make Do And Mend",
+		"coverArt": "ar-580",
+		"albumCount": 1
+	},
+	{
+		"id": "582",
+		"name": "Manau",
+		"albumCount": 1
+	},
+	{
+		"id": "946",
+		"name": "Manchester Orchestra",
+		"coverArt": "ar-946",
+		"albumCount": 1
+	},
+	{
+		"id": "583",
+		"name": "Manic Hispanic",
+		"coverArt": "ar-583",
+		"albumCount": 1
+	},
+	{
+		"id": "584",
+		"name": "Mano Negra",
+		"albumCount": 1
+	},
+	{
+		"id": "581",
+		"name": "Man Overboard",
+		"coverArt": "ar-581",
+		"albumCount": 1
+	},
+	{
+		"id": "586",
+		"name": "Mariachi El Bronx",
+		"coverArt": "ar-586",
+		"albumCount": 3
+	},
+	{
+		"id": "585",
+		"name": "Maria Mckee",
+		"albumCount": 1
+	},
+	{
+		"id": "587",
+		"name": "Marilyn Manson",
+		"coverArt": "ar-587",
+		"albumCount": 2
+	},
+	{
+		"id": "588",
+		"name": "Maroon 5",
+		"coverArt": "ar-588",
+		"albumCount": 4
+	},
+	{
+		"id": "241",
+		"name": "Marvin Gaye",
+		"coverArt": "ar-241",
+		"albumCount": 1
+	},
+	{
+		"id": "589",
+		"name": "Marvin Sease",
+		"coverArt": "ar-589",
+		"albumCount": 1
+	},
+	{
+		"id": "590",
+		"name": "Masked Intruder",
+		"coverArt": "ar-590",
+		"albumCount": 3
+	},
+	{
+		"id": "591",
+		"name": "Mastodon",
+		"coverArt": "ar-591",
+		"albumCount": 2
+	},
+	{
+		"id": "592",
+		"name": "Matchbox Twenty",
+		"coverArt": "ar-592",
+		"albumCount": 1
+	},
+	{
+		"id": "593",
+		"name": "Matt & Kim",
+		"coverArt": "ar-593",
+		"albumCount": 1
+	},
+	{
+		"id": "594",
+		"name": "Matt Costa",
+		"coverArt": "ar-594",
+		"albumCount": 1
+	},
+	{
+		"id": "597",
+		"name": "Matthew Ryan",
+		"coverArt": "ar-597",
+		"albumCount": 2
+	},
+	{
+		"id": "595",
+		"name": "Matt Skiba",
+		"coverArt": "ar-595",
+		"albumCount": 1
+	},
+	{
+		"id": "596",
+		"name": "Matt Skiba & The Sekrets",
+		"coverArt": "ar-596",
+		"albumCount": 2
+	},
+	{
+		"id": "598",
+		"name": "Max Brooks",
+		"coverArt": "ar-598",
+		"albumCount": 2
+	},
+	{
+		"id": "947",
+		"name": "McFly Feat. Taio Cruz",
+		"coverArt": "ar-947",
+		"albumCount": 1
+	},
+	{
+		"id": "1074",
+		"name": "Meat Loaf",
+		"coverArt": "ar-1074",
+		"albumCount": 1
+	},
+	{
+		"id": "1073",
+		"name": "Me First & the Gimme Gimmes",
+		"coverArt": "ar-1073",
+		"albumCount": 1
+	},
+	{
+		"id": "1072",
+		"name": "Me First & The Gimme Gimmes",
+		"coverArt": "ar-1072",
+		"albumCount": 8
+	},
+	{
+		"id": "1075",
+		"name": "Meghan Trainor",
+		"coverArt": "ar-1075",
+		"albumCount": 2
+	},
+	{
+		"id": "1076",
+		"name": "Melissa Etheridge",
+		"albumCount": 1
+	},
+	{
+		"id": "1077",
+		"name": "Men Without Hats",
+		"coverArt": "ar-1077",
+		"albumCount": 1
+	},
+	{
+		"id": "914",
+		"name": "The Menzingers",
+		"coverArt": "ar-914",
+		"albumCount": 8
+	},
+	{
+		"id": "1078",
+		"name": "Mest",
+		"coverArt": "ar-1078",
+		"albumCount": 2
+	},
+	{
+		"id": "1079",
+		"name": "Metallica",
+		"coverArt": "ar-1079",
+		"albumCount": 13
+	},
+	{
+		"id": "915",
+		"name": "The Methadones",
+		"coverArt": "ar-915",
+		"albumCount": 4
+	},
+	{
+		"id": "1080",
+		"name": "MewithoutYou",
+		"coverArt": "ar-1080",
+		"albumCount": 1
+	},
+	{
+		"id": "1081",
+		"name": "MGMT",
+		"coverArt": "ar-1081",
+		"albumCount": 3
+	},
+	{
+		"id": "1082",
+		"name": "mi6",
+		"coverArt": "ar-1082",
+		"albumCount": 2
+	},
+	{
+		"id": "1083",
+		"name": "MI6",
+		"coverArt": "ar-1083",
+		"albumCount": 1
+	},
+	{
+		"id": "238",
+		"name": "Michael Andrews",
+		"coverArt": "ar-238",
+		"albumCount": 1
+	},
+	{
+		"id": "1084",
+		"name": "Michael Buble",
+		"coverArt": "ar-1084",
+		"albumCount": 1
+	},
+	{
+		"id": "1085",
+		"name": "Michale Graves",
+		"coverArt": "ar-1085",
+		"albumCount": 2
+	},
+	{
+		"id": "916",
+		"name": "The Mighty Mighty Bosstones",
+		"coverArt": "ar-916",
+		"albumCount": 9
+	},
+	{
+		"id": "1",
+		"name": "Mike Ault",
+		"coverArt": "ar-1",
+		"albumCount": 1
+	},
+	{
+		"id": "2",
+		"name": "Mike Ault feat. Avianna Acid",
+		"coverArt": "ar-2",
+		"albumCount": 1
+	},
+	{
+		"id": "3",
+		"name": "Mike Ault feat. Crysta",
+		"coverArt": "ar-3",
+		"albumCount": 1
+	},
+	{
+		"id": "4",
+		"name": "Mike Ault feat. Morgan Perry",
+		"coverArt": "ar-4",
+		"albumCount": 1
+	},
+	{
+		"id": "5",
+		"name": "Mike Ault feat. Nikki Wilkins",
+		"coverArt": "ar-5",
+		"albumCount": 1
+	},
+	{
+		"id": "1086",
+		"name": "Mike Birbiglia",
+		"coverArt": "ar-1086",
+		"albumCount": 1
+	},
+	{
+		"id": "1087",
+		"name": "Mike Felumlee And Dan Andriano",
+		"coverArt": "ar-1087",
+		"albumCount": 1
+	},
+	{
+		"id": "1088",
+		"name": "Mike Herrera's Tumbledown",
+		"coverArt": "ar-1088",
+		"albumCount": 1
+	},
+	{
+		"id": "948",
+		"name": "Mike Ness",
+		"coverArt": "ar-948",
+		"albumCount": 2
+	},
+	{
+		"id": "34",
+		"name": "Mike Park",
+		"coverArt": "ar-34",
+		"albumCount": 1
+	},
+	{
+		"id": "35",
+		"name": "Mikey Erg",
+		"coverArt": "ar-35",
+		"albumCount": 1
+	},
+	{
+		"id": "36",
+		"name": "Miley Cyrus",
+		"coverArt": "ar-36",
+		"albumCount": 1
+	},
+	{
+		"id": "37",
+		"name": "Milk Inc",
+		"albumCount": 1
+	},
+	{
+		"id": "38",
+		"name": "Millencolin",
+		"coverArt": "ar-38",
+		"albumCount": 10
+	},
+	{
+		"id": "39",
+		"name": "Mindless Self Indulgence",
+		"coverArt": "ar-39",
+		"albumCount": 2
+	},
+	{
+		"id": "40",
+		"name": "Minutemen",
+		"coverArt": "ar-40",
+		"albumCount": 1
+	},
+	{
+		"id": "41",
+		"name": "Misfits",
+		"coverArt": "ar-41",
+		"albumCount": 4
+	},
+	{
+		"id": "917",
+		"name": "The Misfits",
+		"coverArt": "ar-917",
+		"albumCount": 14
+	},
+	{
+		"id": "42",
+		"name": "Mixtapes",
+		"coverArt": "ar-42",
+		"albumCount": 4
+	},
+	{
+		"id": "43",
+		"name": "Modest Mouse",
+		"coverArt": "ar-43",
+		"albumCount": 5
+	},
+	{
+		"id": "44",
+		"name": "Monifah",
+		"albumCount": 1
+	},
+	{
+		"id": "45",
+		"name": "Moody Blues",
+		"coverArt": "ar-45",
+		"albumCount": 2
+	},
+	{
+		"id": "46",
+		"name": "Morning Glory",
+		"coverArt": "ar-46",
+		"albumCount": 2
+	},
+	{
+		"id": "47",
+		"name": "Morrissey",
+		"coverArt": "ar-47",
+		"albumCount": 3
+	},
+	{
+		"id": "918",
+		"name": "The Most Beautiful Losers",
+		"coverArt": "ar-918",
+		"albumCount": 2
+	},
+	{
+		"id": "48",
+		"name": "Motion City Soundtrack",
+		"coverArt": "ar-48",
+		"albumCount": 9
+	},
+	{
+		"id": "599",
+		"name": "Mötley Crüe",
+		"coverArt": "ar-599",
+		"albumCount": 1
+	},
+	{
+		"id": "49",
+		"name": "Motörhead",
+		"coverArt": "ar-49",
+		"albumCount": 5
+	},
+	{
+		"id": "50",
+		"name": "Mr. Big",
+		"albumCount": 1
+	},
+	{
+		"id": "919",
+		"name": "The Mr. T Experience",
+		"coverArt": "ar-919",
+		"albumCount": 6
+	},
+	{
+		"id": "51",
+		"name": "Much the Same",
+		"coverArt": "ar-51",
+		"albumCount": 1
+	},
+	{
+		"id": "52",
+		"name": "Mumford & Sons",
+		"coverArt": "ar-52",
+		"albumCount": 5
+	},
+	{
+		"id": "53",
+		"name": "Municipal Waste",
+		"coverArt": "ar-53",
+		"albumCount": 2
+	},
+	{
+		"id": "55",
+		"name": "Murder by Death",
+		"coverArt": "ar-55",
+		"albumCount": 1
+	},
+	{
+		"id": "54",
+		"name": "Murder By Death",
+		"coverArt": "ar-54",
+		"albumCount": 3
+	},
+	{
+		"id": "56",
+		"name": "Murderdolls",
+		"coverArt": "ar-56",
+		"albumCount": 1
+	},
+	{
+		"id": "57",
+		"name": "Muse",
+		"coverArt": "ar-57",
+		"albumCount": 3
+	},
+	{
+		"id": "58",
+		"name": "MxPx",
+		"coverArt": "ar-58",
+		"albumCount": 8
+	},
+	{
+		"id": "949",
+		"name": "My Chemical Romance",
+		"coverArt": "ar-949",
+		"albumCount": 2
+	},
+	{
+		"id": "600",
+		"name": "Nada Surf",
+		"coverArt": "ar-600",
+		"albumCount": 3
+	},
+	{
+		"id": "920",
+		"name": "The National",
+		"coverArt": "ar-920",
+		"albumCount": 3
+	},
+	{
+		"id": "248",
+		"name": "National Lampoons",
+		"coverArt": "ar-248",
+		"albumCount": 1
+	},
+	{
+		"id": "601",
+		"name": "Nazareth",
+		"coverArt": "ar-601",
+		"albumCount": 1
+	},
+	{
+		"id": "603",
+		"name": "Neil Young",
+		"coverArt": "ar-603",
+		"albumCount": 8
+	},
+	{
+		"id": "604",
+		"name": "Neil Young & Crazy Horse",
+		"coverArt": "ar-604",
+		"albumCount": 3
+	},
+	{
+		"id": "605",
+		"name": "Nerf Herder",
+		"coverArt": "ar-605",
+		"albumCount": 2
+	},
+	{
+		"id": "606",
+		"name": "Neutral Milk Hotel",
+		"coverArt": "ar-606",
+		"albumCount": 1
+	},
+	{
+		"id": "607",
+		"name": "New Found Glory",
+		"coverArt": "ar-607",
+		"albumCount": 8
+	},
+	{
+		"id": "608",
+		"name": "New Politics",
+		"coverArt": "ar-608",
+		"albumCount": 1
+	},
+	{
+		"id": "609",
+		"name": "New Radicals",
+		"coverArt": "ar-609",
+		"albumCount": 1
+	},
+	{
+		"id": "602",
+		"name": "Ne-Yo",
+		"coverArt": "ar-602",
+		"albumCount": 1
+	},
+	{
+		"id": "610",
+		"name": "Nick 13",
+		"coverArt": "ar-610",
+		"albumCount": 1
+	},
+	{
+		"id": "611",
+		"name": "Nicole Scherzinger",
+		"coverArt": "ar-611",
+		"albumCount": 1
+	},
+	{
+		"id": "612",
+		"name": "Night Birds",
+		"coverArt": "ar-612",
+		"albumCount": 1
+	},
+	{
+		"id": "614",
+		"name": "Nightmares For A Week",
+		"coverArt": "ar-614",
+		"albumCount": 2
+	},
+	{
+		"id": "615",
+		"name": "Nightmares for a Week/Banquets",
+		"coverArt": "ar-615",
+		"albumCount": 1
+	},
+	{
+		"id": "613",
+		"name": "Night Ranger",
+		"coverArt": "ar-613",
+		"albumCount": 1
+	},
+	{
+		"id": "616",
+		"name": "Nilsson",
+		"coverArt": "ar-616",
+		"albumCount": 2
+	},
+	{
+		"id": "617",
+		"name": "Nine Inch Nails",
+		"coverArt": "ar-617",
+		"albumCount": 1
+	},
+	{
+		"id": "618",
+		"name": "Nirvana",
+		"coverArt": "ar-618",
+		"albumCount": 5
+	},
+	{
+		"id": "623",
+		"name": "Nobodys",
+		"coverArt": "ar-623",
+		"albumCount": 2
+	},
+	{
+		"id": "619",
+		"name": "No Doubt",
+		"coverArt": "ar-619",
+		"albumCount": 4
+	},
+	{
+		"id": "225",
+		"name": "NOFX",
+		"coverArt": "ar-225",
+		"albumCount": 36
+	},
+	{
+		"id": "624",
+		"name": "NOFX & Friends",
+		"coverArt": "ar-624",
+		"albumCount": 1
+	},
+	{
+		"id": "257",
+		"name": "None More Black",
+		"coverArt": "ar-257",
+		"albumCount": 5
+	},
+	{
+		"id": "625",
+		"name": "Norah Jones",
+		"coverArt": "ar-625",
+		"albumCount": 2
+	},
+	{
+		"id": "626",
+		"name": "Norma Jean",
+		"coverArt": "ar-626",
+		"albumCount": 4
+	},
+	{
+		"id": "627",
+		"name": "Nothington",
+		"coverArt": "ar-627",
+		"albumCount": 5
+	},
+	{
+		"id": "921",
+		"name": "The Notorious B.I.G",
+		"coverArt": "ar-921",
+		"albumCount": 4
+	},
+	{
+		"id": "620",
+		"name": "No Trigger",
+		"coverArt": "ar-620",
+		"albumCount": 2
+	},
+	{
+		"id": "621",
+		"name": "No Use for a Name",
+		"coverArt": "ar-621",
+		"albumCount": 1
+	},
+	{
+		"id": "622",
+		"name": "No Use For A Name",
+		"coverArt": "ar-622",
+		"albumCount": 8
+	},
+	{
+		"id": "628",
+		"name": "Now Thats What",
+		"albumCount": 1
+	},
+	{
+		"id": "249",
+		"name": "Now Thats What I Call Motown",
+		"coverArt": "ar-249",
+		"albumCount": 1
+	},
+	{
+		"id": "629",
+		"name": "Oasis",
+		"coverArt": "ar-629",
+		"albumCount": 1
+	},
+	{
+		"id": "634",
+		"name": "OFF!",
+		"coverArt": "ar-634",
+		"albumCount": 1
+	},
+	{
+		"id": "243",
+		"name": "The Offspring",
+		"coverArt": "ar-243",
+		"albumCount": 9
+	},
+	{
+		"id": "633",
+		"name": "Off With Their Heads",
+		"coverArt": "ar-633",
+		"albumCount": 5
+	},
+	{
+		"id": "630",
+		"name": "Of Mice And Men",
+		"coverArt": "ar-630",
+		"albumCount": 2
+	},
+	{
+		"id": "631",
+		"name": "Of Monsters and Men",
+		"coverArt": "ar-631",
+		"albumCount": 1
+	},
+	{
+		"id": "632",
+		"name": "Of Monsters And Men",
+		"coverArt": "ar-632",
+		"albumCount": 1
+	},
+	{
+		"id": "247",
+		"name": "OK Go",
+		"coverArt": "ar-247",
+		"albumCount": 1
+	},
+	{
+		"id": "635",
+		"name": "Old Crow Medicine Show",
+		"coverArt": "ar-635",
+		"albumCount": 4
+	},
+	{
+		"id": "922",
+		"name": "The Old Firm Casuals",
+		"coverArt": "ar-922",
+		"albumCount": 4
+	},
+	{
+		"id": "636",
+		"name": "Old Man Markley",
+		"coverArt": "ar-636",
+		"albumCount": 1
+	},
+	{
+		"id": "637",
+		"name": "Old Tire Swingers",
+		"coverArt": "ar-637",
+		"albumCount": 1
+	},
+	{
+		"id": "638",
+		"name": "Olive",
+		"albumCount": 1
+	},
+	{
+		"id": "639",
+		"name": "OMC",
+		"coverArt": "ar-639",
+		"albumCount": 1
+	},
+	{
+		"id": "233",
+		"name": "One Man Army",
+		"coverArt": "ar-233",
+		"albumCount": 4
+	},
+	{
+		"id": "640",
+		"name": "OneRepublic",
+		"coverArt": "ar-640",
+		"albumCount": 1
+	},
+	{
+		"id": "641",
+		"name": "Only Crime",
+		"coverArt": "ar-641",
+		"albumCount": 3
+	},
+	{
+		"id": "642",
+		"name": "Operation Ivy",
+		"coverArt": "ar-642",
+		"albumCount": 1
+	},
+	{
+		"id": "643",
+		"name": "Orange",
+		"coverArt": "ar-643",
+		"albumCount": 1
+	},
+	{
+		"id": "644",
+		"name": "Orgy",
+		"coverArt": "ar-644",
+		"albumCount": 3
+	},
+	{
+		"id": "645",
+		"name": "OST",
+		"coverArt": "ar-645",
+		"albumCount": 2
+	},
+	{
+		"id": "646",
+		"name": "Our Lady Peace",
+		"coverArt": "ar-646",
+		"albumCount": 3
+	},
+	{
+		"id": "923",
+		"name": "The Outfield",
+		"coverArt": "ar-923",
+		"albumCount": 4
+	},
+	{
+		"id": "647",
+		"name": "Ozzy Osbourne",
+		"coverArt": "ar-647",
+		"albumCount": 2
+	},
+	{
+		"id": "648",
+		"name": "Paint It Black",
+		"coverArt": "ar-648",
+		"albumCount": 1
+	},
+	{
+		"id": "649",
+		"name": "Panic! At the Disco",
+		"coverArt": "ar-649",
+		"albumCount": 1
+	},
+	{
+		"id": "650",
+		"name": "Pantera",
+		"coverArt": "ar-650",
+		"albumCount": 2
+	},
+	{
+		"id": "950",
+		"name": "Papa Roach",
+		"coverArt": "ar-950",
+		"albumCount": 3
+	},
+	{
+		"id": "651",
+		"name": "Paramore",
+		"coverArt": "ar-651",
+		"albumCount": 1
+	},
+	{
+		"id": "652",
+		"name": "Passion Pit",
+		"coverArt": "ar-652",
+		"albumCount": 2
+	},
+	{
+		"id": "653",
+		"name": "Patrice O'Neal",
+		"coverArt": "ar-653",
+		"albumCount": 2
+	},
+	{
+		"id": "654",
+		"name": "Patty Smyth",
+		"coverArt": "ar-654",
+		"albumCount": 1
+	},
+	{
+		"id": "655",
+		"name": "Paul Johnson",
+		"albumCount": 1
+	},
+	{
+		"id": "656",
+		"name": "Paul Westerberg",
+		"coverArt": "ar-656",
+		"albumCount": 2
+	},
+	{
+		"id": "924",
+		"name": "The Pavers",
+		"coverArt": "ar-924",
+		"albumCount": 2
+	},
+	{
+		"id": "657",
+		"name": "Pearl Jam",
+		"coverArt": "ar-657",
+		"albumCount": 12
+	},
+	{
+		"id": "658",
+		"name": "Pears",
+		"coverArt": "ar-658",
+		"albumCount": 1
+	},
+	{
+		"id": "224",
+		"name": "Pennywise",
+		"coverArt": "ar-224",
+		"albumCount": 12
+	},
+	{
+		"id": "659",
+		"name": "Pentimento",
+		"coverArt": "ar-659",
+		"albumCount": 3
+	},
+	{
+		"id": "660",
+		"name": "Pepper",
+		"coverArt": "ar-660",
+		"albumCount": 1
+	},
+	{
+		"id": "662",
+		"name": "Pete Droge",
+		"coverArt": "ar-662",
+		"albumCount": 2
+	},
+	{
+		"id": "665",
+		"name": "Peter Frampton",
+		"coverArt": "ar-665",
+		"albumCount": 1
+	},
+	{
+		"id": "666",
+		"name": "Peter Gabriel",
+		"coverArt": "ar-666",
+		"albumCount": 4
+	},
+	{
+		"id": "234",
+		"name": "Peter Schmalfuss",
+		"coverArt": "ar-234",
+		"albumCount": 1
+	},
+	{
+		"id": "663",
+		"name": "Pete Townshend",
+		"coverArt": "ar-663",
+		"albumCount": 1
+	},
+	{
+		"id": "664",
+		"name": "Pete Yorn",
+		"coverArt": "ar-664",
+		"albumCount": 3
+	},
+	{
+		"id": "661",
+		"name": "Pet Shop Boys",
+		"albumCount": 1
+	},
+	{
+		"id": "667",
+		"name": "Pharrell",
+		"coverArt": "ar-667",
+		"albumCount": 1
+	},
+	{
+		"id": "668",
+		"name": "Phil Collins",
+		"coverArt": "ar-668",
+		"albumCount": 3
+	},
+	{
+		"id": "669",
+		"name": "Phosphorescent",
+		"coverArt": "ar-669",
+		"albumCount": 1
+	},
+	{
+		"id": "670",
+		"name": "Pinhead Gunpowder",
+		"coverArt": "ar-670",
+		"albumCount": 1
+	},
+	{
+		"id": "671",
+		"name": "Pink Floyd",
+		"coverArt": "ar-671",
+		"albumCount": 18
+	},
+	{
+		"id": "672",
+		"name": "Pitch Black",
+		"coverArt": "ar-672",
+		"albumCount": 1
+	},
+	{
+		"id": "673",
+		"name": "Pixie Lott",
+		"albumCount": 1
+	},
+	{
+		"id": "674",
+		"name": "Pixies",
+		"coverArt": "ar-674",
+		"albumCount": 1
+	},
+	{
+		"id": "925",
+		"name": "The Pixies",
+		"coverArt": "ar-925",
+		"albumCount": 8
+	},
+	{
+		"id": "675",
+		"name": "Plain White T's",
+		"albumCount": 1
+	},
+	{
+		"id": "534",
+		"name": "La Plebe",
+		"coverArt": "ar-534",
+		"albumCount": 1
+	},
+	{
+		"id": "676",
+		"name": "Plow United",
+		"coverArt": "ar-676",
+		"albumCount": 2
+	},
+	{
+		"id": "677",
+		"name": "Poison Idea",
+		"coverArt": "ar-677",
+		"albumCount": 2
+	},
+	{
+		"id": "951",
+		"name": "Polar Bear Club",
+		"coverArt": "ar-951",
+		"albumCount": 6
+	},
+	{
+		"id": "963",
+		"name": "The Police",
+		"coverArt": "ar-963",
+		"albumCount": 5
+	},
+	{
+		"id": "926",
+		"name": "The Postal Service",
+		"coverArt": "ar-926",
+		"albumCount": 1
+	},
+	{
+		"id": "678",
+		"name": "Presidents Of The United States Of America",
+		"coverArt": "ar-678",
+		"albumCount": 1
+	},
+	{
+		"id": "927",
+		"name": "The Presidents of the United States of America",
+		"coverArt": "ar-927",
+		"albumCount": 1
+	},
+	{
+		"id": "928",
+		"name": "The Pretenders",
+		"coverArt": "ar-928",
+		"albumCount": 3
+	},
+	{
+		"id": "679",
+		"name": "Primitive Radio Gods",
+		"coverArt": "ar-679",
+		"albumCount": 1
+	},
+	{
+		"id": "680",
+		"name": "Primus",
+		"coverArt": "ar-680",
+		"albumCount": 3
+	},
+	{
+		"id": "681",
+		"name": "Prince",
+		"coverArt": "ar-681",
+		"albumCount": 9
+	},
+	{
+		"id": "929",
+		"name": "The Proclaimers",
+		"coverArt": "ar-929",
+		"albumCount": 2
+	},
+	{
+		"id": "682",
+		"name": "Professor Green Feat. Ed Drewett",
+		"albumCount": 1
+	},
+	{
+		"id": "683",
+		"name": "Propagandhi",
+		"coverArt": "ar-683",
+		"albumCount": 9
+	},
+	{
+		"id": "684",
+		"name": "Protagonist",
+		"coverArt": "ar-684",
+		"albumCount": 1
+	},
+	{
+		"id": "685",
+		"name": "Public Image Ltd",
+		"coverArt": "ar-685",
+		"albumCount": 2
+	},
+	{
+		"id": "686",
+		"name": "Pulley",
+		"coverArt": "ar-686",
+		"albumCount": 6
+	},
+	{
+		"id": "228",
+		"name": "Pulp Fiction Soundtrack",
+		"coverArt": "ar-228",
+		"albumCount": 13
+	},
+	{
+		"id": "253",
+		"name": "Punk Goes Pop 3",
+		"coverArt": "ar-253",
+		"albumCount": 1
+	},
+	{
+		"id": "687",
+		"name": "Pup",
+		"coverArt": "ar-687",
+		"albumCount": 1
+	},
+	{
+		"id": "688",
+		"name": "Pure Prairie League",
+		"coverArt": "ar-688",
+		"albumCount": 1
+	},
+	{
+		"id": "689",
+		"name": "Queen",
+		"coverArt": "ar-689",
+		"albumCount": 4
+	},
+	{
+		"id": "690",
+		"name": "Queens Of The Stone Age",
+		"coverArt": "ar-690",
+		"albumCount": 3
+	},
+	{
+		"id": "691",
+		"name": "Queensrÿche",
+		"coverArt": "ar-691",
+		"albumCount": 1
+	},
+	{
+		"id": "930",
+		"name": "The Queers",
+		"coverArt": "ar-930",
+		"albumCount": 16
+	},
+	{
+		"id": "693",
+		"name": "R.E.M.",
+		"coverArt": "ar-693",
+		"albumCount": 2
+	},
+	{
+		"id": "692",
+		"name": "R. Kelly",
+		"albumCount": 1
+	},
+	{
+		"id": "694",
+		"name": "Radkey",
+		"coverArt": "ar-694",
+		"albumCount": 1
+	},
+	{
+		"id": "695",
+		"name": "Rage Against the Machine",
+		"coverArt": "ar-695",
+		"albumCount": 3
+	},
+	{
+		"id": "696",
+		"name": "Rage Against The Machine",
+		"coverArt": "ar-696",
+		"albumCount": 2
+	},
+	{
+		"id": "697",
+		"name": "Ramallah",
+		"coverArt": "ar-697",
+		"albumCount": 1
+	},
+	{
+		"id": "698",
+		"name": "Rammstein",
+		"coverArt": "ar-698",
+		"albumCount": 6
+	},
+	{
+		"id": "699",
+		"name": "Ramones",
+		"coverArt": "ar-699",
+		"albumCount": 7
+	},
+	{
+		"id": "259",
+		"name": "Rancid",
+		"coverArt": "ar-259",
+		"albumCount": 13
+	},
+	{
+		"id": "700",
+		"name": "Randy",
+		"coverArt": "ar-700",
+		"albumCount": 1
+	},
+	{
+		"id": "952",
+		"name": "Ray Charles",
+		"coverArt": "ar-952",
+		"albumCount": 1
+	},
+	{
+		"id": "701",
+		"name": "Ray Rocket",
+		"coverArt": "ar-701",
+		"albumCount": 1
+	},
+	{
+		"id": "931",
+		"name": "The Reaganomics",
+		"coverArt": "ar-931",
+		"albumCount": 2
+	},
+	{
+		"id": "702",
+		"name": "Reagan Youth",
+		"coverArt": "ar-702",
+		"albumCount": 1
+	},
+	{
+		"id": "932",
+		"name": "The Real McKenzies",
+		"coverArt": "ar-932",
+		"albumCount": 1
+	},
+	{
+		"id": "703",
+		"name": "Red City Radio",
+		"coverArt": "ar-703",
+		"albumCount": 6
+	},
+	{
+		"id": "704",
+		"name": "Red City Radio & The Gamits",
+		"coverArt": "ar-704",
+		"albumCount": 1
+	},
+	{
+		"id": "705",
+		"name": "Red Collar",
+		"coverArt": "ar-705",
+		"albumCount": 2
+	},
+	{
+		"id": "706",
+		"name": "Red Hot Chili Peppers",
+		"coverArt": "ar-706",
+		"albumCount": 15
+	},
+	{
+		"id": "707",
+		"name": "Reel Big Fish",
+		"coverArt": "ar-707",
+		"albumCount": 10
+	},
+	{
+		"id": "933",
+		"name": "The Refreshments",
+		"coverArt": "ar-933",
+		"albumCount": 2
+	},
+	{
+		"id": "708",
+		"name": "Refused",
+		"coverArt": "ar-708",
+		"albumCount": 2
+	},
+	{
+		"id": "709",
+		"name": "Regina Spektor",
+		"coverArt": "ar-709",
+		"albumCount": 3
+	},
+	{
+		"id": "710",
+		"name": "Rehasher",
+		"coverArt": "ar-710",
+		"albumCount": 2
+	},
+	{
+		"id": "711",
+		"name": "Relient K",
+		"coverArt": "ar-711",
+		"albumCount": 1
+	},
+	{
+		"id": "934",
+		"name": "The Rentals",
+		"coverArt": "ar-934",
+		"albumCount": 2
+	},
+	{
+		"id": "935",
+		"name": "The Replacements",
+		"coverArt": "ar-935",
+		"albumCount": 7
+	},
+	{
+		"id": "712",
+		"name": "Restorations",
+		"coverArt": "ar-712",
+		"albumCount": 1
+	},
+	{
+		"id": "714",
+		"name": "Reverse the Curse",
+		"coverArt": "ar-714",
+		"albumCount": 1
+	},
+	{
+		"id": "713",
+		"name": "Reverse The Curse",
+		"coverArt": "ar-713",
+		"albumCount": 1
+	},
+	{
+		"id": "715",
+		"name": "Ricky Martin",
+		"albumCount": 1
+	},
+	{
+		"id": "716",
+		"name": "Rihanna",
+		"coverArt": "ar-716",
+		"albumCount": 2
+	},
+	{
+		"id": "717",
+		"name": "Rilo Kiley",
+		"coverArt": "ar-717",
+		"albumCount": 4
+	},
+	{
+		"id": "936",
+		"name": "The Riot Before",
+		"coverArt": "ar-936",
+		"albumCount": 2
+	},
+	{
+		"id": "937",
+		"name": "The Riptides",
+		"coverArt": "ar-937",
+		"albumCount": 1
+	},
+	{
+		"id": "718",
+		"name": "Rise Against",
+		"coverArt": "ar-718",
+		"albumCount": 10
+	},
+	{
+		"id": "720",
+		"name": "Riverboat Gamblers",
+		"coverArt": "ar-720",
+		"albumCount": 5
+	},
+	{
+		"id": "719",
+		"name": "River City Extension",
+		"coverArt": "ar-719",
+		"albumCount": 3
+	},
+	{
+		"id": "721",
+		"name": "Riverdales",
+		"coverArt": "ar-721",
+		"albumCount": 1
+	},
+	{
+		"id": "938",
+		"name": "The Riverdales",
+		"coverArt": "ar-938",
+		"albumCount": 2
+	},
+	{
+		"id": "723",
+		"name": "Robbie Williams",
+		"coverArt": "ar-723",
+		"albumCount": 2
+	},
+	{
+		"id": "722",
+		"name": "Rob Zombie",
+		"coverArt": "ar-722",
+		"albumCount": 1
+	},
+	{
+		"id": "724",
+		"name": "Rockabye Baby!",
+		"coverArt": "ar-724",
+		"albumCount": 12
+	},
+	{
+		"id": "725",
+		"name": "Rocket From the Crypt",
+		"coverArt": "ar-725",
+		"albumCount": 6
+	},
+	{
+		"id": "726",
+		"name": "Rocket From The Crypt",
+		"coverArt": "ar-726",
+		"albumCount": 2
+	},
+	{
+		"id": "953",
+		"name": "Rock N' Roll Baby Lullaby Ensemble",
+		"coverArt": "ar-953",
+		"albumCount": 3
+	},
+	{
+		"id": "728",
+		"name": "Rodriguez",
+		"coverArt": "ar-728",
+		"albumCount": 2
+	},
+	{
+		"id": "727",
+		"name": "Rod Stewart",
+		"coverArt": "ar-727",
+		"albumCount": 1
+	},
+	{
+		"id": "112",
+		"name": "Roger Harvey",
+		"coverArt": "ar-112",
+		"albumCount": 1
+	},
+	{
+		"id": "729",
+		"name": "Roger Miret & The Disasters",
+		"coverArt": "ar-729",
+		"albumCount": 2
+	},
+	{
+		"id": "730",
+		"name": "Rogue Wave",
+		"coverArt": "ar-730",
+		"albumCount": 1
+	},
+	{
+		"id": "939",
+		"name": "The Rolling Stones",
+		"coverArt": "ar-939",
+		"albumCount": 6
+	},
+	{
+		"id": "731",
+		"name": "Rollins Band",
+		"coverArt": "ar-731",
+		"albumCount": 1
+	},
+	{
+		"id": "940",
+		"name": "The Roots",
+		"coverArt": "ar-940",
+		"albumCount": 1
+	},
+	{
+		"id": "732",
+		"name": "Roxette",
+		"albumCount": 1
+	},
+	{
+		"id": "735",
+		"name": "Run-D.M.C.",
+		"coverArt": "ar-735",
+		"albumCount": 1
+	},
+	{
+		"id": "733",
+		"name": "Run D.M.C VS Jason Nevins",
+		"albumCount": 1
+	},
+	{
+		"id": "734",
+		"name": "Run Forever",
+		"coverArt": "ar-734",
+		"albumCount": 1
+	},
+	{
+		"id": "736",
+		"name": "Rush",
+		"coverArt": "ar-736",
+		"albumCount": 1
+	},
+	{
+		"id": "737",
+		"name": "Russ Rankin",
+		"coverArt": "ar-737",
+		"albumCount": 1
+	},
+	{
+		"id": "738",
+		"name": "Rusted Root",
+		"coverArt": "ar-738",
+		"albumCount": 1
+	},
+	{
+		"id": "739",
+		"name": "Ruth Ruth",
+		"coverArt": "ar-739",
+		"albumCount": 2
+	},
+	{
+		"id": "740",
+		"name": "RVIVR",
+		"coverArt": "ar-740",
+		"albumCount": 1
+	},
+	{
+		"id": "742",
+		"name": "Ryan's Hope",
+		"coverArt": "ar-742",
+		"albumCount": 2
+	},
+	{
+		"id": "741",
+		"name": "Ryan Bingham",
+		"coverArt": "ar-741",
+		"albumCount": 1
+	},
+	{
+		"id": "743",
+		"name": "Sacrifice",
+		"coverArt": "ar-743",
+		"albumCount": 1
+	},
+	{
+		"id": "744",
+		"name": "Sam Russo",
+		"coverArt": "ar-744",
+		"albumCount": 2
+	},
+	{
+		"id": "745",
+		"name": "Sam Smith",
+		"coverArt": "ar-745",
+		"albumCount": 1
+	},
+	{
+		"id": "746",
+		"name": "Satanic Surfers",
+		"coverArt": "ar-746",
+		"albumCount": 3
+	},
+	{
+		"id": "941",
+		"name": "The Saturdays",
+		"coverArt": "ar-941",
+		"albumCount": 1
+	},
+	{
+		"id": "954",
+		"name": "Saves the Day",
+		"coverArt": "ar-954",
+		"albumCount": 1
+	},
+	{
+		"id": "955",
+		"name": "Saves The Day",
+		"coverArt": "ar-955",
+		"albumCount": 1
+	},
+	{
+		"id": "747",
+		"name": "Say Anything",
+		"coverArt": "ar-747",
+		"albumCount": 8
+	},
+	{
+		"id": "942",
+		"name": "The Scandals",
+		"coverArt": "ar-942",
+		"albumCount": 3
+	},
+	{
+		"id": "748",
+		"name": "Scatman John",
+		"albumCount": 1
+	},
+	{
+		"id": "749",
+		"name": "Schleprock",
+		"coverArt": "ar-749",
+		"albumCount": 2
+	},
+	{
+		"id": "750",
+		"name": "Scorpions",
+		"coverArt": "ar-750",
+		"albumCount": 1
+	},
+	{
+		"id": "751",
+		"name": "Scorpios",
+		"coverArt": "ar-751",
+		"albumCount": 1
+	},
+	{
+		"id": "752",
+		"name": "Scott Reynolds",
+		"coverArt": "ar-752",
+		"albumCount": 1
+	},
+	{
+		"id": "753",
+		"name": "Screeching Weasel",
+		"coverArt": "ar-753",
+		"albumCount": 12
+	},
+	{
+		"id": "754",
+		"name": "Screw 32",
+		"coverArt": "ar-754",
+		"albumCount": 1
+	},
+	{
+		"id": "943",
+		"name": "The Script",
+		"coverArt": "ar-943",
+		"albumCount": 1
+	},
+	{
+		"id": "755",
+		"name": "Seal",
+		"coverArt": "ar-755",
+		"albumCount": 1
+	},
+	{
+		"id": "756",
+		"name": "Semisonic",
+		"coverArt": "ar-756",
+		"albumCount": 1
+	},
+	{
+		"id": "244",
+		"name": "Sense Field",
+		"coverArt": "ar-244",
+		"albumCount": 1
+	},
+	{
+		"id": "757",
+		"name": "Senses Fail",
+		"coverArt": "ar-757",
+		"albumCount": 2
+	},
+	{
+		"id": "758",
+		"name": "Seth Avett & Jessica Lea Mayfield",
+		"coverArt": "ar-758",
+		"albumCount": 1
+	},
+	{
+		"id": "261",
+		"name": "Set Your Goals",
+		"coverArt": "ar-261",
+		"albumCount": 3
+	},
+	{
+		"id": "759",
+		"name": "Sex Pistols",
+		"coverArt": "ar-759",
+		"albumCount": 3
+	},
+	{
+		"id": "760",
+		"name": "Shabba Ranks",
+		"albumCount": 1
+	},
+	{
+		"id": "761",
+		"name": "Shakira",
+		"coverArt": "ar-761",
+		"albumCount": 1
+	},
+	{
+		"id": "762",
+		"name": "Shania Twain",
+		"coverArt": "ar-762",
+		"albumCount": 1
+	},
+	{
+		"id": "763",
+		"name": "Sharks",
+		"coverArt": "ar-763",
+		"albumCount": 2
+	},
+	{
+		"id": "944",
+		"name": "The Shins",
+		"coverArt": "ar-944",
+		"albumCount": 1
+	},
+	{
+		"id": "764",
+		"name": "Shook Ones",
+		"coverArt": "ar-764",
+		"albumCount": 1
+	},
+	{
+		"id": "765",
+		"name": "Showoff",
+		"coverArt": "ar-765",
+		"albumCount": 1
+	},
+	{
+		"id": "766",
+		"name": "Sick Of It All",
+		"coverArt": "ar-766",
+		"albumCount": 3
+	},
+	{
+		"id": "945",
+		"name": "The Sidekicks",
+		"coverArt": "ar-945",
+		"albumCount": 1
+	},
+	{
+		"id": "767",
+		"name": "Signals Midwest",
+		"coverArt": "ar-767",
+		"albumCount": 2
+	},
+	{
+		"id": "956",
+		"name": "Silverchair",
+		"coverArt": "ar-956",
+		"albumCount": 4
+	},
+	{
+		"id": "768",
+		"name": "Simon & Garfunkel",
+		"coverArt": "ar-768",
+		"albumCount": 1
+	},
+	{
+		"id": "769",
+		"name": "Simple Minds",
+		"coverArt": "ar-769",
+		"albumCount": 1
+	},
+	{
+		"id": "236",
+		"name": "Simply Red",
+		"albumCount": 2
+	},
+	{
+		"id": "770",
+		"name": "Sinead O'Conner",
+		"coverArt": "ar-770",
+		"albumCount": 1
+	},
+	{
+		"id": "771",
+		"name": "Sir Mx Alot",
+		"coverArt": "ar-771",
+		"albumCount": 1
+	},
+	{
+		"id": "772",
+		"name": "Sixer",
+		"coverArt": "ar-772",
+		"albumCount": 3
+	},
+	{
+		"id": "773",
+		"name": "Sixpence None The Richer",
+		"albumCount": 1
+	},
+	{
+		"id": "774",
+		"name": "Skee-Lo",
+		"albumCount": 1
+	},
+	{
+		"id": "775",
+		"name": "Skid Row",
+		"coverArt": "ar-775",
+		"albumCount": 3
+	},
+	{
+		"id": "964",
+		"name": "The Slackers",
+		"coverArt": "ar-964",
+		"albumCount": 1
+	},
+	{
+		"id": "776",
+		"name": "Sleater-Kinney",
+		"coverArt": "ar-776",
+		"albumCount": 1
+	},
+	{
+		"id": "777",
+		"name": "Sleeping With Sirens",
+		"coverArt": "ar-777",
+		"albumCount": 1
+	},
+	{
+		"id": "778",
+		"name": "Sleigh Bells",
+		"coverArt": "ar-778",
+		"albumCount": 2
+	},
+	{
+		"id": "779",
+		"name": "Slipknot",
+		"coverArt": "ar-779",
+		"albumCount": 6
+	},
+	{
+		"id": "780",
+		"name": "Smashing Pumpkins",
+		"coverArt": "ar-780",
+		"albumCount": 3
+	},
+	{
+		"id": "968",
+		"name": "The Smashing Pumpkins",
+		"coverArt": "ar-968",
+		"albumCount": 1
+	},
+	{
+		"id": "781",
+		"name": "Smashmouth",
+		"albumCount": 1
+	},
+	{
+		"id": "782",
+		"name": "Smile Empty Soul",
+		"coverArt": "ar-782",
+		"albumCount": 1
+	},
+	{
+		"id": "969",
+		"name": "The Smithereens",
+		"coverArt": "ar-969",
+		"albumCount": 1
+	},
+	{
+		"id": "970",
+		"name": "The Smiths",
+		"coverArt": "ar-970",
+		"albumCount": 6
+	},
+	{
+		"id": "784",
+		"name": "Smoke or Fire",
+		"coverArt": "ar-784",
+		"albumCount": 1
+	},
+	{
+		"id": "783",
+		"name": "Smoke Or Fire",
+		"coverArt": "ar-783",
+		"albumCount": 3
+	},
+	{
+		"id": "785",
+		"name": "Smoking Popes",
+		"coverArt": "ar-785",
+		"albumCount": 4
+	},
+	{
+		"id": "262",
+		"name": "Snapcase",
+		"coverArt": "ar-262",
+		"albumCount": 1
+	},
+	{
+		"id": "786",
+		"name": "SNFU",
+		"coverArt": "ar-786",
+		"albumCount": 4
+	},
+	{
+		"id": "787",
+		"name": "Snow",
+		"albumCount": 1
+	},
+	{
+		"id": "788",
+		"name": "Snuff",
+		"coverArt": "ar-788",
+		"albumCount": 7
+	},
+	{
+		"id": "789",
+		"name": "Social Distortion",
+		"coverArt": "ar-789",
+		"albumCount": 13
+	},
+	{
+		"id": "790",
+		"name": "Soft Cell",
+		"coverArt": "ar-790",
+		"albumCount": 1
+	},
+	{
+		"id": "791",
+		"name": "Songs: Ohia",
+		"coverArt": "ar-791",
+		"albumCount": 1
+	},
+	{
+		"id": "792",
+		"name": "Soul Asylum",
+		"coverArt": "ar-792",
+		"albumCount": 2
+	},
+	{
+		"id": "794",
+		"name": "Soundgarden",
+		"coverArt": "ar-794",
+		"albumCount": 1
+	},
+	{
+		"id": "793",
+		"name": "Sound of Guns",
+		"coverArt": "ar-793",
+		"albumCount": 1
+	},
+	{
+		"id": "795",
+		"name": "Spacehog",
+		"coverArt": "ar-795",
+		"albumCount": 1
+	},
+	{
+		"id": "796",
+		"name": "Spanish Gamble",
+		"coverArt": "ar-796",
+		"albumCount": 1
+	},
+	{
+		"id": "797",
+		"name": "Sparta",
+		"coverArt": "ar-797",
+		"albumCount": 3
+	},
+	{
+		"id": "957",
+		"name": "Sponge",
+		"coverArt": "ar-957",
+		"albumCount": 1
+	},
+	{
+		"id": "798",
+		"name": "Spraynard",
+		"coverArt": "ar-798",
+		"albumCount": 1
+	},
+	{
+		"id": "250",
+		"name": "Spyder-D",
+		"coverArt": "ar-250",
+		"albumCount": 1
+	},
+	{
+		"id": "799",
+		"name": "St. Paul and the Broken Bones",
+		"coverArt": "ar-799",
+		"albumCount": 1
+	},
+	{
+		"id": "800",
+		"name": "Star Fucking Hipsters",
+		"coverArt": "ar-800",
+		"albumCount": 3
+	},
+	{
+		"id": "1030",
+		"name": "Star Wars",
+		"coverArt": "ar-1030",
+		"albumCount": 1
+	},
+	{
+		"id": "801",
+		"name": "Stephen Egerton",
+		"coverArt": "ar-801",
+		"albumCount": 1
+	},
+	{
+		"id": "802",
+		"name": "Stephen Lynch",
+		"coverArt": "ar-802",
+		"albumCount": 2
+	},
+	{
+		"id": "803",
+		"name": "Steppenwolf",
+		"coverArt": "ar-803",
+		"albumCount": 2
+	},
+	{
+		"id": "804",
+		"name": "Steps",
+		"albumCount": 1
+	},
+	{
+		"id": "805",
+		"name": "Steve Aoki",
+		"coverArt": "ar-805",
+		"albumCount": 1
+	},
+	{
+		"id": "806",
+		"name": "Steve Earle",
+		"coverArt": "ar-806",
+		"albumCount": 1
+	},
+	{
+		"id": "807",
+		"name": "Steve Miller Band",
+		"coverArt": "ar-807",
+		"albumCount": 2
+	},
+	{
+		"id": "971",
+		"name": "The Steve Miller Band",
+		"coverArt": "ar-971",
+		"albumCount": 1
+	},
+	{
+		"id": "808",
+		"name": "Stevie Wonder",
+		"coverArt": "ar-808",
+		"albumCount": 2
+	},
+	{
+		"id": "809",
+		"name": "Stiff Little Fingers",
+		"coverArt": "ar-809",
+		"albumCount": 3
+	},
+	{
+		"id": "810",
+		"name": "Sting",
+		"coverArt": "ar-810",
+		"albumCount": 1
+	},
+	{
+		"id": "260",
+		"name": "Sting & The Police",
+		"coverArt": "ar-260",
+		"albumCount": 1
+	},
+	{
+		"id": "811",
+		"name": "Stone Sour",
+		"coverArt": "ar-811",
+		"albumCount": 4
+	},
+	{
+		"id": "812",
+		"name": "Stone Temple Pilots",
+		"coverArt": "ar-812",
+		"albumCount": 5
+	},
+	{
+		"id": "813",
+		"name": "Stornoway",
+		"coverArt": "ar-813",
+		"albumCount": 2
+	},
+	{
+		"id": "814",
+		"name": "Story Of The Year",
+		"coverArt": "ar-814",
+		"albumCount": 1
+	},
+	{
+		"id": "254",
+		"name": "Straight Faced",
+		"coverArt": "ar-254",
+		"albumCount": 1
+	},
+	{
+		"id": "815",
+		"name": "Street Dogs",
+		"coverArt": "ar-815",
+		"albumCount": 9
+	},
+	{
+		"id": "816",
+		"name": "Streetlight Manifesto",
+		"coverArt": "ar-816",
+		"albumCount": 3
+	},
+	{
+		"id": "817",
+		"name": "Stretch Arm Strong",
+		"coverArt": "ar-817",
+		"albumCount": 1
+	},
+	{
+		"id": "818",
+		"name": "Strike Anywhere",
+		"coverArt": "ar-818",
+		"albumCount": 3
+	},
+	{
+		"id": "819",
+		"name": "Strung Out",
+		"coverArt": "ar-819",
+		"albumCount": 10
+	},
+	{
+		"id": "820",
+		"name": "Sublime",
+		"coverArt": "ar-820",
+		"albumCount": 8
+	},
+	{
+		"id": "821",
+		"name": "Sublime With Rome",
+		"coverArt": "ar-821",
+		"albumCount": 1
+	},
+	{
+		"id": "822",
+		"name": "Sufjan Stevens",
+		"coverArt": "ar-822",
+		"albumCount": 7
+	},
+	{
+		"id": "823",
+		"name": "Sugababes",
+		"coverArt": "ar-823",
+		"albumCount": 1
+	},
+	{
+		"id": "824",
+		"name": "Sugarland",
+		"coverArt": "ar-824",
+		"albumCount": 1
+	},
+	{
+		"id": "958",
+		"name": "Sugar Ray",
+		"coverArt": "ar-958",
+		"albumCount": 3
+	},
+	{
+		"id": "825",
+		"name": "Suicide Machines",
+		"coverArt": "ar-825",
+		"albumCount": 1
+	},
+	{
+		"id": "972",
+		"name": "The Suicide Machines",
+		"coverArt": "ar-972",
+		"albumCount": 8
+	},
+	{
+		"id": "826",
+		"name": "Sum 41",
+		"coverArt": "ar-826",
+		"albumCount": 3
+	},
+	{
+		"id": "827",
+		"name": "Sundowner",
+		"coverArt": "ar-827",
+		"albumCount": 4
+	},
+	{
+		"id": "828",
+		"name": "Superchunk",
+		"coverArt": "ar-828",
+		"albumCount": 5
+	},
+	{
+		"id": "973",
+		"name": "The Supremes",
+		"coverArt": "ar-973",
+		"albumCount": 1
+	},
+	{
+		"id": "974",
+		"name": "The Swellers",
+		"coverArt": "ar-974",
+		"albumCount": 6
+	},
+	{
+		"id": "829",
+		"name": "Swingin' Utters",
+		"coverArt": "ar-829",
+		"albumCount": 9
+	},
+	{
+		"id": "830",
+		"name": "Switchfoot",
+		"coverArt": "ar-830",
+		"albumCount": 1
+	},
+	{
+		"id": "831",
+		"name": "System Of A Down",
+		"coverArt": "ar-831",
+		"albumCount": 5
+	},
+	{
+		"id": "832",
+		"name": "T.I.",
+		"coverArt": "ar-832",
+		"albumCount": 1
+	},
+	{
+		"id": "833",
+		"name": "T.S.O.L.",
+		"coverArt": "ar-833",
+		"albumCount": 1
+	},
+	{
+		"id": "975",
+		"name": "The T4 Project",
+		"coverArt": "ar-975",
+		"albumCount": 1
+	},
+	{
+		"id": "834",
+		"name": "Taio Cruz",
+		"coverArt": "ar-834",
+		"albumCount": 1
+	},
+	{
+		"id": "835",
+		"name": "Take That",
+		"albumCount": 1
+	},
+	{
+		"id": "836",
+		"name": "Taking Back Sunday",
+		"coverArt": "ar-836",
+		"albumCount": 4
+	},
+	{
+		"id": "837",
+		"name": "Talking Heads",
+		"coverArt": "ar-837",
+		"albumCount": 1
+	},
+	{
+		"id": "838",
+		"name": "Taylor Swift",
+		"coverArt": "ar-838",
+		"albumCount": 2
+	},
+	{
+		"id": "841",
+		"name": "Teddybears",
+		"coverArt": "ar-841",
+		"albumCount": 1
+	},
+	{
+		"id": "839",
+		"name": "Ted Leo",
+		"coverArt": "ar-839",
+		"albumCount": 1
+	},
+	{
+		"id": "840",
+		"name": "Ted Leo And The Pharmacists",
+		"coverArt": "ar-840",
+		"albumCount": 2
+	},
+	{
+		"id": "843",
+		"name": "Teenage Bottlerocket",
+		"coverArt": "ar-843",
+		"albumCount": 6
+	},
+	{
+		"id": "842",
+		"name": "Teen Idols",
+		"coverArt": "ar-842",
+		"albumCount": 2
+	},
+	{
+		"id": "844",
+		"name": "Tegan and Sara",
+		"coverArt": "ar-844",
+		"albumCount": 5
+	},
+	{
+		"id": "845",
+		"name": "Tegan And Sara",
+		"coverArt": "ar-845",
+		"albumCount": 2
+	},
+	{
+		"id": "976",
+		"name": "The Temptations",
+		"coverArt": "ar-976",
+		"albumCount": 1
+	},
+	{
+		"id": "846",
+		"name": "Tenacious D",
+		"coverArt": "ar-846",
+		"albumCount": 2
+	},
+	{
+		"id": "959",
+		"name": "Ten Foot Pole",
+		"coverArt": "ar-959",
+		"albumCount": 5
+	},
+	{
+		"id": "235",
+		"name": "Terence Trent D'arby",
+		"albumCount": 1
+	},
+	{
+		"id": "847",
+		"name": "Texas Is The Reason",
+		"coverArt": "ar-847",
+		"albumCount": 2
+	},
+	{
+		"id": "989",
+		"name": "Thehell",
+		"coverArt": "ar-989",
+		"albumCount": 1
+	},
+	{
+		"id": "990",
+		"name": "Third Eye Blind",
+		"coverArt": "ar-990",
+		"albumCount": 6
+	},
+	{
+		"id": "991",
+		"name": "Thunderclap Newman",
+		"coverArt": "ar-991",
+		"albumCount": 1
+	},
+	{
+		"id": "992",
+		"name": "Thursday",
+		"coverArt": "ar-992",
+		"albumCount": 3
+	},
+	{
+		"id": "994",
+		"name": "Tiger Army",
+		"coverArt": "ar-994",
+		"albumCount": 5
+	},
+	{
+		"id": "995",
+		"name": "Tigers Jaw",
+		"coverArt": "ar-995",
+		"albumCount": 1
+	},
+	{
+		"id": "993",
+		"name": "Tig Notaro",
+		"coverArt": "ar-993",
+		"albumCount": 1
+	},
+	{
+		"id": "996",
+		"name": "Tim Armstrong",
+		"coverArt": "ar-996",
+		"albumCount": 1
+	},
+	{
+		"id": "1000",
+		"name": "Timbaland Feat. Katy Perry",
+		"albumCount": 1
+	},
+	{
+		"id": "1001",
+		"name": "Timbaland Feat. OneRepublic",
+		"albumCount": 1
+	},
+	{
+		"id": "997",
+		"name": "Tim Barry",
+		"coverArt": "ar-997",
+		"albumCount": 1
+	},
+	{
+		"id": "1002",
+		"name": "Timeshares",
+		"coverArt": "ar-1002",
+		"albumCount": 1
+	},
+	{
+		"id": "998",
+		"name": "Tim Fite",
+		"coverArt": "ar-998",
+		"albumCount": 2
+	},
+	{
+		"id": "999",
+		"name": "Tim Timebomb",
+		"coverArt": "ar-999",
+		"albumCount": 47
+	},
+	{
+		"id": "1003",
+		"name": "Tinchy Stryder Feat. Amelle",
+		"albumCount": 1
+	},
+	{
+		"id": "1004",
+		"name": "Tinie Tempah Feat. Kelly Rowland",
+		"albumCount": 1
+	},
+	{
+		"id": "1005",
+		"name": "Titus Andronicus",
+		"coverArt": "ar-1005",
+		"albumCount": 1
+	},
+	{
+		"id": "1007",
+		"name": "Toadies",
+		"coverArt": "ar-1007",
+		"albumCount": 1
+	},
+	{
+		"id": "1006",
+		"name": "Toad The Wet Sprocket",
+		"coverArt": "ar-1006",
+		"albumCount": 1
+	},
+	{
+		"id": "1008",
+		"name": "Tom Gabel",
+		"coverArt": "ar-1008",
+		"albumCount": 1
+	},
+	{
+		"id": "1009",
+		"name": "Tom Petty & The Heartbreakers",
+		"coverArt": "ar-1009",
+		"albumCount": 5
+	},
+	{
+		"id": "1010",
+		"name": "Tom Waits",
+		"coverArt": "ar-1010",
+		"albumCount": 6
+	},
+	{
+		"id": "1011",
+		"name": "Tonic",
+		"coverArt": "ar-1011",
+		"albumCount": 2
+	},
+	{
+		"id": "1012",
+		"name": "Tony Sly",
+		"coverArt": "ar-1012",
+		"albumCount": 3
+	},
+	{
+		"id": "1013",
+		"name": "Tool",
+		"coverArt": "ar-1013",
+		"albumCount": 4
+	},
+	{
+		"id": "966",
+		"name": "Torchwood",
+		"coverArt": "ar-966",
+		"albumCount": 1
+	},
+	{
+		"id": "1014",
+		"name": "Toto",
+		"coverArt": "ar-1014",
+		"albumCount": 1
+	},
+	{
+		"id": "1015",
+		"name": "Touché Amoré",
+		"coverArt": "ar-1015",
+		"albumCount": 1
+	},
+	{
+		"id": "1016",
+		"name": "Tracy Chapman",
+		"coverArt": "ar-1016",
+		"albumCount": 1
+	},
+	{
+		"id": "1018",
+		"name": "Transit",
+		"coverArt": "ar-1018",
+		"albumCount": 2
+	},
+	{
+		"id": "1019",
+		"name": "Transplants",
+		"coverArt": "ar-1019",
+		"albumCount": 3
+	},
+	{
+		"id": "1017",
+		"name": "Trans-Siberian Orchestra",
+		"coverArt": "ar-1017",
+		"albumCount": 1
+	},
+	{
+		"id": "1020",
+		"name": "Twisted Sister",
+		"coverArt": "ar-1020",
+		"albumCount": 1
+	},
+	{
+		"id": "1021",
+		"name": "Type O Negative",
+		"coverArt": "ar-1021",
+		"albumCount": 4
+	},
+	{
+		"id": "1022",
+		"name": "U.S. Bombs",
+		"coverArt": "ar-1022",
+		"albumCount": 5
+	},
+	{
+		"id": "1023",
+		"name": "U2",
+		"coverArt": "ar-1023",
+		"albumCount": 15
+	},
+	{
+		"id": "1024",
+		"name": "UB40",
+		"albumCount": 1
+	},
+	{
+		"id": "1025",
+		"name": "Ugly Kid Joe",
+		"coverArt": "ar-1025",
+		"albumCount": 1
+	},
+	{
+		"id": "1027",
+		"name": "Uke-Hunt",
+		"coverArt": "ar-1027",
+		"albumCount": 1
+	},
+	{
+		"id": "1026",
+		"name": "UK Subs",
+		"coverArt": "ar-1026",
+		"albumCount": 1
+	},
+	{
+		"id": "1028",
+		"name": "Undercover",
+		"albumCount": 1
+	},
+	{
+		"id": "1029",
+		"name": "Unknown Artist",
+		"coverArt": "ar-1029",
+		"albumCount": 1
+	},
+	{
+		"id": "977",
+		"name": "the Unseen",
+		"coverArt": "ar-977",
+		"albumCount": 1
+	},
+	{
+		"id": "1031",
+		"name": "Unwritten Law",
+		"coverArt": "ar-1031",
+		"albumCount": 9
+	},
+	{
+		"id": "978",
+		"name": "The Used",
+		"coverArt": "ar-978",
+		"albumCount": 4
+	},
+	{
+		"id": "1032",
+		"name": "VA",
+		"coverArt": "ar-1032",
+		"albumCount": 4
+	},
+	{
+		"id": "246",
+		"name": "Vampire Weekend",
+		"coverArt": "ar-246",
+		"albumCount": 2
+	},
+	{
+		"id": "979",
+		"name": "The Vandals",
+		"coverArt": "ar-979",
+		"albumCount": 8
+	},
+	{
+		"id": "1035",
+		"name": "Vanessa Carlton",
+		"coverArt": "ar-1035",
+		"albumCount": 1
+	},
+	{
+		"id": "1033",
+		"name": "Van Halen",
+		"coverArt": "ar-1033",
+		"albumCount": 1
+	},
+	{
+		"id": "1034",
+		"name": "Van Morrison",
+		"coverArt": "ar-1034",
+		"albumCount": 1
+	},
+	{
+		"id": "229",
+		"name": "Various Artists",
+		"coverArt": "ar-229",
+		"albumCount": 30
+	},
+	{
+		"id": "1036",
+		"name": "Vengaboys",
+		"albumCount": 1
+	},
+	{
+		"id": "1037",
+		"name": "Veruca Salt",
+		"coverArt": "ar-1037",
+		"albumCount": 1
+	},
+	{
+		"id": "980",
+		"name": "The Verve",
+		"coverArt": "ar-980",
+		"albumCount": 1
+	},
+	{
+		"id": "981",
+		"name": "The Verve Pipe",
+		"coverArt": "ar-981",
+		"albumCount": 1
+	},
+	{
+		"id": "1038",
+		"name": "Violenet Femmes",
+		"coverArt": "ar-1038",
+		"albumCount": 1
+	},
+	{
+		"id": "1039",
+		"name": "Violent Femmes",
+		"albumCount": 1
+	},
+	{
+		"id": "1040",
+		"name": "Violent Soho",
+		"coverArt": "ar-1040",
+		"albumCount": 2
+	},
+	{
+		"id": "1041",
+		"name": "Volcano Choir",
+		"coverArt": "ar-1041",
+		"albumCount": 1
+	},
+	{
+		"id": "1042",
+		"name": "Voodoo Glow Skulls",
+		"coverArt": "ar-1042",
+		"albumCount": 5
+	},
+	{
+		"id": "1043",
+		"name": "Walk Off the Earth",
+		"coverArt": "ar-1043",
+		"albumCount": 6
+	},
+	{
+		"id": "1044",
+		"name": "Walk Off The Earth",
+		"albumCount": 1
+	},
+	{
+		"id": "982",
+		"name": "The Wallflowers",
+		"coverArt": "ar-982",
+		"albumCount": 1
+	},
+	{
+		"id": "983",
+		"name": "The Wanted",
+		"albumCount": 1
+	},
+	{
+		"id": "984",
+		"name": "The Weakerthans",
+		"coverArt": "ar-984",
+		"albumCount": 7
+	},
+	{
+		"id": "967",
+		"name": "We Are The Union",
+		"coverArt": "ar-967",
+		"albumCount": 2
+	},
+	{
+		"id": "985",
+		"name": "The Weeknd",
+		"coverArt": "ar-985",
+		"albumCount": 1
+	},
+	{
+		"id": "1045",
+		"name": "Weezer",
+		"coverArt": "ar-1045",
+		"albumCount": 15
+	},
+	{
+		"id": "1046",
+		"name": "Weston",
+		"coverArt": "ar-1046",
+		"albumCount": 1
+	},
+	{
+		"id": "1049",
+		"name": "Whitesnake",
+		"coverArt": "ar-1049",
+		"albumCount": 1
+	},
+	{
+		"id": "986",
+		"name": "The White Stripes",
+		"coverArt": "ar-986",
+		"albumCount": 3
+	},
+	{
+		"id": "1047",
+		"name": "White Wives",
+		"coverArt": "ar-1047",
+		"albumCount": 4
+	},
+	{
+		"id": "1048",
+		"name": "White Zombie",
+		"coverArt": "ar-1048",
+		"albumCount": 2
+	},
+	{
+		"id": "1050",
+		"name": "Whitney Houston",
+		"albumCount": 1
+	},
+	{
+		"id": "987",
+		"name": "The Who",
+		"coverArt": "ar-987",
+		"albumCount": 6
+	},
+	{
+		"id": "1051",
+		"name": "Wilco",
+		"coverArt": "ar-1051",
+		"albumCount": 1
+	},
+	{
+		"id": "1052",
+		"name": "Wild",
+		"coverArt": "ar-1052",
+		"albumCount": 1
+	},
+	{
+		"id": "1053",
+		"name": "Will.I.Am Feat. Cheryl Cole",
+		"albumCount": 1
+	},
+	{
+		"id": "1054",
+		"name": "William Elliott Whitmore",
+		"coverArt": "ar-1054",
+		"albumCount": 3
+	},
+	{
+		"id": "1055",
+		"name": "Winger",
+		"coverArt": "ar-1055",
+		"albumCount": 2
+	},
+	{
+		"id": "1056",
+		"name": "Wizo",
+		"coverArt": "ar-1056",
+		"albumCount": 2
+	},
+	{
+		"id": "232",
+		"name": "WIZO",
+		"coverArt": "ar-232",
+		"albumCount": 2
+	},
+	{
+		"id": "1057",
+		"name": "Wolfmother",
+		"coverArt": "ar-1057",
+		"albumCount": 1
+	},
+	{
+		"id": "965",
+		"name": "The Wonder Years",
+		"coverArt": "ar-965",
+		"albumCount": 2
+	},
+	{
+		"id": "988",
+		"name": "The World/Inferno Friendship Society",
+		"coverArt": "ar-988",
+		"albumCount": 3
+	},
+	{
+		"id": "1058",
+		"name": "Worlds Scariest Police Chases",
+		"coverArt": "ar-1058",
+		"albumCount": 1
+	},
+	{
+		"id": "1059",
+		"name": "Worship This!",
+		"coverArt": "ar-1059",
+		"albumCount": 2
+	},
+	{
+		"id": "1060",
+		"name": "X Ambassadors",
+		"coverArt": "ar-1060",
+		"albumCount": 2
+	},
+	{
+		"id": "1061",
+		"name": "Xerxes",
+		"coverArt": "ar-1061",
+		"albumCount": 1
+	},
+	{
+		"id": "1062",
+		"name": "Yeah Yeah Yeahs",
+		"coverArt": "ar-1062",
+		"albumCount": 4
+	},
+	{
+		"id": "1063",
+		"name": "Yellowcard",
+		"coverArt": "ar-1063",
+		"albumCount": 4
+	},
+	{
+		"id": "1064",
+		"name": "Youth Brigade",
+		"coverArt": "ar-1064",
+		"albumCount": 1
+	},
+	{
+		"id": "1065",
+		"name": "Youth Decay",
+		"coverArt": "ar-1065",
+		"albumCount": 1
+	},
+	{
+		"id": "1066",
+		"name": "Zac Brown Band",
+		"coverArt": "ar-1066",
+		"albumCount": 2
+	},
+	{
+		"id": "1067",
+		"name": "Zebrahead",
+		"coverArt": "ar-1067",
+		"albumCount": 10
+	},
+	{
+		"id": "1068",
+		"name": "Zeke",
+		"coverArt": "ar-1068",
+		"albumCount": 1
+	},
+	{
+		"id": "1069",
+		"name": "Zoinks!",
+		"coverArt": "ar-1069",
+		"albumCount": 1
+	},
+	{
+		"id": "1070",
+		"name": "Zwan",
+		"coverArt": "ar-1070",
+		"albumCount": 2
+	},
+	{
+		"id": "7",
+		"name": "+44",
+		"coverArt": "ar-7",
+		"albumCount": 2
+	},
+	{
+		"id": "8",
+		"name": "10000 Maniacs",
+		"coverArt": "ar-8",
+		"albumCount": 1
+	},
+	{
+		"id": "848",
+		"name": "The 1975",
+		"coverArt": "ar-848",
+		"albumCount": 1
+	},
+	{
+		"id": "10",
+		"name": "22 Jacks",
+		"coverArt": "ar-10",
+		"albumCount": 1
+	},
+	{
+		"id": "9",
+		"name": "2 Fabiola Feat. Nunca",
+		"albumCount": 1
+	},
+	{
+		"id": "11",
+		"name": "2Pac",
+		"coverArt": "ar-11",
+		"albumCount": 2
+	},
+	{
+		"id": "13",
+		"name": "311",
+		"coverArt": "ar-13",
+		"albumCount": 7
+	},
+	{
+		"id": "12",
+		"name": "3 Inches of Blood",
+		"coverArt": "ar-12",
+		"albumCount": 1
+	},
+	{
+		"id": "14",
+		"name": "4 Non Blondes",
+		"albumCount": 1
+	},
+	{
+		"id": "15",
+		"name": "50 Cent",
+		"coverArt": "ar-15",
+		"albumCount": 2
+	},
+	{
+		"id": "16",
+		"name": "7 Seconds",
+		"coverArt": "ar-16",
+		"albumCount": 6
+	},
+	{
+		"id": "17",
+		"name": "88 Fingers Louie",
+		"coverArt": "ar-17",
+		"albumCount": 2
+	},
+	{
+		"id": "1071",
+		"name": "†††",
+		"coverArt": "ar-1071",
+		"albumCount": 1
+	}
+]

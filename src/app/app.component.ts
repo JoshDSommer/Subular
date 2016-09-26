@@ -1,20 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SubularService } from './services/subsonic.service';
 import { StoreService } from './services/store.service';
+import { PlayerService } from './services/player.service';
 import { Store, Action } from '@ngrx/store';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs/Rx';
 import { IServer, REDUCERS_DICTONARY, SERVER_ACTIONS, AppState, NOW_PLAYING_ACTIONS,APP_STATE_ACTIONS } from './reducers/reducers.index';
-import { StoreLogMonitorComponent } from '@ngrx/store-log-monitor';
 import { IArtist } from './shared/models';
 
 
 @Component({
-	moduleId: module.id,
 	selector: 'app-root',
-	templateUrl: 'app.component.html',
-	styleUrls: ['app.component.css'],
-	providers: [SubularService, StoreService],
-	directives: [StoreLogMonitorComponent]
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.css'],
+	providers: [SubularService, StoreService,PlayerService],
 })
 export class AppComponent {
 	title = 'Subular';
@@ -31,9 +29,9 @@ export class AppComponent {
 		this.appStateEnum = AppState;
 
 		let newServer: IServer = {
-			name: 'hom2e',
+			name: 'home',
 			serverAddress: 'http://thesommerfamily.subsonic.org',
-			serverPassword: 'qCCPmCczkWDvGo4Z',
+			serverPassword: 'Z1tzM7dtiOzArcePmJJZQogLa93JM1MGQ1WhI94X',
 			serverUserName: 'admin',
 			salt: '',
 			selected: true

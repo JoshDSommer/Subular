@@ -1,0 +1,30 @@
+<section class="playing-footer">
+	<div class="col-xs-12 gutter">
+		<span class="gutter-progress"></span>
+	</div>
+	<div class="col-sm-2">
+		<div class="ff-rw pull-right">
+			<i class="fa fa-backward" (click)="previousSong()"></i>
+			<i class="fa fa-forward" (click)="nextSong()"></i>
+		</div>
+		<i *ngIf="!playing" class="play-pause fa fa-play-circle pull-right" (click)="playSong()"></i>
+		<i *ngIf="playing" class="play-pause fa fa-pause-circle pull-right" (click)="pauseSong()"></i>
+	</div>
+	<div class="col-sm-1">
+		<img [routerLink]="['ArtistAlbum', { id: currentArtist?.id, albumId:currentSong.parent }]" *ngIf="imgUrl !=null" class="pull-right cover-img" src={{imgUrl}} />
+	</div>
+	<div class="col-sm-7 no-padding">
+		<span [routerLink]="['ArtistAlbum', { id: currentArtist?.id, albumId:currentSong.parent }]" class="title">{{currentSong.title}} {{time}}</span>
+		<span [routerLink]="['ArtistAlbums', { id: currentArtist?.id }]" class="artist">{{currentSong.artist}}</span>
+		<span [routerLink]="['ArtistAlbum', { id: currentArtist?.id, albumId:currentSong.parent }]" class="album text-muted">{{currentSong.album}}</span>
+	</div>
+	<div class="col-sm-2 heart pull-right text-right">
+		<i class="fa fa-heart-o" *ngIf="songs.length>0"></i>
+		<i class="fa fa-th-list" *ngIf="songs.length>0" [ngClass]="{activeInverse : playingSongs}" (click)="playingSongs = !playingSongs"></i>
+	</div>
+</section>
+<section id="now-playing-list" *ngIf="playingSongs">
+	<h3>Now Playing</h3>
+	<songList #songList ></songList>
+</section>
+<div *ngIf="playingSongs" id="now-playing-modal" class="subular-modal" (click)="playingSongs = !playingSongs"></div>

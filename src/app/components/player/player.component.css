@@ -1,0 +1,77 @@
+.card-dark{
+background:rgb(34, 34, 34);
+}
+.playing-footer{
+	position:fixed;
+	width:100%;
+	height:65px;
+	bottom:0;
+	background:#ffffff;
+	border-top:1px #101010;
+	box-shadow: 5px -1px 5px #888888;
+}
+i.fa{
+	color: #101010;
+	line-height: 60px !important;
+	font-size: 46px !important;
+	margin-right:7px;
+}
+i.play-pause{
+	margin-right:20px;
+}
+div.ff-rw i, div.heart i{
+	font-size: 28px !important;
+	margin-right:10px;
+}
+.gutter{
+	background-color:#101010;
+	margin:0 !important;
+	height:4px;
+	padding:0;
+}
+.gutter-progress{
+	background: -webkit-linear-gradient(#4B0082,#EED2EE);
+	height:4px;
+	display: inline-block;
+}
+.title, .album, .artist, .cover-img{
+	cursor:hand;
+}
+.title{
+	width: 100%;
+	display: inline-block;
+	font-size: 20px;
+	margin-top:5px;
+}
+.album{
+	font-size: 13px;
+	margin-left: 10px;
+}
+.artist{
+	font-weight:700;
+}
+i.fa:hover{
+	color:#9d9d9d;
+}
+#now-playing-list{
+	position:absolute;
+	bottom:75px;
+	top:75px;
+	right:30px;
+	background-color:#fff;
+	width:79%;
+	overflow-y:auto;
+	border-radius:2px;
+	z-index: 99;
+	padding:5px 0px 10px;
+	border:1px #4B0082 solid;
+}
+#now-playing-list h3{
+	padding:1px 15px;
+}
+.cover-img{
+	height:63px;
+}
+.subular-list-item div table tr td, subular-list-item div table tr th{
+	color: #101010 !important;
+}

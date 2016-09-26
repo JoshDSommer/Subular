@@ -2,7 +2,6 @@
 import * as _ from 'lodash';
 
 import { REDUCERS_DICTONARY, servers, SERVER_ACTIONS, IServer  } from './reducers.index';
-import { addProviders, inject } from '@angular/core/testing';
 
 describe('SettingsReducer', () => {
 	let initialState;

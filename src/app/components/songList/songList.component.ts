@@ -1,11 +1,10 @@
 import { Component, OnInit,AfterViewInit, Input  } from '@angular/core';
 import { Angular2DataTableModule,  TableOptions, TableColumn, ColumnMode, SelectionType } from 'angular2-data-table';
 import { ISong } from '../../shared/models';
-
+import { PlayerService } from '../../services/player.service';
 @Component({
-	moduleId: module.id,
 	selector: 'songList',
-	templateUrl: 'songList.component.html'
+	templateUrl: './songList.component.html'
 })
 
 export class SongListComponent implements AfterViewInit, OnInit {
@@ -26,16 +25,15 @@ export class SongListComponent implements AfterViewInit, OnInit {
 			new TableColumn({ prop: 'album', name: 'Album' }),
 			new TableColumn({ prop: 'year', name: 'Year', maxWidth: 65,  }),
 			new TableColumn({ prop: 'genre', name: 'Genre' })
-
 		]
 	});
 
-	constructor(){
+	constructor(private playerService:PlayerService){
 
 	}
 
-	onRowClick(song:ISong){
-		console.log(song);
+	onRowClick(song:any){
+		this.playerService.addSong(song.row);
 	}
 
 	addSongs(songs:ISong[]){

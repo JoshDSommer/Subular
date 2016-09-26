@@ -8,10 +8,9 @@ import { IArtist, IAlbum } from '../../shared/models';
 
 
 @Component({
-	moduleId: module.id,
 	selector: 'artists',
-	templateUrl: 'artists.component.html',
-	styleUrls: ['artists.component.css']
+	templateUrl: './artists.component.html',
+	styleUrls: ['./artists.component.css']
 })
 
 export class ArtistsComponent implements OnInit {

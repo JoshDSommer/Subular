@@ -8,9 +8,10 @@ import { SongListComponent } from '../songList/songlist.component'
 
 
 @Component({
-	moduleId: module.id,
 	selector: 'album',
-	templateUrl: 'album.component.html'
+	templateUrl: './album.component.html',
+	styleUrls:['./album.component.css']
+
 })
 
 export class AlbumComponent implements OnInit {

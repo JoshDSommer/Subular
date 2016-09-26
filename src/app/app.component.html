@@ -1,6 +1,6 @@
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
+	<div class="container-fullwidth">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 			aria-controls="navbar">
@@ -13,26 +13,27 @@
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li class="active" (click)="page=1"><a [routerLink]="['ArtistList']">Artists</a></li>
-				<!--<li><a [routerLink]="['Playlists']">Playlists</a></li>-->
+				<li class="active" (click)="page=1"><a [routerLink]="['artists']">Artists</a></li>
+				<li><a [routerLink]="['Playlists']">Playlists</a></li>
 			</ul>
 		</div>
 	</div>
 </nav>
 <!--<ngrx-store-log-monitor toggleCommand="ctrl-h" positionCommand="ctrl-m"></ngrx-store-log-monitor>-->
-<div class="container-fluid nav-bar-fix">
-	<div class="row">
-
-		<div class="col-sm-4 col-md-2 no-padding subular-list-container">
-			<section class="artist-list">
-				<section *ngIf="(appState | async) == appStateEnum.loading">
-					Loading app data...
-				</section>
+<div class="container-fullwidth nav-bar-fix">
+	<div class="col-sm-4 col-md-2 subular-list-container">
+		<section class="list " *ngIf="(appState | async) != appStateEnum.loading">
+			<section class="scroll-content">
 				<artists></artists>
 			</section>
-		</div>
-		<div class="col-sm-8 col-md-10 no-padding">
-			<router-outlet></router-outlet>
-		</div>
+		</section>
+	</div>
+	<div class="col-sm-8 col-md-10 no-padding">
+		<section class="main-content">
+			<section class="scroll-content">
+				<router-outlet></router-outlet>
+			</section>
+		</section>
 	</div>
 </div>
+<player></player>

@@ -1,16 +1,17 @@
 /// <reference path="../typings/index.d.ts" />
+import './polyfills.ts';
 
 // import { bootstrap } from '@angular/platform-browser-dynamic';
 // import { enableProdMode } from '@angular/core';
-// import { AppComponent, environment } from './app/';
+// import { AppComponent, environment } from './';
 // import { StoreModule, provideStore } from '@ngrx/store';
 // import { instrumentStore } from '@ngrx/store-devtools';
 // import { useLogMonitor } from '@ngrx/store-log-monitor';
 // import { HTTP_PROVIDERS } from '@angular/http';
 // import { runEffects } from '@ngrx/effects';
 
-// import { servers, artists, appState, nowPlaying } from './app/reducers/reducers.index';
-// import { SubularService } from './app/services/subsonic.service';
+// import { servers, artists, appState, nowPlaying } from './reducers/reducers.index';
+// import { SubularService } from './services/subsonic.service';
 
 // if (environment.production) {
 // 	enableProdMode();
