@@ -30,8 +30,7 @@ export class AppComponent {
 
 		let newServer: IServer = {
 			name: 'home',
-			serverAddress: 'http://thesommerfamily.subsonic.org',
-			serverPassword: 'Z1tzM7dtiOzArcePmJJZQogLa93JM1MGQ1WhI94X',
+
 			serverUserName: 'admin',
 			salt: '',
 			selected: true
