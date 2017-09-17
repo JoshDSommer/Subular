@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start.web": "cd Subular-Web && npm start",
+    "start.android": "cd Subular-Mobile && tns run android",
+    "start.ios": "cd Subular-Mobile && tns run ios"
   },
   "author": "",
   "license": "ISC"
