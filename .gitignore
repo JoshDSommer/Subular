@@ -1,0 +1,51 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+### WEB
+# compiled output
+/Subular-Web/dist
+/tmp
+/Subular-Web/out-tsc
+
+# dependencies
+/Subular-Web/node_modules
+
+# IDEs and editors
+/Subular-Web/.idea
+/Subular-Web/.project
+/Subular-Web/.classpath
+/Subular-Web/.c9/
+/Subular-Web/*.launch
+/Subular-Web/.settings/
+/Subular-Web/*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/Subular-Web/e2e/*.js
+/Subular-Web/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+
+### Mobile
+/Subular-Mobile/*.js
+/Subular-Mobile/**.js.map
+/Subular-Mobile/**.log
+/Subular-Mobile/*.nsbuildinfo
+/Subular-Mobile/*platforms
+/Subular-Mobile/*node_modules
+/Subular-Mobile/*report
