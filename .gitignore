@@ -1,23 +1,23 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# see http://help.github.com/ignore-files/ for more about ignoring files.
 ### WEB
 # compiled output
-/Subular-Web/dist
+/subular-web/dist
 /tmp
-/Subular-Web/out-tsc
+/subular-web/out-tsc
 
 # dependencies
-/Subular-Web/node_modules
+/subular-web/node_modules
 
 # IDEs and editors
-/Subular-Web/.idea
-/Subular-Web/.project
-/Subular-Web/.classpath
-/Subular-Web/.c9/
-/Subular-Web/*.launch
-/Subular-Web/.settings/
-/Subular-Web/*.sublime-workspace
+/subular-web/.idea
+/subular-web/.project
+/subular-web/.classpath
+/subular-web/.c9/
+/subular-web/*.launch
+/subular-web/.settings/
+/subular-web/*.sublime-workspace
 
-# IDE - VSCode
+# IDE - VsCode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -34,18 +34,19 @@ testem.log
 /typings
 
 # e2e
-/Subular-Web/e2e/*.js
-/Subular-Web/e2e/*.map
+/subular-web/e2e/*.js
+/subular-web/e2e/*.map
 
-# System Files
-.DS_Store
+# system Files
+.Ds_store
 Thumbs.db
 
-### Mobile
-/Subular-Mobile/*.js
-/Subular-Mobile/**.js.map
-/Subular-Mobile/**.log
-/Subular-Mobile/*.nsbuildinfo
-/Subular-Mobile/*platforms
-/Subular-Mobile/*node_modules
-/Subular-Mobile/*report
+### MOBILE
+/subular-mobile/**/*.js
+!/subular-mobile/webpack.config.js
+/subular-mobile/**/*.js.map
+/subular-mobile/**/*.log
+/subular-mobile/**/*.nsbuildinfo
+/subular-mobile/platforms
+/subular-mobile/node_modules
+/subular-mobile/report
