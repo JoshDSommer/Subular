@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start.web": "cd subular-web && npm start",
-    "start.android": "cd subular-mobile && tns run android",
-    "start.ios": "cd subular-mobile && tns run ios"
+    "web": "cd subular-web && npm start",
+    "android": "cd subular-mobile && tns run android",
+    "ios": "cd subular-mobile && tns run ios",
+    "ios.webpack": "cd subular-mobile && npm run start-ios-bundle"
   },
   "author": "",
   "license": "ISC",
