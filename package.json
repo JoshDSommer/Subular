@@ -10,5 +10,8 @@
     "start.ios": "cd subular-mobile && tns run ios"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "peerDependencies": {
+    "install-local": "^0.4.0"
+  }
 }
