@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"outDir": "./subular-shared-dist",
+		"sourceMap": false,
+		"declaration": true,
+		"moduleResolution": "node",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"target": "es5",
+		"typeRoots": [
+			"node_modules/@types"
+		],
+		"lib": [
+			"es2017",
+			"dom"
+		]
+	},
+	"include": [
+		"./subular-web/src/shared-services"
+	]
+}

@@ -23,6 +23,7 @@
     "nativescript-theme-core": "~1.0.2",
     "reflect-metadata": "~0.1.8",
     "rxjs": "~5.4.2",
+    "subular": "file:../subular-shared-dist",
     "tns-core-modules": "~3.1.0",
     "zone.js": "~0.8.2"
   },

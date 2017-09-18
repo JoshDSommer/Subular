@@ -2,20 +2,19 @@
   "name": "subular",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "subular-shared-dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "web": "cd subular-web && npm start",
-    "android": "cd subular-mobile && tns run android",
-    "ios": "cd subular-mobile && tns run ios",
-    "ios.webpack": "cd subular-mobile && npm run start-ios-bundle"
+    "android": "npm run update.shared.mobile && cd subular-mobile && tns run android",
+    "update.shared.mobile": "npm run prepare.shared && cd subular-mobile && npm install && npm install ../subular-shared-dist --save",
+    "ios": "npm run update.shared.mobile && cd subular-mobile && tns run ios",
+    "ios.webpack": "npm run update.shared.mobile && cd subular-mobile && npm run start-ios-bundle",
+    "prepare.shared": "tsc --p tsconfig.json && cd subular-shared-dist && npm i"
   },
   "author": "",
   "license": "ISC",
   "peerDependencies": {
     "install-local": "^0.4.0"
-  },
-  "dependencies": {
-    "crypto-js": "^3.1.9-1"
   }
 }
