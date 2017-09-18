@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { SubsonicAuthenticationService } from '../../../shared-services/index';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'login',
@@ -14,10 +16,12 @@ export class LoginComponent {
 		password: ["", Validators.required]
 	});
 
-	constructor(public formBuilder: FormBuilder) { }
+	constructor(public formBuilder: FormBuilder, private subsonicAuthenticationService: SubsonicAuthenticationService, private router: Router) { }
 
 	submitLogin(event) {
 		console.log(event);
 		console.log(this.loginForm.value);
+		this.subsonicAuthenticationService.saveAuthenticationInfo(this.loginForm.value.server, this.loginForm.value.username, this.loginForm.value.password);
+		this.router.navigate(['/app'])
 	}
 }
