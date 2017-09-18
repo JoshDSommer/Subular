@@ -11,12 +11,16 @@ import { SubularBrandComponent } from './components/subular-brand/subular-brand.
 
 import { SubsonicAuthenticationService } from '../shared-services';
 import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';
+import { SubularAppComponent } from './views/subular-app/subular-app.component';
+import { RandomAlbumsComponent } from './views/random-albums/random-albums.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SubularBrandComponent
+    RandomAlbumsComponent,
+    SubularBrandComponent,
+    SubularAppComponent
   ],
   imports: [
     AppRoutingModule,
