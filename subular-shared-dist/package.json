@@ -1,0 +1,17 @@
+{
+  "name": "subular",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "install-local": "^0.4.0"
+  },
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "@angular/core": "~4.2.0",
+    "rxjs": "^5.4.2"
+  }
+}
