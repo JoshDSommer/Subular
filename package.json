@@ -6,11 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "web": "cd subular-web && npm start",
-    "android": "npm run update.shared.mobile && cd subular-mobile && tns run android",
-    "update.shared.mobile": "npm run prepare.shared && cd subular-mobile && npm install && npm install",
-    "ios": "npm run update.shared.mobile && cd subular-mobile && tns run ios",
-    "ios.webpack": "npm run update.shared.mobile && cd subular-mobile && npm run start-ios-bundle",
-    "prepare.shared": "tsc --p tsconfig.json && cd subular-shared-dist && npm i"
+    "prepare.shared.mobile": "npm run prepare.shared && cd subular-mobile && npm install && npm install",
+    "android": "npm run prepare.shared.mobile && cd subular-mobile && tns run android",
+    "ios": "npm run prepare.shared.mobile && cd subular-mobile && tns run ios",
+    "ios.webpack": "npm run prepare.shared.mobile && cd subular-mobile && npm run start-ios-bundle",
+    "prepare.shared": "tsc --p tsconfig.json && cd subular-shared-dist && npm i",
+    "setup": "cd subular-web && npm i"
   },
   "author": "",
   "license": "ISC"
