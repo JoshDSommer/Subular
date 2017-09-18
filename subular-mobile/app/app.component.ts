@@ -4,6 +4,7 @@ import { SubsonicAuthenticationService } from 'subular';
 @Component({
     selector: "ns-app",
     templateUrl: "app.component.html",
+    providers: [SubsonicAuthenticationService]
 })
 
 export class AppComponent {
