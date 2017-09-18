@@ -9,6 +9,9 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login.component';
 import { SubularBrandComponent } from './components/subular-brand/subular-brand.component';
 
+import { SubsonicAuthenticationService } from '../shared-services';
+import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +27,10 @@ import { SubularBrandComponent } from './components/subular-brand/subular-brand.
     PasswordModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    LOCALSTORAGE_SERVICE,
+    SubsonicAuthenticationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
