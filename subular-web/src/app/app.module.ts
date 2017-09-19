@@ -15,6 +15,7 @@ import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';
 import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { RandomAlbumsComponent } from './views/random-albums/random-albums.component';
 import { HttpModule } from '@angular/http';
+import { SharedServicesModule } from '../shared-services/shared-services.module';
 
 @NgModule({
   declarations: [
@@ -32,12 +33,12 @@ import { HttpModule } from '@angular/http';
     InputTextModule,
     HttpModule,
     PasswordModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedServicesModule
   ],
   providers: [
     LOCALSTORAGE_SERVICE,
-    SubsonicAuthenticationService,
-    SubsonicService,
+
   ],
   bootstrap: [AppComponent]
 })
