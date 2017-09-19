@@ -7,6 +7,9 @@ import { SubsonicGuard } from '../shared-services/subsonic.guard';
 
 const routes: Routes = [
 	{
+		path: '', redirectTo: 'login', pathMatch: 'full'
+	},
+	{
 		path: 'login', component: LoginComponent
 	},
 	{
