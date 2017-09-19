@@ -3,12 +3,22 @@ import { Routes, RouterModule, CanActivate, ActivatedRouteSnapshot, RouterStateS
 import { LoginComponent } from './views/login/login.component'
 import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { RandomAlbumsComponent } from './views/random-albums/random-albums.component';
+import { SubsonicGuard } from '../shared-services/subsonic.guard';
 
 const routes: Routes = [
-	{ path: 'login', component: LoginComponent },
 	{
-		path: 'app', component: SubularAppComponent, children: [
-			{ path: '', component: RandomAlbumsComponent, outlet: 'subular' }
+		path: 'login', component: LoginComponent
+	},
+	{
+		path: 'app',
+		component: SubularAppComponent,
+		children: [
+			{ path: '', redirectTo: 'random', pathMatch: 'full', canActivate: [SubsonicGuard] },
+			{ path: 'random', component: RandomAlbumsComponent },
+			{ path: 'album/:id', component: RandomAlbumsComponent },
+			{ path: 'artist/:id', component: RandomAlbumsComponent },
+			{ path: 'playlists', component: RandomAlbumsComponent },
+			{ path: 'playlist/:id', component: RandomAlbumsComponent }
 		]
 	},
 
