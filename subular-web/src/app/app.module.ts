@@ -9,10 +9,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login.component';
 import { SubularBrandComponent } from './components/subular-brand/subular-brand.component';
 
-import { SubsonicAuthenticationService } from '../shared-services';
+import { SubsonicAuthenticationService } from './shared-services/subsonic-authentication.service';
+import { SubsonicService } from './shared-services/subsonic.service';
 import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';
 import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { RandomAlbumsComponent } from './views/random-albums/random-albums.component';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -28,12 +30,14 @@ import { RandomAlbumsComponent } from './views/random-albums/random-albums.compo
     BrowserAnimationsModule,
     ButtonModule,
     InputTextModule,
+    HttpModule,
     PasswordModule,
     ReactiveFormsModule
   ],
   providers: [
     LOCALSTORAGE_SERVICE,
-    SubsonicAuthenticationService
+    SubsonicAuthenticationService,
+    SubsonicService,
   ],
   bootstrap: [AppComponent]
 })
