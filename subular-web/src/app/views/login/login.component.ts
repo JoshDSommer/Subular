@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 				this.router.navigate(['/app'])
 			}
 		}, failed => {
-			// todo replae with something like ngx-toastr
+			// todo replace with something like ngx-toastr
 			window.alert('Login failed');
 		});
 
