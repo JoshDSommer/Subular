@@ -3,6 +3,7 @@ import { SubsonicAuthenticationService } from './subsonic-authentication.service
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/catch'
 
 @Injectable()
 export class SubsonicService {
@@ -18,5 +19,6 @@ export class SubsonicService {
 			.map(response => response.json())
 			.map(data => JSON.parse(JSON.stringify(data).replace('subsonic-response', 'subresp')))
 			.map(data => data.subresp.status === 'ok')
+			.catch(() => Observable.of(false));
 	}
 }

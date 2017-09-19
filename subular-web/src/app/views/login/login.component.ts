@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { SubsonicAuthenticationService } from './../../shared-services/subsonic-authentication.service';
-import { SubsonicService } from './../../shared-services/subsonic.service';
+import { SubsonicAuthenticationService } from '../../../shared-services/subsonic-authentication.service';
+import { SubsonicService } from '../../../shared-services/subsonic.service';
 import { Router } from '@angular/router';
 
 @Component({
