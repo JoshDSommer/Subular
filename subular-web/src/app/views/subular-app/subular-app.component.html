@@ -1,2 +1,10 @@
-<div class="subular-app"> Hello SubularAppComponent! </div>
-<router-outlet></router-outlet>
+<section *ngIf="(albums$ | async) else LoadingAlbums">
+		<h1>Albums</h1>
+		<div class="ui-g-3" *ngFor="let album of (albums$ | async)">
+			{{ album.title}}
+			{{ album.artist}}
+		</div>
+</section>
+<section #LoadingAlbums>
+	<h1>Loading Albums</h1>
+</section>
