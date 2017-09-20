@@ -16,10 +16,12 @@ import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { RandomAlbumsComponent } from './views/random-albums/random-albums.component';
 import { HttpModule } from '@angular/http';
 import { SharedServicesModule } from '../shared-services/shared-services.module';
+import { ArtistListComponent } from './components/artist-list/artist-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ArtistListComponent,
     LoginComponent,
     RandomAlbumsComponent,
     SubularBrandComponent,

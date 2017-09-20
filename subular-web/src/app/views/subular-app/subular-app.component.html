@@ -1,5 +1,6 @@
 <section *ngIf="(loaded$ | async) else LoadingAlbums">
-		<router-outlet></router-outlet>
+	<artist-list [artists]="artists$ | async"></artist-list>
+	<router-outlet></router-outlet>
 </section>
 <ng-template #LoadingAlbums>
 	<h1>Loading Albums</h1>

@@ -18,5 +18,6 @@ export class SubularAppComponent implements OnInit {
 	}
 	ngOnInit() {
 		this.loaded$ = this.cachedData.refreshedCachedData();
+		this.artists$ = this.cachedData.getArtists();
 	}
 }
