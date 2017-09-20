@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CachedAlbumArtistService } from '../../../shared-services/cached-album-artist.service';
 import { Observable } from 'rxjs/Observable';
-import { IAlbum } from '../../../shared-services/index';
+import { IAlbum, IArtist } from '../../../shared-services/index';
 
 @Component({
 	selector: 'subular-app',
@@ -10,11 +10,13 @@ import { IAlbum } from '../../../shared-services/index';
 
 export class SubularAppComponent implements OnInit {
 	albums$: Observable<IAlbum[]>;
+	artists$: Observable<IArtist[]>;
+	loaded$: Observable<boolean>;
 
 	constructor(private cachedData: CachedAlbumArtistService) {
 
 	}
 	ngOnInit() {
-		this.albums$ = this.cachedData.getAlbums();
+		this.loaded$ = this.cachedData.refreshedCachedData();
 	}
 }

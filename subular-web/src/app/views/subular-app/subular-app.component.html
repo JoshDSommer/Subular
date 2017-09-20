@@ -1,10 +1,6 @@
-<section *ngIf="(albums$ | async) else LoadingAlbums">
-		<h1>Albums</h1>
-		<div class="ui-g-3" *ngFor="let album of (albums$ | async)">
-			{{ album.title}}
-			{{ album.artist}}
-		</div>
+<section *ngIf="(loaded$ | async) else LoadingAlbums">
+		<router-outlet></router-outlet>
 </section>
-<section #LoadingAlbums>
+<ng-template #LoadingAlbums>
 	<h1>Loading Albums</h1>
-</section>
+</ng-template>
