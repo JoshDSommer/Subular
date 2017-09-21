@@ -49,7 +49,7 @@ export class SubsonicAuthenticationService {
 		let text = "";
 		let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-		for (var i = 0; i < 15; i++)
+		for (var i = 0; i < 99; i++)
 			text += possible.charAt(Math.floor(Math.random() * possible.length));
 
 		return text;
