@@ -1,5 +1,5 @@
 <div class="subular-wrap-flex">
-	<div class="flex-container row">
+	<div class="flex-container">
 		<section class="sidebar">
 			<artist-list [artists]="artists$ | async"></artist-list>
 		</section>
@@ -7,10 +7,9 @@
 			<router-outlet></router-outlet>
 		</section>
 	</div>
-	<section class="player row">
-
-	</section>
+	<player></player>
 </div>
+
 <ng-template #LoadingAlbums>
 	<h1>Loading Albums</h1>
 </ng-template>

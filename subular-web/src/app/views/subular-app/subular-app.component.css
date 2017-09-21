@@ -3,10 +3,6 @@
 	display: flex;
 	flex-direction: column;
 }
-.player{
-	height: 90px;
-	width: 100%;
-}
 .flex-container{
 	display: flex;
     width: 100%;

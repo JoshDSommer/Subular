@@ -17,31 +17,33 @@ import { RandomAlbumsComponent } from './views/random-albums/random-albums.compo
 import { HttpModule } from '@angular/http';
 import { SharedServicesModule } from '../shared-services/shared-services.module';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ArtistListComponent,
-    LoginComponent,
-    RandomAlbumsComponent,
-    SubularBrandComponent,
-    SubularAppComponent
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    ButtonModule,
-    InputTextModule,
-    HttpModule,
-    PasswordModule,
-    ReactiveFormsModule,
-    SharedServicesModule
-  ],
-  providers: [
-    LOCALSTORAGE_SERVICE,
+	declarations: [
+		AppComponent,
+		ArtistListComponent,
+		LoginComponent,
+		PlayerComponent,
+		RandomAlbumsComponent,
+		SubularBrandComponent,
+		SubularAppComponent
+	],
+	imports: [
+		AppRoutingModule,
+		BrowserModule,
+		BrowserAnimationsModule,
+		ButtonModule,
+		InputTextModule,
+		HttpModule,
+		PasswordModule,
+		ReactiveFormsModule,
+		SharedServicesModule
+	],
+	providers: [
+		LOCALSTORAGE_SERVICE,
 
-  ],
-  bootstrap: [AppComponent]
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
