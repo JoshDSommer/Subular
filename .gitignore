@@ -54,3 +54,5 @@ Thumbs.db
 subular-shared-dist/*
 !subular-shared-dist/package.json
 node_modules
+
+tempcrap
