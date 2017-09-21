@@ -5,7 +5,8 @@ import { IAlbum, IArtist } from '../../../shared-services/index';
 
 @Component({
 	selector: 'subular-app',
-	templateUrl: 'subular-app.component.html'
+	templateUrl: 'subular-app.component.html',
+	styleUrls: ['subular-app.component.css']
 })
 
 export class SubularAppComponent implements OnInit {

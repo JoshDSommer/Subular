@@ -1,6 +1,13 @@
-<section *ngIf="(loaded$ | async) else LoadingAlbums">
-	<artist-list [artists]="artists$ | async"></artist-list>
-	<router-outlet></router-outlet>
+<div class="flex-container">
+	<section class="sidebar">
+		<artist-list [artists]="artists$ | async"></artist-list>
+	</section>
+	<section *ngIf="(loaded$ | async) else LoadingAlbums" class="subular-app">
+		<router-outlet></router-outlet>
+	</section>
+</div>
+<section class="player">
+
 </section>
 <ng-template #LoadingAlbums>
 	<h1>Loading Albums</h1>

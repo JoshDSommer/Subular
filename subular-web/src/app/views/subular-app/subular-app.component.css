@@ -1,3 +1,28 @@
-.subular-app {
+.flex-container{
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 120px);
+    background-color: lightgrey;
+}
 
+.subular-app{
+	order: 1;
+	flex: 6;
+	background-color: #CE9B64;
+  	padding: .5rem;
+}
+.sidebar{
+	order: 1;
+	flex: 1;
+	width: 100px;
+	background-color: purple;
+	flex-basis: auto;
+	min-height: 1px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.player{
+	height: 120px;
+	width: 100%;
 }
