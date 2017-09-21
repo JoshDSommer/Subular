@@ -1,5 +1,5 @@
-<ul class="artist-list">
-	<li *ngFor="let artist of artists">
+<ul class="artist-list" #artistList>
+	<li *ngFor="let artist of artists" [class]="artist.id">
 		{{ artist.name }}
 	</li>
 </ul>
