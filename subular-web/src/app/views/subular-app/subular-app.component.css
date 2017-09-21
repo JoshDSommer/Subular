@@ -2,20 +2,18 @@
     display: -webkit-flex;
     display: flex;
     width: 100%;
-    height: calc(100vh - 120px);
-    background-color: lightgrey;
+    height: calc(100vh - 90px);
 }
 
 .subular-app{
 	order: 1;
 	flex: 6;
-	background-color: #CE9B64;
+	background-color: lightgrey;
   	padding: .5rem;
 }
 .sidebar{
 	order: 1;
-	flex: 1;
-	width: 100px;
+	width: 250px;
 	background-color: purple;
 	flex-basis: auto;
 	min-height: 1px;
@@ -23,6 +21,6 @@
 	overflow-x: hidden;
 }
 .player{
-	height: 120px;
+	height: 90px;
 	width: 100%;
 }
