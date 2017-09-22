@@ -13,14 +13,16 @@ import { SubsonicAuthenticationService } from '../shared-services/subsonic-authe
 import { SubsonicService } from '../shared-services/subsonic.service';
 import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';
 import { SubularAppComponent } from './views/subular-app/subular-app.component';
-import { RandomAlbumsComponent } from './views/random-albums/random-albums.component';
+import { RandomAlbumsComponent } from './views/subular-app/random-albums/random-albums.component';
 import { HttpModule } from '@angular/http';
 import { SharedServicesModule } from '../shared-services/shared-services.module';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
 import { PlayerComponent } from './components/player/player.component';
+import { AlbumsComponent } from './views/subular-app/albums/albums.component';
 
 @NgModule({
-	declarations: [
+  declarations: [
+    AlbumsComponent,
 		AppComponent,
 		ArtistListComponent,
 		LoginComponent,

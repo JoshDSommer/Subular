@@ -2,8 +2,9 @@ import { NgModule, Injectable } from '@angular/core';
 import { Routes, RouterModule, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, } from '@angular/router';
 import { LoginComponent } from './views/login/login.component'
 import { SubularAppComponent } from './views/subular-app/subular-app.component';
-import { RandomAlbumsComponent } from './views/random-albums/random-albums.component';
+import { RandomAlbumsComponent } from './views/subular-app/random-albums/random-albums.component';
 import { SubsonicGuard } from '../shared-services/subsonic.guard';
+import { AlbumsComponent } from './views/subular-app/albums/albums.component';
 
 const routes: Routes = [
 	{
@@ -18,7 +19,7 @@ const routes: Routes = [
 		children: [
 			{ path: '', redirectTo: 'random', pathMatch: 'full', canActivate: [SubsonicGuard] },
 			{ path: 'random', component: RandomAlbumsComponent },
-			{ path: 'album/:id', component: RandomAlbumsComponent },
+			{ path: 'albums/:artistId', component: AlbumsComponent },
 			{ path: 'artist/:id', component: RandomAlbumsComponent },
 			{ path: 'playlists', component: RandomAlbumsComponent },
 			{ path: 'playlist/:id', component: RandomAlbumsComponent }
