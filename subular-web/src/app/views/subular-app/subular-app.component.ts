@@ -10,15 +10,18 @@ import { IAlbum, IArtist } from '../../../shared-services/index';
 })
 
 export class SubularAppComponent implements OnInit {
-	albums$: Observable<IAlbum[]>;
-	artists$: Observable<IArtist[]>;
-	loaded$: Observable<boolean>;
+	albums: IAlbum[];
+	artists: IArtist[];
+	loaded: boolean;
 
 	constructor(private cachedData: CachedAlbumArtistService) {
 
 	}
 	ngOnInit() {
-		this.loaded$ = this.cachedData.refreshedCachedData();
-		this.artists$ = this.cachedData.getArtists();
+		this.cachedData.getCachedData().subscribe(([artists,albums]) => {
+			this.artists = artists;
+			this.albums = albums;
+			this.loaded = true;
+		});
 	}
 }

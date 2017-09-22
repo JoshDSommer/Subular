@@ -21,10 +21,8 @@ export class CachedAlbumArtistService {
 
 
 
-	refreshedCachedData(): Observable<boolean> {
-		return this.getArtists()
-			.switchMap(() => this.getAlbums())
-			.switchMap(() => Observable.of(true));
+	getCachedData(): Observable<[IArtist[],IAlbum[]]> {
+		return Observable.combineLatest(this.getArtists(),this.getAlbums());
 	}
 
 	getArtists(): Observable<IArtist[]> {

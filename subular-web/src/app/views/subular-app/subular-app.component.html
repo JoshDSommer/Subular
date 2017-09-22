@@ -1,9 +1,9 @@
 <div class="subular-wrap-flex">
 	<div class="flex-container">
 		<section class="sidebar">
-			<artist-list [artists]="artists$ | async"></artist-list>
+			<artist-list [artists]="artists"></artist-list>
 		</section>
-		<section *ngIf="(loaded$ | async) else LoadingAlbums" class="subular-app">
+		<section *ngIf="loaded else LoadingAlbums" class="subular-app">
 			<router-outlet></router-outlet>
 		</section>
 	</div>
