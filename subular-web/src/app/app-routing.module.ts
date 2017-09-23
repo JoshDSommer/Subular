@@ -5,6 +5,7 @@ import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { RandomAlbumsComponent } from './views/subular-app/random-albums/random-albums.component';
 import { SubsonicGuard } from '../shared-services/subsonic.guard';
 import { AlbumsComponent } from './views/subular-app/albums/albums.component';
+import { AlbumResolver } from './views/subular-app/albums/albums.resolver';
 
 const routes: Routes = [
 	{
@@ -19,7 +20,12 @@ const routes: Routes = [
 		children: [
 			{ path: '', redirectTo: 'random', pathMatch: 'full', canActivate: [SubsonicGuard] },
 			{ path: 'random', component: RandomAlbumsComponent },
-			{ path: 'albums/:artistId', component: AlbumsComponent },
+			{
+				path: 'albums/:artistId', component: AlbumsComponent,
+				resolve: {
+					albums: AlbumResolver
+				}
+			},
 			{ path: 'artist/:id', component: RandomAlbumsComponent },
 			{ path: 'playlists', component: RandomAlbumsComponent },
 			{ path: 'playlist/:id', component: RandomAlbumsComponent }
@@ -34,6 +40,9 @@ const routes: Routes = [
 		RouterModule.forRoot(routes, { useHash: true })
 	],
 	exports: [RouterModule],
+	providers: [
+		AlbumResolver
+	]
 
 })
 export class AppRoutingModule { }

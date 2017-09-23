@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { IAlbum } from '../../../../shared-services/index';
 
 @Component({
 	selector: 'albums',
@@ -6,6 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AlbumsComponent implements OnInit {
+	albums: IAlbum[];
+	constructor(private route: ActivatedRoute, private router: Router) {
 
-	ngOnInit() { }
+	}
+	ngOnInit() {
+		this.albums = this.route.snapshot.data['albums'] as IAlbum[];
+		this.router.events.subscribe(() => {
+			this.albums = this.route.snapshot.data['albums'] as IAlbum[];
+		});
+	}
 }
