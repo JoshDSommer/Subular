@@ -4,7 +4,8 @@ import { IAlbum } from '../../../../shared-services/index';
 
 @Component({
 	selector: 'albums',
-	templateUrl: 'albums.component.html'
+	templateUrl: 'albums.component.html',
+	styleUrls: ['albums.component.css']
 })
 
 export class AlbumsComponent implements OnInit {
