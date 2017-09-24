@@ -19,10 +19,12 @@ import { SharedServicesModule } from '../shared-services/shared-services.module'
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
 import { PlayerComponent } from './components/player/player.component';
 import { AlbumsComponent } from './views/subular-app/albums/albums.component';
+import { AlbumCardComponent } from './components/album-card/album-card.component';
 
 @NgModule({
-  declarations: [
-    AlbumsComponent,
+	declarations: [
+		AlbumCardComponent,
+		AlbumsComponent,
 		AppComponent,
 		ArtistListComponent,
 		LoginComponent,

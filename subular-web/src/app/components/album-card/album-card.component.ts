@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SubsonicService, IAlbum } from '../../../shared-services/index';
 
 @Component({
 	selector: 'album-card',
@@ -6,6 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AlbumCardComponent implements OnInit {
+	@Input() album: IAlbum;
 
+	getCoverUrl(id) {
+		if (id)
+			return this.subsonic.subsonicGetCoverUrl(id);
+	}
+
+	constructor(private subsonic: SubsonicService) {
+
+	}
 	ngOnInit() { }
 }

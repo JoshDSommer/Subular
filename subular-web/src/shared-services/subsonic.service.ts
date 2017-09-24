@@ -16,6 +16,10 @@ export class SubsonicService {
 			.catch(() => Observable.of(false));
 	}
 
+	subsonicGetCoverUrl(id: number): string {
+		return this.authentication.getServerURl('getCoverArt') + `&id=${id}&size=274`;
+	}
+
 	subsonicGet(method: string, additionalParams?: string) {
 		const url = additionalParams ? this.authentication.getServerURl(method) + additionalParams : this.authentication.getServerURl(method);
 		return this.http.get(url)
