@@ -1,2 +1,2 @@
 <div class="albums"> Hello AlbumsComponent! </div>
-{{ albums | json }}
+<album-card [album]="album" *ngFor="let album of albums"></album-card>
