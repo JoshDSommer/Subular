@@ -3,7 +3,9 @@
 		<img class="artist-album" name="album-{{album?.id}}" crossOrigin="Anonymous" [src]="getCoverUrl(album?.id)" />
 	</div>
 	<div class="album-card-footer">
-		{{album?.title}}
+		<div>
+			{{album?.title}}
+		</div>
 		<i class="fa fa-play-circle play-button" id="play-{{album.id}}" (click)="playAlbum(album?.id)"></i>
 	</div>
 </div>

@@ -3,7 +3,8 @@ import { SubsonicService, IAlbum } from '../../../shared-services/index';
 
 @Component({
 	selector: 'album-card',
-	templateUrl: 'album-card.component.html'
+	templateUrl: 'album-card.component.html',
+	styleUrls: ['album-card.component.css']
 })
 
 export class AlbumCardComponent implements OnInit {

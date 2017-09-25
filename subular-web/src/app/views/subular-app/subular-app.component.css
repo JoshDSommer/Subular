@@ -3,6 +3,13 @@
 	display: flex;
 	flex-direction: column;
 }
+.subular-header{
+	height: 5vh;
+}
+.subular-header subular-brand{
+	font-size: 1.2em;
+	margin-left: 1.8em;
+}
 .flex-container{
 	display: flex;
     width: 100%;
