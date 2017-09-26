@@ -20,14 +20,7 @@ export class SubsonicAuthenticationService {
 
 
 	constructor(private localStorage: LOCALSTORAGE_PROVIDER, private cryptoJs: MD5_PROVIDER) {
-		const existingInfo = localStorage.getValue(SERVER_INFO_KEY) as IServerInfo;
 
-		if (existingInfo) {
-			this.password = existingInfo.password;
-			this.server = existingInfo.server;
-			this.username = existingInfo.username;
-			this.salt = existingInfo.salt;
-		}
 	}
 
 	saveAuthenticationInfo(server: string, username: string, password: string) {
@@ -36,11 +29,12 @@ export class SubsonicAuthenticationService {
 		this.username = username;
 		this.server = server;
 
-		localStorage.setItem(SERVER_INFO_KEY, JSON.stringify(<IServerInfo>{ server, username, password: this.password, salt: this.salt }));
+		this.localStorage.setValue(SERVER_INFO_KEY, JSON.stringify(<IServerInfo>{ server, username, password: this.password, salt: this.salt }));
 
 	}
 
 	getServerURl(method: string) {
+		this.getExistingInfoFromCache();
 		let serverUrl = this.server + '/rest/' + method + '.view?u=' + this.username + '&t=' + this.password + '&s=' + this.salt + '&v=1.0.0&c=rest&f=json';
 		return serverUrl;
 	}
@@ -53,5 +47,17 @@ export class SubsonicAuthenticationService {
 			text += possible.charAt(Math.floor(Math.random() * possible.length));
 
 		return text;
+	}
+
+	private getExistingInfoFromCache() {
+		const existingInfo = this.localStorage.getValue(SERVER_INFO_KEY) as IServerInfo;
+
+		if (existingInfo) {
+			this.password = existingInfo.password;
+			this.server = existingInfo.server;
+			this.username = existingInfo.username;
+			this.salt = existingInfo.salt;
+		}
+
 	}
 }

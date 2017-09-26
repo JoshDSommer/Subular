@@ -19,7 +19,7 @@ import { LoginComponent } from './views/login/login.component';
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 
 // Uncomment and add to NgModule imports  if you need to use the HTTP wrapper
-// import { NativeScriptHttpModule } from 'nativescript-angular/http';
+import { NativeScriptHttpModule } from 'nativescript-angular/http';
 
 @NgModule({
     bootstrap: [
@@ -28,6 +28,7 @@ import { LoginComponent } from './views/login/login.component';
     imports: [
         SharedServicesModule.forRoot(LOCALSTORAGE_SERVICE, MD5_SERVICE),
         NativeScriptModule,
+        NativeScriptHttpModule,
         NativeScriptUISideDrawerModule,
         AppRoutingModule,
     ],

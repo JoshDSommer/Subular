@@ -1,17 +1,26 @@
-import { ClassProvider } from '@angular/core';
+import { FactoryProvider } from '@angular/core';
 import { LOCALSTORAGE_PROVIDER } from 'subular';
 import { getString, setString } from 'application-settings';
 
 export class LocalStorageService implements LOCALSTORAGE_PROVIDER {
+	constructor() {
+	}
 	getValue(key: string): any {
-		return JSON.parse(getString(key));
+		const value = getString(key);
+		if (value) {
+			return JSON.parse(value);
+		}
+		return null;
 	}
 	setValue(key: string, value: any): void {
 		setString(key, JSON.stringify(value));
 	}
 }
+export function getLocalStorage() {
+	return new LocalStorageService();
+}
 
-export const LOCALSTORAGE_SERVICE: ClassProvider = {
+export const LOCALSTORAGE_SERVICE: FactoryProvider = {
 	provide: LOCALSTORAGE_PROVIDER,
-	useClass: LocalStorageService,
+	useFactory: getLocalStorage ,
 };
