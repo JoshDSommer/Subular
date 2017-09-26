@@ -10,9 +10,13 @@
     "android": "npm run prepare.shared.mobile && cd subular-mobile && tns run android",
     "ios": "npm run prepare.shared.mobile && cd subular-mobile && tns run ios",
     "ios.webpack": "npm run prepare.shared.mobile && cd subular-mobile && npm run start-ios-bundle",
-    "prepare.shared": "tsc --p tsconfig.json && cd subular-shared-dist && npm i",
+    "prepare.shared": "ngc --p tsconfig.json && cd subular-shared-dist && npm i",
     "setup": "cd subular-web && npm i"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@angular/core": "^4.4.3",
+    "rxjs": "^5.4.3"
+  }
 }
