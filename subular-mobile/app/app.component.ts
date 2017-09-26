@@ -7,7 +7,7 @@ import { SubsonicAuthenticationService } from 'subular';
 })
 
 export class AppComponent {
-    constructor(private subsonicAuthenticationService: SubsonicAuthenticationService) {
+    constructor() {
 
     }
 }

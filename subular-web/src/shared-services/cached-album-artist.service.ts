@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import { ClassProvider } from '@angular/core';
 import { SubsonicService } from './subsonic.service';
 import { IAlbum } from './interfaces/album';
 import { IArtist } from './interfaces/artists';
 import { LOCALSTORAGE_PROVIDER } from './localstorage.provider';
 
 
-const SUBULAR_CACHED_ALBUMS = 'subular.cached.albums';
-const SUBULAR_CACHED_ARTISTS = 'subular.cached.artists';
+export const SUBULAR_CACHED_ALBUMS = 'subular.cached.albums';
+export const SUBULAR_CACHED_ARTISTS = 'subular.cached.artists';
 
 @Injectable()
 export class CachedAlbumArtistService {

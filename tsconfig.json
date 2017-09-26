@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"baseUrl": "./",
 		"outDir": "./subular-shared-dist",
 		"sourceMap": false,
 		"declaration": true,
@@ -13,7 +14,15 @@
 		"lib": [
 			"es2017",
 			"dom"
-		]
+		],
+		"paths": {
+			"@angular/*": [
+			  "./node_modules/@angular/*"
+			]
+		}
+	},
+	"angularCompilerOptions": {
+		"skipTemplateCodegen": true
 	},
 	"include": [
 		"./subular-web/src/shared-services"

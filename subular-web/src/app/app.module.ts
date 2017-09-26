@@ -20,6 +20,7 @@ import { ArtistListComponent } from './components/artist-list/artist-list.compon
 import { PlayerComponent } from './components/player/player.component';
 import { AlbumsComponent } from './views/subular-app/albums/albums.component';
 import { AlbumCardComponent } from './components/album-card/album-card.component';
+import { MD5_SERVICE } from './providers/md5.provider';
 
 @NgModule({
 	declarations: [
@@ -42,10 +43,9 @@ import { AlbumCardComponent } from './components/album-card/album-card.component
 		HttpModule,
 		PasswordModule,
 		ReactiveFormsModule,
-		SharedServicesModule
+		SharedServicesModule.forRoot(LOCALSTORAGE_SERVICE, MD5_SERVICE)
 	],
 	providers: [
-		LOCALSTORAGE_SERVICE,
 
 	],
 	bootstrap: [AppComponent]
