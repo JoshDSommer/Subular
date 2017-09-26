@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { LOCALSTORAGE_PROVIDER } from './localstorage.provider';
-import { MD5 } from 'crypto-js';
+import { MD5_PROVIDER } from './md5.provider';
 
-const SERVER_INFO_KEY = 'SERVERINFO';
-interface IServerInfo {
+export const SERVER_INFO_KEY = 'SERVERINFO';
+export interface IServerInfo {
 	server: string;
 	username: string;
 	password: string;
@@ -19,7 +19,7 @@ export class SubsonicAuthenticationService {
 	private password: string;
 
 
-	constructor(private localStorage: LOCALSTORAGE_PROVIDER) {
+	constructor(private localStorage: LOCALSTORAGE_PROVIDER, private cryptoJs: MD5_PROVIDER) {
 		const existingInfo = localStorage.getValue(SERVER_INFO_KEY) as IServerInfo;
 
 		if (existingInfo) {
@@ -32,7 +32,7 @@ export class SubsonicAuthenticationService {
 
 	saveAuthenticationInfo(server: string, username: string, password: string) {
 		this.salt = this.salt || this.makeSalt();
-		this.password = MD5(password + this.salt).toString();
+		this.password = this.cryptoJs.MD5(password + this.salt).toString();
 		this.username = username;
 		this.server = server;
 

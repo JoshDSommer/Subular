@@ -1,18 +1,27 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { SubsonicService } from './subsonic.service';
 import { SubsonicAuthenticationService } from './subsonic-authentication.service';
 import { HttpModule } from '@angular/http';
 import { SubsonicGuard } from './subsonic.guard';
 import { CachedAlbumArtistService } from './cached-album-artist.service';
+import { LOCALSTORAGE_PROVIDER } from './localstorage.provider';
+import { MD5_PROVIDER } from './md5.provider';
 
 @NgModule({
-	imports:[
-	],
-	providers: [
-		SubsonicAuthenticationService,
-		SubsonicService,
-		SubsonicGuard,
-		CachedAlbumArtistService
+	imports: [
 	],
 })
-export class SharedServicesModule { }
+export class SharedServicesModule {
+	public static forRoot(...providers): ModuleWithProviders {
+		return {
+			ngModule: SharedServicesModule,
+			providers: [
+				SubsonicAuthenticationService,
+				SubsonicService,
+				SubsonicGuard,
+				CachedAlbumArtistService,
+				providers
+			]
+		};
+	}
+}

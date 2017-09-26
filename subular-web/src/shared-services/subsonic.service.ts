@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { SubsonicAuthenticationService } from './subsonic-authentication.service';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/catch'
 
 @Injectable()
 export class SubsonicService {
