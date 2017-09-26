@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 
 import { NativeScriptUISideDrawerModule } from 'nativescript-telerik-ui/sidedrawer/angular/side-drawer-directives';
 
-import { LOCALSTORAGE_PROVIDER, SubsonicAuthenticationService } from 'subular';
+import { LOCALSTORAGE_PROVIDER, SharedServicesModule } from 'subular';
 
 
 import { ItemService } from './item/item.service';
 import { ItemsComponent } from './item/items.component';
 import { ItemDetailComponent } from './item/item-detail.component';
 import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';
+import { MD5_SERVICE } from './providers/md5.service';
+import { LoginComponent } from './views/login/login.component';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
@@ -24,22 +26,22 @@ import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';
         AppComponent
     ],
     imports: [
+        SharedServicesModule.forRoot(LOCALSTORAGE_SERVICE, MD5_SERVICE),
         NativeScriptModule,
         NativeScriptUISideDrawerModule,
-        AppRoutingModule
+        AppRoutingModule,
     ],
     declarations: [
         AppComponent,
-        ItemsComponent,
-        ItemDetailComponent
+        LoginComponent,
     ],
     providers: [
         ItemService,
-        LOCALSTORAGE_SERVICE,
-        SubsonicAuthenticationService
+
     ],
     schemas: [
         NO_ERRORS_SCHEMA
+
     ]
 })
 /*
