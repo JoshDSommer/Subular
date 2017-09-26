@@ -3,7 +3,7 @@ import { SubsonicService } from './subsonic.service';
 import { SubsonicAuthenticationService } from './subsonic-authentication.service';
 import { HttpModule } from '@angular/http';
 import { SubsonicGuard } from './subsonic.guard';
-import { CachedAlbumArtistService } from './cached-album-artist.service';
+import { SubsonicCachedService } from './subsonic.cached.service';
 import { LOCALSTORAGE_PROVIDER } from './localstorage.provider';
 import { MD5_PROVIDER } from './md5.provider';
 
@@ -19,7 +19,7 @@ export class SharedServicesModule {
 				SubsonicAuthenticationService,
 				SubsonicService,
 				SubsonicGuard,
-				CachedAlbumArtistService,
+				SubsonicCachedService,
 				providers
 			]
 		};

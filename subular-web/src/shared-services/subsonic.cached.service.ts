@@ -10,7 +10,7 @@ export const SUBULAR_CACHED_ALBUMS = 'subular.cached.albums';
 export const SUBULAR_CACHED_ARTISTS = 'subular.cached.artists';
 
 @Injectable()
-export class CachedAlbumArtistService {
+export class SubsonicCachedService {
 
 	// private artists: IArtist[];
 

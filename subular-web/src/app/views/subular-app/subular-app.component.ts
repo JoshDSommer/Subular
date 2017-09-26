@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CachedAlbumArtistService } from '../../../shared-services/cached-album-artist.service';
+import { SubsonicCachedService } from '../../../shared-services/subsonic.cached.service';
 import { Observable } from 'rxjs/Observable';
 import { IAlbum, IArtist } from '../../../shared-services/index';
 
@@ -14,7 +14,7 @@ export class SubularAppComponent implements OnInit {
 	artists: IArtist[];
 	loaded: boolean;
 
-	constructor(private cachedData: CachedAlbumArtistService) {
+	constructor(private cachedData: SubsonicCachedService) {
 
 	}
 	ngOnInit() {
