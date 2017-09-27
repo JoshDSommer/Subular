@@ -9,6 +9,7 @@ import { IArtist } from '../../../shared-services/index';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArtistListComponent implements OnInit {
+	@Input() selectedArtistId: number;
 	@Input() artists: IArtist[];
 	@ViewChild('artistList') artistListUL: ElementRef;
 
@@ -21,6 +22,8 @@ export class ArtistListComponent implements OnInit {
 
 	private searchValue = '';
 	private timeOut;
+
+
 	searchArtistsWithDebounce(value) {
 		clearTimeout(this.timeOut);
 		this.searchValue = this.searchValue + value;

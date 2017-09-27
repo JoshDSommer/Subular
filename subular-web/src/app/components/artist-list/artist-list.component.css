@@ -25,3 +25,8 @@
 	background-color: #222222;
 	color: #fff;
 }
+
+.artist-list li.selected a{
+	background-color: #222222;
+	color: #fff;
+}
