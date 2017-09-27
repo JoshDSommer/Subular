@@ -4,7 +4,7 @@
 	</div>
 	<div class="flex-container">
 		<section class="sidebar">
-			<artist-list [artists]="artists"></artist-list>
+			<artist-list [artists]="artists$ | async" [selectedArtistId]="(artistId$ | async)"></artist-list>
 		</section>
 		<section *ngIf="loaded else LoadingAlbums" class="subular-app">
 			<router-outlet></router-outlet>
