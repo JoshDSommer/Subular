@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { SubsonicService, IAlbum } from '../../../shared-services/index';
 
 @Component({
 	selector: 'album-card',
 	templateUrl: 'album-card.component.html',
-	styleUrls: ['album-card.component.css']
+	styleUrls: ['album-card.component.css'],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class AlbumCardComponent implements OnInit {
