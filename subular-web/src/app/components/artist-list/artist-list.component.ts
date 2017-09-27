@@ -31,19 +31,24 @@ export class ArtistListComponent implements OnInit {
 			const artist = this.getFirstArtistThatStartsWith(this.searchValue);
 			this.scrollToArtist(artist);
 			this.searchValue = '';
-		}, 300);
+		}, 500);
 	}
 
 	scrollToArtist(artist: IArtist) {
 		if (artist) {
 			const nativeHtmlUL = this.artistListUL.nativeElement as HTMLUListElement;
-			const artistLI = nativeHtmlUL.querySelectorAll(`[class='${artist.id}']`)[0] as HTMLLIElement;
-			nativeHtmlUL.scrollTop = artistLI.offsetTop - 25;
+			const artistLI = nativeHtmlUL.querySelector(`[class='${artist.id}']`) as HTMLLIElement;
+			nativeHtmlUL.scrollTop = artistLI.offsetTop - 100;
+			artistLI.querySelector('a').click()
 		}
 	}
 
 	getFirstArtistThatStartsWith(startsWith: string): IArtist {
-		return this.artists.find(value => value.name.substr(0, startsWith.length).toLowerCase() == startsWith.toLowerCase());
+		return this.artists.find(value => value.name
+			.toLowerCase()
+			.replace('the ', '')
+			.substr(0, startsWith.length) == startsWith.toLowerCase()
+		);
 	}
 
 	ngOnInit() { }
