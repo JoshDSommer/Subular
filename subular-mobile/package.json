@@ -4,7 +4,7 @@
   "readme": "NativeScript Application",
   "repository": "<fill-your-repository-here>",
   "nativescript": {
-    "id": "org.nativescript.subularmobile",
+    "id": "com.joshdsommer.subular",
     "tns-ios": {
       "version": "3.2.0"
     },
@@ -23,6 +23,8 @@
     "@angular/router": "~4.2.0",
     "crypto-js": "^3.1.9-1",
     "nativescript-angular": "~4.2.0",
+    "nativescript-feedback": "1.0.6",
+    "nativescript-gradient": "^2.0.1",
     "nativescript-telerik-ui": "^2.0.1",
     "nativescript-theme-core": "~1.0.2",
     "reflect-metadata": "~0.1.8",
