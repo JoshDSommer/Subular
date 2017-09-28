@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SubsonicCachedService } from '../../../shared-services/subsonic.cached.service';
+import { SubsonicCachedService } from '../../../shared-module/subsonic.cached.service';
 import { Observable } from 'rxjs/Observable';
-import { IAlbum, IArtist } from '../../../shared-services/index';
+import { IAlbum, IArtist } from '../../../shared-module/index';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { SubularAppBaseComponent } from '../../../shared-module/components/subular-app.base.component';
 
 @Component({
 	selector: 'subular-app',
@@ -10,21 +11,8 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 	styleUrls: ['subular-app.component.css']
 })
 
-export class SubularAppComponent implements OnInit {
-	artists$: Observable<IArtist[]>;
-	loaded: boolean;
-	artistId$: Observable<any>;
-
-	constructor(private cachedData: SubsonicCachedService, private route: ActivatedRoute, private router: Router) {}
-
-	ngOnInit() {
-		this.artists$ = this.cachedData.getCachedData()
-			.map(([artists, albums]) => artists)
-			.do(() => this.loaded = true);
-
-		this.artistId$ = Observable.of(this.route.firstChild.snapshot.params['artistId'])
-			.merge(this.router.events
-				.filter(value => value instanceof NavigationEnd)
-				.map(() => +this.route.firstChild.snapshot.params['artistId']));
+export class SubularAppComponent extends SubularAppBaseComponent {
+	constructor(cachedData: SubsonicCachedService, route: ActivatedRoute, router: Router) {
+		super(cachedData, route, router);
 	}
 }
