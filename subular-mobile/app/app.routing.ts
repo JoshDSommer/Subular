@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { Routes } from "@angular/router";
 
-import { ItemsComponent } from "./item/items.component";
 import { LoginComponent } from "./views/login/login.component";
 import { SubularAppComponent } from "./views/subular-app/subular-app.component";
 

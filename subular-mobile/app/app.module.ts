@@ -7,10 +7,6 @@ import { NativeScriptUISideDrawerModule } from 'nativescript-telerik-ui/sidedraw
 
 import { LOCALSTORAGE_PROVIDER, SubularSharedModule } from 'subular';
 
-
-import { ItemService } from './item/item.service';
-import { ItemsComponent } from './item/items.component';
-import { ItemDetailComponent } from './item/item-detail.component';
 import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';
 import { MD5_SERVICE } from './providers/md5.service';
 import { LoginComponent } from './views/login/login.component';
@@ -39,8 +35,6 @@ import { SubularAppComponent } from './views/subular-app/subular-app.component';
         SubularAppComponent
     ],
     providers: [
-        ItemService,
-
     ],
     schemas: [
         NO_ERRORS_SCHEMA
