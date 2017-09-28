@@ -6,10 +6,15 @@ import { SubsonicGuard } from './subsonic.guard';
 import { SubsonicCachedService } from './subsonic.cached.service';
 import { LOCALSTORAGE_PROVIDER } from './localstorage.provider';
 import { MD5_PROVIDER } from './md5.provider';
+import { SubularAppBaseComponent } from './components/subular-app.base.component';
 
 @NgModule({
-	imports: [
+	declarations:[
+		SubularAppBaseComponent
 	],
+	exports:[
+		SubularAppBaseComponent
+	]
 })
 export class SharedServicesModule {
 	public static forRoot(...providers): ModuleWithProviders {

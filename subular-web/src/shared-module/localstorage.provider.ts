@@ -6,4 +6,3 @@ export abstract class LOCALSTORAGE_PROVIDER {
 
 	}
 }
-

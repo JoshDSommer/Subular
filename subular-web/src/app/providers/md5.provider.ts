@@ -1,6 +1,6 @@
 import { FactoryProvider } from '@angular/core';
 import { MD5 } from 'crypto-js';
-import { MD5_PROVIDER } from '../../shared-services/md5.provider';
+import { MD5_PROVIDER } from '../../shared-module/md5.provider';
 
 export const MD5_SERVICE: FactoryProvider = {
 	provide: MD5_PROVIDER,

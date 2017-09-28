@@ -25,6 +25,6 @@
 		"skipTemplateCodegen": true
 	},
 	"include": [
-		"./subular-web/src/shared-services"
+		"./subular-web/src/shared-module"
 	]
 }

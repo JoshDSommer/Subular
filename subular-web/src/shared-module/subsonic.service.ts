@@ -22,6 +22,11 @@ export class SubsonicService {
 	subsonicGet(method: string, additionalParams: string);
 	subsonicGet(method: string, additionalParams?: string) {
 		const url = additionalParams ? this.authentication.getServerURl(method) + additionalParams : this.authentication.getServerURl(method);
+		if(url == '' || url == additionalParams){
+			return Observable.of(false);
+		}
+
+
 		return this.http.get(url)
 			.map(response => response.json())
 			.map(data => JSON.parse(JSON.stringify(data).replace('subsonic-response', 'subresp')));

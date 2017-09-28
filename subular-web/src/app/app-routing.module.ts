@@ -3,7 +3,7 @@ import { Routes, RouterModule, CanActivate, ActivatedRouteSnapshot, RouterStateS
 import { LoginComponent } from './views/login/login.component'
 import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { RandomAlbumsComponent } from './views/subular-app/random-albums/random-albums.component';
-import { SubsonicGuard } from '../shared-services/subsonic.guard';
+import { SubsonicGuard } from '../shared-module/subsonic.guard';
 import { AlbumsComponent } from './views/subular-app/albums/albums.component';
 import { AlbumResolver } from './views/subular-app/albums/albums.resolver';
 

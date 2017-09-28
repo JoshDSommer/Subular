@@ -9,13 +9,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login.component';
 import { SubularBrandComponent } from './components/subular-brand/subular-brand.component';
 
-import { SubsonicAuthenticationService } from '../shared-services/subsonic-authentication.service';
-import { SubsonicService } from '../shared-services/subsonic.service';
+import { SubsonicAuthenticationService } from '../shared-module/subsonic-authentication.service';
+import { SubsonicService } from '../shared-module/subsonic.service';
 import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';
 import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { RandomAlbumsComponent } from './views/subular-app/random-albums/random-albums.component';
 import { HttpModule } from '@angular/http';
-import { SharedServicesModule } from '../shared-services/shared-services.module';
+import { SharedServicesModule } from '../shared-module/shared-module.module';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
 import { PlayerComponent } from './components/player/player.component';
 import { AlbumsComponent } from './views/subular-app/albums/albums.component';
