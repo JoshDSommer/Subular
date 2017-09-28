@@ -6,3 +6,4 @@ export * from './subsonic.cached.service';
 export * from './interfaces';
 export * from './subular-shared.module';
 export * from './md5.provider';
+export * from './components';
