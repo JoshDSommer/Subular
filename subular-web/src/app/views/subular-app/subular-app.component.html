@@ -2,17 +2,19 @@
 	<div class="subular-header">
 		<subular-brand></subular-brand>
 	</div>
-	<div class="flex-container">
+	<div class="flex-container" *ngIf="artists$ | async as artists else loading">
 		<section class="sidebar">
-			<artist-list [artists]="artists$ | async" [selectedArtistId]="(artistId$ | async)"></artist-list>
+			<artist-list [artists]="artists"  [selectedArtistId]="(artistId$ | async)"></artist-list>
 		</section>
-		<section *ngIf="loaded else LoadingAlbums" class="subular-app">
+		<section *ngIf="loaded " class="subular-app">
 			<router-outlet></router-outlet>
 		</section>
 	</div>
 	<player></player>
 </div>
 
-<ng-template #LoadingAlbums>
-	<h1>Loading Albums</h1>
+<ng-template #loading>
+	<section class="loading">
+		<h1>Loading Albums</h1>
+	</section>
 </ng-template>
