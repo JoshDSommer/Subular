@@ -1,5 +1,5 @@
 import { FactoryProvider } from '@angular/core';
-import { LOCALSTORAGE_PROVIDER } from 'subular';
+import { LOCALSTORAGE_PROVIDER, IServerInfo } from 'subular';
 import { getString, setString } from 'application-settings';
 
 export class LocalStorageService implements LOCALSTORAGE_PROVIDER {
@@ -13,7 +13,7 @@ export class LocalStorageService implements LOCALSTORAGE_PROVIDER {
 		return null;
 	}
 	setValue(key: string, value: any): void {
-		setString(key, JSON.stringify(value));
+		setString(key, value);
 	}
 }
 export function getLocalStorage() {
