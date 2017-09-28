@@ -17,20 +17,18 @@ export class LoginComponent implements OnInit {
 	ngOnInit() {
 		this.subsonic.pingServer().subscribe(authenticated => {
 			if (authenticated) {
-				this.router.navigate(['/app'])
-
+				//this.router.navigate(['/app'])
 			}
 		});
 	}
 
 	submitLogin(server, username, password) {
-		console.log(server)
 		this.authentication.saveAuthenticationInfo(server, username, password);
 
 		this.subsonic.pingServer().subscribe(authenticated => {
 			console.log('AUTHENTICATEDAADFASD ', authenticated)
 			if (authenticated) {
-			//	this.router.navigate(['/app'])
+				this.router.navigate(['/app'])
 			}
 		}, failed => {
 			// todo replace with something like ngx-toastr
