@@ -7,6 +7,9 @@
     "id": "org.nativescript.subularmobile",
     "tns-ios": {
       "version": "3.2.0"
+    },
+    "tns-android": {
+      "version": "3.2.0"
     }
   },
   "dependencies": {
@@ -31,8 +34,12 @@
   "devDependencies": {
     "@angular/compiler-cli": "~4.2.0",
     "@ngtools/webpack": "~1.6.0",
+    "babel-traverse": "6.4.5",
+    "babel-types": "6.4.5",
+    "babylon": "6.4.5",
     "copy-webpack-plugin": "~4.0.1",
     "extract-text-webpack-plugin": "~3.0.0",
+    "lazy": "1.0.11",
     "nativescript-css-loader": "~0.26.0",
     "nativescript-dev-typescript": "~0.5.0",
     "nativescript-dev-webpack": "^0.8.0",
