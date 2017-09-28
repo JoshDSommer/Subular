@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 
 import { NativeScriptUISideDrawerModule } from 'nativescript-telerik-ui/sidedrawer/angular/side-drawer-directives';
 
-import { LOCALSTORAGE_PROVIDER, SharedModule } from 'subular';
+import { LOCALSTORAGE_PROVIDER, SubularSharedModule } from 'subular';
 
 
 import { ItemService } from './item/item.service';
@@ -27,7 +27,7 @@ import { SubularAppComponent } from './views/subular-app/subular-app.component';
         AppComponent
     ],
     imports: [
-        SharedModule.forRoot(LOCALSTORAGE_SERVICE, MD5_SERVICE),
+        SubularSharedModule.forRoot(LOCALSTORAGE_SERVICE, MD5_SERVICE),
         NativeScriptModule,
         NativeScriptHttpModule,
         NativeScriptUISideDrawerModule,
