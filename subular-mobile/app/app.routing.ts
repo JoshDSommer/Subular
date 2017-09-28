@@ -8,6 +8,23 @@ import { LoginComponent } from "./views/login/login.component";
 const routes: Routes = [
     { path: "", redirectTo: "/login", pathMatch: "full" },
     { path: "login", component: LoginComponent },
+    {
+		path: 'app',
+		component: SubularAppComponent,
+		children: [
+			{ path: '', redirectTo: 'random', pathMatch: 'full', canActivate: [SubsonicGuard] },
+			{ path: 'random', component: RandomAlbumsComponent },
+			{
+				path: 'albums/:artistId', component: AlbumsComponent,
+				resolve: {
+					albums: AlbumResolver
+				}
+			},
+			{ path: 'artist/:id', component: RandomAlbumsComponent },
+			{ path: 'playlists', component: RandomAlbumsComponent },
+			{ path: 'playlist/:id', component: RandomAlbumsComponent }
+		]
+	},
 ];
 
 @NgModule({

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 
 import { NativeScriptUISideDrawerModule } from 'nativescript-telerik-ui/sidedrawer/angular/side-drawer-directives';
 
-import { LOCALSTORAGE_PROVIDER, SharedServicesModule } from 'subular';
+import { LOCALSTORAGE_PROVIDER, SharedModule } from 'subular';
 
 
 import { ItemService } from './item/item.service';
@@ -20,13 +20,14 @@ import { LoginComponent } from './views/login/login.component';
 
 // Uncomment and add to NgModule imports  if you need to use the HTTP wrapper
 import { NativeScriptHttpModule } from 'nativescript-angular/http';
+import { SubularAppComponent } from './views/subular-app/subular-app.component';
 
 @NgModule({
     bootstrap: [
         AppComponent
     ],
     imports: [
-        SharedServicesModule.forRoot(LOCALSTORAGE_SERVICE, MD5_SERVICE),
+        SharedModule.forRoot(LOCALSTORAGE_SERVICE, MD5_SERVICE),
         NativeScriptModule,
         NativeScriptHttpModule,
         NativeScriptUISideDrawerModule,
@@ -35,6 +36,7 @@ import { NativeScriptHttpModule } from 'nativescript-angular/http';
     declarations: [
         AppComponent,
         LoginComponent,
+        SubularAppComponent
     ],
     providers: [
         ItemService,
