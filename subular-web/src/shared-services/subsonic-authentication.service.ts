@@ -12,31 +12,21 @@ export interface IServerInfo {
 
 @Injectable()
 export class SubsonicAuthenticationService {
-
-	private salt: string;
-	private server: string;
-	private username: string;
-	private password: string;
-
-
-	constructor(private localStorage: LOCALSTORAGE_PROVIDER, private cryptoJs: MD5_PROVIDER) {
-
-	}
+	constructor(private localStorage: LOCALSTORAGE_PROVIDER, private cryptoJs: MD5_PROVIDER) { }
 
 	saveAuthenticationInfo(server: string, username: string, password: string) {
-		this.salt = this.salt || this.makeSalt();
-		this.password = this.cryptoJs.MD5(password + this.salt).toString();
-		this.username = username;
-		this.server = server;
+		const salt = this.makeSalt();
+		const saltedPassword = this.cryptoJs.MD5(password + salt).toString();
 
-		this.localStorage.setValue(SERVER_INFO_KEY, JSON.stringify(<IServerInfo>{ server, username, password: this.password, salt: this.salt }));
-
+		this.localStorage.setValue(SERVER_INFO_KEY, <IServerInfo>{ server, username, password: saltedPassword, salt });
 	}
 
 	getServerURl(method: string) {
-		this.getExistingInfoFromCache();
-		let serverUrl = this.server + '/rest/' + method + '.view?u=' + this.username + '&t=' + this.password + '&s=' + this.salt + '&v=1.0.0&c=rest&f=json';
-		return serverUrl;
+		const serverInfo = this.getExistingInfoFromCache();
+		if (serverInfo) {
+			return serverInfo.server + '/rest/' + method + '.view?u=' + serverInfo.username + '&t=' + serverInfo.password + '&s=' + serverInfo.salt + '&v=1.0.0&c=rest&f=json';
+		}
+		return '';
 	}
 
 	private makeSalt(): string {
@@ -49,15 +39,8 @@ export class SubsonicAuthenticationService {
 		return text;
 	}
 
-	private getExistingInfoFromCache() {
+	private getExistingInfoFromCache(): IServerInfo {
 		const existingInfo = this.localStorage.getValue(SERVER_INFO_KEY) as IServerInfo;
-
-		if (existingInfo) {
-			this.password = existingInfo.password;
-			this.server = existingInfo.server;
-			this.username = existingInfo.username;
-			this.salt = existingInfo.salt;
-		}
-
+		return existingInfo;
 	}
 }

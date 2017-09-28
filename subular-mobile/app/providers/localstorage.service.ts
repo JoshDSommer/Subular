@@ -13,7 +13,7 @@ export class LocalStorageService implements LOCALSTORAGE_PROVIDER {
 		return null;
 	}
 	setValue(key: string, value: any): void {
-		setString(key, value);
+		setString(key, JSON.stringify(value));
 	}
 }
 export function getLocalStorage() {
