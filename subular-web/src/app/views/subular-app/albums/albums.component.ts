@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { IAlbum } from '../../../../shared-module/index';
+import { IAlbum } from '../../../../subular-shared/index';
 
 @Component({
 	selector: 'albums',

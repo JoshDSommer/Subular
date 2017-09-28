@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, HostListener, ViewChild, ElementRef } from '@angular/core';
-import { IArtist } from '../../../shared-module/index';
+import { IArtist } from '../../../subular-shared/index';
 
 
 @Component({

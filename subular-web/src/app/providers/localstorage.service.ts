@@ -1,5 +1,5 @@
 import { ClassProvider } from '@angular/core';
-import { LOCALSTORAGE_PROVIDER } from '../../shared-module';
+import { LOCALSTORAGE_PROVIDER } from '../../subular-shared';
 
 export class LocalStorageService implements LOCALSTORAGE_PROVIDER {
 	getValue(key: string): any {

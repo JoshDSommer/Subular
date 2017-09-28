@@ -16,10 +16,10 @@ import { SubularAppBaseComponent } from './components/subular-app.base.component
 		SubularAppBaseComponent
 	]
 })
-export class SharedServicesModule {
+export class SubularSharedModule {
 	public static forRoot(...providers): ModuleWithProviders {
 		return {
-			ngModule: SharedServicesModule,
+			ngModule: SubularSharedModule,
 			providers: [
 				SubsonicAuthenticationService,
 				SubsonicService,

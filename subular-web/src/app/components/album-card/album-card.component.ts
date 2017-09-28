@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { SubsonicService, IAlbum } from '../../../shared-module/index';
+import { SubsonicService, IAlbum } from '../../../subular-shared/index';
 
 @Component({
 	selector: 'album-card',

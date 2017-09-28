@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { SubsonicAuthenticationService } from '../../../shared-module/subsonic-authentication.service';
-import { SubsonicService } from '../../../shared-module/subsonic.service';
+import { SubsonicAuthenticationService } from '../../../subular-shared/subsonic-authentication.service';
+import { SubsonicService } from '../../../subular-shared/subsonic.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -29,8 +29,6 @@ export class LoginComponent implements OnInit {
 	}
 
 	submitLogin(event) {
-		// console.log(event);
-		// console.log(this.loginForm.value);
 		this.authentication.saveAuthenticationInfo(this.loginForm.value.server, this.loginForm.value.username, this.loginForm.value.password);
 
 		this.subsonic.pingServer().subscribe(authenticated => {
