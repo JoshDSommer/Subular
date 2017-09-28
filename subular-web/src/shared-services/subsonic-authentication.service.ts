@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { LOCALSTORAGE_PROVIDER } from './localstorage.provider';
 import { MD5_PROVIDER } from './md5.provider';
 
-export const SERVER_INFO_KEY = 'SERVERINFO';
+export const SERVER_INFO_KEY = 'subular.cached.serverinfo';
 export interface IServerInfo {
 	server: string;
 	username: string;
