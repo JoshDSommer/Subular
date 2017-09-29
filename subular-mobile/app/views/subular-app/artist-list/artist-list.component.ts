@@ -2,6 +2,10 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SubsonicCachedService, IArtist } from 'subular';
 import { Observable } from 'rxjs/Rx';
 import { ListView } from 'ui/list-view';
+import { Label } from 'ui/label';
+import { StackLayout } from 'ui/layouts/stack-layout';
+import { TouchGestureEventData, PanGestureEventData, TouchAction } from 'ui/gestures';
+import { layout } from 'utils/utils';
 
 @Component({
 	moduleId: module.id,
@@ -31,13 +35,41 @@ export class ArtistListComponent implements OnInit {
 
 	}
 
+	previousCharacterToJumpTo: string;
+	slide($event: TouchGestureEventData) {
+		const yCoordinate = $event.getY();
+		const stackWrapper = $event.view as StackLayout;
+		const firstLabel = stackWrapper.getChildAt(1) as Label;
+		const letterHeight = layout.toDeviceIndependentPixels(firstLabel.getMeasuredHeight());
+		const indexRaw = yCoordinate / letterHeight;
+		if (indexRaw >= 0 && indexRaw <= this.alphabet.length) {
+			const indexToGoTo = Math.floor(indexRaw);
+			const char = this.alphabet[indexToGoTo];
+
+			if (this.previousCharacterToJumpTo != char) {
+				this.jumpToArtistThatStartsWith(char)
+				this.previousCharacterToJumpTo = char;
+			}
+
+		}
+
+	}
 	jumpToArtistThatStartsWith(char) {
+		if (!char) {
+			return;
+		}
 		if (char == '#') {
-			char = 1;
+			char = '1';
+		}
+		if (char == 'a') {
+			this.artistListView.scrollToIndex(0);
+			return;
 		}
 		const firstArtistThatStartsWith = this.artists.find(artist => artist.name.toLowerCase().replace('the', '').startsWith(char));
 		const itemToScrollToIndex = this.artists.indexOf(firstArtistThatStartsWith);
-		this.artistListView.scrollToIndex(itemToScrollToIndex);
+		if (firstArtistThatStartsWith && itemToScrollToIndex) {
+			this.artistListView.scrollToIndex(itemToScrollToIndex);
+		}
 
 	}
 }

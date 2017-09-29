@@ -5,14 +5,13 @@
 }
 
 .letter-wrap{
-	/* border-color: #4B0082;
-	border-width: 1; */
-	padding-top: 75;
+	margin-top: 75;
 	font-size: 13px;
 }
 
 .letter-wrap Label{
-	padding-bottom: 2;
+	height: 18;
+	font-weight: bold;
 	color: #4B0082;
 	text-transform: uppercase;
 }

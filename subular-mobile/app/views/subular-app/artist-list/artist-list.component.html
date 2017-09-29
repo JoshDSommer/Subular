@@ -1,10 +1,10 @@
 <GridLayout rows="*" columns="*,15">
 	<ListView #artistList [items]="artists$ | async" class="list-group">
 		<ng-template let-item="item" let-odd="odd" let-even="even">
-				<Label [text]="item.name" class="artist"></Label>
+			<Label [text]="item.name" class="artist"></Label>
 		</ng-template>
 	</ListView>
-	<StackLayout row="1" col="1" class="letter-wrap">
-		<Label (touch)="jumpToArtistThatStartsWith(char)" [text]="char" *ngFor="let char of alphabet" textWrap="true"></Label>
+	<StackLayout (touch)="slide($event)" row="0" col="1" class="letter-wrap">
+		<Label [text]="char" *ngFor="let char of alphabet" textWrap="true"></Label>
 	</StackLayout>
 </GridLayout>
