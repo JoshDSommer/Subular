@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { SubsonicCachedService } from '../../../../subular-shared/index';
-import { IAlbum } from '../../../../subular-shared/index';
+import { IAlbum } from '../index';
+import { SubsonicCachedService } from '../subsonic.cached.service';
+
 
 @Injectable()
 export class AlbumResolver implements Resolve<IAlbum[]> {

@@ -5,7 +5,7 @@ import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { RandomAlbumsComponent } from './views/subular-app/random-albums/random-albums.component';
 import { SubsonicGuard } from '../subular-shared/subsonic.guard';
 import { AlbumsComponent } from './views/subular-app/albums/albums.component';
-import { AlbumResolver } from './views/subular-app/albums/albums.resolver';
+import { AlbumResolver } from '../subular-shared/resolvers/albums.resolver';
 
 const routes: Routes = [
 	{
@@ -41,7 +41,6 @@ const routes: Routes = [
 	],
 	exports: [RouterModule],
 	providers: [
-		AlbumResolver
 	]
 
 })
