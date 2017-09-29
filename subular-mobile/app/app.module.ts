@@ -16,6 +16,7 @@ import { LoginComponent } from './views/login/login.component';
 
 import { NativeScriptHttpModule } from 'nativescript-angular/http';
 import { SubularAppComponent } from './views/subular-app/subular-app.component';
+import { ArtistListComponent } from './views/subular-app/artist-list/artist-list.component';
 
 @NgModule({
     bootstrap: [
@@ -30,6 +31,7 @@ import { SubularAppComponent } from './views/subular-app/subular-app.component';
     ],
     declarations: [
         AppComponent,
+        ArtistListComponent,
         LoginComponent,
         SubularAppComponent
     ],

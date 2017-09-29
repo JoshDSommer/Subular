@@ -1,0 +1,18 @@
+.artist {
+	margin: 3% 2.5%;
+	font-size: 23px;
+
+}
+
+.letter-wrap{
+	/* border-color: #4B0082;
+	border-width: 1; */
+	padding-top: 75;
+	font-size: 13px;
+}
+
+.letter-wrap Label{
+	padding-bottom: 2;
+	color: #4B0082;
+	text-transform: uppercase;
+}
