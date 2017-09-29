@@ -1,7 +1,9 @@
 <GridLayout rows="*" columns="*,18">
 	<ListView #artistList [items]="artists$ | async" class="list-group">
 		<ng-template let-item="item" let-odd="odd" let-even="even">
-			<Label [text]="item.name" class="artist" [nsRouterLink]="['../albums', item.id ]"></Label>
+			<GridLayout rows="*" columns="*" [nsRouterLink]="['../albums', item.id ]" class="artist-list-item">
+				<Label row="0" , col="0" [text]="item.name" class="artist"></Label>
+			</GridLayout>
 		</ng-template>
 	</ListView>
 	<StackLayout (touch)="slide($event)" row="0" col="1" class="letter-wrap">
