@@ -19,9 +19,12 @@ export class SubularAppBaseComponent implements OnInit {
 			.map(([artists, albums]) => artists)
 			.do(() => this.loaded = true);
 
-		this.artistId$ = Observable.of(this.route.firstChild.snapshot.params['artistId'])
+		if (this.route && this.route.firstChild && this.route.firstChild.snapshot  && this.route.firstChild.snapshot.params) {
+			this.artistId$ = Observable.of(this.route.firstChild.snapshot.params['artistId'])
 			.merge(this.router.events
 				.filter(value => value instanceof NavigationEnd)
 				.map(() => +this.route.firstChild.snapshot.params['artistId']));
+		}
+
 	}
 }
