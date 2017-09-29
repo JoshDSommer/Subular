@@ -5,6 +5,8 @@ import { Routes } from "@angular/router";
 import { LoginComponent } from "./views/login/login.component";
 import { SubularAppComponent } from "./views/subular-app/subular-app.component";
 import { ArtistListComponent } from "./views/subular-app/artist-list/artist-list.component";
+import { AlbumsComponent } from "./views/subular-app/albums/albums.component";
+import { AlbumResolver } from 'subular';
 
 const routes: Routes = [
     { path: "", redirectTo: "/login", pathMatch: "full" },
@@ -15,13 +17,12 @@ const routes: Routes = [
 		children: [
 			{ path: '', redirectTo: 'artists', pathMatch: 'full' },
 			{ path: 'artists', component: ArtistListComponent },
-		// 	{ path: 'random', component: RandomAlbumsComponent },
-		// 	{
-		// 		path: 'albums/:artistId', component: AlbumsComponent,
-		// 		resolve: {
-		// 			albums: AlbumResolver
-		// 		}
-		// 	},
+			{
+				path: 'albums/:artistId', component: AlbumsComponent,
+				resolve: {
+					albums: AlbumResolver
+				}
+			},
 		// 	{ path: 'artist/:id', component: RandomAlbumsComponent },
 		// 	{ path: 'playlists', component: RandomAlbumsComponent },
 		// 	{ path: 'playlist/:id', component: RandomAlbumsComponent }
