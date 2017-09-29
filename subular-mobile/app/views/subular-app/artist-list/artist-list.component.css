@@ -5,13 +5,14 @@
 }
 
 .letter-wrap{
-	margin-top: 75;
+	margin-top: 130;
 	font-size: 13px;
 }
 
 .letter-wrap Label{
-	height: 18;
+	height: 14;
 	font-weight: bold;
 	color: #4B0082;
 	text-transform: uppercase;
+	text-align: center
 }

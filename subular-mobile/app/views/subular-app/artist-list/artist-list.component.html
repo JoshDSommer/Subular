@@ -1,4 +1,4 @@
-<GridLayout rows="*" columns="*,15">
+<GridLayout rows="*" columns="*,18">
 	<ListView #artistList [items]="artists$ | async" class="list-group">
 		<ng-template let-item="item" let-odd="odd" let-even="even">
 			<Label [text]="item.name" class="artist"></Label>
