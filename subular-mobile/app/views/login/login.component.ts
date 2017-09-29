@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SubsonicAuthenticationService, SubsonicService } from 'subular';
 import { Router } from '@angular/router';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
 	moduleId: module.id,
@@ -12,12 +13,15 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
 
-	constructor(private subsonic: SubsonicService, private authentication: SubsonicAuthenticationService, private router: Router) { }
+	constructor(private subsonic: SubsonicService,
+		private authentication: SubsonicAuthenticationService,
+		private router: RouterExtensions
+	) { }
 
 	ngOnInit() {
 		this.subsonic.pingServer().subscribe(authenticated => {
 			if (authenticated) {
-				//this.router.navigate(['/app'])
+				this.redirectToMainApplication();
 			}
 		});
 	}
@@ -26,13 +30,15 @@ export class LoginComponent implements OnInit {
 		this.authentication.saveAuthenticationInfo(server, username, password);
 
 		this.subsonic.pingServer().subscribe(authenticated => {
-			console.log('AUTHENTICATEDAADFASD ', authenticated)
 			if (authenticated) {
-				this.router.navigate(['/app'])
+				this.redirectToMainApplication();
 			}
 		}, failed => {
-			// todo replace with something like ngx-toastr
-		});
 
+		});
+	}
+
+	redirectToMainApplication() {
+		this.router.navigate(['/app/artists'], { clearHistory: true });
 	}
 }
