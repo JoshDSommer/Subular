@@ -3,7 +3,7 @@ import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 
-import { NativeScriptUISideDrawerModule } from 'nativescript-telerik-ui/sidedrawer/angular/side-drawer-directives';
+// import { NativeScriptUISideDrawerModule } from 'nativescript-pro-ui/sidedrawer/angular/side-drawer-directives';
 
 import { LOCALSTORAGE_PROVIDER, SubularSharedModule } from 'subular';
 
@@ -17,6 +17,7 @@ import { LoginComponent } from './views/login/login.component';
 import { NativeScriptHttpModule } from 'nativescript-angular/http';
 import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { ArtistListComponent } from './views/subular-app/artist-list/artist-list.component';
+import { AlbumsComponent } from './views/subular-app/albums/albums.component';
 
 @NgModule({
     bootstrap: [
@@ -26,11 +27,12 @@ import { ArtistListComponent } from './views/subular-app/artist-list/artist-list
         SubularSharedModule.forRoot(LOCALSTORAGE_SERVICE, MD5_SERVICE),
         NativeScriptModule,
         NativeScriptHttpModule,
-        NativeScriptUISideDrawerModule,
+        // NativeScriptUISideDrawerModule,
         AppRoutingModule,
     ],
     declarations: [
         AppComponent,
+        AlbumsComponent,
         ArtistListComponent,
         LoginComponent,
         SubularAppComponent
