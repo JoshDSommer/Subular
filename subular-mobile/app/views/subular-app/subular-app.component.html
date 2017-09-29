@@ -1,2 +1,7 @@
-
-<router-outlet></router-outlet>
+<StackLayout class="app-wrap">
+	<Label text="subular" textWrap="true" class="subular"></Label>
+	<router-outlet *ngIf="artists$ | async else loading" class="router-outlet"></router-outlet>
+	<ng-template #loading>
+		<Label text="Loading..." textWrap="true"></Label>
+	</ng-template>
+</StackLayout>
