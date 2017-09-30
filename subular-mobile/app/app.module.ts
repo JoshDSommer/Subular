@@ -3,8 +3,7 @@ import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 
-// import { NativeScriptUISideDrawerModule } from 'nativescript-pro-ui/sidedrawer/angular/side-drawer-directives';
-
+import { NativeScriptUISideDrawerModule } from "nativescript-pro-ui/sidedrawer/angular";
 import { LOCALSTORAGE_PROVIDER, SubularSharedModule } from 'subular';
 
 import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';
@@ -27,7 +26,7 @@ import { AlbumsComponent } from './views/subular-app/albums/albums.component';
         SubularSharedModule.forRoot(LOCALSTORAGE_SERVICE, MD5_SERVICE),
         NativeScriptModule,
         NativeScriptHttpModule,
-        // NativeScriptUISideDrawerModule,
+        NativeScriptUISideDrawerModule,
         AppRoutingModule,
     ],
     declarations: [

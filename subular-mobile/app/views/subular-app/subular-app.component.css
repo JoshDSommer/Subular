@@ -4,7 +4,11 @@
 .subular{
 	font-size: 35
 }
-.router-outlet{
-	border-color: red;
-	border-width: 1;
+.sidedrawer-wrap{
+	padding-top: 50;
+	background-color: #4B0082;
+}
+
+.sidedrawer-wrap label{
+	color: #fff;
 }

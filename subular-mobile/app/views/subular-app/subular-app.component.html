@@ -1,7 +1,16 @@
-<StackLayout class="app-wrap">
-	<Label text="subular" textWrap="true" class="subular"></Label>
-	<router-outlet *ngIf="artists$ | async else loading" class="router-outlet"></router-outlet>
-	<ng-template #loading>
-		<Label text="Loading..." textWrap="true"></Label>
-	</ng-template>
-</StackLayout>
+<RadSideDrawer showOverNavigation="true">
+	<StackLayout tkDrawerContent class="sidedrawer-wrap">
+		<StackLayout class="sidedrawer-title">
+			<Label text="subular"></Label>
+		</StackLayout>
+		<StackLayout class="sidedrawer-content">
+		</StackLayout>
+	</StackLayout>
+	<StackLayout class="app-wrap" tkMainContent>
+		<Label text="subular" textWrap="true" class="subular" (tap)="this.drawer.showDrawer()"></Label>
+		<router-outlet *ngIf="artists$ | async else loading" class="router-outlet"></router-outlet>
+		<ng-template #loading>
+			<Label text="Loading..." textWrap="true"></Label>
+		</ng-template>
+	</StackLayout>
+</RadSideDrawer>
