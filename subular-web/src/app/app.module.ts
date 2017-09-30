@@ -43,10 +43,10 @@ import { MD5_SERVICE } from './providers/md5.provider';
 		HttpModule,
 		PasswordModule,
 		ReactiveFormsModule,
-		SubularSharedModule.forRoot(LOCALSTORAGE_SERVICE, MD5_SERVICE)
+		SubularSharedModule.forRoot()
 	],
 	providers: [
-
+		LOCALSTORAGE_SERVICE, MD5_SERVICE
 	],
 	bootstrap: [AppComponent]
 })

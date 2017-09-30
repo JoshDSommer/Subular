@@ -23,7 +23,7 @@ import { AlbumsComponent } from './views/subular-app/albums/albums.component';
         AppComponent
     ],
     imports: [
-        SubularSharedModule.forRoot(LOCALSTORAGE_SERVICE, MD5_SERVICE),
+        SubularSharedModule.forRoot(),
         NativeScriptModule,
         NativeScriptHttpModule,
         NativeScriptUISideDrawerModule,
@@ -37,6 +37,8 @@ import { AlbumsComponent } from './views/subular-app/albums/albums.component';
         SubularAppComponent
     ],
     providers: [
+        LOCALSTORAGE_SERVICE,
+        MD5_SERVICE
     ],
     schemas: [
         NO_ERRORS_SCHEMA

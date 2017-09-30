@@ -16,7 +16,7 @@ import { AlbumResolver } from './resolvers/albums.resolver';
 	]
 })
 export class SubularSharedModule {
-	public static forRoot(...providers): ModuleWithProviders {
+	public static forRoot(): ModuleWithProviders {
 		return {
 			ngModule: SubularSharedModule,
 			providers: [
@@ -24,8 +24,7 @@ export class SubularSharedModule {
 				SubsonicService,
 				SubsonicGuard,
 				SubsonicCachedService,
-				AlbumResolver,
-				providers
+				AlbumResolver
 			]
 		};
 	}

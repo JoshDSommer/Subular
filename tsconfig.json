@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"baseUrl": "./",
+		"baseUrl": "./subular-web/src/subular-shared",
 		"outDir": "./subular-shared-dist",
 		"sourceMap": false,
 		"declaration": true,
@@ -17,7 +17,7 @@
 		],
 		"paths": {
 			"@angular/*": [
-			  "./node_modules/@angular/*"
+			  "./subular-web/node_modules/@angular/*"
 			]
 		}
 	},
