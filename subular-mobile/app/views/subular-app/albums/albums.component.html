@@ -1,2 +1,13 @@
 <Label text="back" (tap)="back()"></Label>
-<Label *ngFor="let album of albums" class="albums" [text]="album.title"></Label>
+<GridLayout tkExampleTitle tkToggleNavButton>
+	<RadListView [items]="albums">
+		<ng-template tkListItemTemplate let-item="item">
+			<StackLayout orientation="vertical" >
+				<Image width="200" height="200" [src]="subular.subsonicGetCoverUrl(item.id)"></Image>
+				<FrescoDrawee *tkIfAndroid horizontalAlignment="stretch" width="200" height="200" [imageUri]="item.image" verticalAlignment="top"></FrescoDrawee>
+				<Label class="nameLabel" [text]="item.title" textWrap="true"></Label>
+			</StackLayout>
+		</ng-template>
+		<ListViewGridLayout tkListViewLayout scrollDirection="Vertical" ios:itemHeight="200" spanCount="2"></ListViewGridLayout>
+	</RadListView>
+</GridLayout>

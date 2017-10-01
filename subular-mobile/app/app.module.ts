@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 
 import { NativeScriptUISideDrawerModule } from "nativescript-pro-ui/sidedrawer/angular";
+import { NativeScriptUIListViewModule } from "nativescript-pro-ui/listview/angular";
 import { LOCALSTORAGE_PROVIDER, SubularSharedModule } from 'subular';
 
 import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';
@@ -12,11 +13,19 @@ import { LoginComponent } from './views/login/login.component';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
-
+import { TNSFrescoModule } from 'nativescript-fresco/angular';
 import { NativeScriptHttpModule } from 'nativescript-angular/http';
 import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { ArtistListComponent } from './views/subular-app/artist-list/artist-list.component';
 import { AlbumsComponent } from './views/subular-app/albums/albums.component';
+
+import * as applicationModule from "tns-core-modules/application";
+import * as frescoModule from "nativescript-fresco";
+if (applicationModule.android) {
+    applicationModule.on("launch", () => {
+        frescoModule.initialize();
+    });
+}
 
 @NgModule({
     bootstrap: [
@@ -27,7 +36,9 @@ import { AlbumsComponent } from './views/subular-app/albums/albums.component';
         NativeScriptModule,
         NativeScriptHttpModule,
         NativeScriptUISideDrawerModule,
+        NativeScriptUIListViewModule,
         AppRoutingModule,
+        TNSFrescoModule,
     ],
     declarations: [
         AppComponent,

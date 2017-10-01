@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { IAlbum } from 'subular';
+import { IAlbum, SubsonicService } from 'subular';
 import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ import { RouterExtensions } from 'nativescript-angular/router';
 
 export class AlbumsComponent implements OnInit {
 	albums: IAlbum[];
-	constructor(private route: ActivatedRoute, private router: Router, private nsRouter: RouterExtensions) {
+	constructor(private route: ActivatedRoute, private router: Router, private nsRouter: RouterExtensions, public subular:SubsonicService) {
 
 	}
 	back() {
