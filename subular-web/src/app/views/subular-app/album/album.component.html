@@ -1,1 +1,5 @@
-<div class="album"> Hello AlbumComponent! </div>
+<div class="album" *ngIf="album$ | async as album"> Hello AlbumComponent! {{album | json }}
+	<div *ngIf="songs$ | async as songs">
+		{{songs | json }}
+	</div>
+</div>

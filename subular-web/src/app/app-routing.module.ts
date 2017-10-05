@@ -30,7 +30,7 @@ const routes: Routes = [
 			{
 				path:'album/:albumId', component: AlbumComponent,
 				resolve: {
-					albums: AlbumResolver
+					album: AlbumResolver
 				}
 			},
 			{ path: 'artist/:id', component: RandomAlbumsComponent },
