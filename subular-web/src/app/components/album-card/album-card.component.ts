@@ -11,9 +11,9 @@ import { SubsonicService, IAlbum } from '../../../subular-shared/index';
 export class AlbumCardComponent implements OnInit {
 	@Input() album: IAlbum;
 
-	getCoverUrl(id) {
-		if (id)
-			return this.subsonic.subsonicGetCoverUrl(id);
+	getCoverUrl(coverArt) {
+		if (coverArt)
+			return this.subsonic.subsonicGetCoverUrl(coverArt);
 	}
 
 	constructor(private subsonic: SubsonicService) {

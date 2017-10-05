@@ -15,12 +15,12 @@ export class SubsonicService {
 			.catch(() => Observable.of(false));
 	}
 
-	getSongs(albumId: number) {
-		return this.subsonicGet('getAlbum', `&id={id}`).do(console.log);
+	getSongs(albumId: number): Observable<ISong[]> {
+		return this.subsonicGet('getAlbum', `&id=${albumId}`).do(console.log);
 	}
 
 	getTopSongs(artistName): Observable<ISong[]> {
-		return this.subsonicGet('getTopSongs',`artist=${artistName}`)
+		return this.subsonicGet('getTopSongs', `&artist=${artistName}`)
 	}
 
 	subsonicGetCoverUrl(id: number): string {

@@ -15,7 +15,7 @@ export class AlbumsResolver implements Resolve<IAlbum[]> {
 		return this.cache.getAlbums()
 			.map(albums => {
 				const artistId = +route.paramMap.get('artistId');
-				const filtered = albums.filter(album => album.parent == artistId)
+				const filtered = albums.filter(album => album.artistId == artistId)
 				return filtered;
 			});
 	}

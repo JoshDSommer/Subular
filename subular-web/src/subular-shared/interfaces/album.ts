@@ -1,12 +1,13 @@
 export interface IAlbum {
 	id: number;
-	parent: number;
-	isDir: boolean;
-	title: string;
-	album: string;
+	name: string;
 	artist: string;
+	artistId: number;
+	coverArt: string;
+	songCount: number;
+	duration: number;
+	playCount: number;
+	created: Date;
 	year: number;
 	genre: string;
-	coverArt: number;
-	created: Date;
 }

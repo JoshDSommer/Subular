@@ -60,8 +60,8 @@ export class SubsonicCachedService {
 
 	private buildAlbumDatabase(albums: IAlbum[] = [], offset: number = 0): Observable<boolean> {
 		return this.subsonic
-			.subsonicGet('getAlbumList', '&type=newest&size=500&offset=' + offset)
-			.map(data => data.subresp.albumList.album as IAlbum[])
+			.subsonicGet('getAlbumList2', '&type=newest&size=500&offset=' + offset)
+			.map(data => data.subresp.albumList2.album as IAlbum[])
 			.switchMap(data => {
 				albums = [...albums, ...data,]
 				if (data.length === 500) {
@@ -74,8 +74,8 @@ export class SubsonicCachedService {
 	}
 
 	private buildArtistDatabase(): Observable<any> {
-		return this.subsonic.subsonicGet('getIndexes')
-			.map(data => data.subresp.indexes.index
+		return this.subsonic.subsonicGet('getArtists')
+			.map(data => data.subresp.artists.index
 				.map(value => value.artist)
 				.reduce((previous, value) => [...previous, ...value]) as IArtist[]
 			)
