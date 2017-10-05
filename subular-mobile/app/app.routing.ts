@@ -6,7 +6,7 @@ import { LoginComponent } from "./views/login/login.component";
 import { SubularAppComponent } from "./views/subular-app/subular-app.component";
 import { ArtistListComponent } from "./views/subular-app/artist-list/artist-list.component";
 import { AlbumsComponent } from "./views/subular-app/albums/albums.component";
-import { AlbumResolver } from 'subular';
+import { AlbumsResolver } from 'subular';
 
 const routes: Routes = [
     { path: "", redirectTo: "/login", pathMatch: "full" },
@@ -20,7 +20,7 @@ const routes: Routes = [
 			{
 				path: 'albums/:artistId', component: AlbumsComponent,
 				resolve: {
-					albums: AlbumResolver
+					albums: AlbumsResolver
 				}
 			},
 		// 	{ path: 'artist/:id', component: RandomAlbumsComponent },
