@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SubsonicAuthenticationService } from './subsonic-authentication.service';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
+import { ISong } from './interfaces';
 
 @Injectable()
 export class SubsonicService {
@@ -14,6 +15,14 @@ export class SubsonicService {
 			.catch(() => Observable.of(false));
 	}
 
+	getSongs(albumId: number) {
+		return this.subsonicGet('getAlbum', `&id={id}`).do(console.log);
+	}
+
+	getTopSongs(artistName): Observable<ISong[]> {
+		return this.subsonicGet('getTopSongs',`artist=${artistName}`)
+	}
+
 	subsonicGetCoverUrl(id: number): string {
 		return this.authentication.getServerURl('getCoverArt') + `&id=${id}&size=274`;
 	}
@@ -22,7 +31,7 @@ export class SubsonicService {
 	subsonicGet(method: string, additionalParams: string);
 	subsonicGet(method: string, additionalParams?: string) {
 		const url = additionalParams ? this.authentication.getServerURl(method) + additionalParams : this.authentication.getServerURl(method);
-		if(url == '' || url == additionalParams){
+		if (url == '' || url == additionalParams) {
 			return Observable.of(false);
 		}
 

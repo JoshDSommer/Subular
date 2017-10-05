@@ -6,7 +6,7 @@ import { SubsonicCachedService } from '../subsonic.cached.service';
 
 
 @Injectable()
-export class AlbumResolver implements Resolve<IAlbum[]> {
+export class AlbumsResolver implements Resolve<IAlbum[]> {
 
 	constructor(private cache: SubsonicCachedService) {
 	}

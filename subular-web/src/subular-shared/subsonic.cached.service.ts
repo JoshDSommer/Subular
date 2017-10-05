@@ -20,8 +20,8 @@ export class SubsonicCachedService {
 
 
 
-	getCachedData(): Observable<[IArtist[],IAlbum[]]> {
-		return Observable.combineLatest(this.getArtists(),this.getAlbums());
+	getCachedData(): Observable<[IArtist[], IAlbum[]]> {
+		return Observable.combineLatest(this.getArtists(), this.getAlbums());
 	}
 
 	getArtists(): Observable<IArtist[]> {
@@ -46,6 +46,10 @@ export class SubsonicCachedService {
 		}
 		// else rebuild albumDB  and then get it form local storage.
 		return this.buildAlbumDatabase().switchMap(() => this.getAlbums());
+	}
+
+	getArtistById(id: number): Observable<IArtist> {
+		return this.getArtists().map(artists => artists.find(artist => artist.id == id));
 	}
 
 
