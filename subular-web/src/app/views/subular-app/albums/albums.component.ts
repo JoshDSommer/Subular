@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { IAlbum } from '../../../../subular-shared/index';
+import { IAlbum, IArtist } from '../../../../subular-shared/index';
+import { Observable } from 'rxjs';
+import { RouterResolverDataObservable, RouterParamObservable } from '../../../../subular-shared/functions';
+import { SubsonicCachedService } from '../../../../subular-shared/subsonic.cached.service';
 
 @Component({
 	selector: 'albums',
@@ -9,14 +12,14 @@ import { IAlbum } from '../../../../subular-shared/index';
 })
 
 export class AlbumsComponent implements OnInit {
-	albums: IAlbum[];
-	constructor(private route: ActivatedRoute, private router: Router) {
+	albums$: Observable<IAlbum[]>;
+	artist$: Observable<IArtist>;
+	constructor(private route: ActivatedRoute, private router: Router, private cached: SubsonicCachedService) {
 
 	}
 	ngOnInit() {
-		this.albums = this.route.snapshot.data['albums'] as IAlbum[];
-		this.router.events.subscribe(() => {
-			this.albums = this.route.snapshot.data['albums'] as IAlbum[];
-		});
+		this.artist$ = RouterParamObservable<number>(this.route, this.router, 'artistId')
+			.switchMap(artistId => this.cached.getArtistById(artistId))
+		this.albums$ = RouterResolverDataObservable<IAlbum[]>(this.route, this.router, 'albums')
 	}
 }
