@@ -5,7 +5,7 @@ import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { RandomAlbumsComponent } from './views/subular-app/random-albums/random-albums.component';
 import { SubsonicGuard } from '../subular-shared/subsonic.guard';
 import { AlbumsComponent } from './views/subular-app/albums/albums.component';
-import { AlbumsResolver } from '../subular-shared/resolvers';
+import { AlbumsResolver, AlbumResolver } from '../subular-shared/resolvers';
 import { AlbumComponent } from './views/subular-app/album/album.component';
 
 const routes: Routes = [
@@ -28,7 +28,10 @@ const routes: Routes = [
 				}
 			},
 			{
-				path:'album/:albumId', component: AlbumComponent
+				path:'album/:albumId', component: AlbumComponent,
+				resolve: {
+					albums: AlbumResolver
+				}
 			},
 			{ path: 'artist/:id', component: RandomAlbumsComponent },
 			{ path: 'playlists', component: RandomAlbumsComponent },

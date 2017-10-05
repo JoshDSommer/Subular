@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { SubsonicGuard } from './subsonic.guard';
 import { SubsonicCachedService } from './subsonic.cached.service';
 import { SubularAppBaseComponent } from './components/subular-app.base.component';
-import { AlbumsResolver } from './resolvers/albums.resolver';
+import { AlbumsResolver, AlbumResolver } from './resolvers';
 
 @NgModule({
 	declarations:[
@@ -24,7 +24,8 @@ export class SubularSharedModule {
 				SubsonicService,
 				SubsonicGuard,
 				SubsonicCachedService,
-				AlbumsResolver
+				AlbumsResolver,
+				AlbumResolver
 			]
 		};
 	}

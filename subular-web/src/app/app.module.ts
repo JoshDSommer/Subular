@@ -21,11 +21,13 @@ import { PlayerComponent } from './components/player/player.component';
 import { AlbumsComponent } from './views/subular-app/albums/albums.component';
 import { AlbumCardComponent } from './components/album-card/album-card.component';
 import { MD5_SERVICE } from './providers/md5.provider';
+import { AlbumComponent } from './views/subular-app/album/album.component';
 
 @NgModule({
 	declarations: [
 		AlbumCardComponent,
 		AlbumsComponent,
+		AlbumComponent,
 		AppComponent,
 		ArtistListComponent,
 		LoginComponent,
