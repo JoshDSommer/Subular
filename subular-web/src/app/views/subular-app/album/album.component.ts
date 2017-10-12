@@ -13,6 +13,8 @@ export class AlbumComponent implements OnInit {
 	songs$: Observable<ISong[]>
 	album$: Observable<IAlbum>;
 
+	dataTableSongs: ISong[] =[];
+
 	constructor(private route: ActivatedRoute, private router: Router, private subsonic: SubsonicService) { }
 	ngOnInit() {
 		this.album$ = RouterResolverDataObservable<IAlbum>(this.route, this.router, 'album');

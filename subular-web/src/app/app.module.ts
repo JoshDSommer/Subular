@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { InputTextModule, PasswordModule, ButtonModule } from 'primeng/primeng';
+import { InputTextModule, PasswordModule, ButtonModule, DataTableModule, SharedModule } from 'primeng/primeng';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -41,10 +41,12 @@ import { AlbumComponent } from './views/subular-app/album/album.component';
 		BrowserModule,
 		BrowserAnimationsModule,
 		ButtonModule,
+		DataTableModule,
 		InputTextModule,
 		HttpModule,
 		PasswordModule,
 		ReactiveFormsModule,
+		SharedModule,
 		SubularSharedModule.forRoot()
 	],
 	providers: [
