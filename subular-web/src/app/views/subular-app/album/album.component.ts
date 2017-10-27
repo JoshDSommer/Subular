@@ -18,7 +18,6 @@ export class AlbumComponent implements OnInit {
 	constructor(private route: ActivatedRoute, private router: Router, private subsonic: SubsonicService) { }
 	ngOnInit() {
 		this.album$ = RouterResolverDataObservable<IAlbum>(this.route, this.router, 'album');
-
 		this.songs$ = this.album$.switchMap(album => this.subsonic.getSongs(album.id));
 	}
 }

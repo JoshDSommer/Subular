@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { IAlbum, IArtist } from '../../../../subular-shared/index';
 import { Observable } from 'rxjs';
 import { RouterResolverDataObservable, RouterParamObservable } from '../../../../subular-shared/functions';
-import { SubsonicCachedService } from '../../../../subular-shared/subsonic.cached.service';
+import { SubsonicCachedService } from '../../../../subular-shared';
 
 @Component({
 	selector: 'albums',
@@ -20,6 +20,6 @@ export class AlbumsComponent implements OnInit {
 	ngOnInit() {
 		this.artist$ = RouterParamObservable<number>(this.route, this.router, 'artistId')
 			.switchMap(artistId => this.cached.getArtistById(artistId))
-		this.albums$ = RouterResolverDataObservable<IAlbum[]>(this.route, this.router, 'albums')
+		this.albums$ = RouterResolverDataObservable<IAlbum[]>(this.route, this.router, 'albums');
 	}
 }

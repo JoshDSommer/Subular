@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
-import { SubsonicService } from './subsonic.service';
+import { SubsonicService } from './services/subsonic.service';
 
 @Injectable()
 export class SubsonicGuard implements CanActivate {

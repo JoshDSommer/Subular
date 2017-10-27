@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { SubsonicCachedService } from '../subsonic.cached.service';
+import { SubsonicCachedService } from '../services/subsonic.cached.service';
 import { IArtist } from '../interfaces/artists';
 
 @Component({

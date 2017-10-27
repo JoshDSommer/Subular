@@ -1,9 +1,9 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { SubsonicService } from './subsonic.service';
-import { SubsonicAuthenticationService } from './subsonic-authentication.service';
+import { SubsonicService } from './services/subsonic.service';
+import { SubsonicAuthenticationService } from './services/subsonic-authentication.service';
 import { HttpModule } from '@angular/http';
 import { SubsonicGuard } from './subsonic.guard';
-import { SubsonicCachedService } from './subsonic.cached.service';
+import { SubsonicCachedService } from './services/subsonic.cached.service';
 import { SubularAppBaseComponent } from './components/subular-app.base.component';
 import { AlbumsResolver, AlbumResolver } from './resolvers';
 

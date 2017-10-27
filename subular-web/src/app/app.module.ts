@@ -9,8 +9,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login.component';
 import { SubularBrandComponent } from './components/subular-brand/subular-brand.component';
 
-import { SubsonicAuthenticationService } from '../subular-shared/subsonic-authentication.service';
-import { SubsonicService } from '../subular-shared/subsonic.service';
+import { SubsonicAuthenticationService, SubsonicService } from '../subular-shared';
 import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';
 import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { RandomAlbumsComponent } from './views/subular-app/random-albums/random-albums.component';

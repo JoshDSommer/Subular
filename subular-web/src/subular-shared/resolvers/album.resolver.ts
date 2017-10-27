@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { IAlbum } from '../interfaces/album';
-import { SubsonicCachedService } from '../subsonic.cached.service';
+import { SubsonicCachedService } from '../services/subsonic.cached.service';
 
 
 @Injectable()

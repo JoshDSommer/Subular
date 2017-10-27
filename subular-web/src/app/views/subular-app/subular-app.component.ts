@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SubsonicCachedService } from '../../../subular-shared/subsonic.cached.service';
+import { SubsonicCachedService, SubularAppBaseComponent } from '../../../subular-shared/';
 import { Observable } from 'rxjs/Observable';
 import { IAlbum, IArtist } from '../../../subular-shared/index';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { SubularAppBaseComponent } from '../../../subular-shared/components/subular-app.base.component';
 
 @Component({
 	selector: 'subular-app',
