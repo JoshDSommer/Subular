@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { SubsonicAuthenticationService } from './subsonic-authentication.service';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { ISong } from './interfaces';
+import { ISong } from '../interfaces';
 
 @Injectable()
 export class SubsonicService {

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { SubsonicService } from './subsonic.service';
-import { IAlbum } from './interfaces/album';
-import { IArtist } from './interfaces/artists';
-import { LOCALSTORAGE_PROVIDER } from './localstorage.provider';
+import { IAlbum } from '../interfaces/album';
+import { IArtist } from '../interfaces/artists';
+import { LOCALSTORAGE_PROVIDER } from '../localstorage.provider';
 
 
 export const SUBULAR_CACHED_ALBUMS = 'subular.cached.albums';

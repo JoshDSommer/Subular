@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { LOCALSTORAGE_PROVIDER } from './localstorage.provider';
-import { MD5_PROVIDER } from './md5.provider';
+import { LOCALSTORAGE_PROVIDER } from '../localstorage.provider';
+import { MD5_PROVIDER } from '../md5.provider';
 
 export const SERVER_INFO_KEY = 'subular.cached.serverinfo';
 export interface IServerInfo {
@@ -26,17 +26,19 @@ export class SubsonicAuthenticationService {
 	getServerURl(method: string) {
 		const serverInfo = this.getExistingInfoFromCache();
 		if (serverInfo) {
-			return serverInfo.server + '/rest/' + method + '.view?u=' + serverInfo.username + '&t=' + serverInfo.password + '&s=' + serverInfo.salt + '&v=1.0.0&c=rest&f=json';
+			return serverInfo.server + '/rest/' + method + '.view?u=' + serverInfo.username + '&t=' + serverInfo.password + '&s='
+			+ serverInfo.salt + '&v=1.0.0&c=rest&f=json';
 		}
 		return '';
 	}
 
 	private makeSalt(): string {
-		let text = "";
-		let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		let text = '';
+		let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-		for (var i = 0; i < 99; i++)
+		for (var i = 0; i < 99; i++){
 			text += possible.charAt(Math.floor(Math.random() * possible.length));
+		}
 
 		return text;
 	}
