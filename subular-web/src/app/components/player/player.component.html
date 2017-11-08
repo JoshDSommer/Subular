@@ -1,1 +1,32 @@
-<div class="player"> Hello PlayerComponent! </div>
+<section class="playing-footer" *ngIf="nowPlaying$ | async as nowPlaying">
+	<gutter [percent]="nowPlaying.position"></gutter>
+	<div class="ui-g-1">
+		<ng-container [ngSwitch]="nowPlaying.playing">
+			<i *ngSwitchCase="playingStatus.paused" class="play-pause fa fa-play-circle pull-right" (click)="playSong()"></i>
+			<i *ngSwitchCase="playingStatus.playing" class="play-pause fa fa-pause-circle pull-right" (click)="pauseSong()"></i>
+		</ng-container>
+	</div>
+	<div class="ui-g-1">
+		<div class="ff-rw pull-right">
+			<i class="fa fa-backward" (click)="previousSong()"></i>
+			<i class="fa fa-forward" (click)="nextSong()"></i>
+		</div>
+	</div>
+	<div class="ui-g-1">
+		<img [routerLink]="['ArtistAlbum', { id: nowPlaying.song.parent }]" *ngIf="imgUrl != null && nowPlaying.song" class="pull-right cover-img"
+		 [src]="imgUrl" />
+	</div>
+	<div class="ui-g-7 no-padding">
+		<span [routerLink]="['album', { id: nowPlaying.song.parent }]" class="title">{{nowPlaying.song.title}} {{nowPlaying.time}}</span>
+		<span [routerLink]="['albums', { id: currentArtist?.id }]" class="artist">{{nowPlaying.song.artist}}</span>
+		<span [routerLink]="['album', { id: nowPlaying.song.parent }]" class="album text-muted">{{nowPlaying.song.album}}</span>
+	</div>
+	<div class="ui-g-2 heart pull-right text-right">
+		<i class="fa fa-heart-o" *ngIf="songList.length>0"></i>
+		<i class="fa fa-th-list" *ngIf="songList.length>0" [ngClass]="{activeInverse : playingSongs}" (click)="playingSongs = !playingSongs"></i>
+	</div>
+</section>
+<!-- <section id="now-playing-list" *ngIf="playingSongs">
+	<h3>Now Playing</h3>
+</section>
+<div *ngIf="playingSongs" id="now-playing-modal" class="subular-modal" (click)="playingSongs = !playingSongs"></div> -->
