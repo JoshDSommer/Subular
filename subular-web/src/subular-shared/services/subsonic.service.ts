@@ -15,24 +15,29 @@ export class SubsonicService {
 			.catch(() => Observable.of(false));
 	}
 
+	getStreamUrl(id: number): string {
+		return `${this.authentication.getServerURl('stream')}&id=${id}`;
+	}
+
 	getSongs(albumId: number): Observable<ISong[]> {
-		return this.subsonicGet('getAlbum', `&id=${albumId}`).do(console.log);
+		return this.subsonicGet('getAlbum', `&id=${albumId}`);
 	}
 
 	getTopSongs(artistName): Observable<ISong[]> {
-		return this.subsonicGet('getTopSongs', `&artist=${artistName}`)
+		return this.subsonicGet('getTopSongs', `&artist=${artistName}`);
 	}
 
 	subsonicGetCoverUrl(id: number): string {
 		return this.authentication.getServerURl('getCoverArt') + `&id=${id}&size=274`;
 	}
 
+	subsonicGet(method: string);
+	subsonicGet(method: string, additionalParams: string);
 	subsonicGet(method: string, additionalParams?: string) {
 		const url = additionalParams ? this.authentication.getServerURl(method) + additionalParams : this.authentication.getServerURl(method);
 		if (url === '' || url === additionalParams) {
 			return Observable.of(false);
 		}
-
 
 		return this.http.get(url)
 			.map(response => response.json())
