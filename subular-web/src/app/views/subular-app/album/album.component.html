@@ -1,7 +1,7 @@
 <div class="album" *ngIf="album$ | async as album">
 	<h1>{{ album.name }} - {{ album.artist }}</h1>
 	<div *ngIf="songs$ | async as songs">
-		<p-dataTable [value]="songs.subresp.album.song">
+		<p-dataTable [value]="songs.subresp.album.song"  selectionMode="single" (onRowSelect)="selectSong($event.data)">
 			<p-column field="track" [style]="{'width':'5%'}" header="Track#"></p-column>
 			<p-column field="title" [style]="{'width':'45%'}" header="Title"></p-column>
 			<p-column field="artist" header="Artist"></p-column>
