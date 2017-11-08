@@ -21,6 +21,8 @@ import { AlbumsComponent } from './views/subular-app/albums/albums.component';
 import { AlbumCardComponent } from './components/album-card/album-card.component';
 import { MD5_SERVICE } from './providers/md5.provider';
 import { AlbumComponent } from './views/subular-app/album/album.component';
+import { PlayerService } from './services/player.service';
+import { GutterComponent } from './components/gutter/gutter.component';
 
 @NgModule({
 	declarations: [
@@ -33,7 +35,8 @@ import { AlbumComponent } from './views/subular-app/album/album.component';
 		PlayerComponent,
 		RandomAlbumsComponent,
 		SubularBrandComponent,
-		SubularAppComponent
+		SubularAppComponent,
+		GutterComponent
 	],
 	imports: [
 		AppRoutingModule,
@@ -49,7 +52,8 @@ import { AlbumComponent } from './views/subular-app/album/album.component';
 		SubularSharedModule.forRoot()
 	],
 	providers: [
-		LOCALSTORAGE_SERVICE, MD5_SERVICE
+		LOCALSTORAGE_SERVICE, MD5_SERVICE,
+		PlayerService
 	],
 	bootstrap: [AppComponent]
 })
