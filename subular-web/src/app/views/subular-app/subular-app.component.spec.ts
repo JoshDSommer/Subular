@@ -5,21 +5,21 @@ import { SubularAppComponent } from './subular-app.component';
 describe('a subular-app component', () => {
 	let component: SubularAppComponent;
 
-	// register all needed dependencies
-	beforeEach(() => {
-		TestBed.configureTestingModule({
-			providers: [
-				SubularAppComponent
-			]
-		});
-	});
+	// // register all needed dependencies
+	// beforeEach(() => {
+	// 	TestBed.configureTestingModule({
+	// 		providers: [
+	// 			SubularAppComponent
+	// 		]
+	// 	});
+	// });
 
-	// instantiation through framework injection
-	beforeEach(inject([SubularAppComponent], (SubularAppComponent) => {
-		component = SubularAppComponent;
-	}));
+	// // instantiation through framework injection
+	// beforeEach(inject([SubularAppComponent], (SubularAppComponent) => {
+	// 	component = SubularAppComponent;
+	// }));
 
-	it('should have an instance', () => {
-		expect(component).toBeDefined();
-	});
+	// it('should have an instance', () => {
+	// 	expect(component).toBeDefined();
+	// });
 });
