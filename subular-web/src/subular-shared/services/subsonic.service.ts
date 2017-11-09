@@ -20,7 +20,7 @@ export class SubsonicService {
 	}
 
 	getSongs(albumId: number): Observable<ISong[]> {
-		return this.subsonicGet('getAlbum', `&id=${albumId}`);
+		return this.subsonicGet('getAlbum', `&id=${albumId}`).map(songs => songs.subresp.album.song);
 	}
 
 	getTopSongs(artistName): Observable<ISong[]> {
