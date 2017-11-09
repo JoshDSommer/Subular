@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PlayerService } from '../../../services/player.service';
 import { MenuItem } from 'primeng/primeng';
+import { HostBinding } from '@angular/core';
 
 @Component({
 	selector: 'album',
@@ -20,15 +21,23 @@ export class AlbumComponent implements OnInit {
 	dataTableSongs: ISong[] = [];
 
 	private listedSongs: ISong[];
+
+	@HostBinding('style.background-image')
+	backgroundImage;
+
 	constructor(private route: ActivatedRoute,
 		private router: Router,
 		private subsonic: SubsonicService,
 		private playerService: PlayerService) { }
 
 	ngOnInit() {
-		this.album$ = RouterResolverDataObservable<IAlbum>(this.route, this.router, 'album');
+		this.album$ = RouterResolverDataObservable<IAlbum>(this.route, this.router, 'album')
+
 		this.songs$ = this.album$.switchMap(album => this.subsonic.getSongs(album.id))
-			.do(songs => this.listedSongs = songs);
+			.do(songs => this.listedSongs = songs)
+			.do(songs => {
+				this.getCoverArt(songs[0].id);
+			});
 		this.nowPlayingSong$ = this.playerService.nowPlaying$
 			.filter(nowPlaying => !!nowPlaying && !!nowPlaying.song)
 			.map(nowPlaying => nowPlaying.song);
@@ -42,5 +51,9 @@ export class AlbumComponent implements OnInit {
 		this.playerService.clearSongs();
 
 		this.playerService.addSongsAndPlaySong(this.listedSongs, $song);
+	}
+
+	getCoverArt(id) {
+		this.backgroundImage = `url(${this.subsonic.subsonicGetCoverUrl(id)})`;
 	}
 }

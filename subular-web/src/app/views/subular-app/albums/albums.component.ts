@@ -3,7 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { IAlbum, IArtist } from '../../../../subular-shared/index';
 import { Observable } from 'rxjs';
 import { RouterResolverDataObservable, RouterParamObservable } from '../../../../subular-shared/functions';
-import { SubsonicCachedService } from '../../../../subular-shared';
+import { SubsonicCachedService, SubsonicService } from '../../../../subular-shared';
+import { HostBinding } from '@angular/core';
 
 @Component({
 	selector: 'albums',
@@ -14,12 +15,21 @@ import { SubsonicCachedService } from '../../../../subular-shared';
 export class AlbumsComponent implements OnInit {
 	albums$: Observable<IAlbum[]>;
 	artist$: Observable<IArtist>;
-	constructor(private route: ActivatedRoute, private router: Router, private cached: SubsonicCachedService) {
+
+	@HostBinding('style.background-image')
+	backgroundImage;
+
+	constructor(private route: ActivatedRoute, private router: Router, private cached: SubsonicCachedService,
+		private subsonic: SubsonicService) {
 
 	}
 	ngOnInit() {
 		this.artist$ = RouterParamObservable<number>(this.route, this.router, 'artistId')
 			.switchMap(artistId => this.cached.getArtistById(artistId))
 		this.albums$ = RouterResolverDataObservable<IAlbum[]>(this.route, this.router, 'albums');
+	}
+
+	getCoverArt(id) {
+		this.backgroundImage = `url(${this.subsonic.subsonicGetCoverUrl(id)})`;
 	}
 }

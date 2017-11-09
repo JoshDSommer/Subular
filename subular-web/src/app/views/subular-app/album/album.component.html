@@ -1,4 +1,4 @@
-<div class="album" *ngIf="album$ | async as album">
+<ng-container class="album" *ngIf="album$ | async as album">
 	<h1>{{ album.name }} - {{ album.artist }}</h1>
 	<ng-container *ngIf="songs$ | async as songs">
 		<p-dataTable [value]="songs" [selection]="nowPlayingSong$ | async" dataKey="id" selectionMode="single" (onRowSelect)="selectSong($event.data)" [contextMenu]="contextMenu">
@@ -8,6 +8,6 @@
 			<p-column field="genre" [style]="{'width':'20%'}" header="Genre"></p-column>
 		</p-dataTable>
 	</ng-container>
-</div>
+</ng-container>
 <p-contextMenu #contextMenu [model]="contextMenuItems">
 </p-contextMenu>

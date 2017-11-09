@@ -1,3 +1,10 @@
-.album {
-
+::host{
+	display: flex;
+	height: 100%;
+	overflow-y: scroll;
+}
+h1{
+	color: #fff;
+	padding: 0 1em;
+	font-size: 2.5em;
 }
