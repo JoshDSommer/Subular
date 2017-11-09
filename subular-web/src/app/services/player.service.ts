@@ -144,4 +144,14 @@ export class PlayerService {
 		this.audio.play();
 		this.currentSong$.next({ ...this.currentSong, playing: PlayingStatus.playing });
 	}
+
+	playNextSong() {
+		const nextIndex = (this.currentIndex + 1) >= this.songList.length ? 0 : (this.currentIndex + 1);
+		this.playSong(nextIndex);
+	}
+
+	playPreviousSong() {
+		const previousIndex = (this.currentIndex - 1) < 0 ? (this.songList.length - 1) : (this.currentIndex - 1);
+		this.playSong(previousIndex);
+	}
 }
