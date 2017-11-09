@@ -59,6 +59,11 @@ export class PlayerService {
 		this.songList = [...this.songList, ...songs];
 	}
 
+	addSongsAndPlaySong(songs: ISong[], song: ISong) {
+		this.addSongs(songs);
+		this.playSong(this.songList.indexOf(song));
+	}
+
 	shuffleSongs(): void {
 		const songList = this.songList;
 
@@ -84,7 +89,7 @@ export class PlayerService {
 			const playingSong = this.songList[index];
 			this.playHistory = [...this.playHistory, playingSong];
 			this.currentIndex = index;
-			this.currentSong = { song: playingSong, playing: PlayingStatus.loading };
+			this.currentSong = { song: playingSong, playing: PlayingStatus.loading, position: 0, remainingTime: 0 };
 			this.currentSong$.next(this.currentSong);
 			if (this.audio != null) {
 				this.audio.pause();
@@ -103,7 +108,7 @@ export class PlayerService {
 					const secs = remainder - mins * 60;
 
 					this.currentSong = {
-						song: playingSong,
+						song: this.currentSong.song,
 						playing: PlayingStatus.playing,
 						remainingTime: remainder,
 						position: position,
