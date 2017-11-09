@@ -1,7 +1,7 @@
 <div class="album" *ngIf="album$ | async as album">
 	<h1>{{ album.name }} - {{ album.artist }}</h1>
 	<ng-container *ngIf="songs$ | async as songs">
-		<p-dataTable [value]="songs" [selection]="nowPlayingSong$ | async" compareSelectionBy="deepEquals"  selectionMode="single" (onRowSelect)="selectSong($event.data)" [contextMenu]="contextMenu">
+		<p-dataTable [value]="songs" [selection]="nowPlayingSong$ | async" dataKey="id" selectionMode="single" (onRowSelect)="selectSong($event.data)" [contextMenu]="contextMenu">
 			<p-column field="track" [style]="{'width':'5%'}" header="Track#"></p-column>
 			<p-column field="title" [style]="{'width':'45%'}" header="Title"></p-column>
 			<p-column field="artist" header="Artist"></p-column>
