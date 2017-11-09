@@ -18,6 +18,9 @@
 		<i class="fa fa-th-list" *ngIf="songList.length>0" [ngClass]="{activeInverse : playingSongs}" (click)="playingSongs = !playingSongs"></i>
 	</div>
 </section>
+<!-- <section class="blurred-background"  *ngIf="nowPlaying$ | async">
+
+</section> -->
 <!-- <section id="now-playing-list" *ngIf="playingSongs">
 	<h3>Now Playing</h3>
 </section>
