@@ -1,0 +1,19 @@
+.title, .album, .artist, .cover-img{
+	cursor:hand;
+}
+.title{
+	width: 100%;
+	display: inline-block;
+	font-size: 20px;
+	margin-top:5px;
+}
+.album{
+	font-size: 13px;
+	margin-left: 10px;
+}
+.artist{
+	font-weight:700;
+}
+.cover-img{
+	height:63px;
+}

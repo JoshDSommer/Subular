@@ -12,32 +12,22 @@ export class PlayerComponent implements OnInit {
 	nowPlaying$;
 	songList;
 	playingStatus = PlayingStatus;
-	imgUrl;
 
 	constructor(private subsonic: SubsonicService, private playerService: PlayerService) {
 
 	}
 
 	ngOnInit() {
-		this.nowPlaying$ = this.playerService.nowPlaying$.do(nowPlaying => {
-			if (nowPlaying) {
-				this.imgUrl = this.subsonic.subsonicGetCoverUrl(nowPlaying.song.id);
-			}
-		});
+		this.nowPlaying$ = this.playerService.nowPlaying$;
 		this.songList = this.playerService.songList;
 	}
 
 	nextSong(): void {
-		// this.playerService.playSong(this.playerService.currentIndex + 1);
-		// this.currentSong = this.playerService.currentSong();
-		// this.songs = this.playerService.songList;
-		// this.getImgUrl();
+		this.playerService.playNextSong();
 	}
 
 	previousSong(): void {
-		// this.playerService.playSong(this.playerService.currentIndex - 1);
-		// this.currentSong = this.playerService.currentSong();
-		// this.getImgUrl();
+		this.playerService.playPreviousSong();
 	}
 
 	pauseSong(): void {
