@@ -1,11 +1,13 @@
 <div class="album" *ngIf="album$ | async as album">
 	<h1>{{ album.name }} - {{ album.artist }}</h1>
-	<div *ngIf="songs$ | async as songs">
-		<p-dataTable [value]="songs.subresp.album.song"  selectionMode="single" (onRowSelect)="selectSong($event.data)">
+	<ng-container *ngIf="songs$ | async as songs">
+		<p-dataTable [value]="songs" [selection]="nowPlayingSong$ | async" compareSelectionBy="deepEquals"  selectionMode="single" (onRowSelect)="selectSong($event.data)" [contextMenu]="contextMenu">
 			<p-column field="track" [style]="{'width':'5%'}" header="Track#"></p-column>
 			<p-column field="title" [style]="{'width':'45%'}" header="Title"></p-column>
 			<p-column field="artist" header="Artist"></p-column>
 			<p-column field="genre" [style]="{'width':'20%'}" header="Genre"></p-column>
 		</p-dataTable>
-	</div>
+	</ng-container>
 </div>
+<p-contextMenu #contextMenu [model]="contextMenuItems">
+</p-contextMenu>
