@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { InputTextModule, PasswordModule, ButtonModule, DataTableModule, SharedModule } from 'primeng/primeng';
+import { InputTextModule, PasswordModule, ButtonModule, DataTableModule, SharedModule, ContextMenuModule } from 'primeng/primeng';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -22,7 +22,8 @@ import { AlbumCardComponent } from './components/album-card/album-card.component
 import { MD5_SERVICE } from './providers/md5.provider';
 import { AlbumComponent } from './views/subular-app/album/album.component';
 import { PlayerService } from './services/player.service';
-import { GutterComponent } from './components/gutter/gutter.component';
+import { GutterComponent } from './components/player/gutter/gutter.component';
+import { TrackInfoComponent } from './components/player/track-info/track-info.component';
 
 @NgModule({
 	declarations: [
@@ -36,13 +37,15 @@ import { GutterComponent } from './components/gutter/gutter.component';
 		RandomAlbumsComponent,
 		SubularBrandComponent,
 		SubularAppComponent,
-		GutterComponent
+		GutterComponent,
+		TrackInfoComponent
 	],
 	imports: [
 		AppRoutingModule,
 		BrowserModule,
 		BrowserAnimationsModule,
 		ButtonModule,
+		ContextMenuModule,
 		DataTableModule,
 		InputTextModule,
 		HttpModule,
