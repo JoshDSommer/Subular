@@ -33,3 +33,7 @@ h1{
 ::ng-deep tr.ui-state-highlight{
 	color:#a247e5;
 }
+
+::ng-deep .ui-datatable{
+	margin-bottom: 50px;
+}
