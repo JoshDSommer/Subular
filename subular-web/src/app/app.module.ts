@@ -24,6 +24,7 @@ import { AlbumComponent } from './views/subular-app/album/album.component';
 import { PlayerService } from './services/player.service';
 import { GutterComponent } from './components/player/gutter/gutter.component';
 import { TrackInfoComponent } from './components/player/track-info/track-info.component';
+import { AlbumOptionsComponent } from './views/subular-app/album/album-options/album-options.component';
 
 @NgModule({
 	declarations: [
@@ -38,7 +39,8 @@ import { TrackInfoComponent } from './components/player/track-info/track-info.co
 		SubularBrandComponent,
 		SubularAppComponent,
 		GutterComponent,
-		TrackInfoComponent
+		TrackInfoComponent,
+		AlbumOptionsComponent
 	],
 	imports: [
 		AppRoutingModule,

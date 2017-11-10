@@ -1,5 +1,8 @@
 <ng-container class="album" *ngIf="album$ | async as album">
-	<h1>{{ album.name }} - {{ album.artist }}</h1>
+	<h1> {{ album.artist }} - {{ album.name }}</h1>
+	<img class="album-image" crossOrigin="Anonymous" [src]="getCoverArt(album?.coverArt)" />
+	<album-options [album]="album"></album-options>
+
 	<ng-container *ngIf="songs$ | async as songs">
 		<p-dataTable [value]="songs" [selection]="nowPlayingSong$ | async" dataKey="id" selectionMode="single" (onRowSelect)="selectSong($event.data)" [contextMenu]="contextMenu">
 			<p-column field="track" [style]="{'width':'5%'}" header="Track#"></p-column>

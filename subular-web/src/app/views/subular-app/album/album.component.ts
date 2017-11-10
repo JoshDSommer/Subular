@@ -53,7 +53,7 @@ export class AlbumComponent implements OnInit {
 		this.playerService.addSongsAndPlaySong(this.listedSongs, $song);
 	}
 
-	getCoverArt(id) {
-		this.backgroundImage = `url(${this.subsonic.subsonicGetCoverUrl(id)})`;
+	getCoverArt(coverArt) {
+		return this.subsonic.subsonicGetCoverUrl(coverArt); // `url(${})`;
 	}
 }

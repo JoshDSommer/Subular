@@ -1,6 +1,6 @@
 import { NgModule, Injectable } from '@angular/core';
 import { Routes, RouterModule, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, } from '@angular/router';
-import { LoginComponent } from './views/login/login.component'
+import { LoginComponent } from './views/login/login.component';
 import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { RandomAlbumsComponent } from './views/subular-app/random-albums/random-albums.component';
 import { SubsonicGuard } from '../subular-shared/subsonic.guard';
@@ -28,7 +28,7 @@ const routes: Routes = [
 				}
 			},
 			{
-				path:'album/:albumId', component: AlbumComponent,
+				path: 'album/:albumId', component: AlbumComponent,
 				resolve: {
 					album: AlbumResolver
 				}

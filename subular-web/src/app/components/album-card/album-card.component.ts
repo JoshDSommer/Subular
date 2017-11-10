@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { SubsonicService, IAlbum } from '../../../subular-shared/index';
+import { PlayerService } from '../../services/player.service';
 
 @Component({
 	selector: 'album-card',
@@ -12,12 +13,23 @@ export class AlbumCardComponent implements OnInit {
 	@Input() album: IAlbum;
 
 	getCoverUrl(coverArt) {
-		if (coverArt)
+		if (coverArt) {
 			return this.subsonic.subsonicGetCoverUrl(coverArt);
+		}
 	}
 
-	constructor(private subsonic: SubsonicService) {
+	constructor(private subsonic: SubsonicService, private playerService: PlayerService) {
 
 	}
-	ngOnInit() { }
+	ngOnInit() {
+
+	}
+
+	playAlbum(id) {
+		this.subsonic.getSongs(id).subscribe(songs => {
+			this.playerService.clearSongs();
+			this.playerService.addSongs(songs);
+			this.playerService.playSong();
+		});
+	}
 }

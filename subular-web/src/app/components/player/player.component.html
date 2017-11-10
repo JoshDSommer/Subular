@@ -14,7 +14,7 @@
 	</div>
 	<track-info [song]="nowPlaying.song" ></track-info>
 	<div class="ui-g-2 heart pull-right text-right">
-		<i class="fa fa-heart-o" *ngIf="songList.length>0"></i>
+		<i class="fa fa-heart-o" ></i>
 		<i class="fa fa-th-list" *ngIf="songList.length>0" [ngClass]="{activeInverse : playingSongs}" (click)="playingSongs = !playingSongs"></i>
 	</div>
 </section>
