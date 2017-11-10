@@ -13,16 +13,17 @@ export class AlbumOptionsComponent {
 
 	constructor(private subsonic: SubsonicService, private playerService: PlayerService) { }
 
-	playAlbum(id) {
-		this.subsonic.getSongs(id).subscribe(songs => {
+
+	playAlbum() {
+		this.subsonic.getSongs(this.album.id).subscribe(songs => {
 			this.playerService.clearSongs();
 			this.playerService.addSongs(songs);
 			this.playerService.playSong();
 		});
 	}
 
-	playAlbumRandom(id){
-		this.subsonic.getSongs(id).subscribe(songs => {
+	playAlbumRandom() {
+		this.subsonic.getSongs(this.album.id).subscribe(songs => {
 			this.playerService.clearSongs();
 			this.playerService.addSongs(songs);
 			this.playerService.shuffleSongs();

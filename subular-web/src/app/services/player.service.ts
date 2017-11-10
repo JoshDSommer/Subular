@@ -93,7 +93,7 @@ export class PlayerService {
 		if (this.songList.length > 0) {
 			this.currentIndex  = (!index ? 0 : index);
 
-			const playingSong = this.songAtIndex(index);
+			const playingSong = this.songAtIndex(this.currentIndex);
 
 			this.playHistory = [...this.playHistory, playingSong];
 			this.currentSong = { song: playingSong, playing: PlayingStatus.loading, position: 0, remainingTime: 0 };
