@@ -20,5 +20,6 @@ export interface ISong {
 	created?: Date;
 	albumId?: number;
 	artistId?: number;
+	starred: Date;
 	type?: string;
 }

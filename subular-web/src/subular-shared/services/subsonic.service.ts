@@ -31,6 +31,13 @@ export class SubsonicService {
 		return this.authentication.getServerURl('getCoverArt') + `&id=${id}&size=274`;
 	}
 
+	starSong(id: number) {
+		return this.subsonicGet('star', `&id=${id}`);
+	}
+	unStarSong(id: number) {
+		return this.subsonicGet('unstar', `&id=${id}`);
+	}
+
 	subsonicGet(method: string);
 	subsonicGet(method: string, additionalParams: string);
 	subsonicGet(method: string, additionalParams?: string) {

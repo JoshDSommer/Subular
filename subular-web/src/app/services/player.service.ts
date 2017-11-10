@@ -33,6 +33,11 @@ export class PlayerService {
 		return this.currentSong$.asObservable();
 	}
 
+	private songAtIndex(index) {
+		return this.songList[index];
+
+	}
+
 	constructor(private subularService: SubsonicService) {
 		this.currentSong$.unsubscribe = () => {
 			if (this.audioSubscriptions) {
@@ -83,13 +88,16 @@ export class PlayerService {
 		this.songList = songList;
 	}
 
+
 	playSong(index?: number): void {
 		if (this.songList.length > 0) {
-			index = (!index ? 0 : index);
-			const playingSong = this.songList[index];
+			this.currentIndex  = (!index ? 0 : index);
+
+			const playingSong = this.songAtIndex(index);
+
 			this.playHistory = [...this.playHistory, playingSong];
-			this.currentIndex = index;
 			this.currentSong = { song: playingSong, playing: PlayingStatus.loading, position: 0, remainingTime: 0 };
+
 			this.currentSong$.next(this.currentSong);
 			if (this.audio != null) {
 				this.audio.pause();

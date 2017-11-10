@@ -5,6 +5,9 @@
 }
 .subular-header{
 	height: 5vh;
+	border-bottom:1px #101010;
+	box-shadow: 5px -1px 5px #888888;
+	z-index: 1;
 }
 .subular-header subular-brand{
 	font-size: 1.2em;

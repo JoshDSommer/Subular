@@ -1,20 +1,20 @@
 <section class="playing-footer" *ngIf="nowPlaying$ | async as nowPlaying">
 	<gutter [percent]="nowPlaying.position"></gutter>
-	<div class="ui-g-1">
-		<ng-container [ngSwitch]="nowPlaying.playing">
+	<div class="ui-g-2 player-controls">
+		<span class="play-pause-button">
+			<i class="fa fa-step-backward" (click)="previousSong()"></i>
+		</span>
+		<span class="play-pause-button" [ngSwitch]="nowPlaying.playing">
 			<i *ngSwitchCase="playingStatus.paused" class="play-pause fa fa-play-circle pull-right" (click)="playSong()"></i>
 			<i *ngSwitchCase="playingStatus.playing" class="play-pause fa fa-pause-circle pull-right" (click)="pauseSong()"></i>
-		</ng-container>
+		</span>
+		<span class="play-pause-button">
+			<i class="fa fa-step-forward" (click)="nextSong()"></i>
+		</span>
 	</div>
-	<div class="ui-g-1">
-		<div class="ff-rw pull-right">
-			<i class="fa fa-backward" (click)="previousSong()"></i>
-			<i class="fa fa-forward" (click)="nextSong()"></i>
-		</div>
-	</div>
-	<track-info [song]="nowPlaying.song" ></track-info>
-	<div class="ui-g-2 heart pull-right text-right">
-		<i class="fa fa-heart-o" ></i>
+	<track-info [song]="nowPlaying.song"></track-info>
+	<div class="ui-g-2 secondary">
+		<heart [song]="nowPlaying.song"></heart>
 		<i class="fa fa-th-list" *ngIf="songList.length>0" [ngClass]="{activeInverse : playingSongs}" (click)="playingSongs = !playingSongs"></i>
 	</div>
 </section>
