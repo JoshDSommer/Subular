@@ -4,11 +4,11 @@
 .title{
 	width: 100%;
 	display: inline-block;
-	font-size: 20px;
+	font-size: 1.7em;
 	margin-top:5px;
 }
-.album{
-	font-size: 13px;
+.album,{
+	font-size: 1.0em;
 	margin-left: 10px;
 }
 .artist{
