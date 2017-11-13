@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ISong, SubsonicService } from '../../subular-shared/index';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs';
 
 export enum PlayingStatus {
 	loading,
@@ -23,28 +21,14 @@ export interface IAudioPlayingInfo {
 export class PlayerService {
 	songList: ISong[] = [];
 	playHistory: ISong[] = [];
-	audio: any;
-	private currentSong$ = new BehaviorSubject<IAudioPlayingInfo>(null);
+	nowPlaying$: Observable<IAudioPlayingInfo>;
+	private audio: HTMLAudioElement;
 	private currentSong: IAudioPlayingInfo;
-	public currentIndex: number;
-	private audioSubscriptions: Subscription;
+	private currentIndex: number;
 
-	get nowPlaying$() {
-		return this.currentSong$.asObservable();
-	}
-
-	private songAtIndex(index) {
-		return this.songList[index];
-
-	}
 
 	constructor(private subularService: SubsonicService) {
-		this.currentSong$.unsubscribe = () => {
-			if (this.audioSubscriptions) {
-				this.audioSubscriptions.unsubscribe();
-				this.audio = null;
-			}
-		};
+		this.setupAudio();
 	}
 
 	clearSongs(): void {
@@ -91,71 +75,65 @@ export class PlayerService {
 
 	playSong(index?: number): void {
 		if (this.songList.length > 0) {
-			this.currentIndex  = (!index ? 0 : index);
+			this.currentIndex = (!index ? 0 : index);
 
-			const playingSong = this.songAtIndex(this.currentIndex);
+			const playingSong = this.songList[this.currentIndex];
 
 			this.playHistory = [...this.playHistory, playingSong];
 			this.currentSong = { song: playingSong, playing: PlayingStatus.loading, position: 0, remainingTime: 0 };
 
-			this.currentSong$.next(this.currentSong);
-			if (this.audio != null) {
-				this.audio.pause();
-			}
-
 			const streamUrl = this.subularService.getStreamUrl(playingSong.id); // + '&maxBitRate=128';
-			this.audio = new Audio(streamUrl);
+
+			this.audio.pause();
+			this.audio.src = streamUrl;
 
 			this.audio.play();
-
-			const timeUpdate$ = Observable.fromEvent(this.audio, 'timeupdate')
-				.do(() => {
-					const remainder = this.audio.duration - this.audio.currentTime;
-					const position = (this.audio.currentTime / this.audio.duration) * 100;
-					const mins = Math.floor(remainder / 60);
-					const secs = remainder - mins * 60;
-
-					this.currentSong = {
-						song: this.currentSong.song,
-						playing: PlayingStatus.playing,
-						remainingTime: remainder,
-						position: position,
-						mins,
-						secs
-					};
-
-					this.currentSong$.next(this.currentSong);
-				});
-			const trackPaused$ = Observable.fromEvent(this.audio, 'pause')
-				.do(() => {
-					this.currentSong$.next({ ...this.currentSong, playing: PlayingStatus.paused });
-				});
-
-			const trackPlay$ = Observable.fromEvent(this.audio, 'play')
-				.do(() => {
-					this.currentSong$.next({ ...this.currentSong, playing: PlayingStatus.playing });
-				});
-
-			const trackDone$ = Observable.fromEvent(this.audio, 'ended')
-				.do(() => {
-					if ((this.currentIndex + 1) < this.songList.length) {
-						this.playSong(this.currentIndex + 1);
-					}
-				});
-
-			this.audioSubscriptions = Observable.merge(timeUpdate$, trackDone$, trackPaused$, trackPlay$).subscribe();
 		}
+	}
+
+	private setupAudio() {
+		this.audio = new Audio('');
+
+		const timeUpdate$ = Observable.fromEvent(this.audio, 'timeupdate')
+			.map(() => {
+				const remainder = this.audio.duration - this.audio.currentTime;
+				const position = (this.audio.currentTime / this.audio.duration) * 100;
+				const mins = Math.floor(remainder / 60);
+				const secs = remainder - mins * 60;
+				return {
+					song: this.currentSong.song,
+					playing: PlayingStatus.playing,
+					remainingTime: remainder,
+					position: position,
+					mins,
+					secs
+				};
+			});
+		const trackPaused$ = Observable.fromEvent(this.audio, 'pause')
+			.map(() => {
+				return { ...this.currentSong, playing: PlayingStatus.paused };
+			});
+		const trackPlay$ = Observable.fromEvent(this.audio, 'play')
+			.map(() => {
+				return { ...this.currentSong, playing: PlayingStatus.playing };
+			});
+		const trackDone$ = Observable.fromEvent(this.audio, 'ended')
+			.do(() => {
+				if ((this.currentIndex + 1) < this.songList.length) {
+					this.playSong(this.currentIndex + 1);
+				}
+			})
+			.map(() => null);
+
+		this.nowPlaying$ = Observable.merge(timeUpdate$, trackDone$, trackPaused$, trackPlay$);
 	}
 
 	pauseSong(): void {
 		this.audio.pause();
-		setTimeout(() => {
-		});
 	}
 
 	resumeSong(): void {
 		this.audio.play();
-		this.currentSong$.next({ ...this.currentSong, playing: PlayingStatus.playing });
 	}
 
 	playNextSong() {
@@ -166,5 +144,20 @@ export class PlayerService {
 	playPreviousSong() {
 		const previousIndex = (this.currentIndex - 1) < 0 ? (this.songList.length - 1) : (this.currentIndex - 1);
 		this.playSong(previousIndex);
+	}
+
+	songUpdated(song: ISong) {
+		this.songList = this.songList.map(previousSong => {
+			if (song.id === previousSong.id) {
+				return song;
+			}
+			return previousSong;
+		});
+		this.playHistory = this.playHistory.map(previousSong => {
+			if (song.id === previousSong.id) {
+				return song;
+			}
+			return previousSong;
+		});
 	}
 }
