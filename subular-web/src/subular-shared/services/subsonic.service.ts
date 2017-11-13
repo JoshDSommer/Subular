@@ -20,7 +20,17 @@ export class SubsonicService {
 	}
 
 	getSongs(albumId: number): Observable<ISong[]> {
-		return this.subsonicGet('getAlbum', `&id=${albumId}`).map(songs => songs.subresp.album.song);
+		return this.subsonicGet('getAlbum', `&id=${albumId}`)
+			.map(data => data.subresp.album.song)
+			.map(songs => {
+				return songs.map((song: ISong) => {
+					const measuredTime = new Date(song.duration * 1000);
+					const timeWithoutHours = measuredTime.toISOString().substr(14, 5);
+					const timeWithHours = measuredTime.toISOString().substr(11, 8);
+					song.time = timeWithHours.startsWith('00:') ? timeWithoutHours : timeWithHours;
+					return song;
+				});
+			});
 	}
 
 	getTopSongs(artistName): Observable<ISong[]> {

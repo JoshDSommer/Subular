@@ -13,6 +13,7 @@ export interface ISong {
 	contentType?: string;
 	suffix?: string;
 	duration?: number;
+	time?: string;
 	bitRate?: number;
 	path?: string;
 	isVideo?: boolean;
