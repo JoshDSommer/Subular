@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { PlayerService } from '../../../services/player.service';
 import { MenuItem } from 'primeng/primeng';
 import { HostBinding } from '@angular/core';
+import { SongStoreService } from '../../../services/song-store.service';
 
 @Component({
 	selector: 'album',
@@ -28,7 +29,8 @@ export class AlbumComponent implements OnInit {
 	constructor(private route: ActivatedRoute,
 		private router: Router,
 		private subsonic: SubsonicService,
-		private playerService: PlayerService) { }
+		private playerService: PlayerService,
+		private songStore: SongStoreService) { }
 
 	ngOnInit() {
 		this.album$ = RouterResolverDataObservable<IAlbum>(this.route, this.router, 'album');
@@ -40,10 +42,11 @@ export class AlbumComponent implements OnInit {
 					return previosSong.title === song.title && previosSong.track === song.track;
 				});
 			}))
-			.do(songs => this.listedSongs = songs)
 			.do(songs => {
 				this.getCoverArt(songs[0].id);
-			});
+			})
+			.switchMap(songs => this.songStore.addSongs(songs))
+			.do(songs => this.listedSongs = songs);
 		this.nowPlayingSong$ = this.playerService.nowPlaying$
 			.filter(nowPlaying => !!nowPlaying && !!nowPlaying.song)
 			.map(nowPlaying => nowPlaying.song);

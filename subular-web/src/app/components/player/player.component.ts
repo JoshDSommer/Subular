@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, HostBinding, HostListener } from '@angular/core';
 import { PlayerService, PlayingStatus } from '../../services/player.service';
 import { SubsonicService } from '../../../subular-shared/index';
+import { SongStoreService } from '../../services/song-store.service';
 
 @Component({
 	selector: 'player',
@@ -31,7 +32,7 @@ export class PlayerComponent implements OnInit {
 	}
 
 
-	constructor(private subsonic: SubsonicService, private playerService: PlayerService) {
+	constructor(private subsonic: SubsonicService, private playerService: PlayerService, private songStore: SongStoreService) {
 
 	}
 
@@ -39,7 +40,10 @@ export class PlayerComponent implements OnInit {
 		this.nowPlaying$ = this.playerService.nowPlaying$.do(nowPlaying => {
 			if (nowPlaying && nowPlaying.song) {
 				this.height = '90px';
+			} else {
+				this.height = '0px';
 			}
+
 		});
 		this.songList = this.playerService.songList;
 	}
@@ -58,5 +62,10 @@ export class PlayerComponent implements OnInit {
 
 	playSong(): void {
 		this.playerService.resumeSong();
+	}
+
+	songUpdated(song) {
+		this.songStore.updateSong(song);
+		this.playerService.songUpdated(song);
 	}
 }

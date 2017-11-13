@@ -1,5 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { ISong, SubsonicService } from '../../../../subular-shared/index';
+import { SongStoreService } from '../../../services/song-store.service';
 
 @Component({
 	selector: 'heart',
@@ -10,6 +11,8 @@ import { ISong, SubsonicService } from '../../../../subular-shared/index';
 
 export class HeartComponent {
 	@Input() song: ISong;
+	@Output() songUpdated = new EventEmitter<ISong>();
+
 	get isHearted() {
 		console.log(this.song);
 		return this.song.starred;
@@ -19,11 +22,13 @@ export class HeartComponent {
 	unHeartSong() {
 		this.song = { ...this.song, starred: null };
 		this.subsonic.unStarSong(this.song.id).subscribe();
+		this.songUpdated.next(this.song);
 	}
 
 	heartSong() {
 		this.song = { ...this.song, starred: new Date() };
 		this.subsonic.starSong(this.song.id).subscribe();
+		this.songUpdated.next(this.song);
 	}
 
 }

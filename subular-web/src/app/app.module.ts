@@ -26,6 +26,7 @@ import { GutterComponent } from './components/player/gutter/gutter.component';
 import { TrackInfoComponent } from './components/player/track-info/track-info.component';
 import { HeartComponent } from './components/player/heart/heart.component';
 import { AlbumOptionsComponent } from './views/subular-app/album/album-options/album-options.component';
+import { SongStoreService } from './services/song-store.service';
 
 @NgModule({
 	declarations: [
@@ -60,7 +61,8 @@ import { AlbumOptionsComponent } from './views/subular-app/album/album-options/a
 	],
 	providers: [
 		LOCALSTORAGE_SERVICE, MD5_SERVICE,
-		PlayerService
+		PlayerService,
+		SongStoreService
 	],
 	bootstrap: [AppComponent]
 })
