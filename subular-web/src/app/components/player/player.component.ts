@@ -14,9 +14,6 @@ export class PlayerComponent implements OnInit {
 	songList;
 	playingStatus = PlayingStatus;
 
-	@HostBinding('style.height')
-	height = '0';
-
 	@HostListener('window:keyup', ['$event'])
 	keyEvent(event: KeyboardEvent) {
 		switch (event.key) {
@@ -38,11 +35,11 @@ export class PlayerComponent implements OnInit {
 
 	ngOnInit() {
 		this.nowPlaying$ = this.playerService.nowPlaying$.do(nowPlaying => {
-			if (nowPlaying && nowPlaying.song) {
-				this.height = '90px';
-			} else {
-				this.height = '0px';
-			}
+			// if (nowPlaying && nowPlaying.song) {
+			// 	this.height = '90px';
+			// } else {
+			// 	this.height = '0px';
+			// }
 
 		});
 		this.songList = this.playerService.songList;
