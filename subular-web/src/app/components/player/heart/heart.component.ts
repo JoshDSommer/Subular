@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { ISong, SubsonicService } from '../../../../subular-shared/index';
-import { SongStoreService } from '../../../services/song-store.service';
-
+import { SongStoreService } from '../../../../subular-shared';
 @Component({
 	selector: 'heart',
 	templateUrl: 'heart.component.html',

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { PlayerService } from '../../../services/player.service';
 import { MenuItem } from 'primeng/primeng';
 import { HostBinding } from '@angular/core';
-import { SongStoreService } from '../../../services/song-store.service';
+import { SongStoreService } from '../../../../subular-shared';
 
 @Component({
 	selector: 'album',

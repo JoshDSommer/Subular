@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, HostBinding, HostListener } from '@angular/core';
 import { PlayerService, PlayingStatus } from '../../services/player.service';
 import { SubsonicService } from '../../../subular-shared/index';
-import { SongStoreService } from '../../services/song-store.service';
+import { SongStoreService } from '../../../subular-shared';
 
 @Component({
 	selector: 'player',
