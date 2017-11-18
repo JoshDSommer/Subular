@@ -1,0 +1,3 @@
+<ng-container class="album" *ngIf="album$ | async as album">
+	<Label text="{{ album.artist }} - {{ album.name }}" textWrap="true"></Label>
+</ng-container>

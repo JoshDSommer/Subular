@@ -21,6 +21,7 @@ import { AlbumsComponent } from './views/subular-app/albums/albums.component';
 
 import * as applicationModule from "tns-core-modules/application";
 import * as frescoModule from "nativescript-fresco";
+import { AlbumComponent } from './views/subular-app/album/album.component';
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
         frescoModule.initialize();
@@ -43,9 +44,10 @@ if (applicationModule.android) {
     declarations: [
         AppComponent,
         AlbumsComponent,
-        ArtistListComponent,
-        LoginComponent,
-        SubularAppComponent
+		ArtistListComponent,
+		LoginComponent,
+		SubularAppComponent,
+		AlbumComponent
     ],
     providers: [
         LOCALSTORAGE_SERVICE,
