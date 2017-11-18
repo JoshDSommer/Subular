@@ -2,8 +2,8 @@
 <GridLayout tkExampleTitle tkToggleNavButton>
 	<RadListView [items]="albums">
 		<ng-template tkListItemTemplate let-item="item">
-			<StackLayout orientation="vertical" >
-				<Image width="200" height="200" [src]="subular.subsonicGetCoverUrl(item.id)"></Image>
+			<StackLayout orientation="vertical" [nsRouterLink]="['../../album', item.id ]" >
+				<Image width="200" height="200" [src]="subular.subsonicGetCoverUrl(item.coverArt)"></Image>
 				<FrescoDrawee *tkIfAndroid horizontalAlignment="stretch" width="200" height="200" [imageUri]="item.image" verticalAlignment="top"></FrescoDrawee>
 				<Label class="nameLabel" [text]="item.title" textWrap="true"></Label>
 			</StackLayout>
