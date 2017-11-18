@@ -15,6 +15,10 @@ export class SongStoreService {
 		return this.songList$.asObservable();
 	}
 
+	get songs$() {
+		return this.songList$.asObservable();
+	}
+
 	updateSong(song: ISong) {
 		this.songList = this.songList.map(previousSong => {
 			if (song.id === previousSong.id) {
