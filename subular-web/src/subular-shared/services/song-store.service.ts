@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { ISong } from '../../subular-shared/index';
+import { ISong } from '../interfaces';
 
 @Injectable()
 export class SongStoreService {
