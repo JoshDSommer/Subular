@@ -23,6 +23,7 @@
     "@angular/router": "~4.2.0",
     "crypto-js": "^3.1.9-1",
     "nativescript-angular": "~4.2.0",
+    "nativescript-audio": "^4.0.3",
     "nativescript-feedback": "1.0.6",
     "nativescript-fresco": "^3.0.6",
     "nativescript-gradient": "^2.0.1",
@@ -61,6 +62,7 @@
     "start-android-bundle": "npm run ns-bundle --android --run-app",
     "start-ios-bundle": "npm run ns-bundle --ios --run-app",
     "build-android-bundle": "npm run ns-bundle --android --build-app",
-    "build-ios-bundle": "npm run ns-bundle --ios --build-app"
+    "build-ios-bundle": "npm run ns-bundle --ios --build-app",
+    "postinstall": "rm -rf platforms"
   }
 }
