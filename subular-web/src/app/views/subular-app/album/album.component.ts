@@ -47,6 +47,7 @@ export class AlbumComponent implements OnInit {
 			})
 			.switchMap(songs => this.songStore.addSongs(songs))
 			.do(songs => this.listedSongs = songs);
+
 		this.nowPlayingSong$ = this.playerService.nowPlaying$
 			.filter(nowPlaying => !!nowPlaying && !!nowPlaying.song)
 			.map(nowPlaying => nowPlaying.song);
