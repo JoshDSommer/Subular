@@ -1,0 +1,9 @@
+<StackLayout>
+	<ListView #songList [items]="songs$ | async" class="list-group">
+		<ng-template let-item="item" let-odd="odd" let-even="even">
+			<GridLayout rows="*" columns="*" class="song-list-item">
+				<Label row="0" , col="0" [text]="item.title" class="song"></Label>
+			</GridLayout>
+		</ng-template>
+	</ListView>
+</StackLayout>

@@ -1,3 +1,6 @@
-<ng-container class="album" *ngIf="album$ | async as album">
-	<Label text="{{ album.artist }} - {{ album.name }}" textWrap="true"></Label>
-</ng-container>
+<StackLayout class="album" *ngIf="album$ | async as album">
+	<Label [nsRouterLink]="['../../albums', album.artistId ]" text="{{ album.artist }}" textWrap="true"></Label>
+	<Label text="{{ album.name }}" textWrap="true"></Label>
+
+	<song-list></song-list>
+</StackLayout>

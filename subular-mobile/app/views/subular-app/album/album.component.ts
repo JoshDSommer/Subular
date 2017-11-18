@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IAlbum, SubsonicService, RouterResolverDataObservable, ISong, SongStoreService } from 'subular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs';
 
 @Component({
 	moduleId: module.id,
@@ -11,6 +12,7 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class AlbumComponent implements OnInit {
+	songSubscription: Subscription;
 	songs$: Observable<ISong[]>;
 	listedSongs: {};
 	album$: Observable<IAlbum>;
@@ -28,15 +30,14 @@ export class AlbumComponent implements OnInit {
 				// this.getCoverArt(songs[0].id);
 			});
 		// this.songs$ =
-		this.album$.switchMap(album => this.subsonic.getSongs(album.id))
+		this.songSubscription = this.album$.switchMap(album => this.subsonic.getSongs(album.id))
 			// this map is to filter out duplicates.
 			.map(songs => songs.filter((song, index, self) => {
 				return index === self.findIndex((previosSong) => {
 					return previosSong.title === song.title && previosSong.track === song.track;
 				});
 			}))
-
-			.switchMap(songs => this.songStore.addSongs(songs))
+			.switchMap(songs => this.songStore.addSongs(songs)).subscribe();
 
 		// 	.do(songs => this.listedSongs = songs);
 		// this.nowPlayingSong$ = this.playerService.nowPlaying$
@@ -44,5 +45,11 @@ export class AlbumComponent implements OnInit {
 		// .map(nowPlaying => nowPlaying.song);
 
 
+	}
+
+	ngOnDestroy() {
+		//Called once, before the instance is destroyed.
+		//Add 'implements OnDestroy' to the class.
+		this.songSubscription.unsubscribe();
 	}
 }
