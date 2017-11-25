@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { ISong, SubsonicService } from 'subular';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -34,7 +34,7 @@ export class PlayerService {
 	private currentIndex: number;
 
 
-	constructor(private subularService: SubsonicService) {
+	constructor(private subularService: SubsonicService, private ngZone: NgZone) {
 
 		this.setupAudio();
 	}
@@ -97,10 +97,10 @@ export class PlayerService {
 			let playerItem = AVPlayerItem.playerItemWithURL(url);
 			this._player.removeAllItems();
 			this._player.insertItemAfterItem(playerItem, null);
-			this._nowPlaying$.next(this.currentSong);
+			this.notifyObservable();
 			this._player.play();
 
-
+			//NSNotificationCenter.defaultCenter.addObserverSelectorNameObject(this.commandCenter, 'playNextSong', AVPlayerItemDidPlayToEndTimeNotification, playerItem);
 			//set commands centers playing controls to Pause button since music is playing.
 			this.commandCenter.pauseCommand.enabled = true;
 
@@ -114,8 +114,13 @@ export class PlayerService {
 
 			MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = nowPlaying as any;
 
-
 		}
+	}
+
+	private notifyObservable() {
+		this.ngZone.run(() => {
+			this._nowPlaying$.next(this.currentSong);
+		});
 	}
 
 	private setupAudio() {
@@ -146,15 +151,15 @@ export class PlayerService {
 		this._player.addPeriodicTimeObserverForIntervalQueueUsingBlock(_interval, null, (currentTime) => {
 			let _seconds = CMTimeGetSeconds(currentTime);
 			const position = (_seconds / this.currentSong.song.duration) * 100;
-			const remainder = this.currentSong.song.duration - _seconds;
-			if (remainder > 0) {
+			const remainder = Math.floor(this.currentSong.song.duration - _seconds);
+			if (remainder >= 1) {
 				const mins = Math.floor(remainder / 60);
 				const secs = remainder - mins * 60;
 				this.currentSong.position = position;
 				this.currentSong.playing = PlayingStatus.playing;
 				this.currentSong.mins = mins;
 				this.currentSong.secs = secs;
-				this._nowPlaying$.next(this.currentSong);
+				this.notifyObservable();
 			} else {
 				this.playNextSong();
 			}
@@ -165,17 +170,18 @@ export class PlayerService {
 	pauseSong(): void {
 		this._player.pause();
 		this.currentSong.playing = PlayingStatus.paused;
-		this._nowPlaying$.next(this.currentSong);
+		this.notifyObservable();
 
 	}
 
 	resumeSong(): void {
 		this._player.play();
 		this.currentSong.playing = PlayingStatus.playing;
-		this._nowPlaying$.next(this.currentSong);
+		this.notifyObservable();
 	}
 
 	playNextSong() {
+		console.log('next song')
 		const nextIndex = (this.currentIndex + 1) >= this.songList.length ? 0 : (this.currentIndex + 1);
 		this.playSong(nextIndex);
 	}
@@ -246,6 +252,8 @@ class ControlsHandler extends NSObject {
 
 		owner.playPreviousSong();
 	}
+
+
 	public static ObjCExposedMethods = {
 		'pauseSong': { returns: interop.types.void },
 		'resumeSong': { returns: interop.types.void },
