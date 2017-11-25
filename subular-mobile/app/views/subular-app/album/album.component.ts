@@ -35,15 +35,15 @@ export class AlbumComponent implements OnInit {
 				});
 			}))
 			.switchMap(songs => this.songStore.addSongs(songs)).subscribe();
-
 		// 	.do(songs => this.listedSongs = songs);
 		// this.nowPlayingSong$ = this.playerService.nowPlaying$
 		// .filter(nowPlaying => !!nowPlaying && !!nowPlaying.song)
 		// .map(nowPlaying => nowPlaying.song);
 
-
 	}
-
+	playingSong() {
+		console.log('playingSong')
+	}
 	ngOnDestroy() {
 		//Called once, before the instance is destroyed.
 		//Add 'implements OnDestroy' to the class.
