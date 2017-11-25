@@ -90,7 +90,7 @@ export class PlayerService {
 			this.playHistory = [...this.playHistory, playingSong];
 			this.currentSong = { song: playingSong, playing: PlayingStatus.loading, position: 0, remainingTime: 0 };
 
-			const streamUrl = this.subularService.getHLSStream(playingSong.id);
+			const streamUrl = this.subularService.getStreamUrl(playingSong.id);
 			let url = NSURL.URLWithString(streamUrl);
 
 
