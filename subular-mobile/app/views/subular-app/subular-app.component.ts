@@ -18,7 +18,6 @@ import { GridLayout } from 'ui/layouts/grid-layout';
 export class SubularAppComponent extends SubularAppBaseComponent {
 	nowPlaying: IAudioPlayingInfo;
 	PlayingStatus = PlayingStatus;
-	@ViewChild('mainLayout') mainLayout: ElementRef
 
 	constructor(cachedData: SubsonicCachedService, route: ActivatedRoute, router: Router,
 		public subsonic: SubsonicService,

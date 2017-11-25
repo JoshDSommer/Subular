@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { IAlbum, SubsonicService, RouterResolverDataObservable, ISong, SongStoreService } from 'subular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 	moduleId: module.id,
 	selector: 'album',
 	templateUrl: './album.component.html',
-	styleUrls: ['./album.component.css']
+	styleUrls: ['./album.component.css'],
 })
 
 export class AlbumComponent implements OnInit {

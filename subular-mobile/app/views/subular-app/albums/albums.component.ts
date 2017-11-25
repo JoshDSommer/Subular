@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IAlbum, SubsonicService } from 'subular';
 import { RouterExtensions } from 'nativescript-angular/router';
@@ -7,14 +7,17 @@ import { RouterExtensions } from 'nativescript-angular/router';
 	moduleId: module.id,
 	selector: 'albums',
 	templateUrl: 'albums.component.html',
-	styleUrls: ['albums.component.css']
+	styleUrls: ['albums.component.css'],
 })
 
 export class AlbumsComponent implements OnInit {
 	albums: IAlbum[];
-	constructor(private route: ActivatedRoute, private router: Router, private nsRouter: RouterExtensions, public subular:SubsonicService) {
-
+	constructor(private route: ActivatedRoute,
+		private router: Router,
+		private nsRouter: RouterExtensions,
+		public subular: SubsonicService) {
 	}
+
 	back() {
 		this.nsRouter.back();
 	}
