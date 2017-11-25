@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ISong, SubsonicService } from 'subular';
 import { Observable } from 'rxjs/Observable';
-import { TNSPlayer } from 'nativescript-audio';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { ios } from 'utils/utils';
 
 export enum PlayingStatus {
 	loading,
@@ -20,15 +21,21 @@ export interface IAudioPlayingInfo {
 
 @Injectable()
 export class PlayerService {
+	commandCenter: MPRemoteCommandCenter;
+	controlsHandler: ControlsHandler;
 	songList: ISong[] = [];
 	playHistory: ISong[] = [];
-	nowPlaying$: Observable<IAudioPlayingInfo>;
-	private _player: TNSPlayer;
+	private _nowPlaying$ = new BehaviorSubject<IAudioPlayingInfo>(null);
+	get nowPlaying$(): Observable<IAudioPlayingInfo> {
+		return this._nowPlaying$.asObservable();
+	}
+	private _player: AVQueuePlayer;
 	private currentSong: IAudioPlayingInfo;
 	private currentIndex: number;
 
 
 	constructor(private subularService: SubsonicService) {
+
 		this.setupAudio();
 	}
 
@@ -83,67 +90,89 @@ export class PlayerService {
 			this.playHistory = [...this.playHistory, playingSong];
 			this.currentSong = { song: playingSong, playing: PlayingStatus.loading, position: 0, remainingTime: 0 };
 
-			const streamUrl = this.subularService.getStreamUrl(playingSong.id) + '&maxBitRate=128';
+			const streamUrl = this.subularService.getHLSStream(playingSong.id);
+			let url = NSURL.URLWithString(streamUrl);
 
-			if (this._player.isAudioPlaying()) {
-				console.log('another song playing')
-				this._player.pause().then();
-				this._player.dispose();
-			}
 
-			this._player.playFromUrl({
-				audioFile: streamUrl,
+			let playerItem = AVPlayerItem.playerItemWithURL(url);
+			this._player.removeAllItems();
+			this._player.insertItemAfterItem(playerItem, null);
+			this._nowPlaying$.next(this.currentSong);
+			this._player.play();
 
-				loop: false,
-			}).then(() => {
-				console.log('then done...')
-			});
+
+			//set commands centers playing controls to Pause button since music is playing.
+			this.commandCenter.pauseCommand.enabled = true;
+
+
+			// TODO set artwork
+			const values = ios.collections.jsArrayToNSArray([playingSong.title, playingSong.artist, playingSong.album]);
+			const keys = ios.collections.jsArrayToNSArray([MPMediaItemPropertyTitle, MPMediaItemPropertyArtist, MPMediaItemPropertyAlbumTitle])
+
+			const nowPlaying = NSDictionary
+				.dictionaryWithObjectsForKeys(values, keys);
+
+			MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = nowPlaying as any;
+
+
 		}
 	}
 
 	private setupAudio() {
-		this._player = new TNSPlayer();
+		this._player = AVQueuePlayer.alloc().init();
 
-		// const timeUpdate$ = Observable.fromEvent(this.audio, 'timeupdate')
-		// 	.map(() => {
-		// 		const remainder = this.audio.duration - this.audio.currentTime;
-		// 		const position = (this.audio.currentTime / this.audio.duration) * 100;
-		// 		const mins = Math.floor(remainder / 60);
-		// 		const secs = remainder - mins * 60;
-		// 		return {
-		// 			song: this.currentSong.song,
-		// 			playing: PlayingStatus.playing,
-		// 			remainingTime: remainder,
-		// 			position: position,
-		// 			mins,
-		// 			secs
-		// 		};
-		// 	});
-		// const trackPaused$ = Observable.fromEvent(this.audio, 'pause')
-		// 	.map(() => {
-		// 		return { ...this.currentSong, playing: PlayingStatus.paused };
-		// 	});
-		// const trackPlay$ = Observable.fromEvent(this.audio, 'play')
-		// 	.map(() => {
-		// 		return { ...this.currentSong, playing: PlayingStatus.playing };
-		// 	});
-		// const trackDone$ = Observable.fromEvent(this.audio, 'ended')
-		// 	.do(() => {
-		// 		if ((this.currentIndex + 1) < this.songList.length) {
-		// 			this.playSong(this.currentIndex + 1);
-		// 		}
-		// 	})
-		// 	.map(() => null);
+		//allows player controls and background audio.
+		UIApplication.sharedApplication.beginReceivingRemoteControlEvents();
 
-		// this.nowPlaying$ = Observable.merge(timeUpdate$, trackDone$, trackPaused$, trackPlay$);
+		AVAudioSession.sharedInstance().setCategoryWithOptionsError(AVAudioSessionCategoryPlayback, null);
+		AVAudioSession.sharedInstance().setActiveError(true);
+
+		// creates the controls handler to marshal commands between objective c and javascript
+		this.controlsHandler = ControlsHandler.initWithOwner(new WeakRef(this));
+
+		// sets the command center commands to use the controls handers events.
+		this.commandCenter = MPRemoteCommandCenter.sharedCommandCenter();
+		this.commandCenter.pauseCommand.enabled = true;
+		this.commandCenter.pauseCommand.addTargetAction(this.controlsHandler, 'pauseSong');
+		this.commandCenter.playCommand.enabled = true;
+		this.commandCenter.playCommand.addTargetAction(this.controlsHandler, 'resumeSong');
+		this.commandCenter.nextTrackCommand.enabled = true;
+		this.commandCenter.nextTrackCommand.addTargetAction(this.controlsHandler, 'playNextSong');
+		this.commandCenter.previousTrackCommand.enabled = true;
+		this.commandCenter.previousTrackCommand.addTargetAction(this.controlsHandler, 'playPreviousSong');
+
+		//TODO delegates to update time and when song is done playing
+		const _interval = CMTimeMake(1, 5);
+		this._player.addPeriodicTimeObserverForIntervalQueueUsingBlock(_interval, null, (currentTime) => {
+			let _seconds = CMTimeGetSeconds(currentTime);
+			const position = (_seconds / this.currentSong.song.duration) * 100;
+			const remainder = this.currentSong.song.duration - _seconds;
+			if (remainder > 0) {
+				const mins = Math.floor(remainder / 60);
+				const secs = remainder - mins * 60;
+				this.currentSong.position = position;
+				this.currentSong.playing = PlayingStatus.playing;
+				this.currentSong.mins = mins;
+				this.currentSong.secs = secs;
+				this._nowPlaying$.next(this.currentSong);
+			} else {
+				this.playNextSong();
+			}
+		});
+
 	}
 
 	pauseSong(): void {
 		this._player.pause();
+		this.currentSong.playing = PlayingStatus.paused;
+		this._nowPlaying$.next(this.currentSong);
+
 	}
 
 	resumeSong(): void {
 		this._player.play();
+		this.currentSong.playing = PlayingStatus.playing;
+		this._nowPlaying$.next(this.currentSong);
 	}
 
 	playNextSong() {
@@ -170,4 +199,58 @@ export class PlayerService {
 			return previousSong;
 		});
 	}
+}
+
+
+class ControlsHandler extends NSObject {
+	private _owner: WeakRef<PlayerService>;
+
+	public static initWithOwner(owner: WeakRef<PlayerService>): ControlsHandler {
+		let impl = <ControlsHandler>ControlsHandler.new();
+		impl._owner = owner;
+		return impl;
+	}
+
+	public pauseSong() {
+		let owner = this._owner.get();
+		if (!owner) {
+			return;
+		}
+
+		owner.pauseSong();
+	}
+
+	public resumeSong() {
+		let owner = this._owner.get();
+		if (!owner) {
+			return;
+		}
+
+		owner.resumeSong();
+	}
+
+	public playNextSong() {
+		let owner = this._owner.get();
+		if (!owner) {
+			return;
+		}
+
+		owner.playNextSong();
+	}
+
+	public playPreviousSong() {
+		let owner = this._owner.get();
+		if (!owner) {
+			return;
+		}
+
+		owner.playPreviousSong();
+	}
+	public static ObjCExposedMethods = {
+		'pauseSong': { returns: interop.types.void },
+		'resumeSong': { returns: interop.types.void },
+		'playNextSong': { returns: interop.types.void },
+		'playPreviousSong': { returns: interop.types.void }
+	};
+
 }
