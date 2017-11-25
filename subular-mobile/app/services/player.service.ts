@@ -100,11 +100,6 @@ export class PlayerService {
 			this.notifyObservable();
 			this._player.play();
 
-			//NSNotificationCenter.defaultCenter.addObserverSelectorNameObject(this.commandCenter, 'playNextSong', AVPlayerItemDidPlayToEndTimeNotification, playerItem);
-			//set commands centers playing controls to Pause button since music is playing.
-			this.commandCenter.pauseCommand.enabled = true;
-
-
 			// TODO set artwork
 			const values = ios.collections.jsArrayToNSArray([playingSong.title, playingSong.artist, playingSong.album]);
 			const keys = ios.collections.jsArrayToNSArray([MPMediaItemPropertyTitle, MPMediaItemPropertyArtist, MPMediaItemPropertyAlbumTitle])
@@ -156,9 +151,29 @@ export class PlayerService {
 				const mins = Math.floor(remainder / 60);
 				const secs = remainder - mins * 60;
 				this.currentSong.position = position;
-				this.currentSong.playing = PlayingStatus.playing;
+				// this is because this function is started to be called as soon as the play is playing.
+				// not nescarrily after loading.
+				if (this.currentSong.playing != PlayingStatus.paused) {
+					this.currentSong.playing = position > 0 ? PlayingStatus.playing : PlayingStatus.loading;
+				}
 				this.currentSong.mins = mins;
 				this.currentSong.secs = secs;
+				switch (this.currentSong.playing) {
+					case PlayingStatus.loading: {
+						this.commandCenter.playCommand.enabled = false;
+						this.commandCenter.pauseCommand.enabled = false;
+						break;
+					}
+					case PlayingStatus.paused: {
+						this.commandCenter.playCommand.enabled = true;
+
+						break;
+					}
+					case PlayingStatus.playing: {
+						this.commandCenter.pauseCommand.enabled = true;
+						break;
+					}
+				}
 				this.notifyObservable();
 			} else {
 				this.playNextSong();
