@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SongStoreService, ISong } from 'subular';
 import { Observable } from 'rxjs/Observable';
 import { PlayerService } from '../../services/player.service';
@@ -7,7 +7,8 @@ import { PlayerService } from '../../services/player.service';
 	moduleId: module.id,
 	selector: 'song-list',
 	templateUrl: './song-list.component.html',
-	styleUrls: ['./song-list.component.css']
+	styleUrls: ['./song-list.component.css'],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class SongListComponent implements OnInit {

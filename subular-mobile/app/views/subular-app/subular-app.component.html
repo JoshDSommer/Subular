@@ -2,15 +2,24 @@
 	<StackLayout tkDrawerContent class="sidedrawer-wrap">
 		<StackLayout class="sidedrawer-title">
 			<Label text="subular"></Label>
+			<Label [nsRouterLink]="['/app/artists']" text="Artists"></Label>
 		</StackLayout>
 		<StackLayout class="sidedrawer-content">
 		</StackLayout>
 	</StackLayout>
-	<StackLayout class="app-wrap" tkMainContent>
-		<Label text="subular" textWrap="true" class="subular" (tap)="this.drawer.showDrawer()"></Label>
-		<router-outlet *ngIf="artists$ | async else loading" class="router-outlet"></router-outlet>
-		<ng-template #loading>
-			<Label text="Loading..." textWrap="true"></Label>
-		</ng-template>
-	</StackLayout>
+	<DockLayout stretchLastChild="true" class="app-wrap" tkMainContent>
+		<GridLayout dock="bottom" *ngIf="nowPlaying$ | async as nowPlaying" height="25%" rows="*,*" columns="*,*,*">
+			<Label row="0" col="0" [text]="nowPlaying.position" textWrap="true"></Label>
+			<Label row="0" col="1" [text]="nowPlaying.song.title" textWrap="true"></Label>
+			<Label row="1" col="1" [text]="nowPlaying.song.artist" textWrap="true"></Label>
+		</GridLayout>
+		<StackLayout dock="top">
+			<Label text="subular" textWrap="true" class="subular" (tap)="this.drawer.showDrawer()"></Label>
+			<router-outlet *ngIf="artists$ | async else loading" class="router-outlet"></router-outlet>
+			<ng-template #loading>
+				<Label text="Loading..." textWrap="true"></Label>
+			</ng-template>
+		</StackLayout>
+	</DockLayout>
+
 </RadSideDrawer>

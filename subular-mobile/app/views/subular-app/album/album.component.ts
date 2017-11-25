@@ -25,11 +25,8 @@ export class AlbumComponent implements OnInit {
 		private songStore: SongStoreService) { }
 
 	ngOnInit() {
-		this.album$ = RouterResolverDataObservable<IAlbum>(this.route, this.router, 'album')
-			.do(album => {
-				// this.getCoverArt(songs[0].id);
-			});
-		// this.songs$ =
+		this.album$ = RouterResolverDataObservable<IAlbum>(this.route, this.router, 'album');
+				// this.songs$ =
 		this.songSubscription = this.album$.switchMap(album => this.subsonic.getSongs(album.id))
 			// this map is to filter out duplicates.
 			.map(songs => songs.filter((song, index, self) => {

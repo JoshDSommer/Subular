@@ -1,4 +1,4 @@
-<Label text="back" (tap)="back()"></Label>
+<Label text="Artists" [nsRouterLink]="['/app/artists']"></Label>
 <GridLayout tkExampleTitle tkToggleNavButton>
 	<RadListView [items]="albums">
 		<ng-template tkListItemTemplate let-item="item">
