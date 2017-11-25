@@ -12,3 +12,13 @@
 .sidedrawer-wrap label{
 	color: #fff;
 }
+
+.navigation{
+	border-top-width: 0.25;
+	border-top-color:#222222;
+}
+.navigation-option{
+	text-align: center;
+	font-weight: bold;
+	font-size: 18;
+}
