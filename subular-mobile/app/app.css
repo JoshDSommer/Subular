@@ -15,3 +15,17 @@ refer to http://docs.nativescript.org/ui/theme.
 Image{
 	border-radius: 2;
 }
+
+.fa{
+	font-family: 'FontAwesome', fontawesome-webfont;
+}
+
+.border-outline{
+	border-width: 0;
+}
+
+.debug{
+	border-color:red;
+	border-width: 1;
+
+}
