@@ -11,11 +11,11 @@
 		<Image row="0" col="0" width="70" height="70" [src]="getArtWork(nowPlaying?.song?.coverArt)"></Image>
 		<Label row="0" col="1" [text]="nowPlaying?.song?.title" textWrap="true"></Label>
 		<ng-container [ngSwitch]="nowPlaying?.playing">
-			<Label row="0" col="2" class="fa mini-player-button" [animate]="animateOptions" [text]="'&#xf021;'" *ngSwitchCase="PlayingStatus.loading"
+			<Label row="0" col="2" class="fa mini-player-button" [animate]="animateOptions" text="&#xf021;" *ngSwitchCase="PlayingStatus.loading"
 			 textWrap="true"></Label>
-			<Label row="0" col="2" class="fa mini-player-button" [text]="'&#xf04b;'" (tap)="play()" *ngSwitchCase="PlayingStatus.paused"
+			<Label row="0" col="2" class="fa mini-player-button" text="&#xf04b;" (tap)="play()" *ngSwitchCase="PlayingStatus.paused"
 			 textWrap="true"></Label>
-			<Label row="0" col="2" class="fa mini-player-button" [text]="'&#xf04c;'" (tap)="pause()" *ngSwitchCase="PlayingStatus.playing"
+			<Label row="0" col="2" class="fa mini-player-button" text="&#xf04c;" (tap)="pause()" *ngSwitchCase="PlayingStatus.playing"
 			 textWrap="true"></Label>
 		</ng-container>
 	</GridLayout>
