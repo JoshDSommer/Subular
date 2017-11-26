@@ -86,6 +86,10 @@ export class ArtistListComponent implements OnInit {
 	}
 
 	cacheIndex(index) {
+		index = index - 5;
+		if (index < 0) {
+			index = 0;
+		}
 		setNumber(ARTIST_LIST_CACHE_KEY, index);
 	}
 }
