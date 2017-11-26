@@ -5,10 +5,10 @@
 	<ScrollView>
 
 		<WrapLayout orientation="horizontal">
-			<StackLayout *ngFor="let item of albums" width="49%" orientation="vertical" [nsRouterLink]="['../../album', item.id ]">
-				<Image width="200" height="200" [src]="getCoverArt(item.coverArt)"></Image>
-				<FrescoDrawee *tkIfAndroid horizontalAlignment="stretch" width="200" height="200" [imageUri]="item.image" verticalAlignment="top"></FrescoDrawee>
-				<Label class="nameLabel" [text]="item.name" textWrap="true"></Label>
+			<StackLayout *ngFor="let item of albums" class="album-card" orientation="vertical" [nsRouterLink]="['../../album', item.id ]">
+				<Image class="album-image" [src]="getCoverArt(item.coverArt)"></Image>
+				<!-- <FrescoDrawee class="artist-image" *tkIfAndroid horizontalAlignment="stretch"  [imageUri]="item.image" verticalAlignment="top"></FrescoDrawee> -->
+				<Label class="album-name" [text]="item.name"></Label>
 			</StackLayout>
 		</WrapLayout>
 	</ScrollView>

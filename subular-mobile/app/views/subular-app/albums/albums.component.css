@@ -1,12 +1,17 @@
-.albums {
-
-}
-
 .artist-name{
 	text-align: center;
 	font-weight: bold;
 	font-size: 18;
 }
-.offset-for-slide{
-	transform: translateX(300);
+.album-card{
+	width: 49%;
+	padding-bottom: 35%;
+}
+.album-image{
+	width: 80%;
+	border-width: 1;
+	border-color: rgb(228, 227, 227);
+}
+.album-name{
+	width: 80%
 }
