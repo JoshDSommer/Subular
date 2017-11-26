@@ -34,3 +34,7 @@ Image{
 	font-size: 18;
 	margin: 10 20;
 }
+
+.offset-for-slide{
+	transform: translateX(300);
+}

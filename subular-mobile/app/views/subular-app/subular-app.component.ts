@@ -5,7 +5,7 @@ import { SubularAppBaseComponent, SubsonicCachedService, SubsonicService } from 
 import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { RadSideDrawerComponent } from "nativescript-pro-ui/sidedrawer/angular";
 import { PlayerService, IAudioPlayingInfo, PlayingStatus } from '../../services/player.service';
-import { GridLayout } from 'ui/layouts/grid-layout';
+import { SPIN_ANIMATION } from '../../animations/animations';
 
 @Component({
 	moduleId: module.id,
@@ -17,6 +17,8 @@ import { GridLayout } from 'ui/layouts/grid-layout';
 export class SubularAppComponent extends SubularAppBaseComponent {
 	nowPlaying: IAudioPlayingInfo;
 	PlayingStatus = PlayingStatus;
+
+	animateOptions = SPIN_ANIMATION;
 
 	constructor(cachedData: SubsonicCachedService, route: ActivatedRoute, router: Router,
 		public subsonic: SubsonicService,

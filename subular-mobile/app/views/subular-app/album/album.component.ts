@@ -3,6 +3,7 @@ import { IAlbum, SubsonicService, RouterResolverDataObservable, ISong, SongStore
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs';
+import { SLIDE_RIGHT_ANIMATION } from '../../../animations/animations';
 
 @Component({
 	moduleId: module.id,
@@ -17,6 +18,8 @@ export class AlbumComponent implements OnInit {
 	listedSongs: {};
 	album$: Observable<IAlbum>;
 	albums: IAlbum;
+
+	animateOptions = SLIDE_RIGHT_ANIMATION
 
 	constructor(private route: ActivatedRoute,
 		private router: Router,

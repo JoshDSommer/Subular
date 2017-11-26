@@ -24,6 +24,7 @@ import * as frescoModule from "nativescript-fresco";
 import { AlbumComponent } from './views/subular-app/album/album.component';
 import { SongListComponent } from './components/song-list/song-list.component';
 import { PlayerService } from './services/player.service';
+import { AnimateDirective } from './directives/animate.directive';
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
         frescoModule.initialize();
@@ -46,7 +47,8 @@ if (applicationModule.android) {
     declarations: [
         AppComponent,
         AlbumsComponent,
-		ArtistListComponent,
+        ArtistListComponent,
+        AnimateDirective,
 		LoginComponent,
 		SubularAppComponent,
         AlbumComponent,

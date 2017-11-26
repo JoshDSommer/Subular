@@ -27,4 +27,15 @@
 	color:#222222;
 	font-weight: bold;
 	font-size: 28;
+	text-align: center;
+}
+
+.loading-text{
+	font-size: 28;
+	text-align: center;
+	margin-top: 5%;
+	color:#222222;
+}
+.loading-image{
+	margin-top: 25%;
 }
