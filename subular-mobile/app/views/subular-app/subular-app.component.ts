@@ -18,8 +18,8 @@ import { ARTIST_LIST_CACHE_KEY } from '../subular-app/artist-list/artist-list.co
 })
 export class SubularAppComponent extends SubularAppBaseComponent {
 	nowPlaying: IAudioPlayingInfo;
-	PlayingStatus = PlayingStatus;
 
+	PlayingStatus = PlayingStatus;
 	animateOptions = SPIN_ANIMATION;
 
 	constructor(cachedData: SubsonicCachedService, route: ActivatedRoute, router: Router,
