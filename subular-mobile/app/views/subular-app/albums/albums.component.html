@@ -1,13 +1,12 @@
 <Label text="< Artists" class="back-link" [nsRouterLink]="['/app/artists']"></Label>
-<GridLayout tkExampleTitle tkToggleNavButton>
-	<RadListView [items]="albums">
-		<ng-template tkListItemTemplate let-item="item">
-			<StackLayout orientation="vertical" [nsRouterLink]="['../../album', item.id ]" >
+<StackLayout>
+	<ScrollView>
+		<WrapLayout orientation="horizontal">
+			<StackLayout *ngFor="let item of albums" width="49%" orientation="vertical" [nsRouterLink]="['../../album', item.id ]">
 				<Image width="200" height="200" [src]="subular.subsonicGetCoverUrl(item.coverArt)"></Image>
 				<FrescoDrawee *tkIfAndroid horizontalAlignment="stretch" width="200" height="200" [imageUri]="item.image" verticalAlignment="top"></FrescoDrawee>
-				<Label class="nameLabel" [text]="item.title" textWrap="true"></Label>
+				<Label class="nameLabel" [text]="item.name" textWrap="true"></Label>
 			</StackLayout>
-		</ng-template>
-		<ListViewGridLayout tkListViewLayout scrollDirection="Vertical" ios:itemHeight="200" spanCount="2"></ListViewGridLayout>
-	</RadListView>
-</GridLayout>
+		</WrapLayout>
+	</ScrollView>
+</StackLayout>
