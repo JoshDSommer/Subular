@@ -1,3 +1,6 @@
+.song-list-wrap, .list-group{
+	height: 100%;
+}
 .song-list-item{
 	padding: 15;
 }
@@ -6,7 +9,6 @@
 	font-size: 18px;
 
 }
-
 .letter-wrap{
 	margin-top: 130;
 	font-size: 13px;

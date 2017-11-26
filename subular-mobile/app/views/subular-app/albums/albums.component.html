@@ -1,6 +1,7 @@
 <StackLayout [animate]="animateOptions" class="offset-for-slide">
 	<Label text="< Artists" class="back-link" [nsRouterLink]="['/app/artists']"></Label>
 	<Label [text]="albums[0].artist" class="artist-name" textWrap="true"></Label>
+	<!-- <Label [text]="albums.length + ' albums'" class="" textWrap="true"></Label> -->
 	<ScrollView>
 
 		<WrapLayout orientation="horizontal">

@@ -1,4 +1,4 @@
-<StackLayout>
+<StackLayout class="song-list-wrap">
 	<ListView #songList [items]="songs$ | async" class="list-group">
 		<ng-template let-item="item" let-odd="odd" let-even="even">
 			<GridLayout rows="*" columns="*" class="song-list-item" (tap)="selectSong(item)" >
