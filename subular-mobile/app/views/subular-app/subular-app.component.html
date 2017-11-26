@@ -1,6 +1,6 @@
 <GridLayout #mainLayout rows="*,auto,60" , columns="*" stretchLastChild="true" class="app-wrap">
 	<GridLayout row="2" col="0" rows="*" columns="*,*,*,*" height="60" class="navigation">
-		<Label row="0" col="0" [nsRouterLink]="['/app/artists']" width="100%" horizontalAlign="center" verticalAlignment="center"
+		<Label row="0" col="0" [nsRouterLink]="['/app/artists']" (tap)="clearArtistKeyCache()" width="100%" horizontalAlign="center" verticalAlignment="center"
 		 class="fa navigation-option" [text]="'Artists'"></Label>
 		<Label row="0" col="1" [nsRouterLink]="['/app/artists']" width="100%" horizontalAlign="center" verticalAlignment="center"
 		 class="fa navigation-option" [text]="'Playlists'"></Label>

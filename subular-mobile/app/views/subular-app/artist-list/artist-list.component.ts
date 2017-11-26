@@ -6,6 +6,9 @@ import { Label } from 'ui/label';
 import { StackLayout } from 'ui/layouts/stack-layout';
 import { TouchGestureEventData, PanGestureEventData, TouchAction } from 'ui/gestures';
 import { layout } from 'utils/utils';
+import { getNumber, setNumber } from 'application-settings';
+
+export const ARTIST_LIST_CACHE_KEY = 'artist-list-cached-index';
 
 @Component({
 	moduleId: module.id,
@@ -15,6 +18,7 @@ import { layout } from 'utils/utils';
 })
 
 export class ArtistListComponent implements OnInit {
+	cachedIndex: any;
 	@ViewChild('artistList') _artistListView: ElementRef;
 	artists$: Observable<IArtist[]>;
 	alphabet = 'abcdefghijklmnopqrstuvwxyz#'.split('');
@@ -32,7 +36,11 @@ export class ArtistListComponent implements OnInit {
 		this.artists$ = this.cachedData.getCachedData()
 			.map(([artists, albums]) => artists)
 			.do(artists => this.artists = artists);
+	}
 
+	ngAfterViewInit() {
+		const jumpToIndex = getNumber(ARTIST_LIST_CACHE_KEY, 0);
+		this.artistListView.scrollToIndex(jumpToIndex);
 	}
 
 	previousCharacterToJumpTo: string;
@@ -75,5 +83,9 @@ export class ArtistListComponent implements OnInit {
 			this.artistListView.scrollToIndex(itemToScrollToIndex);
 		}
 
+	}
+
+	cacheIndex(index) {
+		setNumber(ARTIST_LIST_CACHE_KEY, index);
 	}
 }
