@@ -8,9 +8,9 @@
 		<Image row="0" col="0" width="70" height="70" [src]="getArtWork(nowPlaying?.song?.coverArt)"></Image>
 		<Label row="0" col="1" [text]="nowPlaying?.song?.title" textWrap="true"></Label>
 		<ng-container [ngSwitch]="nowPlaying?.playing">
-			<Label row="0" col="2" text="loading" *ngSwitchCase="PlayingStatus.loading" textWrap="true"></Label>
-			<Label row="0" col="2" text="paused" (tap)="play()" *ngSwitchCase="PlayingStatus.paused" textWrap="true"></Label>
-			<Label row="0" col="2" text="playing" (tap)="pause()" *ngSwitchCase="PlayingStatus.playing" textWrap="true"></Label>
+			<Label row="0" col="2" class="fa mini-player-button" [text]="'&#xf021;'" *ngSwitchCase="PlayingStatus.loading" textWrap="true"></Label>
+			<Label row="0" col="2" class="fa mini-player-button" [text]="'&#xf04b;'" (tap)="play()" *ngSwitchCase="PlayingStatus.paused" textWrap="true"></Label>
+			<Label row="0" col="2" class="fa mini-player-button" [text]="'&#xf04c;'" (tap)="pause()" *ngSwitchCase="PlayingStatus.playing" textWrap="true"></Label>
 		</ng-container>
 	</GridLayout>
 	<StackLayout row="0" col="0" class="border-outline">

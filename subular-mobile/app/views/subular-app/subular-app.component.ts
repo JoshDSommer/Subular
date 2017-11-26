@@ -14,7 +14,6 @@ import { GridLayout } from 'ui/layouts/grid-layout';
 	styleUrls: ['subular-app.component.css'],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-
 export class SubularAppComponent extends SubularAppBaseComponent {
 	nowPlaying: IAudioPlayingInfo;
 	PlayingStatus = PlayingStatus;
