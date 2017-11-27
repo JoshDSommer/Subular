@@ -25,6 +25,7 @@ import { AlbumComponent } from './views/subular-app/album/album.component';
 import { SongListComponent } from './components/song-list/song-list.component';
 import { PlayerService } from './services/player.service';
 import { AnimateDirective } from './directives/animate.directive';
+import { SlideBackDirective } from './directives/slideBack.directive';
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
         frescoModule.initialize();
@@ -52,7 +53,8 @@ if (applicationModule.android) {
 		LoginComponent,
 		SubularAppComponent,
         AlbumComponent,
-        SongListComponent
+        SongListComponent,
+        SlideBackDirective,
     ],
     providers: [
         LOCALSTORAGE_SERVICE,
