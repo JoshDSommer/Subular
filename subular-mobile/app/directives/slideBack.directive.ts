@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, NgZone } from '@angular/core';
-import { View } from 'tns-core-modules/ui/core/view/view';
-import { PanGestureEventData, TouchGestureEventData, TouchAction, GestureStateTypes } from 'tns-core-modules/ui/gestures/gestures';
+import { View } from 'ui/core/view';
+import { PanGestureEventData, TouchGestureEventData, TouchAction, GestureStateTypes } from 'ui/gestures';
 import { screen } from 'platform';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { Router } from '@angular/router';
@@ -13,12 +13,12 @@ export class SlideBackDirective {
 	startX: number;
 
 	get view(): View {
-		return this._el.nativeElement;
+		return this.element.nativeElement;
 	}
 
 	private currentDeltaX = 0;
 
-	constructor(private _el: ElementRef, private nsRouter: RouterExtensions, private zone: NgZone
+	constructor(private element: ElementRef, private nsRouter: RouterExtensions, private zone: NgZone
 	) { }
 
 	ngAfterViewInit() {
@@ -37,7 +37,7 @@ export class SlideBackDirective {
 		});
 	}
 
-	public onPan(args: PanGestureEventData) {
+	private onPan(args: PanGestureEventData) {
 		// if the start position is not on the left hand side of the screen exit function
 		if (this.startX > 20) {
 			return;
@@ -87,20 +87,11 @@ export class SlideBackDirective {
 		}
 
 	}
-	ngOnDestroy() {
-		//Called once, before the instance is destroyed.
-		//Add 'implements OnDestroy' to the class.
-		this.view.off('pan');
-		this.view.off('touch');
-	}
 
 	private disableScroll() {
 		if (this.view instanceof ScrollView || this.view instanceof ListView) {
 			if (this.view.ios) {
 				this.view.ios.scrollEnabled = false;
-			}
-			if (this.view.android) {
-				this.view.android.requestDisallowInterceptTouchEvent(true)
 			}
 		}
 	}
@@ -110,11 +101,13 @@ export class SlideBackDirective {
 			if (this.view.ios) {
 				this.view.ios.scrollEnabled = true;
 			}
-			if (this.view.android) {
-
-				this.view.android.requestDisallowInterceptTouchEvent(false)
-			}
 		}
 	}
 
+	ngOnDestroy() {
+		//Called once, before the instance is destroyed.
+		//Add 'implements OnDestroy' to the class.
+		this.view.off('pan');
+		this.view.off('touch');
+	}
 }
