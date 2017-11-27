@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { PlayerService } from '../../../services/player.service';
 import { MenuItem } from 'primeng/primeng';
 import { HostBinding } from '@angular/core';
-import { SongStoreService } from '../../../services/song-store.service';
+import { SongStoreService } from '../../../../subular-shared';
 
 @Component({
 	selector: 'album',
@@ -47,6 +47,7 @@ export class AlbumComponent implements OnInit {
 			})
 			.switchMap(songs => this.songStore.addSongs(songs))
 			.do(songs => this.listedSongs = songs);
+
 		this.nowPlayingSong$ = this.playerService.nowPlaying$
 			.filter(nowPlaying => !!nowPlaying && !!nowPlaying.song)
 			.map(nowPlaying => nowPlaying.song);

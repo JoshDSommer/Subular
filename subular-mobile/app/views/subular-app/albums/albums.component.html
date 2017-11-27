@@ -1,13 +1,14 @@
-<Label text="back" (tap)="back()"></Label>
-<GridLayout tkExampleTitle tkToggleNavButton>
-	<RadListView [items]="albums">
-		<ng-template tkListItemTemplate let-item="item">
-			<StackLayout orientation="vertical" >
-				<Image width="200" height="200" [src]="subular.subsonicGetCoverUrl(item.id)"></Image>
-				<FrescoDrawee *tkIfAndroid horizontalAlignment="stretch" width="200" height="200" [imageUri]="item.image" verticalAlignment="top"></FrescoDrawee>
-				<Label class="nameLabel" [text]="item.title" textWrap="true"></Label>
+<StackLayout [animate]="animateOptions" class="offset-for-slide">
+	<Label text="< Artists" class="back-link" [nsRouterLink]="['/app/artists']"></Label>
+	<Label [text]="albums[0].artist" class="artist-name" textWrap="true"></Label>
+	<!-- <Label [text]="albums.length + ' albums'" class="" textWrap="true"></Label> -->
+	<ScrollView [slideBack]="['/app/artists']" class="" height="100%">
+		<WrapLayout orientation="horizontal">
+			<StackLayout *ngFor="let item of albums" class="album-card" orientation="vertical" [nsRouterLink]="['../../album', item.id ]">
+				<Image class="album-image" [src]="getCoverArt(item.coverArt)"></Image>
+				<!-- <FrescoDrawee class="artist-image" *tkIfAndroid horizontalAlignment="stretch"  [imageUri]="item.image" verticalAlignment="top"></FrescoDrawee> -->
+				<Label class="album-name" [text]="item.name"></Label>
 			</StackLayout>
-		</ng-template>
-		<ListViewGridLayout tkListViewLayout scrollDirection="Vertical" ios:itemHeight="200" spanCount="2"></ListViewGridLayout>
-	</RadListView>
-</GridLayout>
+		</WrapLayout>
+	</ScrollView>
+</StackLayout>

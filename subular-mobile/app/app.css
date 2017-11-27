@@ -10,3 +10,31 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 @import 'nativescript-theme-core/css/core.light.css';
+
+
+Image{
+	border-radius: 2;
+}
+
+.fa{
+	font-family: 'FontAwesome', fontawesome-webfont;
+}
+
+.border-outline{
+	border-width: 0;
+}
+
+.debug{
+	border-color:red;
+	border-width: 1;
+
+}
+
+.back-link{
+	font-size: 18;
+	margin: 10 20;
+}
+
+.offset-for-slide{
+	transform: translateX(300);
+}

@@ -6,6 +6,9 @@ import { Label } from 'ui/label';
 import { StackLayout } from 'ui/layouts/stack-layout';
 import { TouchGestureEventData, PanGestureEventData, TouchAction } from 'ui/gestures';
 import { layout } from 'utils/utils';
+import { getNumber, setNumber } from 'application-settings';
+
+export const ARTIST_LIST_CACHE_KEY = 'artist-list-cached-index';
 
 @Component({
 	moduleId: module.id,
@@ -15,6 +18,7 @@ import { layout } from 'utils/utils';
 })
 
 export class ArtistListComponent implements OnInit {
+	cachedIndex: any;
 	@ViewChild('artistList') _artistListView: ElementRef;
 	artists$: Observable<IArtist[]>;
 	alphabet = 'abcdefghijklmnopqrstuvwxyz#'.split('');
@@ -32,7 +36,11 @@ export class ArtistListComponent implements OnInit {
 		this.artists$ = this.cachedData.getCachedData()
 			.map(([artists, albums]) => artists)
 			.do(artists => this.artists = artists);
+	}
 
+	ngAfterViewInit() {
+		const jumpToIndex = getNumber(ARTIST_LIST_CACHE_KEY, 0);
+		this.artistListView.scrollToIndex(jumpToIndex);
 	}
 
 	previousCharacterToJumpTo: string;
@@ -65,11 +73,23 @@ export class ArtistListComponent implements OnInit {
 			this.artistListView.scrollToIndex(0);
 			return;
 		}
-		const firstArtistThatStartsWith = this.artists.find(artist => artist.name.toLowerCase().replace('the', '').startsWith(char));
+		const firstArtistThatStartsWith = this.artists.find(artist => artist.name.toLowerCase()
+			.replace('the', '')
+			.replace('los', '')
+			.trim()
+			.startsWith(char));
 		const itemToScrollToIndex = this.artists.indexOf(firstArtistThatStartsWith);
 		if (firstArtistThatStartsWith && itemToScrollToIndex) {
 			this.artistListView.scrollToIndex(itemToScrollToIndex);
 		}
 
+	}
+
+	cacheIndex(index) {
+		index = index - 5;
+		if (index < 0) {
+			index = 0;
+		}
+		setNumber(ARTIST_LIST_CACHE_KEY, index);
 	}
 }

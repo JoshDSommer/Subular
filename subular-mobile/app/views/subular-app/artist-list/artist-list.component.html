@@ -1,7 +1,7 @@
 <GridLayout rows="*" columns="*,18">
 	<ListView #artistList [items]="artists$ | async" class="list-group">
-		<ng-template let-item="item" let-odd="odd" let-even="even">
-			<GridLayout rows="*" columns="*" [nsRouterLink]="['../albums', item.id ]" class="artist-list-item">
+		<ng-template let-item="item" let-odd="odd" let-even="even" let-i="index">
+			<GridLayout rows="*" columns="*" [nsRouterLink]="['../albums', item.id ]" (tap)="cacheIndex(i)" class="artist-list-item">
 				<Label row="0" , col="0" [text]="item.name" class="artist"></Label>
 			</GridLayout>
 		</ng-template>

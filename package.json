@@ -13,7 +13,10 @@
     "ios": "npm run prepare.shared.mobile && cd subular-mobile && tns run ios",
     "ios.webpack": "npm run prepare.shared.mobile && cd subular-mobile && npm run start-ios-bundle",
     "prepare.shared": "./node_modules/.bin/ngc --p tsconfig.json && cd subular-shared-dist && npm i",
-    "setup": "cd subular-web && npm i"
+    "setup": "cd subular-web && npm i",
+    "clean.mobile": "rm -rf subular-mobile/node_modules/ subular-mobile/platforms/",
+    "clean.dist": "cd subular-shared-dist && find . \\! -name 'package.json' -delete",
+    "clean.web": "rm -rf subular-web/node_modules"
   },
   "author": "",
   "license": "ISC",

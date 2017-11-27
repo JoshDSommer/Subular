@@ -1,0 +1,8 @@
+.album {
+	height: 100%;
+}
+.album-name{
+	text-align: center;
+	font-weight: bold;
+	font-size: 18;
+}

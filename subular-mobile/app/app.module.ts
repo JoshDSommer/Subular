@@ -21,6 +21,11 @@ import { AlbumsComponent } from './views/subular-app/albums/albums.component';
 
 import * as applicationModule from "tns-core-modules/application";
 import * as frescoModule from "nativescript-fresco";
+import { AlbumComponent } from './views/subular-app/album/album.component';
+import { SongListComponent } from './components/song-list/song-list.component';
+import { PlayerService } from './services/player.service';
+import { AnimateDirective } from './directives/animate.directive';
+import { SlideBackDirective } from './directives/slideBack.directive';
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
         frescoModule.initialize();
@@ -44,12 +49,17 @@ if (applicationModule.android) {
         AppComponent,
         AlbumsComponent,
         ArtistListComponent,
-        LoginComponent,
-        SubularAppComponent
+        AnimateDirective,
+		LoginComponent,
+		SubularAppComponent,
+        AlbumComponent,
+        SongListComponent,
+        SlideBackDirective,
     ],
     providers: [
         LOCALSTORAGE_SERVICE,
-        MD5_SERVICE
+        MD5_SERVICE,
+        PlayerService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

@@ -19,6 +19,11 @@ export class SubsonicService {
 		return `${this.authentication.getServerURl('stream')}&id=${id}`;
 	}
 
+	getHLSStream(id: number) {
+
+		return `${this.authentication.getHLSURl(id)}`;
+	}
+
 	getSongs(albumId: number): Observable<ISong[]> {
 		return this.subsonicGet('getAlbum', `&id=${albumId}`)
 			.map(data => data.subresp.album.song)

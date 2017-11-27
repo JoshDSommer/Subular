@@ -32,6 +32,15 @@ export class SubsonicAuthenticationService {
 		return '';
 	}
 
+	getHLSURl(id: number) {
+		const serverInfo = this.getExistingInfoFromCache();
+		if (serverInfo) {
+			return serverInfo.server + '/rest/hls.m3u8?u=' + serverInfo.username + '&t=' + serverInfo.password + '&s='
+			+ serverInfo.salt + '&v=1.0.0&c=rest&f=json&id=' + id;
+		}
+		return '';
+	}
+
 	private makeSalt(): string {
 		let text = '';
 		let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
