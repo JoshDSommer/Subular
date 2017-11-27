@@ -7,8 +7,8 @@
 		<Label row="0" col="2" [nsRouterLink]="['/app/artists']" width="100%" horizontalAlign="center" verticalAlignment="center"
 		 class="fa navigation-option" [text]="'Albums'"></Label>
 	</GridLayout>
-	<GridLayout row="1" col="0" backgroundColor="#dbd3de" *ngIf="nowPlaying" height="80" rows="*" columns="80,*,80">
-		<Image row="0" col="0" width="70" height="70" [src]="getArtWork(nowPlaying?.song?.coverArt)"></Image>
+	<GridLayout row="1" col="0" backgroundColor="#dbd3de" *ngIf="nowPlaying" height="70" rows="*" columns="80,*,80">
+		<Image row="0" col="0" width="60" height="60" [src]="getArtWork(nowPlaying?.song?.coverArt)"></Image>
 		<Label row="0" col="1" [text]="nowPlaying?.song?.title" textWrap="true"></Label>
 		<ng-container [ngSwitch]="nowPlaying?.playing">
 			<Label row="0" col="2" class="fa mini-player-button" [animate]="animateOptions" text="&#xf1ce;" *ngSwitchCase="PlayingStatus.loading"

@@ -2,7 +2,7 @@
 	<Label text="< Artists" class="back-link" [nsRouterLink]="['/app/artists']"></Label>
 	<Label [text]="albums[0].artist" class="artist-name" textWrap="true"></Label>
 	<!-- <Label [text]="albums.length + ' albums'" class="" textWrap="true"></Label> -->
-	<ScrollView [slideBack]="['/app/artists']">
+	<ScrollView [slideBack]="['/app/artists']" class="" height="100%">
 		<WrapLayout orientation="horizontal">
 			<StackLayout *ngFor="let item of albums" class="album-card" orientation="vertical" [nsRouterLink]="['../../album', item.id ]">
 				<Image class="album-image" [src]="getCoverArt(item.coverArt)"></Image>
