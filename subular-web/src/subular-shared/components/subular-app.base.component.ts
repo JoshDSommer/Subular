@@ -8,16 +8,15 @@ import { IArtist } from '../interfaces/artists';
 	template:''
 })
 export class SubularAppBaseComponent implements OnInit {
-	artists$: Observable<IArtist[]>;
+	loaded$: Observable<boolean>;
 	artistId$: Observable<any>;
-	loaded: boolean;
 
 	constructor(private cachedData: SubsonicCachedService, private route: ActivatedRoute, private router: Router) {}
 
 	ngOnInit() {
-		this.artists$ = this.cachedData.getCachedData()
-			.map(([artists, albums]) => artists)
-			.do(() => this.loaded = true);
+		this.loaded$ = this.cachedData.getCachedData()
+			.map(([artists, albums]) => true);
+
 
 		if (this.route && this.route.firstChild && this.route.firstChild.snapshot  && this.route.firstChild.snapshot.params) {
 			this.artistId$ = Observable.of(this.route.firstChild.snapshot.params['artistId'])
