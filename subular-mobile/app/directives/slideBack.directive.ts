@@ -4,16 +4,20 @@ import { PanGestureEventData, TouchGestureEventData, TouchAction, GestureStateTy
 import { screen } from 'platform';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { Router } from '@angular/router';
+import { ListView } from 'ui/list-view';
+import { ScrollView } from 'ui/scroll-view';
 
 @Directive({ selector: '[slideBack]' })
 export class SlideBackDirective {
-	startX: number;
 	@Input() slideBack: any[];
-	private currentDeltaX = 0;
+	startX: number;
 
 	get view(): View {
 		return this._el.nativeElement;
 	}
+
+	private currentDeltaX = 0;
+
 	constructor(private _el: ElementRef, private nsRouter: RouterExtensions, private zone: NgZone
 	) { }
 
@@ -44,8 +48,12 @@ export class SlideBackDirective {
 			return
 		}
 		/// if sliding finger from left to right.
-		if (args.state === GestureStateTypes.changed && args.deltaX > 0) {
+		if (args.state === GestureStateTypes.changed && args.deltaX > 10) {
+			this.disableScroll();
 			item.translateX += args.deltaX - this.currentDeltaX;
+			if (item.translateX < 0) {
+				item.translateX = 0;
+			}
 			item.opacity = (100 - args.deltaX / 3) * 0.01;
 			this.currentDeltaX = args.deltaX;
 			//release of finger from slide.
@@ -73,6 +81,7 @@ export class SlideBackDirective {
 				// snap back.
 				item.translateX = 0;
 				item.opacity = 1;
+				this.enableScroll();
 			}
 			return;
 		}
@@ -84,4 +93,28 @@ export class SlideBackDirective {
 		this.view.off('pan');
 		this.view.off('touch');
 	}
+
+	private disableScroll() {
+		if (this.view instanceof ScrollView || this.view instanceof ListView) {
+			if (this.view.ios) {
+				this.view.ios.scrollEnabled = false;
+			}
+			if (this.view.android) {
+				this.view.android.requestDisallowInterceptTouchEvent(true)
+			}
+		}
+	}
+
+	private enableScroll() {
+		if (this.view instanceof ScrollView || this.view instanceof ListView) {
+			if (this.view.ios) {
+				this.view.ios.scrollEnabled = true;
+			}
+			if (this.view.android) {
+
+				this.view.android.requestDisallowInterceptTouchEvent(false)
+			}
+		}
+	}
+
 }
