@@ -6,7 +6,7 @@ import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { RadSideDrawerComponent } from "nativescript-pro-ui/sidedrawer/angular";
 import { PlayerService, IAudioPlayingInfo, PlayingStatus } from '../../services/player.service';
 import { SPIN_ANIMATION } from '../../animations/animations';
-import { setNumber } from 'application-settings/application-settings';
+import { setNumber } from 'application-settings';
 import { ARTIST_LIST_CACHE_KEY } from '../subular-app/artist-list/artist-list.component';
 
 @Component({
