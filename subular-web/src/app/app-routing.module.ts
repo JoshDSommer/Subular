@@ -7,6 +7,7 @@ import { SubsonicGuard } from '../subular-shared/subsonic.guard';
 import { AlbumsComponent } from './views/subular-app/albums/albums.component';
 import { AlbumsResolver, AlbumResolver } from '../subular-shared/resolvers';
 import { AlbumComponent } from './views/subular-app/album/album.component';
+import { ArtistListComponent } from './components/artist-list/artist-list.component';
 
 const routes: Routes = [
 	{
@@ -19,23 +20,28 @@ const routes: Routes = [
 		path: 'app',
 		component: SubularAppComponent,
 		children: [
-			{ path: '', redirectTo: 'random', pathMatch: 'full', canActivate: [SubsonicGuard] },
+			{
+				path: 'artists', component: ArtistListComponent, outlet: 'lists'
+			},
+			// { path: '', redirectTo: 'random', pathMatch: 'full', canActivate: [SubsonicGuard] },
 			{ path: 'random', component: RandomAlbumsComponent },
 			{
 				path: 'albums/:artistId', component: AlbumsComponent,
 				resolve: {
 					albums: AlbumsResolver
-				}
+				}, outlet: 'content'
 			},
 			{
 				path: 'album/:albumId', component: AlbumComponent,
 				resolve: {
 					album: AlbumResolver
-				}
+				}, outlet: 'content'
 			},
-			{ path: 'artist/:id', component: RandomAlbumsComponent },
-			{ path: 'playlists', component: RandomAlbumsComponent },
-			{ path: 'playlist/:id', component: RandomAlbumsComponent }
+			{ path: 'artist/:id', component: RandomAlbumsComponent, outlet: 'content' },
+
+
+			// { path: 'playlists', component: RandomAlbumsComponent },
+			// { path: 'playlist/:id', component: RandomAlbumsComponent }
 		]
 	},
 

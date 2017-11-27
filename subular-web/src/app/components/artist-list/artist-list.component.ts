@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, HostListener, ViewChild, ElementRef } from '@angular/core';
-import { IArtist } from '../../../subular-shared/index';
+import { IArtist, SubsonicCachedService } from '../../../subular-shared/index';
 
 
 @Component({
@@ -9,6 +9,7 @@ import { IArtist } from '../../../subular-shared/index';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArtistListComponent implements OnInit {
+	artists$: any;
 	@Input() selectedArtistId: number;
 	@Input() artists: IArtist[];
 	@ViewChild('artistList') artistListUL: ElementRef;
@@ -23,6 +24,7 @@ export class ArtistListComponent implements OnInit {
 	private searchValue = '';
 	private timeOut;
 
+	constructor(private cachedData: SubsonicCachedService) { }
 
 	searchArtistsWithDebounce(value) {
 		clearTimeout(this.timeOut);
@@ -51,6 +53,9 @@ export class ArtistListComponent implements OnInit {
 		);
 	}
 
-	ngOnInit() { }
+	ngOnInit() {
+		this.artists$ = this.cachedData.getCachedData()
+			.map(([artists, albums]) => artists);
+	}
 
 }

@@ -17,12 +17,18 @@ export class LoginComponent implements OnInit {
 		password: ["", Validators.required]
 	});
 
-	constructor(public formBuilder: FormBuilder, private subsonic: SubsonicService, private authentication: SubsonicAuthenticationService, private router: Router) { }
+	constructor(public formBuilder: FormBuilder, private subsonic: SubsonicService,
+		private authentication: SubsonicAuthenticationService, private router: Router) { }
 
 	ngOnInit() {
 		this.subsonic.pingServer().subscribe(authenticated => {
 			if (authenticated) {
-				this.router.navigate(['/app'])
+				const link = ['app', {
+					outlets: {
+						lists: ['artists']
+					}
+				}];
+				this.router.navigate(link);
 
 			}
 		});
