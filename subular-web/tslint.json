@@ -114,15 +114,6 @@
       "check-separator",
       "check-type"
     ],
-    "directive-selector": [
-      true,
-      "attribute",
-      "camelCase"
-    ],
-    "component-selector": [
-      true,
-      "element"
-    ],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
