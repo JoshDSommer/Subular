@@ -1,6 +1,6 @@
-<ul class="artist-list" #artistList>
-	<li *ngFor="let artist of artists$ | async" [class]="artist.id" [class.selected]="artist.id == selectedArtistId">
-		<a [routerLink]="['/app',{ outlets:{ lists: ['artists'], content: ['albums', artist.id ]}}]">
+<ul [jumpTo]="artists$ | async" (selected)="artist = $event" class="artist-list">
+	<li *ngFor="let artist of artists$ | async" [class]="artist.id">
+		<a [routerLink]="['/app',{ outlets:{ lists: ['artists'], content: ['albums', artist.id ]}}]" >
 			{{ artist.name }}
 		</a>
 	</li>
