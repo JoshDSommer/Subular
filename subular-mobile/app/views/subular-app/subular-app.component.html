@@ -20,7 +20,7 @@
 		</ng-container>
 	</GridLayout>
 	<StackLayout row="0" col="0" class="border-outline">
-		<router-outlet *ngIf="artists$ | async else loading" class="router-outlet"></router-outlet>
+		<router-outlet *ngIf="loaded$ | async else loading" class="router-outlet"></router-outlet>
 		<ng-template #loading>
 			<Label class="loading-text" text="Loading..." textWrap="true"></Label>
 			<Image class="loading-image" [animate]="animateOptions" src="~/images/record.png" width="50"></Image>
