@@ -3,7 +3,6 @@ import { RouterResolverDataObservable, IAlbum, SubsonicService, ISong } from '..
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PlayerService } from '../../../services/player.service';
-import { MenuItem } from 'primeng/primeng';
 import { HostBinding } from '@angular/core';
 import { SongStoreService } from '../../../../subular-shared';
 
@@ -14,7 +13,6 @@ import { SongStoreService } from '../../../../subular-shared';
 })
 
 export class AlbumComponent implements OnInit {
-	contextMenuItems: MenuItem[];
 	nowPlayingSong$ = new Observable<ISong>();
 	songs$: Observable<ISong[]>;
 	album$: Observable<IAlbum>;
@@ -52,9 +50,7 @@ export class AlbumComponent implements OnInit {
 			.filter(nowPlaying => !!nowPlaying && !!nowPlaying.song)
 			.map(nowPlaying => nowPlaying.song);
 
-		this.contextMenuItems = [{
-			label: 'Coming soon...'
-		}];
+
 	}
 
 	selectSong($song: ISong) {

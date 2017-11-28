@@ -29,6 +29,7 @@ import { AlbumOptionsComponent } from './views/subular-app/album/album-options/a
 import { PlaylistListComponent } from './components/playlist-list/playlist-list.component';
 import { TypeAndJumpToDirective } from './directives/typeAndJumpTo.directive';
 import { PlaylistComponent } from './views/subular-app/playlist/playlist.component';
+import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 
 @NgModule({
 	declarations: [
@@ -49,6 +50,7 @@ import { PlaylistComponent } from './views/subular-app/playlist/playlist.compone
 		HeartComponent,
 		PlaylistListComponent,
 		PlaylistComponent,
+		ContextMenuComponent
 	],
 	imports: [
 		AppRoutingModule,
