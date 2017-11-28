@@ -14,8 +14,6 @@ export class SubularMobileService {
 
 	constructor(subsonic: SubsonicService, private cachedData: SubsonicCachedService) {
 		this.subsonicService = { subsonic, cachedData }
-
-		console.log(this.subsonicService)
 	}
 
 	getStreamUrl(id: number): string {
@@ -27,13 +25,13 @@ export class SubularMobileService {
 	}
 
 	subsonicGetCoverUrl(id: number): string {
-		return this.subsonicService.subsonic.getStreamUrl(id);
+		return this.subsonicService.subsonic.subsonicGetCoverUrl(id);
 	}
 	starSong(id: number) {
-		return this.starSong(id);
+		return this.subsonicService.subsonic.starSong(id);
 	}
 	unStarSong(id: number) {
-		return this.unStarSong(id);
+		return this.subsonicService.subsonic.unStarSong(id);
 	}
 	getArtists(): Observable<IArtist[]> {
 		return this.subsonicService.cachedData.getArtists();

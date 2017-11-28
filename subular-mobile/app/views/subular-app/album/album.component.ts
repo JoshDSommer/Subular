@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { IAlbum, SubsonicService, RouterResolverDataObservable, ISong, SongStoreService } from 'subular';
+import { IAlbum, RouterResolverDataObservable, ISong, SongStoreService } from 'subular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs';
 import { SLIDE_RIGHT_ANIMATION } from '../../../animations/animations';
 import { PlayerService } from '../../../services/player.service';
+import { SubularMobileService } from '../../../services/subularMobile.service';
 
 @Component({
 	moduleId: module.id,
@@ -24,14 +25,14 @@ export class AlbumComponent implements OnInit {
 
 	constructor(private route: ActivatedRoute,
 		private router: Router,
-		private subsonic: SubsonicService,
+		private subular: SubularMobileService,
 		private playerService: PlayerService,
 		private songStore: SongStoreService) { }
 
 	ngOnInit() {
 		this.album$ = RouterResolverDataObservable<IAlbum>(this.route, this.router, 'album');
 		// this.songs$ =
-		this.songs$ = this.album$.switchMap(album => this.subsonic.getSongs(album.id))
+		this.songs$ = this.album$.switchMap(album => this.subular.getSongs(album.id))
 			// this map is to filter out duplicates.
 			.map(songs => songs.filter((song, index, self) => {
 				return index === self.findIndex((previosSong) => {

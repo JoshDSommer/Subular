@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { IAlbum, SubsonicService } from 'subular';
+import { IAlbum } from 'subular';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { SLIDE_RIGHT_ANIMATION } from '../../../animations/animations';
+import { SubularMobileService } from '../../../services/subularMobile.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class AlbumsComponent implements OnInit {
 	constructor(private route: ActivatedRoute,
 		private router: Router,
 		private nsRouter: RouterExtensions,
-		public subular: SubsonicService) {
+		public subular: SubularMobileService) {
 	}
 
 	back() {
