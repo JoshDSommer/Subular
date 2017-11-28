@@ -1,0 +1,7 @@
+<ul class="artist-list" #artistList>
+	<li *ngFor="let artist of playlists$ | async" [class]="artist.id" [class.selected]="artist.id == selectedArtistId">
+		<a [routerLink]="['/app',{ outlets:{ lists: ['playlists'], content: ['albums', artist.id ]}}]">
+			{{ artist.name }}
+		</a>
+	</li>
+</ul>

@@ -3,6 +3,7 @@ import { SubsonicAuthenticationService } from './subsonic-authentication.service
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { ISong } from '../interfaces';
+import { IPlaylists } from '../interfaces/playlist';
 
 @Injectable()
 export class SubsonicService {
@@ -24,8 +25,8 @@ export class SubsonicService {
 		return `${this.authentication.getHLSURl(id)}`;
 	}
 
-	getPlaylists() {
-		return this.subsonicGet('getPlaylists');
+	getPlaylists(): Observable<IPlaylists> {
+		return this.subsonicGet('getPlaylists').map(data => data.subresp.playlists.playlist);
 	}
 
 	getPlaylist(id: number) {
