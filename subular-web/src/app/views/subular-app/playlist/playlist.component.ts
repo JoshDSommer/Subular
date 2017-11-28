@@ -44,6 +44,11 @@ export class PlaylistComponent implements OnInit {
 				.getPlaylist(playlistId))
 			.do(playlist => this.listedSongs = playlist.entry);
 
+
+		this.nowPlayingSong$ = this.playerService.nowPlaying$
+			.filter(nowPlaying => !!nowPlaying && !!nowPlaying.song)
+			.map(nowPlaying => nowPlaying.song);
+
 		this.contextMenuItems = [{
 			label: 'Coming soon...'
 		}];

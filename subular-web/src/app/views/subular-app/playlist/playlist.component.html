@@ -1,6 +1,6 @@
 <ng-container *ngIf="playlist$ | async as playlist">
 	<h1> {{ playlist.name }} </h1>
-	<p-dataTable [value]="playlist.entry" [selection]="playlist$ | async" dataKey="id" selectionMode="single" (onRowSelect)="selectSong($event.data)"
+	<p-dataTable [value]="playlist.entry" [selection]="nowPlayingSong$ | async" dataKey="id" selectionMode="single" (onRowSelect)="selectSong($event.data)"
 	 [contextMenu]="contextMenu">
 		<p-column field="track" [style]="{'width':'5%','text-align':'center'}" header="Track#"></p-column>
 		<p-column field="title" [style]="{'width':'50%','text-align':'left'}" header="Title"></p-column>

@@ -36,13 +36,13 @@
 	i.fa{
 		color: #222222;
 		line-height: 60px !important;
-		font-size: 64px ;
+		font-size: 54px ;
 	}
 	i.play-pause{
 		margin-right:20px;
 	}
 	div.ff-rw i, div.heart i, .fa-step-backward, .fa-step-forward{
-		font-size: 38px !important;
+		font-size: 24px !important;
 	}
 	i.fa:hover{
 		color:#9d9d9d;

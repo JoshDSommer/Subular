@@ -6,3 +6,8 @@ i{
 .fa-play-circle{
 	margin-right: 0.5em;
 }
+
+
+.fa:hover{
+	color:#a247e5;
+}
