@@ -8,6 +8,7 @@ import { AlbumsComponent } from './views/subular-app/albums/albums.component';
 import { AlbumsResolver, AlbumResolver } from '../subular-shared/resolvers';
 import { AlbumComponent } from './views/subular-app/album/album.component';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
+import { PlaylistListComponent } from './components/playlist-list/playlist-list.component';
 
 const routes: Routes = [
 	{
@@ -23,7 +24,7 @@ const routes: Routes = [
 			{
 				path: 'artists', component: ArtistListComponent, outlet: 'lists'
 			},
-			// { path: '', redirectTo: 'random', pathMatch: 'full', canActivate: [SubsonicGuard] },
+			{ path: 'playlists', component: PlaylistListComponent, outlet: 'lists' },
 			{ path: 'random', component: RandomAlbumsComponent },
 			{
 				path: 'albums/:artistId', component: AlbumsComponent,

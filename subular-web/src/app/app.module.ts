@@ -26,6 +26,8 @@ import { GutterComponent } from './components/player/gutter/gutter.component';
 import { TrackInfoComponent } from './components/player/track-info/track-info.component';
 import { HeartComponent } from './components/player/heart/heart.component';
 import { AlbumOptionsComponent } from './views/subular-app/album/album-options/album-options.component';
+import { PlaylistListComponent } from './components/playlist-list/playlist-list.component';
+import { TypeAndJumpToDirective } from './directives/typeAndJumpTo.directive';
 
 @NgModule({
 	declarations: [
@@ -37,12 +39,14 @@ import { AlbumOptionsComponent } from './views/subular-app/album/album-options/a
 		LoginComponent,
 		PlayerComponent,
 		RandomAlbumsComponent,
+		TypeAndJumpToDirective,
 		SubularBrandComponent,
 		SubularAppComponent,
 		GutterComponent,
 		TrackInfoComponent,
 		AlbumOptionsComponent,
-		HeartComponent
+		HeartComponent,
+		PlaylistListComponent,
 	],
 	imports: [
 		AppRoutingModule,

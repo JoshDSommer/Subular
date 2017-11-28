@@ -1,6 +1,8 @@
 <div class="subular-wrap-flex">
 	<div class="subular-header">
 		<subular-brand></subular-brand>
+		<button [routerLink]="['/app',{ outlets:{ lists: ['artists'], content: null }}]">Artists</button>
+		<button [routerLink]="['/app',{ outlets:{ lists: ['playlists'], content: null }}]">Playists</button>
 	</div>
 	<div class="flex-container" *ngIf="loaded$ | async">
 		<section class="sidebar">
