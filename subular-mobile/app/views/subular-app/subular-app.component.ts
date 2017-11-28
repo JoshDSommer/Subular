@@ -8,6 +8,7 @@ import { PlayerService, IAudioPlayingInfo, PlayingStatus } from '../../services/
 import { SPIN_ANIMATION } from '../../animations/animations';
 import { setNumber } from 'application-settings';
 import { ARTIST_LIST_CACHE_KEY } from '../subular-app/artist-list/artist-list.component';
+import { SubularMobileService } from '../../services/subularMobile.service';
 
 @Component({
 	moduleId: module.id,
@@ -16,17 +17,16 @@ import { ARTIST_LIST_CACHE_KEY } from '../subular-app/artist-list/artist-list.co
 	styleUrls: ['subular-app.component.css'],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SubularAppComponent extends SubularAppBaseComponent {
+export class SubularAppComponent {
+	loaded$: any;
 	nowPlaying: IAudioPlayingInfo;
 
 	PlayingStatus = PlayingStatus;
 	animateOptions = SPIN_ANIMATION;
 
-	constructor(cachedData: SubsonicCachedService, route: ActivatedRoute, router: Router,
-		public subsonic: SubsonicService,
+	constructor(private subular: SubularMobileService, route: ActivatedRoute, router: Router,
 		private player: PlayerService,
 		private ref: ChangeDetectorRef) {
-		super(cachedData, route, router);
 		this.player.nowPlaying$.subscribe(nowPlaying => {
 			if (nowPlaying) {
 				this.nowPlaying = Object.assign({}, nowPlaying);
@@ -35,9 +35,17 @@ export class SubularAppComponent extends SubularAppBaseComponent {
 		});
 	}
 
+	ngOnInit() {
+		//Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+		//Add 'implements OnInit' to the class.
+		this.loaded$ = this.subular.getCachedData()
+			.map(([artists, albums]) => true);
+
+	}
+
 	getArtWork(coverArt) {
 		if (coverArt) {
-			return this.subsonic.subsonicGetCoverUrl(coverArt)
+			return this.subular.subsonicGetCoverUrl(coverArt)
 		}
 		return '~/images/coverArt.png';
 	}

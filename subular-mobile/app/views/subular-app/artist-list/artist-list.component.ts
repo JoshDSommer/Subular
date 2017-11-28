@@ -7,6 +7,7 @@ import { StackLayout } from 'ui/layouts/stack-layout';
 import { TouchGestureEventData, PanGestureEventData, TouchAction } from 'ui/gestures';
 import { layout } from 'utils/utils';
 import { getNumber, setNumber } from 'application-settings';
+import { SubularMobileService } from '../../../services/subularMobile.service';
 
 export const ARTIST_LIST_CACHE_KEY = 'artist-list-cached-index';
 
@@ -28,13 +29,12 @@ export class ArtistListComponent implements OnInit {
 		return this._artistListView.nativeElement;
 	}
 
-	constructor(private cachedData: SubsonicCachedService) {
+	constructor(private subular: SubularMobileService) {
 
 	}
 
 	ngOnInit() {
-		this.artists$ = this.cachedData.getCachedData()
-			.map(([artists, albums]) => artists)
+		this.artists$ = this.subular.getArtists()
 			.do(artists => this.artists = artists);
 	}
 

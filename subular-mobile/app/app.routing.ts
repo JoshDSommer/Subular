@@ -6,7 +6,7 @@ import { LoginComponent } from "./views/login/login.component";
 import { SubularAppComponent } from "./views/subular-app/subular-app.component";
 import { ArtistListComponent } from "./views/subular-app/artist-list/artist-list.component";
 import { AlbumsComponent } from "./views/subular-app/albums/albums.component";
-import { AlbumsResolver, AlbumResolver } from 'subular';
+import { AlbumsResolver, AlbumResolver } from './resolvers';
 import { CommonModule } from '@angular/common';
 import { AlbumComponent } from "./views/subular-app/album/album.component";
 
