@@ -1,4 +1,4 @@
-
+import { ISong } from '../index';
 
 export interface IPlaylist {
 	id: number;
@@ -8,9 +8,11 @@ export interface IPlaylist {
 	created: Date;
 	changed: Date;
 	comment: string;
+	entry?: Array<ISong>;
 	duration: number;
 }
 
 // tslint:disable-next-line:no-empty-interface
-export interface IPlaylists extends Array<IPlaylist> {}
+export interface IPlaylists extends Array<IPlaylist> { }
+
 

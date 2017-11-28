@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { SubsonicAuthenticationService } from './subsonic-authentication.service';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { ISong } from '../interfaces';
+import { ISong, IPlaylist } from '../interfaces';
 import { IPlaylists } from '../interfaces/playlist';
 
 @Injectable()
@@ -29,8 +29,9 @@ export class SubsonicService {
 		return this.subsonicGet('getPlaylists').map(data => data.subresp.playlists.playlist);
 	}
 
-	getPlaylist(id: number) {
-		return this.subsonicGet('getPlaylist', `id=${id}`);
+	getPlaylist(id: number): Observable<IPlaylist> {
+		return this.subsonicGet('getPlaylist', `&id=${id}`)
+			.map(data => data.subresp.playlist);
 	}
 
 

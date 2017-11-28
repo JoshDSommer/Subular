@@ -9,6 +9,7 @@ import { AlbumsResolver, AlbumResolver } from '../subular-shared/resolvers';
 import { AlbumComponent } from './views/subular-app/album/album.component';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
 import { PlaylistListComponent } from './components/playlist-list/playlist-list.component';
+import { PlaylistComponent } from './views/subular-app/playlist/playlist.component';
 
 const routes: Routes = [
 	{
@@ -25,6 +26,9 @@ const routes: Routes = [
 				path: 'artists', component: ArtistListComponent, outlet: 'lists'
 			},
 			{ path: 'playlists', component: PlaylistListComponent, outlet: 'lists' },
+			{
+				path: 'playlist/:playlistId', component: PlaylistComponent, outlet: 'content'
+			},
 			{ path: 'random', component: RandomAlbumsComponent },
 			{
 				path: 'albums/:artistId', component: AlbumsComponent,

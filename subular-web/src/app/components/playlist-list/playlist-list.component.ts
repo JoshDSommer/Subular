@@ -4,7 +4,8 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
 	selector: 'playlist-list',
-	templateUrl: 'playlist-list.component.html'
+	templateUrl: 'playlist-list.component.html',
+	styleUrls: ['playlist-list.component.css'],
 })
 
 export class PlaylistListComponent implements OnInit {

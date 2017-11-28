@@ -50,7 +50,8 @@ export class PlayerService {
 
 	addSongsAndPlaySong(songs: ISong[], song: ISong) {
 		this.addSongs(songs);
-		this.playSong(this.songList.indexOf(song));
+		const index = this.songList.findIndex(item => item.id === song.id);
+		this.playSong(index);
 	}
 
 	shuffleSongs(): void {
