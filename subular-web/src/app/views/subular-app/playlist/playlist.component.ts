@@ -50,19 +50,30 @@ export class PlaylistComponent implements OnInit {
 			.filter(nowPlaying => !!nowPlaying && !!nowPlaying.song)
 			.map(nowPlaying => nowPlaying.song);
 
-		this.contextMenuItems = [{
-			label: 'Remove from playlist',
-			command: (event) => {
-				this.playlist$ = this.subsonic.removeSongFromPlaylist(this.listedSongs.indexOf(this.selectedSong), this.playlistId)
-					.switchMap(() => this.subsonic.getPlaylist(this.playlistId))
-					.do(playlist => this.listedSongs = playlist.entry);
-			}
-		}];
+		this.contextMenuItems = [
+			{
+				label: 'Play now',
+				command: (event) => {
+					this.playerService.addAndPlaySong(this.selectedSong);
+				}
+			},
+			{
+				label: 'Play next',
+				command: (event) => {
+					this.playerService.addSongToPlayNext(this.selectedSong);
+				}
+			},
+			{
+				label: 'Remove from playlist',
+				command: (event) => {
+					this.playlist$ = this.subsonic.removeSongFromPlaylist(this.listedSongs.indexOf(this.selectedSong), this.playlistId)
+						.switchMap(() => this.subsonic.getPlaylist(this.playlistId))
+						.do(playlist => this.listedSongs = playlist.entry);
+				}
+			}];
 	}
 
 	selectSong($song: ISong) {
-
-		console.log($song, this.listedSongs, this.listedSongs.indexOf($song));
 		this.playerService.clearSongs();
 
 		this.playerService.addSongsAndPlaySong(this.listedSongs, $song);

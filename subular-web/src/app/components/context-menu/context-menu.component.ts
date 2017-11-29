@@ -23,13 +23,23 @@ export class ContextMenuComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.contextMenuItems = [{
-			label: 'Coming soon...',
-			command: (event) => console.log(this.selectedSong)
-		}, {
-			label: 'Add to playlist:',
-			items: []
-		}] as MenuItem[];
+		this.contextMenuItems = [
+			{
+				label: 'Play now',
+				command: (event) => {
+					this.playerService.addAndPlaySong(this.selectedSong);
+				}
+			},
+			{
+				label: 'Play next',
+				command: (event) => {
+					this.playerService.addSongToPlayNext(this.selectedSong);
+				}
+			},
+			{
+				label: 'Add to playlist:',
+				items: []
+			}] as MenuItem[];
 
 		const newPlaylistMenuItem = (playlist: IPlaylist) => ({
 			label: playlist.name, command: (event) => {
@@ -38,7 +48,7 @@ export class ContextMenuComponent implements OnInit {
 		});
 
 		this.subsonic.getPlaylists().subscribe(playlists => {
-			this.contextMenuItems[1].items = playlists.map(newPlaylistMenuItem);
+			this.contextMenuItems[2].items = playlists.map(newPlaylistMenuItem);
 		});
 
 	}
