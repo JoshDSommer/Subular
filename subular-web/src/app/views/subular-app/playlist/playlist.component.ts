@@ -14,12 +14,13 @@ import { SongStoreService } from '../../../../subular-shared';
 })
 
 export class PlaylistComponent implements OnInit {
+	playlistId: number;
 	playlistId$: Observable<any>;
 	contextMenuItems: MenuItem[];
 	nowPlayingSong$ = new Observable<ISong>();
 	songs$: Observable<ISong[]>;
 	playlist$: Observable<IPlaylist>;
-
+	selectedSong: ISong;
 	dataTableSongs: ISong[] = [];
 
 	private listedSongs: ISong[];
@@ -40,23 +41,39 @@ export class PlaylistComponent implements OnInit {
 			.startWith(this.route.snapshot.params['playlistId']);
 
 		this.playlist$ = this.playlistId$
-			.switchMap(playlistId => this.subsonic
-				.getPlaylist(playlistId))
-			.do(playlist => this.listedSongs = playlist.entry);
+			.switchMap(playlistId => this.subsonic.getPlaylist(playlistId))
+			.do(playlist => this.listedSongs = playlist.entry)
+			.do(playlist => this.playlistId = playlist.id);
 
 
 		this.nowPlayingSong$ = this.playerService.nowPlaying$
 			.filter(nowPlaying => !!nowPlaying && !!nowPlaying.song)
 			.map(nowPlaying => nowPlaying.song);
 
-		this.contextMenuItems = [{
-			label: 'Coming soon...'
-		}];
+		this.contextMenuItems = [
+			{
+				label: 'Play now',
+				command: (event) => {
+					this.playerService.addAndPlaySong(this.selectedSong);
+				}
+			},
+			{
+				label: 'Play next',
+				command: (event) => {
+					this.playerService.addSongToPlayNext(this.selectedSong);
+				}
+			},
+			{
+				label: 'Remove from playlist',
+				command: (event) => {
+					this.playlist$ = this.subsonic.removeSongFromPlaylist(this.listedSongs.indexOf(this.selectedSong), this.playlistId)
+						.switchMap(() => this.subsonic.getPlaylist(this.playlistId))
+						.do(playlist => this.listedSongs = playlist.entry);
+				}
+			}];
 	}
 
 	selectSong($song: ISong) {
-
-		console.log($song, this.listedSongs, this.listedSongs.indexOf($song));
 		this.playerService.clearSongs();
 
 		this.playerService.addSongsAndPlaySong(this.listedSongs, $song);

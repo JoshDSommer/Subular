@@ -34,6 +34,13 @@ export class SubsonicService {
 			.map(data => data.subresp.playlist);
 	}
 
+	addSongToPlaylist(song: ISong, playlistId: number) {
+		return this.subsonicGet('updatePlaylist', `&playlistId=${playlistId}&songIdToAdd=${song.id}`);
+	}
+
+	removeSongFromPlaylist(songIndexToRemove, playlistId: number) {
+		return this.subsonicGet('updatePlaylist', `&playlistId=${playlistId}&songIndexToRemove=${songIndexToRemove}`);
+	}
 
 	getSongs(albumId: number): Observable<ISong[]> {
 		return this.subsonicGet('getAlbum', `&id=${albumId}`)

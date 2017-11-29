@@ -54,6 +54,11 @@ export class PlayerService {
 		this.playSong(index);
 	}
 
+	addSongToPlayNext(song: ISong) {
+		const currentIndex = (this.currentIndex + 1);
+		this.songList.splice(currentIndex, 0, song);
+	}
+
 	shuffleSongs(): void {
 		const songList = this.songList;
 
