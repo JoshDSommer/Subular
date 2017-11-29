@@ -33,7 +33,7 @@ export class ContextMenuComponent implements OnInit {
 
 		const newPlaylistMenuItem = (playlist: IPlaylist) => ({
 			label: playlist.name, command: (event) => {
-				console.log(this.selectedSong, event, playlist.id);
+				this.subsonic.addSongToPlaylist(this.selectedSong, playlist.id).subscribe();
 			}
 		});
 
