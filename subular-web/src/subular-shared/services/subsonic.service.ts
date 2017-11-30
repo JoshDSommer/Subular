@@ -39,6 +39,10 @@ export class SubsonicService {
 			.map(data => data.subresp.playlist);
 	}
 
+	createPlaylist(name: string): Observable<number> {
+		return this.subsonicGet('createPlaylist', `&name=${name}`);
+	}
+
 	addSongToPlaylist(song: ISong, playlistId: number) {
 		return this.subsonicGet('updatePlaylist', `&playlistId=${playlistId}&songIdToAdd=${song.id}`);
 	}
