@@ -74,8 +74,8 @@ export class ArtistListComponent implements OnInit {
 			return;
 		}
 		const firstArtistThatStartsWith = this.artists.find(artist => artist.name.toLowerCase()
-			.replace('the', '')
-			.replace('los', '')
+			.replace('the ', '')
+			.replace('los ', '')
 			.trim()
 			.startsWith(char));
 		const itemToScrollToIndex = this.artists.indexOf(firstArtistThatStartsWith);
