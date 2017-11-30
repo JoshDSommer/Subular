@@ -54,7 +54,7 @@ export class SlideBackDirective {
 			if (item.translateX < 0) {
 				item.translateX = 0;
 			}
-			item.opacity = (100 - args.deltaX / 3) * 0.01;
+			item.opacity = ((100 - args.deltaX / 3) * 0.01) + 0.2;
 			this.currentDeltaX = args.deltaX;
 			//release of finger from slide.
 			return;
@@ -63,7 +63,7 @@ export class SlideBackDirective {
 		if (args.state === GestureStateTypes.ended) {
 			if (this.currentDeltaX > (screen.mainScreen.widthDIPs / 3)) {
 				item.animate({
-					opacity: 0,
+					opacity: 0.2,
 					translate: { x: screen.mainScreen.widthDIPs, y: 0 },
 					duration: 100
 				}).then(() => {
@@ -79,8 +79,13 @@ export class SlideBackDirective {
 				});
 			} else {
 				// snap back.
-				item.translateX = 0;
-				item.opacity = 1;
+				item.animate({
+					opacity: 1,
+					translate: { x: 0, y: 0 },
+					duration: 80
+				}).then(() => {
+				}, (err) => {
+				});
 				this.enableScroll();
 			}
 			return;
