@@ -43,11 +43,8 @@ export class SubularAppComponent {
 
 	}
 
-	getArtWork(coverArt) {
-		if (coverArt) {
-			return this.subular.subsonicGetCoverUrl(coverArt)
-		}
-		return '~/images/coverArt.png';
+	getArtWork(song) {
+		return this.subular.subsonicGetCoverUrl(song)
 	}
 
 	play() {

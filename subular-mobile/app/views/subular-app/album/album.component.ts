@@ -33,9 +33,6 @@ export class AlbumComponent implements OnInit {
 
 	downloaded(song) {
 		const localFile = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
-		const streamUrl = this.subular.getStreamUrl(song.id);
-		let url;
-
 		return fs.File.exists(localFile);
 	}
 
@@ -51,11 +48,6 @@ export class AlbumComponent implements OnInit {
 			}))
 			.switchMap(songs => this.songStore.addSongs(songs))
 			.do(songs => this.listedSongs = songs);
-		// 	.do(songs => this.listedSongs = songs);
-		// this.nowPlayingSong$ = this.playerService.nowPlaying$
-		// .filter(nowPlaying => !!nowPlaying && !!nowPlaying.song)
-		// .map(nowPlaying => nowPlaying.song);
-
 	}
 
 	selectSong($song: ISong) {
@@ -66,6 +58,10 @@ export class AlbumComponent implements OnInit {
 
 	download(song: ISong) {
 		this.subular.downloadSong(song).subscribe(console.log);
+	}
+
+	downloadAllSongs() {
+		Observable.merge(this.listedSongs.map(song => this.download(song))).subscribe();
 	}
 	ngOnDestroy() {
 		//Called once, before the instance is destroyed.

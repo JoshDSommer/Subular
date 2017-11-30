@@ -33,13 +33,12 @@ export class AlbumsComponent implements OnInit {
 			this.albums = this.route.snapshot.data['albums'] as IAlbum[];
 		});
 	}
-	getCoverArt(coverArt) {
-		if (coverArt) {
-			const coverArtUrl = this.subular.subsonicGetCoverUrl(coverArt);
-			if (coverArtUrl) {
-				return coverArtUrl;
-			}
-		}
-		return '~/images/coverArt.png';
+	getCoverArt(song) {
+		return this.subular.subsonicGetCoverUrl(song);
+		// 	if (coverArtUrl) {
+		// 		return coverArtUrl;
+		// 	}
+		// }
+		// return '~/images/coverArt.png';
 	}
 }

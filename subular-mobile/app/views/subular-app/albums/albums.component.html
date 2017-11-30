@@ -5,7 +5,7 @@
 	<ScrollView [slideBack]="['/app/artists']" class="" height="100%">
 		<WrapLayout orientation="horizontal">
 			<StackLayout *ngFor="let item of albums" class="album-card" orientation="vertical" [nsRouterLink]="['../../album', item.id ]">
-				<Image class="album-image" [src]="getCoverArt(item.coverArt)"></Image>
+				<Image class="album-image" [src]="getCoverArt(item)"></Image>
 				<!-- <FrescoDrawee class="artist-image" *tkIfAndroid horizontalAlignment="stretch"  [imageUri]="item.image" verticalAlignment="top"></FrescoDrawee> -->
 				<Label class="album-name" [text]="item.name"></Label>
 			</StackLayout>
