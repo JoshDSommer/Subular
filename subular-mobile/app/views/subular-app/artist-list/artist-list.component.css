@@ -2,9 +2,9 @@
 	padding: 15;
 }
 .artist {
-	margin: 3% 2.5%;
+	margin: 0 2.5%;
+	padding: 3% 0;
 	font-size: 18px;
-
 }
 
 .letter-wrap{

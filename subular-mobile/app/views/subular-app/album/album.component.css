@@ -10,12 +10,12 @@
 	height: 100%;
 }
 .song-list-item{
-	padding: 15;
+	padding: 10;
 }
 .song {
-	margin: 3% 2.5%;
+	margin: 0 2.5%;
+	padding: 3% 0;
 	font-size: 18px;
-
 }
 .letter-wrap{
 	margin-top: 130;
