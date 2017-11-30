@@ -20,6 +20,11 @@ export class SubsonicService {
 		return `${this.authentication.getServerURl('stream')}&id=${id}`;
 	}
 
+	getDownloadUrl(id: number): string {
+		return `${this.authentication.getServerURl('download')}&id=${id}`;
+	}
+
+
 	getHLSStream(id: number) {
 
 		return `${this.authentication.getHLSURl(id)}`;

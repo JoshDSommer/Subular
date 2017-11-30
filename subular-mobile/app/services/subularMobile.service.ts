@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { SubsonicService, SubsonicCachedService, ISong, IArtist, IAlbum } from 'subular';
 import { Observable } from 'rxjs/Observable';
+import * as http from "http";
+import * as fs from "file-system";
+import * as utilModule from "utils/utils";
 
 interface ISubularService {
 	subsonic: SubsonicService;
@@ -14,6 +17,28 @@ export class SubularMobileService {
 
 	constructor(subsonic: SubsonicService, private cachedData: SubsonicCachedService) {
 		this.subsonicService = { subsonic, cachedData }
+	}
+
+	public downloadSong(song: ISong): Observable<boolean> {
+		let url: string = this.subsonicService.subsonic.getDownloadUrl(song.id);
+		let path: string = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
+
+		console.log(url);
+
+		return Observable.fromPromise(http.getFile({
+			url: url,
+			method: "GET",
+
+		}, path))
+			.map(file => {
+				return file && fs.File.exists(file.path)
+			});
+
+		//TODO Save cached songs list.
+
+	}
+	getDownloadUrl(id: number): string {
+		return this.subsonicService.subsonic.getDownloadUrl(id);
 	}
 
 	getStreamUrl(id: number): string {

@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs';
 import { SLIDE_RIGHT_ANIMATION } from '../../../animations/animations';
 import { PlayerService } from '../../../services/player.service';
 import { SubularMobileService } from '../../../services/subularMobile.service';
+import { ios } from 'utils/utils';
+import * as fs from "file-system";
 
 @Component({
 	moduleId: module.id,
@@ -28,6 +30,14 @@ export class AlbumComponent implements OnInit {
 		private subular: SubularMobileService,
 		private playerService: PlayerService,
 		private songStore: SongStoreService) { }
+
+	downloaded(song) {
+		const localFile = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
+		const streamUrl = this.subular.getStreamUrl(song.id);
+		let url;
+
+		return fs.File.exists(localFile);
+	}
 
 	ngOnInit() {
 		this.album$ = RouterResolverDataObservable<IAlbum>(this.route, this.router, 'album');
@@ -54,6 +64,9 @@ export class AlbumComponent implements OnInit {
 		this.playerService.addSongsAndPlaySong(this.listedSongs, $song);
 	}
 
+	download(song: ISong) {
+		this.subular.downloadSong(song).subscribe(console.log);
+	}
 	ngOnDestroy() {
 		//Called once, before the instance is destroyed.
 		//Add 'implements OnDestroy' to the class.

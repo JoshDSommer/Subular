@@ -3,6 +3,7 @@ import { ISong, SubsonicService } from 'subular';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ios } from 'utils/utils';
+import * as fs from "file-system";
 
 export enum PlayingStatus {
 	loading,
@@ -90,10 +91,17 @@ export class PlayerService {
 			this.playHistory = [...this.playHistory, playingSong];
 			this.currentSong = { song: playingSong, playing: PlayingStatus.loading, position: 0, remainingTime: 0 };
 
+			const localFile = fs.path.join(fs.knownFolders.documents().path, playingSong.id.toString() + '.mp3');
 			const streamUrl = this.subularService.getStreamUrl(playingSong.id);
-			let url = NSURL.URLWithString(streamUrl);
+			let url;
 
-
+			if (fs.File.exists(localFile)) {
+				url = NSURL.fileURLWithPath(localFile)
+				console.log('localfile');
+			} else {
+				console.log('stream');
+				url = NSURL.URLWithString(streamUrl);
+			}
 			let playerItem = AVPlayerItem.playerItemWithURL(url);
 			this._player.removeAllItems();
 			this._player.insertItemAfterItem(playerItem, null);
