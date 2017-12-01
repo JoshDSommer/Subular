@@ -69,8 +69,8 @@ export class SubsonicService {
 		return this.subsonicGet('getTopSongs', `&artist=${artistName}`);
 	}
 
-	subsonicGetCoverUrl(id: number): string {
-		return this.authentication.getServerURl('getCoverArt') + `&id=${id}&size=274`;
+	subsonicGetCoverUrl(id: number, size = 274): string {
+		return this.authentication.getServerURl('getCoverArt') + `&id=${id}&size=${274}`;
 	}
 
 	starSong(id: number) {

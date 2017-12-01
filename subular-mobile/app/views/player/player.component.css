@@ -1,0 +1,42 @@
+ActionBar{
+	background-color: #222222;
+}
+.back-button{
+	width:80%;
+}
+Image{
+	border-radius: 0;
+}
+Progress{
+	background-color:#222222;
+	color: #ca9fdb;
+}
+.hide-button{
+	font-size: 35;
+	color: #ca9fdb;
+}
+.song-title, .song-artist, .song-album{
+	text-align: center;
+}
+
+.song-title{
+	font-size: 25;
+}
+.song-artist, .song-album{
+	font-size: 18;
+}
+
+.player-controls Label{
+	text-align: center;
+	height: 66;
+	color: #222222;
+	font-size: 20;
+
+}
+.mini-player-button{
+	border-width: 2;
+	border-color: #222222;
+	border-radius: 33;
+	width: 66;
+	font-size: 30;
+}

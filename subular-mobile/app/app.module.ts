@@ -11,7 +11,6 @@ import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';
 import { MD5_SERVICE } from './providers/md5.service';
 import { LoginComponent } from './views/login/login.component';
 
-// Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { TNSFrescoModule } from 'nativescript-fresco/angular';
 import { NativeScriptHttpModule } from 'nativescript-angular/http';
@@ -28,6 +27,8 @@ import { AnimateDirective } from './directives/animate.directive';
 import { SlideBackDirective } from './directives/slideBack.directive';
 import { SubularMobileService } from './services/subularMobile.service';
 import { AlbumsResolver, AlbumResolver } from './resolvers';
+import { PlayerComponent } from './views/player/player.component';
+
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
         frescoModule.initialize();
@@ -56,6 +57,7 @@ if (applicationModule.android) {
         SubularAppComponent,
         AlbumComponent,
         SongListComponent,
+        PlayerComponent,
         SlideBackDirective,
     ],
     providers: [

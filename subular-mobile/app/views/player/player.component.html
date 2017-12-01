@@ -1,0 +1,25 @@
+<ActionBar>
+	<NavigationButton visibility="collapsed"></NavigationButton>
+	<StackLayout class="back-button" (touch)="nsRouter.back()">
+		<Button row="0" col="0" class="fa hide-button" text="&#xf107;"></Button>
+	</StackLayout>
+</ActionBar>
+<GridLayout rows="auto,25,10,28,22,22,*,66,*" columns="*">
+	<Image row="0" col="0" width="100%" stretch="aspectFit" [src]="getArtWork(nowPlaying?.song)"></Image>
+	<Progress row="1" col="0" [value]="nowPlaying?.position" (loaded)="onProgressLoaded($event)"></Progress>
+	<Label class="song-title" row="3" col="0" width="100%" [text]="nowPlaying?.song?.title"></Label>
+	<Label class="song-artist" row="4" col="0" width="100%" [text]="nowPlaying?.song?.artist"></Label>
+	<Label class="song-album" row="5" col="0" width="100%" [text]="nowPlaying?.song?.album"></Label>
+	<GridLayout class="player-controls" row="7" col="0" rows="*" columns="*,*,*">
+		<Label row="0" col="0" class="fa" (tap)="player.playPreviousSong()" text="&#xf048;"></Label>
+		<ng-container [ngSwitch]="nowPlaying?.playing">
+			<Label row="0" col="1" class="fa mini-player-button" [animate]="animateOptions" text="&#xf1ce;" *ngSwitchCase="PlayingStatus.loading"
+			 textWrap="true"></Label>
+			<Label row="0" col="1" class="fa mini-player-button" text="&#xf04b;" (tap)="player.resumeSong()" *ngSwitchCase="PlayingStatus.paused"
+			 textWrap="true"></Label>
+			<Label row="0" col="1" class="fa mini-player-button" text="&#xf04c;" (tap)="player.pauseSong()" *ngSwitchCase="PlayingStatus.playing"
+			 textWrap="true"></Label>
+		</ng-container>
+		<Label row="0" col="2" class="fa" (tap)="player.playNextSong()" text="&#xf051;"></Label>
+	</GridLayout>
+</GridLayout>

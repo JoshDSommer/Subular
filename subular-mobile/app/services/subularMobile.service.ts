@@ -59,7 +59,7 @@ export class SubularMobileService {
 		let url = this.subsonicService.subsonic.getDownloadUrl(song.id);
 		let path = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
 		let coverPath = fs.path.join(fs.knownFolders.documents().path, song.coverArt + '.png');
-		let coverUrl = this.subsonicService.subsonic.subsonicGetCoverUrl(song.coverArt);
+		let coverUrl = this.subsonicService.subsonic.subsonicGetCoverUrl(song.coverArt, 600);
 
 		console.log(url);
 
@@ -97,15 +97,19 @@ export class SubularMobileService {
 		return this.subsonicService.subsonic.getSongs(albumId);
 	}
 
-	subsonicGetCoverUrl(song: ISong): string {
+	subsonicGetCoverUrl(song: ISong, size?: number): string {
 		//I'd rather always get image ar from the file system if available
 		let coverPath = fs.path.join(fs.knownFolders.documents().path, song.coverArt + '.png');
 		if (fs.File.exists(coverPath)) {
 			return coverPath
 		}
 		if (this.subsonicService.subsonic.subsonicGetCoverUrl) {
+			if (!size) {
+				size = 500;
+			}
 			return this.subsonicService.subsonic.subsonicGetCoverUrl(song.coverArt);
 		}
+		console.log(this.subsonicService.subsonic.subsonicGetCoverUrl(song.coverArt));
 		return '~/images/coverArt.png';
 	}
 	starSong(id: number) {

@@ -9,6 +9,7 @@ import { AlbumsComponent } from "./views/subular-app/albums/albums.component";
 import { AlbumsResolver, AlbumResolver } from './resolvers';
 import { CommonModule } from '@angular/common';
 import { AlbumComponent } from "./views/subular-app/album/album.component";
+import { PlayerComponent } from "./views/player/player.component";
 
 const routes: Routes = [
 	{ path: "", redirectTo: "/login", pathMatch: "full" },
@@ -37,6 +38,11 @@ const routes: Routes = [
 			// 	{ path: 'playlist/:id', component: RandomAlbumsComponent }
 		]
 	},
+	{
+		path: 'player',
+		component: PlayerComponent,
+
+	}
 ];
 
 @NgModule({

@@ -1,15 +1,15 @@
 <GridLayout #mainLayout rows="*,auto,60" , columns="*" stretchLastChild="true" class="app-wrap">
 	<GridLayout row="2" col="0" rows="*" columns="*,*,*,*" height="60" class="navigation">
-		<Label row="0" col="0" [nsRouterLink]="['/app/artists']" (tap)="clearArtistKeyCache()" width="100%" horizontalAlign="center" verticalAlignment="center"
-		 class="fa navigation-option" [text]="'Artists'"></Label>
+		<Label row="0" col="0" [nsRouterLink]="['/app/artists']" (tap)="clearArtistKeyCache()" width="100%" horizontalAlign="center"
+		 verticalAlignment="center" class="fa navigation-option" [text]="'Artists'"></Label>
 		<Label row="0" col="1" [nsRouterLink]="['/app/artists']" width="100%" horizontalAlign="center" verticalAlignment="center"
 		 class="fa navigation-option" [text]="'Playlists'"></Label>
 		<Label row="0" col="2" [nsRouterLink]="['/app/artists']" width="100%" horizontalAlign="center" verticalAlignment="center"
 		 class="fa navigation-option" [text]="'Albums'"></Label>
 	</GridLayout>
 	<GridLayout row="1" col="0" backgroundColor="#dbd3de" *ngIf="nowPlaying" height="70" rows="*" columns="80,*,80">
-		<Image row="0" col="0" width="60" height="60" [src]="getArtWork(nowPlaying?.song)"></Image>
-		<Label row="0" col="1" [text]="nowPlaying?.song?.title" textWrap="true"></Label>
+		<Image [nsRouterLink]="['/player']" pageTransition="slideTop" row="0" col="0" width="60" height="60" [src]="getArtWork(nowPlaying?.song)"></Image>
+		<Label [nsRouterLink]="['/player']" pageTransition="slideTop" row="0" col="1" [text]="nowPlaying?.song?.title" textWrap="true"></Label>
 		<ng-container [ngSwitch]="nowPlaying?.playing">
 			<Label row="0" col="2" class="fa mini-player-button" [animate]="animateOptions" text="&#xf1ce;" *ngSwitchCase="PlayingStatus.loading"
 			 textWrap="true"></Label>
