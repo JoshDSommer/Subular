@@ -1,18 +1,16 @@
-<div class="subular-wrap-flex">
+<div class="subular-container">
 	<div class="subular-header">
 		<subular-brand></subular-brand>
 		<a class="top-links" [routerLink]="['/app',{ outlets:{ lists: ['artists'], content: null }}]">Artists</a>
 		<a class="top-links" [routerLink]="['/app',{ outlets:{ lists: ['playlists'], content: null }}]">Playists</a>
 	</div>
-	<div class="flex-container" *ngIf="loaded$ | async">
-		<section class="sidebar">
-			<router-outlet name="lists"></router-outlet>
-		</section>
-		<section *ngIf="loaded$ | async " class="subular-app">
-			<router-outlet name="content"></router-outlet>
-		</section>
-	</div>
-	<player></player>
+	<section class="subular-sidebar">
+		<router-outlet name="lists"></router-outlet>
+	</section>
+	<section *ngIf="loaded$ | async " class="subular-content">
+		<router-outlet name="content"></router-outlet>
+	</section>
+	<player class="subular-player"></player>
 </div>
 
 <ng-template #loading>
