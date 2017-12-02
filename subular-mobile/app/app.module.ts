@@ -3,8 +3,6 @@ import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 
-import { NativeScriptUISideDrawerModule } from "nativescript-pro-ui/sidedrawer/angular";
-import { NativeScriptUIListViewModule } from "nativescript-pro-ui/listview/angular";
 import { LOCALSTORAGE_PROVIDER, SubularSharedModule } from 'subular';
 
 import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';

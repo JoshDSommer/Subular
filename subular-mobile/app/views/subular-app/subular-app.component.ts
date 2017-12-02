@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, ChangeDete
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { SubularAppBaseComponent, SubsonicCachedService, SubsonicService } from 'subular';
-import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
-import { RadSideDrawerComponent } from "nativescript-pro-ui/sidedrawer/angular";
 import { PlayerService, IAudioPlayingInfo, PlayingStatus } from '../../services/player.service';
 import { SPIN_ANIMATION } from '../../animations/animations';
 import { setNumber } from 'application-settings';
