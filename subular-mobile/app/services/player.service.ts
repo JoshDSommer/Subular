@@ -18,10 +18,13 @@ export interface IAudioPlayingInfo {
 	position?: number;
 	mins?: number;
 	secs?: number;
+	repeat?: boolean;
+	random?: boolean;
 }
 
 @Injectable()
 export class PlayerService {
+	preSortedSongListOrder: ISong[];
 	commandCenter: MPRemoteCommandCenter;
 	controlsHandler: ControlsHandler;
 	songList: ISong[] = [];
@@ -34,6 +37,8 @@ export class PlayerService {
 	private currentSong: IAudioPlayingInfo;
 	private currentIndex: number;
 
+	private _repeat: boolean;
+	private _random: boolean;
 
 	constructor(private subularService: SubsonicService, private ngZone: NgZone) {
 
@@ -62,8 +67,10 @@ export class PlayerService {
 		this.playSong(this.songList.indexOf(song));
 	}
 
-	shuffleSongs(): void {
+	shuffleSongs(firstSong: ISong = null): void {
+		this._random = true;
 		const songList = this.songList;
+		this.preSortedSongListOrder = [...this.songList];
 
 		let currentIndex = songList.length, temporaryValue, randomIndex;
 		// While there remain elements to shuffle...
@@ -78,9 +85,27 @@ export class PlayerService {
 			songList[currentIndex] = songList[randomIndex];
 			songList[randomIndex] = temporaryValue;
 		}
+		if (firstSong) {
+			this.songList = [firstSong, ...songList];
+			return;
+		}
 		this.songList = songList;
 	}
 
+	toggleRepeat() {
+		this._repeat = !this._repeat;
+	}
+
+	toggleShuffle() {
+		this._random = !this._random;
+
+		if (this._random) {
+			this.shuffleSongs(this.currentSong.song);
+			this.currentIndex = 0;
+		} else {
+			this.songList = [...this.preSortedSongListOrder];
+		}
+	}
 
 	playSong(index?: number): void {
 		if (this.songList.length > 0) {
@@ -89,7 +114,7 @@ export class PlayerService {
 			const playingSong = this.songList[this.currentIndex];
 
 			this.playHistory = [...this.playHistory, playingSong];
-			this.currentSong = { song: playingSong, playing: PlayingStatus.loading, position: 0, remainingTime: 0 };
+			this.currentSong = Object.assign({}, this.currentSong, { song: playingSong, playing: PlayingStatus.loading, position: 0, remainingTime: 0 });
 
 			const localFile = fs.path.join(fs.knownFolders.documents().path, playingSong.id.toString() + '.mp3');
 			const streamUrl = this.subularService.getStreamUrl(playingSong.id);
@@ -97,9 +122,7 @@ export class PlayerService {
 
 			if (fs.File.exists(localFile)) {
 				url = NSURL.fileURLWithPath(localFile)
-				console.log('localfile');
 			} else {
-				console.log('stream');
 				url = NSURL.URLWithString(streamUrl);
 			}
 			let playerItem = AVPlayerItem.playerItemWithURL(url);
@@ -167,6 +190,9 @@ export class PlayerService {
 				}
 				this.currentSong.mins = mins;
 				this.currentSong.secs = secs;
+				this.currentSong.repeat = this._repeat;
+				this.currentSong.random = this._random;
+
 				switch (this.currentSong.playing) {
 					case PlayingStatus.loading: {
 						this.commandCenter.playCommand.enabled = false;
@@ -207,7 +233,13 @@ export class PlayerService {
 	playNextSong() {
 		console.log('next song')
 		const nextIndex = (this.currentIndex + 1) >= this.songList.length ? 0 : (this.currentIndex + 1);
+
+		if (nextIndex === 0 && !this._repeat) {
+			//if the next index is 0 and repeat is set to false then top playing
+			return;
+		}
 		this.playSong(nextIndex);
+
 	}
 
 	playPreviousSong() {

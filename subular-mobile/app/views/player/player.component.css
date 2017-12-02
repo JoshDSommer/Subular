@@ -31,6 +31,7 @@ Progress{
 .hide-button{
 	font-size: 35;
 	color: #ca9fdb;
+	text-align: center;
 }
 .heart-wrap{
 	text-align: right;
@@ -75,6 +76,9 @@ Progress{
 }
 
 .random-repeat{
+	color: #c4c2c2;
+}
+.random-repeat-enabled{
 	color: #ca9fdb;
 }
 .time{

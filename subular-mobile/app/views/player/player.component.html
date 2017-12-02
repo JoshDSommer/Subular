@@ -1,6 +1,6 @@
 <ActionBar #actionBar>
 	<StackLayout class="back-button" (touch)="nsRouter.back()">
-		<Button row="0" col="0" class="fa hide-button" text="&#xf0d7;"></Button>
+		<Label class="fa hide-button" text="&#xf0d7;"></Label>
 	</StackLayout>
 	<NavigationButton visibility="collapsed"></NavigationButton>
 </ActionBar>
@@ -9,7 +9,7 @@
 		<heart [song]="nowPlaying?.song"></heart>
 	</StackLayout>
 	<AbsoluteLayout shadow="28" [marginBottom]="imageTopBottomMargin" [marginTop]="imageTopBottomMargin" [width]="imageHeightWidth"
-	 [height]="imageHeightWidth"  class="album-art">
+	 [height]="imageHeightWidth" class="album-art">
 		<Image top="0" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="" stretch="aspectFit" [src]="getArtWork(nowPlaying?.song)"></Image>
 		<Label top="0" [animate]="animateOptions" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="fa loading-album"
 		 text="&#xf1ce;" *ngIf="nowPlaying?.playing === PlayingStatus.loading"></Label>
@@ -24,7 +24,8 @@
 	<Label class="song-artist" row="4" col="0" width="100%" [text]="nowPlaying?.song?.artist"></Label>
 	<Label class="song-album" row="5" col="0" width="100%" [text]="nowPlaying?.song?.album"></Label>
 	<GridLayout class="player-controls" row="7" col="0" rows="*" columns="60,*,80,*,60">
-		<Label row="0" col="0" class="fa random-repeat" (tap)="player.playPreviousSong()" text="&#xf01e;"></Label>
+		<Label row="0" col="0" class="fa random-repeat" [class.random-repeat-enabled]="nowPlaying?.repeat" (tap)="player.toggleRepeat()"
+		 text="&#xf01e;"></Label>
 		<Label row="0" col="1" class="fa next-previous" (tap)="player.playPreviousSong()" text="&#xf048;"></Label>
 		<ng-container [ngSwitch]="nowPlaying?.playing">
 			<Label row="0" col="2" class="fa mini-player-button disabled" text="&#xf04c;" *ngSwitchCase="PlayingStatus.loading" textWrap="true"></Label>
@@ -34,7 +35,8 @@
 			 textWrap="true"></Label>
 		</ng-container>
 		<Label row="0" col="3" class="fa next-previous" (tap)="player.playNextSong()" text="&#xf051;"></Label>
-		<Label row="0" col="4" class="fa random-repeat" (tap)="player.playPreviousSong()" text="&#xf074;"></Label>
+		<Label row="0" col="4" class="fa random-repeat" [class.random-repeat-enabled]="nowPlaying?.random" (tap)="player.toggleShuffle()"
+		 text="&#xf074;"></Label>
 
 	</GridLayout>
 </GridLayout>

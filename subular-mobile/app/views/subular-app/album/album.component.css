@@ -34,3 +34,8 @@
 	text-align: right;
 	color: #ca9fdb;
 }
+.button-wrap Button{
+	width: 49%;
+	padding: 15;
+	color: #c4c2c2;
+}

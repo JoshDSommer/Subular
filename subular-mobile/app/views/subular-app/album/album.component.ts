@@ -55,6 +55,12 @@ export class AlbumComponent implements OnInit {
 		this.playerService.addSongsAndPlaySong(this.listedSongs, $song);
 	}
 
+	playAndShuffle() {
+		this.playerService.addSongs(this.listedSongs);
+		this.playerService.shuffleSongs();
+		this.playerService.playSong();
+	}
+
 	download(song: ISong) {
 		this.subular.downloadSong(song).subscribe(console.log);
 	}
