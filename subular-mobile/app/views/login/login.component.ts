@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SubsonicAuthenticationService, SubsonicService } from 'subular';
+import { SubsonicAuthenticationService, SubsonicService, SUBULAR_CACHED_ARTISTS, SUBULAR_CACHED_ALBUMS } from 'subular';
 import { Router } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular/router';
+import { setString } from 'tns-core-modules/application-settings/application-settings';
 
 @Component({
 	moduleId: module.id,
@@ -31,6 +32,8 @@ export class LoginComponent implements OnInit {
 
 		this.subsonic.pingServer().subscribe(authenticated => {
 			if (authenticated) {
+				setString(SUBULAR_CACHED_ARTISTS, '');
+				setString(SUBULAR_CACHED_ALBUMS, '');
 				this.redirectToMainApplication();
 			}
 		}, failed => {
