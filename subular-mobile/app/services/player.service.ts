@@ -161,6 +161,7 @@ export class PlayerService {
 				this.currentSong.position = position;
 				// this is because this function is started to be called as soon as the play is playing.
 				// not nescarrily after loading.
+				this.currentSong.remainingTime = remainder;
 				if (this.currentSong.playing != PlayingStatus.paused) {
 					this.currentSong.playing = position > 0 ? PlayingStatus.playing : PlayingStatus.loading;
 				}
