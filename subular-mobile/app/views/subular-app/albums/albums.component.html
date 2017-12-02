@@ -1,14 +1,14 @@
 <StackLayout [animate]="animateOptions" class="offset-for-slide">
 	<Label text="&#xf0d9; Artists" class="fa back-link" [nsRouterLink]="['/app/artists']"></Label>
-	<StackLayout [marginLeft]="imageSideMargins" [marginBottom]="imageSideMargins">
+	<StackLayout class="page-padding" [marginBottom]="imageSideMargins">
 		<Label [text]="albums[0].artist" class="title" textWrap="true"></Label>
-		<Label [text]="albums.length + ' albums'" class="" textWrap="true"></Label>
+		<Label [text]="getAlbumsText(albums)" class="" textWrap="true"></Label>
 	</StackLayout>
 	<ScrollView [slideBack]="['/app/artists']" class="" height="100%">
 		<WrapLayout orientation="horizontal">
 			<StackLayout [width]="imageHeightWidth" [marginLeft]="imageSideMargins" [marginBottom]="imageSideMargins" *ngFor="let item of albums"
 			 class="album-card" orientation="vertical" [nsRouterLink]="['../../album', item.id ]">
-				<Image [width]="imageHeightWidth" [height]="imageHeightWidth" class="album-image" [src]="getCoverArt(item)"></Image>
+				<Image [width]="imageHeightWidth" [height]="imageHeightWidth" stretch="fill" class="album-image" [src]="getCoverArt(item)"></Image>
 				<!-- <FrescoDrawee class="artist-image" *tkIfAndroid horizontalAlignment="stretch"  [imageUri]="item.image" verticalAlignment="top"></FrescoDrawee> -->
 				<Label class="album-name" [text]="item.name"></Label>
 			</StackLayout>

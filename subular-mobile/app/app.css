@@ -29,10 +29,13 @@ Image{
 	border-width: 1;
 
 }
-
+.page-padding{
+	padding-left: 18%;
+	padding-right: 18%;
+}
 .back-link{
 	font-size: 18;
-	margin: 10 20;
+	margin: 10 10;
 	color: #ca9fdb;
 	font-weight: bold;
 }

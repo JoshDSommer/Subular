@@ -38,7 +38,6 @@ export class AlbumComponent implements OnInit {
 
 	ngOnInit() {
 		this.album$ = RouterResolverDataObservable<IAlbum>(this.route, this.router, 'album');
-		// this.songs$ =
 		this.songs$ = this.album$.switchMap(album => this.subular.getSongs(album.id))
 			// this map is to filter out duplicates.
 			.map(songs => songs.filter((song, index, self) => {

@@ -27,6 +27,10 @@ export class AlbumsComponent implements OnInit {
 		public subular: SubularMobileService) {
 	}
 
+	getAlbumsText(albums: IAlbum[]) {
+		return `${albums.length} album${albums.length > 1 ? 's' : ''}`;
+	}
+
 	back() {
 		this.nsRouter.back();
 	}
@@ -38,10 +42,5 @@ export class AlbumsComponent implements OnInit {
 	}
 	getCoverArt(song) {
 		return this.subular.subsonicGetCoverUrl(song);
-		// 	if (coverArtUrl) {
-		// 		return coverArtUrl;
-		// 	}
-		// }
-		// return '~/images/coverArt.png';
 	}
 }

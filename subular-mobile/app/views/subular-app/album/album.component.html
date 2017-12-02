@@ -1,13 +1,13 @@
-<StackLayout class="album offset-for-slide" *ngIf="album$ | async as album" [animate]="animateOptions">
+<StackLayout *ngIf="album$ | async as album" [animate]="animateOptions">
 	<Label [nsRouterLink]="['../../albums', album.artistId ]" class="fa back-link" text="&#xf0d9; {{ album.artist }}" textWrap="true"></Label>
-	<Label text="{{ album.name }}" class="title" textWrap="true"></Label>
+	<Label text="{{ album.name }}" class="title page-padding" textWrap="true"></Label>
 	<Button text="Download" (tap)="downloadAllSongs()"></Button>
 
-	<ListView [slideBack]="['/app/albums', album.artistId ]" [items]="songs$ | async" class="list-group">
+	<ListView [slideBack]="['/app/albums', album.artistId ]" [items]="songs$ | async" class="list-group ">
 		<ng-template let-item="item" let-odd="odd" let-even="even">
-			<GridLayout rows="*" columns="*,60" class="song-list-item">
+			<GridLayout rows="*" columns="*,60" class="song-list-item page-padding">
 				<Label row="0" , col="0" [text]="item.title" (tap)="selectSong(item)" class="song"></Label>
-				<Label row="0" , col="1" (tap)="download(item)" text="&#xf0ed;" *ngIf="!downloaded(item)" class="fa" textWrap="true"></Label>
+				<Label row="0" , col="1" (tap)="download(item)" text="&#xf0ed;" *ngIf="!downloaded(item)" class="fa fa-download" textWrap="true"></Label>
 			</GridLayout>
 		</ng-template>
 	</ListView>
