@@ -4,14 +4,18 @@
 	font-size: 18;
 }
 .album-card{
-	width: 49%;
-	padding-bottom: 35%;
+	border-width: 1;
+	border-color: #e4e3e3;
+	border-bottom-left-radius: 4;
+	border-bottom-right-radius: 4;
 }
 .album-image{
-	width: 80%;
-	border-width: 1;
-	border-color: rgb(228, 227, 227);
+	background-color: #ca9fdb;
+
 }
 .album-name{
-	width: 80%
+	font-size: 13;
+	margin-top: 6;
+	margin-bottom: 6;
+	margin-left: 2;
 }

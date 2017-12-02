@@ -33,8 +33,14 @@ Image{
 .back-link{
 	font-size: 18;
 	margin: 10 20;
+	color: #ca9fdb;
+	font-weight: bold;
 }
 
 .offset-for-slide{
 	transform: translateX(300);
+}
+.title{
+	font-size: 25;
+	font-weight: bold
 }

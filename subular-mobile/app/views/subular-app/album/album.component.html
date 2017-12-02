@@ -1,6 +1,6 @@
 <StackLayout class="album offset-for-slide" *ngIf="album$ | async as album" [animate]="animateOptions">
-	<Label [nsRouterLink]="['../../albums', album.artistId ]" text="< {{ album.artist }}" class="back-link" textWrap="true"></Label>
-	<Label text="{{ album.name }}" class="album-name" textWrap="true"></Label>
+	<Label [nsRouterLink]="['../../albums', album.artistId ]" class="fa back-link" text="&#xf0d9; {{ album.artist }}" textWrap="true"></Label>
+	<Label text="{{ album.name }}" class="title" textWrap="true"></Label>
 	<Button text="Download" (tap)="downloadAllSongs()"></Button>
 
 	<ListView [slideBack]="['/app/albums', album.artistId ]" [items]="songs$ | async" class="list-group">
