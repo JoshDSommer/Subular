@@ -32,12 +32,13 @@ export class PlayerComponent implements OnInit {
 
 	constructor(public player: PlayerService, public nsRouter: RouterExtensions, private subular: SubularMobileService, private page: Page, private ref: ChangeDetectorRef) {
 	}
-
 	private trimLeadingZero(time: string) {
 		return time.startsWith('0') ? time.substring(1, time.length) : time;
 	}
 
 	ngOnInit() {
+		this.page.backgroundColor = '#adadad';
+
 		this.subscription = this.player.nowPlaying$.subscribe(nowPlaying => {
 			if (nowPlaying) {
 				//mutate time formats probably should export this to a Pipe
@@ -53,6 +54,7 @@ export class PlayerComponent implements OnInit {
 		});
 	}
 
+
 	getArtWork(song) {
 		return this.subular.subsonicGetCoverUrl(song, 1000)
 	}
@@ -64,9 +66,9 @@ export class PlayerComponent implements OnInit {
 	onProgressLoaded(args: EventData) {
 		let progress = args.object as Progress;
 		if (progress.android) {
-			progress.android.setScaleY(5);  //  progress.android === android.widget.ProgressBar
+			progress.android.setScaleY(4);  //  progress.android === android.widget.ProgressBar
 		} else if (progress.ios) {
-			let transform = CGAffineTransformMakeScale(1.0, 5.0);
+			let transform = CGAffineTransformMakeScale(1.0, 4.0);
 			progress.ios.transform = transform; // progress.ios === UIProgressView
 		}
 	}

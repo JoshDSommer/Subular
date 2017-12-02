@@ -29,6 +29,7 @@ import { SubularMobileService } from './services/subularMobile.service';
 import { AlbumsResolver, AlbumResolver } from './resolvers';
 import { PlayerComponent } from './views/player/player.component';
 import { NativeShadowDirective } from './directives/shadow.directive';
+import { HeartComponent } from './components/heart/heart.component';
 
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
@@ -59,6 +60,7 @@ if (applicationModule.android) {
         PlayerComponent,
         NativeShadowDirective,
         SlideBackDirective,
+        HeartComponent,
     ],
     providers: [
         LOCALSTORAGE_SERVICE,

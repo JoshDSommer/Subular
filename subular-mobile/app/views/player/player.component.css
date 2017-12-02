@@ -1,3 +1,9 @@
+
+.player-wrap{
+	border-bottom-left-radius: 20;
+	border-bottom-right-radius: 20;
+	background-color: #fff;
+}
 ActionBar{
 	background-color: #fff;
 }
@@ -17,7 +23,7 @@ ActionBar{
 	margin-bottom: 30; */
 }
 Progress{
-	background-color:#222222;
+	background-color:#c4c2c2;
 	color: #ca9fdb;
 	width: 67%;
 	margin-top: 15px
@@ -26,33 +32,50 @@ Progress{
 	font-size: 35;
 	color: #ca9fdb;
 }
+.heart-wrap{
+	text-align: right;
+	padding-top: 15;
+	padding-right: 40;
+}
 .song-title, .song-artist, .song-album{
 	text-align: center;
 }
 
 .song-title{
 	font-size: 25;
+	font-weight: bold
 }
 .song-artist, .song-album{
 	font-size: 18;
+}
+.song-artist{
+	font-weight: bold;
+}
+.song-album{
+	font-style : italic;
 }
 
 .player-controls Label{
 	text-align: center;
 	height: 66;
-	color: #222222;
 
 }
 .mini-player-button{
 	width: 66;
 	font-size: 36;
+	color: #222222;
+
 }
 .disabled{
 	color: #ca9fdb;
 }
-
 .next-previous{
+	color: #222222;
 	font-size: 25
+}
+
+.random-repeat{
+	color: #ca9fdb;
 }
 .time{
 	text-align: center;
