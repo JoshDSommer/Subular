@@ -28,6 +28,7 @@ import { SlideBackDirective } from './directives/slideBack.directive';
 import { SubularMobileService } from './services/subularMobile.service';
 import { AlbumsResolver, AlbumResolver } from './resolvers';
 import { PlayerComponent } from './views/player/player.component';
+import { NativeShadowDirective } from './directives/shadow.directive';
 
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
@@ -43,8 +44,6 @@ if (applicationModule.android) {
         SubularSharedModule.forRoot(),
         NativeScriptModule,
         NativeScriptHttpModule,
-        NativeScriptUISideDrawerModule,
-        NativeScriptUIListViewModule,
         AppRoutingModule,
         TNSFrescoModule,
     ],
@@ -58,6 +57,7 @@ if (applicationModule.android) {
         AlbumComponent,
         SongListComponent,
         PlayerComponent,
+        NativeShadowDirective,
         SlideBackDirective,
     ],
     providers: [

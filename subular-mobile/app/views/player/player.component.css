@@ -1,15 +1,26 @@
 ActionBar{
-	background-color: #222222;
+	background-color: #fff;
 }
 .back-button{
-	width:80%;
+	width:20%;
+	align-content: center;
 }
-Image{
-	border-radius: 0;
+.loading-album{
+	text-align: center;
+	font-size: 105;
+	color: #ca9fdb;
+	opacity: 0.8
+}
+.album-art Image{
+	border-radius: 4;
+	/* margin-top: 20;
+	margin-bottom: 30; */
 }
 Progress{
 	background-color:#222222;
 	color: #ca9fdb;
+	width: 67%;
+	margin-top: 15px
 }
 .hide-button{
 	font-size: 35;
@@ -30,13 +41,21 @@ Progress{
 	text-align: center;
 	height: 66;
 	color: #222222;
-	font-size: 20;
 
 }
 .mini-player-button{
-	border-width: 2;
-	border-color: #222222;
-	border-radius: 33;
 	width: 66;
-	font-size: 30;
+	font-size: 36;
+}
+.disabled{
+	color: #ca9fdb;
+}
+
+.next-previous{
+	font-size: 25
+}
+.time{
+	text-align: center;
+	font-size: 11px;
+	vertical-align:top;
 }
