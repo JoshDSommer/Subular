@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectorRef, ChangeDetectionStrategy, NgZone } from '@angular/core';
 import { IAlbum, RouterResolverDataObservable, ISong, SongStoreService } from 'subular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -15,6 +15,7 @@ import { DownloadQueueService } from '../../../services/downloadQueue.service';
 	selector: 'album',
 	templateUrl: './album.component.html',
 	styleUrls: ['./album.component.css'],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class AlbumComponent implements OnInit {
@@ -67,7 +68,10 @@ export class AlbumComponent implements OnInit {
 	}
 
 	download(song: ISong) {
-		this.queue.addSongToTheQueue(song);
+		const onComplete = () => {
+			console.log(song.title, 'downloaded')
+		}
+		this.queue.addSongToTheQueue({ song, onComplete });
 	}
 
 	downloadAllSongs() {

@@ -29,7 +29,7 @@ import { PlayerComponent } from './views/player/player.component';
 import { NativeShadowDirective } from './directives/shadow.directive';
 import { HeartComponent } from './components/heart/heart.component';
 import { HighlightDirective } from './directives/highlight.directive';
-import { WorkerService } from './services/worker.service';
+import { WorkerService, DownloadQueueService } from './services';
 
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
@@ -70,7 +70,8 @@ if (applicationModule.android) {
         SubularMobileService,
         AlbumsResolver,
         AlbumResolver,
-        WorkerService
+        WorkerService,
+        DownloadQueueService
 
     ],
     schemas: [
