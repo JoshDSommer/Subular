@@ -8,6 +8,7 @@ import { PlayerService } from '../../../services/player.service';
 import { SubularMobileService } from '../../../services/subularMobile.service';
 import { ios } from 'utils/utils';
 import * as fs from "file-system";
+import { WorkerService } from '../../../services/worker.service';
 
 @Component({
 	moduleId: module.id,
@@ -30,7 +31,8 @@ export class AlbumComponent implements OnInit {
 		private router: Router,
 		private subular: SubularMobileService,
 		private playerService: PlayerService,
-		private songStore: SongStoreService) { }
+		private songStore: SongStoreService,
+		private workers: WorkerService) { }
 
 	downloaded(song) {
 		const localFile = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
@@ -65,11 +67,26 @@ export class AlbumComponent implements OnInit {
 	}
 
 	download(song: ISong) {
-		this.subular.downloadSong(song).subscribe(console.log);
+		this.subular.downloadSong(song, () => {
+			console.log('Down Downloading', song.title)
+		});
+		// let url = this.subular.getDownloadUrl(song.id);
+		// let path = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
+		// const worker = this.workers.initJsWorker();
+
+		// worker.postMessage({ url, path })
+		// worker.onmessage = m => {
+
+		// };
 	}
 
+
+
 	downloadAllSongs() {
-		Observable.merge(this.listedSongs.map(song => this.download(song))).subscribe();
+		this.listedSongs.forEach(song => {
+			console.log('downloading song', song.title)
+			this.download(song)
+		});
 	}
 	ngOnDestroy() {
 		//Called once, before the instance is destroyed.

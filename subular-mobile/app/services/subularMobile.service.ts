@@ -7,6 +7,7 @@ import * as utilModule from "utils/utils";
 import { LocalStorageService } from '../providers/localstorage.service';
 import { getString, setString } from 'application-settings';
 import * as connectivity from "tns-core-modules/connectivity";
+import { WorkerService } from './worker.service';
 
 interface ISubularService {
 	subsonic: SubsonicService;
@@ -22,7 +23,7 @@ export class SubularMobileService {
 	private currentConnectionType: connectivity.connectionType;
 	private subsonicService: ISubularService;
 
-	constructor(subsonic: SubsonicService, private cachedData: SubsonicCachedService) {
+	constructor(subsonic: SubsonicService, private cachedData: SubsonicCachedService, private workers: WorkerService) {
 		const getOnlineServices = () => ({ subsonic, cachedData });
 		const getOfflineServices = () => ({
 			subsonic: {
@@ -68,34 +69,26 @@ export class SubularMobileService {
 		return this.subsonicService.subsonic.getPlaylist(id);
 	}
 
-	downloadSong(song: ISong): Observable<boolean> {
+	private _worker: Worker;
+	downloadSong(song: ISong, callback: Function): void {
 		let url = this.subsonicService.subsonic.getDownloadUrl(song.id);
 		let path = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
+
 		let coverPath = fs.path.join(fs.knownFolders.documents().path, song.coverArt + '.png');
 		let coverUrl = this.subsonicService.subsonic.subsonicGetCoverUrl(song.coverArt, 600);
 
-		console.log(url);
+		this._worker = this.workers.initDownloadWorker();
 
-		const getCover$ = Observable.fromPromise(http.getFile({
-			url: coverUrl,
-			method: "GET",
-		}, coverPath));
-		const getSong$ = Observable.fromPromise(http.getFile({
-			url: url,
-			method: "GET",
-		}, path))
-			.do(() => this.StoreCachedSong(song))
-			.map(file => {
-				return file && fs.File.exists(file.path)
-			});
-
-		if (fs.File.exists(coverPath)) {
-			console.log('cached cover')
-			return getSong$;
+		this._worker.onmessage = m => {
+			console.log(JSON.stringify(m));
+			callback();
 		}
-		console.log('song cover')
-		return getCover$.switchMap(() => getSong$);
-		//TODO Save cached songs list.
+		if (fs.File.exists(coverPath)) {
+			this._worker.postMessage({ url, path })
+			return;
+		}
+		this._worker.postMessage({ url: coverUrl, path: coverPath })
+		this._worker.postMessage({ url, path })
 
 	}
 
