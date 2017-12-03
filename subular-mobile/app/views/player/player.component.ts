@@ -21,6 +21,7 @@ import { ActionBar } from 'tns-core-modules/ui/action-bar/action-bar';
 
 export class PlayerComponent implements OnInit {
 	timeEclipsed: string;
+	highlightBgColor = '#ca9fdb';
 	private subscription: Subscription;
 	nowPlaying: IAudioPlayingInfo;
 

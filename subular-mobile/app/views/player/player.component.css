@@ -63,6 +63,7 @@ Progress{
 }
 .mini-player-button{
 	width: 66;
+	border-radius: 33;
 	font-size: 36;
 	color: #222222;
 
@@ -72,7 +73,9 @@ Progress{
 }
 .next-previous{
 	color: #222222;
-	font-size: 25
+	font-size: 25;
+	width: 66;
+	border-radius: 33;
 }
 
 .random-repeat{
