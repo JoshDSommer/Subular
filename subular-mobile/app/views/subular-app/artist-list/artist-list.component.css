@@ -1,8 +1,11 @@
 .artist-list-item{
-	padding: 15;
+	padding-top: 15;
+	padding-bottom: 15;
+	border-bottom-width: 1;
+	border-bottom-color:#e4e3e3;
 }
 .artist {
-	margin: 0 2.5%;
+	margin: 0;
 	padding: 3% 0;
 	font-size: 18px;
 }

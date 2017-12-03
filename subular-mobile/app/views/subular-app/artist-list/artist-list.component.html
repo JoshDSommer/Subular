@@ -1,12 +1,15 @@
-<GridLayout rows="*" columns="*,18">
-	<ListView #artistList [items]="artists$ | async" class="list-group">
-		<ng-template let-item="item" let-odd="odd" let-even="even" let-i="index">
-			<GridLayout rows="*" columns="*" [nsRouterLink]="['../albums', item.id ]" (tap)="cacheIndex(i)" class="artist-list-item">
-				<Label row="0" , col="0" [text]="item.name" class="artist"></Label>
-			</GridLayout>
-		</ng-template>
-	</ListView>
-	<StackLayout (touch)="slide($event)" row="0" col="1" class="letter-wrap">
-		<Label [text]="char" *ngFor="let char of alphabet" textWrap="true"></Label>
-	</StackLayout>
-</GridLayout>
+<StackLayout class="page-padding-left" >
+	<Label text="Artists" class="title"></Label>
+	<GridLayout rows="*" columns="*,18" class="">
+		<ListView #artistList [items]="artists$ | async" class="list-group">
+			<ng-template let-item="item" let-odd="odd" let-even="even" let-i="index">
+				<GridLayout rows="*" columns="*" [nsRouterLink]="['../albums', item.id ]" (tap)="cacheIndex(i)" class="artist-list-item">
+					<Label row="0" , col="0" [text]="item.name" class="artist"></Label>
+				</GridLayout>
+			</ng-template>
+		</ListView>
+		<StackLayout (touch)="slide($event)" row="0" col="1" class="letter-wrap">
+			<Label [text]="char" *ngFor="let char of alphabet" textWrap="true"></Label>
+		</StackLayout>
+	</GridLayout>
+</StackLayout>
