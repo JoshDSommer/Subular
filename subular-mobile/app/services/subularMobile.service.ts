@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SubsonicService, SubsonicCachedService, ISong, IArtist, IAlbum } from 'subular';
+import { SubsonicService, SubsonicCachedService, ISong, IArtist, IAlbum, IPlaylist } from 'subular';
 import { Observable } from 'rxjs/Observable';
 import * as http from "http";
 import * as fs from "file-system";
@@ -14,10 +14,12 @@ interface ISubularService {
 }
 
 const CACHED_SONGS_KEY = 'subular.cached.songs';
+const CACHED_PLAYLISTS_KEY = 'subular.cached.playlists';
 
 @Injectable()
 export class SubularMobileService {
 
+	private currentConnectionType: connectivity.connectionType;
 	private subsonicService: ISubularService;
 
 	constructor(subsonic: SubsonicService, private cachedData: SubsonicCachedService) {
@@ -25,6 +27,8 @@ export class SubularMobileService {
 		const getOfflineServices = () => ({
 			subsonic: {
 				getSongs: (albumId) => this.getCachedSongs(albumId),
+				getPlaylists: () => this.getPlaylistsFromCache(),
+				getPlaylist: (id) => this.getPlaylistSongsFromCache(id),
 				subsonicGetCoverUrl: () => ''
 			},
 			cachedData: {
@@ -35,6 +39,7 @@ export class SubularMobileService {
 		} as any);
 
 		const handleConnectionChange = (connectionType) => {
+			this.currentConnectionType = connectionType;
 			switch (connectionType) {
 				case connectivity.connectionType.none:
 					this.subsonicService = getOfflineServices();
@@ -54,8 +59,16 @@ export class SubularMobileService {
 		connectivity.startMonitoring(handleConnectionChange);
 	}
 
+	getPlaylists() {
+		return this.subsonicService.subsonic.getPlaylists()
+			.do(playlists => this.setValue(CACHED_PLAYLISTS_KEY, playlists));
+	}
 
-	public downloadSong(song: ISong): Observable<boolean> {
+	getPlaylist(id: number): Observable<IPlaylist> {
+		return this.subsonicService.subsonic.getPlaylist(id);
+	}
+
+	downloadSong(song: ISong): Observable<boolean> {
 		let url = this.subsonicService.subsonic.getDownloadUrl(song.id);
 		let path = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
 		let coverPath = fs.path.join(fs.knownFolders.documents().path, song.coverArt + '.png');
@@ -85,6 +98,7 @@ export class SubularMobileService {
 		//TODO Save cached songs list.
 
 	}
+
 	getDownloadUrl(id: number): string {
 		return this.subsonicService.subsonic.getDownloadUrl(id);
 	}
@@ -141,14 +155,29 @@ export class SubularMobileService {
 	}
 
 	private sortByName = (array: Array<{ name: string }>) => {
+		const cleanName = (name: string) => name.replace('the ', '').replace('los ', '');
 		return array.sort((a, b) => {
-			if (a.name < b.name)
+			const bName = cleanName(b.name);
+			const aName = cleanName(a.name);
+			if (aName < bName)
 				return -1;
-			if (a.name > b.name)
+			if (aName > bName)
 				return 1;
 			return 0;
 		});
 	};
+
+	getPlaylistSongsFromCache(arg0: any): any {
+		throw new Error("Method not implemented.");
+	}
+
+	private getPlaylistsFromCache(): Observable<IPlaylist[]> {
+		const cachedPlaylists = this.getValue(CACHED_PLAYLISTS_KEY);
+		if (cachedPlaylists) {
+			return Observable.of(cachedPlaylists);
+		}
+		return Observable.of([]);
+	}
 
 	private getArtistFromCache(): Observable<IArtist[]> {
 		const cachedSongs = this.getValue(CACHED_SONGS_KEY);
@@ -177,6 +206,13 @@ export class SubularMobileService {
 
 		const cachedSongs = this.getValue(CACHED_SONGS_KEY) as ISong[];
 		const filteredSongs = cachedSongs.filter(song => song.albumId === albumId)
+		const orderedSongs = filteredSongs.sort((a, b) => {
+			if (a.track < b.track)
+				return -1;
+			if (a.track > b.track)
+				return 1;
+			return 0;
+		});
 		return Observable.of(filteredSongs);
 	}
 
