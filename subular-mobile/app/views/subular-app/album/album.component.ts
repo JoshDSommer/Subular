@@ -8,7 +8,7 @@ import { PlayerService } from '../../../services/player.service';
 import { SubularMobileService } from '../../../services/subularMobile.service';
 import { ios } from 'utils/utils';
 import * as fs from "file-system";
-import { WorkerService } from '../../../services/worker.service';
+import { DownloadQueueService } from '../../../services/downloadQueue.service';
 
 @Component({
 	moduleId: module.id,
@@ -32,7 +32,7 @@ export class AlbumComponent implements OnInit {
 		private subular: SubularMobileService,
 		private playerService: PlayerService,
 		private songStore: SongStoreService,
-		private workers: WorkerService) { }
+		private queue: DownloadQueueService) { }
 
 	downloaded(song) {
 		const localFile = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
@@ -67,24 +67,11 @@ export class AlbumComponent implements OnInit {
 	}
 
 	download(song: ISong) {
-		this.subular.downloadSong(song, () => {
-			console.log('Down Downloading', song.title)
-		});
-		// let url = this.subular.getDownloadUrl(song.id);
-		// let path = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
-		// const worker = this.workers.initJsWorker();
-
-		// worker.postMessage({ url, path })
-		// worker.onmessage = m => {
-
-		// };
+		this.queue.addSongToTheQueue(song);
 	}
-
-
 
 	downloadAllSongs() {
 		this.listedSongs.forEach(song => {
-			console.log('downloading song', song.title)
 			this.download(song)
 		});
 	}

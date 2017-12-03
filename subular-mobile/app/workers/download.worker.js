@@ -8,7 +8,7 @@ global.onmessage = function (msg) {
 	}, msg.data.path).then(() => {
 		global.postMessage('true');
 	}, (error) => {
-		global.postMessage('fail')
+		global.postMessage('fail');
 	});
 
 }

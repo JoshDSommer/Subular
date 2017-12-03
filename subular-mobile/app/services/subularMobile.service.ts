@@ -7,7 +7,6 @@ import * as utilModule from "utils/utils";
 import { LocalStorageService } from '../providers/localstorage.service';
 import { getString, setString } from 'application-settings';
 import * as connectivity from "tns-core-modules/connectivity";
-import { WorkerService } from './worker.service';
 
 interface ISubularService {
 	subsonic: SubsonicService;
@@ -23,7 +22,7 @@ export class SubularMobileService {
 	private currentConnectionType: connectivity.connectionType;
 	private subsonicService: ISubularService;
 
-	constructor(subsonic: SubsonicService, private cachedData: SubsonicCachedService, private workers: WorkerService) {
+	constructor(subsonic: SubsonicService, private cachedData: SubsonicCachedService) {
 		const getOnlineServices = () => ({ subsonic, cachedData });
 		const getOfflineServices = () => ({
 			subsonic: {
@@ -67,29 +66,6 @@ export class SubularMobileService {
 
 	getPlaylist(id: number): Observable<IPlaylist> {
 		return this.subsonicService.subsonic.getPlaylist(id);
-	}
-
-	private _worker: Worker;
-	downloadSong(song: ISong, callback: Function): void {
-		let url = this.subsonicService.subsonic.getDownloadUrl(song.id);
-		let path = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
-
-		let coverPath = fs.path.join(fs.knownFolders.documents().path, song.coverArt + '.png');
-		let coverUrl = this.subsonicService.subsonic.subsonicGetCoverUrl(song.coverArt, 600);
-
-		this._worker = this.workers.initDownloadWorker();
-
-		this._worker.onmessage = m => {
-			console.log(JSON.stringify(m));
-			callback();
-		}
-		if (fs.File.exists(coverPath)) {
-			this._worker.postMessage({ url, path })
-			return;
-		}
-		this._worker.postMessage({ url: coverUrl, path: coverPath })
-		this._worker.postMessage({ url, path })
-
 	}
 
 	getDownloadUrl(id: number): string {

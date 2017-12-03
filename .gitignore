@@ -50,6 +50,7 @@ Thumbs.db
 /subular-mobile/platforms
 /subular-mobile/node_modules
 /subular-mobile/report
+!/subular-mobile/**/*.worker.js
 
 subular-shared-dist/*
 !subular-shared-dist/package.json
