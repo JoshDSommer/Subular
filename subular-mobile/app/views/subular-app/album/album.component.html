@@ -8,9 +8,10 @@
 
 	<ListView [slideBack]="['/app/albums', album.artistId ]" [items]="songs$ | async" class="list-group">
 		<ng-template let-item="item" let-odd="odd" let-even="even">
-			<GridLayout rows="*" columns="*,60" class="song-list-item page-padding">
-				<Label row="0" , col="0" [text]="item.title" (tap)="selectSong(item)" class="song"></Label>
-				<Label row="0" , col="1" (tap)="download(item)" text="&#xf0ed;" *ngIf="!downloaded(item)" class="fa fa-download" textWrap="true"></Label>
+			<GridLayout rows="*" columns="30,*,60" class="song-list-item page-padding">
+				<Label row="0" , col="0" [text]="item.track" (tap)="selectSong(item)" class="track-number"></Label>
+				<Label row="0" , col="1" [text]="item.title" (tap)="selectSong(item)" class="song"></Label>
+				<Label row="0" , col="2" (tap)="download(item)" text="&#xf0ed;" *ngIf="!downloaded(item)" class="fa fa-download" textWrap="true"></Label>
 			</GridLayout>
 		</ng-template>
 	</ListView>
