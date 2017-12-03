@@ -28,6 +28,7 @@ import { AlbumsResolver, AlbumResolver } from './resolvers';
 import { PlayerComponent } from './views/player/player.component';
 import { NativeShadowDirective } from './directives/shadow.directive';
 import { HeartComponent } from './components/heart/heart.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
@@ -59,6 +60,7 @@ if (applicationModule.android) {
         NativeShadowDirective,
         SlideBackDirective,
         HeartComponent,
+        HighlightDirective,
     ],
     providers: [
         LOCALSTORAGE_SERVICE,
