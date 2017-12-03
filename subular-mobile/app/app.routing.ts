@@ -10,6 +10,7 @@ import { AlbumsResolver, AlbumResolver } from './resolvers';
 import { CommonModule } from '@angular/common';
 import { AlbumComponent } from "./views/subular-app/album/album.component";
 import { PlayerComponent } from "./views/player/player.component";
+import { PlaylistsComponent } from "./views/subular-app/playlists/playlists.component";
 
 const routes: Routes = [
 	{ path: "", redirectTo: "/login", pathMatch: "full" },
@@ -32,9 +33,9 @@ const routes: Routes = [
 				resolve: {
 					album: AlbumResolver
 				}
-			}
+			},
 			// 	{ path: 'artist/:id', component: RandomAlbumsComponent },
-			// 	{ path: 'playlists', component: RandomAlbumsComponent },
+			{ path: 'playlists', component: PlaylistsComponent },
 			// 	{ path: 'playlist/:id', component: RandomAlbumsComponent }
 		]
 	},

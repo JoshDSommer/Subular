@@ -30,6 +30,7 @@ import { NativeShadowDirective } from './directives/shadow.directive';
 import { HeartComponent } from './components/heart/heart.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { WorkerService, DownloadQueueService } from './services';
+import { PlaylistsComponent } from './views/subular-app/playlists/playlists.component';
 
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
@@ -62,6 +63,7 @@ if (applicationModule.android) {
         SlideBackDirective,
         HeartComponent,
         HighlightDirective,
+        PlaylistsComponent,
     ],
     providers: [
         LOCALSTORAGE_SERVICE,
