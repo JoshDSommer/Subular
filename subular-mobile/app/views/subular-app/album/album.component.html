@@ -12,7 +12,11 @@
 			<GridLayout rows="*" columns="30,*,60" class="song-list-item page-padding">
 				<Label row="0" , col="0" [text]="item.track" (tap)="selectSong(item)" class="track-number"></Label>
 				<Label row="0" , col="1" [text]="item.title" (tap)="selectSong(item)" class="song"></Label>
-				<Label row="0" , col="2" (tap)="download(item)" text="&#xf0ed;" *ngIf="!downloaded(item)" class="fa fa-download" textWrap="true"></Label>
+				<ng-container [ngSwitch]="item?.state">
+					<Label *ngSwitchCase="SongState.downloading" row="0" col="2" class="fa fa-download" [animate]="animateSpin" text="&#xf1ce;"></Label>
+					<Label *ngSwitchCase="SongState.downloaded" row="0" col="2" class="fa fa-download"></Label>
+					<Label *ngSwitchDefault row="0" , col="2" (tap)="download(item)" text="&#xf0ed;" class="fa fa-download" textWrap="true"></Label>
+				</ng-container>
 			</GridLayout>
 		</ng-template>
 	</ListView>

@@ -1,3 +1,10 @@
+export enum SongState {
+	none,
+	downloading,
+	downloaded,
+	playing,
+}
+
 export interface ISong {
 	id?: number;
 	parent?: number;
@@ -23,4 +30,5 @@ export interface ISong {
 	artistId?: number;
 	starred: Date;
 	type?: string;
+	state?: SongState
 }
