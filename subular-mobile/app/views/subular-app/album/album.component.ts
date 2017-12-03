@@ -23,6 +23,7 @@ export class AlbumComponent implements OnInit {
 	album$: Observable<IAlbum>;
 	albums: IAlbum;
 
+	allSongsDownloaded = true;
 	animateOptions = SLIDE_RIGHT_ANIMATION
 
 	constructor(private route: ActivatedRoute,
@@ -33,7 +34,9 @@ export class AlbumComponent implements OnInit {
 
 	downloaded(song) {
 		const localFile = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
-		return fs.File.exists(localFile);
+		const fileExists = fs.File.exists(localFile);
+		this.allSongsDownloaded = fileExists;
+		return fileExists;
 	}
 
 	ngOnInit() {

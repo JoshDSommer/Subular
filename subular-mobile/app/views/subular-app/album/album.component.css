@@ -34,10 +34,18 @@
 	text-align: right;
 	color: #ca9fdb;
 }
-.button-wrap Button{
+.button-wrap Button, .button-wrap Label{
 	width: 49%;
 	padding: 15;
 	color: #c4c2c2;
+	font-size: 14;
+	text-align: center;
+}
+.button-wrap Button:highlighted{
+	background-color: #ca9fdb;
+	color: #ffffff;
+	font-weight: bold;
+	border-radius: 7;
 }
 .track-number{
 	color: #8f8e8e;
