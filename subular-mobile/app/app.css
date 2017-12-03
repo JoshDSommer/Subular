@@ -15,6 +15,9 @@ refer to http://docs.nativescript.org/ui/theme.
 Image{
 	border-radius: 2;
 }
+Button{
+	color: #ca9fdb;
+}
 
 .fa{
 	font-family: 'FontAwesome', fontawesome-webfont;
@@ -36,6 +39,7 @@ Image{
 .back-link{
 	font-size: 18;
 	margin: 10 10;
+	height: 22;
 	color: #ca9fdb;
 	font-weight: bold;
 }
