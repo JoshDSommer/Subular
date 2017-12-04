@@ -39,3 +39,12 @@
 .loading-image{
 	margin-top: 25%;
 }
+.song-title{
+	vertical-align: bottom;
+}
+.song-artist{
+	vertical-align: top;
+	font-size: 13;
+	font-style : italic;
+	color: #646262
+}

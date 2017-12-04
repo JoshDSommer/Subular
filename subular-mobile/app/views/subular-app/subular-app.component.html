@@ -7,17 +7,18 @@
 		<!-- <Label row="0" col="2" [nsRouterLink]="['/app/artists']" width="100%" horizontalAlign="center" verticalAlignment="center"
 		 class="fa navigation-option" [text]="'Albums'"></Label> -->
 	</GridLayout>
-	<GridLayout row="1" col="0" backgroundColor="#dbd3de" *ngIf="nowPlaying" height="70" rows="*" columns="80,*,80">
-		<StackLayout shadow="5" row="0" col="0" width="60" height="60">
-			<Image [nsRouterLink]="['/player']" pageTransition="slideTop"  width="60" height="60" [src]="getArtWork(nowPlaying?.song)"></Image>
+	<GridLayout row="1" col="0" backgroundColor="#dbd3de" *ngIf="nowPlaying" height="70" rows="*,30" columns="80,*,80">
+		<StackLayout shadow="5" row="0" rowSpan="2" col="0" width="60" height="60">
+			<Image [nsRouterLink]="['/player']" pageTransition="slideTop" width="60" height="60" [src]="getArtWork(nowPlaying?.song)"></Image>
 		</StackLayout>
-		<Label [nsRouterLink]="['/player']" pageTransition="slideTop" row="0" col="1" [text]="nowPlaying?.song?.title" textWrap="true"></Label>
+		<Label [nsRouterLink]="['/player']" class="song-title" pageTransition="slideTop" row="0" col="1" [text]="nowPlaying?.song?.title"></Label>
+		 <Label [nsRouterLink]="['/player']" class="song-artist" pageTransition="slideTop" row="1" col="1" [text]="nowPlaying?.song?.artist"></Label>
 		<ng-container [ngSwitch]="nowPlaying?.playing">
-			<Label row="0" col="2" class="fa mini-player-button" [animate]="animateOptions" text="&#xf1ce;" *ngSwitchCase="PlayingStatus.loading"
+			<Label row="0" col="2" rowSpan="2"  class="fa mini-player-button" [animate]="animateOptions" text="&#xf1ce;" *ngSwitchCase="PlayingStatus.loading"
 			 textWrap="true"></Label>
-			<Label row="0" col="2" class="fa mini-player-button" text="&#xf04b;" (tap)="play()" *ngSwitchCase="PlayingStatus.paused"
+			<Label row="0" col="2" rowSpan="2"  class="fa mini-player-button" text="&#xf04b;" (tap)="play()" *ngSwitchCase="PlayingStatus.paused"
 			 textWrap="true"></Label>
-			<Label row="0" col="2" class="fa mini-player-button" text="&#xf04c;" (tap)="pause()" *ngSwitchCase="PlayingStatus.playing"
+			<Label row="0" col="2" rowSpan="2"  class="fa mini-player-button" text="&#xf04c;" (tap)="pause()" *ngSwitchCase="PlayingStatus.playing"
 			 textWrap="true"></Label>
 		</ng-container>
 	</GridLayout>

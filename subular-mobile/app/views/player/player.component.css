@@ -36,7 +36,7 @@ Progress{
 .heart-wrap{
 	text-align: right;
 	padding-top: 15;
-	padding-right: 40;
+	padding-right: 25;
 }
 .song-title, .song-artist, .song-album{
 	text-align: center;
@@ -54,12 +54,12 @@ Progress{
 }
 .song-album{
 	font-style : italic;
+	color: #646262;
 }
 
 .player-controls Label{
 	text-align: center;
 	height: 66;
-
 }
 .mini-player-button{
 	width: 66;

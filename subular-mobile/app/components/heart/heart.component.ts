@@ -17,6 +17,8 @@ export class HeartComponent {
 		return this.song.starred;
 	}
 	constructor(private subsonic: SubularMobileService) { }
+	@Input() row: number;
+	@Input() col: number;
 
 	unHeartSong() {
 		this.song = Object.assign({}, this.song, { starred: null });
@@ -25,7 +27,7 @@ export class HeartComponent {
 	}
 
 	heartSong() {
-		this.song = Object.assign({}, this.song, { starred: new Date()  });
+		this.song = Object.assign({}, this.song, { starred: new Date() });
 		this.subsonic.starSong(this.song.id).subscribe();
 		this.songUpdated.next(this.song);
 	}
