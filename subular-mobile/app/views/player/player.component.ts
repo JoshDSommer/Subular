@@ -55,6 +55,10 @@ export class PlayerComponent implements OnInit {
 				this.ref.markForCheck();
 			}
 		});
+		topmost().ios.controller.visibleViewController.navigationItem.setHidesBackButtonAnimated(
+			true,
+			false
+		  );
 	}
 
 
