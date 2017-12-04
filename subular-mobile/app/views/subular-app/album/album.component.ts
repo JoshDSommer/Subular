@@ -87,9 +87,12 @@ export class AlbumComponent implements OnInit {
 				this.songStore.updateSong(updatedSong);
 			});
 		}
-		this.queue.addSongToTheQueue({ song, onComplete });
-		song = Object.assign({}, song, { state: SongState.downloading }) as ISong;
-		this.songStore.updateSong(song);
+		// the song is added to the queue update the store
+		if (this.queue.addSongToTheQueue({ song, onComplete })) {
+			song = Object.assign({}, song, { state: SongState.downloading }) as ISong;
+			this.songStore.updateSong(song);
+		};
+
 	}
 
 	downloadAllSongs() {

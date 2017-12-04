@@ -119,9 +119,11 @@ export class SubularMobileService {
 
 	StoreCachedSong(song: ISong) {
 		const cachedSongs = this.getValue(CACHED_SONGS_KEY) || [];
-		const updatedSongs = [...cachedSongs, song];
-
-		this.setValue(CACHED_SONGS_KEY, updatedSongs);
+		const cachedSongExists = cachedSongs.filter(cachedSong => cachedSong.id === song.id);
+		if (!cachedSongExists) {
+			const updatedSongs = [...cachedSongs, song];
+			this.setValue(CACHED_SONGS_KEY, updatedSongs);
+		}
 	}
 
 	private sortByName = (array: Array<{ name: string }>) => {

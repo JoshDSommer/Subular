@@ -17,15 +17,27 @@ export class DownloadQueueService {
 	private songs: ISongToDownload[] = [];
 	constructor(private workers: WorkerService, private subular: SubularMobileService) {
 		this.worker = this.workers.initDownloadWorker();
+
+		this.worker.onerror = error => {
+			console.log(error.message);
+		};
 	}
 
 
-	addSongToTheQueue(song: ISongToDownload) {
-		this.songs = [...this.songs, song];
-		if (!this.downloading) {
-			this.downloading = true;
-			this.processQueue();
+	addSongToTheQueue(song: ISongToDownload): boolean {
+		let path = fs.path.join(fs.knownFolders.documents().path, song.song.id.toString() + '.mp3');
+		if (!fs.File.exists(path)) {
+			this.songs = [...this.songs, song];
+			if (!this.downloading) {
+				this.downloading = true;
+				this.processQueue();
+			}
+			return true;
+		} else {
+			this.subular.StoreCachedSong(song.song);
+			return false;
 		}
+
 
 	}
 
@@ -40,7 +52,6 @@ export class DownloadQueueService {
 			let coverPath = fs.path.join(fs.knownFolders.documents().path, song.coverArt + '.png');
 			let coverUrl = this.subular.subsonicGetCoverUrl(song, 600);
 
-
 			this.worker.onmessage = m => {
 				this.subular.StoreCachedSong(song);
 				if (onComplete) {
@@ -51,11 +62,9 @@ export class DownloadQueueService {
 				this.processQueue();
 			}
 
-			if (fs.File.exists(coverPath)) {
-				this.worker.postMessage({ url, path })
-				return;
+			if (!fs.File.exists(coverPath)) {
+				this.worker.postMessage({ url: coverUrl, path: coverPath })
 			}
-			this.worker.postMessage({ url: coverUrl, path: coverPath })
 			this.worker.postMessage({ url, path })
 		} else {
 			this.downloading = false;
