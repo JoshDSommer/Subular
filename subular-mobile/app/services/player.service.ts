@@ -47,6 +47,7 @@ export class PlayerService {
 
 	clearSongs(): void {
 		this.songList = [];
+		this.preSortedSongListOrder = [];
 	}
 
 	addSong(song: ISong): void {
