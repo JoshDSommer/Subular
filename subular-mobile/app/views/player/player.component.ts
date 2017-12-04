@@ -55,12 +55,14 @@ export class PlayerComponent implements OnInit {
 				this.ref.markForCheck();
 			}
 		});
-		topmost().ios.controller.visibleViewController.navigationItem.setHidesBackButtonAnimated(
-			true,
-			false
-		  );
+		//id back button ios
+		if (this.page.ios) {
+			topmost().ios.controller.visibleViewController.navigationItem.setHidesBackButtonAnimated(
+				true,
+				false
+			);
+		}
 	}
-
 
 	getArtWork(song) {
 		return this.subular.subsonicGetCoverUrl(song, 1000)

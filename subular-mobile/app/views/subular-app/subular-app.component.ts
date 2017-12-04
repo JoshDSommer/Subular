@@ -34,11 +34,8 @@ export class SubularAppComponent {
 	}
 
 	ngOnInit() {
-		//Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-		//Add 'implements OnInit' to the class.
 		this.loaded$ = this.subular.getCachedData()
 			.map(([artists, albums]) => true);
-
 	}
 
 	getArtWork(song) {
