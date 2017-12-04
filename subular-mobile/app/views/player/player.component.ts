@@ -34,6 +34,9 @@ export class PlayerComponent implements OnInit {
 	constructor(public player: PlayerService, public nsRouter: RouterExtensions, private subular: SubularMobileService, private page: Page, private ref: ChangeDetectorRef) {
 	}
 	private trimLeadingZero(time: string) {
+		if (!time) {
+			return '0:00';
+		}
 		return time.startsWith('0') ? time.substring(1, time.length) : time;
 	}
 
@@ -60,7 +63,9 @@ export class PlayerComponent implements OnInit {
 	}
 
 	ngOnDestroy() {
-		this.subscription.unsubscribe();
+		if (this.subscription) {
+			this.subscription.unsubscribe();
+		}
 	}
 
 	onProgressLoaded(args: EventData) {
