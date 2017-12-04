@@ -24,7 +24,7 @@ export class AlbumComponent implements OnInit {
 	album$: Observable<IAlbum>;
 	albums: IAlbum;
 
-	allSongsDownloaded = true;
+	allSongsDownloaded = false;
 	animateOptions = SLIDE_RIGHT_ANIMATION
 	SongState = SongState;
 	animateSpin = SPIN_ANIMATION;
@@ -37,12 +37,6 @@ export class AlbumComponent implements OnInit {
 		private queue: DownloadQueueService,
 		private zone: NgZone) { }
 
-	downloaded(song) {
-		const localFile = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
-		const fileExists = fs.File.exists(localFile);
-		this.allSongsDownloaded = fileExists;
-		return fileExists;
-	}
 
 	ngOnInit() {
 		this.album$ = RouterResolverDataObservable<IAlbum>(this.route, this.router, 'album');
@@ -78,12 +72,18 @@ export class AlbumComponent implements OnInit {
 		this.playerService.playSong();
 	}
 
+	downloaded(song) {
+		const localFile = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
+		const fileExists = fs.File.exists(localFile);
+		this.allSongsDownloaded = fileExists;
+		return fileExists;
+	}
+
 	download(song: ISong) {
 		const onComplete = () => {
 			this.zone.run(() => {
 				let updatedSong = song;
 				updatedSong = Object.assign({}, updatedSong, { state: SongState.downloaded }) as ISong;
-				console.log('downloaded song', updatedSong.title)
 				this.songStore.updateSong(updatedSong);
 			});
 		}
