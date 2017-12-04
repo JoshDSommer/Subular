@@ -31,6 +31,7 @@ import { HeartComponent } from './components/heart/heart.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { WorkerService, DownloadQueueService } from './services';
 import { PlaylistsComponent } from './views/subular-app/playlists/playlists.component';
+import { PlaylistComponent } from './views/subular-app/playlist/playlist.component';
 
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
@@ -64,6 +65,7 @@ if (applicationModule.android) {
         HeartComponent,
         HighlightDirective,
         PlaylistsComponent,
+        PlaylistComponent,
     ],
     providers: [
         LOCALSTORAGE_SERVICE,

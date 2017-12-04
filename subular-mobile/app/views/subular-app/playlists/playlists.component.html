@@ -2,7 +2,7 @@
 	<Label text="Playlists" class="title" textWrap="true"></Label>
 	<ListView #playlistList [items]="playlists$ | async" class="list-group">
 		<ng-template let-item="item" let-odd="odd" let-even="even" let-i="index">
-			<GridLayout rows="*" columns="*" [nsRouterLink]="['../albums', item.id ]" (tap)="cacheIndex(i)" class="playlist-list-item">
+			<GridLayout rows="*" columns="*" [nsRouterLink]="['/app/playlist', item.id ]" class="playlist-list-item">
 				<Label row="0" , col="0" [text]="item.name" class="playlist"></Label>
 			</GridLayout>
 		</ng-template>

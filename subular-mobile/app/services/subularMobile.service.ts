@@ -27,8 +27,9 @@ export class SubularMobileService {
 		const getOfflineServices = () => ({
 			subsonic: {
 				getSongs: (albumId) => this.getCachedSongs(albumId),
-				getPlaylists: () => this.getPlaylistsFromCache(),
-				getPlaylist: (id) => this.getPlaylistSongsFromCache(id),
+				// right now i'm still getting playlists via mobile
+				getPlaylists: () => subsonic.getPlaylists(),
+				getPlaylist: (id) => subsonic.getPlaylist(id),
 				subsonicGetCoverUrl: () => ''
 			},
 			cachedData: {

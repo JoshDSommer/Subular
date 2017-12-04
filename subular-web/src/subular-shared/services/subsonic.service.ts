@@ -36,7 +36,17 @@ export class SubsonicService {
 
 	getPlaylist(id: number): Observable<IPlaylist> {
 		return this.subsonicGet('getPlaylist', `&id=${id}`)
-			.map(data => data.subresp.playlist);
+			.map(data => data.subresp.playlist)
+			.map(playlist => {
+				playlist.entry = playlist.entry.map((song: ISong) => {
+					const measuredTime = new Date(song.duration * 1000);
+					const timeWithoutHours = measuredTime.toISOString().substr(14, 5);
+					const timeWithHours = measuredTime.toISOString().substr(11, 8);
+					song.time = timeWithHours.startsWith('00:') ? timeWithoutHours : timeWithHours;
+					return song;
+				});
+				return playlist;
+			});;
 	}
 
 	createPlaylist(name: string): Observable<number> {
@@ -45,6 +55,10 @@ export class SubsonicService {
 
 	addSongToPlaylist(song: ISong, playlistId: number) {
 		return this.subsonicGet('updatePlaylist', `&playlistId=${playlistId}&songIdToAdd=${song.id}`);
+	}
+
+	changePlaylistName(name: string, playlistId: number) {
+		return this.subsonicGet('updatePlaylist', `&playlistId=${playlistId}&name=${name}`);
 	}
 
 	removeSongFromPlaylist(songIndexToRemove, playlistId: number) {

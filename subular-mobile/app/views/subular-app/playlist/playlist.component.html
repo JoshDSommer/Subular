@@ -1,0 +1,24 @@
+<StackLayout *ngIf="playlist$ | async as playlist" [animate]="animateOptions" class="offset-for-slide">
+	<Label [nsRouterLink]="['/app/playlists']" class="fa back-link" text="&#xf0d9; Playlists" textWrap="true"></Label>
+	<Label text="{{ playlist.name }}" class="title page-padding" textWrap="true"></Label>
+	<StackLayout orientation="horizontal" class="button-wrap page-padding">
+		<Button class="fa" text="&#xf0ed; Download" *ngIf="!allSongsDownloaded" (tap)="downloadAllSongs()"></Button>
+		<Label class="fa" text="&#xf00c; Downloaded" *ngIf="allSongsDownloaded"></Label>
+		<Button class="fa" text="&#xf074; Shuffle" (tap)="playAndShuffle()"></Button>
+	</StackLayout>
+
+	<ListView [slideBack]="['/app/playlists']" [items]="songs$ | async" class="list-group">
+		<ng-template let-item="item" let-odd="odd" let-even="even">
+			<GridLayout rows="*,15" columns="30,*,60" class="song-list-item page-padding">
+				<Label row="0" , col="0" [text]="item.track" (tap)="selectSong(item)" class="track-number"></Label>
+				<Label row="0" , col="1" [text]="item.title" (tap)="selectSong(item)" class="song"></Label>
+				<ng-container [ngSwitch]="item?.state">
+					<Label *ngSwitchCase="SongState.downloading" row="0" col="2" class="fa fa-download" text="&#xf1ce;"></Label>
+					<Label *ngSwitchCase="SongState.downloaded" row="0" col="2" class="fa fa-download"></Label>
+					<Label *ngSwitchDefault row="0" , col="2" (tap)="download(item)" text="&#xf0ed;" class="fa fa-download" textWrap="true"></Label>
+				</ng-container>
+				<Label [text]="item.artist" (tap)="selectSong(item)" row="1" col="1" textWrap="true" class="artist"></Label>
+			</GridLayout>
+		</ng-template>
+	</ListView>
+</StackLayout>
