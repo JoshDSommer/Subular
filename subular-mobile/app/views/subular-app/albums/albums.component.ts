@@ -42,7 +42,6 @@ export class AlbumsComponent implements OnInit {
 	}
 	getCoverArt(song) {
 		const url = this.subular.subsonicGetAlbumCoverUrl(song);
-		console.log(url)
 		return url;
 	}
 }
