@@ -25,3 +25,8 @@
 .list-group{
 	height: 100%;
 }
+
+.fa-heart{
+	color:#eb2e9c;
+	padding-right: 10;
+}

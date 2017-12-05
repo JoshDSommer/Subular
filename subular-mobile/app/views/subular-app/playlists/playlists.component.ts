@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SubularMobileService } from '../../../services';
-import { IPlaylists } from 'subular';
+import { IPlaylists, IPlaylist } from 'subular';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -16,6 +16,8 @@ export class PlaylistsComponent implements OnInit {
 	constructor(private subular: SubularMobileService) { }
 
 	ngOnInit() {
-		this.playlists$ = this.subular.getPlaylists();
-	 }
+		this.playlists$ = this.subular.getPlaylists()
+			.map(playlists => [{ id: 0, name: 'Favorites' } as IPlaylist, ...playlists]);
+	}
 }
+
