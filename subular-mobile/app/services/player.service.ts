@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { ISong, SubsonicService } from 'subular';
+import { ISong, SubsonicService, replace } from 'subular';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ios } from 'utils/utils';
@@ -48,6 +48,7 @@ export class PlayerService {
 	clearSongs(): void {
 		this.songList = [];
 		this.preSortedSongListOrder = [];
+		this._random = false;
 	}
 
 	addSong(song: ISong): void {
@@ -66,6 +67,15 @@ export class PlayerService {
 	addSongsAndPlaySong(songs: ISong[], song: ISong) {
 		this.addSongs(songs);
 		this.playSong(this.songList.indexOf(song));
+	}
+
+	/**
+	 * used to update song, for example if  hearted/unhearted
+	 */
+	updateSong(song: ISong) {
+		this.songList = replace(this.songList, song);
+		this.preSortedSongListOrder = replace(this.preSortedSongListOrder, song);
+		this.currentSong.song = song;
 	}
 
 	shuffleSongs(firstSong: ISong = null): void {

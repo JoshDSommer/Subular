@@ -5,9 +5,9 @@
 </ActionBar>
 <GridLayout class="player-wrap" rows="70,auto,25,10,28,22,22,*,66,*" columns="*">
 	<GridLayout row="0" col="0" rows="*" columns="80,*,80" class="heart-wrap">
-		<heart row="0" col="2" [song]="nowPlaying?.song"></heart>
+		<heart row="0" col="2" [song]="nowPlaying?.song" (songUpdated)="songHeartChange($event)"></heart>
 	</GridLayout>
-	<AbsoluteLayout row="1" col="0" shadow="28" class="debug" [marginBottom]="imageTopBottomMargin"  [width]="imageHeightWidth"
+	<AbsoluteLayout row="1" col="0" shadow="28" class="debug" [marginBottom]="imageTopBottomMargin" [width]="imageHeightWidth"
 	 [height]="imageHeightWidth" class="album-art">
 		<Image top="0" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="" stretch="aspectFit" [src]="getArtWork(nowPlaying?.song)"></Image>
 		<Label top="0" [animate]="animateOptions" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="fa loading-album"

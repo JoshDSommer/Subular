@@ -10,6 +10,7 @@ import { topmost } from "ui/frame";
 import { Progress } from 'ui/progress';
 import { screen } from 'platform';
 import { ActionBar } from 'tns-core-modules/ui/action-bar/action-bar';
+import { ISong } from 'subular';
 
 @Component({
 	moduleId: module.id,
@@ -62,6 +63,9 @@ export class PlayerComponent implements OnInit {
 				false
 			);
 		}
+	}
+	songHeartChange(song: ISong) {
+		this.player.updateSong(song);
 	}
 
 	getArtWork(song) {

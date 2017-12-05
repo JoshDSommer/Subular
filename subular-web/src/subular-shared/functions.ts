@@ -21,3 +21,20 @@ export function RouterResolverDataObservable<T>(route: ActivatedRoute, router: R
 			.startWith(route.snapshot.data[paramName]);
 	//
 }
+
+
+export function replace<T>(array: T[], targetItem: T, comparator: (listItem: T, targetItem: T) => boolean = defaultComparer): T[] {
+	return array.map(listItem => {
+		if (comparator(listItem, targetItem)) {
+			return targetItem;
+		}
+		return listItem;
+	});
+}
+
+export function defaultComparer<T>(x: T, y: T): boolean {
+	if (x && y) {
+		return (x as any).id === (y as any).id;
+	}
+	return x == y;
+}
