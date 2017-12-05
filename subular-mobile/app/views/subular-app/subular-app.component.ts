@@ -21,6 +21,7 @@ export class SubularAppComponent {
 
 	PlayingStatus = PlayingStatus;
 	animateOptions = SPIN_ANIMATION;
+	highlightBgColor = '#ebd2f5';
 
 	constructor(private subular: SubularMobileService, route: ActivatedRoute, router: Router,
 		private player: PlayerService,

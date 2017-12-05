@@ -12,7 +12,8 @@
 		<Image top="0" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="" stretch="aspectFit" [src]="getArtWork(nowPlaying?.song)"></Image>
 		<Label top="0" [animate]="animateOptions" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="fa loading-album"
 		 text="&#xf1ce;" *ngIf="nowPlaying?.playing === PlayingStatus.loading"></Label>
-
+		<!-- <ActivityIndicator ios.activityIndicatorViewStyle="0" top="0" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="fa loading-album" *ngIf="nowPlaying?.playing === PlayingStatus.loading"
+		 busy="true"></ActivityIndicator> -->
 	</AbsoluteLayout>
 	<GridLayout class="" row="2" col="0" rows="*" columns="80,*,80">
 		<Label class="time" row="0" col="0" [text]="timeEclipsed" textWrap="true"></Label>

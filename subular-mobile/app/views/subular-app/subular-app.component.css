@@ -14,15 +14,21 @@
 }
 
 .navigation{
-	border-top-width: 2;
+	border-top-width: 1;
 	border-top-color:#e4e3e3;
 }
 .navigation-option{
 	text-align: center;
 	font-weight: bold;
 	font-size: 18;
+	font-weight: bold;
+	height: 100%
 }
 
+.mini-player{
+	background-color: #dbd3de;
+	height: 70;
+}
 .mini-player-button{
 	color:#222222;
 	font-weight: bold;
@@ -48,3 +54,4 @@
 	font-style : italic;
 	color: #646262
 }
+

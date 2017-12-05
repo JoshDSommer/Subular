@@ -105,6 +105,8 @@ export class PlayerService {
 
 	toggleRepeat() {
 		this._repeat = !this._repeat;
+		this.currentSong.repeat = this._repeat;
+		this.notifyObservable();
 	}
 
 	toggleShuffle() {
@@ -116,6 +118,8 @@ export class PlayerService {
 		} else {
 			this.songList = [...this.preSortedSongListOrder];
 		}
+		this.currentSong.random = this._random;
+		this.notifyObservable();
 	}
 
 	playSong(index?: number): void {
