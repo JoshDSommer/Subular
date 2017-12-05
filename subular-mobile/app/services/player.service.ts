@@ -232,7 +232,6 @@ export class PlayerService {
 	}
 
 	playNextSong() {
-		console.log('next song')
 		const nextIndex = (this.currentIndex + 1) >= this.songList.length ? 0 : (this.currentIndex + 1);
 
 		if (nextIndex === 0 && !this._repeat) {

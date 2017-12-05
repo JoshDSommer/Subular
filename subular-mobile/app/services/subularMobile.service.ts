@@ -93,7 +93,6 @@ export class SubularMobileService {
 			}
 			return this.subsonicService.subsonic.subsonicGetCoverUrl(song.coverArt);
 		}
-		console.log(this.subsonicService.subsonic.subsonicGetCoverUrl(song.coverArt));
 		return '~/images/coverArt.png';
 	}
 	starSong(id: number) {
@@ -156,7 +155,6 @@ export class SubularMobileService {
 		if (cachedSongs) {
 			const cachedSongsToArtist = cachedSongs.map(song => ({ id: song.artistId, name: song.artist } as IArtist));
 			const artists = cachedSongsToArtist.filter((artist, index, self) => self.findIndex(t => t.id === artist.id) === index) as IArtist[];
-			console.log(JSON.stringify(artists))
 			return Observable.of(this.sortByName(artists) as IArtist[]);
 		}
 		return Observable.of([]);
@@ -167,8 +165,6 @@ export class SubularMobileService {
 		if (cachedSongs) {
 			const cachedSongsToAlbums = cachedSongs.map(song => ({ id: song.albumId, name: song.album, artist: song.artist, coverArt: song.coverArt, artistId: song.artistId } as IAlbum));
 			const albums = cachedSongsToAlbums.filter((album, index, self) => self.findIndex(t => t.id === album.id) === index)
-			console.log(JSON.stringify(albums))
-
 			return Observable.of(this.sortByName(albums) as IAlbum[]);
 		}
 		return Observable.of([]);

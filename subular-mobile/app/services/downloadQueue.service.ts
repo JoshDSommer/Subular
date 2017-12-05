@@ -19,7 +19,7 @@ export class DownloadQueueService {
 		this.worker = this.workers.initDownloadWorker();
 
 		this.worker.onerror = error => {
-			console.log(error.message);
+			console.error(error.message);
 		};
 	}
 
