@@ -14,6 +14,7 @@
 				<Label row="0" , col="1" [text]="item.title" (tap)="selectSong(item)" class="song"></Label>
 				<ng-container [ngSwitch]="item?.state">
 					<Label *ngSwitchCase="SongState.downloading" row="0" col="2" class="fa fa-download" text="&#xf1ce;"></Label>
+					<!-- <ActivityIndicator *ngSwitchCase="SongState.downloading" row="0" col="2" rowSpan="2" class="fa fa-download" busy="true"></ActivityIndicator> -->
 					<Label *ngSwitchCase="SongState.downloaded" row="0" col="2" class="fa fa-download"></Label>
 					<Label *ngSwitchDefault row="0" , col="2" (tap)="download(item)" text="&#xf0ed;" class="fa fa-download" textWrap="true"></Label>
 				</ng-container>
