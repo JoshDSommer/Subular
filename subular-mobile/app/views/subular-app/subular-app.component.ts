@@ -40,7 +40,7 @@ export class SubularAppComponent {
 	}
 
 	getArtWork(song) {
-		return this.subular.subsonicGetCoverUrl(song)
+		return this.subular.subsonicGetSongCoverUrl(song)
 	}
 
 	play() {

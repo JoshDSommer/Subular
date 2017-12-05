@@ -69,7 +69,7 @@ export class PlayerComponent implements OnInit {
 	}
 
 	getArtWork(song) {
-		return this.subular.subsonicGetCoverUrl(song, 1000)
+		return this.subular.subsonicGetSongCoverUrl(song, 1000)
 	}
 
 	ngOnDestroy() {

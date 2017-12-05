@@ -49,8 +49,8 @@ export class DownloadQueueService {
 			let url = this.subular.getDownloadUrl(song.id);
 			let path = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
 
-			let coverPath = fs.path.join(fs.knownFolders.documents().path, song.coverArt + '.png');
-			let coverUrl = this.subular.subsonicGetCoverUrl(song, 600);
+			let coverPath = fs.path.join(fs.knownFolders.documents().path, song.albumId + '.png');
+			let coverUrl = this.subular.subsonicGetSongCoverUrl(song, 600);
 
 			this.worker.onmessage = m => {
 				this.subular.StoreCachedSong(song);
