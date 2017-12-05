@@ -19,5 +19,10 @@ export class PlaylistsComponent implements OnInit {
 		this.playlists$ = this.subular.getPlaylists()
 			.map(playlists => [{ id: 0, name: 'Favorites' } as IPlaylist, ...playlists]);
 	}
+
+	getCoverArt(playlist: IPlaylist) {
+		const url = this.subular.subsonicGetPlaylistCoverUrl(playlist);
+		return url;
+	}
 }
 

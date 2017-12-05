@@ -5,9 +5,8 @@
 	border-bottom-color:#e4e3e3;
 }
 .playlist {
-	margin: 0;
-	padding: 3% 0;
 	font-size: 18px;
+	padding-left: 10;
 }
 
 .letter-wrap{
@@ -25,8 +24,15 @@
 .list-group{
 	height: 100%;
 }
-
+image{
+	border-width: 1;
+	border-color: #e4e3e3;
+}
 .fa-heart{
 	color:#eb2e9c;
-	padding-right: 10;
+	text-align: center;
+	font-size: 35;
+	border-radius: 2;
+	border-width: 1;
+	border-color: #e4e3e3;
 }

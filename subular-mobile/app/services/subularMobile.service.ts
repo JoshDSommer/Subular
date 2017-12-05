@@ -81,6 +81,22 @@ export class SubularMobileService {
 		return this.subsonicService.subsonic.getSongs(albumId);
 	}
 
+	subsonicGetPlaylistCoverUrl(playlist: IPlaylist, size?: number) {
+		//I'd rather always get image ar from the file system if available
+		let coverPath = fs.path.join(fs.knownFolders.documents().path, playlist.coverArt + '.png');
+		const exists = fs.File.exists(coverPath);
+		if (exists) {
+			return coverPath
+		}
+		if (this.subsonicService.subsonic.subsonicGetCoverUrl) {
+			if (!size) {
+				size = 500;
+			}
+			return this.subsonicService.subsonic.subsonicGetCoverUrl(playlist.coverArt as any);
+		}
+		return '~/images/coverArt.png';
+	}
+
 	subsonicGetSongCoverUrl(song: ISong, size?: number): string {
 		//I'd rather always get image ar from the file system if available
 		let coverPath = fs.path.join(fs.knownFolders.documents().path, song.albumId + '.png');
