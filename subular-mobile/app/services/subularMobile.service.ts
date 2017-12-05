@@ -136,7 +136,7 @@ export class SubularMobileService {
 
 	StoreCachedSong(song: ISong) {
 		const cachedSongs = this.getValue(CACHED_SONGS_KEY) || [];
-		const cachedSongExists = cachedSongs.filter(cachedSong => cachedSong.id === song.id);
+		const cachedSongExists = cachedSongs.find(cachedSong => cachedSong.id === song.id);
 		if (!cachedSongExists) {
 			const updatedSongs = [...cachedSongs, song];
 			this.setValue(CACHED_SONGS_KEY, updatedSongs);
