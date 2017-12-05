@@ -12,13 +12,13 @@ import { ISong } from 'subular';
 export class HeartComponent {
 	@Input() song: ISong;
 	@Output() songUpdated = new EventEmitter<ISong>();
+	@Input() row: number;
+	@Input() col: number;
 
 	get isHearted() {
 		return this.song.starred;
 	}
 	constructor(private subsonic: SubularMobileService) { }
-	@Input() row: number;
-	@Input() col: number;
 
 	unHeartSong() {
 		this.song = Object.assign({}, this.song, { starred: null });
