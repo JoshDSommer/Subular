@@ -3,39 +3,41 @@
 		<Label class="fa hide-button" text="&#xf0d7;"></Label>
 	</StackLayout>
 </ActionBar>
-<GridLayout class="player-wrap" rows="70,auto,25,10,28,22,22,*,66,*" columns="*">
-	<GridLayout row="0" col="0" rows="*" columns="80,*,80" class="heart-wrap">
-		<heart row="0" col="2" [song]="nowPlaying?.song" (songUpdated)="songHeartChange($event)"></heart>
-	</GridLayout>
-	<AbsoluteLayout row="1" col="0" shadow="28" class="debug" [marginBottom]="imageTopBottomMargin" [width]="imageHeightWidth"
-	 [height]="imageHeightWidth" class="album-art">
-		<Image top="0" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="" stretch="aspectFit" [src]="getArtWork(nowPlaying?.song)"></Image>
-		<Label top="0" [animate]="animateOptions" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="fa loading-album"
-		 text="&#xf1ce;" *ngIf="nowPlaying?.playing === PlayingStatus.loading"></Label>
-		<!-- <ActivityIndicator ios.activityIndicatorViewStyle="0" top="0" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="fa loading-album" *ngIf="nowPlaying?.playing === PlayingStatus.loading"
+<StackLayout [slideDownBack] class="player-wrap-background">
+	<GridLayout class="player-wrap" rows="70,auto,25,10,28,22,22,*,66,*" columns="*">
+		<GridLayout row="0" col="0" rows="*" columns="80,*,80" class="heart-wrap">
+			<heart row="0" col="2" [song]="nowPlaying?.song" (songUpdated)="songHeartChange($event)"></heart>
+		</GridLayout>
+		<AbsoluteLayout row="1" col="0" shadow="28" class="debug" [marginBottom]="imageTopBottomMargin" [width]="imageHeightWidth"
+		 [height]="imageHeightWidth" class="album-art">
+			<Image top="0" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="" stretch="aspectFit" [src]="getArtWork(nowPlaying?.song)"></Image>
+			<Label top="0" [animate]="animateOptions" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="fa loading-album"
+			 text="&#xf1ce;" *ngIf="nowPlaying?.playing === PlayingStatus.loading"></Label>
+			<!-- <ActivityIndicator ios.activityIndicatorViewStyle="0" top="0" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="fa loading-album" *ngIf="nowPlaying?.playing === PlayingStatus.loading"
 		 busy="true"></ActivityIndicator> -->
-	</AbsoluteLayout>
-	<GridLayout class="" row="2" col="0" rows="*" columns="80,*,80">
-		<Label class="time" row="0" col="0" [text]="timeEclipsed" textWrap="true"></Label>
-		<Progress class="" row="0" col="1" [width]="imageHeightWidth" [value]="nowPlaying?.position" (loaded)="onProgressLoaded($event)"></Progress>
-		<Label class="time" row="0" col="2" [text]="nowPlaying?.song?.time" textWrap="true"></Label>
+		</AbsoluteLayout>
+		<GridLayout class="" row="2" col="0" rows="*" columns="80,*,80">
+			<Label class="time" row="0" col="0" [text]="timeEclipsed" textWrap="true"></Label>
+			<Progress class="" row="0" col="1" [width]="imageHeightWidth" [value]="nowPlaying?.position" (loaded)="onProgressLoaded($event)"></Progress>
+			<Label class="time" row="0" col="2" [text]="nowPlaying?.song?.time" textWrap="true"></Label>
+		</GridLayout>
+		<Label class="song-title page-padding" row="4" col="0" width="100%" [text]="nowPlaying?.song?.title"></Label>
+		<Label class="song-artist page-padding" row="5" col="0" width="100%" [text]="nowPlaying?.song?.artist"></Label>
+		<Label class="song-album page-padding" row="6" col="0" width="100%" [text]="nowPlaying?.song?.album"></Label>
+		<GridLayout class="player-controls" row="8" col="0" rows="*" columns="60,*,80,*,60">
+			<Label row="0" col="0" class="fa random-repeat" [class.random-repeat-enabled]="nowPlaying?.repeat" (tap)="player.toggleRepeat()"
+			 text="&#xf01e;"></Label>
+			<Label row="0" col="1" [highlight]="highlightBgColor" class="fa next-previous" (tap)="player.playPreviousSong()" text="&#xf048;"></Label>
+			<ng-container [ngSwitch]="nowPlaying?.playing">
+				<Label row="0" col="2" class="fa mini-player-button disabled" text="&#xf04c;" *ngSwitchCase="PlayingStatus.loading" textWrap="true"></Label>
+				<Label row="0" col="2" [highlight]="highlightBgColor" class="fa mini-player-button" text="&#xf04b;" (tap)="player.resumeSong()"
+				 *ngSwitchCase="PlayingStatus.paused" textWrap="true"></Label>
+				<Label row="0" col="2" [highlight]="highlightBgColor" class="fa mini-player-button" text="&#xf04c;" (tap)="player.pauseSong()"
+				 *ngSwitchCase="PlayingStatus.playing" textWrap="true"></Label>
+			</ng-container>
+			<Label row="0" col="3" [highlight]="highlightBgColor" class="fa next-previous" (tap)="player.playNextSong()" text="&#xf051;"></Label>
+			<Label row="0" col="4" class="fa random-repeat" [class.random-repeat-enabled]="nowPlaying?.random" (tap)="player.toggleShuffle()"
+			 text="&#xf074;"></Label>
+		</GridLayout>
 	</GridLayout>
-	<Label class="song-title page-padding" row="4" col="0" width="100%" [text]="nowPlaying?.song?.title"></Label>
-	<Label class="song-artist page-padding" row="5" col="0" width="100%" [text]="nowPlaying?.song?.artist"></Label>
-	<Label class="song-album page-padding" row="6" col="0" width="100%" [text]="nowPlaying?.song?.album"></Label>
-	<GridLayout class="player-controls" row="8" col="0" rows="*" columns="60,*,80,*,60">
-		<Label row="0" col="0" class="fa random-repeat" [class.random-repeat-enabled]="nowPlaying?.repeat" (tap)="player.toggleRepeat()"
-		 text="&#xf01e;"></Label>
-		<Label row="0" col="1" [highlight]="highlightBgColor" class="fa next-previous" (tap)="player.playPreviousSong()" text="&#xf048;"></Label>
-		<ng-container [ngSwitch]="nowPlaying?.playing">
-			<Label row="0" col="2" class="fa mini-player-button disabled" text="&#xf04c;" *ngSwitchCase="PlayingStatus.loading" textWrap="true"></Label>
-			<Label row="0" col="2" [highlight]="highlightBgColor" class="fa mini-player-button" text="&#xf04b;" (tap)="player.resumeSong()"
-			 *ngSwitchCase="PlayingStatus.paused" textWrap="true"></Label>
-			<Label row="0" col="2" [highlight]="highlightBgColor" class="fa mini-player-button" text="&#xf04c;" (tap)="player.pauseSong()"
-			 *ngSwitchCase="PlayingStatus.playing" textWrap="true"></Label>
-		</ng-container>
-		<Label row="0" col="3" [highlight]="highlightBgColor" class="fa next-previous" (tap)="player.playNextSong()" text="&#xf051;"></Label>
-		<Label row="0" col="4" class="fa random-repeat" [class.random-repeat-enabled]="nowPlaying?.random" (tap)="player.toggleShuffle()"
-		 text="&#xf074;"></Label>
-	</GridLayout>
-</GridLayout>
+</StackLayout>

@@ -42,7 +42,6 @@ export class PlayerComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.page.backgroundColor = '#000000';
 		this.subscription = this.player.nowPlaying$.subscribe(nowPlaying => {
 			if (nowPlaying) {
 				//mutate time formats probably should export this to a Pipe

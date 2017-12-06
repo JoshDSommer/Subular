@@ -32,6 +32,7 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { WorkerService, DownloadQueueService } from './services';
 import { PlaylistsComponent } from './views/subular-app/playlists/playlists.component';
 import { PlaylistComponent } from './views/subular-app/playlist/playlist.component';
+import { SlideDownBackDirective } from './directives/slideDownBack.directive';
 
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
@@ -66,6 +67,7 @@ if (applicationModule.android) {
         HighlightDirective,
         PlaylistsComponent,
         PlaylistComponent,
+        SlideDownBackDirective,
     ],
     providers: [
         LOCALSTORAGE_SERVICE,

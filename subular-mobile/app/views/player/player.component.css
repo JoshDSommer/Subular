@@ -1,4 +1,6 @@
-
+.player-wrap-background{
+	background-color: #000000;
+}
 .player-wrap{
 	border-bottom-left-radius: 20;
 	border-bottom-right-radius: 20;
