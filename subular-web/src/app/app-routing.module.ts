@@ -10,6 +10,7 @@ import { AlbumComponent } from './views/subular-app/album/album.component';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
 import { PlaylistListComponent } from './components/playlist-list/playlist-list.component';
 import { PlaylistComponent } from './views/subular-app/playlist/playlist.component';
+import { RecentlyAddedComponent } from './views/subular-app/recently-added/recently-added.component';
 
 const routes: Routes = [
 	{
@@ -29,12 +30,15 @@ const routes: Routes = [
 			{
 				path: 'playlist/:playlistId', component: PlaylistComponent, outlet: 'content'
 			},
-			{ path: 'random', component: RandomAlbumsComponent },
+			{
+				path: 'recent', component: RecentlyAddedComponent, outlet: 'content'
+			},
 			{
 				path: 'albums/:artistId', component: AlbumsComponent,
 				resolve: {
 					albums: AlbumsResolver
-				}, outlet: 'content'
+				},
+				outlet: 'content'
 			},
 			{
 				path: 'album/:albumId', component: AlbumComponent,

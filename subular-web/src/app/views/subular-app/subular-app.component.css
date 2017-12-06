@@ -5,23 +5,22 @@
 .subular-header subular-brand{
 	font-size: 1.2em;
 	margin-left: 1.8em;
+	margin-right: 160px;
 }
-
-
+.subular-header nav{
+	widows:50%;
+	display: inline-block
+}
 	.loading{
 		height: 100%;
 		background-color: lightgrey;
 	}
 
-	subular-brand{
-		margin-right: 150px;
-	}
 	.top-links{
-		width: 100px;
+		width: 150px;
 		display: inline-block;
 		color: #fff;
 		text-decoration: none;
-		float: right;
 		padding-top: 5px;
 	}
 

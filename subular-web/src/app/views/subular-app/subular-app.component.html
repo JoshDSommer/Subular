@@ -1,8 +1,11 @@
 <div class="subular-container">
 	<div class="subular-header">
 		<subular-brand></subular-brand>
-		<a class="top-links" [routerLink]="['/app',{ outlets:{ lists: ['artists'], content: null }}]">Artists</a>
-		<a class="top-links" [routerLink]="['/app',{ outlets:{ lists: ['playlists'], content: null }}]">Playists</a>
+		<nav>
+			<a class="top-links" [routerLink]="['/app',{ outlets:{ lists: ['artists'], content: null }}]">Artists</a>
+			<a class="top-links" [routerLink]="['/app',{ outlets:{ lists: ['playlists'], content: null }}]">Playists</a>
+			<a class="top-links" [routerLink]="['/app',{ outlets:{ content: ['recent'] }}]">Recently Added</a>
+		</nav>
 	</div>
 	<section class="subular-sidebar">
 		<router-outlet name="lists"></router-outlet>

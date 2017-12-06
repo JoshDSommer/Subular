@@ -1,0 +1,6 @@
+<div>
+	<h1> Recently Added</h1>
+	<div class="album-wrap" *ngIf="albums$ | async as albums">
+		<album-card [album]="album" *ngFor="let album of albums"></album-card>
+	</div>
+</div>

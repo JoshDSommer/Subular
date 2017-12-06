@@ -30,6 +30,7 @@ import { PlaylistListComponent } from './components/playlist-list/playlist-list.
 import { TypeAndJumpToDirective } from './directives/typeAndJumpTo.directive';
 import { PlaylistComponent } from './views/subular-app/playlist/playlist.component';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
+import { RecentlyAddedComponent } from './views/subular-app/recently-added/recently-added.component';
 
 @NgModule({
 	declarations: [
@@ -50,7 +51,8 @@ import { ContextMenuComponent } from './components/context-menu/context-menu.com
 		HeartComponent,
 		PlaylistListComponent,
 		PlaylistComponent,
-		ContextMenuComponent
+		ContextMenuComponent,
+		RecentlyAddedComponent
 	],
 	imports: [
 		AppRoutingModule,

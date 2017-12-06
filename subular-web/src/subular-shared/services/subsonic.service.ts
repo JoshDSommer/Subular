@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { SubsonicAuthenticationService } from './subsonic-authentication.service';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { ISong, IPlaylist } from '../interfaces';
+import { ISong, IPlaylist, IAlbum } from '../interfaces';
 import { IPlaylists } from '../interfaces/playlist';
 
 @Injectable()
@@ -34,6 +34,11 @@ export class SubsonicService {
 		return this.subsonicGet('getPlaylists').map(data => data.subresp.playlists.playlist);
 	}
 
+	getRecentAdditions(): Observable<IAlbum[]> {
+		return this.subsonicGet('getAlbumList2', '&type=newest&size=50')
+			.map(response => response.subresp.albumList2.album)
+	}
+
 	getPlaylist(id: number): Observable<IPlaylist> {
 		return this.subsonicGet('getPlaylist', `&id=${id}`)
 			.map(data => data.subresp.playlist)
@@ -46,7 +51,7 @@ export class SubsonicService {
 					return song;
 				});
 				return playlist;
-			});;
+			});
 	}
 
 	createPlaylist(name: string): Observable<number> {
