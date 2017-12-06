@@ -36,7 +36,10 @@
 }
 .button-wrap Button, .button-wrap Label{
 	width: 49%;
-	padding: 15;
+	padding-top: 15;
+	padding-right: 15;
+	padding-left: 15;
+	padding-bottom: 5;
 	color: #c4c2c2;
 	font-size: 14;
 	text-align: center;

@@ -1,6 +1,6 @@
 <StackLayout [animate]="animateOptions" class="offset-for-slide">
 	<Label text="&#xf0d9; Artists" class="fa back-link" [nsRouterLink]="['/app/artists']"></Label>
-	<StackLayout class="page-padding" [marginBottom]="imageSideMargins">
+	<StackLayout class="page-padding artist-info">
 		<Label [text]="albums[0].artist" class="title" textWrap="true"></Label>
 		<Label [text]="getAlbumsText(albums)" class="" textWrap="true"></Label>
 	</StackLayout>
