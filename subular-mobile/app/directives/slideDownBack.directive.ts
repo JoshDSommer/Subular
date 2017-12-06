@@ -39,7 +39,7 @@ export class SlideDownBackDirective {
 
 	private onPan(args: PanGestureEventData) {
 		// if the start position is not on the left hand side of the screen exit function
-		if (this.startY > 200) {
+		if (this.startY > (screen.mainScreen.heightDIPs / 2)) {
 			return;
 		}
 		let item = args.view;
@@ -48,13 +48,13 @@ export class SlideDownBackDirective {
 			return
 		}
 		/// if sliding finger from left to right.
-		if (args.state === GestureStateTypes.changed && args.deltaY > 10) {
+		if (args.state === GestureStateTypes.changed && args.deltaY > 20) {
 			this.disableScroll();
 			item.translateY += args.deltaY - this.currentDeltaY;
 			if (item.translateY < 0) {
 				item.translateY = 0;
 			}
-			item.opacity = ((100 - args.deltaY / 3) * 0.01) + 0.2;
+			//item.opacity = ((100 - args.deltaY / 3) * 0.01) + 0.2;
 			this.currentDeltaY = args.deltaY;
 			//release of finger from slide.
 			return;
@@ -67,14 +67,14 @@ export class SlideDownBackDirective {
 				// 	translate: { Y: screen.mainScreen.widthDIPs, y: 0 },
 				// 	duration: 100
 				// }).then(() => {
-					if (this.slideBack) {
-						//must wrap this in zone run for the angular component lifecycle hooks to be called.
-						this.zone.run(() => {
-							this.nsRouter.navigate(this.slideBack)
-						})
-					} else {
-						this.nsRouter.back();
-					}
+				if (this.slideBack) {
+					//must wrap this in zone run for the angular component lifecycle hooks to be called.
+					this.zone.run(() => {
+						this.nsRouter.navigate(this.slideBack)
+					})
+				} else {
+					this.nsRouter.back();
+				}
 				// }, (err) => {
 				// });
 			} else {
