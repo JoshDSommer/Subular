@@ -27,16 +27,20 @@ export class SubsonicAuthenticationService {
 		const serverInfo = this.getExistingInfoFromCache();
 		if (serverInfo) {
 			return serverInfo.server + '/rest/' + method + '.view?u=' + serverInfo.username + '&t=' + serverInfo.password + '&s='
-			+ serverInfo.salt + '&v=1.0.0&c=rest&f=json';
+				+ serverInfo.salt + '&v=1.0.0&c=rest&f=json';
 		}
 		return '';
+	}
+
+	hasAuthenticationInfo() {
+		return !!this.localStorage.getValue(SERVER_INFO_KEY);
 	}
 
 	getHLSURl(id: number) {
 		const serverInfo = this.getExistingInfoFromCache();
 		if (serverInfo) {
 			return serverInfo.server + '/rest/hls.m3u8?u=' + serverInfo.username + '&t=' + serverInfo.password + '&s='
-			+ serverInfo.salt + '&v=1.0.0&c=rest&f=json&id=' + id;
+				+ serverInfo.salt + '&v=1.0.0&c=rest&f=json&id=' + id;
 		}
 		return '';
 	}
@@ -45,7 +49,7 @@ export class SubsonicAuthenticationService {
 		let text = '';
 		let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-		for (var i = 0; i < 99; i++){
+		for (var i = 0; i < 99; i++) {
 			text += possible.charAt(Math.floor(Math.random() * possible.length));
 		}
 
