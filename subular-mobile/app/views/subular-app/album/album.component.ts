@@ -46,18 +46,13 @@ export class AlbumComponent implements OnInit {
 				return index === self.findIndex((previosSong) => {
 					return previosSong.title === song.title && previosSong.track === song.track;
 				});
-			})).
-			map(songs => {
-				return songs.map(song => {
-					const downloaded = this.downloaded(song);
-					if (downloaded) {
-						song = Object.assign({}, song, { state: SongState.downloaded }) as ISong;
-					}
-					return song;
-				});
-			})
+			}))
 			.switchMap(songs => this.songStore.addSongs(songs))
-			.do(songs => this.listedSongs = songs);
+			.do(songs => this.listedSongs = songs)
+			.do(songs => {
+				const notDownloadedSongs = songs.filter(song => song.state != SongState.downloaded && song.state != SongState.downloading);
+				this.allSongsDownloaded = notDownloadedSongs.length === 0;
+			})
 	}
 
 	selectSong($song: ISong) {
@@ -70,13 +65,6 @@ export class AlbumComponent implements OnInit {
 		this.playerService.addSongs(this.listedSongs);
 		this.playerService.shuffleSongs();
 		this.playerService.playSong();
-	}
-
-	downloaded(song) {
-		const localFile = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
-		const fileExists = fs.File.exists(localFile);
-		this.allSongsDownloaded = fileExists;
-		return fileExists;
 	}
 
 	download(song: ISong) {

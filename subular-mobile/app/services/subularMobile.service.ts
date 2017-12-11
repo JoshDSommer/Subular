@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SubsonicService, SubsonicCachedService, ISong, IArtist, IAlbum, IPlaylist } from 'subular';
+import { SubsonicService, SubsonicCachedService, ISong, IArtist, IAlbum, IPlaylist, SongState } from 'subular';
 import { Observable } from 'rxjs/Observable';
 import * as http from "http";
 import * as fs from "file-system";
@@ -7,6 +7,8 @@ import * as utilModule from "utils/utils";
 import { LocalStorageService } from '../providers/localstorage.service';
 import { getString, setString } from 'application-settings';
 import * as connectivity from "tns-core-modules/connectivity";
+import { CurrentConnectionService } from './currentConnection.service';
+import { observe } from 'tns-core-modules/ui/gestures/gestures';
 
 interface ISubularService {
 	subsonic: SubsonicService;
@@ -22,16 +24,16 @@ export class SubularMobileService {
 	private currentConnectionType: connectivity.connectionType;
 	private subsonicService: ISubularService;
 
-	constructor(subsonic: SubsonicService, private cachedData: SubsonicCachedService) {
+	private songDownloaded = (songId) => {
+		const localFile = fs.path.join(fs.knownFolders.documents().path, songId + '.mp3');
+		const fileExists = fs.File.exists(localFile);
+		return fileExists;
+	};
+
+	constructor(subsonic: SubsonicService, private cachedData: SubsonicCachedService, private connection: CurrentConnectionService) {
 		const getOnlineServices = () => ({ subsonic, cachedData });
 		const getOfflineServices = () => ({
-			subsonic: {
-				getSongs: (albumId) => this.getCachedSongs(albumId),
-				// right now i'm still getting playlists via mobile
-				getPlaylists: () => subsonic.getPlaylists(),
-				getPlaylist: (id) => subsonic.getPlaylist(id),
-				subsonicGetCoverUrl: () => ''
-			},
+			subsonic: this.getMobileSubularService(subsonic),
 			cachedData: {
 				getCachedData: () => Observable.of(true),
 				getArtists: () => this.getArtistFromCache(),
@@ -39,7 +41,7 @@ export class SubularMobileService {
 			}
 		} as any);
 
-		const handleConnectionChange = (connectionType) => {
+		this.connection.connectionType$.subscribe((connectionType) => {
 			this.currentConnectionType = connectionType;
 			switch (connectionType) {
 				case connectivity.connectionType.none:
@@ -52,12 +54,19 @@ export class SubularMobileService {
 					this.subsonicService = getOfflineServices();
 					break;
 			}
-		};
+		});
+	}
 
-		var connectionType = connectivity.getConnectionType();
-
-		handleConnectionChange(connectionType);
-		connectivity.startMonitoring(handleConnectionChange);
+	private getMobileSubularService(subsonic: SubsonicService) {
+		return {
+			getSongs: (albumId) => this.getCachedSongs(albumId),
+			// right now i'm still getting playlists via mobile
+			getPlaylists: () => subsonic.getPlaylists(),
+			getPlaylist: (id) => subsonic.getPlaylist(id),
+			subsonicGetCoverUrl: () => '',
+			pingServer: () => subsonic.pingServer(),
+			getRecentAdditions: () => subsonic.getRecentAdditions(),
+		}
 	}
 
 	getPlaylists() {
@@ -66,7 +75,19 @@ export class SubularMobileService {
 	}
 
 	getPlaylist(id: number): Observable<IPlaylist> {
-		return this.subsonicService.subsonic.getPlaylist(id);
+		return this.subsonicService.subsonic.getPlaylist(id)
+			.map(playlist => {
+				playlist.entry = playlist.entry.map(song => {
+					const downloaded = this.songDownloaded(song.id);
+					song.state = downloaded ? SongState.downloaded : song.state;
+					return song;
+				});
+				return playlist;
+			});
+	}
+
+	getRecentAdditions() {
+		return this.subsonicService.subsonic.getRecentAdditions();
 	}
 
 	getDownloadUrl(id: number): string {
@@ -78,55 +99,82 @@ export class SubularMobileService {
 	}
 
 	getSongs(albumId: number): Observable<ISong[]> {
-		return this.subsonicService.subsonic.getSongs(albumId);
+		return this.subsonicService.subsonic.getSongs(albumId)
+			.map(songs => {
+				songs = songs.map(song => {
+					if (song.state != SongState.downloaded) {
+						const downloaded = this.songDownloaded(song.id);
+						song.state = downloaded ? SongState.downloaded : song.state;
+					}
+					return song;
+				});
+				return songs;
+			});
+	}
+	pingServer() {
+		return this.subsonicService.subsonic.pingServer();
 	}
 
 	subsonicGetPlaylistCoverUrl(playlist: IPlaylist, size?: number) {
 		//I'd rather always get image ar from the file system if available
-		let coverPath = fs.path.join(fs.knownFolders.documents().path, playlist.coverArt + '.png');
+		let coverPath = fs.path.join(fs.knownFolders.documents().path + '/images', playlist.coverArt + '.png');
 		const exists = fs.File.exists(coverPath);
 		if (exists) {
-			return coverPath
+			return Observable.of(coverPath);
 		}
-		if (this.subsonicService.subsonic.subsonicGetCoverUrl) {
-			if (!size) {
-				size = 500;
-			}
-			return this.subsonicService.subsonic.subsonicGetCoverUrl(playlist.coverArt as any);
-		}
-		return '~/images/coverArt.png';
+		return new Observable(observer => {
+			http.getFile({
+				url: this.subsonicService.subsonic.subsonicGetCoverUrl(playlist.coverArt as any),
+				method: "GET",
+			}, coverPath).then(() => {
+				observer.next(coverPath);
+				observer.complete();
+			}, (error) => {
+				observer.next('~/images/coverArt.png');
+				observer.complete();
+			});
+		});
 	}
 
-	subsonicGetSongCoverUrl(song: ISong, size?: number): string {
+	subsonicGetSongCoverUrl(song: ISong, size?: number) {
 		//I'd rather always get image ar from the file system if available
-		let coverPath = fs.path.join(fs.knownFolders.documents().path, song.albumId + '.png');
+		let coverPath = fs.path.join(fs.knownFolders.documents().path + '/images', song.albumId + '.png');
 		const exists = fs.File.exists(coverPath);
 		if (exists) {
-			return coverPath
+			return Observable.of(coverPath);
 		}
-		if (this.subsonicService.subsonic.subsonicGetCoverUrl) {
-			if (!size) {
-				size = 500;
-			}
-			return this.subsonicService.subsonic.subsonicGetCoverUrl(song.coverArt);
-		}
-		return '~/images/coverArt.png';
+		return new Observable(observer => {
+			observer.next('~/images/coverArt.png');
+			http.getFile({
+				url: this.subsonicService.subsonic.subsonicGetCoverUrl(song.coverArt as any),
+				method: "GET",
+			}, coverPath).then(() => {
+				observer.next(coverPath);
+				observer.complete();
+			}, (error) => {
+				observer.complete();
+			});
+		});
 	}
 
-	subsonicGetAlbumCoverUrl(album: IAlbum, size?: number): string {
-		//I'd rather always get image ar from the file system if available
-		let coverPath = fs.path.join(fs.knownFolders.documents().path, album.id + '.png');
+	subsonicGetAlbumCoverUrl(album: IAlbum, size = 500) {
+		let coverPath = fs.path.join(fs.knownFolders.documents().path + '/images', album.id + '.png');
 		const exists = fs.File.exists(coverPath);
 		if (exists) {
-			return coverPath
+			return Observable.of(coverPath);
 		}
-		if (this.subsonicService.subsonic.subsonicGetCoverUrl) {
-			if (!size) {
-				size = 500;
-			}
-			return this.subsonicService.subsonic.subsonicGetCoverUrl(album.coverArt as any);
-		}
-		return '~/images/coverArt.png';
+		return new Observable(observer => {
+			observer.next('~/images/coverArt.png');
+			http.getFile({
+				url: this.subsonicService.subsonic.subsonicGetCoverUrl(album.coverArt as any),
+				method: "GET",
+			}, coverPath).then(() => {
+				observer.next(coverPath);
+				observer.complete();
+			}, (error) => {
+				observer.complete();
+			});
+		});
 	}
 
 	starSong(id: number) {

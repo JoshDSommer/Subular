@@ -4,7 +4,7 @@
 		<ng-template let-item="item" let-odd="odd" let-even="even" let-i="index">
 			<GridLayout rows="*" columns="60,*" class="playlist-list-item">
 				<ng-template [ngIf]="item.name != 'Favorites'">
-					<Image [nsRouterLink]="['/app/playlist', item.id ]" height="60" height="60" row="0" col="0" [src]="getCoverArt(item)"></Image>
+					<Image [nsRouterLink]="['/app/playlist', item.id ]" height="60" height="60" row="0" col="0" [src]="getCoverArt(item) | async"></Image>
 					<Label [nsRouterLink]="['/app/playlist', item.id ]" row="0" col="1" [text]="item.name" class="playlist"></Label>
 				</ng-template>
 				<ng-template [ngIf]="item.name == 'Favorites'">

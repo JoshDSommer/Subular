@@ -7,6 +7,7 @@ import { SPIN_ANIMATION } from '../../animations/animations';
 import { setNumber } from 'application-settings';
 import { ARTIST_LIST_CACHE_KEY } from '../subular-app/artist-list/artist-list.component';
 import { SubularMobileService } from '../../services/subularMobile.service';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
 	moduleId: module.id,
@@ -23,9 +24,10 @@ export class SubularAppComponent {
 	animateOptions = SPIN_ANIMATION;
 	highlightBgColor = '#ebd2f5';
 
-	constructor(private subular: SubularMobileService, route: ActivatedRoute, router: Router,
+	constructor(private subular: SubularMobileService, private router: RouterExtensions,
 		private player: PlayerService,
 		private ref: ChangeDetectorRef) {
+
 		this.player.nowPlaying$.subscribe(nowPlaying => {
 			if (nowPlaying) {
 				this.nowPlaying = Object.assign({}, nowPlaying);
@@ -35,6 +37,13 @@ export class SubularAppComponent {
 	}
 
 	ngOnInit() {
+		this.subular.pingServer()
+			.subscribe(authenticated => {
+				if (!authenticated) {
+					this.redirectToLogin();
+				}
+			});
+
 		this.loaded$ = this.subular.getCachedData()
 			.map(([artists, albums]) => true);
 	}
@@ -53,5 +62,9 @@ export class SubularAppComponent {
 
 	clearArtistKeyCache() {
 		setNumber(ARTIST_LIST_CACHE_KEY, 0)
+	}
+
+	redirectToLogin() {
+		this.router.navigate(['/login'], { clearHistory: true });
 	}
 }

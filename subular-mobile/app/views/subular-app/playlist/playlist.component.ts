@@ -8,6 +8,7 @@ import { PlayerService } from '../../../services/player.service';
 import { ios } from 'utils/utils';
 import * as fs from "file-system";
 import { DownloadQueueService } from '../../../services/downloadQueue.service';
+import { CurrentConnectionService, ConnectionType } from '../../../services/currentConnection.service';
 
 @Component({
 	moduleId: module.id,
@@ -17,16 +18,18 @@ import { DownloadQueueService } from '../../../services/downloadQueue.service';
 })
 
 export class PlaylistComponent implements OnInit {
+	connection$: Observable<ConnectionType>;
 	songs$: Observable<ISong[]>;
 	listedSongs: any;
 	playlist$: Observable<IPlaylist>;
 	animateOptions = SLIDE_RIGHT_ANIMATION
 	allSongsDownloaded = false;
 	SongState = SongState;
+	ConnectionType = ConnectionType;
 
 	constructor(private subular: SubularMobileService, private songStore: SongStoreService,
 		private route: ActivatedRoute, private playerService: PlayerService, private queue: DownloadQueueService,
-		private zone: NgZone
+		private zone: NgZone, private connection: CurrentConnectionService
 	) { }
 
 	ngOnInit() {
@@ -36,17 +39,15 @@ export class PlaylistComponent implements OnInit {
 
 		this.songs$ = this.playlist$
 			.map(playlist => playlist.entry)
-			.map(songs => {
-				return songs.map(song => {
-					const downloaded = this.downloaded(song);
-					if (downloaded) {
-						song = Object.assign({}, song, { state: SongState.downloaded }) as ISong;
-					}
-					return song;
-				});
-			})
 			.switchMap(songs => this.songStore.addSongs(songs))
 			.do(songs => this.listedSongs = songs)
+			.do(songs => {
+				const notDownloadedSongs = songs.filter(song => song.state != SongState.downloaded && song.state != SongState.downloading);
+				this.allSongsDownloaded = notDownloadedSongs.length === 0;
+			});
+
+		this.connection$ = this.connection.connectionType$;
+
 	}
 
 	selectSong($song: ISong) {
@@ -59,13 +60,6 @@ export class PlaylistComponent implements OnInit {
 		this.playerService.addSongs(this.listedSongs);
 		this.playerService.shuffleSongs();
 		this.playerService.playSong();
-	}
-
-	downloaded(song) {
-		const localFile = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
-		const fileExists = fs.File.exists(localFile);
-		this.allSongsDownloaded = fileExists;
-		return fileExists;
 	}
 
 	download(song: ISong) {

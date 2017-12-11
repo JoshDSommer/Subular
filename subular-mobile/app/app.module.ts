@@ -33,6 +33,9 @@ import { WorkerService, DownloadQueueService } from './services';
 import { PlaylistsComponent } from './views/subular-app/playlists/playlists.component';
 import { PlaylistComponent } from './views/subular-app/playlist/playlist.component';
 import { SlideDownBackDirective } from './directives/slideDownBack.directive';
+import { SlideForwardDirective } from './directives/slideForward.directive';
+import { CurrentConnectionService } from './services/currentConnection.service';
+import { RecentlyAddedComponent } from './views/subular-app/recently-added/recently-added.component';
 
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
@@ -68,6 +71,8 @@ if (applicationModule.android) {
         PlaylistsComponent,
         PlaylistComponent,
         SlideDownBackDirective,
+        SlideForwardDirective,
+        RecentlyAddedComponent,
     ],
     providers: [
         LOCALSTORAGE_SERVICE,
@@ -77,8 +82,8 @@ if (applicationModule.android) {
         AlbumsResolver,
         AlbumResolver,
         WorkerService,
-        DownloadQueueService
-
+        DownloadQueueService,
+        CurrentConnectionService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

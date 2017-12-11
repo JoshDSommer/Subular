@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ISong, SubsonicService } from 'subular';
+import { ISong, SubsonicService, IPlaylist } from 'subular';
 import { WorkerService } from './worker.service';
 import * as fs from "file-system";
 import * as utilModule from "utils/utils";
@@ -12,9 +12,12 @@ interface ISongToDownload {
 
 @Injectable()
 export class DownloadQueueService {
-	downloading = false;
+	downloadingPlaylists = false;
+	downloadingSongs = false;
 	private worker: Worker;
 	private songs: ISongToDownload[] = [];
+	private playlists: IPlaylist[] = [];
+
 	constructor(private workers: WorkerService, private subular: SubularMobileService) {
 		this.worker = this.workers.initDownloadWorker();
 
@@ -23,25 +26,22 @@ export class DownloadQueueService {
 		};
 	}
 
-
 	addSongToTheQueue(song: ISongToDownload): boolean {
 		let path = fs.path.join(fs.knownFolders.documents().path, song.song.id.toString() + '.mp3');
 		if (!fs.File.exists(path)) {
 			this.songs = [...this.songs, song];
-			if (!this.downloading) {
-				this.downloading = true;
-				this.processQueue();
+			if (!this.downloadingSongs) {
+				this.downloadingSongs = true;
+				this.processSongsQueue();
 			}
 			return true;
 		} else {
 			this.subular.StoreCachedSong(song.song);
 			return false;
 		}
-
-
 	}
 
-	processQueue() {
+	processSongsQueue() {
 		if (this.songs && this.songs.length > 0) {
 			const song = this.songs[0].song;
 			const onComplete = this.songs[0].onComplete;
@@ -49,7 +49,7 @@ export class DownloadQueueService {
 			let url = this.subular.getDownloadUrl(song.id);
 			let path = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
 
-			let coverPath = fs.path.join(fs.knownFolders.documents().path, song.albumId + '.png');
+			let coverPath = fs.path.join(fs.knownFolders.documents().path + '/images', song.albumId + '.png');
 			let coverUrl = this.subular.subsonicGetSongCoverUrl(song, 600);
 
 			this.worker.onmessage = m => {
@@ -59,7 +59,7 @@ export class DownloadQueueService {
 				}
 				this.songs = [...this.songs.slice(1)];
 				// process the next song in the queue
-				this.processQueue();
+				this.processSongsQueue();
 			}
 
 			if (!fs.File.exists(coverPath)) {
@@ -67,9 +67,41 @@ export class DownloadQueueService {
 			}
 			this.worker.postMessage({ url, path })
 		} else {
-			this.downloading = false;
+			this.downloadingSongs = false;
 		}
 	}
 
+	downloadPlaylistCoverArt(playlist: IPlaylist) {
+		this.playlists = [...this.playlists, playlist];
+		if (!this.downloadingPlaylists) {
+			this.downloadingPlaylists = true;
+			this.processPlaylistQueue();
+			return true;
+		}
+		return false;
+	}
 
+	processPlaylistQueue() {
+		if (this.playlists && this.playlists.length > 0) {
+
+			const playlist = this.playlists[0];
+			let coverPath = fs.path.join(fs.knownFolders.documents().path + '/images', playlist.coverArt + '.png');
+			let coverUrl = this.subular.subsonicGetPlaylistCoverUrl(playlist, 600);
+
+			this.worker.onmessage = m => {
+				this.playlists = [...this.playlists.slice(1)];
+				// process the next song in the queue
+				this.processPlaylistQueue();
+			}
+
+			if (!fs.File.exists(coverPath)) {
+				this.worker.postMessage({ url: coverUrl, path: coverPath })
+			} {
+				this.playlists = [...this.playlists.slice(1)];
+				this.processPlaylistQueue();
+			}
+		} else {
+			this.downloadingPlaylists = false;
+		}
+	}
 }

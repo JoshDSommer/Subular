@@ -19,13 +19,7 @@ export class LoginComponent implements OnInit {
 		private router: RouterExtensions
 	) { }
 
-	ngOnInit() {
-		this.subsonic.pingServer().subscribe(authenticated => {
-			if (authenticated) {
-				this.redirectToMainApplication();
-			}
-		});
-	}
+	ngOnInit() { }
 
 	submitLogin(server, username, password) {
 		this.authentication.saveAuthenticationInfo(server, username, password);

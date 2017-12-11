@@ -10,7 +10,7 @@
 		</GridLayout>
 		<AbsoluteLayout row="1" col="0" shadow="28" class="debug" [marginBottom]="imageTopBottomMargin" [width]="imageHeightWidth"
 		 [height]="imageHeightWidth" class="album-art">
-			<Image top="0" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="" stretch="aspectFit" [src]="getArtWork(nowPlaying?.song)"></Image>
+			<Image top="0" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="" stretch="aspectFit" [src]="getArtWork(nowPlaying?.song) | async"></Image>
 			<Label top="0" [animate]="animateOptions" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="fa loading-album"
 			 text="&#xf1ce;" *ngIf="nowPlaying?.playing === PlayingStatus.loading"></Label>
 			<!-- <ActivityIndicator ios.activityIndicatorViewStyle="0" top="0" [width]="imageHeightWidth" [height]="imageHeightWidth" left="0" class="fa loading-album" *ngIf="nowPlaying?.playing === PlayingStatus.loading"

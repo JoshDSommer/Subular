@@ -11,6 +11,7 @@
     "android": "npm run prepare.shared.mobile && cd subular-mobile && tns run android",
     "android.webpack": "npm run prepare.shared.mobile && cd subular-mobile && npm run start-android-bundle",
     "ios": "npm run prepare.shared.mobile && cd subular-mobile && tns run ios",
+    "ios.debug": "npm run prepare.shared.mobile && cd subular-mobile && tns debug ios",
     "ios.webpack": "npm run prepare.shared.mobile && cd subular-mobile && npm run start-ios-bundle",
     "prepare.shared": "./node_modules/.bin/ngc --p tsconfig.json && cd subular-shared-dist && npm i",
     "setup": "cd subular-web && npm i",

@@ -12,9 +12,10 @@ import { AlbumComponent } from "./views/subular-app/album/album.component";
 import { PlayerComponent } from "./views/player/player.component";
 import { PlaylistsComponent } from "./views/subular-app/playlists/playlists.component";
 import { PlaylistComponent } from './views/subular-app/playlist/playlist.component';
+import { RecentlyAddedComponent } from "./views/subular-app/recently-added/recently-added.component";
 
 const routes: Routes = [
-	{ path: "", redirectTo: "/login", pathMatch: "full" },
+	{ path: "", redirectTo: "/app/artists", pathMatch: "full" },
 	{ path: "login", component: LoginComponent },
 	{
 		path: 'app',
@@ -36,7 +37,11 @@ const routes: Routes = [
 				}
 			},
 			{ path: 'playlists', component: PlaylistsComponent },
-			{ path: 'playlist/:playlistId', component: PlaylistComponent }
+			{ path: 'playlist/:playlistId', component: PlaylistComponent },
+			{
+				path: 'recent',
+				component: RecentlyAddedComponent
+			}
 		]
 	},
 	{
