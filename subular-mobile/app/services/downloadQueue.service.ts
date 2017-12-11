@@ -16,7 +16,6 @@ export class DownloadQueueService {
 	downloadingSongs = false;
 	private worker: Worker;
 	private songs: ISongToDownload[] = [];
-	private playlists: IPlaylist[] = [];
 
 	constructor(private workers: WorkerService, private subular: SubularMobileService) {
 		this.worker = this.workers.initDownloadWorker();
@@ -68,40 +67,6 @@ export class DownloadQueueService {
 			this.worker.postMessage({ url, path })
 		} else {
 			this.downloadingSongs = false;
-		}
-	}
-
-	downloadPlaylistCoverArt(playlist: IPlaylist) {
-		this.playlists = [...this.playlists, playlist];
-		if (!this.downloadingPlaylists) {
-			this.downloadingPlaylists = true;
-			this.processPlaylistQueue();
-			return true;
-		}
-		return false;
-	}
-
-	processPlaylistQueue() {
-		if (this.playlists && this.playlists.length > 0) {
-
-			const playlist = this.playlists[0];
-			let coverPath = fs.path.join(fs.knownFolders.documents().path + '/images', playlist.coverArt + '.png');
-			let coverUrl = this.subular.subsonicGetPlaylistCoverUrl(playlist, 600);
-
-			this.worker.onmessage = m => {
-				this.playlists = [...this.playlists.slice(1)];
-				// process the next song in the queue
-				this.processPlaylistQueue();
-			}
-
-			if (!fs.File.exists(coverPath)) {
-				this.worker.postMessage({ url: coverUrl, path: coverPath })
-			} {
-				this.playlists = [...this.playlists.slice(1)];
-				this.processPlaylistQueue();
-			}
-		} else {
-			this.downloadingPlaylists = false;
 		}
 	}
 }

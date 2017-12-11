@@ -18,18 +18,11 @@ export class PlaylistsComponent implements OnInit {
 
 	ngOnInit() {
 		this.playlists$ = this.subular.getPlaylists()
-			.do(playlists => {
-				playlists.forEach(playlist => {
-					this.download.downloadPlaylistCoverArt(playlist)
-				})
-			})
-			.map(playlists => [{ id: 0, name: 'Favorites' } as IPlaylist, ...playlists]);
-
+			.map(playlists => [{ id: 0, name: 'Favorites' } as IPlaylist, ...playlists])
 	}
 
 	getCoverArt(playlist: IPlaylist) {
-		const url = this.subular.subsonicGetPlaylistCoverUrl(playlist);
-		return url;
+		return this.subular.subsonicGetPlaylistCoverUrl(playlist);
 	}
 }
 
