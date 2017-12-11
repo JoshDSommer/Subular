@@ -41,7 +41,6 @@ export class AlbumsComponent implements OnInit {
 		});
 	}
 	getCoverArt(song) {
-		return this.subular.subsonicGetAlbumCoverUrl(song)
-			.do(console.log);
+		return this.subular.subsonicGetAlbumCoverUrl(song);
 	}
 }
