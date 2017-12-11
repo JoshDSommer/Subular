@@ -48,9 +48,6 @@ export class DownloadQueueService {
 			let url = this.subular.getDownloadUrl(song.id);
 			let path = fs.path.join(fs.knownFolders.documents().path, song.id.toString() + '.mp3');
 
-			let coverPath = fs.path.join(fs.knownFolders.documents().path + '/images', song.albumId + '.png');
-			let coverUrl = this.subular.subsonicGetSongCoverUrl(song, 600);
-
 			this.worker.onmessage = m => {
 				this.subular.StoreCachedSong(song);
 				if (onComplete) {
@@ -59,10 +56,6 @@ export class DownloadQueueService {
 				this.songs = [...this.songs.slice(1)];
 				// process the next song in the queue
 				this.processSongsQueue();
-			}
-
-			if (!fs.File.exists(coverPath)) {
-				this.worker.postMessage({ url: coverUrl, path: coverPath })
 			}
 			this.worker.postMessage({ url, path })
 		} else {
