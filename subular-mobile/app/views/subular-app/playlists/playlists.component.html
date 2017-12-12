@@ -1,17 +1,22 @@
 <StackLayout class="page-padding">
 	<Label text="Playlists" class="title" textWrap="true"></Label>
-	<ListView #playlistList [items]="playlists$ | async" class="list-group">
-		<ng-template let-item="item" let-odd="odd" let-even="even" let-i="index">
-			<GridLayout rows="*" columns="60,*" class="playlist-list-item">
-				<ng-template [ngIf]="item.name != 'Favorites'">
-					<Image [nsRouterLink]="['/app/playlist', item.id ]" height="60" height="60" row="0" col="0" [src]="getCoverArt(item) | async"></Image>
-					<Label [nsRouterLink]="['/app/playlist', item.id ]" row="0" col="1" [text]="item.name" class="playlist"></Label>
-				</ng-template>
-				<ng-template [ngIf]="item.name == 'Favorites'">
-					<Label [nsRouterLink]="['/app/favorites']" height="60" height="60" row="0" col="0" text="&#xf004;" class="fa fa-heart" textWrap="true"></Label>
-					<Label [nsRouterLink]="['/app/favorites']" row="0" col="1" text="{{ item.name }} " class="playlist "></Label>
-				</ng-template>
-			</GridLayout>
-		</ng-template>
-	</ListView>
+	<ng-container *ngIf="playlists$ | async as playlist else loading">
+		<ListView #playlistList [items]="playlist" class="list-group">
+			<ng-template let-item="item" let-odd="odd" let-even="even" let-i="index">
+				<GridLayout rows="*" columns="60,*" class="playlist-list-item">
+					<ng-template [ngIf]="item.name != 'Favorites'">
+						<Image [nsRouterLink]="['/app/playlist', item.id ]" height="60" height="60" row="0" col="0" [src]="getCoverArt(item) | async"></Image>
+						<Label [nsRouterLink]="['/app/playlist', item.id ]" row="0" col="1" [text]="item.name" class="playlist"></Label>
+					</ng-template>
+					<ng-template [ngIf]="item.name == 'Favorites'">
+						<Label [nsRouterLink]="['/app/favorites']" height="60" height="60" row="0" col="0" text="&#xf004;" class="fa fa-heart" textWrap="true"></Label>
+						<Label [nsRouterLink]="['/app/favorites']" row="0" col="1" text="{{ item.name }} " class="playlist "></Label>
+					</ng-template>
+				</GridLayout>
+			</ng-template>
+		</ListView>
+	</ng-container>
+	<ng-template #loading>
+		<ActivityIndicator busy="true" ></ActivityIndicator>
+	</ng-template>
 </StackLayout>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IAlbum } from 'subular';
 import { RouterExtensions } from 'nativescript-angular/router';
-import { SLIDE_RIGHT_ANIMATION } from '../../../animations/animations';
+import { SLIDE_RIGHT_ANIMATION, SPIN_ANIMATION } from '../../../animations/animations';
 import { SubularMobileService } from '../../../services/subularMobile.service';
 import { screen } from 'platform';
 import { Observable } from 'rxjs/Observable';
@@ -17,7 +17,9 @@ export class RecentlyAddedComponent implements OnInit {
 
 	albums$: Observable<IAlbum[]>;
 
-	animateOptions = SLIDE_RIGHT_ANIMATION
+	SPIN_ANIMATION = SPIN_ANIMATION;
+	SLIDE_RIGHT_ANIMATION = SLIDE_RIGHT_ANIMATION
+
 	imageHeightWidth = (screen.mainScreen.widthDIPs / 12) * 5;
 	imageSideMargins = (screen.mainScreen.widthDIPs / 18);
 
