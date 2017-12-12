@@ -18,7 +18,7 @@ import { DownloadQueueService } from '../../../services/downloadQueue.service';
 })
 
 export class AlbumComponent implements OnInit {
-	returnLink$: Observable<any[]>;
+	returnLink$: Observable<any>;
 	songSubscription: Subscription;
 	songs$: Observable<ISong[]>;
 	listedSongs = [];
@@ -57,7 +57,13 @@ export class AlbumComponent implements OnInit {
 
 		this.returnLink$ = this.route.params
 			.combineLatest(this.album$)
-			.map(([value, album]) => !value.returnLink ? ['/app/albums', album.artistId] : [value.returnLink]);
+			.map(([value, album]) => {
+				return {
+					link: !value.returnLink ? ['/app/albums', album.artistId] : [value.returnLink],
+					text: !value.returnLink ? album.artist : value.returnLinkText
+				};
+			});
+
 	}
 
 	selectSong($song: ISong) {

@@ -6,7 +6,7 @@
 		<ScrollView class="" height="100%">
 			<WrapLayout orientation="horizontal">
 				<StackLayout [width]="imageHeightWidth" [marginLeft]="imageSideMargins" [marginBottom]="imageSideMargins" *ngFor="let item of album"
-				 class="album-card" orientation="vertical" [nsRouterLink]="['../album', item.id , { returnLink: '/app/recent' }]">
+				 class="album-card" orientation="vertical" [nsRouterLink]="['../album', item.id , { returnLink: '/app/recent', returnLinkText: 'Recently Added' }]">
 					<Image [width]="imageHeightWidth" [height]="imageHeightWidth" stretch="fill" class="album-image" [src]="getCoverArt(item) | async"></Image>
 					<!-- <FrescoDrawee class="artist-image" *tkIfAndroid horizontalAlignment="stretch"  [imageUri]="item.image" verticalAlignment="top"></FrescoDrawee> -->
 					<Label class="album-name" [text]="item.name"></Label>
