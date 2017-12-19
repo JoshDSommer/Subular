@@ -20,7 +20,6 @@ import * as applicationModule from "tns-core-modules/application";
 import * as frescoModule from "nativescript-fresco";
 import { AlbumComponent } from './views/subular-app/album/album.component';
 import { SongListComponent } from './components/song-list/song-list.component';
-import { PlayerService } from './services/player.service';
 import { AnimateDirective } from './directives/animate.directive';
 import { SlideBackDirective } from './directives/slideBack.directive';
 import { SubularMobileService } from './services/subularMobile.service';
@@ -33,9 +32,9 @@ import { WorkerService, DownloadQueueService } from './services';
 import { PlaylistsComponent } from './views/subular-app/playlists/playlists.component';
 import { PlaylistComponent } from './views/subular-app/playlist/playlist.component';
 import { SlideDownBackDirective } from './directives/slideDownBack.directive';
-import { SlideForwardDirective } from './directives/slideForward.directive';
 import { CurrentConnectionService } from './services/currentConnection.service';
 import { RecentlyAddedComponent } from './views/subular-app/recently-added/recently-added.component';
+import { PLAYER_SERVICE } from './services/player.service';
 
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
@@ -71,13 +70,12 @@ if (applicationModule.android) {
         PlaylistsComponent,
         PlaylistComponent,
         SlideDownBackDirective,
-        SlideForwardDirective,
         RecentlyAddedComponent,
     ],
     providers: [
         LOCALSTORAGE_SERVICE,
         MD5_SERVICE,
-        PlayerService,
+        PLAYER_SERVICE,
         SubularMobileService,
         AlbumsResolver,
         AlbumResolver,
