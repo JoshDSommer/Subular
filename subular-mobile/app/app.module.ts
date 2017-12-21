@@ -33,7 +33,6 @@ import { WorkerService, DownloadQueueService } from './services';
 import { PlaylistsComponent } from './views/subular-app/playlists/playlists.component';
 import { PlaylistComponent } from './views/subular-app/playlist/playlist.component';
 import { SlideDownBackDirective } from './directives/slideDownBack.directive';
-import { SlideForwardDirective } from './directives/slideForward.directive';
 import { CurrentConnectionService } from './services/currentConnection.service';
 import { RecentlyAddedComponent } from './views/subular-app/recently-added/recently-added.component';
 
@@ -71,7 +70,6 @@ if (applicationModule.android) {
         PlaylistsComponent,
         PlaylistComponent,
         SlideDownBackDirective,
-        SlideForwardDirective,
         RecentlyAddedComponent,
     ],
     providers: [
