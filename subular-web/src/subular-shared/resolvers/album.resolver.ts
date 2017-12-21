@@ -3,7 +3,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs/Observable';
 import { IAlbum } from '../interfaces/album';
 import { SubsonicCachedService } from '../services/subsonic.cached.service';
-
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AlbumResolver implements Resolve<IAlbum> {

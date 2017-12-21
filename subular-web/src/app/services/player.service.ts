@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ISong, SubsonicService } from '../../subular-shared/index';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/observable/merge';
 
 export enum PlayingStatus {
 	loading,
@@ -100,7 +104,7 @@ export class PlayerService {
 	private setupAudio() {
 		this.audio = new Audio('');
 
-		const timeUpdate$ = Observable.fromEvent(this.audio, 'timeupdate')
+		const timeUpdate$ = fromEvent(this.audio, 'timeupdate')
 			.map(() => {
 				const remainder = this.audio.duration - this.audio.currentTime;
 				const position = (this.audio.currentTime / this.audio.duration) * 100;
@@ -115,15 +119,15 @@ export class PlayerService {
 					secs
 				};
 			});
-		const trackPaused$ = Observable.fromEvent(this.audio, 'pause')
+		const trackPaused$ = fromEvent(this.audio, 'pause')
 			.map(() => {
 				return { ...this.currentSong, playing: PlayingStatus.paused };
 			});
-		const trackPlay$ = Observable.fromEvent(this.audio, 'play')
+		const trackPlay$ = fromEvent(this.audio, 'play')
 			.map(() => {
 				return { ...this.currentSong, playing: PlayingStatus.playing };
 			});
-		const trackDone$ = Observable.fromEvent(this.audio, 'ended')
+		const trackDone$ = fromEvent(this.audio, 'ended')
 			.do(() => {
 				if ((this.currentIndex + 1) < this.songList.length) {
 					this.playSong(this.currentIndex + 1);

@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { SubsonicService } from './subsonic.service';
 import { IAlbum } from '../interfaces/album';
 import { IArtist } from '../interfaces/artists';
 import { LOCALSTORAGE_PROVIDER } from '../localstorage.provider';
-
+import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
 
 export const SUBULAR_CACHED_ALBUMS = 'subular.cached.albums';
 export const SUBULAR_CACHED_ARTISTS = 'subular.cached.artists';
@@ -21,7 +24,7 @@ export class SubsonicCachedService {
 
 
 	getCachedData(): Observable<[IArtist[], IAlbum[]]> {
-		return Observable.combineLatest(this.getArtists(), this.getAlbums());
+		return Observable.combineLatest(this.getArtists(), this.getAlbums()) as any;
 	}
 
 	getArtists(): Observable<IArtist[]> {

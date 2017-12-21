@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SubsonicCachedService, IArtist } from 'subular';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { ListView } from 'ui/list-view';
 import { Label } from 'ui/label';
 import { StackLayout } from 'ui/layouts/stack-layout';

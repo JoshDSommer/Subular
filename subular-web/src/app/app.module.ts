@@ -13,7 +13,7 @@ import { SubsonicAuthenticationService, SubsonicService } from '../subular-share
 import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';
 import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { RandomAlbumsComponent } from './views/subular-app/random-albums/random-albums.component';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { SubularSharedModule } from '../subular-shared/subular-shared.module';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
 import { PlayerComponent } from './components/player/player.component';
@@ -62,7 +62,7 @@ import { RecentlyAddedComponent } from './views/subular-app/recently-added/recen
 		ContextMenuModule,
 		DataTableModule,
 		InputTextModule,
-		HttpModule,
+		HttpClientModule,
 		PasswordModule,
 		ReactiveFormsModule,
 		SharedModule,

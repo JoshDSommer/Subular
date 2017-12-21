@@ -1,6 +1,5 @@
-import { Observable } from "rxjs/Observable";
-import { NavigationEnd, ActivatedRoute, Router } from "@angular/router";
-
+import { Observable } from 'rxjs/Observable';
+import { NavigationEnd, ActivatedRoute, Router } from '@angular/router';
 
 export function RouterParamObservable<T>(route: ActivatedRoute, router: Router, paramName: string): Observable<T> {
 	if (route && route.snapshot && route.snapshot.params) {
