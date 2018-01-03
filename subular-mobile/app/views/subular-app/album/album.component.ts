@@ -9,6 +9,7 @@ import { SubularMobileService } from '../../../services/subularMobile.service';
 import { ios } from 'utils/utils';
 import * as fs from "file-system";
 import { DownloadQueueService } from '../../../services/downloadQueue.service';
+import 'rxjs/add/operator/combineLatest';
 
 @Component({
 	moduleId: module.id,
