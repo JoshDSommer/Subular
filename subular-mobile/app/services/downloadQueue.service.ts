@@ -4,6 +4,7 @@ import { WorkerService } from './worker.service';
 import * as fs from "file-system";
 import * as utilModule from "utils/utils";
 import { SubularMobileService } from './subularMobile.service';
+var http = require("http");
 
 interface ISongToDownload {
 	song: ISong;
@@ -14,12 +15,11 @@ interface ISongToDownload {
 export class DownloadQueueService {
 	downloadingPlaylists = false;
 	downloadingSongs = false;
-	private worker: Worker;
+ 	// private worker: Worker;
 	private songs: ISongToDownload[] = [];
 
 	constructor(private workers: WorkerService, private subular: SubularMobileService) {
-		this.worker = this.workers.initDownloadWorker();
-
+	//	this.worker = this.workers.initDownloadWorker();
 		this.worker.onerror = error => {
 			console.error(error.message);
 		};
@@ -61,5 +61,20 @@ export class DownloadQueueService {
 		} else {
 			this.downloadingSongs = false;
 		}
+	}
+	//non worker service
+	worker = {
+		postMessage(msg) {
+			http.getFile({
+				url: msg.url,
+				method: "GET",
+			}, msg.path).then(() => {
+				this.onmessage();
+			}, (error) => {
+				this.error();
+			});
+		},
+		onmessage: null,
+		onerror: null
 	}
 }
