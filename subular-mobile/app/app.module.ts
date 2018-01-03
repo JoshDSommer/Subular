@@ -12,6 +12,8 @@ import { LoginComponent } from './views/login/login.component';
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { TNSFrescoModule } from 'nativescript-fresco/angular';
 import { NativeScriptHttpModule } from 'nativescript-angular/http';
+import { HttpClientModule } from '@angular/common/http';
+
 import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { ArtistListComponent } from './views/subular-app/artist-list/artist-list.component';
 import { AlbumsComponent } from './views/subular-app/albums/albums.component';
@@ -50,6 +52,7 @@ if (applicationModule.android) {
         SubularSharedModule.forRoot(),
         NativeScriptModule,
         NativeScriptHttpModule,
+        HttpClientModule,
         AppRoutingModule,
         TNSFrescoModule,
     ],
