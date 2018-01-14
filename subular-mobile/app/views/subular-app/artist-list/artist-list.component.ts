@@ -9,6 +9,11 @@ import { layout } from 'utils/utils';
 import { getNumber, setNumber } from 'application-settings';
 import { SubularMobileService } from '../../../services/subularMobile.service';
 
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import 'rxjs/add/operator/reduce';
+import 'rxjs/add/operator/distinctUntilChanged';
+import { interval } from 'rxjs/observable/interval';
+
 export const ARTIST_LIST_CACHE_KEY = 'artist-list-cached-index';
 
 @Component({
@@ -21,12 +26,18 @@ export const ARTIST_LIST_CACHE_KEY = 'artist-list-cached-index';
 export class ArtistListComponent implements OnInit {
 	cachedIndex: any;
 	@ViewChild('artistList') _artistListView: ElementRef;
+	@ViewChild('label') _label: ElementRef;
+
 	artists$: Observable<IArtist[]>;
 	alphabet = 'abcdefghijklmnopqrstuvwxyz#'.split('');
 	artists: IArtist[];
 
 	get artistListView(): ListView {
 		return this._artistListView.nativeElement;
+	}
+
+	get labelView(): ListView {
+		return this._label.nativeElement;
 	}
 
 	constructor(private subular: SubularMobileService) {
@@ -41,6 +52,47 @@ export class ArtistListComponent implements OnInit {
 	ngAfterViewInit() {
 		const jumpToIndex = getNumber(ARTIST_LIST_CACHE_KEY, 0);
 		this.artistListView.scrollToIndex(jumpToIndex);
+		//this.setupCollapse()
+	}
+
+	setupCollapse() {
+		const panEvent$ = fromEvent(this.artistListView, 'pan')
+			.map((event: PanGestureEventData) => event.deltaY)
+		panEvent$
+			.filter(x => {
+				// filter out out events that are just starting
+				if (x < -10) {
+					return true;
+				}
+				if (x > 10) {
+					return true;
+				}
+				return false;
+			})
+			.map(x => {
+				return x > 0 ? 1 : 0;
+			})
+			.distinctUntilChanged()
+			.subscribe((x) => {
+				if (x > 0) {
+					this.labelView.animate({
+						translate: { x: 0, y: 0 },
+						duration: 600
+					}).then(() => { }, () => { });
+					this.artistListView.translateY = 0;
+				} else {
+					this.labelView.animate({
+						translate: { x: 0, y: -100 },
+						duration: 600
+					}).then(() => { }, () => { });
+					this.artistListView.animate({
+						translate: { x: 0, y: -100 },
+						duration: 600
+					}).then(() => {}, () => { });
+				}
+
+			});
+
 	}
 
 	previousCharacterToJumpTo: string;

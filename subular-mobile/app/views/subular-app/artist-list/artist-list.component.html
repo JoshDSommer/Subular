@@ -1,5 +1,5 @@
 <StackLayout class="page-padding-left" >
-	<Label text="Artists" class="title"></Label>
+	<Label [collapse]="artistList" #label text="Artists" class="title"></Label>
 	<GridLayout rows="*" columns="*,18" class="">
 		<ListView #artistList [items]="artists$ | async" class="list-group">
 			<ng-template let-item="item" let-odd="odd" let-even="even" let-i="index">
