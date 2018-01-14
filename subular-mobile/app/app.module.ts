@@ -37,6 +37,7 @@ import { PlaylistComponent } from './views/subular-app/playlist/playlist.compone
 import { SlideDownBackDirective } from './directives/slideDownBack.directive';
 import { CurrentConnectionService } from './services/currentConnection.service';
 import { RecentlyAddedComponent } from './views/subular-app/recently-added/recently-added.component';
+import { LongPressDirective } from './directives/longPress.directive';
 
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
@@ -74,6 +75,7 @@ if (applicationModule.android) {
         PlaylistComponent,
         SlideDownBackDirective,
         RecentlyAddedComponent,
+        LongPressDirective,
     ],
     providers: [
         LOCALSTORAGE_SERVICE,
