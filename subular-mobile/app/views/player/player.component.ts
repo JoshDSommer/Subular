@@ -12,6 +12,8 @@ import { screen } from 'platform';
 import { ActionBar } from 'tns-core-modules/ui/action-bar/action-bar';
 import { ISong } from 'subular';
 
+declare const CGAffineTransformMakeScale: any;
+
 @Component({
 	moduleId: module.id,
 	selector: 'player',
