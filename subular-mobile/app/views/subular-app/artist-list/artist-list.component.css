@@ -1,8 +1,18 @@
+.list-view{
+}
 .artist-list-item{
 	padding-top: 15;
 	padding-bottom: 15;
 	border-bottom-width: 1;
 	border-bottom-color:#e4e3e3;
+}
+.title{
+	background-color: #fff;
+	width: 100%;
+}
+
+.first-item{
+	padding-top: 40;
 }
 .artist {
 	margin: 0;
