@@ -6,10 +6,10 @@
   "nativescript": {
     "id": "com.joshdsommer.subular",
     "tns-ios": {
-      "version": "3.4.0"
+      "version": "3.4.1"
     },
     "tns-android": {
-      "version": "3.4.0"
+      "version": "3.4.1"
     }
   },
   "dependencies": {
@@ -32,7 +32,7 @@
     "reflect-metadata": "~0.1.8",
     "rxjs": "~5.5.2",
     "subular": "file:../subular-shared-dist",
-    "tns-core-modules": "^3.4.0",
+    "tns-core-modules": "^3.4.1",
     "zone.js": "~0.8.2"
   },
   "devDependencies": {
