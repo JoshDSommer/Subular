@@ -1,4 +1,4 @@
-<StackLayout *ngIf="album$ | async as album" [animate]="animateOptions" class="offset-for-slide">
+<StackLayout *ngIf="album$ | async as album" [animate]="animateOptions" height="100%" class="offset-for-slide">
 	<ng-container *ngIf="returnLink$ | async as returnlink">
 
 		<Label [nsRouterLink]="returnlink.link" class="fa back-link" text="&#xf0d9; {{ returnlink.text }}" textWrap="true"></Label>
@@ -9,7 +9,7 @@
 			<Button class="fa" text="&#xf074; Shuffle" (tap)="playAndShuffle()"></Button>
 		</StackLayout>
 
-		<ListView [slideBack]="returnlink.link" [items]="songs$ | async" class="list-group">
+		<ListView [slideBack]="returnlink.link" height="100%" [items]="songs$ | async" class="list-group">
 			<ng-template let-item="item" let-odd="odd" let-even="even">
 				<GridLayout rows="*" columns="30,*,60" class="song-list-item page-padding">
 					<Label row="0" , col="0" [text]="item.track" (tap)="selectSong(item)" class="track-number"></Label>
