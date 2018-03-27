@@ -38,6 +38,7 @@ import { SlideDownBackDirective } from './directives/slideDownBack.directive';
 import { CurrentConnectionService } from './services/currentConnection.service';
 import { RecentlyAddedComponent } from './views/subular-app/recently-added/recently-added.component';
 import { CollapseDirective } from './directives/collapse.directive';
+import { AddToPlaylistComponent } from './views/subular-app/add-to-playlist/add-to-playlist.component';
 
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
@@ -76,6 +77,7 @@ if (applicationModule.android) {
         SlideDownBackDirective,
         RecentlyAddedComponent,
         CollapseDirective,
+        AddToPlaylistComponent,
     ],
     providers: [
         LOCALSTORAGE_SERVICE,

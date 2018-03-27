@@ -12,8 +12,8 @@
 		<ListView [slideBack]="returnlink.link" height="100%" [items]="songs$ | async" class="list-group">
 			<ng-template let-item="item" let-odd="odd" let-even="even">
 				<GridLayout rows="*" columns="30,*,60" class="song-list-item page-padding">
-					<Label row="0" , col="0" [text]="item.track" (tap)="selectSong(item)" class="track-number"></Label>
-					<Label row="0" , col="1" [text]="item.title" (tap)="selectSong(item)" class="song"></Label>
+					<Label row="0" , col="0" [text]="item.track" (longPress)="longpress(item)" (tap)="selectSong(item)" class="track-number"></Label>
+					<Label row="0" , col="1" [text]="item.title" (longPress)="longpress(item)" (tap)="selectSong(item)" class="song"></Label>
 					<ng-container [ngSwitch]="item?.state">
 						<Label *ngSwitchCase="SongState.downloading" row="0" col="2" class="fa fa-download" text="&#xf1ce;"></Label>
 						<!-- <ActivityIndicator *ngSwitchCase="SongState.downloading" row="0" col="2" rowSpan="2" class="fa fa-download" busy="true"></ActivityIndicator> -->

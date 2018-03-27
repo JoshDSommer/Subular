@@ -74,6 +74,10 @@ export class SubularMobileService {
 			.do(playlists => this.setValue(CACHED_PLAYLISTS_KEY, playlists));
 	}
 
+	addToPlaylist(song: ISong, playlistId: number) {
+		return this.subsonicService.subsonic.addSongToPlaylist(song, playlistId);
+	}
+
 	getPlaylist(id: number): Observable<IPlaylist> {
 		return this.subsonicService.subsonic.getPlaylist(id)
 			.map(playlist => {

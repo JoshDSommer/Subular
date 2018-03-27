@@ -13,6 +13,7 @@ import { PlayerComponent } from "./views/player/player.component";
 import { PlaylistsComponent } from "./views/subular-app/playlists/playlists.component";
 import { PlaylistComponent } from './views/subular-app/playlist/playlist.component';
 import { RecentlyAddedComponent } from "./views/subular-app/recently-added/recently-added.component";
+import { AddToPlaylistComponent } from './views/subular-app/add-to-playlist/add-to-playlist.component';
 
 const routes: Routes = [
 	{ path: "", redirectTo: "/app/artists", pathMatch: "full" },
@@ -41,6 +42,10 @@ const routes: Routes = [
 			{
 				path: 'recent',
 				component: RecentlyAddedComponent
+			},
+			{
+				path: 'addToPlaylist/:songId',
+				component: AddToPlaylistComponent
 			}
 		]
 	},

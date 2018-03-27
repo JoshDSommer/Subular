@@ -10,6 +10,7 @@ import { ios } from 'utils/utils';
 import * as fs from "file-system";
 import { DownloadQueueService } from '../../../services/downloadQueue.service';
 import 'rxjs/add/operator/combineLatest';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
 	moduleId: module.id,
@@ -37,8 +38,8 @@ export class AlbumComponent implements OnInit {
 		private playerService: PlayerService,
 		private songStore: SongStoreService,
 		private queue: DownloadQueueService,
-		private zone: NgZone) { }
-
+		private zone: NgZone,
+		private nsRouter : RouterExtensions) { }
 
 	ngOnInit() {
 		this.album$ = RouterResolverDataObservable<IAlbum>(this.route, this.router, 'album');
@@ -71,6 +72,10 @@ export class AlbumComponent implements OnInit {
 		this.playerService.clearSongs();
 
 		this.playerService.addSongsAndPlaySong(this.listedSongs, $song);
+	}
+
+	longpress($song: ISong) {
+		this.nsRouter.navigate(['/app/addToPlaylist/' + $song.id ]);
 	}
 
 	playAndShuffle() {
