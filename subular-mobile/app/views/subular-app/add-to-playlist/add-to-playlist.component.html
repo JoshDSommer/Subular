@@ -1,5 +1,5 @@
 <StackLayout class="page-padding">
-	<Label text="Playlists" class="title" textWrap="true"></Label>
+	<Label text="Add to Playlist" class="title" textWrap="true"></Label>
 	<ng-container *ngIf="playlists$ | async as playlist else loading">
 		<ListView #playlistList [items]="playlist" class="list-group">
 			<ng-template let-item="item" let-odd="odd" let-even="even" let-i="index">

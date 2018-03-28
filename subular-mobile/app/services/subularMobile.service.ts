@@ -78,6 +78,10 @@ export class SubularMobileService {
 		return this.subsonicService.subsonic.addSongToPlaylist(song, playlistId);
 	}
 
+	removeFromPlaylist(songIndex: number, playlistId: number) : Observable<void> {
+		return this.subsonicService.subsonic.removeSongFromPlaylist(songIndex, playlistId);
+	}
+
 	getPlaylist(id: number): Observable<IPlaylist> {
 		return this.subsonicService.subsonic.getPlaylist(id)
 			.map(playlist => {
