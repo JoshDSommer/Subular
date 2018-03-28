@@ -43,16 +43,17 @@ const routes: Routes = [
 				path: 'recent',
 				component: RecentlyAddedComponent
 			},
-			{
-				path: 'addToPlaylist/:songId',
-				component: AddToPlaylistComponent
-			}
+
 		]
 	},
 	{
 		path: 'player',
 		component: PlayerComponent,
 
+	},
+	{
+		path: 'addToPlaylist/:songId',
+		component: AddToPlaylistComponent
 	}
 ];
 

@@ -39,7 +39,7 @@ export class AlbumComponent implements OnInit {
 		private songStore: SongStoreService,
 		private queue: DownloadQueueService,
 		private zone: NgZone,
-		private nsRouter : RouterExtensions) { }
+		private nsRouter: RouterExtensions) { }
 
 	ngOnInit() {
 		this.album$ = RouterResolverDataObservable<IAlbum>(this.route, this.router, 'album');
@@ -75,7 +75,11 @@ export class AlbumComponent implements OnInit {
 	}
 
 	longpress($song: ISong) {
-		this.nsRouter.navigate(['/app/addToPlaylist/' + $song.id ]);
+		this.nsRouter.navigate(['/addToPlaylist/' + $song.id], {
+			transition: {
+				name: 'slideTop'
+			}
+		});
 	}
 
 	playAndShuffle() {
