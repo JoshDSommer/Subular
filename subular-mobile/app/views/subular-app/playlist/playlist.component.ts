@@ -70,10 +70,20 @@ export class PlaylistComponent implements OnInit {
 
 	swipe($event: SwipeGestureEventData, gridView: GridLayout) {
 		if ($event.direction == SwipeDirection.left && gridView.translateX === 0) {
-			gridView.translateX = -65;
+			gridView.animate({
+				translate: { x: -65, y: 0 },
+				duration: 400
+			})
+			.then(()=>{})
+			.catch(()=>{});
 		}
 		if ($event.direction === SwipeDirection.right && gridView.translateX === -65) {
-			gridView.translateX = 0;
+			gridView.animate({
+				translate: { x: 0, y: 0 },
+				duration: 400
+			})
+			.then(()=>{})
+			.catch(()=>{});	gridView.translateX = 0;
 		}
 	}
 
