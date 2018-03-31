@@ -10,7 +10,7 @@
 	<ListView [slideBack]="['/app/playlists']" [items]="songs$ | async" class="list-group">
 		<ng-template let-item="item" let-odd="odd" let-even="even" let-index="index">
 			<AbsoluteLayout width="100%">
-				<Label class="remove" top="0" left="0" text="remove" (tap)="removeFromPlaylist(index)"></Label>
+				<Label class="remove fa fa-download" top="0" left="0" text="&#xf014;" (tap)="removeFromPlaylist(index)"></Label>
 				<GridLayout #songListing (tap)="void" (swipe)="swipe($event,songListing)" rows="*,15" top="0" left="0" columns="30,*,60"
 				 class="song-list-item page-padding" width="100%" backgroundColor="#fff">
 					<Label row="0" , col="0" [text]="(index + 1)" (tap)="selectSong(item)" class="track-number"></Label>
