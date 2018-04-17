@@ -1,9 +1,9 @@
 <div class="album-card-wrapper" >
 	<div class="album-card">
-		<img class="artist-album" [routerLink]="'../../album/'+ album?.id" name="album-{{album?.id}}" crossOrigin="Anonymous" [src]="getCoverUrl(album?.coverArt)" />
+		<img class="artist-album" [routerLink]="routerLink" name="album-{{album?.id}}" crossOrigin="Anonymous" [src]="getCoverUrl(album?.coverArt)" />
 	</div>
 	<div class="album-card-footer">
-		<div [routerLink]="'../../album/'+ album?.id">
+		<div [routerLink]="routerLink">
 			{{album?.name}}
 		</div>
 		<i class="fa fa-play-circle play-button" id="play-{{album.id}}" (click)="playAlbum(album?.id)"></i>
