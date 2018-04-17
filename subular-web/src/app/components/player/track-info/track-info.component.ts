@@ -19,7 +19,6 @@ export class TrackInfoComponent implements OnInit, OnChanges {
 
 	ngOnChanges() {
 		if (this.song) {
-			console.log(this.song)
 			this.imgUrl = this.subsonic.subsonicGetCoverUrl(this.song.id);
 		}
 	}

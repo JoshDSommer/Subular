@@ -12,11 +12,7 @@ export class AlbumResolver implements Resolve<IAlbum> {
 	}
 
 	resolve(route: ActivatedRouteSnapshot): Observable<IAlbum> {
-		return this.cache.getAlbums()
-			.map(albums => {
-				const albumId = +route.paramMap.get('albumId');
-				const filtered = albums.find(album => album.id == albumId)
-				return filtered;
-			});
+		const albumId = +route.paramMap.get('albumId');
+		return this.cache.getAlbum(albumId);
 	}
 }

@@ -13,7 +13,6 @@ export class HeartComponent {
 	@Output() songUpdated = new EventEmitter<ISong>();
 
 	get isHearted() {
-		console.log(this.song);
 		return this.song.starred;
 	}
 	constructor(private subsonic: SubsonicService) { }

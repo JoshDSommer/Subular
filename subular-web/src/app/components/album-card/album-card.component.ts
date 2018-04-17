@@ -11,6 +11,7 @@ import { PlayerService } from '../../services/player.service';
 
 export class AlbumCardComponent implements OnInit {
 	@Input() album: IAlbum;
+	@Input() routerLink: string;
 
 	getCoverUrl(coverArt) {
 		if (coverArt) {
