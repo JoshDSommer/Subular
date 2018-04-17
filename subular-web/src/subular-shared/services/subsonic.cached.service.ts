@@ -52,6 +52,21 @@ export class SubsonicCachedService {
 		return this.buildAlbumDatabase().switchMap(() => this.getAlbums());
 	}
 
+	getAlbum(albumId: number) {
+		const albums = this.localStorage.getValue(SUBULAR_CACHED_ALBUMS);
+		const filtered = albums.find(album => album.id == albumId)
+
+		if (filtered) {
+			return new Observable(observer => {
+				observer.next(filtered);
+				observer.complete();
+			});
+		}
+		// else rebuild albumDB  and then get it form local storage.
+		return this.buildAlbumDatabase().switchMap(() => this.getAlbums().map(albumList => albumList.find(album => album.id === albumId)));
+
+	}
+
 	getArtistById(id: number): Observable<IArtist> {
 		return this.getArtists().map(artists => artists.find(artist => artist.id == id));
 	}
