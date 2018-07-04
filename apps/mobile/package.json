@@ -10,6 +10,7 @@
     }
   },
   "dependencies": {
+    "@Subular/core": "file:../../libs/core",
     "@angular/animations": "file:../../node_modules/@angular/animations",
     "@angular/common": "file:../../node_modules/@angular/common",
     "@angular/compiler": "file:../../node_modules/@angular/compiler",

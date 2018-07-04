@@ -16,6 +16,9 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@Subular/core": [
+        "libs/core/src/index.ts"
+      ]
     }
   },
   "exclude": [
