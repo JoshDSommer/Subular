@@ -1,23 +1,23 @@
-# see http://help.github.com/ignore-files/ for more about ignoring files.
-### WEB
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
 # compiled output
-/subular-web/dist
+/dist
 /tmp
-/subular-web/out-tsc
+/out-tsc
 
 # dependencies
-/subular-web/node_modules
+/node_modules
 
 # IDEs and editors
-/subular-web/.idea
-/subular-web/.project
-/subular-web/.classpath
-/subular-web/.c9/
-/subular-web/*.launch
-/subular-web/.settings/
-/subular-web/*.sublime-workspace
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-# IDE - VsCode
+# IDE - VSCode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -30,30 +30,10 @@
 /coverage
 /libpeerconnection.log
 npm-debug.log
+yarn-error.log
 testem.log
 /typings
 
-# e2e
-/subular-web/e2e/*.js
-/subular-web/e2e/*.map
-
-# system Files
-.Ds_store
+# System Files
+.DS_Store
 Thumbs.db
-
-### MOBILE
-/subular-mobile/**/*.js
-!/subular-mobile/webpack.config.js
-/subular-mobile/**/*.js.map
-/subular-mobile/**/*.log
-/subular-mobile/**/*.nsbuildinfo
-/subular-mobile/platforms
-/subular-mobile/node_modules
-/subular-mobile/report
-!/subular-mobile/**/*.worker.js
-
-subular-shared-dist/*
-!subular-shared-dist/package.json
-node_modules
-
-tempcrap

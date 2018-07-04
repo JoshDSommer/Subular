@@ -1,30 +1,25 @@
 {
-	"compilerOptions": {
-		"baseUrl": "./subular-web/src/subular-shared",
-		"outDir": "./subular-shared-dist",
-		"sourceMap": false,
-		"declaration": true,
-		"moduleResolution": "node",
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"target": "es5",
-		"typeRoots": [
-			"node_modules/@types"
-		],
-		"lib": [
-			"es2017",
-			"dom"
-		],
-		"paths": {
-			"@angular/*": [
-			  "./subular-web/node_modules/@angular/*"
-			]
-		}
-	},
-	"angularCompilerOptions": {
-		"skipTemplateCodegen": true
-	},
-	"include": [
-		"./subular-web/src/subular-shared"
-	]
+  "compileOnSave": false,
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "baseUrl": ".",
+    "paths": {
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
