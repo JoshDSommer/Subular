@@ -8,9 +8,16 @@
 android {  
   defaultConfig {  
     generatedDensities = []
-    applicationId = "__PACKAGE__"  
+    applicationId = "org.nativescript.subularmobile"  
   }  
   aaptOptions {  
     additionalParameters "--no-version-vectors"  
   }  
 } 
+
+def settingsGradlePath = "$rootDir/../../app/App_Resources/Android/settings.gradle";
+def settingsGradleFile = new File(settingsGradlePath);
+if(settingsGradleFile.exists())
+{
+    apply from: settingsGradleFile;
+}

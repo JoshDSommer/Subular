@@ -1,0 +1,9 @@
+<StackLayout>
+
+	<Label class="login" text="Hello LoginComponent!"></Label>
+
+	<TextField #server hint="http://yourServer.subsonic.org" text="theoriginaljosh.subsonic.org"></TextField>
+	<TextField #username hint="Username" text="josh"></TextField>
+	<TextField #password hint="Password" text="bruiser09"></TextField>
+	<Button text="Submit" (tap)="submitLogin(server.text,username.text,password.text)"></Button>
+</StackLayout>

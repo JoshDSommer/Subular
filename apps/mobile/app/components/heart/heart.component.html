@@ -1,0 +1,6 @@
+<ng-container class="play-pause-button" *ngIf="isHearted else unHearted">
+	<Label [row]="row" [col]="col"  class="fa fa-heart " (tap)="unHeartSong()" text="&#xf004;"></Label>
+</ng-container>
+<ng-template #unHearted>
+	<Label [row]="row" [col]="col" class="fa fa-unheart " (tap)="heartSong()" text="&#xf08a;"></Label>
+</ng-template>

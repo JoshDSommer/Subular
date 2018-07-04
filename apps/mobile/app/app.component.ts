@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
-import { SubsonicService } from '@Subular/core';
+import { SubsonicAuthenticationService } from 'subular';
+import { ARTIST_LIST_CACHE_KEY } from './views/subular-app/artist-list/artist-list.component';
+import { setNumber } from 'application-settings';
+
 @Component({
-  selector: 'ns-app',
-  templateUrl: 'app.component.html'
+    selector: 'ns-app',
+    templateUrl: 'app.component.html',
 })
+
 export class AppComponent {
-  constructor(private sub: SubsonicService) {
-    console.log(this.sub);
-  }
+    constructor() {
+        setNumber(ARTIST_LIST_CACHE_KEY, 0)
+    }
 }

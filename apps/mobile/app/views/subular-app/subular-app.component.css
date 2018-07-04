@@ -1,0 +1,56 @@
+
+.app-wrap{
+}
+.subular{
+	font-size: 35
+}
+.sidedrawer-wrap{
+	padding-top: 50;
+	background-color: #4B0082;
+}
+
+.sidedrawer-wrap label{
+	color: #fff;
+}
+
+.navigation{
+	border-top-width: 1;
+	border-top-color:#e4e3e3;
+}
+.navigation-option{
+	text-align: center;
+	font-size: 18;
+	font-weight: bold;
+	height: 100%
+}
+
+.mini-player{
+	background-color: #dbd3de;
+	height: 70;
+}
+.mini-player-button{
+	color:#222222;
+	font-weight: bold;
+	font-size: 28;
+	text-align: center;
+}
+
+.loading-text{
+	font-size: 28;
+	text-align: center;
+	margin-top: 5%;
+	color:#222222;
+}
+.loading-image{
+	margin-top: 25%;
+}
+.song-title{
+	vertical-align: bottom;
+}
+.song-artist{
+	vertical-align: top;
+	font-size: 13;
+	font-style : italic;
+	color: #646262
+}
+

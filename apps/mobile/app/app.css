@@ -9,12 +9,51 @@ In many cases you may want to use the NativeScript core theme instead
 of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
-@import '~nativescript-theme-core/css/core.light.css';
+@import 'nativescript-theme-core/css/core.light.css';
 
-/*
-For example, the following CSS rule changes the font size of all UI
-components that have the btn class name.
-*/
-.btn {
-    font-size: 18;
+
+Image{
+	border-radius: 2;
+}
+Button{
+	color: #ca9fdb;
+}
+
+.fa{
+	font-family: 'FontAwesome', fontawesome-webfont;
+}
+
+.border-outline{
+	border-width: 0;
+}
+
+.debug{
+	border-color:red;
+	border-width: 1;
+
+}
+.page-padding{
+	padding-left: 18%;
+	padding-right: 18%;
+}
+.page-padding-left{
+	padding-left: 18%;
+}
+
+.back-link{
+	font-size: 18;
+	margin: 10 10;
+	height: 22;
+	color: #ca9fdb;
+	font-weight: bold;
+}
+
+.offset-for-slide{
+	transform: translateX(300);
+}
+.title{
+	font-size: 26;
+	font-weight: bold;
+	padding-top:5;
+	padding-bottom:5;
 }
