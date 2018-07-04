@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectorRef, ChangeDetectionStrategy, NgZone } from '@angular/core';
-import { IAlbum, RouterResolverDataObservable, ISong, SongStoreService, SongState } from 'subular';
+import { IAlbum, RouterResolverDataObservable, ISong, SongStoreService, SongState } from '@Subular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs';

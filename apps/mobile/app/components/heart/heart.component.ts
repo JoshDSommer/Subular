@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { SubularMobileService } from '../../services/subularMobile.service';
-import { ISong } from 'subular';
+import { ISong } from '@Subular/core';
 @Component({
 	moduleId: module.id,
 	selector: 'heart',

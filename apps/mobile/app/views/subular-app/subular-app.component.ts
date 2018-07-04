@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { SubularAppBaseComponent, SubsonicCachedService, SubsonicService } from 'subular';
+import { SubularAppBaseComponent, SubsonicCachedService, SubsonicService } from '@Subular/core';
 import { PlayerService, IAudioPlayingInfo, PlayingStatus } from '../../services/player.service';
 import { SPIN_ANIMATION } from '../../animations/animations';
 import { setNumber } from 'application-settings';

@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { ISong, SubsonicService, replace } from 'subular';
+import { ISong, SubsonicService, replace } from '@Subular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ios } from 'utils/utils';

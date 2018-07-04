@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ISong, SubsonicService, IPlaylist } from 'subular';
+import { ISong, SubsonicService, IPlaylist } from '@Subular/core';
 import { WorkerService } from './worker.service';
 import * as fs from "file-system";
 import * as utilModule from "utils/utils";

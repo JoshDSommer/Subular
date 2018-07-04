@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SubularMobileService } from '../../../services';
-import { IPlaylists, IPlaylist } from 'subular';
+import { IPlaylists, IPlaylist } from '@Subular/core';
 import { Observable } from 'rxjs/Observable';
 import { DownloadQueueService } from '../../../services/downloadQueue.service';
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SubsonicService, SubsonicCachedService, ISong, IArtist, IAlbum, IPlaylist, SongState } from 'subular';
+import { SubsonicService, SubsonicCachedService, ISong, IArtist, IAlbum, IPlaylist, SongState } from '@Subular/core';
 import { Observable } from 'rxjs/Observable';
 import * as http from "http";
 import * as fs from "file-system";

@@ -1,5 +1,5 @@
 import { FactoryProvider } from '@angular/core';
-import { LOCALSTORAGE_PROVIDER, IServerInfo } from 'subular';
+import { LOCALSTORAGE_PROVIDER, IServerInfo } from '@Subular/core';
 import { getString, setString } from 'application-settings';
 
 export class LocalStorageService implements LOCALSTORAGE_PROVIDER {

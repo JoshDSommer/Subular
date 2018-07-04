@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SubsonicAuthenticationService, SubsonicService, SUBULAR_CACHED_ARTISTS, SUBULAR_CACHED_ALBUMS } from 'subular';
+import { SubsonicAuthenticationService, SubsonicService, SUBULAR_CACHED_ARTISTS, SUBULAR_CACHED_ALBUMS } from '@Subular/core';
 import { Router } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { setString } from 'tns-core-modules/application-settings/application-settings';

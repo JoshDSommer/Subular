@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SubularMobileService } from '../../../services';
 import { Observable } from 'rxjs/Observable';
-import { IPlaylists, IPlaylist } from 'subular';
+import { IPlaylists, IPlaylist } from '@Subular/core';
 import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular/router';
 

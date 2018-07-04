@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { SubsonicCachedService, IArtist } from 'subular';
+import { SubsonicCachedService, IArtist } from '@Subular/core';
 import { Observable } from 'rxjs/Observable';
 import { ListView } from 'ui/list-view';
 import { Label } from 'ui/label';

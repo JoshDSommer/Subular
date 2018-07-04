@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { SubularMobileService } from '../../../services';
 import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
-import { IPlaylist, SongStoreService, ISong, SongState } from 'subular';
+import { IPlaylist, SongStoreService, ISong, SongState } from '@Subular/core';
 import { Observable } from 'rxjs/Observable';
 import { SLIDE_RIGHT_ANIMATION } from '../../../animations/animations';
 import { PlayerService } from '../../../services/player.service';

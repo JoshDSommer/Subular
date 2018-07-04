@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { IAlbum } from 'subular';
+import { IAlbum } from '@Subular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { SLIDE_RIGHT_ANIMATION } from '../../../animations/animations';
 import { SubularMobileService } from '../../../services/subularMobile.service';
