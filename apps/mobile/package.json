@@ -28,6 +28,7 @@
     "rxjs": "file:../../node_modules/rxjs",
     "rxjs-compat": "file:../../node_modules/rxjs-compat",
     "tns-core-modules": "4.1.0",
+    "tns-platform-declarations": "^4.1.0",
     "zone.js": "~0.8.18"
   },
   "devDependencies": {
