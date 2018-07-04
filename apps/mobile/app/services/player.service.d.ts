@@ -4,57 +4,55 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 export enum PlayingStatus {
-	loading,
-	paused,
-	playing
+  loading,
+  paused,
+  playing
 }
 
 export interface IAudioPlayingInfo {
-	song: ISong;
-	playing: PlayingStatus;
-	remainingTime?: number;
-	position?: number;
-	mins?: number;
-	secs?: number;
-	repeat?: boolean;
-	random?: boolean;
+  song: ISong;
+  playing: PlayingStatus;
+  remainingTime?: number;
+  position?: number;
+  mins?: number;
+  secs?: number;
+  repeat?: boolean;
+  random?: boolean;
 }
 
 declare class PlayerService {
+  nowPlaying$: Observable<IAudioPlayingInfo>;
 
-	nowPlaying$: Observable<IAudioPlayingInfo>;
+  private _repeat: boolean;
+  private _random: boolean;
 
-	private _repeat: boolean;
-	private _random: boolean;
+  clearSongs(): void;
 
+  addSong(song: ISong): void;
 
-	clearSongs(): void;
+  addAndPlaySong(song: ISong): void;
 
-	addSong(song: ISong): void;
+  addSongs(songs: ISong[]): void;
 
-	addAndPlaySong(song: ISong): void;
+  addSongsAndPlaySong(songs: ISong[], song: ISong);
 
-	addSongs(songs: ISong[]): void;
+  updateSong(song: ISong);
 
-	addSongsAndPlaySong(songs: ISong[], song: ISong);
+  shuffleSongs(firstSong: ISong): void;
 
-	updateSong(song: ISong);
+  toggleRepeat();
 
-	shuffleSongs(firstSong: ISong = null): void;
+  toggleShuffle();
 
-	toggleRepeat();
+  playSong(index?: number): void;
 
-	toggleShuffle();
+  pauseSong(): void;
 
-	playSong(index?: number): void;
+  resumeSong(): void;
 
-	pauseSong(): void;
+  playNextSong();
 
-	resumeSong(): void;
+  playPreviousSong();
 
-	playNextSong();
-
-	playPreviousSong();
-
-	songUpdated(song: ISong);
+  songUpdated(song: ISong);
 }
