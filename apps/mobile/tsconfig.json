@@ -11,7 +11,7 @@
     "paths": {
       "~/*": ["app/*"],
       "*": ["./node_modules/tns-core-modules/*", "./node_modules/*"],
-      "@Subular/core": ["../../libs/core/indext.ts"]
+      "@Subular/core": ["../../libs/core/index.ts"]
     }
   },
   "exclude": ["node_modules", "platforms"]
