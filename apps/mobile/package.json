@@ -17,10 +17,8 @@
     "@angular/core": "file:../../node_modules/@angular/core",
     "@angular/forms": "file:../../node_modules/@angular/forms",
     "@angular/http": "file:../../node_modules/@angular/http",
-    "@angular/platform-browser":
-      "file:../../node_modules/@angular/platform-browser",
-    "@angular/platform-browser-dynamic":
-      "file:../../node_modules/@angular/platform-browser-dynamic",
+    "@angular/platform-browser": "file:../../node_modules/@angular/platform-browser",
+    "@angular/platform-browser-dynamic": "file:../../node_modules/@angular/platform-browser-dynamic",
     "@angular/router": "~6.0.6",
     "crypto-js": "file:../../node_modules/crypto-js",
     "nativescript-angular": "~6.0.6",
