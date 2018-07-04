@@ -2,13 +2,13 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Output,
   EventEmitter
 } from '@angular/core';
 import { SongStoreService, ISong } from '@Subular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { PlayerService } from '../../services/player.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   moduleId: module.id,
