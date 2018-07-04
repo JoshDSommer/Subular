@@ -1,0 +1,34 @@
+.list-view{
+}
+.artist-list-item{
+	padding-top: 15;
+	padding-bottom: 15;
+	border-bottom-width: 1;
+	border-bottom-color:#e4e3e3;
+}
+.title{
+	background-color: #fff;
+	width: 100%;
+}
+
+.first-item{
+	padding-top: 40;
+}
+.artist {
+	margin: 0;
+	padding: 3% 0;
+	font-size: 20px;
+}
+
+.letter-wrap{
+	margin-top: 130;
+	font-size: 13px;
+}
+
+.letter-wrap Label{
+	height: 14;
+	font-weight: bold;
+	color: #ca9fdb;
+	text-transform: uppercase;
+	text-align: center
+}

@@ -1,0 +1,21 @@
+{
+  "npmScope": "Subular",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "web": {
+      "tags": []
+    },
+    "web-e2e": {
+      "tags": []
+    },
+    "core": {
+      "tags": []
+    }
+  }
+}

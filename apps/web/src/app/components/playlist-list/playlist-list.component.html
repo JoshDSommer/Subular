@@ -1,0 +1,12 @@
+<ul class="playlist-list" #playlistList>
+	<li>
+		<button (click)="createNew()">Create new playlist
+			<i class="fa fa-add"></i>
+		</button>
+	</li>
+	<li *ngFor="let playlist of playlists$ | async" [class]="playlist.id">
+		<a [routerLink]="['/app',{ outlets:{ lists: ['playlists'], content: ['playlist', playlist.id ]}}]">
+			{{ playlist.name }}
+		</a>
+	</li>
+</ul>
