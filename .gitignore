@@ -40,3 +40,4 @@ Thumbs.db
 
 /apps/mobile/node_modules
 /apps/mobile/platforms
+/apps/mobile/**/*.js
