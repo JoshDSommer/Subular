@@ -18,12 +18,12 @@
             "main": "apps/web/src/main.ts",
             "polyfills": "apps/web/src/polyfills.ts",
             "tsConfig": "apps/web/tsconfig.app.json",
-            "assets": [
-              "apps/web/src/favicon.ico",
-              "apps/web/src/assets"
-            ],
+            "assets": ["apps/web/src/favicon.ico", "apps/web/src/assets"],
             "styles": [
-              "apps/web/src/styles.css"
+              "apps/web/src/styles.css",
+              "./node_modules/font-awesome/css/font-awesome.min.css",
+              "./node_modules/primeng/resources/primeng.min.css",
+              "./node_modules/primeng/resources/themes/cruze/theme.css"
             ],
             "scripts": []
           },
@@ -71,14 +71,9 @@
             "polyfills": "apps/web/src/polyfills.ts",
             "tsConfig": "apps/web/tsconfig.spec.json",
             "karmaConfig": "apps/web/karma.conf.js",
-            "styles": [
-              "apps/web/src/styles.css"
-            ],
+            "styles": ["apps/web/src/styles.css"],
             "scripts": [],
-            "assets": [
-              "apps/web/src/favicon.ico",
-              "apps/web/src/assets"
-            ]
+            "assets": ["apps/web/src/favicon.ico", "apps/web/src/assets"]
           }
         },
         "lint": {
@@ -88,9 +83,7 @@
               "apps/web/tsconfig.app.json",
               "apps/web/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -110,9 +103,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/web-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -138,9 +129,7 @@
               "libs/core/tsconfig.lib.json",
               "libs/core/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
