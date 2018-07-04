@@ -1,0 +1,15 @@
+
+
+
+@font-face {
+	font-family: 'Pacifico';
+	src: url('/assets/fonts/Pacifico.ttf');
+}
+
+.subular-brand {
+	display: inline-block;
+	font-family: 'Pacifico';
+	background: -webkit-linear-gradient(#4B0082,#EED2EE);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}

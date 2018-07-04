@@ -1,0 +1,11 @@
+.gutter{
+	background-color:#101010;
+	margin:0 !important;
+	height:4px;
+	padding:0;
+}
+.gutter-progress{
+	background: -webkit-linear-gradient(#4B0082,#EED2EE);
+	height:4px;
+	display: block;
+}
