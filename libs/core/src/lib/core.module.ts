@@ -15,7 +15,7 @@ import { SongStoreService } from './services';
 export class SubularCoreModule {
   public static forRoot(): ModuleWithProviders {
     return {
-      ngModule: SubularSharedModule,
+      ngModule: SubularCoreModule,
       providers: [
         SubsonicAuthenticationService,
         SubsonicService,
