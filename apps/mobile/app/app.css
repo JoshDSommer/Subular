@@ -11,49 +11,53 @@ refer to http://docs.nativescript.org/ui/theme.
 */
 @import 'nativescript-theme-core/css/core.light.css';
 
-
-Image{
-	border-radius: 2;
+Image {
+  border-radius: 2;
 }
-Button{
-	color: #ca9fdb;
-}
-
-.fa{
-	font-family: 'FontAwesome', fontawesome-webfont;
+Button {
+  color: #ca9fdb;
 }
 
-.border-outline{
-	border-width: 0;
+.fa {
+  font-family: 'FontAwesome', fontawesome-webfont;
 }
 
-.debug{
-	border-color:red;
-	border-width: 1;
-
-}
-.page-padding{
-	padding-left: 18%;
-	padding-right: 18%;
-}
-.page-padding-left{
-	padding-left: 18%;
+.pacifico {
+  font-family: 'Pacifico', Pacifico;
 }
 
-.back-link{
-	font-size: 18;
-	margin: 10 10;
-	height: 22;
-	color: #ca9fdb;
-	font-weight: bold;
+.border-outline {
+  border-width: 0;
 }
 
-.offset-for-slide{
-	transform: translateX(300);
+.debug {
+  border-color: red;
+  border-width: 1;
 }
-.title{
-	font-size: 26;
-	font-weight: bold;
-	padding-top:5;
-	padding-bottom:5;
+.page-padding {
+  padding-left: 18%;
+  padding-right: 18%;
+}
+.page-padding-left {
+  padding-left: 18%;
+}
+
+.back-link {
+  font-size: 18;
+  margin: 10 10;
+  height: 22;
+  color: #ca9fdb;
+  font-weight: bold;
+}
+
+.offset-for-slide {
+  transform: translateX(300);
+}
+.title {
+  font-size: 26;
+  font-weight: bold;
+  padding-top: 5;
+  padding-bottom: 5;
+  /* font-family: 'Pacifico', Pacifico;
+  text-transform: lowercase; */
 }
