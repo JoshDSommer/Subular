@@ -22,8 +22,8 @@ interface ISubularService {
   cachedData: SubsonicCachedService;
 }
 
-const CACHED_SONGS_KEY = 'subular.cached.songs';
-const CACHED_PLAYLISTS_KEY = 'subular.cached.playlists';
+export const CACHED_SONGS_KEY = 'subular.cached.songs';
+export const CACHED_PLAYLISTS_KEY = 'subular.cached.playlists';
 
 @Injectable()
 export class SubularMobileService {
