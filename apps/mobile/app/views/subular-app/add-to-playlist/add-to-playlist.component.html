@@ -1,7 +1,7 @@
-<StackLayout class="page-padding">
+<StackLayout class="page-padding ">
 	<Label text="Add to Playlist" class="title" textWrap="true"></Label>
 	<ng-container *ngIf="playlists$ | async as playlist else loading">
-		<ListView #playlistList [items]="playlist" class="list-group">
+		<ListView #playlistList [items]="playlist" class="list-group" height="100%">
 			<ng-template let-item="item" let-odd="odd" let-even="even" let-i="index">
 				<GridLayout rows="*" columns="60,*" class="playlist-list-item">
 					<ng-template [ngIf]="item.name != 'Favorites'">
@@ -13,6 +13,6 @@
 		</ListView>
 	</ng-container>
 	<ng-template #loading>
-		<ActivityIndicator busy="true" ></ActivityIndicator>
+		<ActivityIndicator busy="true"></ActivityIndicator>
 	</ng-template>
 </StackLayout>
