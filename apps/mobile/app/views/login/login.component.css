@@ -1,4 +1,14 @@
 .login {
-	color: black;
-	font-size: 50
+  color: #ca9fdb;
+  font-size: 50;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10%;
+}
+
+TextField {
+  text-align: center;
+  margin: 5 0 5 0;
+  font-size: 16;
+  color: #222222;
 }
