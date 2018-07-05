@@ -66,8 +66,9 @@ export class AlbumComponent implements OnInit {
     this.songs$ = this.album$.pipe(
       switchMap(album => this.subular.getSongs(album.id)),
       // this map is to filter out duplicates.
-      map(songs =>
-        songs.filter((song, index, self) => {
+      map(songs => [
+        { header: true } as any,
+        ...songs.filter((song, index, self) => {
           return (
             index ===
             self.findIndex(previosSong => {
@@ -78,7 +79,7 @@ export class AlbumComponent implements OnInit {
             })
           );
         })
-      ),
+      ]),
       switchMap(songs => this.songStore.addSongs(songs)),
       tap(songs => (this.listedSongs = songs)),
       tap(songs => {
@@ -151,4 +152,9 @@ export class AlbumComponent implements OnInit {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
   }
+
+  templateSelector = (item: any, index: number, items: any) => {
+    const template = item.header === true ? 'header' : 'regular';
+    return template;
+  };
 }

@@ -1,11 +1,11 @@
 <StackLayout [animate]="animateOptions" class="offset-for-slide">
 	<Label text="&#xf0d9; Artists" class="fa back-link" [nsRouterLink]="['/app/artists']"></Label>
-	<StackLayout class="page-padding artist-info">
-		<Label [text]="albums[0].artist" class="title" textWrap="true"></Label>
-		<Label [text]="getAlbumsText(albums)" class="" textWrap="true"></Label>
-	</StackLayout>
 	<ScrollView [slideBack]="['/app/artists']" class="" height="100%">
-		<WrapLayout orientation="horizontal">
+		<WrapLayout orientation="horizontal" class="">
+			<StackLayout class="page-padding artist-info" width="100%">
+				<Label [text]="albums[0].artist" class="title" textWrap="true"></Label>
+				<Label [text]="getAlbumsText(albums)" class="" textWrap="true"></Label>
+			</StackLayout>
 			<StackLayout [width]="imageHeightWidth" [marginLeft]="imageSideMargins" [marginBottom]="imageSideMargins" *ngFor="let item of albums"
 			 class="album-card" orientation="vertical" [nsRouterLink]="['../../album', item.id ]">
 				<Image [width]="imageHeightWidth" [height]="imageHeightWidth" stretch="fill" class="album-image" [src]="getCoverArt(item) | async"></Image>
