@@ -8,6 +8,7 @@ import { LOCALSTORAGE_PROVIDER, SubularCoreModule } from '@Subular/core';
 import { LOCALSTORAGE_SERVICE } from './providers/localstorage.service';
 import { MD5_SERVICE } from './providers/md5.service';
 import { LoginComponent } from './views/login/login.component';
+import { SupaComponent } from './views/supa/supa.component';
 
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { TNSFrescoModule } from 'nativescript-fresco/angular';
@@ -75,7 +76,8 @@ if (applicationModule.android) {
     SlideDownBackDirective,
     RecentlyAddedComponent,
     CollapseDirective,
-    AddToPlaylistComponent
+    AddToPlaylistComponent,
+    SupaComponent
   ],
   providers: [
     LOCALSTORAGE_SERVICE,

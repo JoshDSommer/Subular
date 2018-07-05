@@ -120,7 +120,7 @@ export class AlbumComponent implements OnInit {
 
   playAndShuffle() {
     this.playerService.addSongs(this.listedSongs);
-    this.playerService.shuffleSongs();
+    this.playerService.shuffleSongs(null);
     this.playerService.playSong();
   }
 
