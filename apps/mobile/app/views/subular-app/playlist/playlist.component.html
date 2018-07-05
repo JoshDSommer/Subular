@@ -14,7 +14,7 @@
 				<GridLayout #songListing (tap)="void" (swipe)="swipe($event,songListing)" rows="*,15" top="0" left="0" columns="30,*,60"
 				 class="song-list-item page-padding" width="100%" backgroundColor="#fff">
 					<Label row="0" , col="0" [text]="(index + 1)" (tap)="selectSong(item)" class="track-number"></Label>
-					<Label row="0" , col="1" [text]="item.title"  (swipe)="swipe($event,songListing)" (tap)="selectSong(item)" class="song"></Label>
+					<Label row="0" , col="1" [text]="item.title" (swipe)="swipe($event,songListing)" (tap)="selectSong(item)" class="song"></Label>
 					<ng-container [ngSwitch]="item?.state">
 						<Label *ngSwitchCase="SongState.downloading" row="0" col="2" class="fa fa-download" text="&#xf1ce;"></Label>
 						<!-- <ActivityIndicator *ngSwitchCase="SongState.downloading" row="0" col="2" rowSpan="2" class="fa fa-download" busy="true"></ActivityIndicator> -->
