@@ -1,13 +1,14 @@
 <GridLayout #mainLayout rows="*,auto,52" , columns="*" stretchLastChild="true" class="app-wrap">
 	<GridLayout row="2" col="0" rows="*" columns="*,*,*,*" height="60" class="navigation">
-		<Label row="0" col="0" [highlight]="highlightBgColor" [nsRouterLink]="['/app/recent']" horizontalAlign="center"
-		 verticalAlignment="center" class=" navigation-option " [text]="'Recent'"></Label>
+		<Label row="0" col="0" [highlight]="highlightBgColor" [nsRouterLink]="['/app/recent']" horizontalAlign="center" verticalAlignment="center"
+		 class=" navigation-option " [text]="'Recent'"></Label>
 		<Label row="0" col="1" [highlight]="highlightBgColor" [nsRouterLink]="['/app/artists']" (tap)="clearArtistKeyCache()" horizontalAlign="center"
 		 verticalAlignment="center" class="navigation-option " [text]="'Artists'"></Label>
 		<Label row="0" col="2" [highlight]="highlightBgColor" [nsRouterLink]="['/app/playlists']" horizontalAlign="center" verticalAlignment="center"
 		 class="navigation-option " [text]="'Playlists'"></Label>
-		<!-- <Label row="0" col="2" [nsRouterLink]="['/app/artists']" width="100%" horizontalAlign="center" verticalAlignment="center"
-		 class="fa navigation-option" [text]="'Albums'"></Label> -->
+		<Label row="0" col="3" [highlight]="highlightBgColor" [nsRouterLink]="['/app/supa' ]" horizontalAlign="center" verticalAlignment="center"
+		 class="navigation-option " [text]="'More'"></Label>
+
 	</GridLayout>
 	<GridLayout row="1" col="0" *ngIf="nowPlaying" class="mini-player" rows="*,30" columns="80,*,80">
 		<StackLayout shadow="5" row="0" rowSpan="2" col="0" width="60" height="60">

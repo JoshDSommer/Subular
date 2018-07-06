@@ -1,93 +1,95 @@
-.player-wrap-background{
-	background-color: #000000;
+.player-wrap-background {
+  background-color: #000000;
 }
-.player-wrap{
-	border-bottom-left-radius: 20;
-	border-bottom-right-radius: 20;
-	background-color: #fff;
+.player-wrap {
+  border-bottom-left-radius: 20;
+  border-bottom-right-radius: 20;
+  background-color: #fff;
 }
-ActionBar{
-	background-color: #fff;
+ActionBar {
+  background-color: #fff;
 }
-.back-button{
-	width:80%;
-	align-content: center;
+.back-button {
+  width: 80%;
+  align-content: center;
 }
-.loading-album{
-	text-align: center;
-	font-size: 105;
-	color: #ca9fdb;
-	opacity: 0.8
+.loading-album {
+  text-align: center;
+  font-size: 105;
+  color: #ca9fdb;
+  opacity: 0.8;
 }
-.album-art Image{
-	border-radius: 4;
-	/* margin-top: 20;
+.album-art Image {
+  border-radius: 4;
+  /* margin-top: 20;
 	margin-bottom: 30; */
 }
-Progress{
-	background-color:#c4c2c2;
-	color: #ca9fdb;
-	width: 67%;
-	margin-top: 15px
+Progress {
+  background-color: #c4c2c2;
+  color: #ca9fdb;
+  width: 67%;
+  margin-top: 15px;
 }
-.hide-button{
-	font-size: 35;
-	color: #ca9fdb;
-	text-align: center;
+.hide-button {
+  font-size: 35;
+  color: #ca9fdb;
+  text-align: center;
 }
-.heart-wrap{
-	text-align: right;
-	padding-top: 15;
-	padding-right: 25;
+.heart-wrap {
+  text-align: right;
+  padding-top: 15;
+  padding-right: 25;
 }
-.song-title, .song-artist, .song-album{
-	text-align: center;
-}
-
-.song-title{
-	font-size: 25;
-	font-weight: bold
-}
-.song-artist, .song-album{
-	font-size: 18;
-}
-.song-artist{
-	font-weight: bold;
-}
-.song-album{
-	font-style : italic;
-	color: #646262;
+.song-title,
+.song-artist,
+.song-album {
+  text-align: center;
 }
 
-.player-controls Label{
-	text-align: center;
-	height: 66;
+.song-title {
+  font-size: 25;
+  font-weight: bold;
 }
-.mini-player-button{
-	width: 66;
-	border-radius: 33;
-	font-size: 36;
-	color: #222222;
-
+.song-artist,
+.song-album {
+  font-size: 18;
 }
-.disabled{
-	color: #c4c2c2;
+.song-artist {
+  font-weight: bold;
 }
-.next-previous{
-	color: #222222;
-	font-size: 25;
-	width: 66;
-	border-radius: 33;
+.song-album {
+  font-style: italic;
+  color: #646262;
 }
 
-.random-repeat{
-	color: #c4c2c2;
+.player-controls Label {
+  text-align: center;
+  height: 66;
 }
-.random-repeat-enabled{
-	color: #ca9fdb;
+.mini-player-button {
+  width: 66;
+  border-radius: 33;
+  font-size: 36;
+  color: #36454f;
 }
-.time{
-	text-align: center;
-	font-size: 11px;
-	vertical-align:top;
+.disabled {
+  color: #c4c2c2;
+}
+.next-previous {
+  color: #36454f;
+  font-size: 25;
+  width: 66;
+  border-radius: 33;
+}
+
+.random-repeat {
+  color: #c4c2c2;
+}
+.random-repeat-enabled {
+  color: #ca9fdb;
+}
+.time {
+  text-align: center;
+  font-size: 11px;
+  vertical-align: top;
 }

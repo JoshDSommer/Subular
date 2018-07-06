@@ -54,6 +54,7 @@ Button {
   transform: translateX(300);
 }
 .title {
+  color: #36454f;
   font-size: 28;
   font-weight: bold;
   padding-top: 10;
