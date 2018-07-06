@@ -1,18 +1,20 @@
 <StackLayout [animate]="SLIDE_RIGHT_ANIMATION" class="offset-for-slide">
-	<StackLayout class="page-padding artist-info">
-		<Label text="Recently Added" class="title" textWrap="true"></Label>
-	</StackLayout>
 	<ng-container *ngIf="albums$ | async as album else loading">
-		<ScrollView class="" height="100%">
-			<WrapLayout orientation="horizontal">
-				<StackLayout [width]="imageHeightWidth" [marginLeft]="imageSideMargins" [marginBottom]="imageSideMargins" *ngFor="let item of album"
-				 class="album-card" orientation="vertical" [nsRouterLink]="['../album', item.id , { returnLink: '/app/recent', returnLinkText: 'Recently Added' }]">
-					<Image [width]="imageHeightWidth" [height]="imageHeightWidth" stretch="fill" class="album-image" [src]="getCoverArt(item) | async"></Image>
-					<!-- <FrescoDrawee class="artist-image" *tkIfAndroid horizontalAlignment="stretch"  [imageUri]="item.image" verticalAlignment="top"></FrescoDrawee> -->
-					<Label class="album-name" [text]="item.name"></Label>
-				</StackLayout>
-			</WrapLayout>
-		</ScrollView>
+		<AbsoluteLayout class="" height="100%">
+			<GridLayout rows="*" top="0" left="0" width="100%" height="100%" columns="*">
+				<ScrollView #recentlyAdded class="" height="100%">
+					<WrapLayout orientation="horizontal">
+						<StackLayout [class.first-item]="i == 0 || i == 1" [width]="imageHeightWidth" [marginLeft]="imageSideMargins" [marginBottom]="imageSideMargins"
+						 *ngFor="let item of albums$ | async; let i = index" class="album-card" orientation="vertical" [nsRouterLink]="['../album', item.id , { returnLink: '/app/recent', returnLinkText: 'Recently Added' }]">
+							<Image [width]="imageHeightWidth" [height]="imageHeightWidth" stretch="fill" class="album-image" [src]="getCoverArt(item) | async"></Image>
+							<!-- <FrescoDrawee class="artist-image" *tkIfAndroid horizontalAlignment="stretch"  [imageUri]="item.image" verticalAlignment="top"></FrescoDrawee> -->
+							<Label class="album-name" [text]="item.name"></Label>
+						</StackLayout>
+					</WrapLayout>
+				</ScrollView>
+			</GridLayout>
+			<Label text="Recently Added" [collapse]="recentlyAdded" class="title page-padding-left" textWrap="true"></Label>
+		</AbsoluteLayout>
 	</ng-container>
 	<ng-template #loading>
 		<ActivityIndicator busy="true"></ActivityIndicator>
