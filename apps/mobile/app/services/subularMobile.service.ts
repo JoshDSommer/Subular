@@ -149,6 +149,7 @@ export class SubularMobileService {
       fs.knownFolders.documents().path + '/images',
       playlist.coverArt + '.png'
     );
+
     const exists = fs.File.exists(coverPath);
     if (exists) {
       return of(coverPath);
@@ -182,8 +183,21 @@ export class SubularMobileService {
       song.albumId + '.png'
     );
     const exists = fs.File.exists(coverPath);
-    if (exists) {
+    const fileSize = fs.knownFolders
+      .documents()
+      .getFolder('images')
+      .getFile(song.albumId + '.png').size;
+
+    if (exists && fileSize > 200) {
       return of(coverPath);
+    }
+    if (fileSize <= 200) {
+      fs.knownFolders
+        .documents()
+        .getFolder('images')
+        .getFile(song.albumId + '.png')
+        .remove()
+        .then();
     }
     return new Observable(observer => {
       observer.next('~/images/coverArt.png');
@@ -213,8 +227,21 @@ export class SubularMobileService {
       album.id + '.png'
     );
     const exists = fs.File.exists(coverPath);
-    if (exists) {
+    const fileSize = fs.knownFolders
+      .documents()
+      .getFolder('images')
+      .getFile(album.id + '.png').size;
+
+    if (exists && fileSize > 200) {
       return of(coverPath);
+    }
+    if (fileSize <= 200) {
+      fs.knownFolders
+        .documents()
+        .getFolder('images')
+        .getFile(album.id + '.png')
+        .remove()
+        .then();
     }
     return new Observable(observer => {
       observer.next('~/images/coverArt.png');
