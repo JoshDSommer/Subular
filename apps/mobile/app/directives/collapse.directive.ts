@@ -23,56 +23,62 @@ export class CollapseDirective implements AfterViewInit {
   }
 
   private get listView(): View {
-    return this.collapse.nativeElement;
+    return this.collapse.nativeElement
+      ? this.collapse.nativeElement
+      : this.collapse;
   }
 
   constructor(private element: ElementRef) {}
 
   ngAfterViewInit() {
-    const panEvent$ = fromEvent(this.listView, 'pan').map(
-      (event: PanGestureEventData) => event.deltaY
-    );
+    if (this.listView) {
+      const panEvent$ = fromEvent(this.listView, 'pan').map(
+        (event: PanGestureEventData) => event.deltaY
+      );
 
-    this.subscription = panEvent$
-      .pipe(
-        filter(deltaY => {
-          // filter out out events that are just starting
-          if (deltaY < -10) {
-            return true;
-          }
-          if (deltaY > 10) {
-            return true;
-          }
-          return false;
-        }),
-        map(deltaY => {
-          // determine if we are moving up or not.
-          return deltaY > 0 ? 1 : 0;
-        }),
-        distinctUntilChanged(),
-        switchMap(up => {
-          const itemHeight = this.view.getMeasuredHeight();
-          if (up) {
-            return fromPromise(
-              this.view.animate({
-                translate: { x: 0, y: 0 },
-                duration: 600
-              })
-            );
-          } else {
-            return fromPromise(
-              this.view.animate({
-                translate: { x: 0, y: -itemHeight },
-                duration: 600
-              })
-            );
-          }
-        })
-      )
-      .subscribe();
+      this.subscription = panEvent$
+        .pipe(
+          filter(deltaY => {
+            // filter out out events that are just starting
+            if (deltaY < -10) {
+              return true;
+            }
+            if (deltaY > 10) {
+              return true;
+            }
+            return false;
+          }),
+          map(deltaY => {
+            // determine if we are moving up or not.
+            return deltaY > 0 ? 1 : 0;
+          }),
+          distinctUntilChanged(),
+          switchMap(up => {
+            const itemHeight = this.view.getMeasuredHeight();
+            if (up) {
+              return fromPromise(
+                this.view.animate({
+                  translate: { x: 0, y: 0 },
+                  duration: 600
+                })
+              );
+            } else {
+              return fromPromise(
+                this.view.animate({
+                  translate: { x: 0, y: -itemHeight },
+                  duration: 600
+                })
+              );
+            }
+          })
+        )
+        .subscribe();
+    }
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
