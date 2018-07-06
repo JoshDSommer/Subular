@@ -7,7 +7,7 @@
 		<ListView [slideBack]="returnlink.link" [itemTemplateSelector]="templateSelector" height="100%" [items]="songs$ | async"
 		 class="list-group">
 			<ng-template nsTemplateKey="header">
-				<StackLayout>
+				<StackLayout class="header-list-item">
 					<Label text="{{ album.name }}" class="title page-padding" textWrap="true"></Label>
 					<StackLayout orientation="horizontal" class="button-wrap page-padding">
 						<Button class="fa" text="&#xf0ed; Download" *ngIf="!allSongsDownloaded" (tap)="downloadAllSongs()"></Button>

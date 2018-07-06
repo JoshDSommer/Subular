@@ -44,6 +44,7 @@ Progress {
 .song-artist,
 .song-album {
   text-align: center;
+  color: #36454f;
 }
 
 .song-title {
@@ -65,6 +66,7 @@ Progress {
 .player-controls Label {
   text-align: center;
   height: 66;
+  color: #36454f;
 }
 .mini-player-button {
   width: 66;
@@ -92,4 +94,5 @@ Progress {
   text-align: center;
   font-size: 11px;
   vertical-align: top;
+  color: #36454f;
 }
