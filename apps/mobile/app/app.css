@@ -54,10 +54,10 @@ Button {
   transform: translateX(300);
 }
 .title {
-  font-size: 26;
+  font-size: 28;
   font-weight: bold;
-  padding-top: 5;
-  padding-bottom: 5;
+  padding-top: 10;
+  padding-bottom: 8;
   /* font-family: 'Pacifico', Pacifico;
   text-transform: lowercase; */
 }
