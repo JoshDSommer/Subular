@@ -27,6 +27,10 @@ import 'rxjs/add/operator/combineLatest';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { switchMap, tap, map, combineLatest } from 'rxjs/operators';
 
+interface IAlbumSong extends ISong {
+  header: boolean;
+}
+
 @Component({
   moduleId: module.id,
   selector: 'album',
@@ -36,8 +40,8 @@ import { switchMap, tap, map, combineLatest } from 'rxjs/operators';
 export class AlbumComponent implements OnInit {
   returnLink$: Observable<any>;
   songSubscription: Subscription;
-  songs$: Observable<ISong[]>;
-  listedSongs = [];
+  songs$: Observable<IAlbumSong[]>;
+  listedSongs: IAlbumSong[] = [];
   album$: Observable<IAlbum>;
   albums: IAlbum;
 
@@ -81,7 +85,7 @@ export class AlbumComponent implements OnInit {
         })
       ]),
       switchMap(songs => this.songStore.addSongs(songs)),
-      tap(songs => (this.listedSongs = songs)),
+      tap(songs => (this.listedSongs = songs as IAlbumSong[])),
       tap(songs => {
         const notDownloadedSongs = songs.filter(
           song =>
@@ -90,7 +94,7 @@ export class AlbumComponent implements OnInit {
         );
         this.allSongsDownloaded = notDownloadedSongs.length === 0;
       })
-    );
+    ) as Observable<IAlbumSong[]>;
 
     this.returnLink$ = this.route.params.pipe(
       combineLatest(this.album$),
@@ -120,7 +124,7 @@ export class AlbumComponent implements OnInit {
   }
 
   playAndShuffle() {
-    this.playerService.addSongs(this.listedSongs);
+    this.playerService.addSongs(this.listedSongs.filter(song => !song.header));
     this.playerService.shuffleSongs(null);
     this.playerService.playSong();
   }
@@ -143,11 +147,16 @@ export class AlbumComponent implements OnInit {
   }
 
   downloadAllSongs() {
-    this.listedSongs.forEach(song => {
-      this.download(song);
+    setTimeout(() => {
+      this.listedSongs.forEach(song => {
+        if (!song.header) {
+          this.download(song);
+        }
+      });
+      this.allSongsDownloaded = true;
     });
-    this.allSongsDownloaded = true;
   }
+
   ngOnDestroy() {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
