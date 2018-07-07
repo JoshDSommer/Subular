@@ -5,16 +5,8 @@
 				<ListView #recentlyAdded [items]="albums" class="list-group">
 					<ng-template let-item="item" let-i="index" let-album1="item[0]" let-album2="item[1]" let-odd="odd" let-even="even">
 						<StackLayout orientation="horizontal" [class.first-item]="i == 0">
-							<StackLayout [width]="imageHeightWidth" [marginLeft]="imageSideMargins" [marginBottom]="imageSideMargins" class="album-card"
-							 orientation="vertical" [nsRouterLink]="['../album', album1.id , { returnLink: '/app/recent', returnLinkText: 'Recently Added' }]">
-								<Image [width]="imageHeightWidth" [height]="imageHeightWidth" stretch="fill" class="album-image" [src]="getCoverArt(album1) | async"></Image>
-								<Label class="album-name" [text]="album1.name"></Label>
-							</StackLayout>
-							<StackLayout [width]="imageHeightWidth" [marginLeft]="imageSideMargins" [marginBottom]="imageSideMargins" class="album-card"
-							 orientation="vertical" [nsRouterLink]="['../album', album2.id , { returnLink: '/app/recent', returnLinkText: 'Recently Added' }]">
-								<Image [width]="imageHeightWidth" [height]="imageHeightWidth" stretch="fill" class="album-image" [src]="getCoverArt(album2) | async"></Image>
-								<Label class="album-name" [text]="album2.name"></Label>
-							</StackLayout>
+							<recently-added-album [album]="album1" [width]="imageHeightWidth" [margin]="imageSideMargins"></recently-added-album>
+							<recently-added-album [album]="album2" [width]="imageHeightWidth" [margin]="imageSideMargins"></recently-added-album>
 						</StackLayout>
 					</ng-template>
 				</ListView>
