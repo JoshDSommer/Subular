@@ -6,41 +6,40 @@ import { SLIDE_RIGHT_ANIMATION } from '../../../animations/animations';
 import { SubularMobileService } from '../../../services/subularMobile.service';
 import { screen } from 'platform';
 
-
 @Component({
-	moduleId: module.id,
-	selector: 'albums',
-	templateUrl: 'albums.component.html',
-	styleUrls: ['albums.component.css'],
+  moduleId: module.id,
+  selector: 'albums',
+  templateUrl: 'albums.component.html',
+  styleUrls: ['albums.component.css']
 })
-
 export class AlbumsComponent implements OnInit {
-	albums: IAlbum[];
+  albums: IAlbum[];
 
-	animateOptions = SLIDE_RIGHT_ANIMATION
-	imageHeightWidth = (screen.mainScreen.widthDIPs / 12) * 5;
-	imageSideMargins = (screen.mainScreen.widthDIPs / 18);
+  animateOptions = SLIDE_RIGHT_ANIMATION;
+  imageHeightWidth = screen.mainScreen.widthDIPs / 12 * 5;
+  imageSideMargins = screen.mainScreen.widthDIPs / 18;
 
-	constructor(private route: ActivatedRoute,
-		private router: Router,
-		private nsRouter: RouterExtensions,
-		public subular: SubularMobileService) {
-	}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private nsRouter: RouterExtensions,
+    public subular: SubularMobileService
+  ) {}
 
-	getAlbumsText(albums: IAlbum[]) {
-		return `${albums.length} album${albums.length > 1 ? 's' : ''}`;
-	}
+  getAlbumsText(albums: IAlbum[]) {
+    return `${albums.length} album${albums.length > 1 ? 's' : ''}`;
+  }
 
-	back() {
-		this.nsRouter.back();
-	}
-	ngOnInit() {
-		this.albums = this.route.snapshot.data['albums'] as IAlbum[];
-		this.router.events.subscribe(() => {
-			this.albums = this.route.snapshot.data['albums'] as IAlbum[];
-		});
-	}
-	getCoverArt(song) {
-		return this.subular.subsonicGetAlbumCoverUrl(song);
-	}
+  back() {
+    this.nsRouter.back();
+  }
+  ngOnInit() {
+    this.albums = this.route.snapshot.data['albums'] as IAlbum[];
+    this.router.events.subscribe(() => {
+      this.albums = this.route.snapshot.data['albums'] as IAlbum[];
+    });
+  }
+  getCoverArt(song) {
+    return this.subular.getArtWork(song.coverArt);
+  }
 }

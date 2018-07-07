@@ -5,24 +5,29 @@ import { Observable } from 'rxjs/Observable';
 import { DownloadQueueService } from '../../../services/downloadQueue.service';
 
 @Component({
-	moduleId: module.id,
-	selector: 'playlists',
-	templateUrl: './playlists.component.html',
-	styleUrls: ['./playlists.component.css']
+  moduleId: module.id,
+  selector: 'playlists',
+  templateUrl: './playlists.component.html',
+  styleUrls: ['./playlists.component.css']
 })
-
 export class PlaylistsComponent implements OnInit {
-	playlists$: Observable<IPlaylists>;
+  playlists$: Observable<IPlaylists>;
 
-	constructor(private subular: SubularMobileService, private download: DownloadQueueService) { }
+  constructor(
+    private subular: SubularMobileService,
+    private download: DownloadQueueService
+  ) {}
 
-	ngOnInit() {
-		this.playlists$ = this.subular.getPlaylists()
-			.map(playlists => [{ id: 0, name: 'Favorites' } as IPlaylist, ...playlists])
-	}
+  ngOnInit() {
+    this.playlists$ = this.subular
+      .getPlaylists()
+      .map(playlists => [
+        { id: 0, name: 'Favorites' } as IPlaylist,
+        ...playlists
+      ]);
+  }
 
-	getCoverArt(playlist: IPlaylist) {
-		return this.subular.subsonicGetPlaylistCoverUrl(playlist);
-	}
+  getCoverArt(playlist: IPlaylist) {
+    return this.subular.getArtWork(playlist.coverArt);
+  }
 }
-

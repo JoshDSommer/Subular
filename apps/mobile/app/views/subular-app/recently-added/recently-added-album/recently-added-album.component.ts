@@ -31,6 +31,6 @@ export class RecentlyAddedAlbumComponent implements OnInit {
   ngOnInit() {}
 
   getCoverArt(song) {
-    return this.subular.subsonicGetAlbumCoverUrl(song);
+    return this.subular.getArtWork(song.coverArt);
   }
 }

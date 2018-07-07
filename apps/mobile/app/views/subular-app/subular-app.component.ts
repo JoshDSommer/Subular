@@ -66,7 +66,7 @@ export class SubularAppComponent {
   }
 
   getArtWork(song) {
-    return this.subular.subsonicGetSongCoverUrl(song);
+    return this.subular.getArtWork(song.coverArt);
   }
 
   play() {

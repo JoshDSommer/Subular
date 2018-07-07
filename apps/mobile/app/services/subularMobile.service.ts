@@ -142,29 +142,16 @@ export class SubularMobileService {
   pingServer() {
     return this.subsonicService.subsonic.pingServer();
   }
-
-  subsonicGetAlbumCoverUrl(album: IAlbum, size = 500) {
-    return this.getArtWork(album.id, album.coverArt);
-  }
-
-  subsonicGetPlaylistCoverUrl(playlist: IPlaylist, size?: number) {
-    return this.getArtWork(playlist.coverArt, playlist.coverArt);
-  }
-
-  subsonicGetSongCoverUrl(song: ISong, size?: number) {
-    return this.getArtWork(song.albumId, song.coverArt);
-  }
-
-  private getArtWork(artworkSavedName, artWorkUrl) {
+  getArtWork(artWorkUrl, size = 1) {
     let coverPath = fs.path.join(
       fs.knownFolders.documents().path + '/images',
-      artworkSavedName + '.png'
+      artWorkUrl + '.png'
     );
     const exists = fs.File.exists(coverPath);
     const fileSize = fs.knownFolders
       .documents()
       .getFolder('images')
-      .getFile(artworkSavedName + '.png').size;
+      .getFile(artWorkUrl + '.png').size;
 
     if (exists && fileSize > 200) {
       return of(coverPath);
@@ -173,7 +160,7 @@ export class SubularMobileService {
       fs.knownFolders
         .documents()
         .getFolder('images')
-        .getFile(artworkSavedName + '.png')
+        .getFile(artWorkUrl + '.png')
         .remove()
         .then();
     }

@@ -31,7 +31,7 @@ export class AddToPlaylistComponent implements OnInit {
   }
 
   getCoverArt(playlist: IPlaylist) {
-    return this.subular.subsonicGetPlaylistCoverUrl(playlist);
+    return this.subular.getArtWork(playlist.coverArt);
   }
 
   addToPlaylist(playlist: IPlaylist) {
