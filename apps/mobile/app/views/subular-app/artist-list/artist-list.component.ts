@@ -52,54 +52,6 @@ export class ArtistListComponent implements OnInit {
   ngAfterViewInit() {
     const jumpToIndex = getNumber(ARTIST_LIST_CACHE_KEY, 0);
     this.artistListView.scrollToIndex(jumpToIndex);
-    //this.setupCollapse()
-  }
-
-  setupCollapse() {
-    const panEvent$ = fromEvent(this.artistListView, 'pan').map(
-      (event: PanGestureEventData) => event.deltaY
-    );
-    panEvent$
-      .pipe(
-        filter(x => {
-          // filter out out events that are just starting
-          if (x < -10) {
-            return true;
-          }
-          if (x > 10) {
-            return true;
-          }
-          return false;
-        }),
-        map(x => {
-          return x > 0 ? 1 : 0;
-        }),
-        distinctUntilChanged()
-      )
-      .subscribe(x => {
-        if (x > 0) {
-          this.labelView
-            .animate({
-              translate: { x: 0, y: 0 },
-              duration: 600
-            })
-            .then(() => {}, () => {});
-          this.artistListView.translateY = 0;
-        } else {
-          this.labelView
-            .animate({
-              translate: { x: 0, y: -100 },
-              duration: 600
-            })
-            .then(() => {}, () => {});
-          this.artistListView
-            .animate({
-              translate: { x: 0, y: -100 },
-              duration: 600
-            })
-            .then(() => {}, () => {});
-        }
-      });
   }
 
   previousCharacterToJumpTo: string;
