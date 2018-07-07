@@ -143,94 +143,28 @@ export class SubularMobileService {
     return this.subsonicService.subsonic.pingServer();
   }
 
-  subsonicGetPlaylistCoverUrl(playlist: IPlaylist, size?: number) {
-    //I'd rather always get image ar from the file system if available
-    let coverPath = fs.path.join(
-      fs.knownFolders.documents().path + '/images',
-      playlist.coverArt + '.png'
-    );
+  subsonicGetAlbumCoverUrl(album: IAlbum, size = 500) {
+    return this.getArtWork(album.id, album.coverArt);
+  }
 
-    const exists = fs.File.exists(coverPath);
-    if (exists) {
-      return of(coverPath);
-    }
-    return new Observable(observer => {
-      getFile(
-        {
-          url: this.subsonicService.subsonic.subsonicGetCoverUrl(
-            playlist.coverArt as any
-          ),
-          method: 'GET'
-        },
-        coverPath
-      ).then(
-        () => {
-          observer.next(coverPath);
-          observer.complete();
-        },
-        error => {
-          observer.next('~/images/coverArt.png');
-          observer.complete();
-        }
-      );
-    });
+  subsonicGetPlaylistCoverUrl(playlist: IPlaylist, size?: number) {
+    return this.getArtWork(playlist.coverArt, playlist.coverArt);
   }
 
   subsonicGetSongCoverUrl(song: ISong, size?: number) {
-    //I'd rather always get image ar from the file system if available
-    let coverPath = fs.path.join(
-      fs.knownFolders.documents().path + '/images',
-      song.albumId + '.png'
-    );
-    const exists = fs.File.exists(coverPath);
-    const fileSize = fs.knownFolders
-      .documents()
-      .getFolder('images')
-      .getFile(song.albumId + '.png').size;
-
-    if (exists && fileSize > 200) {
-      return of(coverPath);
-    }
-    if (fileSize <= 200) {
-      fs.knownFolders
-        .documents()
-        .getFolder('images')
-        .getFile(song.albumId + '.png')
-        .remove()
-        .then();
-    }
-    return new Observable(observer => {
-      observer.next('~/images/coverArt.png');
-      getFile(
-        {
-          url: this.subsonicService.subsonic.subsonicGetCoverUrl(
-            song.coverArt as any
-          ),
-          method: 'GET'
-        },
-        coverPath
-      ).then(
-        () => {
-          observer.next(coverPath);
-          observer.complete();
-        },
-        error => {
-          observer.complete();
-        }
-      );
-    });
+    return this.getArtWork(song.albumId, song.coverArt);
   }
 
-  subsonicGetAlbumCoverUrl(album: IAlbum, size = 500) {
+  private getArtWork(artworkSavedName, artWorkUrl) {
     let coverPath = fs.path.join(
       fs.knownFolders.documents().path + '/images',
-      album.id + '.png'
+      artworkSavedName + '.png'
     );
     const exists = fs.File.exists(coverPath);
     const fileSize = fs.knownFolders
       .documents()
       .getFolder('images')
-      .getFile(album.id + '.png').size;
+      .getFile(artworkSavedName + '.png').size;
 
     if (exists && fileSize > 200) {
       return of(coverPath);
@@ -239,7 +173,7 @@ export class SubularMobileService {
       fs.knownFolders
         .documents()
         .getFolder('images')
-        .getFile(album.id + '.png')
+        .getFile(artworkSavedName + '.png')
         .remove()
         .then();
     }
@@ -248,7 +182,7 @@ export class SubularMobileService {
       getFile(
         {
           url: this.subsonicService.subsonic.subsonicGetCoverUrl(
-            album.coverArt as any
+            artWorkUrl as any
           ),
           method: 'GET'
         },
