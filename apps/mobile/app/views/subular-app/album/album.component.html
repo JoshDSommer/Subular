@@ -7,7 +7,8 @@
 		<ListView [slideBack]="returnlink.link" [itemTemplateSelector]="templateSelector" height="100%" [items]="songs$ | async"
 		 class="list-group">
 			<ng-template nsTemplateKey="header">
-				<song-list-header [coverArt]="album.coverArt" [name]="album.name " [shuffleFunction]="playAndShuffle" [downloadFunction]="downloadAllSongs"></song-list-header>
+				<song-list-header [coverArt]="album.coverArt" [name]="album.name" [genre]="album.genre" [year]="album.year " [shuffleFunction]="playAndShuffle"
+				 [downloadFunction]="downloadAllSongs"></song-list-header>
 			</ng-template>
 			<ng-template nsTemplateKey="regular" let-item="item" let-odd="odd" let-even="even">
 				<GridLayout rows="*" columns="30,*,60" class="song-list-item page-padding">

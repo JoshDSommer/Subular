@@ -1,10 +1,13 @@
-<StackLayout class="header-list-item">
-	<Image [src]="getCoverArt() | async"></Image>
-
-	<Label text="{{ name }}" class="title page-padding" textWrap="true"></Label>
-	<StackLayout orientation="horizontal" class="button-wrap page-padding">
+<GridLayout rows="100,*" columns="100,*" class="header-list-item">
+	<Image height="75" width="75" row="0" col="0" [src]="getCoverArt() | async"></Image>
+	<StackLayout row="0" col="1" class="song-list-info-wrap">
+		<Label text="{{ name }}" class="song-list-title" textWrap="true"></Label>
+		<Label text="{{ genre }}" class="song-list-sub" textWrap="true"></Label>
+		<Label text="{{ year }}" class="song-list-sub" textWrap="true"></Label>
+	</StackLayout>
+	<StackLayout row="1" colSpan="2" orientation="horizontal" class="button-wrap page-padding">
 		<Button class="fa" text="&#xf0ed; Download" *ngIf="!allSongsDownloaded" (tap)="downloadAllSongs()"></Button>
 		<Label class="fa" text="&#xf00c; Downloaded" *ngIf="allSongsDownloaded"></Label>
 		<Button class="fa" text="&#xf074; Shuffle" (tap)="playAndShuffle()"></Button>
 	</StackLayout>
-</StackLayout>
+</GridLayout>

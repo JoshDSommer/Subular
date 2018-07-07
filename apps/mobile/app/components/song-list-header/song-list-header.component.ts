@@ -15,6 +15,8 @@ import { SubularMobileService } from '../../services';
 })
 export class SongListHeaderComponent implements OnInit {
   @Input() name: string;
+  @Input() year: string;
+  @Input() genre: string;
   @Input() shuffleFunction: Function;
   @Input() downloadFunction: Function;
   @Input() coverArt: string;

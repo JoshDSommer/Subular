@@ -18,3 +18,14 @@
   font-weight: bold;
   border-radius: 7;
 }
+.song-list-title {
+  color: #36454f;
+  font-weight: bold;
+}
+.song-list-sub {
+  font-size: 12;
+  color: #c4c2c2;
+}
+.song-list-info-wrap {
+  padding-top: 12.5;
+}
