@@ -8,3 +8,6 @@ ActivityIndicator {
   background-color: #fff;
   width: 100%;
 }
+ListView {
+  separator-color: transparent;
+}
