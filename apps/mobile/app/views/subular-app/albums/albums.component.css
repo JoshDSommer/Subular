@@ -1,26 +1,27 @@
-.artist-name{
-	text-align: center;
-	font-weight: bold;
-	font-size: 18;
+.artist-name {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18;
 }
-.album-card{
-	border-width: 1;
+.album-card {
+  /* border-width: 1;
 	border-color: #e4e3e3;
 	border-bottom-left-radius: 4;
-	border-bottom-right-radius: 4;
+	border-bottom-right-radius: 4; */
 }
-.album-image{
-	background-color: #e4e3e3;
+.album-image {
+  background-color: #e4e3e3;
+}
+.album-name {
+  /* font-size: 13; */
+  color: #36454f;
 
+  margin-top: 6;
+  margin-bottom: 6;
+  /* margin-left: 2; */
 }
-.album-name{
-	font-size: 13;
-	margin-top: 6;
-	margin-bottom: 6;
-	margin-left: 2;
-}
-.artist-info{
-	padding-right: 15;
-	padding-left: 15;
-	padding-bottom: 5;
+.artist-info {
+  padding-right: 15;
+  padding-left: 15;
+  padding-bottom: 5;
 }

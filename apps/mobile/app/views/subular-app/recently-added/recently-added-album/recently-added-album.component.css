@@ -1,3 +1,7 @@
-.recently-added-album {
-
+.album-name {
+  /* font-size: 13; */
+  color: #36454f;
+  margin-top: 6;
+  margin-bottom: 6;
+  /* margin-left: 2; */
 }
