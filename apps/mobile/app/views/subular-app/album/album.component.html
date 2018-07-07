@@ -7,14 +7,7 @@
 		<ListView [slideBack]="returnlink.link" [itemTemplateSelector]="templateSelector" height="100%" [items]="songs$ | async"
 		 class="list-group">
 			<ng-template nsTemplateKey="header">
-				<StackLayout class="header-list-item">
-					<Label text="{{ album.name }}" class="title page-padding" textWrap="true"></Label>
-					<StackLayout orientation="horizontal" class="button-wrap page-padding">
-						<Button class="fa" text="&#xf0ed; Download" *ngIf="!allSongsDownloaded" (tap)="downloadAllSongs()"></Button>
-						<Label class="fa" text="&#xf00c; Downloaded" *ngIf="allSongsDownloaded"></Label>
-						<Button class="fa" text="&#xf074; Shuffle" (tap)="playAndShuffle()"></Button>
-					</StackLayout>
-				</StackLayout>
+				<song-list-header [name]="album.name " [shuffleFunction]="playAndShuffle" [downloadFunction]="downloadAllSongs"></song-list-header>
 			</ng-template>
 			<ng-template nsTemplateKey="regular" let-item="item" let-odd="odd" let-even="even">
 				<GridLayout rows="*" columns="30,*,60" class="song-list-item page-padding">

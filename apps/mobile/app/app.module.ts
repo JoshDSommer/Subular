@@ -41,6 +41,7 @@ import { RecentlyAddedComponent } from './views/subular-app/recently-added/recen
 import { CollapseDirective } from './directives/collapse.directive';
 import { AddToPlaylistComponent } from './views/subular-app/add-to-playlist/add-to-playlist.component';
 import { RecentlyAddedAlbumComponent } from './views/subular-app/recently-added/recently-added-album/recently-added-album.component';
+import { SongListHeaderComponent } from './components/song-list-header/song-list-header.component';
 
 if (applicationModule.android) {
   applicationModule.on('launch', () => {
@@ -79,7 +80,8 @@ if (applicationModule.android) {
     CollapseDirective,
     AddToPlaylistComponent,
     SupaComponent,
-    RecentlyAddedAlbumComponent
+    RecentlyAddedAlbumComponent,
+    SongListHeaderComponent
   ],
   providers: [
     LOCALSTORAGE_SERVICE,

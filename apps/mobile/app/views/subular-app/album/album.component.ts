@@ -123,11 +123,11 @@ export class AlbumComponent implements OnInit {
     });
   }
 
-  playAndShuffle() {
+  playAndShuffle = () => {
     this.playerService.addSongs(this.listedSongs.filter(song => !song.header));
     this.playerService.shuffleSongs(null);
     this.playerService.playSong();
-  }
+  };
 
   download(song: ISong) {
     const onComplete = () => {
@@ -146,7 +146,7 @@ export class AlbumComponent implements OnInit {
     }
   }
 
-  downloadAllSongs() {
+  downloadAllSongs = () => {
     setTimeout(() => {
       this.listedSongs.forEach(song => {
         if (!song.header) {
@@ -155,7 +155,7 @@ export class AlbumComponent implements OnInit {
       });
       this.allSongsDownloaded = true;
     });
-  }
+  };
 
   ngOnDestroy() {
     //Called once, before the instance is destroyed.
