@@ -1,4 +1,6 @@
 <StackLayout class="header-list-item">
+	<Image [src]="getCoverArt() | async"></Image>
+
 	<Label text="{{ name }}" class="title page-padding" textWrap="true"></Label>
 	<StackLayout orientation="horizontal" class="button-wrap page-padding">
 		<Button class="fa" text="&#xf0ed; Download" *ngIf="!allSongsDownloaded" (tap)="downloadAllSongs()"></Button>

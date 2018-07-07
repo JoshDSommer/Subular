@@ -2,7 +2,7 @@
 	<Label [nsRouterLink]="['/app/playlists']" class="fa back-link" text="&#xf0d9; Playlists" textWrap="true"></Label>
 	<ListView [slideBack]="['/app/playlists']" [itemTemplateSelector]="templateSelector" [items]="songs$ | async" class="list-group">
 		<ng-template nsTemplateKey="header">
-			<song-list-header [name]="playlist.name " [shuffleFunction]="playAndShuffle" [downloadFunction]="downloadAllSongs"></song-list-header>
+			<song-list-header [coverArt]="playlist.coverArt" [name]="playlist.name " [shuffleFunction]="playAndShuffle" [downloadFunction]="downloadAllSongs"></song-list-header>
 		</ng-template>
 		<ng-template nsTemplateKey="regular" let-item="item" let-odd="odd" let-even="even" let-index="index">
 			<AbsoluteLayout width="100%">

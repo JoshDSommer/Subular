@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   Input
 } from '@angular/core';
+import { SubularMobileService } from '../../services';
 
 @Component({
   moduleId: module.id,
@@ -16,8 +17,9 @@ export class SongListHeaderComponent implements OnInit {
   @Input() name: string;
   @Input() shuffleFunction: Function;
   @Input() downloadFunction: Function;
+  @Input() coverArt: string;
 
-  constructor() {}
+  constructor(private subular: SubularMobileService) {}
 
   ngOnInit() {}
 
@@ -28,4 +30,10 @@ export class SongListHeaderComponent implements OnInit {
   downloadAllSongs() {
     this.downloadFunction();
   }
+
+  getCoverArt() {
+    return this.subular.getArtWork(this.coverArt);
+  }
+
+  ngAfterViewInit() {}
 }
