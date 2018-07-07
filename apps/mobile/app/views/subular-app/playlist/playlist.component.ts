@@ -14,6 +14,10 @@ import { switchMap, map, tap } from 'rxjs/operators';
 import { SwipeGestureEventData, SwipeDirection } from 'ui/gestures';
 import { GridLayout } from 'ui/layouts/grid-layout';
 
+interface IAlbumSong extends ISong {
+  header: boolean;
+}
+
 @Component({
   moduleId: module.id,
   selector: 'playlist',
@@ -22,7 +26,7 @@ import { GridLayout } from 'ui/layouts/grid-layout';
 })
 export class PlaylistComponent implements OnInit {
   connection$: Observable<ConnectionType>;
-  songs$: Observable<ISong[]>;
+  songs$: Observable<IAlbumSong[]>;
   listedSongs: any;
   playlist$: Observable<IPlaylist>;
   animateOptions = SLIDE_RIGHT_ANIMATION;
@@ -66,6 +70,13 @@ export class PlaylistComponent implements OnInit {
             song.state != SongState.downloading
         );
         this.allSongsDownloaded = notDownloadedSongs.length === 0;
+      }),
+      map(songs => {
+        return [{ header: true } as any, ...songs];
+      }),
+      map(songs => {
+        console.log(songs.length, 'songs');
+        return songs;
       })
     );
   }
@@ -139,4 +150,9 @@ export class PlaylistComponent implements OnInit {
     });
     this.allSongsDownloaded = true;
   }
+
+  templateSelector = (item: any, index: number, items: any) => {
+    const template = item.header === true ? 'header' : 'regular';
+    return template;
+  };
 }
