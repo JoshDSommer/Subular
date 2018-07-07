@@ -49,9 +49,6 @@ export class RecentlyAddedComponent implements OnInit {
         tap(albums => (this.albums = albums))
       );
   }
-  getCoverArt(song) {
-    return this.subular.subsonicGetAlbumCoverUrl(song);
-  }
 }
 
 export function smashArray<T>(array: T[]): T[][] {
