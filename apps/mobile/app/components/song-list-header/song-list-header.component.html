@@ -1,7 +1,7 @@
 <GridLayout rows="100,*" columns="100,*" class="header-list-item page-padding">
 	<Image height="75" width="75" row="0" col="0" [src]="getCoverArt() | async"></Image>
 	<StackLayout row="0" col="1" class="song-list-info-wrap">
-		<Label text="{{ name }}" class="song-list-title" textWrap="true"></Label>
+		<Label text="{{ name }}" class="song-list-title " textWrap="false"></Label>
 		<Label text="{{ genre }}" class="song-list-sub" textWrap="true"></Label>
 		<Label text="{{ year }}" class="song-list-sub" textWrap="true"></Label>
 	</StackLayout>

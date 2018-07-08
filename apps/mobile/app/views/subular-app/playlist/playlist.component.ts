@@ -75,7 +75,6 @@ export class PlaylistComponent implements OnInit {
         return [{ header: true } as any, ...songs];
       }),
       map(songs => {
-        console.log(songs.length, 'songs');
         return songs;
       })
     );

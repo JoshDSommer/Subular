@@ -38,7 +38,6 @@ export class AddToPlaylistComponent implements OnInit {
     this.route.params
       .pipe(
         map(params => params['songId']),
-        tap(console.log),
         switchMap(songId => {
           return this.subular.addToPlaylist({ id: songId } as any, playlist.id);
         })

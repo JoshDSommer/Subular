@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { ISong, IPlaylist, IAlbum } from '../interfaces';
 import { IPlaylists } from '../interfaces/playlist';
 import { of } from 'rxjs/observable/of';
+import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/catch';
@@ -87,8 +88,15 @@ export class SubsonicService {
     );
   }
 
-  getArtistInfo(artistId: number) {
-    return this.subsonicGet('getArtistInfo2', `&id=${artistId}`);
+  getArtistInfo(artistId: number): Observable<any> {
+    return this.subsonicGet('getArtistInfo2', `&id=${artistId}`).pipe(
+      map(
+        (data: any) =>
+          data && data.subresp && data.subresp.artistInfo2
+            ? data.subresp.artistInfo2
+            : {}
+      )
+    );
   }
 
   getSongs(albumId: number): Observable<ISong[]> {
@@ -126,7 +134,7 @@ export class SubsonicService {
 
   subsonicGet(method: string);
   subsonicGet(method: string, additionalParams: string);
-  subsonicGet(method: string, additionalParams?: string) {
+  subsonicGet(method: string, additionalParams?: string): Observable<any> {
     const url = additionalParams
       ? this.authentication.getServerURl(method) + additionalParams
       : this.authentication.getServerURl(method);
@@ -135,7 +143,7 @@ export class SubsonicService {
     }
 
     return this.http
-      .get(url)
+      .get<any>(url)
       .map(data =>
         JSON.parse(JSON.stringify(data).replace('subsonic-response', 'subresp'))
       );

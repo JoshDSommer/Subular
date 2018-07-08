@@ -5,7 +5,7 @@
 				<ng-template let-item="item" let-odd="odd" let-even="even" let-i="index">
 					<GridLayout [class.first-item]="i == 0" rows="*" columns="34,*" [nsRouterLink]="['../albums', item.id ]" (tap)="cacheIndex(i)"
 					 class="artist-list-item">
-						<artist-image row="0" col="0"></artist-image>
+						<artist-image row="0" col="0" [name]="item.name" [artistId]="item.id"></artist-image>
 						<Label row="0" col="1" [text]="item.name" class="artist"></Label>
 					</GridLayout>
 				</ng-template>
