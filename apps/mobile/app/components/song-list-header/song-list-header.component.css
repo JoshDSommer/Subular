@@ -12,12 +12,12 @@
   font-size: 14;
   text-align: center;
 }
-.button-wrap Button:highlighted {
+/* .button-wrap Button:highlighted {
   background-color: #ca9fdb;
   color: #ffffff;
   font-weight: bold;
   border-radius: 7;
-}
+} */
 .song-list-title {
   color: #36454f;
   font-size: 18;

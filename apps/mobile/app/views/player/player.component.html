@@ -7,7 +7,7 @@
 	<StackLayout [slideDownBack] class="player-wrap-background">
 		<GridLayout *ngIf="playerVisible" class="player-wrap" rows="70,auto,25,10,28,22,22,*,66,*" columns="*" marginTop="50" [height]="playerHeight">
 			<GridLayout row="0" col="0" rows="*" columns="80,*,80" class="heart-wrap">
-				<Label row="0" col="0" class="fa queue-button" text="&#xf03a;" textWrap="true" (touch)="goToQueue(scrollView)"></Label>
+				<Label row="0" col="0" class="fa queue-button" text="&#xf0ca;" textWrap="true" (touch)="goToQueue(scrollView)"></Label>
 
 				<heart row="0" col="2" [song]="nowPlaying?.song" (songUpdated)="songHeartChange($event)"></heart>
 			</GridLayout>
