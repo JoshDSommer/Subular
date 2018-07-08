@@ -22,12 +22,12 @@
 }
 
 .letter-wrap {
-  margin-top: 130;
+  margin-top: 120;
   font-size: 13px;
 }
 
 .letter-wrap Label {
-  height: 14;
+  height: 16;
   font-weight: bold;
   color: #ca9fdb;
   text-transform: uppercase;
