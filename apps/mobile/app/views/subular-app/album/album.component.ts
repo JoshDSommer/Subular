@@ -70,9 +70,8 @@ export class AlbumComponent implements OnInit {
     this.songs$ = this.album$.pipe(
       switchMap(album => this.subular.getSongs(album.id)),
       // this map is to filter out duplicates.
-      map(songs => [
-        { header: true } as any,
-        ...songs.filter((song, index, self) => {
+      map(songs =>
+        songs.filter((song, index, self) => {
           return (
             index ===
             self.findIndex(previosSong => {
@@ -83,7 +82,7 @@ export class AlbumComponent implements OnInit {
             })
           );
         })
-      ]),
+      ),
       switchMap(songs => this.songStore.addSongs(songs)),
       tap(songs => (this.listedSongs = songs as IAlbumSong[])),
       tap(songs => {
@@ -92,8 +91,10 @@ export class AlbumComponent implements OnInit {
             song.state != SongState.downloaded &&
             song.state != SongState.downloading
         );
+        console.log(notDownloadedSongs);
         this.allSongsDownloaded = notDownloadedSongs.length === 0;
-      })
+      }),
+      map(songs => [{ header: true } as any, ...songs])
     ) as Observable<IAlbumSong[]>;
 
     this.returnLink$ = this.route.params.pipe(

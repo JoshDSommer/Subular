@@ -8,10 +8,6 @@
 					<Label text="{{ albums[0].artist }}" class="song-list-title " textWrap="true"></Label>
 					<Label [text]="getAlbumsText(albums)" class="song-list-sub " textWrap="true"></Label>
 				</StackLayout>
-				<!-- <StackLayout class="page-padding artist-info" width="100%">
-					<Label [text]="albums[0].artist" class="title" textWrap="true"></Label>
-					<Label [text]="getAlbumsText(albums)" class="" textWrap="true"></Label>
-				</StackLayout> -->
 			</GridLayout>
 			<StackLayout [width]="imageHeightWidth" [marginLeft]="imageSideMargins" [marginBottom]="imageSideMargins" *ngFor="let item of albums"
 			 class="album-card" orientation="vertical" [nsRouterLink]="['../../album', item.id ]">

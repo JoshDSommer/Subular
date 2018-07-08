@@ -52,7 +52,6 @@ export class ArtistImageComponent implements OnInit {
         .getFile(fileName).size;
 
       if (exists && fileSize > 200) {
-        console.log('image from cache', this.name);
         return of(coverPath);
       }
       if (fileSize <= 200) {
@@ -77,9 +76,6 @@ export class ArtistImageComponent implements OnInit {
           catchError(() => {
             return placeholderImage$;
           }),
-          tap(() =>
-            console.log('image from last.fm', 'requested artwork', this.name)
-          ),
           map(value => (value != PLACEHOLDER_IMAGE ? coverPath : value))
         );
 

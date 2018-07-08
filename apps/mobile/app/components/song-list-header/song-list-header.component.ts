@@ -5,6 +5,11 @@ import {
   Input
 } from '@angular/core';
 import { SubularMobileService } from '../../services';
+import {
+  GestureTypes,
+  TouchAction,
+  TouchGestureEventData
+} from 'tns-core-modules/ui/gestures/gestures';
 
 @Component({
   moduleId: module.id,
@@ -20,16 +25,22 @@ export class SongListHeaderComponent implements OnInit {
   @Input() shuffleFunction: Function;
   @Input() downloadFunction: Function;
   @Input() coverArt: string;
+  @Input() allSongsDownloaded: boolean;
 
   constructor(private subular: SubularMobileService) {}
 
   ngOnInit() {}
 
-  playAndShuffle() {
-    this.shuffleFunction();
+  playAndShuffle(event: TouchGestureEventData) {
+    console.log(event.action);
+    if (event.action === TouchAction.up) {
+      this.touched();
+      this.shuffleFunction();
+    }
   }
 
   downloadAllSongs() {
+    this.touched();
     this.downloadFunction();
   }
 
@@ -38,4 +49,8 @@ export class SongListHeaderComponent implements OnInit {
   }
 
   ngAfterViewInit() {}
+
+  touched() {
+    console.log('touched');
+  }
 }

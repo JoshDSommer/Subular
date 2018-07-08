@@ -120,11 +120,11 @@ export class PlaylistComponent implements OnInit {
     this.getSongs();
   }
 
-  playAndShuffle() {
+  playAndShuffle = () => {
     this.playerService.addSongs(this.listedSongs);
     this.playerService.shuffleSongs(null);
     this.playerService.playSong();
-  }
+  };
 
   download(song: ISong) {
     const onComplete = () => {
@@ -143,12 +143,14 @@ export class PlaylistComponent implements OnInit {
     }
   }
 
-  downloadAllSongs() {
-    this.listedSongs.forEach(song => {
-      this.download(song);
-    });
-    this.allSongsDownloaded = true;
-  }
+  downloadAllSongs = () => {
+    if (this.listedSongs) {
+      this.listedSongs.forEach(song => {
+        this.download(song);
+      });
+      this.allSongsDownloaded = true;
+    }
+  };
 
   templateSelector = (item: any, index: number, items: any) => {
     const template = item.header === true ? 'header' : 'regular';
