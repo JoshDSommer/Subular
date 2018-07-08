@@ -91,7 +91,6 @@ export class AlbumComponent implements OnInit {
             song.state != SongState.downloaded &&
             song.state != SongState.downloading
         );
-        console.log(notDownloadedSongs);
         this.allSongsDownloaded = notDownloadedSongs.length === 0;
       }),
       map(songs => [{ header: true } as any, ...songs])

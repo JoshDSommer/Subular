@@ -1,5 +1,5 @@
 .player-wrap-background {
-  background-color: #000000;
+  /* background-color: #000000; */
 }
 .player-wrap {
   border-bottom-left-radius: 20;
@@ -95,4 +95,10 @@ Progress {
   font-size: 11px;
   vertical-align: top;
   color: #36454f;
+}
+.queue-button {
+  color: #36454f;
+  text-align: left;
+  margin-left: 25;
+  font-size: 25px;
 }

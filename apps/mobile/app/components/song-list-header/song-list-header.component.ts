@@ -34,13 +34,11 @@ export class SongListHeaderComponent implements OnInit {
   playAndShuffle(event: TouchGestureEventData) {
     console.log(event.action);
     if (event.action === TouchAction.up) {
-      this.touched();
       this.shuffleFunction();
     }
   }
 
   downloadAllSongs() {
-    this.touched();
     this.downloadFunction();
   }
 
@@ -49,8 +47,4 @@ export class SongListHeaderComponent implements OnInit {
   }
 
   ngAfterViewInit() {}
-
-  touched() {
-    console.log('touched');
-  }
 }

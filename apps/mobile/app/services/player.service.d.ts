@@ -22,6 +22,8 @@ export interface IAudioPlayingInfo {
 
 declare class PlayerService {
   nowPlaying$: Observable<IAudioPlayingInfo>;
+  queue$: Observable<ISong[]>;
+  songList: ISong[];
 
   private _repeat: boolean;
   private _random: boolean;
