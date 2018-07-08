@@ -27,6 +27,10 @@ export class SupaComponent implements OnInit {
       .documents()
       .getFolder('images')
       .clear();
+    fs.knownFolders
+      .documents()
+      .getFolder('artist-images')
+      .clear();
   }
 
   clearSongs() {

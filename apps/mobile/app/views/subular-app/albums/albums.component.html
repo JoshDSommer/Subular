@@ -2,10 +2,17 @@
 	<Label text="&#xf0d9; Artists" class="fa back-link" [nsRouterLink]="['/app/artists']"></Label>
 	<ScrollView [slideBack]="['/app/artists']" class="" height="100%">
 		<WrapLayout orientation="horizontal" class="">
-			<StackLayout class="page-padding artist-info" width="100%">
-				<Label [text]="albums[0].artist" class="title" textWrap="true"></Label>
-				<Label [text]="getAlbumsText(albums)" class="" textWrap="true"></Label>
-			</StackLayout>
+			<GridLayout rows="100" columns="100,*" class="header-list-item page-padding">
+				<Image class="artist-image" height="75" width="75" borderRadius="38" row="0" col="0" [src]="getArtistImage(albums[0].artistId) | async"></Image>
+				<StackLayout row="0" col="1" class="song-list-info-wrap">
+					<Label text="{{ albums[0].artist }}" class="song-list-title " textWrap="true"></Label>
+					<Label [text]="getAlbumsText(albums)" class="song-list-sub " textWrap="true"></Label>
+				</StackLayout>
+				<!-- <StackLayout class="page-padding artist-info" width="100%">
+					<Label [text]="albums[0].artist" class="title" textWrap="true"></Label>
+					<Label [text]="getAlbumsText(albums)" class="" textWrap="true"></Label>
+				</StackLayout> -->
+			</GridLayout>
 			<StackLayout [width]="imageHeightWidth" [marginLeft]="imageSideMargins" [marginBottom]="imageSideMargins" *ngFor="let item of albums"
 			 class="album-card" orientation="vertical" [nsRouterLink]="['../../album', item.id ]">
 				<Image [width]="imageHeightWidth" [height]="imageHeightWidth" stretch="fill" class="album-image" [src]="getCoverArt(item) | async"></Image>

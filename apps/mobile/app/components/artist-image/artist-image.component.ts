@@ -63,11 +63,11 @@ export class ArtistImageComponent implements OnInit {
           .then();
       }
 
-      const downloadImage$ = smallImageUrl =>
+      const downloadImage$ = imageUrl =>
         fromPromise(
           getFile(
             {
-              url: smallImageUrl,
+              url: imageUrl,
               method: 'GET'
             },
             coverPath
@@ -90,7 +90,7 @@ export class ArtistImageComponent implements OnInit {
                 this.subsonic
                   .getArtistInfo(artistId)
                   .pipe(
-                    map(info => info.smallImageUrl),
+                    map(info => info.mediumImageUrl),
                     switchMap(downloadImage$)
                   )
               )

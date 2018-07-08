@@ -5,6 +5,13 @@ import { RouterExtensions } from 'nativescript-angular/router';
 import { SLIDE_RIGHT_ANIMATION } from '../../../animations/animations';
 import { SubularMobileService } from '../../../services/subularMobile.service';
 import { screen } from 'platform';
+import { of } from 'rxjs';
+import {
+  path,
+  knownFolders,
+  File
+} from 'tns-core-modules/file-system/file-system';
+import { PLACEHOLDER_IMAGE } from '../../../components/artist-image/artist-image.component';
 
 @Component({
   moduleId: module.id,
@@ -27,6 +34,7 @@ export class AlbumsComponent implements OnInit {
   ) {}
 
   getAlbumsText(albums: IAlbum[]) {
+    console.log(albums);
     return `${albums.length} album${albums.length > 1 ? 's' : ''}`;
   }
 
@@ -41,5 +49,26 @@ export class AlbumsComponent implements OnInit {
   }
   getCoverArt(song) {
     return this.subular.getArtWork(song.coverArt);
+  }
+
+  getArtistImage(artistId) {
+    const placeholderImage$ = of(PLACEHOLDER_IMAGE);
+    if (artistId) {
+      let coverPath = path.join(
+        knownFolders.documents().path + '/artist-images',
+        artistId + '.png'
+      );
+
+      const exists = File.exists(coverPath);
+      const fileSize = knownFolders
+        .documents()
+        .getFolder('artist-images')
+        .getFile(artistId + '.png').size;
+
+      if (exists && fileSize > 200) {
+        return of(coverPath);
+      }
+    }
+    return placeholderImage$;
   }
 }
