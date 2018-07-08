@@ -34,8 +34,12 @@ export class AlbumsComponent implements OnInit {
   ) {}
 
   getAlbumsText(albums: IAlbum[]) {
-    console.log(albums);
-    return `${albums.length} album${albums.length > 1 ? 's' : ''}`;
+    const songCount = albums
+      .map(album => album.songCount)
+      .reduce((acc, re) => acc + re);
+    return `${albums.length} album${
+      albums.length > 1 ? 's' : ''
+    } ${songCount} song${songCount > 1 ? 's' : ''}`;
   }
 
   back() {
