@@ -38,17 +38,18 @@ export class ArtistImageComponent implements OnInit {
 
   getArtistImage(artistId): Observable<string> {
     const placeholderImage$ = of(PLACEHOLDER_IMAGE);
+    const fileName = artistId + '.png';
     if (artistId) {
       let coverPath = path.join(
         knownFolders.documents().path + '/artist-images',
-        artistId + '.png'
+        fileName
       );
 
       const exists = File.exists(coverPath);
       const fileSize = knownFolders
         .documents()
         .getFolder('artist-images')
-        .getFile(artistId + '.png').size;
+        .getFile(fileName).size;
 
       if (exists && fileSize > 200) {
         console.log('image from cache', this.name);
@@ -58,7 +59,7 @@ export class ArtistImageComponent implements OnInit {
         knownFolders
           .documents()
           .getFolder('artist-images')
-          .getFile(artistId + '.png')
+          .getFile(fileName)
           .remove()
           .then();
       }
