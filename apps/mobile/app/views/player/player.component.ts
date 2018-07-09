@@ -2,9 +2,7 @@ import {
   Component,
   OnInit,
   ChangeDetectorRef,
-  ChangeDetectionStrategy,
-  ViewChild,
-  ElementRef
+  ChangeDetectionStrategy
 } from '@angular/core';
 import {
   PlayerService,
@@ -20,11 +18,9 @@ import { Subscription, fromEvent } from 'rxjs';
 import { topmost } from 'ui/frame';
 import { Progress } from 'ui/progress';
 import { screen } from 'platform';
-import { ActionBar } from 'tns-core-modules/ui/action-bar/action-bar';
 import { ISong } from '@Subular/core';
 import { ScrollView } from 'tns-core-modules/ui/scroll-view/scroll-view';
 import { PanGestureEventData } from 'tns-core-modules/ui/gestures/gestures';
-import { filter, map, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 declare const CGAffineTransformMakeScale: any;
 
@@ -47,7 +43,7 @@ export class PlayerComponent implements OnInit {
 
   imageHeightWidth = screen.mainScreen.widthDIPs / 6 * 4;
   imageTopBottomMargin = screen.mainScreen.widthDIPs / 7;
-  queueVisible: boolean;
+  queueVisible = false;
   playerVisible = true;
 
   constructor(
@@ -95,44 +91,6 @@ export class PlayerComponent implements OnInit {
     const panEvent$ = fromEvent(null, 'pan').map(
       (event: PanGestureEventData) => event.deltaY
     );
-
-    // this.subscription = panEvent$
-    //   .pipe(
-    //     filter(deltaY => {
-    //       // filter out out events that are just starting
-    //       if (deltaY < -10) {
-    //         return true;
-    //       }
-    //       if (deltaY > 10) {
-    //         return true;
-    //       }
-    //       return false;
-    //     }),
-    //     map(deltaY => {
-    //       // determine if we are moving up or not.
-    //       return deltaY > 0 ? 1 : 0;
-    //     }),
-    //     distinctUntilChanged()
-    //     // switchMap(up => {
-    //     //   const itemHeight = this.view.getMeasuredHeight();
-    //     //   if (up) {
-    //     //     return fromPromise(
-    //     //       this.view.animate({
-    //     //         translate: { x: 0, y: 0 },
-    //     //         duration: 600
-    //     //       })
-    //     //     );
-    //     //   } else {
-    //     //     return fromPromise(
-    //     //       this.view.animate({
-    //     //         translate: { x: 0, y: -itemHeight },
-    //     //         duration: 600
-    //     //       })
-    //     //     );
-    //     //   }
-    //     // })
-    //   )
-    //   .subscribe();
   }
 
   ngOnDestroy() {
@@ -148,6 +106,10 @@ export class PlayerComponent implements OnInit {
     return this.subular.getArtWork(song.coverArt, 1000);
   }
 
+  updateView() {
+    setTimeout(() => this.ref.markForCheck());
+  }
+
   onProgressLoaded(args: EventData) {
     let progress = args.object as Progress;
     if (progress.android) {
@@ -159,13 +121,6 @@ export class PlayerComponent implements OnInit {
   }
 
   goToQueue(scrollView: ScrollView) {
-    console.log('showQueue');
-    this.queueVisible = true;
-    this.ref.markForCheck();
     scrollView.scrollToVerticalOffset(this.playerHeight - 16, true);
-    // setTimeout(() => {
-    //   this.playerVisible = false;
-    //   this.ref.markForCheck();
-    // }, 800);
   }
 }

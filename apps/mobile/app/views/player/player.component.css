@@ -1,5 +1,5 @@
 .player-wrap-background {
-  /* background-color: #000000; */
+  background-color: #000000;
 }
 .player-wrap {
   border-bottom-left-radius: 20;
@@ -101,4 +101,15 @@ Progress {
   text-align: left;
   margin-left: 25;
   font-size: 25px;
+}
+.song-list-wrap,
+.list-group {
+  height: 100%;
+}
+.song-list-item {
+  padding: 15;
+}
+.song {
+  margin: 3% 2.5%;
+  font-size: 18px;
 }

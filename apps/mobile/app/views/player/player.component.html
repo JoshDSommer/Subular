@@ -30,12 +30,13 @@
 			<GridLayout class="player-controls" row="8" col="0" rows="*" columns="60,*,80,*,60">
 				<Label row="0" col="0" class="fa random-repeat" [class.random-repeat-enabled]="nowPlaying?.repeat" (tap)="player.toggleRepeat()"
 				 text="&#xf01e;"></Label>
-				<Label row="0" col="1" [highlight]="highlightBgColor" class="fa next-previous" (tap)="player.playPreviousSong()" text="&#xf048;"></Label>
+				<Label row="0" col="1" [highlight]="highlightBgColor" class="fa next-previous" (tap)="player.playPreviousSong(); updateView()"
+				 text="&#xf048;"></Label>
 				<ng-container [ngSwitch]="nowPlaying?.playing">
 					<Label row="0" col="2" class="fa mini-player-button disabled" text="&#xf04c;" *ngSwitchCase="PlayingStatus.loading" textWrap="true"></Label>
-					<Label row="0" col="2" [highlight]="highlightBgColor" class="fa mini-player-button" text="&#xf04b;" (tap)="player.resumeSong()"
+					<Label row="0" col="2" [highlight]="highlightBgColor" class="fa mini-player-button" text="&#xf04b;" (tap)="player.resumeSong(); updateView()"
 					 *ngSwitchCase="PlayingStatus.paused" textWrap="true"></Label>
-					<Label row="0" col="2" [highlight]="highlightBgColor" class="fa mini-player-button" text="&#xf04c;" (tap)="player.pauseSong()"
+					<Label row="0" col="2" [highlight]="highlightBgColor" class="fa mini-player-button" text="&#xf04c;" (tap)="player.pauseSong(); updateView()"
 					 *ngSwitchCase="PlayingStatus.playing" textWrap="true"></Label>
 				</ng-container>
 				<Label row="0" col="3" [highlight]="highlightBgColor" class="fa next-previous" (tap)="player.playNextSong()" text="&#xf051;"></Label>
@@ -43,13 +44,10 @@
 				 text="&#xf074;"></Label>
 			</GridLayout>
 		</GridLayout>
-		<StackLayout *ngIf="queueVisible" [height]="playerHeight">
+		<StackLayout *ngIf="queueVisible" [height]="playerHeight - 120">
 			<ListView #songList [items]="songs$ | async" class="list-group">
-				<ng-template let-item="item" let-odd="odd" let-even="even">
-					<GridLayout rows="*" columns="*,60" class="song-list-item" (tap)="selectSong(item)">
-						<Label row="0" , col="0" [text]="item.title" class="song"></Label>
-						<!-- <Label  row="0" , col="1" text="&#xf0ed;" class="fa" textWrap="true"></Label> -->
-					</GridLayout>
+				<ng-template let-item="item" let-odd="odd" let-even="even" let-index="index">
+					<queue-item [item]="item" [index]="index" [nowPlaying]="nowPlaying"></queue-item>
 				</ng-template>
 			</ListView>
 		</StackLayout>
