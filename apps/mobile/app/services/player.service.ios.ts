@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ios } from 'utils/utils';
 import * as fs from 'file-system';
+import { fromFile } from 'tns-core-modules/image-source/image-source';
+import { path, knownFolders } from 'file-system';
 
 export enum PlayingStatus {
   loading,
@@ -161,16 +163,27 @@ export class PlayerService {
       this.notifyObservable();
       this._player.play();
 
-      // TODO set artwork
+      let coverPath = path.join(
+        knownFolders.documents().path + '/images',
+        playingSong.coverArt + '.png'
+      );
+      let newImage = fromFile(coverPath);
+      if (!newImage) {
+        newImage = fromFile('~/images/artist.png');
+      }
+
+      const image = MPMediaItemArtwork.alloc().initWithImage(newImage.ios);
       const values = ios.collections.jsArrayToNSArray([
         playingSong.title,
         playingSong.artist,
-        playingSong.album
-      ]);
+        playingSong.album,
+        image
+      ] as any);
       const keys = ios.collections.jsArrayToNSArray([
         MPMediaItemPropertyTitle,
         MPMediaItemPropertyArtist,
-        MPMediaItemPropertyAlbumTitle
+        MPMediaItemPropertyAlbumTitle,
+        MPMediaItemPropertyArtwork
       ]);
 
       const nowPlaying = NSDictionary.dictionaryWithObjectsForKeys(
