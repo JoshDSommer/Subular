@@ -83,7 +83,7 @@ export class SubsonicCachedService {
     return this.subsonic
       .subsonicGet('getAlbumList2', '&type=newest&size=500&offset=' + offset)
       .pipe(
-        map((data: any) => data.subresp.albumList2.album as IAlbum[]),
+        map((data: any) => data.albumList2.album as IAlbum[]),
         switchMap((data: any) => {
           albums = [...albums, ...data];
           if (data.length === 500) {
@@ -102,7 +102,7 @@ export class SubsonicCachedService {
       .pipe(
         map(
           (data: any) =>
-            data.subresp.artists.index
+            data.artists.index
               .map(value => value.artist)
               .reduce((previous, value) => [...previous, ...value]) as IArtist[]
         ),

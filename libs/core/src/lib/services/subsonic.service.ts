@@ -18,7 +18,7 @@ export class SubsonicService {
 
   pingServer(): Observable<boolean> {
     return this.subsonicGet('ping')
-      .map(data => data.subresp.status === 'ok')
+      .map(data => data.status === 'ok')
       .catch(() => of(false));
   }
 
@@ -36,19 +36,19 @@ export class SubsonicService {
 
   getPlaylists(): Observable<IPlaylists> {
     return this.subsonicGet('getPlaylists').map(
-      data => data.subresp.playlists.playlist
+      data => data.playlists.playlist
     );
   }
 
   getRecentAdditions(): Observable<IAlbum[]> {
     return this.subsonicGet('getAlbumList2', '&type=newest&size=50').map(
-      response => response.subresp.albumList2.album
+      response => response.albumList2.album
     );
   }
 
   getPlaylist(id: number): Observable<IPlaylist> {
     return this.subsonicGet('getPlaylist', `&id=${id}`)
-      .map(data => data.subresp.playlist)
+      .map(data => data.playlist)
       .map(playlist => {
         playlist.entry = playlist.entry.map((song: ISong) => {
           const measuredTime = new Date(song.duration * 1000);
@@ -90,18 +90,13 @@ export class SubsonicService {
 
   getArtistInfo(artistId: number): Observable<any> {
     return this.subsonicGet('getArtistInfo2', `&id=${artistId}`).pipe(
-      map(
-        (data: any) =>
-          data && data.subresp && data.subresp.artistInfo2
-            ? data.subresp.artistInfo2
-            : {}
-      )
+      map((data: any) => (data && data.artistInfo2 ? data.artistInfo2 : {}))
     );
   }
 
   getSongs(albumId: number): Observable<ISong[]> {
     return this.subsonicGet('getAlbum', `&id=${albumId}`)
-      .map(data => data.subresp.album.song)
+      .map(data => data.album.song)
       .map(songs => {
         return songs.map((song: ISong) => {
           const measuredTime = new Date(song.duration * 1000);
@@ -142,10 +137,6 @@ export class SubsonicService {
       return of(false);
     }
 
-    return this.http
-      .get<any>(url)
-      .map(data =>
-        JSON.parse(JSON.stringify(data).replace('subsonic-response', 'subresp'))
-      );
+    return this.http.get<any>(url).map(data => data['subsonic-response']);
   }
 }
