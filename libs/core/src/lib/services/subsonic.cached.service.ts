@@ -72,10 +72,6 @@ export class SubsonicCachedService {
     );
   }
 
-  private cleanSubsonicResponse(data: any): string {
-    return JSON.stringify(data).replace('subsonic-response', 'subresp');
-  }
-
   private buildAlbumDatabase(
     albums: IAlbum[] = [],
     offset: number = 0
