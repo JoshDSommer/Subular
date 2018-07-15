@@ -5,10 +5,29 @@ import { Observable } from 'rxjs/Observable';
 import { ISong, IPlaylist, IAlbum } from '../interfaces';
 import { IPlaylists } from '../interfaces/playlist';
 import { of } from 'rxjs/observable/of';
-import { map } from 'rxjs/operators';
+import { map, concat } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/catch';
+
+const placeholderSong = {
+  placeholder: true
+} as any;
+const PLACEHOLDER_VALUES = [
+  placeholderSong,
+  placeholderSong,
+  placeholderSong,
+  placeholderSong,
+  placeholderSong,
+  placeholderSong,
+  placeholderSong,
+  placeholderSong,
+  placeholderSong,
+  placeholderSong
+];
+
+const PLACEHOLDER$ = of(PLACEHOLDER_VALUES);
+
 @Injectable()
 export class SubsonicService {
   constructor(
@@ -35,14 +54,20 @@ export class SubsonicService {
   }
 
   getPlaylists(): Observable<IPlaylists> {
-    return this.subsonicGet('getPlaylists').map(
-      data => data.playlists.playlist
+    return PLACEHOLDER$.pipe(
+      concat(
+        this.subsonicGet('getPlaylists').map(data => data.playlists.playlist)
+      )
     );
   }
 
   getRecentAdditions(): Observable<IAlbum[]> {
-    return this.subsonicGet('getAlbumList2', '&type=newest&size=50').map(
-      response => response.albumList2.album
+    return PLACEHOLDER$.pipe(
+      concat(
+        this.subsonicGet('getAlbumList2', '&type=newest&size=50').map(
+          response => response.albumList2.album
+        )
+      )
     );
   }
 
@@ -95,23 +120,29 @@ export class SubsonicService {
   }
 
   getSongs(albumId: number): Observable<ISong[]> {
-    return this.subsonicGet('getAlbum', `&id=${albumId}`)
-      .map(data => data.album.song)
-      .map(songs => {
-        return songs.map((song: ISong) => {
-          const measuredTime = new Date(song.duration * 1000);
-          const timeWithoutHours = measuredTime.toISOString().substr(14, 5);
-          const timeWithHours = measuredTime.toISOString().substr(11, 8);
-          song.time = timeWithHours.startsWith('00:')
-            ? timeWithoutHours
-            : timeWithHours;
-          return song;
-        });
-      });
+    return PLACEHOLDER$.pipe(
+      concat(
+        this.subsonicGet('getAlbum', `&id=${albumId}`)
+          .map(data => data.album.song)
+          .map(songs => {
+            return songs.map((song: ISong) => {
+              const measuredTime = new Date(song.duration * 1000);
+              const timeWithoutHours = measuredTime.toISOString().substr(14, 5);
+              const timeWithHours = measuredTime.toISOString().substr(11, 8);
+              song.time = timeWithHours.startsWith('00:')
+                ? timeWithoutHours
+                : timeWithHours;
+              return song;
+            });
+          })
+      )
+    );
   }
 
   getTopSongs(artistName): Observable<ISong[]> {
-    return this.subsonicGet('getTopSongs', `&artist=${artistName}`);
+    return PLACEHOLDER$.pipe(
+      concat(this.subsonicGet('getTopSongs', `&artist=${artistName}`))
+    );
   }
 
   subsonicGetCoverUrl(id: number, size = 274): string {
