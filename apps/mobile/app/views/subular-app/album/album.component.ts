@@ -163,7 +163,13 @@ export class AlbumComponent implements OnInit {
   }
 
   templateSelector = (item: any, index: number, items: any) => {
-    const template = item.header === true ? 'header' : 'regular';
+    let template = 'regular';
+    if (item.header) {
+      template = 'header';
+    }
+    if (item.placeholder) {
+      template = 'placeholder';
+    }
     return template;
   };
 }

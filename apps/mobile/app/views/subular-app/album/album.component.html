@@ -10,6 +10,12 @@
 				<song-list-header [coverArt]="album.coverArt" [allSongsDownloaded]="allSongsDownloaded" [name]="album.name" [genre]="album.genre"
 				 [year]="album.year " [shuffleFunction]="playAndShuffle" [downloadFunction]="downloadAllSongs"></song-list-header>
 			</ng-template>
+			<ng-template nsTemplateKey="placeholder" let-item="item" let-odd="odd" let-even="even">
+				<GridLayout rows="*" columns="30,*" class="song-list-item page-padding placeholder">
+					<Label row="0" , col="0" text="1" class="track-number"></Label>
+					<Label row="0" , col="1" text="title" class="song"></Label>
+				</GridLayout>
+			</ng-template>
 			<ng-template nsTemplateKey="regular" let-item="item" let-odd="odd" let-even="even">
 				<GridLayout rows="*" columns="30,*,60" class="song-list-item page-padding">
 					<Label row="0" , col="0" [text]="item.track" (longPress)="longpress(item)" (tap)="selectSong(item)" class="track-number"></Label>
