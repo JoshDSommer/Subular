@@ -1,7 +1,19 @@
 .album-name {
   /* font-size: 13; */
   color: #36454f;
+
+  /* margin-left: 2; */
+}
+.album-image {
+  background-color: #f8f8f8;
+}
+
+.placeholder-name {
+  background-color: #f8f8f8;
+  color: #f8f8f8;
+  border-radius: 2;
   margin-top: 6;
   margin-bottom: 6;
-  /* margin-left: 2; */
+  margin-right: 15%;
+  height: 20;
 }

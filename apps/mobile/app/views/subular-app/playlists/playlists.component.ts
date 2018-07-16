@@ -3,6 +3,7 @@ import { SubularMobileService } from '../../../services';
 import { IPlaylists, IPlaylist } from '@Subular/core';
 import { Observable } from 'rxjs/Observable';
 import { DownloadQueueService } from '../../../services/downloadQueue.service';
+import { of } from 'rxjs';
 
 @Component({
   moduleId: module.id,
@@ -28,6 +29,9 @@ export class PlaylistsComponent implements OnInit {
   }
 
   getCoverArt(playlist: IPlaylist) {
-    return this.subular.getArtWork(playlist.coverArt);
+    if (playlist.name) {
+      return this.subular.getArtWork(playlist.coverArt);
+    }
+    return of(null);
   }
 }

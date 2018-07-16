@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { IAlbum } from '@Subular/core';
 import { SubularMobileService } from '../../../../services';
+import { of } from 'rxjs';
 
 @Component({
   moduleId: module.id,
@@ -31,8 +32,9 @@ export class RecentlyAddedAlbumComponent implements OnInit {
   ngOnInit() {}
 
   getCoverArt(song) {
-    if (song) {
+    if (song && song.name) {
       return this.subular.getArtWork(song.coverArt);
     }
+    return of('');
   }
 }
