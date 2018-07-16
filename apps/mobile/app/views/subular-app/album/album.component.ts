@@ -170,7 +170,6 @@ export class AlbumComponent implements OnInit {
     if (item.placeholder) {
       template = 'placeholder';
     }
-    console.log(item.title, template);
     return template;
   };
 }
