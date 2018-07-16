@@ -62,7 +62,6 @@ export class PlaylistComponent implements OnInit {
   getSongs() {
     this.songs$ = this.playlist$.pipe(
       map(playlist => playlist.entry),
-      switchMap(songs => this.songStore.addSongs(songs)),
       tap(songs => (this.listedSongs = songs)),
       tap(songs => {
         const notDownloadedSongs = songs.filter(
@@ -75,7 +74,8 @@ export class PlaylistComponent implements OnInit {
       map(songs => {
         return [{ header: true } as any, ...songs];
       }),
-      popIn
+      popIn,
+      switchMap(songs => this.songStore.addSongs(songs) as any)
     );
   }
 
