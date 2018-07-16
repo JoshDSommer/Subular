@@ -32,7 +32,7 @@ export const popIn = switchMap((items: any[]) => {
     return of(PLACEHOLDER_VALUES);
   }
   const delayTime = delay(110);
-  const oneSet$ = of([items[0], ...PLACEHOLDER_VALUES.slice(0, items.length));
+  const oneSet$ = of([items[0], ...PLACEHOLDER_VALUES.slice(0, items.length)]);
 
   const getItems = (count, items: any[]) =>
     of(items.length >= count, [
