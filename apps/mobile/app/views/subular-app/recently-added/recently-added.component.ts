@@ -7,7 +7,7 @@ import {
   SPIN_ANIMATION
 } from '../../../animations/animations';
 import { SubularMobileService } from '../../../services/subularMobile.service';
-import { screen } from 'platform';
+import { screen } from 'tns-core-modules/platform/platform';
 import { Observable } from 'rxjs/Observable';
 import { tap, map } from 'rxjs/operators';
 

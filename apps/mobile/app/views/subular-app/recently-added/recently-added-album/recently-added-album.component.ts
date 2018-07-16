@@ -4,8 +4,8 @@ import {
   ChangeDetectionStrategy,
   Input
 } from '@angular/core';
-import { SubularMobileService } from '~/services';
 import { IAlbum } from '@Subular/core';
+import { SubularMobileService } from '../../../../services';
 
 @Component({
   moduleId: module.id,
@@ -31,6 +31,8 @@ export class RecentlyAddedAlbumComponent implements OnInit {
   ngOnInit() {}
 
   getCoverArt(song) {
-    return this.subular.getArtWork(song.coverArt);
+    if (song) {
+      return this.subular.getArtWork(song.coverArt);
+    }
   }
 }
