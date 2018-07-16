@@ -26,6 +26,7 @@ import { DownloadQueueService } from '../../../services/downloadQueue.service';
 import 'rxjs/add/operator/combineLatest';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { switchMap, tap, map, combineLatest } from 'rxjs/operators';
+import { popIn } from '~/pipes/popin.pipe';
 
 interface IAlbumSong extends ISong {
   header: boolean;
@@ -93,7 +94,8 @@ export class AlbumComponent implements OnInit {
         );
         this.allSongsDownloaded = notDownloadedSongs.length === 0;
       }),
-      map(songs => [{ header: true } as any, ...songs])
+      map(songs => [{ header: true } as any, ...songs]),
+      popIn
     ) as Observable<IAlbumSong[]>;
 
     this.returnLink$ = this.route.params.pipe(
@@ -164,10 +166,10 @@ export class AlbumComponent implements OnInit {
 
   templateSelector = (item: any, index: number, items: any) => {
     let template = 'regular';
-    if (item.header) {
+    if (item && item.header) {
       template = 'header';
     }
-    if (item.placeholder) {
+    if (item && item.placeholder) {
       template = 'placeholder';
     }
     return template;
