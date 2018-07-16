@@ -32,7 +32,6 @@ export class SongListHeaderComponent implements OnInit {
   ngOnInit() {}
 
   playAndShuffle(event: TouchGestureEventData) {
-    console.log(event.action);
     if (event.action === TouchAction.up) {
       this.shuffleFunction();
     }
