@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { ISong, IPlaylist, IAlbum } from '../interfaces';
 import { IPlaylists } from '../interfaces/playlist';
 import { of } from 'rxjs/observable/of';
-import { map, concat } from 'rxjs/operators';
+import { map, concat, tap, delay } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/catch';
@@ -14,6 +14,13 @@ const placeholderSong = {
   placeholder: true
 } as any;
 const PLACEHOLDER_VALUES = [
+  placeholderSong,
+  placeholderSong,
+  placeholderSong,
+  placeholderSong,
+  placeholderSong,
+  placeholderSong,
+  placeholderSong,
   placeholderSong,
   placeholderSong,
   placeholderSong,
@@ -167,7 +174,6 @@ export class SubsonicService {
     if (url === '' || url === additionalParams) {
       return of(false);
     }
-
-    return this.http.get<any>(url).map(data => data['subsonic-response']);
+    return this.http.get<any>(url).pipe(map(data => data['subsonic-response']));
   }
 }

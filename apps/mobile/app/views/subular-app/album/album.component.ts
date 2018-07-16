@@ -70,19 +70,19 @@ export class AlbumComponent implements OnInit {
     this.songs$ = this.album$.pipe(
       switchMap(album => this.subular.getSongs(album.id)),
       // this map is to filter out duplicates.
-      map(songs =>
-        songs.filter((song, index, self) => {
-          return (
-            index ===
-            self.findIndex(previosSong => {
-              return (
-                previosSong.title === song.title &&
-                previosSong.track === song.track
-              );
-            })
-          );
-        })
-      ),
+      // map(songs =>
+      //   songs.filter((song, index, self) => {
+      //     return (
+      //       index ===
+      //       self.findIndex(previosSong => {
+      //         return (
+      //           previosSong.title === song.title &&
+      //           previosSong.track === song.track &&
+      //         );
+      //       })
+      //     );
+      //   })
+      // ),
       switchMap(songs => this.songStore.addSongs(songs)),
       tap(songs => (this.listedSongs = songs as IAlbumSong[])),
       tap(songs => {
@@ -170,6 +170,7 @@ export class AlbumComponent implements OnInit {
     if (item.placeholder) {
       template = 'placeholder';
     }
+    console.log(item.title, template);
     return template;
   };
 }
