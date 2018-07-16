@@ -13,6 +13,7 @@ import {
 import { switchMap, map, tap } from 'rxjs/operators';
 import { SwipeGestureEventData, SwipeDirection } from 'ui/gestures';
 import { GridLayout } from 'ui/layouts/grid-layout';
+import { popIn } from '~/pipes/popin.pipe';
 
 interface IAlbumSong extends ISong {
   header: boolean;
@@ -74,9 +75,7 @@ export class PlaylistComponent implements OnInit {
       map(songs => {
         return [{ header: true } as any, ...songs];
       }),
-      map(songs => {
-        return songs;
-      })
+      popIn
     );
   }
 

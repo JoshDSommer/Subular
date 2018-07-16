@@ -4,6 +4,8 @@ import { IPlaylists, IPlaylist } from '@Subular/core';
 import { Observable } from 'rxjs/Observable';
 import { DownloadQueueService } from '../../../services/downloadQueue.service';
 import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { popIn } from '~/pipes/popin.pipe';
 
 @Component({
   moduleId: module.id,
@@ -22,10 +24,13 @@ export class PlaylistsComponent implements OnInit {
   ngOnInit() {
     this.playlists$ = this.subular
       .getPlaylists()
-      .map(playlists => [
-        { id: 0, name: 'Favorites' } as IPlaylist,
-        ...playlists
-      ]);
+      .pipe(
+        map(playlists => [
+          { id: 0, name: 'Favorites' } as IPlaylist,
+          ...playlists
+        ]),
+        popIn
+      );
   }
 
   getCoverArt(playlist: IPlaylist) {
