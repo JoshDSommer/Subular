@@ -68,3 +68,17 @@
   padding-right: 22;
   margin-left: 18%;
 }
+
+.placeholder .song,
+.placeholder .track-number {
+  background-color: #f8f8f8;
+  color: #f8f8f8;
+  border-radius: 2;
+  padding: 0;
+  margin: 9;
+}
+
+.placeholder .song {
+  /* width: 25; */
+  margin-right: 0;
+}

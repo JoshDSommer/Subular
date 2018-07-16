@@ -22,5 +22,11 @@
 				</GridLayout>
 			</AbsoluteLayout>
 		</ng-template>
+		<ng-template nsTemplateKey="placeholder" let-item="item" let-odd="odd" let-even="even" let-index="index">
+			<GridLayout rows="*" columns="30,*" class="song-list-item page-padding placeholder">
+				<Label row="0" , col="0" text="1" class="track-number"></Label>
+				<Label row="0" , col="1" text="title" class="song"></Label>
+			</GridLayout>
+		</ng-template>
 	</ListView>
 </StackLayout>

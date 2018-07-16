@@ -79,20 +79,24 @@ export class SubsonicService {
   }
 
   getPlaylist(id: number): Observable<IPlaylist> {
-    return this.subsonicGet('getPlaylist', `&id=${id}`)
-      .map(data => data.playlist)
-      .map(playlist => {
-        playlist.entry = playlist.entry.map((song: ISong) => {
-          const measuredTime = new Date(song.duration * 1000);
-          const timeWithoutHours = measuredTime.toISOString().substr(14, 5);
-          const timeWithHours = measuredTime.toISOString().substr(11, 8);
-          song.time = timeWithHours.startsWith('00:')
-            ? timeWithoutHours
-            : timeWithHours;
-          return song;
-        });
-        return playlist;
-      });
+    return of<any>({ entry: PLACEHOLDER_VALUES }).pipe(
+      concat(
+        this.subsonicGet('getPlaylist', `&id=${id}`)
+          .map(data => data.playlist)
+          .map(playlist => {
+            playlist.entry = playlist.entry.map((song: ISong) => {
+              const measuredTime = new Date(song.duration * 1000);
+              const timeWithoutHours = measuredTime.toISOString().substr(14, 5);
+              const timeWithHours = measuredTime.toISOString().substr(11, 8);
+              song.time = timeWithHours.startsWith('00:')
+                ? timeWithoutHours
+                : timeWithHours;
+              return song;
+            });
+            return playlist;
+          })
+      )
+    );
   }
 
   createPlaylist(name: string): Observable<number> {
