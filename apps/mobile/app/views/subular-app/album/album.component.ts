@@ -84,7 +84,7 @@ export class AlbumComponent implements OnInit {
       //     );
       //   })
       // ),
-      switchMap(songs => this.songStore.addSongs(songs)),
+      // switchMap(songs => this.songStore.addSongs(songs)),
       tap(songs => (this.listedSongs = songs as IAlbumSong[])),
       tap(songs => {
         const notDownloadedSongs = songs.filter(
@@ -95,7 +95,8 @@ export class AlbumComponent implements OnInit {
         this.allSongsDownloaded = notDownloadedSongs.length === 0;
       }),
       map(songs => [{ header: true } as any, ...songs]),
-      popIn
+      popIn,
+      switchMap(songs => this.songStore.addSongs(songs) as any)
     ) as Observable<IAlbumSong[]>;
 
     this.returnLink$ = this.route.params.pipe(
