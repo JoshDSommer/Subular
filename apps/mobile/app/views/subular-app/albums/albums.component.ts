@@ -1,17 +1,18 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { IAlbum } from '@Subular/core';
+import { IAlbum, SubsonicService } from '@Subular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { SLIDE_RIGHT_ANIMATION } from '../../../animations/animations';
 import { SubularMobileService } from '../../../services/subularMobile.service';
 import { screen } from 'platform';
-import { of } from 'rxjs';
-import {
-  path,
-  knownFolders,
-  File
-} from 'tns-core-modules/file-system/file-system';
+import { of, Observable } from 'rxjs';
+import { tap, map, switchMap, concat, delay, catchError } from 'rxjs/operators';
+import { getFile } from 'tns-core-modules/http/http';
+import { knownFolders, path, File } from 'tns-core-modules/file-system';
+import { connectionType } from 'tns-core-modules/connectivity/connectivity';
+import { fromPromise } from 'rxjs/observable/fromPromise';
 import { PLACEHOLDER_IMAGE } from '../../../components/artist-image/artist-image.component';
+import { CurrentConnectionService } from '~/services/currentConnection.service';
 
 @Component({
   moduleId: module.id,
@@ -30,7 +31,9 @@ export class AlbumsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private nsRouter: RouterExtensions,
-    public subular: SubularMobileService
+    public subular: SubularMobileService,
+    private subsonic: SubsonicService,
+    private connection: CurrentConnectionService
   ) {}
 
   getAlbumsText(albums: IAlbum[]) {
@@ -69,9 +72,39 @@ export class AlbumsComponent implements OnInit {
         .getFolder('artist-images')
         .getFile(artistId + '.png').size;
 
-      if (exists && fileSize > 200) {
-        return of(coverPath);
-      }
+      const downloadImage$ = imageUrl =>
+        fromPromise(
+          getFile(
+            {
+              url: imageUrl,
+              method: 'GET'
+            },
+            coverPath
+          )
+        ).pipe(
+          catchError(() => {
+            return placeholderImage$;
+          }),
+          map(value => (value != PLACEHOLDER_IMAGE ? coverPath : value))
+        );
+
+      return this.connection.connectionType$.pipe(
+        switchMap(connection => {
+          if (connection == connectionType.wifi) {
+            return placeholderImage$.pipe(
+              concat(
+                this.subsonic
+                  .getArtistInfo(artistId)
+                  .pipe(
+                    map(info => info.mediumImageUrl),
+                    switchMap(downloadImage$)
+                  )
+              )
+            ) as Observable<string>;
+          }
+          return placeholderImage$;
+        })
+      );
     }
     return placeholderImage$;
   }
