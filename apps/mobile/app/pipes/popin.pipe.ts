@@ -42,19 +42,20 @@ export const popIn = switchMap((items: any[]) => {
         : PLACEHOLDER_VALUES.slice(count, items.length))
     ]).pipe(delayTime);
 
-  return concat(
-    oneSet$,
-    getItems(1, items),
-    getItems(2, items),
-    getItems(3, items),
-    getItems(4, items),
-    getItems(5, items),
-    getItems(6, items),
-    getItems(7, items),
-    getItems(8, items),
-    getItems(9, items),
-    getItems(10, items),
-    getItems(11, items),
-    of(items)
-  ) as Observable<any>;
+  // return concat(
+  //   oneSet$,
+  //   getItems(1, items),
+  //   getItems(2, items),
+  //   getItems(3, items),
+  //   getItems(4, items),
+  //   getItems(5, items),
+  //   getItems(6, items),
+  //   getItems(7, items),
+  //   getItems(8, items),
+  //   getItems(9, items),
+  //   getItems(10, items),
+  //   getItems(11, items),
+  //   of(items)
+  // ) as Observable<any>;
+  return of(items);
 });

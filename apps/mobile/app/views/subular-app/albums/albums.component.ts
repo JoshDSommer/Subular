@@ -72,6 +72,10 @@ export class AlbumsComponent implements OnInit {
         .getFolder('artist-images')
         .getFile(artistId + '.png').size;
 
+      if (exists && fileSize > 200) {
+        return of(coverPath);
+      }
+
       const downloadImage$ = imageUrl =>
         fromPromise(
           getFile(
