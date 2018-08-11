@@ -6,7 +6,7 @@
   "nativescript": {
     "id": "org.joshdsommer.subular",
     "tns-ios": {
-      "version": "4.1.1"
+      "version": "4.2.0"
     }
   },
   "dependencies": {
@@ -28,7 +28,7 @@
     "reflect-metadata": "~0.1.10",
     "rxjs": "file:../../node_modules/rxjs",
     "rxjs-compat": "file:../../node_modules/rxjs-compat",
-    "tns-core-modules": "4.1.0",
+    "tns-core-modules": "^4.2.0",
     "tns-platform-declarations": "^4.1.0",
     "zone.js": "~0.8.18"
   },

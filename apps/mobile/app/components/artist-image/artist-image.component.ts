@@ -29,10 +29,7 @@ export class ArtistImageComponent implements OnInit {
   @Input() col: number;
   @Input() artistId: number;
   @Input() name: string;
-  constructor(
-    private subsonic: SubsonicService,
-    private connection: CurrentConnectionService
-  ) {}
+  constructor() {}
 
   ngOnInit() {}
 
@@ -62,40 +59,6 @@ export class ArtistImageComponent implements OnInit {
           .remove()
           .then();
       }
-
-      const downloadImage$ = imageUrl =>
-        fromPromise(
-          getFile(
-            {
-              url: imageUrl,
-              method: 'GET'
-            },
-            coverPath
-          )
-        ).pipe(
-          catchError(() => {
-            return placeholderImage$;
-          }),
-          map(value => (value != PLACEHOLDER_IMAGE ? coverPath : value))
-        );
-
-      return this.connection.connectionType$.pipe(
-        switchMap(connection => {
-          if (connection == connectionType.wifi) {
-            return placeholderImage$.pipe(
-              concat(
-                this.subsonic
-                  .getArtistInfo(artistId)
-                  .pipe(
-                    map(info => info.mediumImageUrl),
-                    switchMap(downloadImage$)
-                  )
-              )
-            ) as Observable<string>;
-          }
-          return placeholderImage$;
-        })
-      );
     }
     return placeholderImage$;
   }

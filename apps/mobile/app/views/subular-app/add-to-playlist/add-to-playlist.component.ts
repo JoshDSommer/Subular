@@ -5,6 +5,7 @@ import { IPlaylists, IPlaylist } from '@Subular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { map, tap, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   moduleId: module.id,
@@ -24,16 +25,20 @@ export class AddToPlaylistComponent implements OnInit {
   ngOnInit() {
     this.playlists$ = this.subular
       .getPlaylists()
-      .map(playlists => [
-        { id: 0, name: 'Favorites' } as IPlaylist,
-        ...playlists
-      ]);
+      .pipe(
+        map(playlists => [
+          { id: 0, name: 'Favorites' } as IPlaylist,
+          ...playlists
+        ])
+      );
   }
 
   getCoverArt(playlist: IPlaylist) {
-    return this.subular.getArtWork(playlist.coverArt);
+    if (playlist.name) {
+      return this.subular.getArtWork(playlist.coverArt);
+    }
+    return of(null);
   }
-
   addToPlaylist(playlist: IPlaylist) {
     this.route.params
       .pipe(
