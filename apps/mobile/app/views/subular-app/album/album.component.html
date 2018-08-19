@@ -1,4 +1,4 @@
-<StackLayout *ngIf="album$ | async as album" [animate]="animateOptions" height="100%" class="offset-for-slide">
+<StackLayout *ngIf="album$ | async as album" [animate]="animateOptions" height="100%" class="offset-for-slide album-wrap">
 	<ng-container *ngIf="returnLink$ | async as returnlink">
 
 		<Label [nsRouterLink]="returnlink.link" class="fa back-link" text="&#xf0d9; {{ returnlink.text }}" textWrap="true"></Label>
