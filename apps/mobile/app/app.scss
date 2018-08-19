@@ -41,14 +41,20 @@ $heart: #eb2e9c;
 }
 
 /* Player */
+ActionBar {
+  background-color: $backgroundColor;
+}
+.hide-button {
+  font-size: 35;
+  color: $lightPurple;
+  text-align: center;
+}
+
 .player-wrap-background {
   background-color: $backgroundColor;
   .player-wrap {
     border-bottom-left-radius: 20;
     border-bottom-right-radius: 20;
-    background-color: $backgroundColor;
-  }
-  ActionBar {
     background-color: $backgroundColor;
   }
   .back-button {
@@ -67,16 +73,12 @@ $heart: #eb2e9c;
 	margin-bottom: 30; */
   }
   Progress {
-    background-color: $accentsDark;
+    background-color: $accentsLight;
     color: $lightPurple;
     width: 67%;
     margin-top: 15px;
   }
-  .hide-button {
-    font-size: 35;
-    color: $lightPurple;
-    text-align: center;
-  }
+
   .heart-wrap {
     text-align: right;
     padding-top: 15;
