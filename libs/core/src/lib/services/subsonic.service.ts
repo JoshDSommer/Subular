@@ -169,6 +169,20 @@ export class SubsonicService {
     return this.subsonicGet('unstar', `&id=${id}`);
   }
 
+  starArtist(id: number) {
+    return this.subsonicGet('star', `&artistId=${id}`);
+  }
+  unStarArtist(id: number) {
+    return this.subsonicGet('unstar', `&artistId=${id}`);
+  }
+
+  starAlbum(id: number) {
+    return this.subsonicGet('star', `&albumId=${id}`);
+  }
+  unStarAlbum(id: number) {
+    return this.subsonicGet('unstar', `&albumId=${id}`);
+  }
+
   subsonicGet(method: string);
   subsonicGet(method: string, additionalParams: string);
   subsonicGet(method: string, additionalParams?: string): Observable<any> {

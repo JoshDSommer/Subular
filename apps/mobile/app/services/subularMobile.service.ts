@@ -192,6 +192,19 @@ export class SubularMobileService {
   unStarSong(id: number) {
     return this.subsonicService.subsonic.unStarSong(id);
   }
+  starArtist(id: number) {
+    return this.subsonicService.subsonic.starArtist(id);
+  }
+  unStarArtist(id: number) {
+    return this.subsonicService.subsonic.unStarArtist(id);
+  }
+  starAlbum(id: number) {
+    return this.subsonicService.subsonic.starAlbum(id);
+  }
+  unStarAlbum(id: number) {
+    return this.subsonicService.subsonic.unStarAlbum(id);
+  }
+
   getArtists(): Observable<IArtist[]> {
     //return this.getArtistFromCache();
     return this.subsonicService.cachedData.getArtists();
