@@ -9,6 +9,140 @@ In many cases you may want to use the NativeScript core theme instead
 of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
+
+/*Login*/
+.login {
+  color: #ca9fdb;
+  font-size: 50;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10%;
+}
+
+.login-wrap TextField {
+  text-align: center;
+  margin: 5 0 5 0;
+  font-size: 16;
+  color: #36454f;
+}
+
+/* Player */
+.player-wrap-background {
+  background-color: #000000;
+}
+.player-wrap {
+  border-bottom-left-radius: 20;
+  border-bottom-right-radius: 20;
+  background-color: #fff;
+}
+ActionBar {
+  background-color: #fff;
+}
+.back-button {
+  width: 80%;
+  align-content: center;
+}
+.loading-album {
+  text-align: center;
+  font-size: 105;
+  color: #ca9fdb;
+  opacity: 0.8;
+}
+.album-art Image {
+  border-radius: 4;
+  /* margin-top: 20;
+	margin-bottom: 30; */
+}
+Progress {
+  background-color: #c4c2c2;
+  color: #ca9fdb;
+  width: 67%;
+  margin-top: 15px;
+}
+.hide-button {
+  font-size: 35;
+  color: #ca9fdb;
+  text-align: center;
+}
+.heart-wrap {
+  text-align: right;
+  padding-top: 15;
+  padding-right: 25;
+}
+.song-title,
+.song-artist,
+.song-album {
+  text-align: center;
+  color: #36454f;
+}
+
+.song-title {
+  font-size: 25;
+  font-weight: bold;
+}
+.song-artist,
+.song-album {
+  font-size: 18;
+}
+.song-artist {
+  font-weight: bold;
+}
+.song-album {
+  font-style: italic;
+  color: #646262;
+}
+
+.player-controls Label {
+  text-align: center;
+  height: 66;
+  color: #36454f;
+}
+.mini-player-button {
+  width: 66;
+  border-radius: 33;
+  font-size: 36;
+  color: #36454f;
+}
+.disabled {
+  color: #c4c2c2;
+}
+.next-previous {
+  color: #36454f;
+  font-size: 25;
+  width: 66;
+  border-radius: 33;
+}
+
+.random-repeat {
+  color: #c4c2c2;
+}
+.random-repeat-enabled {
+  color: #ca9fdb;
+}
+.time {
+  text-align: center;
+  font-size: 11px;
+  vertical-align: top;
+  color: #36454f;
+}
+.queue-button {
+  color: #a4a4a4;
+  text-align: left;
+  margin-left: 25;
+  font-size: 25px;
+}
+/* .song-list-wrap,
+.list-group {
+  height: 100%;
+}
+.song-list-item {
+  padding: 15;
+}
+.song {
+  margin: 3% 2.5%;
+  font-size: 18px;
+} */
+
 Image {
   border-radius: 2;
 }
