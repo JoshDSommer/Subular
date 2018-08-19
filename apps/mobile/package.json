@@ -35,6 +35,7 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.7.0-rc.0",
     "@angular/compiler-cli": "~6.1.0-beta.1",
+    "nativescript-dev-sass": "^1.6.0",
     "nativescript-dev-typescript": "~0.7.0",
     "nativescript-dev-webpack": "~0.14.0",
     "typescript": "~2.7.2"
