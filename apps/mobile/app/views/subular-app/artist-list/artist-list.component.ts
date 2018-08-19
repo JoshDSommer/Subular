@@ -1,4 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
+} from '@angular/core';
 import { SubsonicCachedService, IArtist } from '@Subular/core';
 import { Observable } from 'rxjs/Observable';
 import { ListView } from 'ui/list-view';
@@ -22,7 +29,8 @@ export const ARTIST_LIST_CACHE_KEY = 'artist-list-cached-index';
   moduleId: module.id,
   selector: 'artist-list',
   templateUrl: './artist-list.component.html',
-  styleUrls: ['./artist-list.component.css']
+  styleUrls: ['./artist-list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArtistListComponent implements OnInit {
   cachedIndex: any;
@@ -41,7 +49,12 @@ export class ArtistListComponent implements OnInit {
     return this._label.nativeElement;
   }
 
-  constructor(private subular: SubularMobileService) {}
+  detectChanges = tap(() => this.ref.markForCheck());
+
+  constructor(
+    private subular: SubularMobileService,
+    private ref: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.artists$ = this.subular
