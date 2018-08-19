@@ -609,3 +609,12 @@ Button {
 .list-group {
   background-color: $backgroundColor;
 }
+.fa {
+  font-size: 25px;
+}
+.fa-heart {
+  color: $heart;
+}
+.fa-unheart {
+  color: $accentsDark;
+}
