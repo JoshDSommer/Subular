@@ -16,8 +16,15 @@ $lightPurple: #ca9fdb;
 $darkPurple: #4b0082;
 $primaryColor: #36454f;
 $lightGrey: #646262;
+$accentsDark: #a4a4a4;
+$accentsLight: #f9f9f9;
+$skeleton: #f8f8f8;
+$trackNumber: #8f8e8e;
+$borders: #e4e3e3;
 
-/*Login*/
+$miniPlayerBg: #dbd3de;
+$heart: #eb2e9c;
+
 .login {
   color: $lightPurple;
   font-size: 50;
@@ -60,7 +67,7 @@ $lightGrey: #646262;
 	margin-bottom: 30; */
   }
   Progress {
-    background-color: $lightGrey;
+    background-color: $accentsDark;
     color: $lightPurple;
     width: 67%;
     margin-top: 15px;
@@ -132,7 +139,7 @@ $lightGrey: #646262;
     color: $primaryColor;
   }
   .queue-button {
-    color: #a4a4a4;
+    color: $accentsDark;
     text-align: left;
     margin-left: 25;
     font-size: 25px;
@@ -168,7 +175,7 @@ $lightGrey: #646262;
 
   & .navigation {
     border-top-width: 1;
-    border-top-color: #f9f9f9;
+    border-top-color: $accentsLight;
   }
   & .navigation-option {
     text-align: center;
@@ -179,7 +186,7 @@ $lightGrey: #646262;
   }
 
   & .mini-player {
-    background-color: #dbd3de;
+    background-color: $miniPlayerBg;
     height: 70;
   }
   & .mini-player-button {
@@ -249,7 +256,7 @@ $lightGrey: #646262;
   }
 
   .track-number {
-    color: #8f8e8e;
+    color: $trackNumber;
     text-align: center;
     margin-top: 15;
     margin-bottom: 15;
@@ -257,8 +264,8 @@ $lightGrey: #646262;
 
   .placeholder .song,
   .placeholder .track-number {
-    background-color: #f8f8f8;
-    color: #f8f8f8;
+    background-color: $skeleton;
+    color: $skeleton;
     border-radius: 2;
     /* padding: 0;
   margin: 9; */
@@ -280,12 +287,12 @@ $lightGrey: #646262;
   }
   .album-card {
     /* border-width: 1;
-    border-color: #e4e3e3;
+    border-color: $borders;
     border-bottom-left-radius: 4;
     border-bottom-right-radius: 4; */
   }
   .album-image {
-    background-color: #e4e3e3;
+    background-color: $borders;
   }
   .album-name {
     /* font-size: 13; */
@@ -313,7 +320,7 @@ $lightGrey: #646262;
     padding-right: 15;
     padding-left: 15;
     padding-bottom: 5;
-    color: #c4c2c2;
+    color: $accentsDark;
     font-size: 14;
     text-align: center;
   }
@@ -331,7 +338,7 @@ $lightGrey: #646262;
   }
   .song-list-sub {
     font-size: 12;
-    color: #c4c2c2;
+    color: $accentsDark;
   }
   .song-list-info-wrap {
     padding-top: 12.5;
@@ -382,7 +389,7 @@ $lightGrey: #646262;
   .button-wrap Label {
     width: 49%;
     padding: 15;
-    color: #c4c2c2;
+    color: $accentsDark;
     font-size: 14;
     text-align: center;
   }
@@ -394,7 +401,7 @@ $lightGrey: #646262;
   }
   .track-number {
     padding-top: 15;
-    color: #8f8e8e;
+    color: $trackNumber;
     text-align: center;
   }
   .artist {
@@ -415,8 +422,8 @@ $lightGrey: #646262;
 
   .placeholder .song,
   .placeholder .track-number {
-    background-color: #f8f8f8;
-    color: #f8f8f8;
+    background-color: $skeleton;
+    color: $skeleton;
     border-radius: 2;
     padding: 0;
     margin: 9;
@@ -434,7 +441,7 @@ $lightGrey: #646262;
     padding-top: 15;
     padding-bottom: 15;
     border-bottom-width: 1;
-    border-bottom-color: #e4e3e3;
+    border-bottom-color: $borders;
   }
   .playlist {
     font-size: 20px;
@@ -458,15 +465,15 @@ $lightGrey: #646262;
   }
   image {
     /* border-width: 1;
-    border-color: #e4e3e3; */
+    border-color: $borders; */
   }
   .fa-heart {
-    color: #eb2e9c;
+    color: $heart;
     text-align: center;
     font-size: 35;
     border-radius: 2;
     border-width: 1;
-    border-color: #e4e3e3;
+    border-color: $borders;
   }
   ActivityIndicator {
     margin-top: 45%;
@@ -480,11 +487,11 @@ $lightGrey: #646262;
   }
 
   .playlist-image {
-    background-color: #f8f8f8;
+    background-color: $skeleton;
   }
   .placeholder-name {
-    background-color: #f8f8f8;
-    color: #f8f8f8;
+    background-color: $skeleton;
+    color: $skeleton;
     border-radius: 2;
     padding: 0;
     height: 25;
@@ -516,7 +523,7 @@ $lightGrey: #646262;
     padding-top: 15;
     padding-bottom: 15;
     border-bottom-width: 1;
-    border-bottom-color: #e4e3e3;
+    border-bottom-color: $borders;
   }
   .title {
     background-color: $backgroundColor;
