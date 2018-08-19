@@ -585,14 +585,6 @@ Button {
   padding-left: 18%;
 }
 
-.back-link {
-  font-size: 18;
-  margin: 10 10;
-  height: 22;
-  color: $lightPurple;
-  font-weight: bold;
-}
-
 .offset-for-slide {
   transform: translateX(300);
 }
@@ -609,12 +601,23 @@ Button {
 .list-group {
   background-color: $backgroundColor;
 }
-.fa {
-  font-size: 25px;
-}
+
 .fa-heart {
   color: $heart;
 }
 .fa-unheart {
   color: $accentsDark;
+}
+
+.back-link-wrap {
+  & .fa {
+    font-size: 28;
+    color: $lightPurple;
+    text-align: center;
+  }
+  & .back-link {
+    font-size: 25;
+    font-weight: bold;
+    color: $lightPurple;
+  }
 }

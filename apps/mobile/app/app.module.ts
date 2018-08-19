@@ -44,6 +44,7 @@ import { RecentlyAddedAlbumComponent } from './views/subular-app/recently-added/
 import { SongListHeaderComponent } from './components/song-list-header/song-list-header.component';
 import { ComponentModule } from './components/components.module';
 import { QueueItemComponent } from './views/player/queue-item/queue-item.component';
+import { BackLinkComponent } from './components/back-link/back-link.component';
 
 if (applicationModule.android) {
   applicationModule.on('launch', () => {
@@ -83,7 +84,8 @@ if (applicationModule.android) {
     AddToPlaylistComponent,
     SupaComponent,
     RecentlyAddedAlbumComponent,
-    QueueItemComponent
+    QueueItemComponent,
+    BackLinkComponent
   ],
   providers: [
     LOCALSTORAGE_SERVICE,
