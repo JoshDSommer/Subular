@@ -24,7 +24,9 @@ export class HeartComponent {
   @Input() col: number;
 
   get isHearted() {
-    return this.song.starred;
+    if (this.song) {
+      return this.song.starred;
+    }
   }
   constructor(private subsonic: SubularMobileService) {}
 
@@ -52,8 +54,6 @@ export class HeartComponent {
       this.subsonic.starAlbum(this.album.id);
     }
   }
-
-  heartArtist() {}
 
   unHeartSong() {
     this.song = Object.assign({}, this.song, { starred: null });
