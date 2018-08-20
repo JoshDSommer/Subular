@@ -22,6 +22,18 @@ $skeleton: #f8f8f8;
 $trackNumber: #8f8e8e;
 $borders: #e4e3e3;
 
+// // Dark
+// $backgroundColor: #171d22;
+// $lightPurple: #ca9fdb;
+// $darkPurple: #4b0082;
+// $primaryColor: #fff;
+// $lightGrey: #646262;
+// $accentsDark: #a4a4a4;
+// $accentsLight: #36454f;
+// $skeleton: #f8f8f8;
+// $trackNumber: #8f8e8e;
+// $borders: #36454f;
+
 $miniPlayerBg: #dbd3de;
 $heart: #eb2e9c;
 
@@ -209,6 +221,7 @@ ActionBar {
   }
   & .song-title {
     vertical-align: bottom;
+    color: $primaryColor;
   }
   & .song-artist {
     vertical-align: top;
@@ -444,10 +457,12 @@ ActionBar {
     padding-bottom: 15;
     border-bottom-width: 1;
     border-bottom-color: $borders;
-  }
-  .playlist {
-    font-size: 20px;
-    padding-left: 10;
+
+    .playlist {
+      font-size: 20px;
+      padding-left: 10;
+      color: $primaryColor;
+    }
   }
 
   .letter-wrap {
@@ -540,6 +555,7 @@ ActionBar {
     padding: 3% 0 3% 0;
     font-size: 20px;
     margin-left: 10;
+    color: $primaryColor;
   }
 
   .letter-wrap {
@@ -622,4 +638,62 @@ Button {
     font-weight: bold;
     color: $lightPurple;
   }
+}
+
+// Recently Added Album
+.album-card {
+  .album-name {
+    /* font-size: 13; */
+    color: $primaryColor;
+
+    /* margin-left: 2; */
+  }
+  .album-image {
+    background-color: $skeleton;
+  }
+
+  .placeholder-name {
+    background-color: $skeleton;
+    color: $skeleton;
+    border-radius: 2;
+    margin-top: 6;
+    margin-bottom: 6;
+    margin-right: 15%;
+    height: 20;
+  }
+}
+
+//SongList HEader
+
+.header-list-item {
+  margin-bottom: 10;
+}
+.button-wrap Button,
+.button-wrap Label {
+  width: 49%;
+  padding-top: 15;
+  padding-right: 15;
+  padding-left: 15;
+  padding-bottom: 5;
+  color: $accentsDark;
+  font-size: 14;
+  text-align: center;
+}
+/* .button-wrap Button:highlighted {
+  background-color: #ca9fdb;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 7;
+} */
+.song-list-title {
+  color: $primaryColor;
+  font-size: 18;
+  font-weight: bold;
+}
+.song-list-sub {
+  font-size: 12;
+  color: $accentsDark;
+}
+.song-list-info-wrap {
+  padding-top: 12.5;
 }
