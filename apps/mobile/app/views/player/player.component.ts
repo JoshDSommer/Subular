@@ -28,7 +28,6 @@ declare const CGAffineTransformMakeScale: any;
   moduleId: module.id,
   selector: 'player',
   templateUrl: './player.component.html',
-  styleUrls: ['./player.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlayerComponent implements OnInit {
