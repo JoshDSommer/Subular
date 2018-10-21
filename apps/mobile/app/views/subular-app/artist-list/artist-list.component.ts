@@ -6,22 +6,17 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef
 } from '@angular/core';
-import { SubsonicCachedService, IArtist } from '@Subular/core';
+import { IArtist } from '@Subular/core';
 import { Observable } from 'rxjs/Observable';
-import { ListView } from 'ui/list-view';
-import { Label } from 'ui/label';
+import { ListView } from 'tns-core-modules/ui/list-view';
+import { Label } from 'tns-core-modules/ui/label';
 import { StackLayout } from 'ui/layouts/stack-layout';
-import {
-  TouchGestureEventData,
-  PanGestureEventData,
-  TouchAction
-} from 'ui/gestures';
-import { layout } from 'utils/utils';
+import { TouchGestureEventData } from 'ui/gestures';
+import { layout } from 'tns-core-modules/utils/utils';
 import { getNumber, setNumber } from 'application-settings';
 import { SubularMobileService } from '../../../services/subularMobile.service';
 
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { tap, distinctUntilChanged, map, filter } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 export const ARTIST_LIST_CACHE_KEY = 'artist-list-cached-index';
 
@@ -33,10 +28,10 @@ export const ARTIST_LIST_CACHE_KEY = 'artist-list-cached-index';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArtistListComponent implements OnInit {
-  cachedIndex: any;
   @ViewChild('artistList') _artistListView: ElementRef;
   @ViewChild('label') _label: ElementRef;
 
+  cachedIndex: any;
   artists$: Observable<IArtist[]>;
   alphabet = 'abcdefghijklmnopqrstuvwxyz#'.split('');
   artists: IArtist[];
