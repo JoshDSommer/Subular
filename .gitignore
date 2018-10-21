@@ -40,5 +40,6 @@ Thumbs.db
 
 /apps/mobile/node_modules
 /apps/mobile/platforms
+apps/mobile/app/app.css
 /apps/mobile/**/*.js
 /libs/core/**/*.js
