@@ -29,6 +29,7 @@
     "tns-core-modules": "~4.2.0",
     "reflect-metadata": "~0.1.10",
     "rxjs": "~6.2.0",
+    "crypto-js": "file:../../node_modules/crypto-js",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
