@@ -11,8 +11,11 @@ import {
   ConnectionType
 } from '../../../services/currentConnection.service';
 import { switchMap, map, tap } from 'rxjs/operators';
-import { SwipeGestureEventData, SwipeDirection } from 'ui/gestures';
-import { GridLayout } from 'ui/layouts/grid-layout';
+import {
+  SwipeGestureEventData,
+  SwipeDirection
+} from 'tns-core-modules/ui/gestures';
+import { GridLayout } from 'tns-core-modules/ui/layouts/grid-layout';
 import { popIn } from '~/pipes/popin.pipe';
 
 interface IAlbumSong extends ISong {

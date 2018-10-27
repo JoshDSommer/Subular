@@ -12,12 +12,12 @@ import {
 import { SPIN_ANIMATION } from '../../animations/animations';
 import { Observable } from 'rxjs/Observable';
 import { RouterExtensions } from 'nativescript-angular/router';
-import { Page, EventData } from 'ui/page';
+import { Page, EventData } from 'tns-core-modules/ui/page';
 import { SubularMobileService } from '../../services/subularMobile.service';
 import { Subscription, fromEvent } from 'rxjs';
-import { topmost } from 'ui/frame';
-import { Progress } from 'ui/progress';
-import { screen } from 'platform';
+import { topmost } from 'tns-core-modules/ui/frame';
+import { Progress } from 'tns-core-modules/ui/progress';
+import { screen } from 'tns-core-modules/platform';
 import { ISong } from '@Subular/core';
 import { ScrollView } from 'tns-core-modules/ui/scroll-view/scroll-view';
 import { PanGestureEventData } from 'tns-core-modules/ui/gestures/gestures';

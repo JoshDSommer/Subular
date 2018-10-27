@@ -1,8 +1,3 @@
-import { Injectable } from '@angular/core';
-import { ISong, SubsonicService } from '@Subular/core';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
 export enum PlayingStatus {
   loading,
   paused,

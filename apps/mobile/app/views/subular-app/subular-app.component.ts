@@ -19,7 +19,7 @@ import {
   PlayingStatus
 } from '../../services/player.service';
 import { SPIN_ANIMATION } from '../../animations/animations';
-import { setNumber } from 'application-settings';
+import { setNumber } from 'tns-core-modules/application-settings';
 import { ARTIST_LIST_CACHE_KEY } from '../subular-app/artist-list/artist-list.component';
 import { SubularMobileService } from '../../services/subularMobile.service';
 import { RouterExtensions } from 'nativescript-angular/router';

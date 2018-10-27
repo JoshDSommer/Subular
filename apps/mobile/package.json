@@ -12,6 +12,7 @@
   "dependencies": {
     "@Subular/core": "file:../../libs/core",
     "@angular/animations": "~6.1.0",
+    "@angular/cli": "6.1.0",
     "@angular/common": "~6.1.0",
     "@angular/compiler": "~6.1.0",
     "@angular/core": "~6.1.0",
@@ -23,7 +24,6 @@
     "crypto-js": "file:../../node_modules/crypto-js",
     "nativescript-angular": "^6.2.0-2018-10-19-164050-02",
     "nativescript-blur": "^2.0.0",
-    "nativescript-fresco": "^4.0.0",
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.10",
     "rxjs": "^6.0.0",
@@ -38,7 +38,8 @@
     "nativescript-dev-sass": "^1.6.0",
     "nativescript-dev-typescript": "~0.7.0",
     "nativescript-dev-webpack": "^0.17.0-rc.0",
-    "typescript": "~2.7.2"
+    "typescript": "~2.7.2",
+    "webpack-cli": "^3.1.2"
   },
   "author": "JoshDSommer@gmail.com"
 }

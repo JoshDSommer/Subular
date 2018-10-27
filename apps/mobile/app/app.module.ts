@@ -11,7 +11,6 @@ import { LoginComponent } from './views/login/login.component';
 import { SupaComponent } from './views/supa/supa.component';
 
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
-import { TNSFrescoModule } from 'nativescript-fresco/angular';
 import { NativeScriptHttpModule } from 'nativescript-angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -20,7 +19,6 @@ import { ArtistListComponent } from './views/subular-app/artist-list/artist-list
 import { AlbumsComponent } from './views/subular-app/albums/albums.component';
 
 import * as applicationModule from 'tns-core-modules/application';
-import * as frescoModule from 'nativescript-fresco';
 import { AlbumComponent } from './views/subular-app/album/album.component';
 import { SongListComponent } from './components/song-list/song-list.component';
 import { PlayerService } from './services/player.service';
@@ -32,7 +30,6 @@ import { PlayerComponent } from './views/player/player.component';
 import { NativeShadowDirective } from './directives/shadow.directive';
 import { HeartComponent } from './components/heart/heart.component';
 import { HighlightDirective } from './directives/highlight.directive';
-import { WorkerService, DownloadQueueService } from './services';
 import { PlaylistsComponent } from './views/subular-app/playlists/playlists.component';
 import { PlaylistComponent } from './views/subular-app/playlist/playlist.component';
 import { SlideDownBackDirective } from './directives/slideDownBack.directive';
@@ -47,9 +44,7 @@ import { QueueItemComponent } from './views/player/queue-item/queue-item.compone
 import { BackLinkComponent } from './components/back-link/back-link.component';
 
 if (applicationModule.android) {
-  applicationModule.on('launch', () => {
-    frescoModule.initialize();
-  });
+  applicationModule.on('launch', () => {});
 }
 
 @NgModule({
@@ -60,7 +55,6 @@ if (applicationModule.android) {
     NativeScriptHttpModule,
     HttpClientModule,
     AppRoutingModule,
-    TNSFrescoModule,
     ComponentModule
   ],
   declarations: [
@@ -94,8 +88,6 @@ if (applicationModule.android) {
     SubularMobileService,
     AlbumsResolver,
     AlbumResolver,
-    WorkerService,
-    DownloadQueueService,
     CurrentConnectionService
   ],
   schemas: [NO_ERRORS_SCHEMA]

@@ -2,10 +2,10 @@ import { Injectable, NgZone } from '@angular/core';
 import { ISong, SubsonicService, replace } from '@Subular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { ios } from 'utils/utils';
-import * as fs from 'file-system';
+import { ios } from 'tns-core-modules/utils/utils';
+import * as fs from 'tns-core-modules/file-system';
 import { fromFile } from 'tns-core-modules/image-source/image-source';
-import { path, knownFolders } from 'file-system';
+import { path, knownFolders } from 'tns-core-modules/file-system';
 
 export enum PlayingStatus {
   loading,
@@ -339,7 +339,7 @@ class ControlsHandler extends NSObject {
   private _owner: WeakRef<PlayerService>;
 
   public static initWithOwner(owner: WeakRef<PlayerService>): ControlsHandler {
-    let impl = <ControlsHandler>ControlsHandler.new();
+    const impl = <ControlsHandler>ControlsHandler.new();
     impl._owner = owner;
     return impl;
   }
@@ -354,7 +354,7 @@ class ControlsHandler extends NSObject {
   }
 
   public resumeSong() {
-    let owner = this._owner.get();
+    const owner = this._owner.get();
     if (!owner) {
       return;
     }
@@ -363,7 +363,7 @@ class ControlsHandler extends NSObject {
   }
 
   public playNextSong() {
-    let owner = this._owner.get();
+    const owner = this._owner.get();
     if (!owner) {
       return;
     }
@@ -372,7 +372,7 @@ class ControlsHandler extends NSObject {
   }
 
   public playPreviousSong() {
-    let owner = this._owner.get();
+    const owner = this._owner.get();
     if (!owner) {
       return;
     }
@@ -380,6 +380,7 @@ class ControlsHandler extends NSObject {
     owner.playPreviousSong();
   }
 
+  // tslint:disable-next-line:member-ordering
   public static ObjCExposedMethods = {
     pauseSong: { returns: interop.types.void },
     resumeSong: { returns: interop.types.void },

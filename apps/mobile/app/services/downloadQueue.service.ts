@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ISong, SubsonicService, IPlaylist } from '@Subular/core';
-import { WorkerService } from './worker.service';
-import * as fs from 'file-system';
+import * as fs from 'tns-core-modules/file-system';
 import { SubularMobileService } from './subularMobile.service';
 import { getFile } from 'tns-core-modules/http';
 
@@ -17,10 +16,7 @@ export class DownloadQueueService {
   // private worker: Worker;
   private songs: ISongToDownload[] = [];
 
-  constructor(
-    private workers: WorkerService,
-    private subular: SubularMobileService
-  ) {
+  constructor(private subular: SubularMobileService) {
     //	this.worker = this.workers.initDownloadWorker();
     this.worker.onerror = error => {
       console.error(error.message);

@@ -1,15 +1,15 @@
 import { Directive, ElementRef, Input, NgZone } from '@angular/core';
-import { View } from 'ui/core/view';
+import { View } from 'tns-core-modules/ui/core/view';
 import {
   PanGestureEventData,
   TouchGestureEventData,
   TouchAction,
   GestureStateTypes
-} from 'ui/gestures';
-import { screen } from 'platform';
+} from 'tns-core-modules/ui/gestures';
+import { screen } from 'tns-core-modules/platform';
 import { RouterExtensions } from 'nativescript-angular/router';
-import { ListView } from 'ui/list-view';
-import { ScrollView } from 'ui/scroll-view';
+import { ListView } from 'tns-core-modules/ui/list-view';
+import { ScrollView } from 'tns-core-modules/ui/scroll-view';
 
 @Directive({ selector: '[slideBack]' })
 export class SlideBackDirective {

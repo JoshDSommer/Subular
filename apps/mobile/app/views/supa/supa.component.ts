@@ -3,7 +3,7 @@ import { getString, setString } from 'tns-core-modules/application-settings';
 import { CACHED_SONGS_KEY, CACHED_PLAYLISTS_KEY } from '~/services';
 import { SUBULAR_CACHED_ALBUMS, SUBULAR_CACHED_ARTISTS } from '@Subular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
-import * as fs from 'file-system';
+import * as fs from 'tns-core-modules/file-system';
 
 @Component({
   moduleId: module.id,
