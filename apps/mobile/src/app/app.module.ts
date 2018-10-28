@@ -42,6 +42,7 @@ import { SongListHeaderComponent } from './components/song-list-header/song-list
 import { ComponentModule } from './components/components.module';
 import { QueueItemComponent } from './views/player/queue-item/queue-item.component';
 import { BackLinkComponent } from './components/back-link/back-link.component';
+import { DownloadQueueService } from './services';
 
 if (applicationModule.android) {
   applicationModule.on('launch', () => {});
@@ -88,7 +89,8 @@ if (applicationModule.android) {
     SubularMobileService,
     AlbumsResolver,
     AlbumResolver,
-    CurrentConnectionService
+    CurrentConnectionService,
+    DownloadQueueService
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
