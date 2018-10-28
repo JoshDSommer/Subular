@@ -93,18 +93,17 @@ export class SubsonicCachedService {
   }
 
   private buildArtistDatabase(): Observable<any> {
-    return this.subsonic
-      .subsonicGet('getArtists')
-      .pipe(
-        map(
-          (data: any) =>
-            data.artists.index
-              .map(value => value.artist)
-              .reduce((previous, value) => [...previous, ...value]) as IArtist[]
-        ),
-        tap(artists =>
-          this.localStorage.setValue(SUBULAR_CACHED_ARTISTS, artists)
-        )
-      );
+    return this.subsonic.subsonicGet('getArtists').pipe(
+      map((data: any) => {
+        if (data && data.artist && data.artist.index) {
+          return data.artists.index
+            .map(value => value.artist)
+            .reduce((previous, value) => [...previous, ...value]) as IArtist[];
+        }
+      }),
+      tap(artists =>
+        this.localStorage.setValue(SUBULAR_CACHED_ARTISTS, artists)
+      )
+    );
   }
 }
