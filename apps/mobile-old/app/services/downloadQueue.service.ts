@@ -24,7 +24,7 @@ export class DownloadQueueService {
   }
 
   addSongToTheQueue(song: ISongToDownload): boolean {
-    let path = fs.path.join(
+    const path = fs.path.join(
       fs.knownFolders.documents().path,
       song.song.id.toString() + '.mp3'
     );
@@ -46,7 +46,7 @@ export class DownloadQueueService {
       const song = this.songs[0].song;
       const onComplete = this.songs[0].onComplete;
 
-      let url = this.subular.getDownloadUrl(song.id);
+      const url = this.subular.getDownloadUrl(song.id);
       let path = fs.path.join(
         fs.knownFolders.documents().path,
         song.id.toString() + '.mp3'
