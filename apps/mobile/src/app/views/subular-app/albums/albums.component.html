@@ -1,0 +1,21 @@
+<StackLayout [animate]="animateOptions" class="offset-for-slide albums-wrap">
+	<back-link text="Artists" [link]="['/app/artists']"></back-link>
+	<ScrollView [slideBack]="['/app/artists']" class="" height="100%">
+		<WrapLayout orientation="horizontal" class="">
+			<GridLayout rows="100" columns="100,*" class="header-list-item page-padding">
+				<Image class="artist-image" height="75" width="75" borderRadius="38" row="0" col="0" [src]="getArtistImage(albums[0].artistId) | async"></Image>
+				<StackLayout row="0" col="1" class="song-list-info-wrap">
+					<Label text="{{ albums[0].artist }}" class="song-list-title " textWrap="true"></Label>
+					<Label [text]="getAlbumsText(albums)" class="song-list-sub " textWrap="true"></Label>
+					<!-- <heart row="0" col="2" [artist]="albums[0].artist" (songUpdated)="songHeartChange($event)"></heart> -->
+				</StackLayout>
+			</GridLayout>
+			<StackLayout [width]="imageHeightWidth" [marginLeft]="imageSideMargins" [marginBottom]="imageSideMargins" *ngFor="let item of albums"
+			 class="album-card" orientation="vertical" [nsRouterLink]="['../../album', item.id ]">
+				<Image [width]="imageHeightWidth" [height]="imageHeightWidth" stretch="fill" class="album-image" [src]="getCoverArt(item) | async"></Image>
+				<!-- <FrescoDrawee class="artist-image" *tkIfAndroid horizontalAlignment="stretch"  [imageUri]="item.image" verticalAlignment="top"></FrescoDrawee> -->
+				<Label class="album-name" [text]="item.name"></Label>
+			</StackLayout>
+		</WrapLayout>
+	</ScrollView>
+</StackLayout>
