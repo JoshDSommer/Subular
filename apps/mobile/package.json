@@ -5,7 +5,7 @@
       "version": "4.2.0"
     },
     "tns-ios": {
-      "version": "4.2.0"
+      "version": "5.0.0-rc-2018-10-17-161243-01"
     }
   },
   "description": "NativeScript Application",
@@ -21,21 +21,21 @@
     "@angular/platform-browser": "~6.1.0",
     "@angular/platform-browser-dynamic": "~6.1.0",
     "@angular/router": "~6.1.0",
-    "nativescript-angular": "~6.1.0",
+    "nativescript-angular": "^6.2.0-2018-10-25-105803-01",
+    "nativescript-dev-webpack": "^0.17.0-2018-10-25-144355-01",
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.8",
-    "rxjs": "~6.2.0",
-    "tns-core-modules": "~4.2.0",
+    "rxjs": "^6.0.0",
+    "tns-core-modules": "^5.0.0-rc-2018-10-26-180808-01",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "typescript": "~2.7.2",
-    "nativescript-dev-typescript": "~0.7.0",
-    "nativescript-dev-webpack": "^0.17.0-rc.0",
-    "@nativescript/schematics": "~0.3.0",
     "@angular/compiler-cli": "~6.1.0",
+    "@nativescript/schematics": "~0.3.0",
     "@ngtools/webpack": "~6.2.0",
-    "tns-platform-declarations": "^4.1.0"
+    "nativescript-dev-typescript": "~0.7.0",
+    "tns-platform-declarations": "^4.1.0",
+    "typescript": "~2.7.2"
   },
   "readme": "NativeScript Application"
 }
