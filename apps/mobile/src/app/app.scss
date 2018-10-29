@@ -341,7 +341,7 @@ ActionBar {
   }
   .button-wrap Button:highlighted {
     background-color: $lightPurple;
-    color: $backgroundColor;
+    color: $primaryColor;
     font-weight: bold;
     border-radius: 7;
   }
@@ -410,7 +410,7 @@ ActionBar {
   }
   .button-wrap Button:highlighted {
     background-color: $lightPurple;
-    color: $backgroundColor;
+    color: $primaryColor;
     font-weight: bold;
     border-radius: 7;
   }
@@ -679,12 +679,12 @@ Button {
   font-size: 14;
   text-align: center;
 }
-/* .button-wrap Button:highlighted {
-  background-color: #ca9fdb;
-  color: #ffffff;
+.button-wrap Button:highlighted {
+  background-color: $lightPurple;
+  color: $primaryColor;
   font-weight: bold;
   border-radius: 7;
-} */
+}
 .song-list-title {
   color: $primaryColor;
   font-size: 18;
