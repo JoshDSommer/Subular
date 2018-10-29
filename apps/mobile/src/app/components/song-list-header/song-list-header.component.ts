@@ -16,7 +16,6 @@ import {
   moduleId: module.id,
   selector: 'song-list-header',
   templateUrl: './song-list-header.component.html',
-  styleUrls: ['./song-list-header.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SongListHeaderComponent implements OnInit, AfterViewInit {
@@ -34,13 +33,15 @@ export class SongListHeaderComponent implements OnInit, AfterViewInit {
 
   playAndShuffle(event: TouchGestureEventData) {
     if (event.action === TouchAction.up) {
-      this.shuffleFunction();
+      setTimeout(this.shuffleFunction);
     }
   }
 
-  downloadAllSongs() {
-    console.log('clicked header');
-    this.downloadFunction();
+  downloadAllSongs(event: TouchGestureEventData) {
+    if (event.action === TouchAction.up) {
+      // withough the timeout in iOS this crashes on the playlist page
+      setTimeout(this.downloadFunction);
+    }
   }
 
   getCoverArt() {
