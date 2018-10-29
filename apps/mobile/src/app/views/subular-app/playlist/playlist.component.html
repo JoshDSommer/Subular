@@ -2,12 +2,12 @@
 	<back-link text="Playlists" [link]="['/app/playlists']"></back-link>
 	<ListView [slideBack]="['/app/playlists']" [itemTemplateSelector]="templateSelector" [items]="songs$ | async" class="list-group">
 		<ng-template nsTemplateKey="header">
-			<song-list-header [coverArt]="playlist.coverArt" [allSongsDownloaded]="allSongsDownloaded" [name]="playlist.name " [shuffleFunction]="playAndShuffle"
-			 [downloadFunction]="downloadAllSongs"></song-list-header>
+			<song-list-header [coverArt]="playlist.coverArt" [allSongsDownloaded]="allSongsDownloaded" [name]="playlist.name "
+			 [shuffleFunction]="playAndShuffle" [downloadFunction]="downloadAllSongs"></song-list-header>
 		</ng-template>
 		<ng-template nsTemplateKey="regular" let-item="item" let-odd="odd" let-even="even" let-index="index">
 			<AbsoluteLayout width="100%">
-				<Label class="remove fa fa-download" top="0" left="0" text="&#xf014;" (tap)="removeFromPlaylist(index)"></Label>
+				<!-- <Label class="remove fa fa-download" top="0" left="0" text="&#xf014;" (tap)="removeFromPlaylist(index)"></Label> -->
 				<GridLayout #songListing (tap)="void" (swipe)="swipe($event,songListing)" rows="*,15" top="0" left="0" columns="30,*,60"
 				 class="song-list-item page-padding" width="100%">
 					<Label row="0" , col="0" [text]="(index + 1)" (tap)="selectSong(item)" class="track-number"></Label>

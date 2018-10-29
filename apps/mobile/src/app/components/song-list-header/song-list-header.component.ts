@@ -2,7 +2,8 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  Input
+  Input,
+  AfterViewInit
 } from '@angular/core';
 import { SubularMobileService } from '../../services';
 import {
@@ -18,7 +19,7 @@ import {
   styleUrls: ['./song-list-header.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SongListHeaderComponent implements OnInit {
+export class SongListHeaderComponent implements OnInit, AfterViewInit {
   @Input() name: string;
   @Input() year: string;
   @Input() genre: string;
@@ -38,6 +39,7 @@ export class SongListHeaderComponent implements OnInit {
   }
 
   downloadAllSongs() {
+    console.log('clicked header');
     this.downloadFunction();
   }
 
