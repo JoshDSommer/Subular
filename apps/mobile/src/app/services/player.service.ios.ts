@@ -169,7 +169,7 @@ export class PlayerService {
       );
       let newImage = fromFile(coverPath);
       if (!newImage) {
-        newImage = fromFile('~/images/artist.png');
+        newImage = fromFile('~/app/images/artist.png');
       }
 
       const image = MPMediaItemArtwork.alloc().initWithImage(newImage.ios);

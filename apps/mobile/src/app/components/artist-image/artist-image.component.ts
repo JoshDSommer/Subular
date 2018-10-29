@@ -15,7 +15,7 @@ import { CurrentConnectionService } from '../../services/currentConnection.servi
 import { connectionType } from 'tns-core-modules/connectivity/connectivity';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 
-export const PLACEHOLDER_IMAGE = '~/images/artist.png';
+export const PLACEHOLDER_IMAGE = '~/app/images/artist.png';
 
 @Component({
   moduleId: module.id,

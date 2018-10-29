@@ -1,13 +1,13 @@
 <GridLayout #mainLayout rows="*,auto,52" , columns="*" stretchLastChild="true" class="app-wrap">
 	<GridLayout row="2" col="0" rows="*" columns="*,*,*,*" height="60" class="navigation">
-		<Label row="0" col="0" [highlight]="highlightBgColor" [nsRouterLink]="['/app/recent']" horizontalAlign="center" verticalAlignment="center"
-		 class=" navigation-option " [text]="'Recent'"></Label>
-		<Label row="0" col="1" [highlight]="highlightBgColor" [nsRouterLink]="['/app/artists']" (tap)="clearArtistKeyCache()" horizontalAlign="center"
-		 verticalAlignment="center" class="navigation-option " [text]="'Artists'"></Label>
-		<Label row="0" col="2" [highlight]="highlightBgColor" [nsRouterLink]="['/app/playlists']" horizontalAlign="center" verticalAlignment="center"
-		 class="navigation-option " [text]="'Playlists'"></Label>
-		<Label row="0" col="3" [highlight]="highlightBgColor" [nsRouterLink]="['/app/supa' ]" horizontalAlign="center" verticalAlignment="center"
-		 class="navigation-option " [text]="'More'"></Label>
+		<Label row="0" col="0" [highlight]="highlightBgColor" [nsRouterLink]="['/app/recent']" horizontalAlign="center"
+		 verticalAlignment="center" class=" navigation-option " [text]="'Recent'"></Label>
+		<Label row="0" col="1" [highlight]="highlightBgColor" [nsRouterLink]="['/app/artists']" (tap)="clearArtistKeyCache()"
+		 horizontalAlign="center" verticalAlignment="center" class="navigation-option " [text]="'Artists'"></Label>
+		<Label row="0" col="2" [highlight]="highlightBgColor" [nsRouterLink]="['/app/playlists']" horizontalAlign="center"
+		 verticalAlignment="center" class="navigation-option " [text]="'Playlists'"></Label>
+		<Label row="0" col="3" [highlight]="highlightBgColor" [nsRouterLink]="['/app/supa' ]" horizontalAlign="center"
+		 verticalAlignment="center" class="navigation-option " [text]="'More'"></Label>
 
 	</GridLayout>
 	<GridLayout row="1" col="0" *ngIf="nowPlaying" class="mini-player" rows="*,30" columns="80,*,80">
@@ -17,8 +17,8 @@
 		<Label [nsRouterLink]="['/player']" class="song-title" pageTransition="slideTop" row="0" col="1" [text]="nowPlaying?.song?.title"></Label>
 		<Label [nsRouterLink]="['/player']" class="song-artist" pageTransition="slideTop" row="1" col="1" [text]="nowPlaying?.song?.artist"></Label>
 		<ng-container [ngSwitch]="nowPlaying?.playing">
-			<Label row="0" col="2" rowSpan="2" class="fa mini-player-button" [animate]="animateOptions" text="&#xf1ce;" *ngSwitchCase="PlayingStatus.loading"
-			 textWrap="true"></Label>
+			<Label row="0" col="2" rowSpan="2" class="fa mini-player-button" [animate]="animateOptions" text="&#xf1ce;"
+			 *ngSwitchCase="PlayingStatus.loading" textWrap="true"></Label>
 			<!-- <ActivityIndicator row="0" col="2" rowSpan="2" class="fa mini-player-button" *ngSwitchCase="PlayingStatus.loading" busy="true"></ActivityIndicator> -->
 			<Label row="0" col="2" rowSpan="2" class="fa mini-player-button" text="&#xf04b;" (tap)="play()" *ngSwitchCase="PlayingStatus.paused"
 			 textWrap="true"></Label>
@@ -30,7 +30,7 @@
 		<router-outlet *ngIf="loaded$ | async else loading" class="router-outlet"></router-outlet>
 		<ng-template #loading>
 			<Label class="loading-text" text="Loading..." textWrap="true"></Label>
-			<Image class="loading-image" [animate]="animateOptions" src="~/images/record.png" width="50"></Image>
+			<Image class="loading-image" [animate]="animateOptions" src="~/app/images/record.png" width="50"></Image>
 		</ng-template>
 	</StackLayout>
 </GridLayout>

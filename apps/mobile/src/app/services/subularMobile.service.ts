@@ -165,7 +165,7 @@ export class SubularMobileService {
         .then();
     }
     return new Observable(observer => {
-      observer.next('~/images/coverArt.png');
+      observer.next('~/app/images/coverArt.png');
       getFile(
         {
           url: this.subsonicService.subsonic.subsonicGetCoverUrl(
