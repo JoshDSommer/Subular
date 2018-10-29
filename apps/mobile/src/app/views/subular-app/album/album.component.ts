@@ -27,6 +27,8 @@ import 'rxjs/add/operator/combineLatest';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { switchMap, tap, map, combineLatest } from 'rxjs/operators';
 import { popIn } from '../../../pipes/popin.pipe';
+import { ItemEventData } from 'tns-core-modules/ui/list-view/list-view';
+import { isIOS } from 'tns-core-modules/ui/page/page';
 
 interface IAlbumSong extends ISong {
   header: boolean;
@@ -159,6 +161,13 @@ export class AlbumComponent implements OnInit {
       this.allSongsDownloaded = true;
     });
   };
+
+  onItemLoading(args: ItemEventData) {
+    if (isIOS && args.index === 0) {
+      const iosCell = args.ios;
+      iosCell.selectionStyle = UITableViewCellSelectionStyle.None;
+    }
+  }
 
   ngOnDestroy() {
     //Called once, before the instance is destroyed.

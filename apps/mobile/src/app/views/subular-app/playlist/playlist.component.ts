@@ -17,6 +17,8 @@ import {
 } from 'tns-core-modules/ui/gestures';
 import { GridLayout } from 'tns-core-modules/ui/layouts/grid-layout';
 import { popIn } from '../../../pipes/popin.pipe';
+import { ItemEventData } from 'tns-core-modules/ui/list-view/list-view';
+import { isIOS } from 'tns-core-modules/ui/page/page';
 
 interface IAlbumSong extends ISong {
   header: boolean;
@@ -31,7 +33,7 @@ interface IAlbumSong extends ISong {
 export class PlaylistComponent implements OnInit {
   connection$: Observable<ConnectionType>;
   songs$: Observable<IAlbumSong[]>;
-  listedSongs: any;
+  listedSongs: ISong[];
   playlist$: Observable<IPlaylist>;
   animateOptions = SLIDE_RIGHT_ANIMATION;
   allSongsDownloaded = false;
@@ -69,8 +71,8 @@ export class PlaylistComponent implements OnInit {
       tap(songs => {
         const notDownloadedSongs = songs.filter(
           song =>
-            song.state != SongState.downloaded &&
-            song.state != SongState.downloading
+            song.state !== SongState.downloaded &&
+            song.state !== SongState.downloading
         );
         this.allSongsDownloaded = notDownloadedSongs.length === 0;
       }),
@@ -145,12 +147,20 @@ export class PlaylistComponent implements OnInit {
     }
   }
 
+  onItemLoading(args: ItemEventData) {
+    if (isIOS && args.index === 0) {
+      const iosCell = args.ios;
+      iosCell.selectionStyle = UITableViewCellSelectionStyle.None;
+    }
+  }
+
   downloadAllSongs = () => {
     if (this.listedSongs) {
       this.listedSongs.forEach(song => {
         this.download(song);
       });
       this.allSongsDownloaded = true;
+      console.log('donlwo');
     }
   };
 

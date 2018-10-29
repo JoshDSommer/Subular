@@ -1,6 +1,7 @@
 <StackLayout *ngIf="playlist$ | async as playlist" [animate]="animateOptions" class="offset-for-slide playlist-wrap">
 	<back-link text="Playlists" [link]="['/app/playlists']"></back-link>
-	<ListView [slideBack]="['/app/playlists']" [itemTemplateSelector]="templateSelector" [items]="songs$ | async" class="list-group">
+	<ListView [slideBack]="['/app/playlists']" [itemTemplateSelector]="templateSelector" [items]="songs$ | async" class="list-group"
+	 (itemLoading)="onItemLoading($event)">
 		<ng-template nsTemplateKey="header">
 			<song-list-header [coverArt]="playlist.coverArt" [allSongsDownloaded]="allSongsDownloaded" [name]="playlist.name "
 			 [shuffleFunction]="playAndShuffle" [downloadFunction]="downloadAllSongs"></song-list-header>
