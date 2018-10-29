@@ -129,6 +129,7 @@ export class AlbumComponent implements OnInit {
   }
 
   playAndShuffle = () => {
+    this.playerService.clearSongs();
     this.playerService.addSongs(this.listedSongs.filter(song => !song.header));
     this.playerService.shuffleSongs(null);
     this.playerService.playSong();

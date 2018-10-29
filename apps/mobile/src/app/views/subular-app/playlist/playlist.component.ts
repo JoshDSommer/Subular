@@ -125,6 +125,7 @@ export class PlaylistComponent implements OnInit {
   }
 
   playAndShuffle = () => {
+    this.playerService.clearSongs();
     this.playerService.addSongs(this.listedSongs);
     this.playerService.shuffleSongs(null);
     this.playerService.playSong();
