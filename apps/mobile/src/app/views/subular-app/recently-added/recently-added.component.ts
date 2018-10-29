@@ -7,11 +7,12 @@ import {
   SPIN_ANIMATION
 } from '../../../animations/animations';
 import { SubularMobileService } from '../../../services/subularMobile.service';
-import { screen } from 'tns-core-modules/platform/platform';
+import { screen, isIOS } from 'tns-core-modules/platform/platform';
 import { Observable } from 'rxjs/Observable';
 import { tap, map, switchMap, delay, combineAll } from 'rxjs/operators';
 import { of, concat, zip } from 'rxjs';
 import { popIn } from '../../../pipes/popin.pipe';
+import { ItemEventData } from 'tns-core-modules/ui/list-view/list-view';
 
 @Component({
   moduleId: module.id,
@@ -51,6 +52,13 @@ export class RecentlyAddedComponent implements OnInit {
         popIn,
         tap(albums => (this.albums = albums))
       );
+  }
+
+  onItemLoading(args: ItemEventData) {
+    if (isIOS) {
+      const iosCell = args.ios;
+      iosCell.selectionStyle = UITableViewCellSelectionStyle.None;
+    }
   }
 }
 
