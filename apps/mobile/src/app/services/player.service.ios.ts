@@ -157,13 +157,13 @@ export class PlayerService {
       } else {
         url = NSURL.URLWithString(streamUrl);
       }
-      let playerItem = AVPlayerItem.playerItemWithURL(url);
+      const playerItem = AVPlayerItem.playerItemWithURL(url);
       this._player.removeAllItems();
       this._player.insertItemAfterItem(playerItem, null);
       this.notifyObservable();
       this._player.play();
 
-      let coverPath = path.join(
+      const coverPath = path.join(
         knownFolders.documents().path + '/images',
         playingSong.coverArt + '.png'
       );
