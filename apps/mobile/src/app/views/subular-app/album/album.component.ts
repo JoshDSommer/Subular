@@ -11,7 +11,8 @@ import {
   RouterResolverDataObservable,
   ISong,
   SongStoreService,
-  SongState
+  SongState,
+  SubsonicCachedService
 } from '@Subular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -61,15 +62,14 @@ export class AlbumComponent implements OnInit {
     private songStore: SongStoreService,
     private queue: DownloadQueueService,
     private zone: NgZone,
-    private nsRouter: RouterExtensions
+    private nsRouter: RouterExtensions,
+    private cache: SubsonicCachedService
   ) {}
 
   ngOnInit() {
-    this.album$ = RouterResolverDataObservable<IAlbum>(
-      this.route,
-      this.router,
-      'album'
-    );
+    this.album$ = this.cache.getAlbum(
+      +this.route.snapshot.paramMap.get('albumId')
+    ) as Observable<IAlbum>;
     this.songs$ = this.album$.pipe(
       switchMap(album => this.subular.getSongs(album.id)),
       // this map is to filter out duplicates.

@@ -34,9 +34,7 @@ const routes: Routes = [
       {
         path: 'album/:albumId',
         component: AlbumComponent,
-        resolve: {
-          album: AlbumResolver
-        }
+        resolve: {}
       },
       { path: 'playlists', component: PlaylistsComponent },
       { path: 'playlist/:playlistId', component: PlaylistComponent },
