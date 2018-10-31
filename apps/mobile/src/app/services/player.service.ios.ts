@@ -245,9 +245,13 @@ export class PlayerService {
       _interval,
       null,
       currentTime => {
-        let _seconds = CMTimeGetSeconds(currentTime);
-        const position = _seconds / this.currentSong.song.duration * 100;
-        const remainder = Math.floor(this.currentSong.song.duration - _seconds);
+        const getDuration = currentSong =>
+          currentSong && currentSong.song && currentSong.song.duration
+            ? currentSong.song.duration
+            : 0;
+        const _seconds = CMTimeGetSeconds(currentTime);
+        const position = _seconds / getDuration(this.currentSong) * 100;
+        const remainder = Math.floor(getDuration(this.currentSong) - _seconds);
         if (remainder >= 1) {
           const mins = Math.floor(remainder / 60);
           const secs = remainder - mins * 60;
