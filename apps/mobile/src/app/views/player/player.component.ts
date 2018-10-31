@@ -2,7 +2,8 @@ import {
   Component,
   OnInit,
   ChangeDetectorRef,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  OnDestroy
 } from '@angular/core';
 import {
   PlayerService,
@@ -30,7 +31,7 @@ declare const CGAffineTransformMakeScale: any;
   templateUrl: './player.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PlayerComponent implements OnInit {
+export class PlayerComponent implements OnInit, OnDestroy {
   timeEclipsed: string;
   highlightBgColor = '#ebd2f5';
   private subscription: Subscription;
