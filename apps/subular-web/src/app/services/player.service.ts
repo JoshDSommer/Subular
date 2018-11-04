@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ISong, SubsonicService } from '@Subular/core';
-import { Observable, fromEvent, merge } from 'rxjs/Observable';
 import { map, tap } from 'rxjs/operators';
+import { fromEvent, Observable, merge } from 'rxjs';
 
 export enum PlayingStatus {
   loading,

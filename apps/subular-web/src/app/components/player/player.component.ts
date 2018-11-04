@@ -8,6 +8,7 @@ import {
 import { PlayerService, PlayingStatus } from '../../services/player.service';
 import { SubsonicService } from '@Subular/core';
 import { SongStoreService } from '@Subular/core';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'player',
@@ -40,13 +41,15 @@ export class PlayerComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.nowPlaying$ = this.playerService.nowPlaying$.do(nowPlaying => {
-      // if (nowPlaying && nowPlaying.song) {
-      // 	this.height = '90px';
-      // } else {
-      // 	this.height = '0px';
-      // }
-    });
+    this.nowPlaying$ = this.playerService.nowPlaying$.pipe(
+      tap(nowPlaying => {
+        // if (nowPlaying && nowPlaying.song) {
+        // 	this.height = '90px';
+        // } else {
+        // 	this.height = '0px';
+        // }
+      })
+    );
     this.songList = this.playerService.songList;
   }
 
