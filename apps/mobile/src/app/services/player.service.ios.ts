@@ -132,7 +132,7 @@ export class PlayerService {
   }
 
   playSong(index?: number): void {
-    if (this.songList.length > 0) {
+    if (this.songList && this.songList.length > 0) {
       this.currentIndex = !index ? 0 : index;
 
       const playingSong = this.songList[this.currentIndex];
@@ -163,27 +163,27 @@ export class PlayerService {
       this.notifyObservable();
       this._player.play();
 
-      const coverPath = path.join(
-        knownFolders.documents().path + '/images',
-        playingSong.coverArt + '.png'
-      );
-      let newImage = fromFile(coverPath);
-      if (!newImage) {
-        newImage = fromFile('~/app/images/artist.png');
-      }
+      // const coverPath = path.join(
+      //   knownFolders.documents().path + '/images',
+      //   playingSong.coverArt + '.png'
+      // );
+      // let newImage = fromFile(coverPath);
+      // if (!newImage) {
+      //   newImage = fromFile('~/app/images/artist.png');
+      // }
 
-      const image = MPMediaItemArtwork.alloc().initWithImage(newImage.ios);
+      // const image = MPMediaItemArtwork.alloc().initWithImage(newImage.ios);
       const values = ios.collections.jsArrayToNSArray([
         playingSong.title,
         playingSong.artist,
-        playingSong.album,
-        image
+        playingSong.album
+        //  image
       ] as any);
       const keys = ios.collections.jsArrayToNSArray([
         MPMediaItemPropertyTitle,
         MPMediaItemPropertyArtist,
-        MPMediaItemPropertyAlbumTitle,
-        MPMediaItemPropertyArtwork
+        MPMediaItemPropertyAlbumTitle
+        // MPMediaItemPropertyArtwork
       ]);
 
       const nowPlaying = NSDictionary.dictionaryWithObjectsForKeys(
@@ -259,7 +259,7 @@ export class PlayerService {
           // this is because this function is started to be called as soon as the play is playing.
           // not nescarrily after loading.
           this.currentSong.remainingTime = remainder;
-          if (this.currentSong.playing != PlayingStatus.paused) {
+          if (this.currentSong.playing !== PlayingStatus.paused) {
             this.currentSong.playing =
               position > 0 ? PlayingStatus.playing : PlayingStatus.loading;
           }
