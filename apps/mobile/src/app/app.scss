@@ -9,48 +9,8 @@ In many cases you may want to use the NativeScript core theme instead
 of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
-
-// LiteColors
-$backgroundColor: #fff;
-$lightPurple: #ca9fdb;
-$darkPurple: #4b0082;
-$primaryColor: #36454f;
-$lightGrey: #646262;
-$accentsDark: #a4a4a4;
-$accentsLight: #f9f9f9;
-$skeleton: #f8f8f8;
-$trackNumber: #8f8e8e;
-$borders: #e4e3e3;
-
-// // Dark
-// $backgroundColor: #171d22;
-// $lightPurple: #ca9fdb;
-// $darkPurple: #4b0082;
-// $primaryColor: #fff;
-// $lightGrey: #646262;
-// $accentsDark: #a4a4a4;
-// $accentsLight: #36454f;
-// $skeleton: #f8f8f8;
-// $trackNumber: #8f8e8e;
-// $borders: #36454f;
-
-$miniPlayerBg: #dbd3de;
-$heart: #eb2e9c;
-
-.login {
-  color: $lightPurple;
-  font-size: 50;
-  text-align: center;
-  width: 100%;
-  margin-bottom: 10%;
-}
-
-.login-wrap TextField {
-  text-align: center;
-  margin: 5 0 5 0;
-  font-size: 16;
-  color: $primaryColor;
-}
+@import 'scss/variables';
+@import 'scss/login';
 
 /* Player */
 ActionBar {
