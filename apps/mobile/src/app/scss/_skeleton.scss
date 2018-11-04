@@ -1,0 +1,22 @@
+.skeleton label {
+  background-color: #d1d1d1;
+  border-radius: 15px;
+}
+.number-skeleton,
+.genre-skeleton {
+  animation-name: skeletonShimmer;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+@keyframes skeletonShimmer {
+  0% {
+    background-color: #eeeeee;
+  }
+  50% {
+    background-color: #d1d1d1;
+  }
+  100% {
+    background-color: #eeeeee;
+  }
+}
