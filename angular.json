@@ -18,7 +18,10 @@
             "main": "apps/web/src/main.ts",
             "polyfills": "apps/web/src/polyfills.ts",
             "tsConfig": "apps/web/tsconfig.app.json",
-            "assets": ["apps/web/src/favicon.ico", "apps/web/src/assets"],
+            "assets": [
+              "apps/web/src/favicon.ico",
+              "apps/web/src/assets"
+            ],
             "styles": [
               "apps/web/src/styles.css",
               "./node_modules/font-awesome/css/font-awesome.min.css",
@@ -71,9 +74,14 @@
             "polyfills": "apps/web/src/polyfills.ts",
             "tsConfig": "apps/web/tsconfig.spec.json",
             "karmaConfig": "apps/web/karma.conf.js",
-            "styles": ["apps/web/src/styles.css"],
+            "styles": [
+              "apps/web/src/styles.css"
+            ],
             "scripts": [],
-            "assets": ["apps/web/src/favicon.ico", "apps/web/src/assets"]
+            "assets": [
+              "apps/web/src/favicon.ico",
+              "apps/web/src/assets"
+            ]
           }
         },
         "lint": {
@@ -83,7 +91,9 @@
               "apps/web/tsconfig.app.json",
               "apps/web/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -103,7 +113,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/web-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -129,7 +141,132 @@
               "libs/core/tsconfig.lib.json",
               "libs/core/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "subular-web": {
+      "root": "apps/subular-web/",
+      "sourceRoot": "apps/subular-web/src",
+      "projectType": "application",
+      "prefix": "Subular",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/subular-web",
+            "index": "apps/subular-web/src/index.html",
+            "main": "apps/subular-web/src/main.ts",
+            "polyfills": "apps/subular-web/src/polyfills.ts",
+            "tsConfig": "apps/subular-web/tsconfig.app.json",
+            "assets": [
+              "apps/subular-web/src/favicon.ico",
+              "apps/subular-web/src/assets"
+            ],
+            "styles": [
+              "apps/subular-web/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/subular-web/src/environments/environment.ts",
+                  "with": "apps/subular-web/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "subular-web:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "subular-web:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "subular-web:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/subular-web/tsconfig.app.json",
+              "apps/subular-web/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/subular-web/jest.config.js",
+            "tsConfig": "apps/subular-web/tsconfig.spec.json",
+            "setupFile": "apps/subular-web/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "subular-web-e2e": {
+      "root": "apps/subular-web-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/subular-web-e2e/cypress.json",
+            "tsConfig": "apps/subular-web-e2e/tsconfig.e2e.json",
+            "devServerTarget": "subular-web:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "subular-web:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }

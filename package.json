@@ -78,6 +78,12 @@
     "tsickle": "0.33.1",
     "tslib": "^1.7.1",
     "tslint": "~5.11.0",
-    "typescript": "3.1.6"
+    "typescript": "3.1.6",
+    "cypress": "^3.1.0",
+    "@types/jquery": "3.3.6",
+    "@nrwl/builders": "7.0.0",
+    "jest": "^23.0.0",
+    "@types/jest": "^23.0.0",
+    "jest-preset-angular": "6.0.1"
   }
 }
