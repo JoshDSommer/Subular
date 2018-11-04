@@ -1,0 +1,69 @@
+.card-dark{
+	background:rgb(34, 34, 34);
+}
+.blurred-background{
+	-webkit-filter: blur(20px);
+	-moz-filter: blur(15px);
+	-o-filter: blur(15px);
+	-ms-filter: blur(15px);
+	filter: blur(15px);
+	opacity: 0.95;
+	position:fixed;
+	width:100%;
+	height:80px;
+	bottom:0;
+	z-index: 0;
+}
+.playing-footer{
+	width:100%;
+	height:80px;
+	background-color: #fff;
+	border-top:1px #222222;
+	box-shadow: 5px -1px 5px #888888;
+}
+.player-controls{
+	padding-left: 40px;
+	vertical-align: middle;
+	display: flex;
+}
+
+.play-pause-button{
+	display: inline-block;
+}
+	i.fa{
+		color: #222222;
+		line-height: 60px !important;
+		font-size: 54px ;
+	}
+	i.play-pause{
+		margin-right:20px;
+	}
+	div.ff-rw i, div.heart i, .fa-step-backward, .fa-step-forward{
+		font-size: 24px !important;
+	}
+	i.fa:hover{
+		color:#9d9d9d;
+	}
+	#now-playing-list{
+		position:absolute;
+		bottom:75px;
+		top:75px;
+		right:30px;
+		background-color:#fff;
+		width:79%;
+		overflow-y:auto;
+		border-radius:2px;
+		z-index: 99;
+		padding:5px 0px 10px;
+		border:1px #4B0082 solid;
+	}
+	#now-playing-list h3{
+		padding:1px 15px;
+	}
+
+	subular-list-item div table tr td, subular-list-item div table tr th{
+		color: #101010 !important;
+	}
+	.secondary .fa{
+		font-size: 38px;
+	}

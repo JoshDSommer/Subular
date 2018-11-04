@@ -1,0 +1,39 @@
+:host{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+h1{
+	color: #fff;
+	padding: 0 1em;
+	font-size: 2.5em;
+}
+.album-image{
+	width: 200px;
+	border-radius: 5px;
+}
+::ng-deep .ui-state-default{
+	background-color: transparent
+}
+
+::ng-deep table thead tr th, ::ng-deep table tbody tr td{
+	border-width: 0 !important;
+}
+
+::ng-deep .ui-widget-content{
+	border-width: 0;
+	background-color: transparent;
+}
+
+::ng-deep div.ui-widget-content{
+	background-color: #575757;
+}
+
+::ng-deep tr.ui-state-highlight{
+	color:#a247e5;
+}
+
+::ng-deep .ui-datatable{
+	margin-bottom: 50px;
+}
