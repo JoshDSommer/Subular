@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { PlayerService } from '../../../services/player.service';
 import { HostBinding } from '@angular/core';
 import { SongStoreService } from '@Subular/core';
+import { switchMap, map, tap, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'album',
@@ -25,7 +26,8 @@ export class AlbumComponent implements OnInit {
 
   private listedSongs: ISong[];
 
-  @HostBinding('style.background-image') backgroundImage;
+  @HostBinding('style.background-image')
+  backgroundImage;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,10 +44,10 @@ export class AlbumComponent implements OnInit {
       'album'
     );
 
-    this.songs$ = this.album$
-      .switchMap(album => this.subsonic.getSongs(album.id))
+    this.songs$ = this.album$.pipe(
+      switchMap(album => this.subsonic.getSongs(album.id)),
       // this map is to filter out duplicates.
-      .map(songs =>
+      map(songs =>
         songs.filter((song, index, self) => {
           return (
             index ===
@@ -57,16 +59,18 @@ export class AlbumComponent implements OnInit {
             })
           );
         })
-      )
-      .do(songs => {
+      ),
+      tap(songs => {
         this.getCoverArt(songs[0].id);
-      })
-      .switchMap(songs => this.songStore.addSongs(songs))
-      .do(songs => (this.listedSongs = songs));
+      }),
+      switchMap(songs => this.songStore.addSongs(songs)),
+      tap(songs => (this.listedSongs = songs))
+    );
 
-    this.nowPlayingSong$ = this.playerService.nowPlaying$
-      .filter(nowPlaying => !!nowPlaying && !!nowPlaying.song)
-      .map(nowPlaying => nowPlaying.song);
+    this.nowPlayingSong$ = this.playerService.nowPlaying$.pipe(
+      filter(nowPlaying => !!nowPlaying && !!nowPlaying.song),
+      map(nowPlaying => nowPlaying.song)
+    );
   }
 
   selectSong($song: ISong) {

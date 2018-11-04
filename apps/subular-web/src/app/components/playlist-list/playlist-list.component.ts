@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SubsonicService, IPlaylists } from '@Subular/core';
 import { Observable } from 'rxjs/Observable';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'playlist-list',
@@ -14,7 +15,7 @@ export class PlaylistListComponent implements OnInit {
   constructor(private subsonic: SubsonicService) {
     this.playlists$ = this.subsonic
       .getPlaylists()
-      .do(playlists => (this.playlists = playlists));
+      .pipe(tap(playlists => (this.playlists = playlists)));
   }
 
   createNew() {
@@ -33,7 +34,7 @@ export class PlaylistListComponent implements OnInit {
     this.playlists$ = this.subsonic
       .createPlaylist(tempPlaylistName)
       .switchMap(() => this.subsonic.getPlaylists())
-      .do(playlists => (this.playlists = playlists));
+      .pipe(tap(playlists => (this.playlists = playlists)));
   }
 
   ngOnInit() {}

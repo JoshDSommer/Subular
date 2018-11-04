@@ -11,6 +11,7 @@ import { PlayerService } from '../../../services/player.service';
 import { MenuItem } from 'primeng/primeng';
 import { HostBinding } from '@angular/core';
 import { SongStoreService } from '@Subular/core';
+import { filter, map, startWith, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'playlist',
@@ -29,7 +30,8 @@ export class PlaylistComponent implements OnInit {
 
   private listedSongs: ISong[];
 
-  @HostBinding('style.background-image') backgroundImage;
+  @HostBinding('style.background-image')
+  backgroundImage;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,19 +42,22 @@ export class PlaylistComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.playlistId$ = this.router.events
-      .filter(value => value instanceof NavigationEnd)
-      .map(() => this.route.snapshot.params['playlistId'])
-      .startWith(this.route.snapshot.params['playlistId']);
+    this.playlistId$ = this.router.events.pipe(
+      filter(value => value instanceof NavigationEnd),
+      map(() => this.route.snapshot.params['playlistId']),
+      startWith(this.route.snapshot.params['playlistId'])
+    );
 
-    this.playlist$ = this.playlistId$
-      .switchMap(playlistId => this.subsonic.getPlaylist(playlistId))
-      .do(playlist => (this.listedSongs = playlist.entry))
-      .do(playlist => (this.playlistId = playlist.id));
+    this.playlist$ = this.playlistId$.pipe(
+      switchMap(playlistId => this.subsonic.getPlaylist(playlistId)),
+      tap(playlist => (this.listedSongs = playlist.entry)),
+      tap(playlist => (this.playlistId = playlist.id))
+    );
 
-    this.nowPlayingSong$ = this.playerService.nowPlaying$
-      .filter(nowPlaying => !!nowPlaying && !!nowPlaying.song)
-      .map(nowPlaying => nowPlaying.song);
+    this.nowPlayingSong$ = this.playerService.nowPlaying$.pipe(
+      filter(nowPlaying => !!nowPlaying && !!nowPlaying.song),
+      map(nowPlaying => nowPlaying.song)
+    );
 
     this.contextMenuItems = [
       {
