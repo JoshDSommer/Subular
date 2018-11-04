@@ -5,7 +5,6 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "noEmitHelpers": true,
-        "skipLibCheck": true,
         "noEmitOnError": true,
         "lib": [
             "es6",
@@ -15,7 +14,7 @@
         "baseUrl": ".",
         "paths": {
             "~/*": [
-                "app/*"
+                "src/*"
             ],
             "*": [
                 "./node_modules/tns-core-modules/*",

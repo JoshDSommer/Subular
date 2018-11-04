@@ -1,16 +1,17 @@
 {
-  "description": "A Subsonic player ",
-  "license": "SEE LICENSE IN <your-license-filename>",
-  "readme": "NativeScript Application",
-  "repository": "<fill-your-repository-here>",
   "nativescript": {
-    "id": "org.joshdsommer.subular",
+    "id": "org.nativescript.mobile",
+    "tns-android": {
+      "version": "4.2.0"
+    },
     "tns-ios": {
-      "version": "5.0.0-rc-2018-10-17-161243-01"
+      "version": "5.0.0"
     }
   },
+  "description": "NativeScript Application",
+  "license": "SEE LICENSE IN <your-license-filename>",
+  "repository": "<fill-your-repository-here>",
   "dependencies": {
-    "@Subular/core": "file:../../libs/core",
     "@angular/animations": "~6.1.0",
     "@angular/common": "~6.1.0",
     "@angular/compiler": "~6.1.0",
@@ -20,25 +21,21 @@
     "@angular/platform-browser": "~6.1.0",
     "@angular/platform-browser-dynamic": "~6.1.0",
     "@angular/router": "~6.1.0",
-    "crypto-js": "file:../../node_modules/crypto-js",
-    "nativescript-angular": "^6.2.0-2018-10-19-164050-02",
-    "nativescript-blur": "^2.0.0",
-    "nativescript-fresco": "^4.0.0",
+    "nativescript-angular": "^6.2.0",
     "nativescript-theme-core": "~1.0.4",
-    "reflect-metadata": "~0.1.10",
+    "reflect-metadata": "~0.1.8",
     "rxjs": "^6.0.0",
-    "rxjs-compat": "file:../../node_modules/rxjs-compat",
-    "tns-core-modules": "^5.0.0-rc-2018-10-16-182917-07",
-    "tns-platform-declarations": "^4.1.0",
+    "tns-core-modules": "^5.0.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.7.0-rc.0",
     "@angular/compiler-cli": "~6.1.0",
-    "nativescript-dev-sass": "^1.6.0",
+    "@nativescript/schematics": "~0.3.0",
+    "@ngtools/webpack": "~6.2.0",
     "nativescript-dev-typescript": "~0.7.0",
-    "nativescript-dev-webpack": "^0.17.0-rc.0",
+    "nativescript-dev-webpack": "^0.17.0",
+    "tns-platform-declarations": "^4.1.0",
     "typescript": "~2.7.2"
   },
-  "author": "JoshDSommer@gmail.com"
+  "readme": "NativeScript Application"
 }
