@@ -25,7 +25,7 @@
     "help": "./node_modules/.bin/nx help",
     "ios": "cd apps/mobile && tns run ios --bundle --syncAllFiles",
     "web": "ng serve subular-web",
-    "e2e:web": "ng e2e subular-web-e2e"
+    "e2e:web": "ng e2e subular-web-e2e --watch"
   },
   "private": true,
   "dependencies": {
