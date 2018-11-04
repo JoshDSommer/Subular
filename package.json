@@ -24,7 +24,8 @@
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
     "ios": "cd apps/mobile && tns run ios --bundle --syncAllFiles",
-    "web": "ng serve subular-web"
+    "web": "ng serve subular-web",
+    "e2e:web": "ng e2e subular-web-e2e"
   },
   "private": true,
   "dependencies": {
