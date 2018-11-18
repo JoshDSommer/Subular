@@ -24,6 +24,8 @@
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
     "ios": "cd apps/mobile && tns run ios  --syncAllFiles",
+    "ios:bundle": "cd apps/mobile && tns run ios --bundle  --syncAllFiles",
+    "mobile:clean": "rm -rf apps/mobile/node_modules/ apps/mobile/platforms/ apps/mobile/hooks/",
     "web": "ng serve"
   },
   "private": true,
