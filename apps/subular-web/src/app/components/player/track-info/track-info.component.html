@@ -1,9 +1,0 @@
-<div class="ui-g-1">
-	<img [routerLink]="['ArtistAlbum', { id: song?.parent }]" *ngIf="imgUrl != null && song" class="pull-right cover-img" [src]="imgUrl"
-	/>
-</div>
-<div class="ui-g-7 no-padding">
-	<span [routerLink]="['/album/'+ song?.albumId]" class="title">{{song?.title}}</span>
-	<span [routerLink]="['/albums/'+ song?.artistId]" class="artist">{{song?.artist}}</span>
-	<span [routerLink]="'/album/'+ song?.albumId" class="album text-muted">{{song?.album}}</span>
-</div>

@@ -24,8 +24,7 @@
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
     "ios": "cd apps/mobile && tns run ios --bundle --syncAllFiles",
-    "web": "ng serve subular-web",
-    "e2e:web": "ng e2e subular-web-e2e --watch"
+    "web": "ng serve"
   },
   "private": true,
   "dependencies": {
@@ -79,12 +78,6 @@
     "tsickle": "0.33.1",
     "tslib": "^1.7.1",
     "tslint": "~5.11.0",
-    "typescript": "3.1.6",
-    "cypress": "^3.1.0",
-    "@types/jquery": "3.3.6",
-    "@nrwl/builders": "7.0.0",
-    "jest": "^23.0.0",
-    "@types/jest": "^23.0.0",
-    "jest-preset-angular": "6.0.1"
+    "typescript": "3.1.6"
   }
 }
