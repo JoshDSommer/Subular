@@ -2,18 +2,10 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  Input,
-  ChangeDetectorRef,
-  NgZone
+  Input
 } from '@angular/core';
 import { of, Observable } from 'rxjs';
-import { SubsonicService } from '@Subular/core';
-import { tap, map, switchMap, concat, delay, catchError } from 'rxjs/operators';
-import { getFile } from 'tns-core-modules/http/http';
 import { knownFolders, path, File } from 'tns-core-modules/file-system';
-import { CurrentConnectionService } from '../../services/currentConnection.service';
-import { connectionType } from 'tns-core-modules/connectivity/connectivity';
-import { fromPromise } from 'rxjs/observable/fromPromise';
 
 export const PLACEHOLDER_IMAGE = '~/app/images/artist.png';
 
@@ -25,10 +17,14 @@ export const PLACEHOLDER_IMAGE = '~/app/images/artist.png';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArtistImageComponent implements OnInit {
-  @Input() row: number;
-  @Input() col: number;
-  @Input() artistId: number;
-  @Input() name: string;
+  @Input()
+  row: number;
+  @Input()
+  col: number;
+  @Input()
+  artistId: number;
+  @Input()
+  name: string;
   constructor() {}
 
   ngOnInit() {}
@@ -61,9 +57,5 @@ export class ArtistImageComponent implements OnInit {
       }
     }
     return placeholderImage$;
-  }
-
-  ngAfterViewInit() {
-    // if (this.artistId) {
   }
 }

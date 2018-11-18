@@ -1,4 +1,0 @@
-<GridLayout rows="*" columns="25,*" class="song-list-item" (tap)="selectSong(index)">
-	<Label *ngIf="nowPlaying.song.id == item.id" row="0" , col="0" text="&#xf144;" class="fa" textWrap="true"></Label>
-	<Label row="0" , col="1" [text]="item.title" class="song"></Label>
-</GridLayout>

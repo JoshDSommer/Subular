@@ -12,6 +12,8 @@
   "license": "SEE LICENSE IN <your-license-filename>",
   "repository": "<fill-your-repository-here>",
   "dependencies": {
+    "@Subular/core": "file:../../libs/core",
+    "crypto-js": "file:../../node_modules/crypto-js",
     "@angular/animations": "~6.1.0",
     "@angular/common": "~6.1.0",
     "@angular/compiler": "~6.1.0",
@@ -25,6 +27,7 @@
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.8",
     "rxjs": "^6.0.0",
+    "rxjs-compat": "6.3.3",
     "tns-core-modules": "^5.0.1",
     "zone.js": "^0.8.26"
   },
