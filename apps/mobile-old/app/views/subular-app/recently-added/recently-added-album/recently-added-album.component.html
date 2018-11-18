@@ -1,6 +1,0 @@
-<StackLayout [width]="imageHeightWidth" [marginLeft]="imageSideMargins" [marginBottom]="imageSideMargins" class="album-card"
- orientation="vertical" [nsRouterLink]="['../album', album?.id , { returnLink: '/app/recent', returnLinkText: 'Recently Added' }]">
-	<Image [width]="imageHeightWidth" [height]="imageHeightWidth" stretch="fill" class="album-image" [src]="getCoverArt(album) | async"></Image>
-	<Label *ngIf="album?.name" class="album-name" [text]="album?.name"></Label>
-	<Label *ngIf="!album?.name" text="" class="placeholder-name"></Label>
-</StackLayout>
