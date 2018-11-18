@@ -1,6 +1,0 @@
-<ng-container class="play-pause-button" *ngIf="isHearted else unHearted">
-	<i class="fa fa-heart" (click)="unHeartSong()"></i>
-</ng-container>
-<ng-template #unHearted>
-		<i class="fa fa-heart-o" (click)="heartSong()"></i>
-</ng-template>

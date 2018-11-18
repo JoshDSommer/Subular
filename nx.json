@@ -16,12 +16,6 @@
     },
     "core": {
       "tags": []
-    },
-    "subular-web": {
-      "tags": []
-    },
-    "subular-web-e2e": {
-      "tags": []
     }
   }
 }
