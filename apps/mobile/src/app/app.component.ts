@@ -4,6 +4,7 @@ import { ARTIST_LIST_CACHE_KEY } from './views/subular-app/artist-list/artist-li
 import { setNumber } from 'tns-core-modules/application-settings';
 
 @Component({
+  moduleId: module.id,
   selector: 'ns-app',
   templateUrl: 'app.component.html'
 })
