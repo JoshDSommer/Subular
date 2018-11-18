@@ -12,6 +12,7 @@
   "license": "SEE LICENSE IN <your-license-filename>",
   "repository": "<fill-your-repository-here>",
   "dependencies": {
+    "@Subular/core": "file:../../libs/core",
     "@angular/animations": "~6.1.0",
     "@angular/common": "~6.1.0",
     "@angular/compiler": "~6.1.0",
