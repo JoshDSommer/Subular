@@ -15,7 +15,27 @@ export class DownloadQueueService {
   downloadingSongs = false;
   // private worker: Worker;
   private songs: ISongToDownload[] = [];
-
+  //non worker service
+  private worker = {
+    postMessage(msg) {
+      getFile(
+        {
+          url: msg.url,
+          method: 'GET'
+        },
+        msg.path
+      ).then(
+        () => {
+          this.onmessage();
+        },
+        error => {
+          this.error();
+        }
+      );
+    },
+    onmessage: null,
+    onerror: null
+  };
   constructor(private subular: SubularMobileService) {
     //	this.worker = this.workers.initDownloadWorker();
     this.worker.onerror = error => {
@@ -24,7 +44,7 @@ export class DownloadQueueService {
   }
 
   addSongToTheQueue(song: ISongToDownload): boolean {
-    let path = fs.path.join(
+    const path = fs.path.join(
       fs.knownFolders.documents().path,
       song.song.id.toString() + '.mp3'
     );
@@ -66,25 +86,4 @@ export class DownloadQueueService {
       this.downloadingSongs = false;
     }
   }
-  //non worker service
-  worker = {
-    postMessage(msg) {
-      getFile(
-        {
-          url: msg.url,
-          method: 'GET'
-        },
-        msg.path
-      ).then(
-        () => {
-          this.onmessage();
-        },
-        error => {
-          this.error();
-        }
-      );
-    },
-    onmessage: null,
-    onerror: null
-  };
 }
