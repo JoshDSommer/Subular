@@ -1,7 +1,4 @@
-<StackLayout
-  [animate]="SLIDE_RIGHT_ANIMATION"
-  class="offset-for-slide recently-added-wrap"
->
+<StackLayout class="recently-added-wrap">
   <ng-container *ngIf="(albums$ | async) as album; else: loading">
     <AbsoluteLayout class="" height="100%">
       <GridLayout
