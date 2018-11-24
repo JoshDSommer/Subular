@@ -43,6 +43,7 @@ import { ComponentModule } from './components/components.module';
 import { QueueItemComponent } from './views/player/queue-item/queue-item.component';
 import { BackLinkComponent } from './components/back-link/back-link.component';
 import { DownloadQueueService } from './services';
+import { VIBRATE_PROVIDER } from './providers/vibrator.provider';
 
 if (applicationModule.android) {
   applicationModule.on('launch', () => {});
@@ -84,6 +85,7 @@ if (applicationModule.android) {
   ],
   providers: [
     LOCALSTORAGE_SERVICE,
+    VIBRATE_PROVIDER,
     MD5_SERVICE,
     PlayerService,
     SubularMobileService,

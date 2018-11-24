@@ -17,6 +17,7 @@ import { getNumber, setNumber } from 'application-settings';
 import { SubularMobileService } from '../../../services/subularMobile.service';
 
 import { tap } from 'rxjs/operators';
+import { TapticEngine } from 'nativescript-taptic-engine';
 
 export const ARTIST_LIST_CACHE_KEY = 'artist-list-cached-index';
 
@@ -28,8 +29,10 @@ export const ARTIST_LIST_CACHE_KEY = 'artist-list-cached-index';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArtistListComponent implements OnInit {
-  @ViewChild('artistList') _artistListView: ElementRef;
-  @ViewChild('label') _label: ElementRef;
+  @ViewChild('artistList')
+  _artistListView: ElementRef;
+  @ViewChild('label')
+  _label: ElementRef;
 
   cachedIndex: any;
   artists$: Observable<IArtist[]>;
@@ -48,7 +51,8 @@ export class ArtistListComponent implements OnInit {
 
   constructor(
     private subular: SubularMobileService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private vibrator: TapticEngine
   ) {}
 
   ngOnInit() {
@@ -75,7 +79,7 @@ export class ArtistListComponent implements OnInit {
       const indexToGoTo = Math.floor(indexRaw);
       const char = this.alphabet[indexToGoTo];
 
-      if (this.previousCharacterToJumpTo != char) {
+      if (this.previousCharacterToJumpTo !== char) {
         this.jumpToArtistThatStartsWith(char);
         this.previousCharacterToJumpTo = char;
       }
@@ -85,11 +89,12 @@ export class ArtistListComponent implements OnInit {
     if (!char) {
       return;
     }
-    if (char == '#') {
+    if (char === '#') {
       char = '1';
     }
-    if (char == 'a') {
+    if (char === 'a') {
       this.artistListView.scrollToIndex(0);
+      this.vibrator.selection();
       return;
     }
     const firstArtistThatStartsWith = this.artists.find(artist =>
@@ -103,6 +108,7 @@ export class ArtistListComponent implements OnInit {
     const itemToScrollToIndex = this.artists.indexOf(firstArtistThatStartsWith);
     if (firstArtistThatStartsWith && itemToScrollToIndex) {
       this.artistListView.scrollToIndex(itemToScrollToIndex);
+      this.vibrator.selection();
     }
   }
 
