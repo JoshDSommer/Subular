@@ -35,6 +35,7 @@
     "@angular/compiler-cli": "~6.1.0",
     "@nativescript/schematics": "~0.3.0",
     "@ngtools/webpack": "~6.2.0",
+    "nativescript-dev-sass": "^1.6.0",
     "nativescript-dev-typescript": "~0.7.0",
     "nativescript-dev-webpack": "^0.17.0",
     "tns-platform-declarations": "^4.1.0",
