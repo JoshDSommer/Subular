@@ -13,7 +13,6 @@
   "repository": "<fill-your-repository-here>",
   "dependencies": {
     "@Subular/core": "file:../../libs/core",
-    "crypto-js": "file:../../node_modules/crypto-js",
     "@angular/animations": "~6.1.0",
     "@angular/common": "~6.1.0",
     "@angular/compiler": "~6.1.0",
@@ -23,7 +22,9 @@
     "@angular/platform-browser": "~6.1.0",
     "@angular/platform-browser-dynamic": "~6.1.0",
     "@angular/router": "~6.1.0",
+    "crypto-js": "file:../../node_modules/crypto-js",
     "nativescript-angular": "^6.2.0",
+    "nativescript-taptic-engine": "^2.0.3",
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.8",
     "rxjs": "^6.0.0",
