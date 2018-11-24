@@ -4,7 +4,8 @@ import {
   ViewChild,
   ElementRef,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  AfterViewInit
 } from '@angular/core';
 import { IArtist } from '@Subular/core';
 import { Observable } from 'rxjs/Observable';
@@ -28,7 +29,20 @@ export const ARTIST_LIST_CACHE_KEY = 'artist-list-cached-index';
   styleUrls: ['./artist-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ArtistListComponent implements OnInit {
+export class ArtistListComponent implements OnInit, AfterViewInit {
+  get artistListView(): ListView {
+    return this._artistListView.nativeElement;
+  }
+
+  get labelView(): ListView {
+    return this._label.nativeElement;
+  }
+
+  constructor(
+    private subular: SubularMobileService,
+    private ref: ChangeDetectorRef,
+    private vibrator: TapticEngine
+  ) {}
   @ViewChild('artistList')
   _artistListView: ElementRef;
   @ViewChild('label')
@@ -39,21 +53,9 @@ export class ArtistListComponent implements OnInit {
   alphabet = 'abcdefghijklmnopqrstuvwxyz#'.split('');
   artists: IArtist[];
 
-  get artistListView(): ListView {
-    return this._artistListView.nativeElement;
-  }
-
-  get labelView(): ListView {
-    return this._label.nativeElement;
-  }
-
   detectChanges = tap(() => this.ref.markForCheck());
 
-  constructor(
-    private subular: SubularMobileService,
-    private ref: ChangeDetectorRef,
-    private vibrator: TapticEngine
-  ) {}
+  previousCharacterToJumpTo: string;
 
   ngOnInit() {
     this.artists$ = this.subular
@@ -65,8 +67,6 @@ export class ArtistListComponent implements OnInit {
     const jumpToIndex = getNumber(ARTIST_LIST_CACHE_KEY, 0);
     this.artistListView.scrollToIndex(jumpToIndex);
   }
-
-  previousCharacterToJumpTo: string;
   slide($event: TouchGestureEventData) {
     const yCoordinate = $event.getY();
     const stackWrapper = $event.view as StackLayout;
