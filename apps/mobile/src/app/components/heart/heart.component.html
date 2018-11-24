@@ -1,6 +1,18 @@
-<ng-container class="play-pause-button" *ngIf="isHearted else unHearted">
-	<Label [row]="row" [col]="col" class="fa fa-heart " (tap)="unHeart()" text="&#xf004;"></Label>
+<ng-container class="play-pause-button" *ngIf="isHearted; else: unHearted">
+  <label
+    [row]="row"
+    [col]="col"
+    class="fa fa-heart "
+    (tap)="unHeart()"
+    text="&#xf004;"
+  ></label>
 </ng-container>
 <ng-template #unHearted>
-	<Label [row]="row" [col]="col" class="fa fa-unheart " (tap)="heart()" text="&#xf08a;"></Label>
+  <label
+    [row]="row"
+    [col]="col"
+    class="fa fa-unheart "
+    (tap)="heart()"
+    text="&#xf08a;"
+  ></label>
 </ng-template>

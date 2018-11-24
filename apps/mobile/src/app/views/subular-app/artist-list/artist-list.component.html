@@ -1,20 +1,46 @@
 <StackLayout class="page-padding-left artist-list">
-	<AbsoluteLayout class="" borderColor="white" borderWidth="1" height="100%">
-		<GridLayout rows="*" top="0" left="0" width="100%" height="100%" columns="*,18">
-			<ListView #artistList [items]="artists$ | async" class="list-group">
-				<ng-template let-item="item" let-odd="odd" let-even="even" let-i="index">
-					<GridLayout [class.first-item]="i == 0" rows="*" columns="34,*" [nsRouterLink]="['../albums', item.id ]" (tap)="cacheIndex(i)"
-					 class="artist-list-item">
-						<artist-image row="0" col="0" [name]="item.name" [artistId]="item.id"></artist-image>
-						<Label row="0" col="1" [text]="item.name" class="artist"></Label>
-					</GridLayout>
-				</ng-template>
-			</ListView>
-			<StackLayout (touch)="slide($event)" row="0" col="1" class="letter-wrap">
-				<Label [text]="char" *ngFor="let char of alphabet" textWrap="true"></Label>
-			</StackLayout>
-		</GridLayout>
-		<Label top="0" left="0" #label text="Artists" class="title"></Label>
-	</AbsoluteLayout>
-
+  <AbsoluteLayout class="" borderColor="white" borderWidth="1" height="100%">
+    <GridLayout
+      rows="*"
+      top="0"
+      left="0"
+      width="100%"
+      height="100%"
+      columns="*,18"
+    >
+      <ListView #artistList [items]="artists$ | async" class="list-group">
+        <ng-template
+          let-item="item"
+          let-odd="odd"
+          let-even="even"
+          let-i="index"
+        >
+          <GridLayout
+            [class.first-item]="i == 0"
+            rows="*"
+            columns="34,*"
+            [nsRouterLink]="['../albums', item.id]"
+            (tap)="cacheIndex(i)"
+            class="artist-list-item"
+          >
+            <artist-image
+              row="0"
+              col="0"
+              [name]="item.name"
+              [artistId]="item.id"
+            ></artist-image>
+            <label row="0" col="1" [text]="item.name" class="artist"></label>
+          </GridLayout>
+        </ng-template>
+      </ListView>
+      <StackLayout (touch)="slide($event)" row="0" col="1" class="letter-wrap">
+        <label
+          [text]="char"
+          *ngFor="let char of alphabet"
+          textWrap="true"
+        ></label>
+      </StackLayout>
+    </GridLayout>
+    <label top="0" left="0" #label text="Artists" class="title"></label>
+  </AbsoluteLayout>
 </StackLayout>
