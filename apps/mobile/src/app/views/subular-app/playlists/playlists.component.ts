@@ -10,8 +10,7 @@ import { popIn } from '../../../pipes/popin.pipe';
 @Component({
   moduleId: module.id,
   selector: 'playlists',
-  templateUrl: './playlists.component.html',
-  styleUrls: ['./playlists.component.css']
+  templateUrl: './playlists.component.html'
 })
 export class PlaylistsComponent implements OnInit {
   playlists$: Observable<IPlaylists>;
@@ -22,15 +21,13 @@ export class PlaylistsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.playlists$ = this.subular
-      .getPlaylists()
-      .pipe(
-        map(playlists => [
-          { id: 0, name: 'Favorites' } as IPlaylist,
-          ...playlists
-        ]),
-        popIn
-      );
+    this.playlists$ = this.subular.getPlaylists().pipe(
+      map(playlists => [
+        { id: 0, name: 'Favorites' } as IPlaylist,
+        ...playlists
+      ]),
+      popIn
+    );
   }
 
   getCoverArt(playlist: IPlaylist) {

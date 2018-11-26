@@ -26,7 +26,6 @@ export const ARTIST_LIST_CACHE_KEY = 'artist-list-cached-index';
   moduleId: module.id,
   selector: 'artist-list',
   templateUrl: './artist-list.component.html',
-  styleUrls: ['./artist-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArtistListComponent implements OnInit, AfterViewInit {

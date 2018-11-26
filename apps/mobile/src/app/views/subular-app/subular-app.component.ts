@@ -28,7 +28,6 @@ import { RouterExtensions } from 'nativescript-angular/router';
   moduleId: module.id,
   selector: 'subular-app',
   templateUrl: './subular-app.component.html',
-  styleUrls: ['./subular-app.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SubularAppComponent {

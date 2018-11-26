@@ -27,8 +27,7 @@ interface IAlbumSong extends ISong {
 @Component({
   moduleId: module.id,
   selector: 'playlist',
-  templateUrl: './playlist.component.html',
-  styleUrls: ['./playlist.component.css']
+  templateUrl: './playlist.component.html'
 })
 export class PlaylistComponent implements OnInit {
   connection$: Observable<ConnectionType>;
