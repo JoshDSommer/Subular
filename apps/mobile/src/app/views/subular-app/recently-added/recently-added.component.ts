@@ -17,8 +17,7 @@ import { ItemEventData } from 'tns-core-modules/ui/list-view/list-view';
 @Component({
   moduleId: module.id,
   selector: 'recently-added',
-  templateUrl: './recently-added.component.html',
-  styleUrls: ['./recently-added.component.css']
+  templateUrl: './recently-added.component.html'
 })
 export class RecentlyAddedComponent implements OnInit {
   albums$: Observable<IAlbum[][]>;
@@ -26,7 +25,7 @@ export class RecentlyAddedComponent implements OnInit {
   SPIN_ANIMATION = SPIN_ANIMATION;
   SLIDE_RIGHT_ANIMATION = SLIDE_RIGHT_ANIMATION;
 
-  imageHeightWidth = screen.mainScreen.widthDIPs / 12 * 5;
+  imageHeightWidth = (screen.mainScreen.widthDIPs / 12) * 5;
   imageSideMargins = screen.mainScreen.widthDIPs / 18;
   albums: IAlbum[][];
 
@@ -45,13 +44,11 @@ export class RecentlyAddedComponent implements OnInit {
     this.nsRouter.back();
   }
   ngOnInit() {
-    this.albums$ = this.subular
-      .getRecentAdditions()
-      .pipe(
-        map(albums => smashArray<IAlbum>(albums)),
-        popIn,
-        tap(albums => (this.albums = albums))
-      );
+    this.albums$ = this.subular.getRecentAdditions().pipe(
+      map(albums => smashArray<IAlbum>(albums)),
+      popIn,
+      tap(albums => (this.albums = albums))
+    );
   }
 
   onItemLoading(args: ItemEventData) {

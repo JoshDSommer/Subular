@@ -1,9 +1,4 @@
-<StackLayout
-  *ngIf="(album$ | async) as album"
-  [animate]="animateOptions"
-  height="100%"
-  class="offset-for-slide album-wrap"
->
+<StackLayout *ngIf="(album$ | async) as album" height="100%" class="album-wrap">
   <ng-container *ngIf="(returnLink$ | async) as returnlink">
     <back-link [text]="returnlink.text" [link]="returnlink.link"></back-link>
     <ListView

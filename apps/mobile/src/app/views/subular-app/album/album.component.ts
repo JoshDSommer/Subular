@@ -38,8 +38,7 @@ interface IAlbumSong extends ISong {
 @Component({
   moduleId: module.id,
   selector: 'album',
-  templateUrl: './album.component.html',
-  styleUrls: ['./album.component.css']
+  templateUrl: './album.component.html'
 })
 export class AlbumComponent implements OnInit {
   returnLink$: Observable<any>;

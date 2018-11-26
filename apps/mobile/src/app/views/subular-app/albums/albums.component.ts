@@ -17,14 +17,13 @@ import { CurrentConnectionService } from '../../../services/currentConnection.se
 @Component({
   moduleId: module.id,
   selector: 'albums',
-  templateUrl: 'albums.component.html',
-  styleUrls: ['albums.component.css']
+  templateUrl: 'albums.component.html'
 })
 export class AlbumsComponent implements OnInit {
   albums: IAlbum[];
 
   animateOptions = SLIDE_RIGHT_ANIMATION;
-  imageHeightWidth = screen.mainScreen.widthDIPs / 12 * 5;
+  imageHeightWidth = (screen.mainScreen.widthDIPs / 12) * 5;
   imageSideMargins = screen.mainScreen.widthDIPs / 18;
 
   constructor(
@@ -97,12 +96,10 @@ export class AlbumsComponent implements OnInit {
           if (connection == connectionType.wifi) {
             return placeholderImage$.pipe(
               concat(
-                this.subsonic
-                  .getArtistInfo(artistId)
-                  .pipe(
-                    map(info => info.mediumImageUrl),
-                    switchMap(downloadImage$)
-                  )
+                this.subsonic.getArtistInfo(artistId).pipe(
+                  map(info => info.mediumImageUrl),
+                  switchMap(downloadImage$)
+                )
               )
             ) as Observable<string>;
           }
