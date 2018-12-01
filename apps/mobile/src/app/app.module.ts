@@ -44,15 +44,22 @@ import { QueueItemComponent } from './views/player/queue-item/queue-item.compone
 import { BackLinkComponent } from './components/back-link/back-link.component';
 import { DownloadQueueService } from './services';
 import { VIBRATE_PROVIDER } from './providers/vibrator.provider';
+import { NativeScriptAnimationsModule } from 'nativescript-angular/animations';
 
-if (applicationModule.android) {
-  applicationModule.on('launch', () => {});
-}
+// if (applicationModule.android) {
+//   applicationModule.on('launch', () => {});
+// }
+
+import { animationsTraceCategory } from 'nativescript-angular/trace';
+import { setCategories, enable } from 'trace';
+setCategories(animationsTraceCategory);
+enable();
 
 @NgModule({
   bootstrap: [AppComponent],
   imports: [
     SubularCoreModule.forRoot(),
+    NativeScriptAnimationsModule,
     NativeScriptModule,
     NativeScriptHttpModule,
     HttpClientModule,
