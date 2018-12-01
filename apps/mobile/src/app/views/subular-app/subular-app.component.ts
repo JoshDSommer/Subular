@@ -27,14 +27,14 @@ import {
 
 const slideLeft = [
   query(':leave', style({ transform: 'translateX(0)' })),
-  query(':enter', style({ transform: 'translateX(-400)' })),
+  query(':enter', style({ transform: 'translateX(0)' })), // animations breaks layout here so instead we get a card look. should be -400
 
   group(
     [
       query(':enter', animate(500, style({ transform: 'translateX(0)' })), {
         // delay: 110
       }),
-      query(':leave', animate(500, style({ transform: 'translateX(750)' })), {
+      query(':leave', animate(500, style({ transform: 'translateX(400)' })), {
         // delay: 100
       })
     ],
@@ -44,7 +44,7 @@ const slideLeft = [
 
 const slideRight = [
   query(':leave', style({ transform: 'translateX(0)' })),
-  query(':enter', style({ transform: 'translateX(400)' })),
+  query(':enter', style({ transform: 'translateX(0)' })), //should be 400
 
   group(
     [
