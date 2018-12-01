@@ -53,7 +53,6 @@ export class RecentlyAddedComponent implements OnInit, AfterViewInit {
       map(albums => smashArray<IAlbum>(albums)),
       popIn,
       tap(albums => (this.albums = albums)),
-      tap(console.log),
       tap(() => this.ref.markForCheck())
     );
   }
