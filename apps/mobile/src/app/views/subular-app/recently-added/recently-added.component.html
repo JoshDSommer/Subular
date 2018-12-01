@@ -1,51 +1,53 @@
 <GridLayout class="recently-added-wrap">
-  <ng-container *ngIf="(albums$ | async) as album; else: loading">
-    <AbsoluteLayout class="" height="100%">
-      <GridLayout
-        rows="*"
-        top="0"
-        left="0"
-        width="100%"
-        height="100%"
-        columns="*"
+  <!-- <ng-container *ngIf="(albums$ | async) as album; else: loading"> -->
+  <AbsoluteLayout class="" height="100%">
+    <GridLayout
+      rows="*"
+      top="0"
+      left="0"
+      width="100%"
+      height="100%"
+      columns="*"
+    >
+      <ListView
+        #recentlyAdded
+        [items]="albums"
+        class="list-group"
+        (itemLoading)="onItemLoading($event)"
       >
-        <ListView
-          #recentlyAdded
-          [items]="albums"
-          class="list-group"
-          (itemLoading)="onItemLoading($event)"
+        <ng-template
+          let-item="item"
+          let-i="index"
+          let-album1="item[0]"
+          let-album2="item[1]"
+          let-odd="odd"
+          let-even="even"
         >
-          <ng-template
-            let-item="item"
-            let-i="index"
-            let-album1="item[0]"
-            let-album2="item[1]"
-            let-odd="odd"
-            let-even="even"
-          >
-            <StackLayout orientation="horizontal" [class.first-item]="i == 0">
-              <recently-added-album
-                [album]="album1"
-                [width]="imageHeightWidth"
-                [margin]="imageSideMargins"
-              ></recently-added-album>
-              <recently-added-album
-                [album]="album2"
-                [width]="imageHeightWidth"
-                [margin]="imageSideMargins"
-              ></recently-added-album>
-            </StackLayout>
-          </ng-template>
-        </ListView>
-      </GridLayout>
-      <label
-        text="Recently Added"
-        class="title page-padding-left"
-        textWrap="true"
-      ></label>
-    </AbsoluteLayout>
-  </ng-container>
-  <ng-template #loading>
-    <ActivityIndicator busy="true"></ActivityIndicator>
-  </ng-template>
+          <StackLayout orientation="horizontal" [class.first-item]="i == 0">
+            <recently-added-album
+              [album]="album1"
+              [width]="imageHeightWidth"
+              [margin]="imageSideMargins"
+            ></recently-added-album>
+            <recently-added-album
+              [album]="album2"
+              [width]="imageHeightWidth"
+              [margin]="imageSideMargins"
+            ></recently-added-album>
+          </StackLayout>
+        </ng-template>
+      </ListView>
+    </GridLayout>
+    <label
+      text="Recently Added"
+      class="title page-padding-left"
+      textWrap="true"
+    ></label>
+  </AbsoluteLayout>
+  <!-- </ng-container> -->
+  <!--
+    <ng-template #loading>
+      <ActivityIndicator busy="true"></ActivityIndicator>
+    </ng-template>
+  -->
 </GridLayout>

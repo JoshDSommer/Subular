@@ -53,7 +53,7 @@ import { NativeScriptAnimationsModule } from 'nativescript-angular/animations';
 import { animationsTraceCategory } from 'nativescript-angular/trace';
 import { setCategories, enable } from 'trace';
 setCategories(animationsTraceCategory);
-enable();
+// enable();
 
 @NgModule({
   bootstrap: [AppComponent],

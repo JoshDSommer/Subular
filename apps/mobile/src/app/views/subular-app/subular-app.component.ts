@@ -27,16 +27,24 @@ import {
 
 const slideLeft = [
   query(':leave', style({ transform: 'translateX(0)' })),
-  query(':enter', style({ transform: 'translateX(0)' })), // animations breaks layout here so instead we get a card look. should be -400
+  query(':enter', style({ transform: 'translateX(0)', opacity: 0.5 })), // animations breaks layout here so instead we get a card look. should be -400
 
   group(
     [
-      query(':enter', animate(500, style({ transform: 'translateX(0)' })), {
-        // delay: 110
-      }),
-      query(':leave', animate(500, style({ transform: 'translateX(400)' })), {
-        // delay: 100
-      })
+      query(
+        ':enter',
+        animate(500, style({ transform: 'translateX(0)', opacity: 1 })),
+        {
+          // delay: 110
+        }
+      ),
+      query(
+        ':leave',
+        animate(500, style({ transform: 'translateX(400)', opacity: 0.5 })),
+        {
+          // delay: 100
+        }
+      )
     ],
     { delay: 10 }
   ) // Needed because a wierd animation scheduling bug in IOS
@@ -44,16 +52,24 @@ const slideLeft = [
 
 const slideRight = [
   query(':leave', style({ transform: 'translateX(0)' })),
-  query(':enter', style({ transform: 'translateX(0)' })), //should be 400
+  query(':enter', style({ transform: 'translateX(0)', opacity: 0.5 })), //should be 400
 
   group(
     [
-      query(':leave', animate(500, style({ transform: 'translateX(-400)' })), {
-        // delay: 100
-      }),
-      query(':enter', animate(500, style({ transform: 'translateX(0)' })), {
-        // delay: 100
-      })
+      query(
+        ':leave',
+        animate(500, style({ transform: 'translateX(-400)', opacity: 0.5 })),
+        {
+          // delay: 100
+        }
+      ),
+      query(
+        ':enter',
+        animate(500, style({ transform: 'translateX(0)', opacity: 1 })),
+        {
+          // delay: 100
+        }
+      )
     ],
     { delay: 10 }
   ) // Needed because a wierd animation scheduling bug in IOS
