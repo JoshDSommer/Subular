@@ -125,11 +125,13 @@
       ></label>
     </ng-container>
   </GridLayout>
-  <StackLayout row="0" col="0" class="border-outline">
-    <router-outlet
-      *ngIf="(loaded$ | async); else: loading"
-      class="router-outlet"
-    ></router-outlet>
+  <GridLayout
+    row="0"
+    col="0"
+    class="border-outline debug"
+    [@routeAnimation]="prepRouteState(routerOutlet)"
+  >
+    <router-outlet #routerOutlet="outlet" class="router-outlet"></router-outlet>
     <ng-template #loading>
       <label class="loading-text" text="Loading..." textWrap="true"></label>
       <image
@@ -139,5 +141,5 @@
         width="50"
       ></image>
     </ng-template>
-  </StackLayout>
+  </GridLayout>
 </GridLayout>

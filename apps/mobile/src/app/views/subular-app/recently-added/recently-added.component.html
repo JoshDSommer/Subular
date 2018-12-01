@@ -1,4 +1,4 @@
-<StackLayout class="recently-added-wrap">
+<GridLayout class="recently-added-wrap">
   <ng-container *ngIf="(albums$ | async) as album; else: loading">
     <AbsoluteLayout class="" height="100%">
       <GridLayout
@@ -48,4 +48,4 @@
   <ng-template #loading>
     <ActivityIndicator busy="true"></ActivityIndicator>
   </ng-template>
-</StackLayout>
+</GridLayout>
