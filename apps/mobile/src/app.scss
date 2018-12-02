@@ -29,7 +29,7 @@ refer to http://docs.nativescript.org/ui/theme.
 
 /* Player */
 ActionBar {
-  background-color: $backgroundColor;
+  background-color: $playerBackgroundColor;
 }
 .hide-button {
   font-size: 35;
@@ -42,11 +42,11 @@ ActionBar {
 }
 
 .player-wrap-background {
-  background-color: $backgroundColor;
+  background-color: $playerBackgroundColor;
   .player-wrap {
     border-bottom-left-radius: 20;
     border-bottom-right-radius: 20;
-    background-color: $backgroundColor;
+    background-color: $playerBackgroundColor;
   }
   .back-button {
     width: 80%;
