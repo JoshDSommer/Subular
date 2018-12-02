@@ -23,7 +23,7 @@ import { ISong } from '@Subular/core';
 import { ScrollView } from 'tns-core-modules/ui/scroll-view/scroll-view';
 import { PanGestureEventData } from 'tns-core-modules/ui/gestures/gestures';
 
-declare const CGAffineTransformMakeScale: any;
+declare const CGAffineTransformMakeScale, UIBarStyle: any;
 
 @Component({
   moduleId: module.id,
@@ -41,7 +41,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   PlayingStatus = PlayingStatus;
   animateOptions = SPIN_ANIMATION;
 
-  imageHeightWidth = screen.mainScreen.widthDIPs / 6 * 4;
+  imageHeightWidth = (screen.mainScreen.widthDIPs / 6) * 4;
   imageTopBottomMargin = screen.mainScreen.widthDIPs / 7;
   queueVisible = false;
   playerVisible = true;
@@ -87,6 +87,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
         true,
         false
       );
+      const navigationBar = topmost().ios.controller.navigationBar;
+      navigationBar.barStyle = UIBarStyle.UIBarStyleBlack;
     }
     const panEvent$ = fromEvent(null, 'pan').map(
       (event: PanGestureEventData) => event.deltaY
