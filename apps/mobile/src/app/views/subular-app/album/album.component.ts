@@ -62,7 +62,8 @@ export class AlbumComponent implements OnInit {
     private queue: DownloadQueueService,
     private zone: NgZone,
     private nsRouter: RouterExtensions,
-    private cache: SubsonicCachedService
+    private cache: SubsonicCachedService,
+    private ref: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -97,7 +98,10 @@ export class AlbumComponent implements OnInit {
       }),
       map(songs => [{ header: true } as any, ...songs]),
       popIn,
-      switchMap(songs => this.songStore.addSongs(songs) as any)
+      switchMap(songs => this.songStore.addSongs(songs) as any),
+      tap(() => {
+        setTimeout(() => this.ref.markForCheck());
+      })
     ) as Observable<IAlbumSong[]>;
 
     this.returnLink$ = this.route.params.pipe(
