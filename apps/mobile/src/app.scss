@@ -63,6 +63,10 @@ ActionBar {
     /* margin-top: 20;
 	margin-bottom: 30; */
   }
+  .player-album-art {
+    border-width: 0.5;
+    border-color: $lightGrey;
+  }
   progress {
     background-color: $accentsLight;
     color: $lightPurple;
@@ -79,7 +83,7 @@ ActionBar {
   .song-artist,
   .song-album {
     text-align: center;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
 
   .song-title {
@@ -101,19 +105,19 @@ ActionBar {
   .player-controls label {
     text-align: center;
     height: 66;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
   .mini-player-button {
     width: 66;
     border-radius: 33;
     font-size: 36;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
   .disabled {
     color: $lightGrey;
   }
   .next-previous {
-    color: $primaryColor;
+    color: $primaryColorTwo;
     font-size: 25;
     width: 66;
     border-radius: 33;
@@ -129,7 +133,7 @@ ActionBar {
     text-align: center;
     font-size: 11px;
     vertical-align: top;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
   .queue-button {
     color: $accentsDark;
@@ -169,13 +173,14 @@ ActionBar {
   & .navigation {
     border-top-width: 1;
     border-top-color: $accentsLight;
+    background-color: $tabBackgroundColor;
   }
   & .navigation-option {
     text-align: center;
     font-size: 18;
     font-weight: bold;
     height: 100%;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
 
   & .mini-player {
@@ -183,7 +188,7 @@ ActionBar {
     height: 70;
   }
   & .mini-player-button {
-    color: $primaryColor;
+    color: $primaryColorTwo;
     font-weight: bold;
     font-size: 28;
     text-align: center;
@@ -193,20 +198,20 @@ ActionBar {
     font-size: 28;
     text-align: center;
     margin-top: 5%;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
   & .loading-image {
     margin-top: 25%;
   }
   & .song-title {
     vertical-align: bottom;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
   & .song-artist {
     vertical-align: top;
     font-size: 13;
     font-style: italic;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
 }
 
