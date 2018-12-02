@@ -188,7 +188,7 @@ ActionBar {
     height: 70;
   }
   & .mini-player-button {
-    color: $primaryColorTwo;
+    color: $primaryColor;
     font-weight: bold;
     font-size: 28;
     text-align: center;
@@ -198,20 +198,20 @@ ActionBar {
     font-size: 28;
     text-align: center;
     margin-top: 5%;
-    color: $primaryColorTwo;
+    color: $primaryColor;
   }
   & .loading-image {
     margin-top: 25%;
   }
   & .song-title {
     vertical-align: bottom;
-    color: $primaryColorTwo;
+    color: $primaryColor;
   }
   & .song-artist {
     vertical-align: top;
     font-size: 13;
     font-style: italic;
-    color: $primaryColorTwo;
+    color: $primaryColor;
   }
 }
 
