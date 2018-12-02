@@ -596,9 +596,8 @@ button {
   color: $primaryColor;
   font-size: 28;
   font-weight: bold;
-  padding-top: 10;
-  padding-bottom: 8;
   font-family: 'Pacifico', Pacifico;
+
   /* font-family: 'Pacifico', Pacifico;
   text-transform: lowercase; */
 }
@@ -621,7 +620,7 @@ button {
     text-align: center;
   }
   & .back-link {
-    font-size: 25;
+    font-size: 28;
     font-weight: bold;
     font-family: 'Pacifico', Pacifico;
     color: $lightPurple;
