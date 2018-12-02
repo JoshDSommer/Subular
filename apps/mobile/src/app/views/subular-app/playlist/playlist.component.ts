@@ -160,7 +160,6 @@ export class PlaylistComponent implements OnInit {
         this.download(song);
       });
       this.allSongsDownloaded = true;
-      console.log('donlwo');
     }
   };
 
