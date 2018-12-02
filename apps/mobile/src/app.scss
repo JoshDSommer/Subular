@@ -29,7 +29,7 @@ refer to http://docs.nativescript.org/ui/theme.
 
 /* Player */
 ActionBar {
-  background-color: $backgroundColor;
+  background-color: $playerBackgroundColor;
 }
 .hide-button {
   font-size: 35;
@@ -42,11 +42,11 @@ ActionBar {
 }
 
 .player-wrap-background {
-  background-color: $backgroundColor;
+  background-color: $playerBackgroundColor;
   .player-wrap {
     border-bottom-left-radius: 20;
     border-bottom-right-radius: 20;
-    background-color: $backgroundColor;
+    background-color: $playerBackgroundColor;
   }
   .back-button {
     width: 80%;
@@ -62,6 +62,10 @@ ActionBar {
     border-radius: 4;
     /* margin-top: 20;
 	margin-bottom: 30; */
+  }
+  .player-album-art {
+    border-width: 0.5;
+    border-color: $lightGrey;
   }
   progress {
     background-color: $accentsLight;
@@ -79,7 +83,7 @@ ActionBar {
   .song-artist,
   .song-album {
     text-align: center;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
 
   .song-title {
@@ -101,19 +105,19 @@ ActionBar {
   .player-controls label {
     text-align: center;
     height: 66;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
   .mini-player-button {
     width: 66;
     border-radius: 33;
     font-size: 36;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
   .disabled {
     color: $lightGrey;
   }
   .next-previous {
-    color: $primaryColor;
+    color: $primaryColorTwo;
     font-size: 25;
     width: 66;
     border-radius: 33;
@@ -129,7 +133,7 @@ ActionBar {
     text-align: center;
     font-size: 11px;
     vertical-align: top;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
   .queue-button {
     color: $accentsDark;
@@ -169,13 +173,14 @@ ActionBar {
   & .navigation {
     border-top-width: 1;
     border-top-color: $accentsLight;
+    background-color: $tabBackgroundColor;
   }
   & .navigation-option {
     text-align: center;
     font-size: 18;
     font-weight: bold;
     height: 100%;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
 
   & .mini-player {
@@ -591,8 +596,8 @@ button {
   color: $primaryColor;
   font-size: 28;
   font-weight: bold;
-  padding-top: 10;
-  padding-bottom: 8;
+  font-family: 'Pacifico', Pacifico;
+
   /* font-family: 'Pacifico', Pacifico;
   text-transform: lowercase; */
 }
@@ -615,8 +620,9 @@ button {
     text-align: center;
   }
   & .back-link {
-    font-size: 25;
+    font-size: 28;
     font-weight: bold;
+    font-family: 'Pacifico', Pacifico;
     color: $lightPurple;
   }
 }

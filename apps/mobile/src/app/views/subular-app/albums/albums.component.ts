@@ -1,4 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  ChangeDetectorRef
+} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IAlbum, SubsonicService } from '@Subular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
@@ -32,7 +37,8 @@ export class AlbumsComponent implements OnInit {
     private nsRouter: RouterExtensions,
     public subular: SubularMobileService,
     private subsonic: SubsonicService,
-    private connection: CurrentConnectionService
+    private connection: CurrentConnectionService,
+    private ref: ChangeDetectorRef
   ) {}
 
   getAlbumsText(albums: IAlbum[]) {
@@ -50,6 +56,7 @@ export class AlbumsComponent implements OnInit {
   ngOnInit() {
     this.albums = this.route.snapshot.data['albums'] as IAlbum[];
     this.router.events.subscribe(() => {
+      this.ref.markForCheck();
       this.albums = this.route.snapshot.data['albums'] as IAlbum[];
     });
   }

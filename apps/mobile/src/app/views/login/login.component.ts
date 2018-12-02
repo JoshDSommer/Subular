@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
       server += `.subsonic.org`;
     }
 
-    console.log(server, username, password);
     this.authentication.saveAuthenticationInfo(server, username, password);
 
     this.subsonic.pingServer().subscribe(
