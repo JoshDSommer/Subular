@@ -445,9 +445,10 @@ ActionBar {
   .playlist-list-item {
     padding-top: 15;
     padding-bottom: 15;
-    border-bottom-width: 1;
-    border-bottom-color: $borders;
-
+    @if $theme != 'dark' {
+      border-bottom-width: 1;
+      border-bottom-color: $borders;
+    }
     .playlist {
       font-size: 20px;
       padding-left: 10;
