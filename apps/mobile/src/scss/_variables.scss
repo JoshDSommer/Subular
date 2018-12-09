@@ -1,3 +1,4 @@
+$theme: 'dark';
 // // // LiteColors
 // $backgroundColor: #fff;
 // $playerBackgroundColor: #fff;
@@ -26,8 +27,9 @@ $accentsDark: #a4a4a4;
 $accentsLight: #36454f;
 $skeleton: #f8f8f8;
 $trackNumber: #8f8e8e;
-$borders: #36454f;
+$borders: $accentsDark;
 $miniPlayerBg: #db93f5;
+$miniPlayerBg2: $lightPurple;
 
 // Other
 $heart: #eb2e9c;

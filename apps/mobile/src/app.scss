@@ -171,9 +171,14 @@ ActionBar {
   }
 
   & .navigation {
-    border-top-width: 1;
-    border-top-color: $accentsLight;
     background-color: $tabBackgroundColor;
+    border-top-width: 1;
+    @if $theme != 'dark' {
+      border-top-color: $accentsLight;
+    }
+    else {
+      border-top-color: $tabBackgroundColor;
+    }
   }
   & .navigation-option {
     text-align: center;
@@ -184,7 +189,16 @@ ActionBar {
   }
 
   & .mini-player {
-    background-color: $miniPlayerBg;
+    background: linear-gradient(
+      0deg,
+      $miniPlayerBg,
+      $miniPlayerBg2,
+      $miniPlayerBg2,
+      $miniPlayerBg2,
+      $miniPlayerBg2,
+      $miniPlayerBg2,
+      $miniPlayerBg
+    );
     height: 70;
   }
   & .mini-player-button {
@@ -445,9 +459,10 @@ ActionBar {
   .playlist-list-item {
     padding-top: 15;
     padding-bottom: 15;
-    border-bottom-width: 1;
-    border-bottom-color: $borders;
-
+    @if $theme != 'dark' {
+      border-bottom-width: 1;
+      border-bottom-color: $borders;
+    }
     .playlist {
       font-size: 20px;
       padding-left: 10;
@@ -530,8 +545,10 @@ ActionBar {
   .artist-list-item {
     padding-top: 15;
     padding-bottom: 15;
-    border-bottom-width: 1;
-    border-bottom-color: $borders;
+    @if $theme != 'dark' {
+      border-bottom-width: 1;
+      border-bottom-color: $borders;
+    }
   }
   .title {
     background-color: $backgroundColor;

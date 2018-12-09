@@ -34,14 +34,16 @@ const slideLeft = [
         ':enter',
         animate(500, style({ transform: 'translateX(0)', opacity: 1 })),
         {
-          delay: 10
+          // delay: 10
+          optional: true
         }
       ),
       query(
         ':leave',
         animate(500, style({ transform: 'translateX(400)', opacity: 0.5 })),
         {
-          delay: 10
+          // delay: 10
+          optional: true
         }
       )
     ],
@@ -59,15 +61,17 @@ const slideRight = [
         ':leave',
         animate(500, style({ transform: 'translateX(-400)', opacity: 0.5 })),
         {
-          delay: 10
+          // delay: 10
           // delay: 100
+          optional: true
         }
       ),
       query(
         ':enter',
         animate(500, style({ transform: 'translateX(0)', opacity: 1 })),
         {
-          delay: 10
+          // delay: 10
+          optional: true
         }
       )
     ],
