@@ -35,6 +35,7 @@ const slideLeft = [
         animate(500, style({ transform: 'translateX(0)', opacity: 1 })),
         {
           // delay: 10
+          optional: true
         }
       ),
       query(
@@ -42,6 +43,7 @@ const slideLeft = [
         animate(500, style({ transform: 'translateX(400)', opacity: 0.5 })),
         {
           // delay: 10
+          optional: true
         }
       )
     ],
@@ -61,6 +63,7 @@ const slideRight = [
         {
           // delay: 10
           // delay: 100
+          optional: true
         }
       ),
       query(
@@ -68,6 +71,7 @@ const slideRight = [
         animate(500, style({ transform: 'translateX(0)', opacity: 1 })),
         {
           // delay: 10
+          optional: true
         }
       )
     ],
