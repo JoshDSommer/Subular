@@ -151,7 +151,7 @@ export class SubularMobileService {
     return this.subsonicService.subsonic.pingServer();
   }
   getArtWork(artWorkUrl, size = 1) {
-    let coverPath = fs.path.join(
+    const coverPath = fs.path.join(
       fs.knownFolders.documents().path + '/images',
       artWorkUrl + '.png'
     );
