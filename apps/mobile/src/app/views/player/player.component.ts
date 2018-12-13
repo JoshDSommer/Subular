@@ -52,7 +52,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
     private subular: SubularMobileService,
     private page: Page,
     private ref: ChangeDetectorRef
-  ) {}
+  ) { }
   private trimLeadingZero(time: string) {
     if (!time) {
       return '0:00';
@@ -90,9 +90,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
       const navigationBar = topmost().ios.controller.navigationBar;
       navigationBar.barStyle = UIBarStyle.UIBarStyleBlack;
     }
-    const panEvent$ = fromEvent(null, 'pan').map(
-      (event: PanGestureEventData) => event.deltaY
-    );
+    // const panEvent$ = fromEvent(null, 'pan').map(
+    //   (event: PanGestureEventData) => event.deltaY
+    // );
   }
 
   ngOnDestroy() {
@@ -113,11 +113,11 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   onProgressLoaded(args: EventData) {
-    let progress = args.object as Progress;
+    const progress = args.object as Progress;
     if (progress.android) {
       progress.android.setScaleY(4); //  progress.android === android.widget.ProgressBar
     } else if (progress.ios) {
-      let transform = CGAffineTransformMakeScale(1.0, 4.0);
+      const transform = CGAffineTransformMakeScale(1.0, 4.0);
       progress.ios.transform = transform; // progress.ios === UIProgressView
     }
   }
