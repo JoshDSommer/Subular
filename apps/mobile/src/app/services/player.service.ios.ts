@@ -165,27 +165,27 @@ export class PlayerService {
       this.notifyObservable();
       this._player.play();
 
-      // const coverPath = path.join(
-      //   knownFolders.documents().path + '/images',
-      //   playingSong.coverArt + '.png'
-      // );
-      // let newImage = fromFile(coverPath);
-      // if (!newImage) {
-      //   newImage = fromFile('~/app/images/artist.png');
-      // }
+      const coverPath = path.join(
+        knownFolders.documents().path + '/images',
+        playingSong.coverArt + '.png'
+      );
+      let newImage = fromFile(coverPath);
+      if (!newImage) {
+        newImage = fromFile('~/app/images/artist.png');
+      }
 
-      // const image = MPMediaItemArtwork.alloc().initWithImage(newImage.ios);
+      const image = MPMediaItemArtwork.alloc().initWithImage(newImage.ios);
       const values = ios.collections.jsArrayToNSArray([
         playingSong.title,
         playingSong.artist,
-        playingSong.album
-        //  image
+        playingSong.album,
+        image
       ] as any);
       const keys = ios.collections.jsArrayToNSArray([
         MPMediaItemPropertyTitle,
         MPMediaItemPropertyArtist,
-        MPMediaItemPropertyAlbumTitle
-        // MPMediaItemPropertyArtwork
+        MPMediaItemPropertyAlbumTitle,
+        MPMediaItemPropertyArtwork
       ]);
 
       const nowPlaying = NSDictionary.dictionaryWithObjectsForKeys(
