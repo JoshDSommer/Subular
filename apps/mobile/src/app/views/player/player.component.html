@@ -13,8 +13,7 @@
     [height]="playerHeight"
   >
     <GridLayout row="0" col="0" rows="*" columns="80,*,80" class="heart-wrap">
-      <label
-        *ngIf="false"
+      <label *ngIf="false"
         row="0"
         col="0"
         class="fa queue-button"
@@ -34,7 +33,6 @@
     <AbsoluteLayout
       row="1"
       col="0"
-      shadow="28"
       class=""
       [marginBottom]="imageTopBottomMargin"
       [width]="imageHeightWidth"
@@ -130,7 +128,7 @@
         col="1"
         [highlight]="highlightBgColor"
         class="fa next-previous"
-        (tap)="player.playPreviousSong(); updateView()"
+        (tap)="player.playPreviousSong(); updateView(); vibrator.selection()"
         text="&#xf048;"
       ></label>
       <ng-container [ngSwitch]="nowPlaying?.playing">
@@ -148,7 +146,7 @@
           [highlight]="highlightBgColor"
           class="fa mini-player-button"
           text="&#xf04b;"
-          (tap)="player.resumeSong(); updateView()"
+          (tap)="player.resumeSong(); updateView(); vibrator.selection()"
           *ngSwitchCase="PlayingStatus.paused"
           textWrap="true"
         ></label>
@@ -168,7 +166,7 @@
         col="3"
         [highlight]="highlightBgColor"
         class="fa next-previous"
-        (tap)="player.playNextSong()"
+        (tap)="player.playNextSong();vibrator.selection()"
         text="&#xf051;"
       ></label>
       <label
@@ -176,7 +174,7 @@
         col="4"
         class="fa random-repeat"
         [class.random-repeat-enabled]="nowPlaying?.random"
-        (tap)="player.toggleShuffle()"
+        (tap)="player.toggleShuffle();vibrator.selection()"
         text="&#xf074;"
       ></label>
     </GridLayout>
