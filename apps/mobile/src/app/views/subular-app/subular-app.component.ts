@@ -83,27 +83,27 @@ const slideRight = [
   moduleId: module.id,
   selector: 'subular-app',
   templateUrl: './subular-app.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [
-    trigger('routeAnimation', [
-      transition('recent => album', slideRight),
-      transition('recent => artists', slideRight),
-      transition('recent => playlists', slideRight),
-      transition('artists => playlists', slideRight),
-      transition('artists => supa', slideRight),
-      transition('artists => albums', slideRight),
-      transition('artists => recent', slideLeft),
-      transition('playlists => supa', slideRight),
-      transition('playlists => recent', slideLeft),
-      transition('playlists => artists', slideLeft),
-      transition('supa => playlists', slideLeft),
-      transition('supa => recent', slideRight),
-      transition('supa => artists', slideLeft),
-      transition('albums => album', slideRight),
-      transition('album => albums', slideLeft),
-      transition('albums => artists', slideLeft)
-    ])
-  ]
+  changeDetection: ChangeDetectionStrategy.OnPush
+  // animations: [
+  //   trigger('routeAnimation', [
+  //     transition('recent => album', slideRight),
+  //     transition('recent => artists', slideRight),
+  //     transition('recent => playlists', slideRight),
+  //     transition('artists => playlists', slideRight),
+  //     transition('artists => supa', slideRight),
+  //     transition('artists => albums', slideRight),
+  //     transition('artists => recent', slideLeft),
+  //     transition('playlists => supa', slideRight),
+  //     transition('playlists => recent', slideLeft),
+  //     transition('playlists => artists', slideLeft),
+  //     transition('supa => playlists', slideLeft),
+  //     transition('supa => recent', slideRight),
+  //     transition('supa => artists', slideLeft),
+  //     transition('albums => album', slideRight),
+  //     transition('album => albums', slideLeft),
+  //     transition('albums => artists', slideLeft)
+  //   ])
+  // ]
 })
 export class SubularAppComponent implements OnInit {
   loaded$: any;
