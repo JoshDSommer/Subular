@@ -41,7 +41,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   PlayingStatus = PlayingStatus;
   animateOptions = SPIN_ANIMATION;
 
-  imageHeightWidth = (screen.mainScreen.widthDIPs / 6) * 4;
+  imageHeightWidth = (screen.mainScreen.widthDIPs / 5) * 4;
   imageTopBottomMargin = screen.mainScreen.widthDIPs / 7;
   queueVisible = false;
   playerVisible = true;
