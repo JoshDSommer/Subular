@@ -125,4 +125,41 @@ export class PlayerComponent implements OnInit, OnDestroy {
   goToQueue(scrollView: ScrollView) {
     scrollView.scrollToVerticalOffset(this.playerHeight - 16, true);
   }
+
+  playPreviousSong() {
+    this.player.playPreviousSong();
+    this.updateView();
+    this.hapticFeedback();
+  }
+
+  playNextSong() {
+    this.player.playNextSong();
+    this.hapticFeedback();
+  }
+
+  toggleShuffle() {
+    this.player.toggleShuffle();
+    this.hapticFeedback();
+  }
+
+  toggleRepeat() {
+    this.player.toggleRepeat();
+    this.hapticFeedback();
+  }
+
+  pauseSong() {
+    this.player.pauseSong();
+    this.updateView();
+    this.hapticFeedback();
+  }
+
+  resumeSong() {
+    this.player.resumeSong();
+    this.updateView();
+    this.hapticFeedback();
+  }
+
+  hapticFeedback() {
+    this.vibrator.selection();
+  }
 }

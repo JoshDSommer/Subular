@@ -120,7 +120,7 @@
         col="0"
         class="fa random-repeat"
         [class.random-repeat-enabled]="nowPlaying?.repeat"
-        (tap)="player.toggleRepeat()"
+        (tap)="toggleRepeat()"
         text="&#xf01e;"
       ></label>
       <label
@@ -128,7 +128,7 @@
         col="1"
         [highlight]="highlightBgColor"
         class="fa next-previous"
-        (tap)="player.playPreviousSong(); updateView(); vibrator.selection()"
+        (tap)="playPreviousSong()"
         text="&#xf048;"
       ></label>
       <ng-container [ngSwitch]="nowPlaying?.playing">
@@ -146,7 +146,7 @@
           [highlight]="highlightBgColor"
           class="fa mini-player-button"
           text="&#xf04b;"
-          (tap)="player.resumeSong(); updateView(); vibrator.selection()"
+          (tap)="resumeSong()"
           *ngSwitchCase="PlayingStatus.paused"
           textWrap="true"
         ></label>
@@ -156,7 +156,7 @@
           [highlight]="highlightBgColor"
           class="fa mini-player-button"
           text="&#xf04c;"
-          (tap)="player.pauseSong(); updateView()"
+          (tap)="pauseSong()"
           *ngSwitchCase="PlayingStatus.playing"
           textWrap="true"
         ></label>
@@ -166,7 +166,7 @@
         col="3"
         [highlight]="highlightBgColor"
         class="fa next-previous"
-        (tap)="player.playNextSong();vibrator.selection()"
+        (tap)="playNextSong()"
         text="&#xf051;"
       ></label>
       <label
@@ -174,12 +174,12 @@
         col="4"
         class="fa random-repeat"
         [class.random-repeat-enabled]="nowPlaying?.random"
-        (tap)="player.toggleShuffle();vibrator.selection()"
+        (tap)="toggleShuffle()"
         text="&#xf074;"
       ></label>
     </GridLayout>
   </GridLayout>
-  <StackLayout *ngIf="queueVisible" [height]="playerHeight - 120">
+  <!-- <StackLayout *ngIf="queueVisible" [height]="playerHeight - 120">
     <ListView #songList [items]="songs$ | async" class="list-group">
       <ng-template
         let-item="item"
@@ -194,6 +194,6 @@
         ></queue-item>
       </ng-template>
     </ListView>
-  </StackLayout>
+  </StackLayout> -->
 </StackLayout>
 <!-- </ScrollView> -->
