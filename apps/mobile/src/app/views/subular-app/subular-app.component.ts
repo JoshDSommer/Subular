@@ -23,6 +23,8 @@ import {
   transition,
   trigger
 } from '@angular/animations';
+import { shareReplay } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
 const slideLeft = [
   query(':leave', style({ transform: 'translateX(0)' })),
@@ -112,6 +114,7 @@ export class SubularAppComponent implements OnInit {
   PlayingStatus = PlayingStatus;
   animateOptions = SPIN_ANIMATION;
   highlightBgColor = '#ebd2f5';
+  currentArtWork: Observable<string>;
 
   constructor(
     private subular: SubularMobileService,
@@ -120,6 +123,9 @@ export class SubularAppComponent implements OnInit {
     private ref: ChangeDetectorRef
   ) {
     this.player.nowPlaying$.subscribe(nowPlaying => {
+      if (this.nowPlaying && this.nowPlaying.song.id !== nowPlaying.song.id) {
+        this.currentArtWork = null;
+      }
       if (nowPlaying) {
         this.nowPlaying = Object.assign({}, nowPlaying);
         this.ref.markForCheck();
@@ -147,7 +153,12 @@ export class SubularAppComponent implements OnInit {
   }
 
   getArtWork(song) {
-    return this.subular.getArtWork(song.coverArt);
+    if (!this.currentArtWork) {
+      this.currentArtWork = this.subular
+        .getArtWork(song.coverArt, 1000)
+        .pipe(shareReplay());
+    }
+    return this.currentArtWork;
   }
 
   play() {

@@ -21,7 +21,8 @@ import { Progress } from 'tns-core-modules/ui/progress';
 import { screen } from 'tns-core-modules/platform';
 import { ISong } from '@Subular/core';
 import { ScrollView } from 'tns-core-modules/ui/scroll-view/scroll-view';
-import { PanGestureEventData } from 'tns-core-modules/ui/gestures/gestures';
+import { TapticEngine } from 'nativescript-taptic-engine';
+import { shareReplay } from 'rxjs/operators';
 
 declare const CGAffineTransformMakeScale, UIBarStyle: any;
 
@@ -45,14 +46,17 @@ export class PlayerComponent implements OnInit, OnDestroy {
   imageTopBottomMargin = screen.mainScreen.widthDIPs / 7;
   queueVisible = false;
   playerVisible = true;
+  currentArtWork: Observable<string>;
 
   constructor(
-    public player: PlayerService,
-    public nsRouter: RouterExtensions,
+    private player: PlayerService,
+    private nsRouter: RouterExtensions,
     private subular: SubularMobileService,
     private page: Page,
-    private ref: ChangeDetectorRef
-  ) { }
+    private ref: ChangeDetectorRef,
+    private vibrator: TapticEngine
+  ) {}
+
   private trimLeadingZero(time: string) {
     if (!time) {
       return '0:00';
@@ -62,6 +66,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.player.nowPlaying$.subscribe(nowPlaying => {
+      if (this.nowPlaying && this.nowPlaying.song.id !== nowPlaying.song.id) {
+        this.currentArtWork = null;
+      }
+
       if (nowPlaying) {
         //mutate time formats probably should export this to a Pipe
         this.nowPlaying = Object.assign({}, nowPlaying);
@@ -105,7 +113,12 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   getArtWork(song) {
-    return this.subular.getArtWork(song.coverArt, 1000);
+    if (!this.currentArtWork) {
+      this.currentArtWork = this.subular
+        .getArtWork(song.coverArt, 1000)
+        .pipe(shareReplay());
+    }
+    return this.currentArtWork;
   }
 
   updateView() {
@@ -124,5 +137,46 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   goToQueue(scrollView: ScrollView) {
     scrollView.scrollToVerticalOffset(this.playerHeight - 16, true);
+  }
+
+  playPreviousSong() {
+    this.player.playPreviousSong();
+    this.updateView();
+    this.hapticFeedback();
+  }
+
+  playNextSong() {
+    this.player.playNextSong();
+    this.hapticFeedback();
+  }
+
+  toggleShuffle() {
+    this.player.toggleShuffle();
+    this.hapticFeedback();
+  }
+
+  toggleRepeat() {
+    this.player.toggleRepeat();
+    this.hapticFeedback();
+  }
+
+  pauseSong() {
+    this.player.pauseSong();
+    this.updateView();
+    this.hapticFeedback();
+  }
+
+  resumeSong() {
+    this.player.resumeSong();
+    this.updateView();
+    this.hapticFeedback();
+  }
+
+  hapticFeedback() {
+    this.vibrator.selection();
+  }
+
+  back() {
+    this.nsRouter.back();
   }
 }
