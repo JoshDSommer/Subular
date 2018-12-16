@@ -23,7 +23,7 @@ import {
   transition,
   trigger
 } from '@angular/animations';
-import { shareReplay } from 'rxjs/operators';
+import { shareReplay, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 
 const slideLeft = [
