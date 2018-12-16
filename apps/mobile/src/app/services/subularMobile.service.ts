@@ -172,7 +172,7 @@ export class SubularMobileService {
         .remove()
         .then();
     }
-    return new Observable(observer => {
+    return new Observable<string>(observer => {
       observer.next('~/app/images/coverArt.png');
       getFile(
         {
