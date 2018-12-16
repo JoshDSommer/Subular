@@ -21,7 +21,7 @@ import { Progress } from 'tns-core-modules/ui/progress';
 import { screen } from 'tns-core-modules/platform';
 import { ISong } from '@Subular/core';
 import { ScrollView } from 'tns-core-modules/ui/scroll-view/scroll-view';
-import { PanGestureEventData } from 'tns-core-modules/ui/gestures/gestures';
+import { TapticEngine } from 'nativescript-taptic-engine';
 
 declare const CGAffineTransformMakeScale, UIBarStyle: any;
 
@@ -51,8 +51,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
     public nsRouter: RouterExtensions,
     private subular: SubularMobileService,
     private page: Page,
-    private ref: ChangeDetectorRef
-  ) { }
+    private ref: ChangeDetectorRef,
+    private vibrator: TapticEngine
   private trimLeadingZero(time: string) {
     if (!time) {
       return '0:00';
