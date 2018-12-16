@@ -47,8 +47,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   playerVisible = true;
 
   constructor(
-    public player: PlayerService,
-    public nsRouter: RouterExtensions,
+    private nsRouter: RouterExtensions,
     private subular: SubularMobileService,
     private page: Page,
     private ref: ChangeDetectorRef,
@@ -161,5 +160,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   hapticFeedback() {
     this.vibrator.selection();
+  }
+
+  back() {
+    this.nsRouter.back();
   }
 }
