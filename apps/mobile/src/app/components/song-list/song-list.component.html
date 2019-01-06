@@ -1,10 +1,17 @@
 <StackLayout class="song-list-wrap">
-	<ListView #songList [items]="songs$ | async" class="list-group">
-		<ng-template let-item="item" let-odd="odd" let-even="even">
-			<GridLayout rows="*" columns="*,60" class="song-list-item" (tap)="selectSong(item)" >
-				<Label row="0" , col="0" [text]="item.title" class="song"></Label>
-				<!-- <Label  row="0" , col="1" text="&#xf0ed;" class="fa" textWrap="true"></Label> -->
-			</GridLayout>
-		</ng-template>
-	</ListView>
+  <ListView #songList [items]="songs$ | async" class="list-group">
+    <ng-template let-item="item" let-odd="odd" let-even="even">
+      <GridLayout
+        rows="*"
+        columns="*,60"
+        class="song-list-item"
+        (tap)="selectSong(item)"
+      >
+        <label row="0" , col="0" [text]="item.title" class="song"></label>
+        <!--
+          <Label  row="0" , col="1" text="&#xf0ed;" class="fa" textWrap="true"></Label>
+        -->
+      </GridLayout>
+    </ng-template>
+  </ListView>
 </StackLayout>

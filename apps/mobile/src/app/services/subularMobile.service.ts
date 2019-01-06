@@ -15,7 +15,7 @@ import { getString, setString } from 'tns-core-modules/application-settings';
 import * as connectivity from 'tns-core-modules/connectivity';
 import { CurrentConnectionService } from './currentConnection.service';
 import { of } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
+import { tap, map, switchMap } from 'rxjs/operators';
 
 interface ISubularService {
   subsonic: SubsonicService;
@@ -73,7 +73,15 @@ export class SubularMobileService {
 
   private getMobileSubularService(subsonic: SubsonicService) {
     return {
-      getSongs: albumId => this.getCachedSongs(albumId),
+      getSongs: albumId =>
+        this.getCachedSongs(albumId).pipe(
+          switchMap(songs => {
+            if (songs) {
+              return of(songs);
+            }
+            return this.getSongs(albumId);
+          })
+        ),
       // right now i'm still getting playlists via mobile
       getPlaylists: () => subsonic.getPlaylists(),
       getPlaylist: id => subsonic.getPlaylist(id),
@@ -129,7 +137,7 @@ export class SubularMobileService {
     return this.subsonicService.subsonic.getSongs(albumId).pipe(
       map(songs => {
         songs = songs.map(song => {
-          if (song.state != SongState.downloaded) {
+          if (song.state !== SongState.downloaded) {
             const downloaded = this.songDownloaded(song.id);
             song.state = downloaded ? SongState.downloaded : song.state;
           }
@@ -143,7 +151,7 @@ export class SubularMobileService {
     return this.subsonicService.subsonic.pingServer();
   }
   getArtWork(artWorkUrl, size = 1) {
-    let coverPath = fs.path.join(
+    const coverPath = fs.path.join(
       fs.knownFolders.documents().path + '/images',
       artWorkUrl + '.png'
     );
@@ -164,7 +172,7 @@ export class SubularMobileService {
         .remove()
         .then();
     }
-    return new Observable(observer => {
+    return new Observable<string>(observer => {
       observer.next('~/app/images/coverArt.png');
       getFile(
         {

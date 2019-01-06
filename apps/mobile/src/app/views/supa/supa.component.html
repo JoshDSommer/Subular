@@ -1,11 +1,15 @@
-<Label text="subular" class="subular title pacifico" textAlign="center" textWrap="true" width="100%">
-</Label>
+<StackLayout>
+  <label
+    text="subular"
+    class="subular title pacifico"
+    textAlign="center"
+    textWrap="true"
+    width="100%"
+  >
+  </label>
+  <button text="Clear Cached" (tap)="clearCachedAlubms()"></button>
 
-<Button text="Clear Cached" (tap)="clearCachedAlubms()">
-</Button>
+  <button text="Clear Artwork" (tap)="clearArtwork()"></button>
 
-<Button text="Clear Artwork" (tap)="clearArtwork()">
-</Button>
-
-<Button text="Clear Downloaded Songs" (tap)="clearSongs()">
-</Button>
+  <button text="Clear Downloaded Songs" (tap)="clearSongs()"></button>
+</StackLayout>

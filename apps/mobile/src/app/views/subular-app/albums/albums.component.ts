@@ -1,4 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  ChangeDetectorRef
+} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IAlbum, SubsonicService } from '@Subular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
@@ -17,14 +22,13 @@ import { CurrentConnectionService } from '../../../services/currentConnection.se
 @Component({
   moduleId: module.id,
   selector: 'albums',
-  templateUrl: 'albums.component.html',
-  styleUrls: ['albums.component.css']
+  templateUrl: 'albums.component.html'
 })
 export class AlbumsComponent implements OnInit {
   albums: IAlbum[];
 
   animateOptions = SLIDE_RIGHT_ANIMATION;
-  imageHeightWidth = screen.mainScreen.widthDIPs / 12 * 5;
+  imageHeightWidth = (screen.mainScreen.widthDIPs / 12) * 5;
   imageSideMargins = screen.mainScreen.widthDIPs / 18;
 
   constructor(
@@ -33,7 +37,8 @@ export class AlbumsComponent implements OnInit {
     private nsRouter: RouterExtensions,
     public subular: SubularMobileService,
     private subsonic: SubsonicService,
-    private connection: CurrentConnectionService
+    private connection: CurrentConnectionService,
+    private ref: ChangeDetectorRef
   ) {}
 
   getAlbumsText(albums: IAlbum[]) {
@@ -51,6 +56,7 @@ export class AlbumsComponent implements OnInit {
   ngOnInit() {
     this.albums = this.route.snapshot.data['albums'] as IAlbum[];
     this.router.events.subscribe(() => {
+      this.ref.markForCheck();
       this.albums = this.route.snapshot.data['albums'] as IAlbum[];
     });
   }
@@ -97,12 +103,10 @@ export class AlbumsComponent implements OnInit {
           if (connection == connectionType.wifi) {
             return placeholderImage$.pipe(
               concat(
-                this.subsonic
-                  .getArtistInfo(artistId)
-                  .pipe(
-                    map(info => info.mediumImageUrl),
-                    switchMap(downloadImage$)
-                  )
+                this.subsonic.getArtistInfo(artistId).pipe(
+                  map(info => info.mediumImageUrl),
+                  switchMap(downloadImage$)
+                )
               )
             ) as Observable<string>;
           }

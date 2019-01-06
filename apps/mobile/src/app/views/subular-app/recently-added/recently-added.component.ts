@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ChangeDetectorRef
+} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IAlbum } from '@Subular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
@@ -9,32 +14,31 @@ import {
 import { SubularMobileService } from '../../../services/subularMobile.service';
 import { screen, isIOS } from 'tns-core-modules/platform/platform';
 import { Observable } from 'rxjs/Observable';
-import { tap, map, switchMap, delay, combineAll } from 'rxjs/operators';
-import { of, concat, zip } from 'rxjs';
+import { tap, map, delay } from 'rxjs/operators';
 import { popIn } from '../../../pipes/popin.pipe';
 import { ItemEventData } from 'tns-core-modules/ui/list-view/list-view';
 
 @Component({
   moduleId: module.id,
   selector: 'recently-added',
-  templateUrl: './recently-added.component.html',
-  styleUrls: ['./recently-added.component.css']
+  templateUrl: './recently-added.component.html'
 })
-export class RecentlyAddedComponent implements OnInit {
+export class RecentlyAddedComponent implements OnInit, AfterViewInit {
   albums$: Observable<IAlbum[][]>;
 
-  SPIN_ANIMATION = SPIN_ANIMATION;
-  SLIDE_RIGHT_ANIMATION = SLIDE_RIGHT_ANIMATION;
+  // SPIN_ANIMATION = SPIN_ANIMATION;
+  // SLIDE_RIGHT_ANIMATION = SLIDE_RIGHT_ANIMATION;
 
-  imageHeightWidth = screen.mainScreen.widthDIPs / 12 * 5;
+  imageHeightWidth = (screen.mainScreen.widthDIPs / 12) * 5;
   imageSideMargins = screen.mainScreen.widthDIPs / 18;
-  albums: IAlbum[][];
+  albums: IAlbum[][] = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private nsRouter: RouterExtensions,
-    public subular: SubularMobileService
+    public subular: SubularMobileService,
+    private ref: ChangeDetectorRef
   ) {}
 
   getAlbumsText(albums: IAlbum[]) {
@@ -45,13 +49,12 @@ export class RecentlyAddedComponent implements OnInit {
     this.nsRouter.back();
   }
   ngOnInit() {
-    this.albums$ = this.subular
-      .getRecentAdditions()
-      .pipe(
-        map(albums => smashArray<IAlbum>(albums)),
-        popIn,
-        tap(albums => (this.albums = albums))
-      );
+    this.albums$ = this.subular.getRecentAdditions().pipe(
+      map(albums => smashArray<IAlbum>(albums)),
+      popIn,
+      tap(albums => (this.albums = albums)),
+      tap(() => this.ref.markForCheck())
+    );
   }
 
   onItemLoading(args: ItemEventData) {
@@ -59,6 +62,10 @@ export class RecentlyAddedComponent implements OnInit {
       const iosCell = args.ios;
       iosCell.selectionStyle = UITableViewCellSelectionStyle.None;
     }
+  }
+
+  ngAfterViewInit() {
+    this.albums$.subscribe();
   }
 }
 

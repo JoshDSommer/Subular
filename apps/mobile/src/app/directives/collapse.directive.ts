@@ -28,13 +28,13 @@ export class CollapseDirective implements AfterViewInit {
       : this.collapse;
   }
 
-  constructor(private element: ElementRef) {}
+  constructor(private element: ElementRef) { }
 
   ngAfterViewInit() {
     if (this.listView) {
-      const panEvent$ = fromEvent(this.listView, 'pan').map(
+      const panEvent$ = fromEvent(this.listView, 'pan').pipe(map(
         (event: PanGestureEventData) => event.deltaY
-      );
+      ));
 
       this.subscription = panEvent$
         .pipe(

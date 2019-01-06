@@ -136,7 +136,9 @@ export class PlayerService {
       this.currentIndex = !index ? 0 : index;
 
       const playingSong = this.songList[this.currentIndex];
-
+      if (!playingSong) {
+        this.playNextSong();
+      }
       this.playHistory = [...this.playHistory, playingSong];
       this.currentSong = Object.assign({}, this.currentSong, {
         song: playingSong,
@@ -163,27 +165,27 @@ export class PlayerService {
       this.notifyObservable();
       this._player.play();
 
-      // const coverPath = path.join(
-      //   knownFolders.documents().path + '/images',
-      //   playingSong.coverArt + '.png'
-      // );
-      // let newImage = fromFile(coverPath);
-      // if (!newImage) {
-      //   newImage = fromFile('~/app/images/artist.png');
-      // }
+      const coverPath = path.join(
+        knownFolders.documents().path + '/images',
+        playingSong.coverArt + '.png'
+      );
+      let newImage = fromFile(coverPath);
+      if (!newImage) {
+        newImage = fromFile('~/app/images/artist.png');
+      }
 
-      // const image = MPMediaItemArtwork.alloc().initWithImage(newImage.ios);
+      const image = MPMediaItemArtwork.alloc().initWithImage(newImage.ios);
       const values = ios.collections.jsArrayToNSArray([
         playingSong.title,
         playingSong.artist,
-        playingSong.album
-        //  image
+        playingSong.album,
+        image
       ] as any);
       const keys = ios.collections.jsArrayToNSArray([
         MPMediaItemPropertyTitle,
         MPMediaItemPropertyArtist,
-        MPMediaItemPropertyAlbumTitle
-        // MPMediaItemPropertyArtwork
+        MPMediaItemPropertyAlbumTitle,
+        MPMediaItemPropertyArtwork
       ]);
 
       const nowPlaying = NSDictionary.dictionaryWithObjectsForKeys(
@@ -250,7 +252,7 @@ export class PlayerService {
             ? currentSong.song.duration
             : 0;
         const _seconds = CMTimeGetSeconds(currentTime);
-        const position = _seconds / getDuration(this.currentSong) * 100;
+        const position = (_seconds / getDuration(this.currentSong)) * 100;
         const remainder = Math.floor(getDuration(this.currentSong) - _seconds);
         if (remainder >= 1) {
           const mins = Math.floor(remainder / 60);

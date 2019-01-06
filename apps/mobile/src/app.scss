@@ -1,41 +1,16 @@
+@import './scss/debug';
+@import './scss/variables';
 /*
 In NativeScript, the app.css file is where you place CSS rules that
 you would like to apply to your entire application. Check out
 http://docs.nativescript.org/ui/styling for a full list of the CSS
 selectors and properties you can use to style UI components.
 
-/*
+
 In many cases you may want to use the NativeScript core theme instead
 of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
-*/
 
-// LiteColors
-$backgroundColor: #fff;
-$lightPurple: #ca9fdb;
-$darkPurple: #4b0082;
-$primaryColor: #36454f;
-$lightGrey: #646262;
-$accentsDark: #a4a4a4;
-$accentsLight: #f9f9f9;
-$skeleton: #f8f8f8;
-$trackNumber: #8f8e8e;
-$borders: #e4e3e3;
-
-// // Dark
-// $backgroundColor: #171d22;
-// $lightPurple: #ca9fdb;
-// $darkPurple: #4b0082;
-// $primaryColor: #fff;
-// $lightGrey: #646262;
-// $accentsDark: #a4a4a4;
-// $accentsLight: #36454f;
-// $skeleton: #f8f8f8;
-// $trackNumber: #8f8e8e;
-// $borders: #36454f;
-
-$miniPlayerBg: #dbd3de;
-$heart: #eb2e9c;
 
 .login {
   color: $lightPurple;
@@ -54,24 +29,24 @@ $heart: #eb2e9c;
 
 /* Player */
 ActionBar {
-  background-color: $backgroundColor;
+  background-color: $playerBackgroundColor;
 }
 .hide-button {
   font-size: 35;
   color: $lightPurple;
   text-align: center;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 280px;
+  padding-right: 280px;
   padding-top: 3px;
   padding-bottom: 3px;
 }
 
 .player-wrap-background {
-  background-color: $backgroundColor;
+  background-color: $playerBackgroundColor;
   .player-wrap {
     border-bottom-left-radius: 20;
     border-bottom-right-radius: 20;
-    background-color: $backgroundColor;
+    background-color: $playerBackgroundColor;
   }
   .back-button {
     width: 80%;
@@ -83,12 +58,16 @@ ActionBar {
     color: $lightPurple;
     opacity: 0.8;
   }
-  .album-art Image {
+  .album-art image {
     border-radius: 4;
     /* margin-top: 20;
 	margin-bottom: 30; */
   }
-  Progress {
+  .player-album-art {
+    border-width: 0.5;
+    border-color: $lightGrey;
+  }
+  progress {
     background-color: $accentsLight;
     color: $lightPurple;
     width: 67%;
@@ -104,7 +83,7 @@ ActionBar {
   .song-artist,
   .song-album {
     text-align: center;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
 
   .song-title {
@@ -123,22 +102,22 @@ ActionBar {
     color: $lightGrey;
   }
 
-  .player-controls Label {
+  .player-controls label {
     text-align: center;
     height: 66;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
   .mini-player-button {
     width: 66;
     border-radius: 33;
     font-size: 36;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
   .disabled {
     color: $lightGrey;
   }
   .next-previous {
-    color: $primaryColor;
+    color: $primaryColorTwo;
     font-size: 25;
     width: 66;
     border-radius: 33;
@@ -154,7 +133,7 @@ ActionBar {
     text-align: center;
     font-size: 11px;
     vertical-align: top;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
   .queue-button {
     color: $accentsDark;
@@ -192,19 +171,35 @@ ActionBar {
   }
 
   & .navigation {
-    border-top-width: 1;
-    border-top-color: $accentsLight;
+    background-color: $tabBackgroundColor;
+    @if $theme != 'dark' {
+      border-top-color: $accentsLight;
+      border-top-width: 1;
+    }
+    else {
+      border-top-color: $tabBackgroundColor;
+     border-top-width: 0;
+  }
   }
   & .navigation-option {
     text-align: center;
     font-size: 18;
     font-weight: bold;
     height: 100%;
-    color: $primaryColor;
+    color: $primaryColorTwo;
   }
 
   & .mini-player {
-    background-color: $miniPlayerBg;
+    background: linear-gradient(
+      0deg,
+      $miniPlayerBg,
+      $miniPlayerBg2,
+      $miniPlayerBg2,
+      $miniPlayerBg2,
+      $miniPlayerBg2,
+      $miniPlayerBg2,
+      $miniPlayerBg
+    );
     height: 70;
   }
   & .mini-player-button {
@@ -262,7 +257,7 @@ ActionBar {
     font-size: 13px;
   }
 
-  .letter-wrap Label {
+  .letter-wrap label {
     height: 14;
     font-weight: bold;
     color: $darkPurple;
@@ -332,8 +327,8 @@ ActionBar {
   .header-list-item {
     margin-bottom: 10;
   }
-  .button-wrap Button,
-  .button-wrap Label {
+  .button-wrap button,
+  .button-wrap label {
     width: 49%;
     padding-top: 15;
     padding-right: 15;
@@ -343,7 +338,7 @@ ActionBar {
     font-size: 14;
     text-align: center;
   }
-  .button-wrap Button:highlighted {
+  .button-wrap button:highlighted {
     background-color: $lightPurple;
     color: $backgroundColor;
     font-weight: bold;
@@ -367,6 +362,9 @@ ActionBar {
 // playlist
 
 .playlist-wrap {
+  border-color: $backgroundColor;
+  border-width: 1;
+
   .playlist {
     height: 100%;
   }
@@ -393,7 +391,7 @@ ActionBar {
     font-size: 13px;
   }
 
-  .letter-wrap Label {
+  .letter-wrap label {
     height: 14;
     font-weight: bold;
     color: $darkPurple;
@@ -404,15 +402,15 @@ ActionBar {
     text-align: center;
     color: $lightPurple;
   }
-  .button-wrap Button,
-  .button-wrap Label {
+  .button-wrap button,
+  .button-wrap label {
     width: 49%;
     padding: 15;
     color: $accentsDark;
     font-size: 14;
     text-align: center;
   }
-  .button-wrap Button:highlighted {
+  .button-wrap button:highlighted {
     background-color: $lightPurple;
     color: $backgroundColor;
     font-weight: bold;
@@ -456,12 +454,16 @@ ActionBar {
 
 // playlists
 .playlists-wrap {
+  border-color: $backgroundColor;
+  border-width: 1;
+
   .playlist-list-item {
     padding-top: 15;
     padding-bottom: 15;
-    border-bottom-width: 1;
-    border-bottom-color: $borders;
-
+    @if $theme != 'dark' {
+      border-bottom-width: 1;
+      border-bottom-color: $borders;
+    }
     .playlist {
       font-size: 20px;
       padding-left: 10;
@@ -474,7 +476,7 @@ ActionBar {
     font-size: 13px;
   }
 
-  .letter-wrap Label {
+  .letter-wrap label {
     height: 14;
     font-weight: bold;
     color: $lightPurple;
@@ -521,6 +523,10 @@ ActionBar {
 }
 
 .recently-added-wrap {
+  background-color: $backgroundColor;
+  border-color: $backgroundColor;
+  border-width: 1;
+
   ActivityIndicator {
     margin-top: 45%;
   }
@@ -540,8 +546,10 @@ ActionBar {
   .artist-list-item {
     padding-top: 15;
     padding-bottom: 15;
-    border-bottom-width: 1;
-    border-bottom-color: $borders;
+    @if $theme != 'dark' {
+      border-bottom-width: 1;
+      border-bottom-color: $borders;
+    }
   }
   .title {
     background-color: $backgroundColor;
@@ -564,7 +572,7 @@ ActionBar {
     font-size: 13px;
   }
 
-  .letter-wrap Label {
+  .letter-wrap label {
     height: 16;
     font-weight: bold;
     color: $lightPurple;
@@ -573,10 +581,10 @@ ActionBar {
   }
 }
 
-Image {
+image {
   border-radius: 2;
 }
-Button {
+button {
   color: $lightPurple;
 }
 
@@ -591,9 +599,8 @@ Button {
 .border-outline {
   border-width: 0;
 }
-
-.debug {
-  border-color: red;
+.overflow-fix {
+  border-color: $backgroundColor;
   border-width: 1;
 }
 .page-padding {
@@ -603,16 +610,12 @@ Button {
 .page-padding-left {
   padding-left: 18%;
 }
-
-.offset-for-slide {
-  transform: translateX(300);
-}
 .title {
   color: $primaryColor;
   font-size: 28;
   font-weight: bold;
-  padding-top: 10;
-  padding-bottom: 8;
+  font-family: 'Pacifico', Pacifico;
+
   /* font-family: 'Pacifico', Pacifico;
   text-transform: lowercase; */
 }
@@ -635,8 +638,9 @@ Button {
     text-align: center;
   }
   & .back-link {
-    font-size: 25;
+    font-size: 28;
     font-weight: bold;
+    font-family: 'Pacifico', Pacifico;
     color: $lightPurple;
   }
 }
@@ -669,8 +673,8 @@ Button {
 .header-list-item {
   margin-bottom: 10;
 }
-.button-wrap Button,
-.button-wrap Label {
+.button-wrap button,
+.button-wrap label {
   width: 49%;
   padding-top: 15;
   padding-right: 15;
