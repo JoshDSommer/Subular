@@ -44,7 +44,8 @@ apps/mobile/app/app.css
 /apps/mobile/**/*.js
 /libs/core/**/*.js
 
-/apps/mobile-old/node_modules
-/apps/mobile-old/platforms
-apps/mobile-old/app/app.css
-/apps/mobile-old/**/*.js
+/apps/mobile2/node_modules
+/apps/mobile2/platforms
+apps/mobile2/app/app.css
+/apps/mobile2/**/*.js
+apps/mobile2/src/app.css
