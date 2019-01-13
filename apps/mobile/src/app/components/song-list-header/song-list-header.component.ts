@@ -19,13 +19,20 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SongListHeaderComponent implements OnInit, AfterViewInit {
-  @Input() name: string;
-  @Input() year: string;
-  @Input() genre: string;
-  @Input() shuffleFunction: Function;
-  @Input() downloadFunction: Function;
-  @Input() coverArt: string;
-  @Input() allSongsDownloaded: boolean;
+  @Input()
+  name: string;
+  @Input()
+  year: string;
+  @Input()
+  genre: string;
+  @Input()
+  shuffleFunction: Function;
+  @Input()
+  downloadFunction: Function;
+  @Input()
+  coverArt: string;
+  @Input()
+  allSongsDownloaded: boolean;
 
   constructor(private subular: SubularMobileService) {}
 

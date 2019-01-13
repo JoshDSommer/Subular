@@ -3,17 +3,8 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc/apps/web",
     "module": "commonjs",
-    "types": [
-      "jasmine",
-      "node"
-    ]
+    "types": ["jasmine", "node"]
   },
-  "files": [
-    "src/test.ts",
-    "src/polyfills.ts"
-  ],
-  "include": [
-    "**/*.spec.ts",
-    "**/*.d.ts"
-  ]
+  "files": ["src/test.ts", "src/polyfills.ts"],
+  "include": ["**/*.spec.ts", "**/*.d.ts"]
 }

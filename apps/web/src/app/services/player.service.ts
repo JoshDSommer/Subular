@@ -110,7 +110,7 @@ export class PlayerService {
 
     const timeUpdate$ = fromEvent(this.audio, 'timeupdate').map(() => {
       const remainder = this.audio.duration - this.audio.currentTime;
-      const position = this.audio.currentTime / this.audio.duration * 100;
+      const position = (this.audio.currentTime / this.audio.duration) * 100;
       const mins = Math.floor(remainder / 60);
       const secs = remainder - mins * 60;
       return {

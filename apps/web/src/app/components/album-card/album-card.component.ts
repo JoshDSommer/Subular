@@ -14,8 +14,10 @@ import { PlayerService } from '../../services/player.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlbumCardComponent implements OnInit {
-  @Input() album: IAlbum;
-  @Input() routerLink: string;
+  @Input()
+  album: IAlbum;
+  @Input()
+  routerLink: string;
 
   getCoverUrl(coverArt) {
     if (coverArt) {

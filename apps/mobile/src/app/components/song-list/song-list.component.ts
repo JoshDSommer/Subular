@@ -18,7 +18,8 @@ import { tap } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SongListComponent implements OnInit {
-  @Output() playingSong = new EventEmitter<ISong>();
+  @Output()
+  playingSong = new EventEmitter<ISong>();
   listedSongs: ISong[];
   songs$: Observable<ISong[]>;
 

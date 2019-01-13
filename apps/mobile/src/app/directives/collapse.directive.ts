@@ -16,7 +16,8 @@ export class CollapseDirective implements AfterViewInit {
   /**
    * listview view to watch scrolling events on.
    */
-  @Input() collapse: ElementRef;
+  @Input()
+  collapse: ElementRef;
 
   private get view(): View {
     return this.element.nativeElement;
@@ -28,13 +29,13 @@ export class CollapseDirective implements AfterViewInit {
       : this.collapse;
   }
 
-  constructor(private element: ElementRef) { }
+  constructor(private element: ElementRef) {}
 
   ngAfterViewInit() {
     if (this.listView) {
-      const panEvent$ = fromEvent(this.listView, 'pan').pipe(map(
-        (event: PanGestureEventData) => event.deltaY
-      ));
+      const panEvent$ = fromEvent(this.listView, 'pan').pipe(
+        map((event: PanGestureEventData) => event.deltaY)
+      );
 
       this.subscription = panEvent$
         .pipe(

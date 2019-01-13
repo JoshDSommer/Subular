@@ -1,32 +1,30 @@
 .artist-list {
-	overflow-y: scroll;
-	overflow-x: hidden;
-	height: 100%;
-	margin:0;
-	list-style: none;
-	background-color: #fff;
-	padding:0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
+  margin: 0;
+  list-style: none;
+  background-color: #fff;
+  padding: 0;
 }
 
-.artist-list li{
-
+.artist-list li {
 }
-.artist-list li a{
-	width: 100%;
-	height: 100%;
-	text-decoration: none;
-	color: #222222;
-	display: inline-block;
-	padding: 0.2em 0.6em;
-
+.artist-list li a {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: #222222;
+  display: inline-block;
+  padding: 0.2em 0.6em;
 }
 
-.artist-list li a:hover{
-	background-color: #222222;
-	color: #fff;
+.artist-list li a:hover {
+  background-color: #222222;
+  color: #fff;
 }
 
-.artist-list li.selected a{
-	background-color: #222222;
-	color: #fff;
+.artist-list li.selected a {
+  background-color: #222222;
+  color: #fff;
 }

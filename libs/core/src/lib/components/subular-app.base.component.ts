@@ -8,25 +8,33 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/startWith';
 
 @Component({
-	template: ''
+  template: ''
 })
 export class SubularAppBaseComponent implements OnInit {
-	loaded$: Observable<boolean>;
-	artistId$: Observable<any>;
+  loaded$: Observable<boolean>;
+  artistId$: Observable<any>;
 
-	constructor(private cachedData: SubsonicCachedService, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private cachedData: SubsonicCachedService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
-	ngOnInit() {
-		this.loaded$ = this.cachedData.getCachedData()
-			.map(([artists, albums]) => true);
+  ngOnInit() {
+    this.loaded$ = this.cachedData
+      .getCachedData()
+      .map(([artists, albums]) => true);
 
-
-		if (this.route && this.route.firstChild && this.route.firstChild.snapshot && this.route.firstChild.snapshot.params) {
-			this.artistId$ = this.router.events
-				.filter(value => value instanceof NavigationEnd)
-				.map(() => this.route.firstChild.snapshot.params['artistId'])
-				.startWith(this.route.firstChild.snapshot.params['artistId']);
-		}
-
-	}
+    if (
+      this.route &&
+      this.route.firstChild &&
+      this.route.firstChild.snapshot &&
+      this.route.firstChild.snapshot.params
+    ) {
+      this.artistId$ = this.router.events
+        .filter(value => value instanceof NavigationEnd)
+        .map(() => this.route.firstChild.snapshot.params['artistId'])
+        .startWith(this.route.firstChild.snapshot.params['artistId']);
+    }
+  }
 }

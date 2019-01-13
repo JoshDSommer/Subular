@@ -13,7 +13,8 @@ import { ScrollView } from 'tns-core-modules/ui/scroll-view';
 
 @Directive({ selector: '[slideBack]' })
 export class SlideBackDirective {
-  @Input() slideBack: any[];
+  @Input()
+  slideBack: any[];
   startX: number;
 
   get view(): View {
@@ -29,9 +30,12 @@ export class SlideBackDirective {
   ) {}
 
   ngAfterViewInit() {
-    this.view.on('pan', (args: PanGestureEventData): void => {
-      this.onPan(args);
-    });
+    this.view.on(
+      'pan',
+      (args: PanGestureEventData): void => {
+        this.onPan(args);
+      }
+    );
 
     //used to set the starting position.
     this.view.on('touch', (args: TouchGestureEventData) => {

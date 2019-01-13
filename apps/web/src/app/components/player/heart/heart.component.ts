@@ -15,8 +15,10 @@ import { SongStoreService } from '@Subular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeartComponent {
-  @Input() song: ISong;
-  @Output() songUpdated = new EventEmitter<ISong>();
+  @Input()
+  song: ISong;
+  @Output()
+  songUpdated = new EventEmitter<ISong>();
 
   get isHearted() {
     return this.song.starred;

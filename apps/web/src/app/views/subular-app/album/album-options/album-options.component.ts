@@ -8,7 +8,8 @@ import { PlayerService } from '../../../../services/player.service';
   styleUrls: ['album-options.component.css']
 })
 export class AlbumOptionsComponent {
-  @Input() album: IAlbum;
+  @Input()
+  album: IAlbum;
 
   constructor(
     private subsonic: SubsonicService,

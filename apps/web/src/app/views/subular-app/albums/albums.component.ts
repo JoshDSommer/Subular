@@ -19,7 +19,8 @@ export class AlbumsComponent implements OnInit {
   albums$: Observable<IAlbum[]>;
   artist$: Observable<IArtist>;
 
-  @HostBinding('style.background-image') backgroundImage;
+  @HostBinding('style.background-image')
+  backgroundImage;
 
   constructor(
     private route: ActivatedRoute,
