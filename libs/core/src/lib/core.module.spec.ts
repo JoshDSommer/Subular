@@ -1,14 +1,14 @@
 import { async, TestBed } from '@angular/core/testing';
-import { CoreModule } from './core.module';
+import { SubularCoreModule } from './core.module';
 
 describe('CoreModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [CoreModule]
+      imports: [SubularCoreModule]
     }).compileComponents();
   }));
 
   it('should create', () => {
-    expect(CoreModule).toBeDefined();
+    expect(SubularCoreModule).toBeDefined();
   });
 });
