@@ -38,23 +38,23 @@ export class PlayerComponent {
     if (this._nowPlaying && this._nowPlaying.song.id !== value.song.id) {
       this.currentArtWork = null;
     }
+    this._nowPlaying = value;
+    const measuredTime = new Date(
+      (value.song.duration - value.remainingTime) * 1000
+    );
+    const timeWithoutHours = measuredTime.toISOString().substr(14, 5);
+    const timeWithHours = measuredTime.toISOString().substr(11, 8);
+    this.timeEclipsed = timeWithHours.startsWith('00:')
+      ? timeWithoutHours
+      : timeWithHours;
+    this.timeEclipsed = this.trimLeadingZero(this.timeEclipsed);
+    this._nowPlaying.song.time = this.trimLeadingZero(
+      this._nowPlaying.song.time
+    );
+  }
 
-    if (value) {
-      //mutate time formats probably should export this to a Pipe
-      this._nowPlaying = Object.assign({}, value);
-      const measuredTime = new Date(
-        (value.song.duration - value.remainingTime) * 1000
-      );
-      const timeWithoutHours = measuredTime.toISOString().substr(14, 5);
-      const timeWithHours = measuredTime.toISOString().substr(11, 8);
-      this.timeEclipsed = timeWithHours.startsWith('00:')
-        ? timeWithoutHours
-        : timeWithHours;
-      this.timeEclipsed = this.trimLeadingZero(this.timeEclipsed);
-      this._nowPlaying.song.time = this.trimLeadingZero(
-        this._nowPlaying.song.time
-      );
-    }
+  get nowPlaying() {
+    return this._nowPlaying;
   }
 
   songs$: Observable<ISong[]>;
@@ -95,9 +95,9 @@ export class PlayerComponent {
     return this.currentArtWork;
   }
 
-  updateView() {
-    setTimeout(() => this.ref.markForCheck());
-  }
+  // updateView() {
+  //   setTimeout(() => this.ref.markForCheck());
+  // }
 
   onProgressLoaded(args: EventData) {
     const progress = args.object as Progress;
@@ -115,7 +115,7 @@ export class PlayerComponent {
 
   playPreviousSong() {
     this.player.playPreviousSong();
-    this.updateView();
+    // this.updateView();
     this.hapticFeedback();
   }
 
@@ -136,13 +136,13 @@ export class PlayerComponent {
 
   pauseSong() {
     this.player.pauseSong();
-    this.updateView();
+    // this.updateView();
     this.hapticFeedback();
   }
 
   resumeSong() {
     this.player.resumeSong();
-    this.updateView();
+    // this.updateView();
     this.hapticFeedback();
   }
 
