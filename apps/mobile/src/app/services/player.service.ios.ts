@@ -138,6 +138,7 @@ export class PlayerService {
       const playingSong = this.songList[this.currentIndex];
       if (!playingSong) {
         this.playNextSong();
+        return;
       }
       this.playHistory = [...this.playHistory, playingSong];
       this.currentSong = Object.assign({}, this.currentSong, {
@@ -199,7 +200,7 @@ export class PlayerService {
 
   private notifyObservable() {
     this.ngZone.run(() => {
-      this._nowPlaying$.next(this.currentSong);
+      this._nowPlaying$.next({ ...this.currentSong });
     });
   }
 

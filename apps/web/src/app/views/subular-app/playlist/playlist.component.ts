@@ -29,7 +29,8 @@ export class PlaylistComponent implements OnInit {
 
   private listedSongs: ISong[];
 
-  @HostBinding('style.background-image') backgroundImage;
+  @HostBinding('style.background-image')
+  backgroundImage;
 
   constructor(
     private route: ActivatedRoute,

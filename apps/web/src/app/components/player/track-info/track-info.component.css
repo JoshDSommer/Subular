@@ -1,19 +1,22 @@
-.title, .album, .artist, .cover-img{
-	cursor:hand;
+.title,
+.album,
+.artist,
+.cover-img {
+  cursor: hand;
 }
-.title{
-	width: 100%;
-	display: inline-block;
-	font-size: 1.7em;
-	margin-top:5px;
+.title {
+  width: 100%;
+  display: inline-block;
+  font-size: 1.7em;
+  margin-top: 5px;
 }
-.album,{
-	font-size: 1.0em;
-	margin-left: 10px;
+.album {
+  font-size: 1em;
+  margin-left: 10px;
 }
-.artist{
-	font-weight:700;
+.artist {
+  font-weight: 700;
 }
-.cover-img{
-	height:63px;
+.cover-img {
+  height: 63px;
 }

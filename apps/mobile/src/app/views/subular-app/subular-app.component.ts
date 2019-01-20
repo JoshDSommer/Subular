@@ -10,7 +10,14 @@ import {
   IAudioPlayingInfo,
   PlayingStatus
 } from '../../services/player.service';
-import { SPIN_ANIMATION } from '../../animations/animations';
+import {
+  SPIN_ANIMATION,
+  SLIDE_DOWN_ANIMATION,
+  SLIDE_UP_ANIMATION,
+  screenInfo,
+  SCALE_DOWN_ANIMATION,
+  SCALE_UP_ANIMATION
+} from '../../animations/animations';
 import { setNumber } from 'tns-core-modules/application-settings';
 import { ARTIST_LIST_CACHE_KEY } from '../subular-app/artist-list/artist-list.component';
 import { SubularMobileService } from '../../services/subularMobile.service';
@@ -25,6 +32,9 @@ import {
 } from '@angular/animations';
 import { shareReplay, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
+import { topmost, isIOS } from 'tns-core-modules/ui/frame/frame';
+
+declare const UIBarStyle: any;
 
 const slideLeft = [
   query(':leave', style({ transform: 'translateX(0)' })),
@@ -115,6 +125,10 @@ export class SubularAppComponent implements OnInit {
   animateOptions = SPIN_ANIMATION;
   highlightBgColor = '#ebd2f5';
   currentArtWork: Observable<string>;
+  playerVisible = false;
+  animation: any;
+  intialOffset: number;
+  scaleAnimation: any;
 
   constructor(
     private subular: SubularMobileService,
@@ -133,27 +147,26 @@ export class SubularAppComponent implements OnInit {
     });
   }
 
-  prepRouteState(outlet: RouterOutlet) {
-    const path = outlet.activatedRoute.snapshot.routeConfig.path;
-    const pathCleanedUp = path.substring(0, path.indexOf('/'));
-    const route = path.includes('/') ? pathCleanedUp : path;
-    return route;
-  }
+  // prepRouteState(outlet: RouterOutlet) {
+  //   const path = outlet.activatedRoute.snapshot.routeConfig.path;
+  //   const pathCleanedUp = path.substring(0, path.indexOf('/'));
+  //   const route = path.includes('/') ? pathCleanedUp : path;
+  //   return route;
+  // }
 
   ngOnInit() {
+    this.intialOffset = screenInfo.portrait;
     this.subular.pingServer().subscribe(authenticated => {
       if (!authenticated) {
         this.redirectToLogin();
       }
     });
 
-    this.loaded$ = this.subular
-      .getCachedData()
-      .map(([artists, albums]) => true);
+    this.loaded$ = this.subular.getCachedData().map(([]) => true);
   }
 
   getArtWork(song) {
-    if (!this.currentArtWork) {
+    if (!this.currentArtWork && song && song.coverArt) {
       this.currentArtWork = this.subular
         .getArtWork(song.coverArt, 1000)
         .pipe(shareReplay());
@@ -175,5 +188,33 @@ export class SubularAppComponent implements OnInit {
 
   redirectToLogin() {
     this.router.navigate(['/login'], { clearHistory: true });
+  }
+
+  showPlayer() {
+    this.animation = SLIDE_UP_ANIMATION;
+    this.scaleAnimation = SCALE_DOWN_ANIMATION;
+    this.playerVisible = true;
+    if (isIOS) {
+      topmost().ios.controller.visibleViewController.navigationItem.setHidesBackButtonAnimated(
+        true,
+        false
+      );
+      const navigationBar = topmost().ios.controller.navigationBar;
+      navigationBar.barStyle = UIBarStyle.UIBarStyleBlack;
+    }
+  }
+
+  hidePlayer() {
+    this.animation = SLIDE_DOWN_ANIMATION;
+    this.scaleAnimation = SCALE_UP_ANIMATION;
+    this.playerVisible = false;
+    if (isIOS) {
+      topmost().ios.controller.visibleViewController.navigationItem.setHidesBackButtonAnimated(
+        true,
+        false
+      );
+      const navigationBar = topmost().ios.controller.navigationBar;
+      navigationBar.barStyle = UIBarStyle.UIBarStyleBlack;
+    }
   }
 }

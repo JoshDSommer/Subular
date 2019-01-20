@@ -10,8 +10,10 @@ import { IPlaylist } from '@Subular/core';
   styleUrls: ['context-menu.component.css']
 })
 export class ContextMenuComponent implements OnInit {
-  @Input() selectedSong: ISong;
-  @ViewChild(ContextMenu) contextMenu: ContextMenu;
+  @Input()
+  selectedSong: ISong;
+  @ViewChild(ContextMenu)
+  contextMenu: ContextMenu;
 
   contextMenuItems: MenuItem[];
 

@@ -41,7 +41,16 @@ ActionBar {
   padding-bottom: 3px;
 }
 
-.player-wrap-background {
+.player-card-background {
+  border-top-left-radius: 40%;
+  border-top-right-radius: 40%;
+  margin-top: 1px;
+  border-top-width: 3;
+  border-color: $accentsDark;
+  // transform: translateY(200%);
+}
+.player-wrap-background,
+.player-card-background {
   background-color: $playerBackgroundColor;
   .player-wrap {
     border-bottom-left-radius: 20;
@@ -76,8 +85,9 @@ ActionBar {
 
   .heart-wrap {
     text-align: right;
-    padding-top: 15;
-    padding-right: 25;
+    padding-top: 5;
+    padding-right: 35;
+    padding-bottom: 5;
   }
   .song-title,
   .song-artist,
@@ -105,7 +115,6 @@ ActionBar {
   .player-controls label {
     text-align: center;
     height: 66;
-    color: $primaryColorTwo;
   }
   .mini-player-button {
     width: 66;
@@ -178,8 +187,8 @@ ActionBar {
     }
     else {
       border-top-color: $tabBackgroundColor;
-     border-top-width: 0;
-  }
+      border-top-width: 0;
+    }
   }
   & .navigation-option {
     text-align: center;
@@ -190,16 +199,7 @@ ActionBar {
   }
 
   & .mini-player {
-    background: linear-gradient(
-      0deg,
-      $miniPlayerBg,
-      $miniPlayerBg2,
-      $miniPlayerBg2,
-      $miniPlayerBg2,
-      $miniPlayerBg2,
-      $miniPlayerBg2,
-      $miniPlayerBg
-    );
+    background: $miniPlayerBg;
     height: 70;
   }
   & .mini-player-button {

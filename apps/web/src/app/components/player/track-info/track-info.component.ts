@@ -14,7 +14,8 @@ import { ISong, SubsonicService } from '@Subular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TrackInfoComponent implements OnInit, OnChanges {
-  @Input() song: ISong;
+  @Input()
+  song: ISong;
   imgUrl;
 
   constructor(private subsonic: SubsonicService) {}

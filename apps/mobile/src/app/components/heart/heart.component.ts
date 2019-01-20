@@ -16,12 +16,18 @@ import { ISong, IAlbum, IArtist } from '@Subular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeartComponent {
-  @Input() song: ISong;
-  @Input() album: IAlbum;
-  @Input() artist: IArtist;
-  @Output() songUpdated = new EventEmitter<ISong>();
-  @Input() row: number;
-  @Input() col: number;
+  @Input()
+  song: ISong;
+  @Input()
+  album: IAlbum;
+  @Input()
+  artist: IArtist;
+  @Output()
+  songUpdated = new EventEmitter<ISong>();
+  @Input()
+  row: number;
+  @Input()
+  col: number;
 
   get isHearted() {
     if (this.song) {

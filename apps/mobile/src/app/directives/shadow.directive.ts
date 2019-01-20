@@ -39,16 +39,26 @@ declare const CGSizeMake: any;
 
 @Directive({ selector: '[shadow]' })
 export class NativeShadowDirective implements OnInit, OnChanges {
-  @Input() shadow: string | AndroidData | IOSData;
-  @Input() elevation?: number | string;
-  @Input() shape?: Shape;
-  @Input() bgcolor?: string;
-  @Input() cornerRadius?: number | string;
-  @Input() maskToBounds?: boolean;
-  @Input() shadowColor?: string;
-  @Input() shadowOffset?: number | string;
-  @Input() shadowOpacity?: number | string;
-  @Input() shadowRadius?: number | string;
+  @Input()
+  shadow: string | AndroidData | IOSData;
+  @Input()
+  elevation?: number | string;
+  @Input()
+  shape?: Shape;
+  @Input()
+  bgcolor?: string;
+  @Input()
+  cornerRadius?: number | string;
+  @Input()
+  maskToBounds?: boolean;
+  @Input()
+  shadowColor?: string;
+  @Input()
+  shadowOffset?: number | string;
+  @Input()
+  shadowOpacity?: number | string;
+  @Input()
+  shadowRadius?: number | string;
 
   private loaded = false;
   private initialized = false;

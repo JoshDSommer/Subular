@@ -15,9 +15,12 @@ import { ISong } from '@Subular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QueueItemComponent implements OnInit {
-  @Input() nowPlaying: IAudioPlayingInfo;
-  @Input() item: ISong;
-  @Input() index: number;
+  @Input()
+  nowPlaying: IAudioPlayingInfo;
+  @Input()
+  item: ISong;
+  @Input()
+  index: number;
 
   constructor(private player: PlayerService) {}
 

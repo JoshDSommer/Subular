@@ -52,6 +52,8 @@ import { NativeScriptAnimationsModule } from 'nativescript-angular/animations';
 
 import { animationsTraceCategory } from 'nativescript-angular/trace';
 import { setCategories, enable } from 'trace';
+import { PlayerWrapComponent } from './views/player/player-wrap/player-wrap.component';
+import { PlayingQueComponent } from './views/player/playing-que/playing-que.component';
 setCategories(animationsTraceCategory);
 // enable();
 
@@ -88,7 +90,9 @@ setCategories(animationsTraceCategory);
     SupaComponent,
     RecentlyAddedAlbumComponent,
     QueueItemComponent,
-    BackLinkComponent
+    BackLinkComponent,
+    PlayerWrapComponent,
+    PlayingQueComponent
   ],
   providers: [
     LOCALSTORAGE_SERVICE,

@@ -1,0 +1,8 @@
+<ActionBar #actionBar>
+	<StackLayout class="back-button" (touch)="back()">
+	  <label class="fa hide-button " text="&#xf0d7;"></label>
+	</StackLayout>
+  </ActionBar>
+<StackLayout [slideDownBack] class="player-wrap-background">
+	<player [nowPlaying]="nowPlaying$ | async"></player>
+</StackLayout>

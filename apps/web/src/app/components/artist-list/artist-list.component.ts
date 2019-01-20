@@ -19,8 +19,10 @@ import { Observable } from 'rxjs/Observable';
 export class ArtistListComponent implements OnInit {
   artistId$: Observable<any>;
   artists$: any;
-  @Input() selectedArtistId: number;
-  @Input() artists: IArtist[];
+  @Input()
+  selectedArtistId: number;
+  @Input()
+  artists: IArtist[];
 
   constructor(
     private cachedData: SubsonicCachedService,

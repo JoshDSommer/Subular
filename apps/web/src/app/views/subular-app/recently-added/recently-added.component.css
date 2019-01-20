@@ -1,10 +1,10 @@
 .album-wrap {
-	display: flex;
-	width: 100%;
-	flex-wrap: wrap;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
 }
-h1{
-	color: #fff;
-	padding: 0 1em;
-	font-size: 2.5em;
+h1 {
+  color: #fff;
+  padding: 0 1em;
+  font-size: 2.5em;
 }
