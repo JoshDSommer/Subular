@@ -1,5 +1,4 @@
 <StackLayout *ngIf="(playlist$ | async) as playlist" class=" playlist-wrap">
-  <back-link text="Playlists" [link]="['/app/playlists']"></back-link>
   <ListView
     [slideBack]="['/app/playlists']"
     [itemTemplateSelector]="templateSelector"

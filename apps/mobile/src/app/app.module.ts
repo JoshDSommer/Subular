@@ -17,10 +17,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { SubularAppComponent } from './views/subular-app/subular-app.component';
 import { ArtistListComponent } from './views/subular-app/artist-list/artist-list.component';
 import { AlbumsComponent } from './views/subular-app/albums/albums.component';
+import { AlbumHeaderResolver } from './views/subular-app/album/album-header.resolver';
 
 import * as applicationModule from 'tns-core-modules/application';
 import { AlbumComponent } from './views/subular-app/album/album.component';
 import { SongListComponent } from './components/song-list/song-list.component';
+import { HeaderComponent } from './components/header/header.component';
 import { PlayerService } from './services/player.service';
 import { AnimateDirective } from './directives/animate.directive';
 import { SlideBackDirective } from './directives/slideBack.directive';
@@ -69,6 +71,7 @@ setCategories(animationsTraceCategory);
     ComponentModule
   ],
   declarations: [
+    HeaderComponent,
     AppComponent,
     AlbumsComponent,
     ArtistListComponent,
@@ -103,7 +106,8 @@ setCategories(animationsTraceCategory);
     AlbumsResolver,
     AlbumResolver,
     CurrentConnectionService,
-    DownloadQueueService
+    DownloadQueueService,
+    AlbumHeaderResolver
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

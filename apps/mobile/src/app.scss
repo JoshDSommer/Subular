@@ -502,7 +502,7 @@ ActionBar {
     margin-top: 45%;
   }
   .first-item {
-    padding-top: 50;
+    // padding-top: 50;
   }
   .title {
     background-color: $backgroundColor;
@@ -531,7 +531,7 @@ ActionBar {
     margin-top: 45%;
   }
   .first-item {
-    padding-top: 50;
+    padding-top: 5;
   }
   .title {
     background-color: $backgroundColor;
@@ -556,9 +556,9 @@ ActionBar {
     width: 100%;
   }
 
-  .first-item {
-    padding-top: 55;
-  }
+  // .first-item {
+  //   padding-top: 55;
+  // }
   .artist {
     margin: 0;
     padding: 3% 0 3% 0;

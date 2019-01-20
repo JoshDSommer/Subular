@@ -1,12 +1,12 @@
 <GridLayout rows="*" columns="*">
-  <GridLayout #mainLayout rows="*,auto,52" row="0" col="0" columns="*" stretchLastChild="true" class="app-wrap">
-    <GridLayout row="2" col="0" rows="*" columns="*,*,*,*" height="60" class="navigation">
+  <GridLayout #mainLayout rows="40,*,auto,52" row="0" col="0" columns="*" stretchLastChild="true" class="app-wrap">
+    <GridLayout row="3" col="0" rows="*" columns="*,*,*,*" height="60" class="navigation">
       <label row="0" col="0" [highlight]="highlightBgColor" [nsRouterLink]="['/app/recent']" horizontalAlign="center" verticalAlignment="center" class=" navigation-option " [text]="'Recent'"></label>
       <label row="0" col="1" [highlight]="highlightBgColor" [nsRouterLink]="['/app/artists']" (tap)="clearArtistKeyCache()" horizontalAlign="center" verticalAlignment="center" class="navigation-option " [text]="'Artists'"></label>
       <label row="0" col="2" [highlight]="highlightBgColor" [nsRouterLink]="['/app/playlists']" horizontalAlign="center" verticalAlignment="center" class="navigation-option " [text]="'Playlists'"></label>
       <label row="0" col="3" [highlight]="highlightBgColor" [nsRouterLink]="['/app/supa']" horizontalAlign="center" verticalAlignment="center" class="navigation-option " [text]="'More'"></label>
     </GridLayout>
-    <GridLayout row="1" col="0" *ngIf="nowPlaying" class="mini-player" rows="*,30" columns="80,*,80">
+    <GridLayout row="2" col="0" *ngIf="nowPlaying" class="mini-player" rows="*,30" columns="80,*,80">
       <StackLayout row="0" class="" rowSpan="2" col="0" width="60" height="60">
         <image (tap)="showPlayer()" class="" width="60" height="60" [src]="getArtWork(nowPlaying?.song) | async"></image>
       </StackLayout>
@@ -22,15 +22,17 @@
       </ng-container>
     </GridLayout>
 
-    <GridLayout row="0" col="0" class="border-outline" [animate]="scaleAnimation">
-      <router-outlet #routerOutlet="outlet" class="router-outlet" ></router-outlet>
+    <GridLayout row="1" col="0" class="border-outline" [animate]="scaleAnimation">
+
+      <router-outlet row="1" col="0" #routerOutlet="outlet" class="router-outlet" ></router-outlet>
       <ng-template #loading>
         <label class="loading-text" text="Loading..." textWrap="true"></label>
         <image class="loading-image" [animate]="animateOptions" src="~/app/images/record.png" width="50"></image>
       </ng-template>
     </GridLayout>
+    <header row="0" col="0" [data]="routeDate$ | async"></header>
   </GridLayout>
-  <StackLayout *ngIf="nowPlaying" row="0" col="0" class="player-card-background" [translateY]="intialOffset" [animate]="animation">
+  <StackLayout *ngIf="nowPlaying" [slideDownBack] [slideBackCallBack]="hidePlayerSlide" row="0" col="0" class="player-card-background" [translateY]="intialOffset" [animate]="animation">
     <StackLayout class="back-button" (tap)="hidePlayer()">
       <label class="fa hide-button " text="&#xf0d7;"></label>
     </StackLayout>

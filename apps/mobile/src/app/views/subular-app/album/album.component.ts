@@ -41,7 +41,7 @@ interface IAlbumSong extends ISong {
   templateUrl: './album.component.html'
 })
 export class AlbumComponent implements OnInit {
-  returnLink$: Observable<any>;
+  returnLink: any;
   songSubscription: Subscription;
   songs$: Observable<IAlbumSong[]>;
   listedSongs: IAlbumSong[] = [];
@@ -104,17 +104,14 @@ export class AlbumComponent implements OnInit {
       })
     ) as Observable<IAlbumSong[]>;
 
-    this.returnLink$ = this.route.params.pipe(
-      combineLatest(this.album$),
-      map(([value, album]) => {
-        return {
-          link: !value.returnLink
-            ? ['/app/albums', album.artistId]
-            : [value.returnLink],
-          text: !value.returnLink ? album.artist : value.returnLinkText
-        };
-      })
-    );
+    this.returnLink = this.route.snapshot.data.headerData.backLinkUrl;
+    if (
+      Object.prototype.toString.call(
+        this.route.snapshot.data.headerData.backLinkUrl
+      ) === '[object String]'
+    ) {
+      this.returnLink = [this.route.snapshot.data.headerData.backLinkUrl];
+    }
   }
 
   selectSong($song: ISong) {
