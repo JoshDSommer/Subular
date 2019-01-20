@@ -38,6 +38,6 @@ export const SCALE_DOWN_ANIMATION: AnimationDefinition = {
 
 export const SCALE_UP_ANIMATION: AnimationDefinition = {
   scale: { x: 1, y: 1 },
-  duration: 600,
+  duration: 200,
   curve: AnimationCurve.easeInOut
 };

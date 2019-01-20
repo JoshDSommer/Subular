@@ -94,7 +94,7 @@ export class SlideAwayDirective implements AfterViewInit {
               x: 0,
               y: screenInfo.portrait
             },
-            duration: 500,
+            duration: 200,
             curve: AnimationCurve.easeInOut
           })
           .then(
