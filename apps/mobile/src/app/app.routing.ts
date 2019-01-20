@@ -8,6 +8,7 @@ import { ArtistListComponent } from './views/subular-app/artist-list/artist-list
 import { AlbumsComponent } from './views/subular-app/albums/albums.component';
 import { AlbumsResolver, AlbumResolver } from './resolvers';
 import { AlbumComponent } from './views/subular-app/album/album.component';
+import { AlbumHeaderResolver } from './views/subular-app/album/album-header.resolver';
 import { PlayerComponent } from './views/player/player.component';
 import { PlaylistsComponent } from './views/subular-app/playlists/playlists.component';
 import { PlaylistComponent } from './views/subular-app/playlist/playlist.component';
@@ -17,9 +18,10 @@ import { SupaComponent } from './views/supa/supa.component';
 import { PlayerWrapComponent } from './views/player/player-wrap/player-wrap.component';
 
 export interface SubularRouteData {
-  title: string;
-  backLinkTitle: string;
-  backLinkUrl: string[];
+  title?: string;
+  backLinkTitle?: string;
+  backLinkUrl?: string[];
+  headerData?: SubularRouteData;
 }
 
 const routes: Routes = [
@@ -54,7 +56,9 @@ const routes: Routes = [
       {
         path: 'album/:albumId',
         component: AlbumComponent,
-        resolve: {}
+        resolve: {
+          headerData: AlbumHeaderResolver
+        }
       },
       {
         path: 'playlists',
