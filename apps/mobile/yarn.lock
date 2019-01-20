@@ -2,6 +2,9 @@
 # yarn lockfile v1
 
 
+"@Subular/core@file:../../libs/core":
+  version "0.0.0"
+
 "@angular-devkit/core@0.8.6", "@angular-devkit/core@^0.8.0", "@angular-devkit/core@~0.8.1":
   version "0.8.6"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-0.8.6.tgz#499cac38e8ed18b04903a404e300046858769ecd"
@@ -18,15 +21,15 @@
     "@angular-devkit/core" "0.8.6"
     rxjs "~6.2.0"
 
-"@angular/animations@~6.1.0":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-6.1.10.tgz#4ab9b9a6c25e0cca781588700daa9efc33a722e4"
+"@angular/animations@~7.0.0":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-7.0.4.tgz#f53fc9f1bce3bf1afe60dcbc08b6863472f519e4"
   dependencies:
     tslib "^1.9.0"
 
-"@angular/common@~6.1.0":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@angular/common/-/common-6.1.10.tgz#96e01564031b23cf54e4264e4c9defd6e10a0e11"
+"@angular/common@~7.0.0":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-7.0.4.tgz#aafb26ce59c967daa5b122393e1933208a247f72"
   dependencies:
     tslib "^1.9.0"
 
@@ -39,45 +42,45 @@
     reflect-metadata "^0.1.2"
     tsickle "^0.32.1"
 
-"@angular/compiler@~6.1.0":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-6.1.10.tgz#6ab35c8584fbda13a6708df14b8b03cc8f849a94"
+"@angular/compiler@~7.0.0":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-7.0.4.tgz#df91dab990c46b464705b0901d70d1cfdfd190e1"
   dependencies:
     tslib "^1.9.0"
 
-"@angular/core@~6.1.0":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@angular/core/-/core-6.1.10.tgz#9f3d8b7e44ec0a68c88745d25a920f98bfb2bc43"
+"@angular/core@~7.0.0":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-7.0.4.tgz#98340a1bdb53f0bbecfcfc9831a7a22a1540d79b"
   dependencies:
     tslib "^1.9.0"
 
-"@angular/forms@~6.1.0":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-6.1.10.tgz#c9cd0f716cf91272e8e09e17a51fc20313df31b0"
+"@angular/forms@~7.0.0":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-7.0.4.tgz#5f2328d297f5c7f9f3af81e1f76a13e1546c743f"
   dependencies:
     tslib "^1.9.0"
 
-"@angular/http@~6.1.0":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@angular/http/-/http-6.1.10.tgz#91239b27990b992cdb312056d3f11cc804bfeaf4"
+"@angular/http@~7.0.0":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-7.0.4.tgz#445d6a812d25ea1656fc3e3381ef82b3f98fccb4"
   dependencies:
     tslib "^1.9.0"
 
-"@angular/platform-browser-dynamic@~6.1.0":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-6.1.10.tgz#f7e192454e221cbe25ab0b8dc250bad4f6a2605b"
+"@angular/platform-browser-dynamic@~7.0.0":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-7.0.4.tgz#69abb8c784bb71a660a0c824ca4a1a4960811a33"
   dependencies:
     tslib "^1.9.0"
 
-"@angular/platform-browser@~6.1.0":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-6.1.10.tgz#ef9d6408db7ae9443daa355f3655adeb496f1216"
+"@angular/platform-browser@~7.0.0":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-7.0.4.tgz#57dfaa23f8a3d678bad6ca110051e3ac6622ff3d"
   dependencies:
     tslib "^1.9.0"
 
-"@angular/router@~6.1.0":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@angular/router/-/router-6.1.10.tgz#c7ee00897f6659b08378ea08d153d6f4c718004e"
+"@angular/router@~7.0.0":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-7.0.4.tgz#ae2c32cc6a29bfe6eb909b9c63257d187075f4ff"
   dependencies:
     tslib "^1.9.0"
 
@@ -1060,6 +1063,9 @@ crypto-browserify@^3.11.0:
     public-encrypt "^4.0.0"
     randombytes "^2.0.0"
     randomfill "^1.0.3"
+
+"crypto-js@file:../../node_modules/crypto-js":
+  version "3.1.9-1"
 
 css-loader@~1.0.0:
   version "1.0.0"
@@ -2681,9 +2687,9 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-nativescript-angular@^6.2.0-2018-10-25-105803-01:
-  version "6.2.0-2018-10-25-105803-01"
-  resolved "https://registry.yarnpkg.com/nativescript-angular/-/nativescript-angular-6.2.0-2018-10-25-105803-01.tgz#b066056930cc068af4f96d276080a96fab23075c"
+nativescript-angular@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/nativescript-angular/-/nativescript-angular-7.1.1.tgz#e926a110386854455d28c3f6599d9c948f89f472"
   dependencies:
     nativescript-intl "^3.0.0"
     reflect-metadata "^0.1.8"
@@ -2705,9 +2711,9 @@ nativescript-dev-typescript@~0.7.0:
     nativescript-hook "^0.2.0"
     semver "5.5.0"
 
-nativescript-dev-webpack@^0.17.0-2018-10-25-144355-01:
-  version "0.17.0-2018-10-25-144355-01"
-  resolved "https://registry.yarnpkg.com/nativescript-dev-webpack/-/nativescript-dev-webpack-0.17.0-2018-10-25-144355-01.tgz#eca0dff145e40ae863b46d9287484b62bf886d05"
+nativescript-dev-webpack@^0.17.0:
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/nativescript-dev-webpack/-/nativescript-dev-webpack-0.17.0.tgz#826f008a29b972ff645b7c341471a395ba83aade"
   dependencies:
     "@angular-devkit/core" "~0.8.1"
     awesome-typescript-loader "~5.2.1"
@@ -2744,6 +2750,14 @@ nativescript-hook@0.2.4, nativescript-hook@^0.2.0:
 nativescript-intl@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/nativescript-intl/-/nativescript-intl-3.0.0.tgz#82ee9be7d377172b3c4295734723037628e186a7"
+
+nativescript-swiss-army-knife@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/nativescript-swiss-army-knife/-/nativescript-swiss-army-knife-4.0.2.tgz#568eafdc21d280c11bff3f53d669a3b6daf313ba"
+
+nativescript-taptic-engine@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/nativescript-taptic-engine/-/nativescript-taptic-engine-2.0.3.tgz#baf662336c1e89b99f354c8cdb9b1dd8f9a90483"
 
 nativescript-theme-core@~1.0.4:
   version "1.0.4"
@@ -3596,7 +3610,11 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@^6.0.0:
+rxjs-compat@6.3.3:
+  version "6.3.3"
+  resolved "https://registry.yarnpkg.com/rxjs-compat/-/rxjs-compat-6.3.3.tgz#2ab3b9ac0dac0c073749d55fef9c03ea1df2045c"
+
+rxjs@^6.3.3:
   version "6.3.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.3.3.tgz#3c6a7fa420e844a81390fb1158a9ec614f4bad55"
   dependencies:
@@ -4054,15 +4072,15 @@ timers-browserify@^2.0.4:
   dependencies:
     setimmediate "^1.0.4"
 
-tns-core-modules-widgets@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/tns-core-modules-widgets/-/tns-core-modules-widgets-5.0.1.tgz#59b35f50a5b58f1be604c198607f06bbe155f521"
+tns-core-modules-widgets@5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/tns-core-modules-widgets/-/tns-core-modules-widgets-5.1.2.tgz#0fcbb906ebfdf89512cdb9c22a508ff5d62c7f13"
 
-tns-core-modules@^5.0.0-rc-2018-10-26-180808-01:
-  version "5.0.0-rc-2018-10-26-180808-01"
-  resolved "https://registry.yarnpkg.com/tns-core-modules/-/tns-core-modules-5.0.0-rc-2018-10-26-180808-01.tgz#6a1935544745c258357d47ab84f4867e4101d98d"
+tns-core-modules@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/tns-core-modules/-/tns-core-modules-5.1.2.tgz#07dfaf82cbf2e80b32010c823235c7b59b9f3346"
   dependencies:
-    tns-core-modules-widgets "5.0.1"
+    tns-core-modules-widgets "5.1.2"
     tslib "^1.9.3"
 
 tns-platform-declarations@^4.1.0:
@@ -4163,9 +4181,9 @@ typedarray@^0.0.6:
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
 
-typescript@~2.7.2:
-  version "2.7.2"
-  resolved "http://registry.npmjs.org/typescript/-/typescript-2.7.2.tgz#2d615a1ef4aee4f574425cdff7026edf81919836"
+typescript@^3.2.4:
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.2.4.tgz#c585cb952912263d915b462726ce244ba510ef3d"
 
 uglify-es@^3.3.4:
   version "3.3.9"

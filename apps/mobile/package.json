@@ -2,7 +2,7 @@
   "nativescript": {
     "id": "org.nativescript.mobile",
     "tns-ios": {
-      "version": "5.0.0"
+      "version": "5.1.1"
     },
     "tns-android": {
       "version": "5.0.0"
@@ -23,13 +23,14 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "crypto-js": "file:../../node_modules/crypto-js",
-    "nativescript-angular": "^7.0.2",
+    "nativescript-angular": "^7.1.1",
+    "nativescript-swiss-army-knife": "^4.0.2",
     "nativescript-taptic-engine": "^2.0.3",
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.8",
     "rxjs": "^6.3.3",
     "rxjs-compat": "6.3.3",
-    "tns-core-modules": "^5.1.0",
+    "tns-core-modules": "^5.1.2",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
@@ -40,7 +41,7 @@
     "nativescript-dev-typescript": "~0.7.0",
     "nativescript-dev-webpack": "^0.17.0",
     "tns-platform-declarations": "^4.1.0",
-    "typescript": "~3.1.1"
+    "typescript": "^3.2.4"
   },
   "readme": "NativeScript Application",
   "scripts": {
