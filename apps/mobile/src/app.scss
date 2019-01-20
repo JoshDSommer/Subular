@@ -41,7 +41,13 @@ ActionBar {
   padding-bottom: 3px;
 }
 
-.player-wrap-background {
+// .player-card-background {
+//   border-top-left-radius: 30%;
+//   border-top-right-radius: 30%;
+//   margin-top: 18px;
+// }
+.player-wrap-background,
+.player-card-background {
   background-color: $playerBackgroundColor;
   .player-wrap {
     border-bottom-left-radius: 20;
@@ -105,7 +111,6 @@ ActionBar {
   .player-controls label {
     text-align: center;
     height: 66;
-    color: $primaryColorTwo;
   }
   .mini-player-button {
     width: 66;
