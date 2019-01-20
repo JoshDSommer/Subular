@@ -46,9 +46,16 @@ import {
 } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import { topmost, isIOS } from 'tns-core-modules/ui/frame/frame';
-import { SubularRouteData } from '../../app.routing';
+import { StackLayout } from 'tns-core-modules/ui/layouts/stack-layout/stack-layout';
 
 declare const UIBarStyle: any;
+
+export const log = (args: any[]) =>
+  console.log(
+    '--------------------------------------------------------------------------------------------',
+    ...args,
+    '--------------------------------------------------------------------------------------------'
+  );
 
 const slideLeft = [
   query(':leave', style({ transform: 'translateX(0)' })),
@@ -228,34 +235,41 @@ export class SubularAppComponent implements OnInit {
     this.router.navigate(['/login'], { clearHistory: true });
   }
 
-  showPlayer() {
-    this.animation = SLIDE_UP_ANIMATION;
-    this.scaleAnimation = SCALE_DOWN_ANIMATION;
-    this.playerVisible = true;
-    if (isIOS) {
-      topmost().ios.controller.visibleViewController.navigationItem.setHidesBackButtonAnimated(
-        true,
-        false
-      );
-      const navigationBar = topmost().ios.controller.navigationBar;
-      navigationBar.barStyle = UIBarStyle.UIBarStyleBlack;
+  showPlayer(playerWrap: StackLayout) {
+    // log(['showPlayer', playerWrap ? playerWrap.translateY : null]);
+    if (playerWrap) {
+      playerWrap.translateY = screenInfo.portrait;
     }
+    this.animation = { ...SLIDE_UP_ANIMATION };
+    this.scaleAnimation = { ...SCALE_DOWN_ANIMATION };
+    this.playerVisible = true;
+
+    // if (isIOS) {
+    //   topmost().ios.controller.visibleViewController.navigationItem.setHidesBackButtonAnimated(
+    //     true,
+    //     false
+    //   );
+    //   const navigationBar = topmost().ios.controller.navigationBar;
+    //   navigationBar.barStyle = UIBarStyle.UIBarStyleBlack;
+    // }
   }
 
   hidePlayerSlide = () => this.hidePlayer();
 
   hidePlayer() {
-    this.animation = SLIDE_DOWN_ANIMATION;
-    this.scaleAnimation = SCALE_UP_ANIMATION;
+    // log(['hidePlayer']);
+    this.animation = { ...SLIDE_DOWN_ANIMATION };
+    this.scaleAnimation = { ...SCALE_UP_ANIMATION };
     this.playerVisible = false;
-    this.ref.markForCheck();
-    if (isIOS) {
-      topmost().ios.controller.visibleViewController.navigationItem.setHidesBackButtonAnimated(
-        true,
-        false
-      );
-      const navigationBar = topmost().ios.controller.navigationBar;
-      navigationBar.barStyle = UIBarStyle.UIBarStyleBlack;
-    }
+
+    // this.ref.markForCheck();
+    // if (isIOS) {
+    //   topmost().ios.controller.visibleViewController.navigationItem.setHidesBackButtonAnimated(
+    //     true,
+    //     false
+    //   );
+    //   const navigationBar = topmost().ios.controller.navigationBar;
+    //   navigationBar.barStyle = UIBarStyle.UIBarStyleBlack;
+    // }
   }
 }
