@@ -23,8 +23,21 @@ export const SLIDE_UP_ANIMATION: AnimationDefinition = {
   duration: 350,
   curve: AnimationCurve.easeInOut
 };
+
 export const SLIDE_DOWN_ANIMATION: AnimationDefinition = {
   translate: { x: 0, y: screenInfo.portrait },
   duration: 500,
+  curve: AnimationCurve.easeInOut
+};
+
+export const SCALE_DOWN_ANIMATION: AnimationDefinition = {
+  scale: { x: 0.95, y: 0.95 },
+  duration: 300,
+  curve: AnimationCurve.easeInOut
+};
+
+export const SCALE_UP_ANIMATION: AnimationDefinition = {
+  scale: { x: 1, y: 1 },
+  duration: 600,
   curve: AnimationCurve.easeInOut
 };

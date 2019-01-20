@@ -7,10 +7,10 @@
       <label row="0" col="3" [highlight]="highlightBgColor" [nsRouterLink]="['/app/supa']" horizontalAlign="center" verticalAlignment="center" class="navigation-option " [text]="'More'"></label>
     </GridLayout>
     <GridLayout row="1" col="0" *ngIf="nowPlaying" class="mini-player" rows="*,30" columns="80,*,80">
-      <StackLayout shadow="5" row="0" rowSpan="2" col="0" width="60" height="60">
-        <image [nsRouterLink]="['/player']" pageTransition="slideTop" width="60" height="60" [src]="getArtWork(nowPlaying?.song) | async"></image>
+      <StackLayout row="0" class="" rowSpan="2" col="0" width="60" height="60">
+        <image (tap)="showPlayer()" class="" width="60" height="60" [src]="getArtWork(nowPlaying?.song) | async"></image>
       </StackLayout>
-      <label [nsRouterLink]="['/player']" class="song-title" pageTransition="slideTop" row="0" col="1" [text]="nowPlaying?.song?.title"></label>
+      <label (tap)="showPlayer()" class="song-title" row="0" col="1" [text]="nowPlaying?.song?.title"></label>
       <label class="song-artist" row="1" col="1" [text]="nowPlaying?.song?.artist"></label>
       <ng-container [ngSwitch]="nowPlaying?.playing">
         <label row="0" col="2" rowSpan="2" class="fa mini-player-button" [animate]="animateOptions" text="&#xf1ce;" *ngSwitchCase="PlayingStatus.loading" textWrap="true"></label>
@@ -22,16 +22,16 @@
       </ng-container>
     </GridLayout>
 
-    <GridLayout row="0" col="0" class="border-outline" [@routeAnimation]="prepRouteState(routerOutlet)">
-      <router-outlet #routerOutlet="outlet" class="router-outlet"></router-outlet>
+    <GridLayout row="0" col="0" class="border-outline" [animate]="scaleAnimation">
+      <router-outlet #routerOutlet="outlet" class="router-outlet" ></router-outlet>
       <ng-template #loading>
         <label class="loading-text" text="Loading..." textWrap="true"></label>
         <image class="loading-image" [animate]="animateOptions" src="~/app/images/record.png" width="50"></image>
       </ng-template>
     </GridLayout>
   </GridLayout>
-  <StackLayout *ngIf="nowPlaying && playerVisible" row="0" col="0" class="player-card-background">
-    <StackLayout class="back-button debug" (tap)="playerVisible = false">
+  <StackLayout *ngIf="nowPlaying" row="0" col="0" class="player-card-background" [translateY]="intialOffset" [animate]="animation">
+    <StackLayout class="back-button" (tap)="hidePlayer()">
       <label class="fa hide-button " text="&#xf0d7;"></label>
     </StackLayout>
     <player [nowPlaying]="nowPlaying"></player>
