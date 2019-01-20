@@ -35,7 +35,11 @@ export class PlayerComponent {
 
   @Input()
   set nowPlaying(value: IAudioPlayingInfo) {
-    if (this._nowPlaying && this._nowPlaying.song.id !== value.song.id) {
+    if (
+      this._nowPlaying &&
+      value &&
+      this._nowPlaying.song.id !== value.song.id
+    ) {
       this.currentArtWork = null;
     }
     this._nowPlaying = value;
