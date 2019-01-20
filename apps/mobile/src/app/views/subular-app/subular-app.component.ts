@@ -4,7 +4,12 @@ import {
   ChangeDetectorRef,
   ChangeDetectionStrategy
 } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {
+  RouterOutlet,
+  Router,
+  NavigationEnd,
+  ActivatedRoute
+} from '@angular/router';
 import {
   PlayerService,
   IAudioPlayingInfo,
@@ -30,9 +35,18 @@ import {
   transition,
   trigger
 } from '@angular/animations';
-import { shareReplay, tap } from 'rxjs/operators';
+import {
+  shareReplay,
+  tap,
+  filter,
+  map,
+  switchMap,
+  mergeMap,
+  startWith
+} from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import { topmost, isIOS } from 'tns-core-modules/ui/frame/frame';
+import { SubularRouteData } from '../../app.routing';
 
 declare const UIBarStyle: any;
 
@@ -129,12 +143,15 @@ export class SubularAppComponent implements OnInit {
   animation: any;
   intialOffset: number;
   scaleAnimation: any;
+  routeDate$: any;
 
   constructor(
     private subular: SubularMobileService,
     private router: RouterExtensions,
     private player: PlayerService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private route: Router,
+    private activatedRoute: ActivatedRoute
   ) {
     this.player.nowPlaying$.subscribe(nowPlaying => {
       if (this.nowPlaying && this.nowPlaying.song.id !== nowPlaying.song.id) {
@@ -155,6 +172,21 @@ export class SubularAppComponent implements OnInit {
   // }
 
   ngOnInit() {
+    this.routeDate$ = this.route.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(() => this.activatedRoute),
+      map(route => {
+        // this will traverse over the state tree to find the last activated route.
+        while (route.firstChild) {
+          route = route.firstChild;
+        }
+        //finally return that route
+        return route as ActivatedRoute;
+      }),
+      mergeMap(route => route.data),
+      startWith({ title: 'Artists' })
+    );
+
     this.intialOffset = screenInfo.portrait;
     this.subular.pingServer().subscribe(authenticated => {
       if (!authenticated) {
@@ -210,6 +242,7 @@ export class SubularAppComponent implements OnInit {
     this.animation = SLIDE_DOWN_ANIMATION;
     this.scaleAnimation = SCALE_UP_ANIMATION;
     this.playerVisible = false;
+    this.ref.markForCheck();
     if (isIOS) {
       topmost().ios.controller.visibleViewController.navigationItem.setHidesBackButtonAnimated(
         true,
