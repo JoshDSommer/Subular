@@ -1,22 +1,8 @@
 <StackLayout class="page-padding" align="center">
   <label class="login pacifico" text="subular"></label>
 
-  <TextField
-    #server
-    hint="http://yourServer.subsonic.org"
-    text=""
-    returnKeyType="next"
-  ></TextField>
+  <TextField #server hint="http://yourServer.subsonic.org" text="" returnKeyType="next"></TextField>
   <TextField #username hint="Username" text="" returnKeyType="next"></TextField>
-  <TextField
-    #password
-    hint="Password"
-    [secure]="true"
-    text=""
-    returnKeyType="done"
-  ></TextField>
-  <button
-    text="Submit"
-    (tap)="submitLogin(server.text, username.text, password.text)"
-  ></button>
+  <TextField #password hint="Password" [secure]="true" text="" returnKeyType="done"></TextField>
+  <button text="Submit" (tap)="submitLogin(server.text, username.text, password.text)"></button>
 </StackLayout>
