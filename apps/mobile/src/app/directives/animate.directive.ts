@@ -18,10 +18,10 @@ import { Animation, AnimationDefinition } from 'tns-core-modules/ui/animation';
   selector: '[animate]'
 })
 export class AnimateDirective implements AfterViewInit, OnDestroy {
-  private _animate: AnimationDefinition;
+  private _animate: AnimationDefinition[];
 
   @Input()
-  set animate(value: AnimationDefinition) {
+  set animate(value: AnimationDefinition[]) {
     if (this._animate !== value) {
       this._animate = value;
       this._cancel();
@@ -55,9 +55,13 @@ export class AnimateDirective implements AfterViewInit, OnDestroy {
       this._view = this._el.nativeElement;
     }
     if (this._view && this.animate) {
-      const animateOptions: AnimationDefinition = this.animate;
-      animateOptions.target = this._view;
-      this._animation = new Animation([animateOptions]);
+      const animateOptions = this.animate.map(animation => {
+        const animateOption: AnimationDefinition = animation;
+        animateOption.target = this._view;
+        return animateOption;
+      });
+
+      this._animation = new Animation(animateOptions);
       this._play();
     }
   }
