@@ -69,7 +69,14 @@ const routes: Routes = [
           backLinkUrl: null
         }
       },
-      { path: 'playlist/:playlistId', component: PlaylistComponent },
+      {
+        path: 'playlist/:playlistId',
+        component: PlaylistComponent,
+        data: {
+          backLinkTitle: 'Playlists',
+          backLinkUrl: ['/app/playlists']
+        }
+      },
       {
         path: 'recent',
         component: RecentlyAddedComponent,
