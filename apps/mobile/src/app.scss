@@ -41,11 +41,14 @@ ActionBar {
   padding-bottom: 3px;
 }
 
-// .player-card-background {
-//   border-top-left-radius: 30%;
-//   border-top-right-radius: 30%;
-//   margin-top: 18px;
-// }
+.player-card-background {
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  margin-top: 1px;
+  border-top-width: 3;
+  border-color: $accentsDark;
+  // transform: translateY(200%);
+}
 .player-wrap-background,
 .player-card-background {
   background-color: $playerBackgroundColor;
@@ -82,8 +85,9 @@ ActionBar {
 
   .heart-wrap {
     text-align: right;
-    padding-top: 15;
-    padding-right: 25;
+    padding-top: 5;
+    padding-right: 35;
+    padding-bottom: 5;
   }
   .song-title,
   .song-artist,
@@ -195,16 +199,7 @@ ActionBar {
   }
 
   & .mini-player {
-    background: linear-gradient(
-      0deg,
-      $miniPlayerBg,
-      $miniPlayerBg2,
-      $miniPlayerBg2,
-      $miniPlayerBg2,
-      $miniPlayerBg2,
-      $miniPlayerBg2,
-      $miniPlayerBg
-    );
+    background: $miniPlayerBg;
     height: 70;
   }
   & .mini-player-button {
