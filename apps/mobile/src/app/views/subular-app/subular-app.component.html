@@ -30,7 +30,7 @@
       </ng-template>
     </GridLayout>
   </GridLayout>
-  <StackLayout *ngIf="nowPlaying" row="0" col="0" class="player-card-background" [translateY]="intialOffset" [animate]="animation">
+  <StackLayout *ngIf="nowPlaying" [slideDownBack] [slideBackCallBack]="hidePlayerSlide" row="0" col="0" class="player-card-background" [translateY]="intialOffset" [animate]="animation">
     <StackLayout class="back-button" (tap)="hidePlayer()">
       <label class="fa hide-button " text="&#xf0d7;"></label>
     </StackLayout>

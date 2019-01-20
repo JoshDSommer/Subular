@@ -1,4 +1,10 @@
-import { Directive, ElementRef, Input, NgZone } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Input,
+  NgZone,
+  AfterViewInit
+} from '@angular/core';
 import { View } from 'tns-core-modules/ui/core/view';
 import {
   PanGestureEventData,
@@ -13,9 +19,13 @@ import { ListView } from 'tns-core-modules/ui/list-view';
 import { ScrollView } from 'tns-core-modules/ui/scroll-view';
 
 @Directive({ selector: '[slideDownBack]' })
-export class SlideDownBackDirective {
+export class SlideDownBackDirective implements AfterViewInit {
   @Input()
   slideBack: any[];
+
+  @Input()
+  slideBackCallBack: Function;
+
   startY: number;
 
   get view(): View {
@@ -83,13 +93,17 @@ export class SlideDownBackDirective {
         // 	translate: { Y: screen.mainScreen.widthDIPs, y: 0 },
         // 	duration: 100
         // }).then(() => {
-        if (this.slideBack) {
-          //must wrap this in zone run for the angular component lifecycle hooks to be called.
-          this.zone.run(() => {
-            this.nsRouter.navigate(this.slideBack);
-          });
+        if (!this.slideBackCallBack) {
+          if (this.slideBack) {
+            //must wrap this in zone run for the angular component lifecycle hooks to be called.
+            this.zone.run(() => {
+              this.nsRouter.navigate(this.slideBack);
+            });
+          } else {
+            this.nsRouter.back();
+          }
         } else {
-          this.nsRouter.back();
+          this.slideBackCallBack();
         }
         // }, (err) => {
         // });

@@ -204,6 +204,8 @@ export class SubularAppComponent implements OnInit {
     }
   }
 
+  hidePlayerSlide = () => this.hidePlayer();
+
   hidePlayer() {
     this.animation = SLIDE_DOWN_ANIMATION;
     this.scaleAnimation = SCALE_UP_ANIMATION;
