@@ -115,6 +115,7 @@ export class SubularAppComponent implements OnInit {
   animateOptions = SPIN_ANIMATION;
   highlightBgColor = '#ebd2f5';
   currentArtWork: Observable<string>;
+  playerVisible = false;
 
   constructor(
     private subular: SubularMobileService,
