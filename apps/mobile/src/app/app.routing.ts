@@ -74,7 +74,7 @@ const routes: Routes = [
         path: 'recent',
         component: RecentlyAddedComponent,
         data: {
-          title: 'Recent',
+          title: 'Recently Added',
           backLink: null,
           backLinkUrl: null
         }

@@ -1,6 +1,5 @@
 <GridLayout rows="*" columns="*">
   <GridLayout #mainLayout rows="40,*,auto,52" row="0" col="0" columns="*" stretchLastChild="true" class="app-wrap">
-    <header row="0" col="0" [data]="routeDate$ | async"></header>
     <GridLayout row="3" col="0" rows="*" columns="*,*,*,*" height="60" class="navigation">
       <label row="0" col="0" [highlight]="highlightBgColor" [nsRouterLink]="['/app/recent']" horizontalAlign="center" verticalAlignment="center" class=" navigation-option " [text]="'Recent'"></label>
       <label row="0" col="1" [highlight]="highlightBgColor" [nsRouterLink]="['/app/artists']" (tap)="clearArtistKeyCache()" horizontalAlign="center" verticalAlignment="center" class="navigation-option " [text]="'Artists'"></label>
@@ -31,6 +30,7 @@
         <image class="loading-image" [animate]="animateOptions" src="~/app/images/record.png" width="50"></image>
       </ng-template>
     </GridLayout>
+    <header row="0" col="0" [data]="routeDate$ | async"></header>
   </GridLayout>
   <StackLayout *ngIf="nowPlaying" [slideDownBack] [slideBackCallBack]="hidePlayerSlide" row="0" col="0" class="player-card-background" [translateY]="intialOffset" [animate]="animation">
     <StackLayout class="back-button" (tap)="hidePlayer()">
