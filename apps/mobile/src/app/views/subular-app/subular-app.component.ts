@@ -184,7 +184,13 @@ export class SubularAppComponent implements OnInit {
         return route as ActivatedRoute;
       }),
       mergeMap(route => route.data),
-      startWith({ title: 'Artists' })
+      startWith({ title: 'Artists' } as any),
+      map(data => {
+        if (data.headerData) {
+          return data.headerData;
+        }
+        return data;
+      })
     );
 
     this.intialOffset = screenInfo.portrait;
