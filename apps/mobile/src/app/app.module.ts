@@ -21,6 +21,7 @@ import { AlbumsComponent } from './views/subular-app/albums/albums.component';
 import * as applicationModule from 'tns-core-modules/application';
 import { AlbumComponent } from './views/subular-app/album/album.component';
 import { SongListComponent } from './components/song-list/song-list.component';
+import { HeaderComponent } from './components/header/header.component';
 import { PlayerService } from './services/player.service';
 import { AnimateDirective } from './directives/animate.directive';
 import { SlideBackDirective } from './directives/slideBack.directive';
@@ -69,6 +70,7 @@ setCategories(animationsTraceCategory);
     ComponentModule
   ],
   declarations: [
+    HeaderComponent,
     AppComponent,
     AlbumsComponent,
     ArtistListComponent,

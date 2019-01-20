@@ -1,0 +1,6 @@
+<!-- <back-link text="Artists" [link]="['/app/artists']"></back-link> -->
+<GridLayout [row]="row" [col]="col" rows="40" columns="25, *" class="back-link-wrap">
+	<label row="0" col="0" colSpan="2" *ngIf="data?.title" #label [text]="data?.title" class="title"></label>
+	<label row="0" col="0"*ngIf="data?.backLinkTitle" text="&#xf0d9;" class="fa" textWrap="true" [nsRouterLink]="data?.backLinkUrl"></label>
+	<label row="0" col="1" *ngIf="data?.backLinkTitle" [text]="data?.backLinkTitle" class=" back-link" [nsRouterLink]="data?.backLinkUrl"></label>
+</GridLayout>
