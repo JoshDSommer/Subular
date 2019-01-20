@@ -8,9 +8,9 @@
     </GridLayout>
     <GridLayout row="2" col="0" *ngIf="nowPlaying" class="mini-player" rows="*,30" columns="80,*,80">
       <StackLayout row="0" class="" rowSpan="2" col="0" width="60" height="60">
-        <image (tap)="showPlayer()" class="" width="60" height="60" [src]="getArtWork(nowPlaying?.song) | async"></image>
+        <image (tap)="showPlayer(playerWrap)" class="" width="60" height="60" [src]="getArtWork(nowPlaying?.song) | async"></image>
       </StackLayout>
-      <label (tap)="showPlayer()" class="song-title" row="0" col="1" [text]="nowPlaying?.song?.title"></label>
+      <label (tap)="showPlayer(playerWrap)" class="song-title" row="0" col="1" [text]="nowPlaying?.song?.title"></label>
       <label class="song-artist" row="1" col="1" [text]="nowPlaying?.song?.artist"></label>
       <ng-container [ngSwitch]="nowPlaying?.playing">
         <label row="0" col="2" rowSpan="2" class="fa mini-player-button" [animate]="animateOptions" text="&#xf1ce;" *ngSwitchCase="PlayingStatus.loading" textWrap="true"></label>
@@ -32,8 +32,8 @@
     </GridLayout>
     <header row="0" col="0" [data]="routeDate$ | async"></header>
   </GridLayout>
-  <StackLayout *ngIf="nowPlaying" [slideDownBack] [slideBackCallBack]="hidePlayerSlide" row="0" col="0" class="player-card-background" [translateY]="intialOffset" [animate]="animation">
-    <StackLayout class="back-button" (tap)="hidePlayer()">
+  <StackLayout *ngIf="nowPlaying" #playerWrap [slideAway]="hidePlayerSlide" row="0" col="0" class="player-card-background" [translateY]="intialOffset" [animate]="animation">
+    <StackLayout class="back-button" (tap)="hidePlayer(playerWrap)">
       <label class="fa hide-button " text="&#xf0d7;"></label>
     </StackLayout>
     <player [nowPlaying]="nowPlaying"></player>

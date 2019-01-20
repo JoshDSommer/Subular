@@ -57,6 +57,7 @@ export class AnimateDirective implements AfterViewInit, OnDestroy {
     if (this._view && this.animate) {
       const animateOptions: AnimationDefinition = this.animate;
       animateOptions.target = this._view;
+
       this._animation = new Animation([animateOptions]);
       this._play();
     }

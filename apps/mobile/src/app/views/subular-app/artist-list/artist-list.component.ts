@@ -112,7 +112,6 @@ export class ArtistListComponent implements OnInit, AfterViewInit {
   }
 
   cacheIndex(index) {
-    index = index - 5;
     if (index < 0) {
       index = 0;
     }
