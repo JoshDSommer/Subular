@@ -3,7 +3,8 @@ import {
   ElementRef,
   Input,
   NgZone,
-  AfterViewInit
+  AfterViewInit,
+  OnDestroy
 } from '@angular/core';
 import { View } from 'tns-core-modules/ui/core/view';
 import {
@@ -19,7 +20,7 @@ import { ListView } from 'tns-core-modules/ui/list-view';
 import { ScrollView } from 'tns-core-modules/ui/scroll-view';
 
 @Directive({ selector: '[slideDownBack]' })
-export class SlideDownBackDirective implements AfterViewInit {
+export class SlideDownBackDirective implements AfterViewInit, OnDestroy {
   @Input()
   slideBack: any[];
 
