@@ -16,6 +16,12 @@ import { AddToPlaylistComponent } from './views/subular-app/add-to-playlist/add-
 import { SupaComponent } from './views/supa/supa.component';
 import { PlayerWrapComponent } from './views/player/player-wrap/player-wrap.component';
 
+export interface SubularRouteData {
+  title: string;
+  backLinkTitle: string;
+  backLinkUrl: string[];
+}
+
 const routes: Routes = [
   { path: '', redirectTo: '/app/artists', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -24,12 +30,25 @@ const routes: Routes = [
     component: SubularAppComponent,
     children: [
       { path: '', redirectTo: 'artists', pathMatch: 'full' },
-      { path: 'artists', component: ArtistListComponent },
+      {
+        path: 'artists',
+        component: ArtistListComponent,
+        data: {
+          title: 'Artists',
+          backLink: null,
+          backLinkUrl: null
+        }
+      },
       {
         path: 'albums/:artistId',
         component: AlbumsComponent,
         resolve: {
           albums: AlbumsResolver
+        },
+        data: {
+          title: null,
+          backLinkTitle: 'Artists',
+          backLinkUrl: ['/app/artists']
         }
       },
       {
