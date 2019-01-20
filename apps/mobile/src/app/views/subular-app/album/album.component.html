@@ -1,6 +1,5 @@
 <StackLayout *ngIf="(album$ | async) as album" height="100%" class="album-wrap">
-  <ng-container *ngIf="(returnLink$ | async) as returnlink">
-    <ListView [slideBack]="returnlink.link" [itemTemplateSelector]="templateSelector" height="100%" [items]="songs$ | async" (itemLoading)="onItemLoading($event)" class="list-group">
+    <ListView [slideBack]="returnLink" [itemTemplateSelector]="templateSelector" height="100%" [items]="songs$ | async" (itemLoading)="onItemLoading($event)" class="list-group">
       <ng-template nsTemplateKey="header">
         <song-list-header [coverArt]="album.coverArt" [allSongsDownloaded]="allSongsDownloaded" [name]="album.name" [genre]="album.genre" [year]="album.year" [shuffleFunction]="playAndShuffle" [downloadFunction]="downloadAllSongs"></song-list-header>
       </ng-template>
@@ -25,5 +24,4 @@
         </GridLayout>
       </ng-template>
     </ListView>
-  </ng-container>
 </StackLayout>
