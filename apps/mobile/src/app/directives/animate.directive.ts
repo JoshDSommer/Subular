@@ -2,7 +2,13 @@
  * Add this to your app's SharedModule declarations
  */
 
-import { Directive, ElementRef, Input } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Input,
+  AfterViewInit,
+  OnDestroy
+} from '@angular/core';
 
 // nativescript
 import { View } from 'tns-core-modules/ui/core/view';
@@ -11,9 +17,21 @@ import { Animation, AnimationDefinition } from 'tns-core-modules/ui/animation';
 @Directive({
   selector: '[animate]'
 })
-export class AnimateDirective {
+export class AnimateDirective implements AfterViewInit, OnDestroy {
+  private _animate: AnimationDefinition;
+
   @Input()
-  animate: AnimationDefinition;
+  set animate(value: AnimationDefinition) {
+    if (this._animate !== value) {
+      this._animate = value;
+      this._cancel();
+      this._initAndPlay();
+    }
+  }
+
+  get animate() {
+    return this._animate;
+  }
 
   private _view: View;
   private _animation: Animation;
@@ -37,7 +55,7 @@ export class AnimateDirective {
       this._view = this._el.nativeElement;
     }
     if (this._view && this.animate) {
-      let animateOptions: AnimationDefinition = this.animate;
+      const animateOptions: AnimationDefinition = this.animate;
       animateOptions.target = this._view;
       this._animation = new Animation([animateOptions]);
       this._play();
