@@ -56,13 +56,34 @@ const routes: Routes = [
         component: AlbumComponent,
         resolve: {}
       },
-      { path: 'playlists', component: PlaylistsComponent },
+      {
+        path: 'playlists',
+        component: PlaylistsComponent,
+        data: {
+          title: 'Playlists',
+          backLink: null,
+          backLinkUrl: null
+        }
+      },
       { path: 'playlist/:playlistId', component: PlaylistComponent },
       {
         path: 'recent',
-        component: RecentlyAddedComponent
+        component: RecentlyAddedComponent,
+        data: {
+          title: 'Recent',
+          backLink: null,
+          backLinkUrl: null
+        }
       },
-      { path: 'supa', component: SupaComponent }
+      {
+        path: 'supa',
+        component: SupaComponent,
+        data: {
+          title: ' ',
+          backLink: null,
+          backLinkUrl: null
+        }
+      }
     ]
   },
   {
