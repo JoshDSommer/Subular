@@ -14,6 +14,7 @@ import { PlaylistComponent } from './views/subular-app/playlist/playlist.compone
 import { RecentlyAddedComponent } from './views/subular-app/recently-added/recently-added.component';
 import { AddToPlaylistComponent } from './views/subular-app/add-to-playlist/add-to-playlist.component';
 import { SupaComponent } from './views/supa/supa.component';
+import { PlayerWrapComponent } from './views/player/player-wrap/player-wrap.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/app/artists', pathMatch: 'full' },
@@ -47,7 +48,7 @@ const routes: Routes = [
   },
   {
     path: 'player',
-    component: PlayerComponent
+    component: PlayerWrapComponent
   },
   {
     path: 'addToPlaylist/:songId',

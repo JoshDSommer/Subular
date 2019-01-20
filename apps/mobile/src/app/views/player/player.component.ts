@@ -3,7 +3,8 @@ import {
   OnInit,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
-  OnDestroy
+  OnDestroy,
+  Input
 } from '@angular/core';
 import {
   PlayerService,
@@ -12,11 +13,8 @@ import {
 } from '../../services/player.service';
 import { SPIN_ANIMATION } from '../../animations/animations';
 import { Observable } from 'rxjs/Observable';
-import { RouterExtensions } from 'nativescript-angular/router';
-import { Page, EventData } from 'tns-core-modules/ui/page';
+import { EventData } from 'tns-core-modules/ui/page';
 import { SubularMobileService } from '../../services/subularMobile.service';
-import { Subscription, fromEvent } from 'rxjs';
-import { topmost } from 'tns-core-modules/ui/frame';
 import { Progress } from 'tns-core-modules/ui/progress';
 import { screen } from 'tns-core-modules/platform';
 import { ISong } from '@Subular/core';
@@ -24,19 +22,41 @@ import { ScrollView } from 'tns-core-modules/ui/scroll-view/scroll-view';
 import { TapticEngine } from 'nativescript-taptic-engine';
 import { shareReplay } from 'rxjs/operators';
 
-declare const CGAffineTransformMakeScale, UIBarStyle: any;
-
 @Component({
   moduleId: module.id,
   selector: 'player',
   templateUrl: './player.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PlayerComponent implements OnInit, OnDestroy {
+export class PlayerComponent {
   timeEclipsed: string;
   highlightBgColor = '#ebd2f5';
-  private subscription: Subscription;
-  nowPlaying: IAudioPlayingInfo;
+  _nowPlaying: IAudioPlayingInfo;
+
+  @Input()
+  set nowPlaying(value: IAudioPlayingInfo) {
+    if (this._nowPlaying && this._nowPlaying.song.id !== value.song.id) {
+      this.currentArtWork = null;
+    }
+
+    if (value) {
+      //mutate time formats probably should export this to a Pipe
+      this._nowPlaying = Object.assign({}, value);
+      const measuredTime = new Date(
+        (value.song.duration - value.remainingTime) * 1000
+      );
+      const timeWithoutHours = measuredTime.toISOString().substr(14, 5);
+      const timeWithHours = measuredTime.toISOString().substr(11, 8);
+      this.timeEclipsed = timeWithHours.startsWith('00:')
+        ? timeWithoutHours
+        : timeWithHours;
+      this.timeEclipsed = this.trimLeadingZero(this.timeEclipsed);
+      this._nowPlaying.song.time = this.trimLeadingZero(
+        this._nowPlaying.song.time
+      );
+    }
+  }
+
   songs$: Observable<ISong[]>;
   playerHeight = screen.mainScreen.heightDIPs - 50;
   PlayingStatus = PlayingStatus;
@@ -50,9 +70,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   constructor(
     private player: PlayerService,
-    private nsRouter: RouterExtensions,
     private subular: SubularMobileService,
-    private page: Page,
     private ref: ChangeDetectorRef,
     private vibrator: TapticEngine
   ) {}
@@ -64,56 +82,12 @@ export class PlayerComponent implements OnInit, OnDestroy {
     return time.startsWith('0') ? time.substring(1, time.length) : time;
   }
 
-  ngOnInit() {
-    this.subscription = this.player.nowPlaying$.subscribe(nowPlaying => {
-      if (this.nowPlaying && this.nowPlaying.song.id !== nowPlaying.song.id) {
-        this.currentArtWork = null;
-      }
-
-      if (nowPlaying) {
-        //mutate time formats probably should export this to a Pipe
-        this.nowPlaying = Object.assign({}, nowPlaying);
-        const measuredTime = new Date(
-          (nowPlaying.song.duration - nowPlaying.remainingTime) * 1000
-        );
-        const timeWithoutHours = measuredTime.toISOString().substr(14, 5);
-        const timeWithHours = measuredTime.toISOString().substr(11, 8);
-        this.timeEclipsed = timeWithHours.startsWith('00:')
-          ? timeWithoutHours
-          : timeWithHours;
-        this.timeEclipsed = this.trimLeadingZero(this.timeEclipsed);
-        this.nowPlaying.song.time = this.trimLeadingZero(
-          this.nowPlaying.song.time
-        );
-        this.ref.markForCheck();
-      }
-    });
-    this.songs$ = this.player.queue$;
-    //id back button ios
-    if (this.page.ios) {
-      topmost().ios.controller.visibleViewController.navigationItem.setHidesBackButtonAnimated(
-        true,
-        false
-      );
-      const navigationBar = topmost().ios.controller.navigationBar;
-      navigationBar.barStyle = UIBarStyle.UIBarStyleBlack;
-    }
-    // const panEvent$ = fromEvent(null, 'pan').map(
-    //   (event: PanGestureEventData) => event.deltaY
-    // );
-  }
-
-  ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-  }
   songHeartChange(song: ISong) {
     this.player.updateSong(song);
   }
 
   getArtWork(song) {
-    if (!this.currentArtWork) {
+    if (!this.currentArtWork && song && song.coverArt) {
       this.currentArtWork = this.subular
         .getArtWork(song.coverArt, 1000)
         .pipe(shareReplay());
@@ -174,9 +148,5 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   hapticFeedback() {
     this.vibrator.selection();
-  }
-
-  back() {
-    this.nsRouter.back();
   }
 }

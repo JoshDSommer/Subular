@@ -1,10 +1,3 @@
-<ActionBar #actionBar>
-  <StackLayout class="back-button" (touch)="back()">
-    <label class="fa hide-button " text="&#xf0d7;"></label>
-  </StackLayout>
-</ActionBar>
-<!-- <ScrollView #scrollView> -->
-<StackLayout [slideDownBack] class="player-wrap-background">
   <GridLayout
     *ngIf="playerVisible"
     class="player-wrap"
@@ -179,21 +172,3 @@
       ></label>
     </GridLayout>
   </GridLayout>
-  <!-- <StackLayout *ngIf="queueVisible" [height]="playerHeight - 120">
-    <ListView #songList [items]="songs$ | async" class="list-group">
-      <ng-template
-        let-item="item"
-        let-odd="odd"
-        let-even="even"
-        let-index="index"
-      >
-        <queue-item
-          [item]="item"
-          [index]="index"
-          [nowPlaying]="nowPlaying"
-        ></queue-item>
-      </ng-template>
-    </ListView>
-  </StackLayout> -->
-</StackLayout>
-<!-- </ScrollView> -->

@@ -1,0 +1,16 @@
+<StackLayout *ngIf="queueVisible" [height]="playerHeight - 120">
+    <ListView #songList [items]="songs$ | async" class="list-group">
+      <ng-template
+        let-item="item"
+        let-odd="odd"
+        let-even="even"
+        let-index="index"
+      >
+        <queue-item
+          [item]="item"
+          [index]="index"
+          [nowPlaying]="nowPlaying"
+        ></queue-item>
+      </ng-template>
+    </ListView>
+  </StackLayout>
