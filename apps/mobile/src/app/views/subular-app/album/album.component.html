@@ -10,9 +10,9 @@
         </GridLayout>
       </ng-template>
       <ng-template nsTemplateKey="regular" let-item="item" let-odd="odd" let-even="even">
-        <GridLayout rows="*" columns="30,*,60" class="song-list-item page-padding" (tap)="selectSong(item)" (longPress)="longpress(item)">
-          <label row="0" , col="0" [text]="item.track" class="track-number"></label>
-          <label row="0" , col="1" [text]="item.title" class="song"></label>
+        <GridLayout rows="*" columns="30,*,60" class="song-list-item page-padding">
+          <label row="0" , col="0" [text]="item.track" class="track-number" (tap)="selectSong(item)" (longPress)="longpress(item)"></label>
+          <label row="0" , col="1" [text]="item.title" class="song"  (tap)="selectSong(item)" (longPress)="longpress(item)"></label>
           <ng-container [ngSwitch]="item?.state">
             <label *ngSwitchCase="SongState.downloading" row="0" col="2" class="fa fa-download" text="&#xf1ce;"></label>
             <!--

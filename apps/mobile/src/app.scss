@@ -42,8 +42,8 @@ ActionBar {
 }
 
 .player-card-background {
-  border-top-left-radius: 40%;
-  border-top-right-radius: 40%;
+  border-top-left-radius: 45%;
+  border-top-right-radius: 45%;
   margin-top: 1px;
   border-top-width: 3;
   border-color: $accentsDark;
@@ -701,4 +701,8 @@ button {
 }
 .song-list-info-wrap {
   padding-top: 12.5;
+}
+
+.color-white {
+  color: white;
 }
