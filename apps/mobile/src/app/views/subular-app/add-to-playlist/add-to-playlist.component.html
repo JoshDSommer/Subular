@@ -1,3 +1,6 @@
+<ActionBar title="Add Song to Playlist" class="color-white">
+  <NavigationButton text="Go Back" class="color-white" android.systemIcon="ic_menu_back" ></NavigationButton>
+</ActionBar>
 <StackLayout class="page-padding ">
   <label text="Add to Playlist" class="title" textWrap="true"></label>
   <ng-container *ngIf="(playlists$ | async) as playlist; else: loading">
@@ -5,21 +8,8 @@
       <ng-template let-item="item" let-odd="odd" let-even="even" let-i="index">
         <GridLayout rows="*" columns="60,*" class="playlist-list-item">
           <ng-template [ngIf]="item.name != 'Favorites'">
-            <image
-              (tap)="addToPlaylist(item)"
-              height="60"
-              height="60"
-              row="0"
-              col="0"
-              [src]="getCoverArt(item) | async"
-            ></image>
-            <label
-              (tap)="addToPlaylist(item)"
-              row="0"
-              col="1"
-              [text]="item.name"
-              class="playlist"
-            ></label>
+            <image (tap)="addToPlaylist(item)" height="60" height="60" row="0" col="0" [src]="getCoverArt(item) | async"></image>
+            <label (tap)="addToPlaylist(item)" row="0" col="1" [text]="item.name" class="playlist"></label>
           </ng-template>
         </GridLayout>
       </ng-template>

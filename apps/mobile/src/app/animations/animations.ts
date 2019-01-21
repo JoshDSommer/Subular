@@ -31,7 +31,7 @@ export const SLIDE_DOWN_ANIMATION: AnimationDefinition = {
 };
 
 export const SCALE_DOWN_ANIMATION: AnimationDefinition = {
-  scale: { x: 0.95, y: 0.95 },
+  scale: { x: 0.9, y: 0.9 },
   duration: 300,
   curve: AnimationCurve.easeInOut
 };
