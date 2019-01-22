@@ -133,12 +133,6 @@
           }
         }
       }
-    },
-    "mobile2": {
-      "root": "apps/mobile2/",
-      "sourceRoot": "apps/mobile2/src",
-      "projectType": "application",
-      "prefix": "ns"
     }
   },
   "cli": {
