@@ -2,7 +2,9 @@ import {
   Component,
   OnInit,
   ChangeDetectorRef,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  ViewChild,
+  ElementRef
 } from '@angular/core';
 import {
   RouterOutlet,
@@ -47,6 +49,7 @@ import {
 import { Observable } from 'rxjs/Observable';
 import { topmost, isIOS } from 'tns-core-modules/ui/frame/frame';
 import { StackLayout } from 'tns-core-modules/ui/layouts/stack-layout/stack-layout';
+import { GridLayout } from 'tns-core-modules/ui/layouts/grid-layout/grid-layout';
 
 declare const UIBarStyle: any;
 
@@ -149,8 +152,21 @@ export class SubularAppComponent implements OnInit {
   playerVisible = false;
   animation: any;
   intialOffset: number;
-  scaleAnimation: any;
   routeDate$: any;
+
+  get routerOutlet(): GridLayout {
+    return this._routerOutlet.nativeElement;
+  }
+
+  get playerWrap(): StackLayout {
+    return this._playerWrap.nativeElement;
+  }
+
+  @ViewChild('routerOutletWrap')
+  _routerOutlet: ElementRef;
+
+  @ViewChild('playerWrap')
+  _playerWrap: ElementRef;
 
   constructor(
     private subular: SubularMobileService,
@@ -235,13 +251,14 @@ export class SubularAppComponent implements OnInit {
     this.router.navigate(['/login'], { clearHistory: true });
   }
 
-  showPlayer(playerWrap: StackLayout) {
+  showPlayer() {
     // log(['showPlayer', playerWrap ? playerWrap.translateY : null]);
-    if (playerWrap) {
-      playerWrap.translateY = screenInfo.portrait;
+    if (this.playerWrap) {
+      this.playerWrap.translateY = screenInfo.portrait;
     }
-    this.animation = { ...SLIDE_UP_ANIMATION };
-    this.scaleAnimation = { ...SCALE_DOWN_ANIMATION };
+    SLIDE_UP_ANIMATION.target = this.playerWrap;
+    SCALE_DOWN_ANIMATION.target = this.routerOutlet;
+    this.animation = [{ ...SLIDE_UP_ANIMATION }, { ...SCALE_DOWN_ANIMATION }];
     this.playerVisible = true;
 
     // if (isIOS) {
@@ -257,9 +274,13 @@ export class SubularAppComponent implements OnInit {
   hidePlayerSlide = () => this.hidePlayer();
 
   hidePlayer() {
-    // log(['hidePlayer']);
-    this.animation = { ...SLIDE_DOWN_ANIMATION };
-    this.scaleAnimation = { ...SCALE_UP_ANIMATION };
+    SLIDE_DOWN_ANIMATION.target = this.playerWrap;
+    SCALE_UP_ANIMATION.target = this.routerOutlet;
+    this.animation = [
+      { ...SLIDE_DOWN_ANIMATION },
+      { ...SCALE_UP_ANIMATION, target: this.routerOutlet }
+    ];
+
     this.playerVisible = false;
 
     // this.ref.markForCheck();
