@@ -22,9 +22,9 @@
       </ng-container>
     </GridLayout>
 
-    <GridLayout row="1" col="0" class="border-outline" [animate]="scaleAnimation">
+    <GridLayout row="1" col="0" #routerOutletWrap class="border-outline">
 
-      <router-outlet row="1" col="0" #routerOutlet="outlet" class="router-outlet" ></router-outlet>
+      <router-outlet row="1" col="0"  class="router-outlet" ></router-outlet>
       <ng-template #loading>
         <label class="loading-text" text="Loading..." textWrap="true"></label>
         <image class="loading-image" [animate]="animateOptions" src="~/app/images/record.png" width="50"></image>
@@ -32,8 +32,8 @@
     </GridLayout>
     <header row="0" col="0" [data]="routeDate$ | async"></header>
   </GridLayout>
-  <StackLayout *ngIf="nowPlaying" #playerWrap [slideAway]="hidePlayerSlide" row="0" col="0" class="player-card-background" [translateY]="intialOffset" [animate]="animation">
-    <StackLayout class="back-button" (tap)="hidePlayer(playerWrap)">
+  <StackLayout #playerWrap [slideAway]="hidePlayerSlide" row="0" col="0" class="player-card-background" [translateY]="intialOffset" [animate]="animation">
+    <StackLayout class="back-button" (tap)="hidePlayer()">
       <label class="fa hide-button " text="&#xf0d7;"></label>
     </StackLayout>
     <player [nowPlaying]="nowPlaying"></player>
