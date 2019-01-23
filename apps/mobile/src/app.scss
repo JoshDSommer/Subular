@@ -163,6 +163,25 @@ ActionBar {
 } */
 }
 
+.navigation {
+  background-color: $tabBackgroundColor;
+  @if $theme != 'dark' {
+    border-top-color: $accentsLight;
+    border-top-width: 1;
+  }
+  else {
+    border-top-color: $tabBackgroundColor;
+    border-top-width: 0;
+  }
+}
+.navigation-option {
+  text-align: center;
+  font-size: 18;
+  font-weight: bold;
+  height: 100%;
+  color: $primaryColorTwo;
+}
+
 // Main App
 .app-wrap {
   background-color: $backgroundColor;
@@ -177,25 +196,6 @@ ActionBar {
 
   & .sidedrawer-wrap label {
     color: $backgroundColor;
-  }
-
-  & .navigation {
-    background-color: $tabBackgroundColor;
-    @if $theme != 'dark' {
-      border-top-color: $accentsLight;
-      border-top-width: 1;
-    }
-    else {
-      border-top-color: $tabBackgroundColor;
-      border-top-width: 0;
-    }
-  }
-  & .navigation-option {
-    text-align: center;
-    font-size: 18;
-    font-weight: bold;
-    height: 100%;
-    color: $primaryColorTwo;
   }
 
   & .mini-player {
@@ -253,7 +253,7 @@ ActionBar {
     font-size: 18px;
   }
   .letter-wrap {
-    margin-top: 110;
+    margin-top: 80;
     font-size: 13px;
   }
 

@@ -26,7 +26,7 @@ export const SLIDE_UP_ANIMATION: AnimationDefinition = {
 
 export const SLIDE_DOWN_ANIMATION: AnimationDefinition = {
   translate: { x: 0, y: screenInfo.portrait },
-  duration: 450,
+  duration: 250,
   curve: AnimationCurve.easeInOut
 };
 
@@ -38,6 +38,6 @@ export const SCALE_DOWN_ANIMATION: AnimationDefinition = {
 
 export const SCALE_UP_ANIMATION: AnimationDefinition = {
   scale: { x: 1, y: 1 },
-  duration: 400,
+  duration: 300,
   curve: AnimationCurve.easeInOut
 };

@@ -158,6 +158,10 @@ export class SubularAppComponent implements OnInit {
     return this._routerOutlet.nativeElement;
   }
 
+  get miniPlayer(): GridLayout {
+    return this._miniPlayer.nativeElement;
+  }
+
   get playerWrap(): StackLayout {
     return this._playerWrap.nativeElement;
   }
@@ -167,6 +171,9 @@ export class SubularAppComponent implements OnInit {
 
   @ViewChild('playerWrap')
   _playerWrap: ElementRef;
+
+  @ViewChild('miniPlayer')
+  _miniPlayer: ElementRef;
 
   constructor(
     private subular: SubularMobileService,
@@ -186,13 +193,6 @@ export class SubularAppComponent implements OnInit {
       }
     });
   }
-
-  // prepRouteState(outlet: RouterOutlet) {
-  //   const path = outlet.activatedRoute.snapshot.routeConfig.path;
-  //   const pathCleanedUp = path.substring(0, path.indexOf('/'));
-  //   const route = path.includes('/') ? pathCleanedUp : path;
-  //   return route;
-  // }
 
   ngOnInit() {
     this.routeDate$ = this.route.events.pipe(
@@ -257,40 +257,34 @@ export class SubularAppComponent implements OnInit {
       this.playerWrap.translateY = screenInfo.portrait;
     }
     SLIDE_UP_ANIMATION.target = this.playerWrap;
+    SLIDE_DOWN_ANIMATION.target = this.miniPlayer;
     SCALE_DOWN_ANIMATION.target = this.routerOutlet;
-    this.animation = [{ ...SLIDE_UP_ANIMATION }, { ...SCALE_DOWN_ANIMATION }];
+    this.animation = [
+      { ...SLIDE_UP_ANIMATION },
+      { ...SLIDE_DOWN_ANIMATION },
+      { ...SCALE_DOWN_ANIMATION }
+    ];
     this.playerVisible = true;
-
-    // if (isIOS) {
-    //   topmost().ios.controller.visibleViewController.navigationItem.setHidesBackButtonAnimated(
-    //     true,
-    //     false
-    //   );
-    //   const navigationBar = topmost().ios.controller.navigationBar;
-    //   navigationBar.barStyle = UIBarStyle.UIBarStyleBlack;
-    // }
   }
 
   hidePlayerSlide = () => this.hidePlayer();
 
   hidePlayer() {
     SLIDE_DOWN_ANIMATION.target = this.playerWrap;
+    SLIDE_UP_ANIMATION.target = this.miniPlayer;
     SCALE_UP_ANIMATION.target = this.routerOutlet;
     this.animation = [
       { ...SLIDE_DOWN_ANIMATION },
-      { ...SCALE_UP_ANIMATION, target: this.routerOutlet }
+      { ...SLIDE_UP_ANIMATION },
+      { ...SCALE_UP_ANIMATION }
     ];
-
+    this.ref.markForCheck();
     this.playerVisible = false;
+  }
 
-    // this.ref.markForCheck();
-    // if (isIOS) {
-    //   topmost().ios.controller.visibleViewController.navigationItem.setHidesBackButtonAnimated(
-    //     true,
-    //     false
-    //   );
-    //   const navigationBar = topmost().ios.controller.navigationBar;
-    //   navigationBar.barStyle = UIBarStyle.UIBarStyleBlack;
-    // }
+  navigationChange() {
+    if (this.playerVisible) {
+      this.hidePlayerSlide();
+    }
   }
 }

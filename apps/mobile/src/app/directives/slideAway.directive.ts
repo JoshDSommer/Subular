@@ -25,6 +25,9 @@ export class SlideAwayDirective implements AfterViewInit {
   @Input()
   slideAway: Function;
 
+  @Input()
+  isPlaying: boolean;
+
   startY: number;
 
   get view(): View {
@@ -88,22 +91,27 @@ export class SlideAwayDirective implements AfterViewInit {
 
     if (args.state === GestureStateTypes.ended) {
       if (this.currentDeltaY > screen.mainScreen.widthDIPs / 3) {
-        item
-          .animate({
-            translate: {
-              x: 0,
-              y: screenInfo.portrait
-            },
-            duration: 200,
-            curve: AnimationCurve.easeInOut
-          })
-          .then(
-            () => {
-              return this.slideAway();
-            },
-            err => {}
-          )
-          .then(() => this.ref.markForCheck);
+        if (this.isPlaying) {
+          this.slideAway();
+          return;
+        }
+        this.zone.run(() => {
+          item
+            .animate({
+              translate: {
+                x: 0,
+                y: screenInfo.portrait
+              },
+              duration: 200,
+              curve: AnimationCurve.easeInOut
+            })
+            .then(
+              () => {
+                this.slideAway();
+              },
+              err => {}
+            );
+        });
       } else {
         // snap back.
         item
