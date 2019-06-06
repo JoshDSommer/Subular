@@ -11,8 +11,8 @@ import { ISong, IAlbum, IArtist } from '@Subular/core';
 @Component({
   moduleId: module.id,
   selector: 'heart',
-  templateUrl: 'heart.component.html',
-  styleUrls: ['heart.component.css'],
+  templateUrl: './heart.component.html',
+  styleUrls: ['./heart.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeartComponent {
