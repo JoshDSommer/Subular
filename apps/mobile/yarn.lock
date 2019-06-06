@@ -2751,6 +2751,9 @@ nativescript-intl@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/nativescript-intl/-/nativescript-intl-3.0.0.tgz#82ee9be7d377172b3c4295734723037628e186a7"
 
+"nativescript-iqkeyboardmanager@file:../../node_modules/nativescript-iqkeyboardmanager":
+  version "1.5.1"
+
 nativescript-swiss-army-knife@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/nativescript-swiss-army-knife/-/nativescript-swiss-army-knife-4.0.2.tgz#568eafdc21d280c11bff3f53d669a3b6daf313ba"
