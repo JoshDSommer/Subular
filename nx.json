@@ -1,0 +1,18 @@
+{
+  "npmScope": "subular3",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "subular3-e2e": {
+      "tags": []
+    },
+    "subular3": {
+      "tags": []
+    }
+  }
+}
