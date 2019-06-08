@@ -9,6 +9,7 @@
     }
   },
   "dependencies": {
+    "@subular3/subsonic-api": "file:../../libs/subsonic-api/src/",
     "@angular/animations": "../../node_modules/@angular/animations",
     "@angular/common": "../../node_modules/@angular/common",
     "@angular/compiler": "../../node_modules/@angular/compiler",
