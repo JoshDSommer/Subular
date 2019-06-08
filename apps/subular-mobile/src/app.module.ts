@@ -12,16 +12,9 @@ import { HomeComponent } from './home/home.component';
 // import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
 
 @NgModule({
-  declarations: [
-      AppComponent,
-      HomeComponent,
-  ],
-  imports: [
-      NativeScriptModule,
-      AppRoutingModule,
-  ],
+  declarations: [AppComponent, HomeComponent],
+  imports: [NativeScriptModule, AppRoutingModule],
   bootstrap: [AppComponent],
-  schemas: [NO_ERRORS_SCHEMA],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule {}
-

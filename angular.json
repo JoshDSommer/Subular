@@ -129,6 +129,33 @@
       "root": "apps/subular-mobile",
       "sourceRoot": "apps/subular-mobile",
       "prefix": "subular"
+    },
+    "subsonic-api": {
+      "projectType": "library",
+      "root": "libs/subsonic-api",
+      "sourceRoot": "libs/subsonic-api/src",
+      "prefix": "subular3",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/subsonic-api/tsconfig.lib.json",
+              "libs/subsonic-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/subsonic-api/jest.config.js",
+            "tsConfig": "libs/subsonic-api/tsconfig.spec.json",
+            "setupFile": "libs/subsonic-api/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {
