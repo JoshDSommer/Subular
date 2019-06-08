@@ -118,6 +118,17 @@
           }
         }
       }
+    },
+    "subular-mobile": {
+      "projectType": "application",
+      "schematics": {
+        "@nativescript/schematics:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/subular-mobile",
+      "sourceRoot": "apps/subular-mobile",
+      "prefix": "subular"
     }
   },
   "cli": {
