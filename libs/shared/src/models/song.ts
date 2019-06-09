@@ -32,3 +32,5 @@ export interface Song {
   type?: string;
   state?: SongState;
 }
+
+export interface Songs extends Array<Song> {}

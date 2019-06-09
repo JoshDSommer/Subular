@@ -11,3 +11,6 @@ export interface Album {
   year: number;
   genre: string;
 }
+
+// tslint:disable-next-line:no-empty-interface
+export interface Albums extends Array<Album> {}
