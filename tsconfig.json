@@ -18,8 +18,8 @@
     "paths": {
       "@subular3/subsonic-api": ["libs/subsonic-api/src/index.ts"],
       "@subular3/shared": ["libs/shared/src/index.ts"],
-      "@subular3/mobile-login": ["libs/mobile-login/src/index.ts"],
-      "@subular3/web-login": ["libs/web-login/src/index.ts"]
+      "@subular3/mobile-login": ["libs/mobile/mobile-login/src/index.ts"],
+      "@subular3/web-login": ["libs/web/web-login/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
