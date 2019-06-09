@@ -186,16 +186,16 @@
     },
     "mobile-login": {
       "projectType": "library",
-      "root": "libs/mobile-login",
-      "sourceRoot": "libs/mobile-login/src",
+      "root": "libs/mobile/mobile-login",
+      "sourceRoot": "libs/mobile/mobile-login/src",
       "prefix": "subular3",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/mobile-login/tsconfig.lib.json",
-              "libs/mobile-login/tsconfig.spec.json"
+              "libs/mobile/mobile-login/tsconfig.lib.json",
+              "libs/mobile/mobile-login/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**"]
           }
@@ -203,9 +203,9 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/mobile-login/jest.config.js",
-            "tsConfig": "libs/mobile-login/tsconfig.spec.json",
-            "setupFile": "libs/mobile-login/src/test-setup.ts"
+            "jestConfig": "libs/mobile/mobile-login/jest.config.js",
+            "tsConfig": "libs/mobile/mobile-login/tsconfig.spec.json",
+            "setupFile": "libs/mobile/mobile-login/src/test-setup.ts"
           }
         }
       },
@@ -213,16 +213,16 @@
     },
     "web-login": {
       "projectType": "library",
-      "root": "libs/web-login",
-      "sourceRoot": "libs/web-login/src",
+      "root": "libs/web/web-login",
+      "sourceRoot": "libs/web/web-login/src",
       "prefix": "subular3",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/web-login/tsconfig.lib.json",
-              "libs/web-login/tsconfig.spec.json"
+              "libs/web/web-login/tsconfig.lib.json",
+              "libs/web/web-login/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**"]
           }
@@ -230,9 +230,9 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/web-login/jest.config.js",
-            "tsConfig": "libs/web-login/tsconfig.spec.json",
-            "setupFile": "libs/web-login/src/test-setup.ts"
+            "jestConfig": "libs/web/web-login/jest.config.js",
+            "tsConfig": "libs/web/web-login/tsconfig.spec.json",
+            "setupFile": "libs/web/web-login/src/test-setup.ts"
           }
         }
       },
