@@ -13,4 +13,4 @@ export interface Playlist {
 }
 
 // tslint:disable-next-line:no-empty-interface
-export interface IPlaylists extends Array<Playlist> {}
+export interface Playlists extends Array<Playlist> {}
