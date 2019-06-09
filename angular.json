@@ -183,6 +183,60 @@
         }
       },
       "schematics": {}
+    },
+    "mobile-login": {
+      "projectType": "library",
+      "root": "libs/mobile-login",
+      "sourceRoot": "libs/mobile-login/src",
+      "prefix": "subular3",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/mobile-login/tsconfig.lib.json",
+              "libs/mobile-login/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/mobile-login/jest.config.js",
+            "tsConfig": "libs/mobile-login/tsconfig.spec.json",
+            "setupFile": "libs/mobile-login/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "web-login": {
+      "projectType": "library",
+      "root": "libs/web-login",
+      "sourceRoot": "libs/web-login/src",
+      "prefix": "subular3",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/web-login/tsconfig.lib.json",
+              "libs/web-login/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/web-login/jest.config.js",
+            "tsConfig": "libs/web-login/tsconfig.spec.json",
+            "setupFile": "libs/web-login/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

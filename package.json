@@ -51,6 +51,7 @@
     "zone.js": "^0.9.1"
   },
   "devDependencies": {
+    "jest-preset-angular": "7.0.0",
     "@angular-devkit/build-angular": "^0.800.0",
     "@angular/cli": "8.0.0",
     "@angular/compiler-cli": "^8.0.0",
@@ -66,7 +67,6 @@
     "cypress": "~3.3.1",
     "dotenv": "6.2.0",
     "jest": "24.1.0",
-    "jest-preset-angular": "7.0.0",
     "nativescript-dev-sass": "~1.6.0",
     "nativescript-dev-typescript": "~0.8.0",
     "nativescript-dev-webpack": "^0.20.0",

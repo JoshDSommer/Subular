@@ -22,6 +22,12 @@
     },
     "shared": {
       "tags": []
+    },
+    "mobile-login": {
+      "tags": []
+    },
+    "web-login": {
+      "tags": []
     }
   }
 }
