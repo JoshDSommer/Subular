@@ -19,6 +19,9 @@
     },
     "subsonic-api": {
       "tags": []
+    },
+    "shared": {
+      "tags": []
     }
   }
 }

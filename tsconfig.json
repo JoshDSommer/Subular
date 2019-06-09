@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@subular3/subsonic-api": ["libs/subsonic-api/src/index.ts"]
+      "@subular3/subsonic-api": ["libs/subsonic-api/src/index.ts"],
+      "@subular3/shared": ["libs/shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
