@@ -11,25 +11,36 @@ import {
   Artists,
   Albums
 } from '@subular3/shared';
+import { SubsonicPlaylistsService } from './services/subsonic-playlists.service';
 
 export const SUBULAR_CACHED_ALBUMS = 'subular.cached.albums';
 export const SUBULAR_CACHED_ARTISTS = 'subular.cached.artists';
 export const SUBULAR_CACHED_PLAYLISTS = 'subular.cached.playlists';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SubsonicCachedService {
   constructor(
     private subsonic: SubsonicGetService,
-    private localStorage: LOCALSTORAGE_PROVIDER
+    private localStorage: LOCALSTORAGE_PROVIDER,
+    private subsonicPlaylists: SubsonicPlaylistsService
   ) {}
 
   getCachedData(): Observable<[Artists, Albums, Playlists]> {
-    return combineLatest(this.getArtists(), this.getAlbums()) as any;
+    return combineLatest(
+      this.getArtists(),
+      this.getAlbums(),
+      this.getPlaylists()
+    ) as any;
   }
 
   getPlaylists(): Observable<Playlists> {
     const playlists = this.localStorage.getValue(SUBULAR_CACHED_PLAYLISTS);
-    return this.buildArtistDatabase().pipe(
+    return this.subsonicPlaylists.getPlaylists().pipe(
+      tap((response: Playlists) =>
+        this.localStorage.setValue(SUBULAR_CACHED_PLAYLISTS, response)
+      ),
       startWith(playlists || []),
       switchMap(() =>
         this.getDateFromCache<Playlist>(SUBULAR_CACHED_PLAYLISTS)(

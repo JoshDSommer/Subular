@@ -5,7 +5,9 @@ import { SubsonicAuthenticationService } from '../subsonic-authentication.servic
 import { SubsonicGetService } from './subsonic-get.service';
 import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SubsonicSongsService {
   constructor(
     private authentication: SubsonicAuthenticationService,
