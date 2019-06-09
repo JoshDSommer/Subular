@@ -1,1 +1,1 @@
-export * from './lib/subsonic-api.module';
+export * from './lib';

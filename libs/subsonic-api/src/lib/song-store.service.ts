@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Songs } from '@subular3/shared';
+import { Songs, Song } from '@subular3/shared';
 
 @Injectable({
   providedIn: 'root'

@@ -18,8 +18,6 @@ export const SUBULAR_CACHED_PLAYLISTS = 'subular.cached.playlists';
 
 @Injectable()
 export class SubsonicCachedService {
-  // private artists: Artist[];
-
   constructor(
     private subsonic: SubsonicGetService,
     private localStorage: LOCALSTORAGE_PROVIDER
