@@ -20,13 +20,13 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public formBuilder: FormBuilder,
-    private subsonic: SubsonicHealthCheckService,
+    private subsonicHealthCheck: SubsonicHealthCheckService,
     private authentication: SubsonicAuthenticationService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.subsonic.pingServer().subscribe(authenticated => {
+    this.subsonicHealthCheck.pingServer().subscribe(authenticated => {
       if (authenticated) {
         const link = [
           'app',
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       this.loginForm.value.password
     );
 
-    this.subsonic.pingServer().subscribe(
+    this.subsonicHealthCheck.pingServer().subscribe(
       authenticated => {
         if (authenticated) {
           this.router.navigate(['/app']);
