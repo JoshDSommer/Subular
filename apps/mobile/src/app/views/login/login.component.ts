@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { setString } from 'tns-core-modules/application-settings/application-settings';
+import { tap } from 'rxjs/operators';
 
 @Component({
   moduleId: module.id,
@@ -25,22 +26,23 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   submitLogin(server: string, username: string, password: string) {
-    if (!server.toLocaleLowerCase().endsWith(`.subsonic.org`)) {
-      server += `.subsonic.org`;
-    }
+    console.log('login', server, username, password);
 
     this.authentication.saveAuthenticationInfo(server, username, password);
 
-    this.subsonic.pingServer().subscribe(
-      authenticated => {
-        if (authenticated) {
-          setString(SUBULAR_CACHED_ARTISTS, '');
-          setString(SUBULAR_CACHED_ALBUMS, '');
-          this.redirectToMainApplication();
-        }
-      },
-      failed => {}
-    );
+    this.subsonic
+      .pingServer()
+      .pipe(tap(console.log))
+      .subscribe(
+        authenticated => {
+          if (authenticated) {
+            setString(SUBULAR_CACHED_ARTISTS, '');
+            setString(SUBULAR_CACHED_ALBUMS, '');
+            this.redirectToMainApplication();
+          }
+        },
+        failed => console.log(failed)
+      );
   }
 
   redirectToMainApplication() {

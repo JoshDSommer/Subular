@@ -166,13 +166,13 @@ export class SubularAppComponent implements OnInit {
     return this._playerWrap.nativeElement;
   }
 
-  @ViewChild('routerOutletWrap')
+  @ViewChild('routerOutletWrap', { static: false })
   _routerOutlet: ElementRef;
 
-  @ViewChild('playerWrap')
+  @ViewChild('playerWrap', { static: false })
   _playerWrap: ElementRef;
 
-  @ViewChild('miniPlayer')
+  @ViewChild('miniPlayer', { static: false })
   _miniPlayer: ElementRef;
 
   constructor(

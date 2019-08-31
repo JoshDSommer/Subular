@@ -42,9 +42,9 @@ export class ArtistListComponent implements OnInit, AfterViewInit {
     private ref: ChangeDetectorRef,
     private vibrator: TapticEngine
   ) {}
-  @ViewChild('artistList')
+  @ViewChild('artistList', { static: false })
   _artistListView: ElementRef;
-  @ViewChild('label')
+  @ViewChild('label', { static: false })
   _label: ElementRef;
 
   cachedIndex: any;
