@@ -4,7 +4,7 @@ import { IAlbum } from '../interfaces/album';
 import { IArtist } from '../interfaces/artists';
 import { LOCALSTORAGE_PROVIDER } from '../localstorage.provider';
 import { map, tap, switchMap } from 'rxjs/operators';
-import { combineLatest, Observable, of } from 'rxjs';
+import { combineLatest, forkJoin, Observable, of } from 'rxjs';
 
 export const SUBULAR_CACHED_ALBUMS = 'subular.cached.albums';
 export const SUBULAR_CACHED_ARTISTS = 'subular.cached.artists';
@@ -19,7 +19,7 @@ export class SubsonicCachedService {
   ) {}
 
   getCachedData(): Observable<[IArtist[], IAlbum[]]> {
-    return combineLatest(this.getArtists(), this.getAlbums()) as any;
+    return forkJoin(this.getArtists(), this.getAlbums()) as any;
   }
 
   getArtists(): Observable<IArtist[]> {
@@ -48,13 +48,14 @@ export class SubsonicCachedService {
 
   getAlbum(albumId: number) {
     const albums = this.localStorage.getValue(SUBULAR_CACHED_ALBUMS);
-    const filtered = albums.find(album => album.id == albumId);
-
-    if (filtered) {
-      return new Observable(observer => {
-        observer.next(filtered);
-        observer.complete();
-      });
+    if (albums) {
+      const filtered = albums.find(album => album.id == albumId);
+      if (filtered) {
+        return new Observable(observer => {
+          observer.next(filtered);
+          observer.complete();
+        });
+      }
     }
     // else rebuild albumDB  and then get it form local storage.
     return this.buildAlbumDatabase().pipe(
@@ -95,9 +96,14 @@ export class SubsonicCachedService {
   private buildArtistDatabase(): Observable<any> {
     return this.subsonic.subsonicGet('getArtists').pipe(
       map((data: any) => {
-        return data.artists.index
-          .map(value => value.artist)
-          .reduce((previous, value) => [...previous, ...value]) as IArtist[];
+        if (data && data.artists && data.artists.index) {
+          const reMappedList = data.artists.index.map(value => value.artist);
+          return reMappedList.reduce((previous, value) => [
+            ...previous,
+            ...value
+          ]) as IArtist[];
+        }
+        return [];
       }),
       tap(artists =>
         this.localStorage.setValue(SUBULAR_CACHED_ARTISTS, artists)

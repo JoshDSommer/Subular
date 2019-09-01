@@ -53,11 +53,12 @@ import { NativeScriptAnimationsModule } from 'nativescript-angular/animations';
 // }
 
 import { animationsTraceCategory } from 'nativescript-angular/trace';
-import { setCategories, enable } from 'trace';
+// import { setCategories, enable } from 'trace';
 import { PlayerWrapComponent } from './views/player/player-wrap/player-wrap.component';
 import { PlayingQueComponent } from './views/player/playing-que/playing-que.component';
 import { SlideAwayDirective } from './directives/slideAway.directive';
-setCategories(animationsTraceCategory);
+import { clear } from 'tns-core-modules/application-settings/application-settings';
+// setCategories(animationsTraceCategory);
 // enable();
 
 @NgModule({

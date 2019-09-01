@@ -57,9 +57,10 @@ export class ArtistListComponent implements OnInit, AfterViewInit {
   previousCharacterToJumpTo: string;
 
   ngOnInit() {
-    this.artists$ = this.subular
-      .getArtists()
-      .pipe(tap(artists => (this.artists = artists)));
+    this.artists$ = this.subular.getArtists().pipe(
+      tap(artists => (this.artists = artists as any)),
+      this.detectChanges
+    ) as any;
   }
 
   ngAfterViewInit() {
