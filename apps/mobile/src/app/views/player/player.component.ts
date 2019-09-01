@@ -35,6 +35,9 @@ export class PlayerComponent {
 
   @Input()
   set nowPlaying(value: IAudioPlayingInfo) {
+    if (!value) {
+      return;
+    }
     if (
       this._nowPlaying &&
       value &&

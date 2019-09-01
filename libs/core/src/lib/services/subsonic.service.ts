@@ -190,10 +190,13 @@ export class SubsonicService {
       ? this.authentication.getServerURl(method) + additionalParams
       : this.authentication.getServerURl(method);
     if (url === '' || url === additionalParams) {
-      console.log('FALSE');
+      // console.log('FALSE');
       return of(false);
     }
     console.log(url);
-    return this.http.get<any>(url).pipe(map(data => data['subsonic-response']));
+    return this.http.get<any>(url).pipe(
+      map(data => data['subsonic-response'])
+      // tap(console.log)
+    );
   }
 }

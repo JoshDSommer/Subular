@@ -47,7 +47,9 @@ export class PlayerService {
   private _random: boolean;
 
   constructor(private subularService: SubsonicService, private ngZone: NgZone) {
-    this.setupAudio();
+    setTimeout(() => {
+      this.setupAudio();
+    });
   }
 
   clearSongs(): void {
