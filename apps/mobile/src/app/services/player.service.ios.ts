@@ -224,25 +224,25 @@ export class PlayerService {
     // sets the command center commands to use the controls handers events.
     this.commandCenter = MPRemoteCommandCenter.sharedCommandCenter();
     this.commandCenter.pauseCommand.enabled = true;
-    // this.commandCenter.pauseCommand.addTargetAction(
-    //   this.controlsHandler,
-    //   'pauseSong'
-    // );
-    // this.commandCenter.playCommand.enabled = true;
-    // this.commandCenter.playCommand.addTargetAction(
-    //   this.controlsHandler,
-    //   'resumeSong'
-    // );
-    // this.commandCenter.nextTrackCommand.enabled = true;
-    // this.commandCenter.nextTrackCommand.addTargetAction(
-    //   this.controlsHandler,
-    //   'playNextSong'
-    // );
-    // this.commandCenter.previousTrackCommand.enabled = true;
-    // this.commandCenter.previousTrackCommand.addTargetAction(
-    //   this.controlsHandler,
-    //   'playPreviousSong'
-    // );
+    this.commandCenter.pauseCommand.addTargetAction(
+      this.controlsHandler,
+      'pauseSong'
+    );
+    this.commandCenter.playCommand.enabled = true;
+    this.commandCenter.playCommand.addTargetAction(
+      this.controlsHandler,
+      'resumeSong'
+    );
+    this.commandCenter.nextTrackCommand.enabled = true;
+    this.commandCenter.nextTrackCommand.addTargetAction(
+      this.controlsHandler,
+      'playNextSong'
+    );
+    this.commandCenter.previousTrackCommand.enabled = true;
+    this.commandCenter.previousTrackCommand.addTargetAction(
+      this.controlsHandler,
+      'playPreviousSong'
+    );
 
     //TODO delegates to update time and when song is done playing
     const _interval = CMTimeMake(1, 5);
@@ -389,11 +389,28 @@ class ControlsHandler extends NSObject {
     owner.playPreviousSong();
   }
 
+  // tslint:disable-next-line: member-ordering
+  public static nativeIntType =
+    interop.sizeof(interop.types.id) == 4
+      ? interop.types.int32
+      : interop.types.int64;
   // tslint:disable-next-line:member-ordering
   public static ObjCExposedMethods = {
-    pauseSong: { returns: interop.types.void },
-    resumeSong: { returns: interop.types.void },
-    playNextSong: { returns: interop.types.void },
-    playPreviousSong: { returns: interop.types.void }
+    pauseSong: {
+      returns: ControlsHandler.nativeIntType,
+      params: [MPRemoteCommandEvent]
+    },
+    resumeSong: {
+      returns: ControlsHandler.nativeIntType,
+      params: [MPRemoteCommandEvent]
+    },
+    playNextSong: {
+      returns: ControlsHandler.nativeIntType,
+      params: [MPRemoteCommandEvent]
+    },
+    playPreviousSong: {
+      returns: ControlsHandler.nativeIntType,
+      params: [MPRemoteCommandEvent]
+    }
   };
 }

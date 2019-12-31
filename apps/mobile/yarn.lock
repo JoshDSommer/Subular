@@ -4438,10 +4438,10 @@ tns-core-modules@~6.3.0:
   dependencies:
     "@nativescript/core" "6.3.2"
 
-tns-platform-declarations@6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/tns-platform-declarations/-/tns-platform-declarations-6.0.1.tgz#202034fe2c7a80d104f9dc2a37edb36670574f5a"
-  integrity sha512-yHkmCikDGjZsPg9G8jBFgj3A/U8YGrHkKN4wG/X7OUBSKhB2D5UQDI1XsY7JLzoKGMCG81G8Sh5uDejWVhUQ8Q==
+tns-platform-declarations@6.3.2:
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/tns-platform-declarations/-/tns-platform-declarations-6.3.2.tgz#2151dc79d6dd709acbe520e2359341315bcd72cb"
+  integrity sha512-XD7j5LEZr/3dnrTA5eoTz0V/iWuLbiybc3Y/fGnLmrJBlxpipZxuL2tMoii1HD9L67ZWiwXDNkmOMDwTSVRU3A==
 
 to-arraybuffer@^1.0.0:
   version "1.0.1"
