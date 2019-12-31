@@ -224,25 +224,25 @@ export class PlayerService {
     // sets the command center commands to use the controls handers events.
     this.commandCenter = MPRemoteCommandCenter.sharedCommandCenter();
     this.commandCenter.pauseCommand.enabled = true;
-    this.commandCenter.pauseCommand.addTargetAction(
-      this.controlsHandler,
-      'pauseSong'
-    );
-    this.commandCenter.playCommand.enabled = true;
-    this.commandCenter.playCommand.addTargetAction(
-      this.controlsHandler,
-      'resumeSong'
-    );
-    this.commandCenter.nextTrackCommand.enabled = true;
-    this.commandCenter.nextTrackCommand.addTargetAction(
-      this.controlsHandler,
-      'playNextSong'
-    );
-    this.commandCenter.previousTrackCommand.enabled = true;
-    this.commandCenter.previousTrackCommand.addTargetAction(
-      this.controlsHandler,
-      'playPreviousSong'
-    );
+    // this.commandCenter.pauseCommand.addTargetAction(
+    //   this.controlsHandler,
+    //   'pauseSong'
+    // );
+    // this.commandCenter.playCommand.enabled = true;
+    // this.commandCenter.playCommand.addTargetAction(
+    //   this.controlsHandler,
+    //   'resumeSong'
+    // );
+    // this.commandCenter.nextTrackCommand.enabled = true;
+    // this.commandCenter.nextTrackCommand.addTargetAction(
+    //   this.controlsHandler,
+    //   'playNextSong'
+    // );
+    // this.commandCenter.previousTrackCommand.enabled = true;
+    // this.commandCenter.previousTrackCommand.addTargetAction(
+    //   this.controlsHandler,
+    //   'playPreviousSong'
+    // );
 
     //TODO delegates to update time and when song is done playing
     const _interval = CMTimeMake(1, 5);

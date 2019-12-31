@@ -21,7 +21,7 @@ export class SubsonicAuthenticationService {
     const salt = this.makeSalt();
     const saltedPassword = this.cryptoJs.MD5(password + salt).toString();
     if (server && !server.toLowerCase().startsWith('https://')) {
-      server = `https://{server}`;
+      server = `https://${server}`;
     }
     this.localStorage.setValue(SERVER_INFO_KEY, <IServerInfo>{
       server,
